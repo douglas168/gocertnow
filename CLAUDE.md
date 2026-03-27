@@ -117,6 +117,10 @@ gocertnow/
 4. **Open the Platform (18+ months):** Invite other cert instructors and training companies to create and sell on GoCertNow. Platform takes 20–30% cut. Add creator dashboard, instructor onboarding, revenue sharing.
 5. **SaaS Layer:** Package the AI cert-content generation workflow as a paid add-on for platform creators (subscription for AI credits — content gen, exam question gen, explanation gen).
 
+## UI Design System
+
+Before building any UI page or component, read `design-system/MASTER.md` (global source of truth) and `design-system/pages/<page>.md` if it exists (page-specific overrides). Do not invent colors, fonts, or styles not in the design system. If these files don't exist yet, follow `docs/planning/WORKFLOW-UI-DESIGN-SYSTEM.md` to generate them first.
+
 ## Current State
 
 Project is in **scaffolding phase** — repository structure is set up, no application code written yet. Existing files are planning documents in `docs/`.
