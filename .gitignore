@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+web/node_modules/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Next.js
+web/.next/
+web/out/
+
+# Content generation output (drafts, not source)
+content/*/output/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Sensitive docs — never commit
+USER-INTAKE.md
+
+# Supabase CLI temp files
+supabase/.temp/

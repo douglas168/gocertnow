@@ -4,32 +4,99 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-SaaS online course platform for IPAS AI應用規劃師 certification exam prep (初級 and 中級 levels). The product combines video courses, a mock exam system with AI-explained answers, and social media content automation.
+**GoCertNow.com** — A platform helping young professionals and career-switchers earn beginner-to-intermediate certifications. Combines video courses, a mock exam system with AI-explained answers, and social media content automation.
 
-**Business model:** Pay-per-course with 3-month access. Failed exam → free extension until next exam date.
+**Starting vertical:** IPAS AI應用規劃師 (初級 + 中級) — used as the pilot to build and validate the content generation workflow and website before expanding to other cert verticals.
 
-## Planned Tech Stack
+**Long-term vision:** B2C → Marketplace → SaaS layer.
+1. Prove the model with IPAS (B2C, Taiwan)
+2. Expand to more cert verticals using the AI workflow
+3. Open the platform — invite other cert instructors and training companies to create and sell on GoCertNow (take a 20–30% platform cut)
+4. Package the AI cert-content generation workflow as a paid creator tool (SaaS subscription for platform creators)
 
-- **Framework:** Next.js 14+ (App Router)
+**Defensible moat:** Cert prep is outcome-binary (pass or fail). GoCertNow owns that outcome — AI-generated content + mock exam system + pass guarantee. This survives AI commoditization because the passing score can't be faked.
+
+**Business model:** Pay-per-course with 3-month access.
+- **Failed exam (1st time):** 1 free 3-month extension — student forwards official IPAS failure email (from registered email) to trigger n8n automation that verifies and extends `access_expires_at` in Supabase.
+- **Failed exam (2nd time / after extension used):** 50% discount code to repurchase the course.
+- **Maximum free access:** 6 months (3 + 3). No further free extensions.
+
+## Repository Structure
+
+This repo contains everything about the project — not just website code.
+
+```
+gocertnow/
+├── web/                    # Next.js website (the product)
+├── content/                # Course content creation pipeline (internal tool)
+│   ├── _templates/         # Reusable prompt + lesson templates
+│   ├── _scripts/           # AI generation scripts (Node.js)
+│   └── ipas/               # IPAS cert vertical (pilot)
+│       ├── beginner/
+│       └── intermediate/
+├── social/                 # Social media automation (FB, X, IG)
+│   ├── n8n/                # n8n workflow JSON exports
+│   ├── templates/          # Caption templates per platform
+│   ├── assets/             # Brand assets, image base templates
+│   └── scripts/            # sharp/canvas image card generation
+├── supabase/               # DB schema & migrations (shared across web + scripts)
+│   ├── migrations/
+│   └── seed/
+├── docs/
+│   ├── brand/              # Brand reference, domain registration
+│   ├── planning/           # Build plans, workflow specs
+│   ├── future-courses/     # Research on future cert verticals
+│   └── competitors/        # Competitor analysis
+└── .github/workflows/      # CI/CD
+```
+
+## Tech Stack
+
+### Web (`web/`)
+- **Framework:** Next.js 14+ (App Router) — rendering layer only, no business logic
 - **Styling:** Tailwind CSS + shadcn/ui
-- **Auth:** Clerk (Google + email login)
-- **Database:** Supabase (PostgreSQL)
-- **Payments:** Stripe (one-time payments, Taiwan credit cards)
-- **Video hosting:** Bunny.net (private CDN streaming)
-- **Deployment:** Vercel
-- **Automation:** n8n (self-hosted) for social media pipeline
-- **Image generation:** Node.js script using `sharp` + `canvas`
-- **AI content:** Gemini API for social media + mock exam answer explanations (start with Gemini 2.0 Flash; upgrade to Claude Haiku/Sonnet only if explanation quality is insufficient)
+- **i18n:** `i18next` + `react-i18next` — shared translation files with future mobile app
+- **Auth:** Clerk (Google + email login) — has React Native SDK for mobile parity
+- **Payments:** Stripe — has `stripe-react-native` SDK for mobile parity
+- **Deployment:** Vercel (deploys from `web/`)
+
+### Mobile (future — `mobile/`)
+- **Framework:** React Native + Expo
+- **Styling:** NativeWind (Tailwind syntax in React Native) + custom components
+- **Auth:** Clerk React Native SDK
+- **Payments:** `stripe-react-native`
+- **Deployment:** Expo EAS
+
+### Backend (shared by web + mobile)
+- **Database + business logic:** Supabase (PostgreSQL + Row Level Security + Edge Functions)
+  - All business logic lives here — never in Next.js server code — so mobile can reuse it
+- **Video hosting:** Bunny.net (private CDN streaming — works on any platform)
+- **Automation:** n8n (self-hosted) for social media pipeline + exam failure extension
+- **Image generation:** Node.js using `sharp` + `canvas`
+- **AI content:** Gemini 2.0 Flash for course content generation, social media copy, and mock exam answer explanations (fallback to Claude Haiku/Sonnet if quality insufficient)
+
+### Shared
+- **i18n translation files:** `shared/locales/en.json` + `shared/locales/zh.json` — consumed by both web and mobile
 
 ## Key Architecture Decisions
 
-- All UI text and content is in **Traditional Chinese (繁體中文)** — Taiwan market only
-- Course access is time-gated via `access_expires_at` field in Supabase
-- Mock exam system is the core differentiator: timed 60-question simulator, score breakdown by category, AI-generated explanations for wrong answers using Gemini 2.0 Flash (fallback to Claude if quality insufficient)
-- Video content is AI-generated (HeyGen avatar + TTS), not live presenter
+- **Language strategy — Dual market:**
+  - **Traditional Chinese (繁體中文):** Taiwan-specific certs (IPAS) — UI, content, and marketing all in Chinese
+  - **English:** International certs (AWS, Google, PMP, etc.) — UI, content, and marketing in English
+  - Pilot (IPAS) launches in Traditional Chinese first; English language support added when expanding to international cert verticals
+  - Next.js i18n routing handles both — `/zh/` for Chinese, `/en/` for English (or subdomain strategy: `tw.gocertnow.com` vs `gocertnow.com`)
+- Course access is time-gated via `access_expires_at` in Supabase
+- Mock exam is the core differentiator: timed 60-question simulator, score breakdown by category, AI-generated explanations for wrong answers
+- **Content format — Hybrid model:**
+  - **Module intro (1–2 min):** AI avatar video (HeyGen + TTS) — one per module for premium feel
+  - **Lesson content:** Text + diagrams + audio narration — scannable, updatable, SEO-friendly, AI-workflow-native
+  - **Concept summaries:** Bullet callout boxes for fast pre-exam review
+  - **Wrong answer explanations:** Text only — students re-read, not re-watch
+  - Rationale: exam prep students review content 5–10× before the exam; text is scannable, video is not. Text is also trivial to update when syllabus changes and is generated natively by the Gemini content workflow.
 - Social media automation: RSS → Gemini API → image cards + captions → Airtable review queue → Buffer publish
+- Content generation workflow is an **internal tool first** — scripts in `content/_scripts/`, run locally, push output to Supabase
 
-## Site Routes
+## Site Routes (`web/`)
 
 ```
 /                          — Landing page
@@ -44,10 +111,12 @@ SaaS online course platform for IPAS AI應用規劃師 certification exam prep (
 
 ## Build Phases
 
-1. **MVP:** Landing page, course pages, lesson player, Stripe checkout, Clerk auth, progress tracking
-2. **Mock Exam System:** Question bank in Supabase (tagged by topic + level), timed exam simulator, score reports, Gemini 2.0 Flash for wrong-answer explanations, retry wrong answers, failed-exam auto-extension
-3. **Growth:** Newsletter, completion certificates, Discord integration, admin panel, referral system
+1. **Pilot — IPAS B2C (Now):** Content generation workflow for IPAS 初級/中級, website with landing page, course pages, lesson player, Stripe checkout, Clerk auth, progress tracking
+2. **Mock Exam System:** Question bank in Supabase (tagged by topic + level), timed exam simulator, score reports, AI explanations for wrong answers, n8n failure-email extension automation
+3. **Scale Verticals (6–18 months):** Add 2–3 more cert verticals (AWS, Google, PMP etc.) using the proven AI content workflow. Each new cert = days of work, not months.
+4. **Open the Platform (18+ months):** Invite other cert instructors and training companies to create and sell on GoCertNow. Platform takes 20–30% cut. Add creator dashboard, instructor onboarding, revenue sharing.
+5. **SaaS Layer:** Package the AI cert-content generation workflow as a paid add-on for platform creators (subscription for AI credits — content gen, exam question gen, explanation gen).
 
 ## Current State
 
-Project is in **planning phase** — no application code has been written yet. The repository contains planning documents (workflow specs, website build plan, competitor analysis).
+Project is in **scaffolding phase** — repository structure is set up, no application code written yet. Existing files are planning documents in `docs/`.

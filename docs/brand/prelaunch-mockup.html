@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GoCertNow – Pre-launch Mockup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ── CSS Variables ── */
+    :root {
+      --bg:          #F8FAFF;
+      --surface:     #FFFFFF;
+      --border:      #C7D8F0;
+      --accent:      #2B85F0;
+      --accent-hover:#1A6FD4;
+      --text-primary:#0D1117;
+      --text-secondary:#4A6080;
+      --success:     #059669;
+      --badge-bg:    #EBF4FF;
+      --badge-text:  #2B85F0;
+      --card-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(43,133,240,0.08);
+    }
+    .dark {
+      --bg:          #07080F;
+      --surface:     #0D1117;
+      --border:      #1F2D45;
+      --accent:      #51a2ff;
+      --accent-hover:#6DB2FF;
+      --text-primary:#EDF2FF;
+      --text-secondary:#7B9CC4;
+      --success:     #34D399;
+      --badge-bg:    #0D1A2E;
+      --badge-text:  #51a2ff;
+      --card-shadow: 0 1px 3px rgba(0,0,0,0.4), 0 4px 24px rgba(81,162,255,0.08);
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      transition: background 0.25s, color 0.25s;
+      line-height: 1.6;
+    }
+
+    /* ── Nav ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: background 0.25s, border-color 0.25s;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+    .logo span { color: var(--accent); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .lang-toggle {
+      display: flex;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    .lang-toggle button {
+      padding: 6px 14px;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 500;
+      transition: background 0.15s, color 0.15s;
+    }
+    .lang-toggle button.active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .theme-btn {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.15s;
+      color: var(--text-primary);
+    }
+    .theme-btn:hover { background: var(--border); }
+
+    /* ── Hero ── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 80px 24px 60px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 28px;
+    }
+    .badge-dot {
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(1.4); }
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+      color: var(--text-primary);
+    }
+    h1 .highlight { color: var(--accent); }
+
+    .sub {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 540px;
+      margin-bottom: 48px;
+      line-height: 1.7;
+    }
+
+    /* ── Countdown ── */
+    .countdown {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 52px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .countdown-unit {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 28px;
+      min-width: 90px;
+      text-align: center;
+      box-shadow: var(--card-shadow);
+      transition: background 0.25s, border-color 0.25s;
+    }
+    .countdown-number {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .countdown-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-secondary);
+    }
+
+    /* ── Features ── */
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 48px;
+      width: 100%;
+      max-width: 440px;
+      text-align: left;
+    }
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+    .feature-icon {
+      width: 22px; height: 22px;
+      background: var(--success);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.65rem;
+      color: #fff;
+      font-weight: 700;
+    }
+    .feature-item strong { color: var(--text-primary); }
+
+    /* ── Email Form ── */
+    .email-form {
+      width: 100%;
+      max-width: 460px;
+      margin-bottom: 16px;
+    }
+    .input-row {
+      display: flex;
+      gap: 8px;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 6px 6px 6px 16px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      box-shadow: var(--card-shadow);
+    }
+    .input-row:focus-within {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(81,162,255,0.15);
+    }
+    .input-row input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      outline: none;
+    }
+    .input-row input::placeholder { color: var(--text-secondary); }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .form-note {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      margin-bottom: 52px;
+    }
+    .form-note strong { color: var(--success); }
+
+    /* ── Divider ── */
+    .divider {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Social ── */
+    .social-section {
+      text-align: center;
+      padding: 40px 24px 60px;
+    }
+    .social-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+    .social-links {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+    .social-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 18px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.15s, color 0.15s, transform 0.1s;
+      box-shadow: var(--card-shadow);
+    }
+    .social-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Waitlist counter ── */
+    .waitlist-count {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      margin-bottom: 40px;
+    }
+    .avatars {
+      display: flex;
+    }
+    .avatar {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      border: 2px solid var(--bg);
+      margin-left: -8px;
+      font-size: 0.65rem;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+      color: #fff;
+    }
+    .avatars .avatar:first-child { margin-left: 0; }
+    .a1 { background: #51a2ff; }
+    .a2 { background: #34D399; }
+    .a3 { background: #F59E0B; }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="logo">Go<span>Cert</span>Now</div>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button class="active" onclick="setLang('en')">EN</button>
+        <button onclick="setLang('zh')">繁中</button>
+      </div>
+      <button class="theme-btn" onclick="toggleTheme()" title="Toggle dark/light mode">🌓</button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+
+    <div class="badge">
+      <span class="badge-dot"></span>
+      <span id="badge-text">Launching May 25, 2026</span>
+    </div>
+
+    <h1 id="headline">
+      Get Certified.<br/><span class="highlight">Get Hired.</span>
+    </h1>
+
+    <p class="sub" id="sub">
+      The cert prep platform built to get you across the finish line.
+      AI-powered mock exams, structured learning paths, and a
+      <strong>pass guarantee</strong> — or we extend your access, free.
+    </p>
+
+    <!-- Countdown -->
+    <div class="countdown">
+      <div class="countdown-unit">
+        <div class="countdown-number" id="days">59</div>
+        <div class="countdown-label" id="label-days">Days</div>
+      </div>
+      <div class="countdown-unit">
+        <div class="countdown-number" id="hours">14</div>
+        <div class="countdown-label" id="label-hours">Hours</div>
+      </div>
+      <div class="countdown-unit">
+        <div class="countdown-number" id="mins">32</div>
+        <div class="countdown-label" id="label-mins">Mins</div>
+      </div>
+      <div class="countdown-unit">
+        <div class="countdown-number" id="secs">08</div>
+        <div class="countdown-label" id="label-secs">Secs</div>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <div class="features">
+      <div class="feature-item">
+        <div class="feature-icon">✓</div>
+        <span id="f1"><strong>AI-powered mock exams</strong> — timed, scored, and explained</span>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">✓</div>
+        <span id="f2"><strong>Pass guarantee</strong> — fail once, get 3 months free extension</span>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">✓</div>
+        <span id="f3"><strong>Beginner to intermediate</strong> — IPAS, AWS, Google certs & more</span>
+      </div>
+    </div>
+
+    <!-- Waitlist counter -->
+    <div class="waitlist-count">
+      <div class="avatars">
+        <div class="avatar a1">D</div>
+        <div class="avatar a2">S</div>
+        <div class="avatar a3">M</div>
+      </div>
+      <span id="waitlist-text">127 people already on the waitlist</span>
+    </div>
+
+    <!-- Email Form -->
+    <div class="email-form">
+      <div class="input-row">
+        <input type="email" id="email-input" placeholder="Enter your email address" />
+        <button class="btn-primary" id="cta-btn">Notify Me →</button>
+      </div>
+    </div>
+    <p class="form-note" id="form-note">
+      🎁 <strong>Early-bird: 20% off</strong> for everyone on the waitlist at launch.
+    </p>
+
+  </section>
+
+  <hr class="divider" />
+
+  <!-- Social -->
+  <div class="social-section">
+    <p class="social-label" id="social-label">Follow for updates</p>
+    <div class="social-links">
+      <a class="social-btn" href="#">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </a>
+      <a class="social-btn" href="#">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        X (Twitter)
+      </a>
+      <a class="social-btn" href="#">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        Instagram
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <span id="footer-text">© 2026 GoCertNow.com — All rights reserved.</span>
+  </footer>
+
+  <script>
+    // ── Dark / Light Mode ──
+    const root = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDark = saved ? saved === 'dark' : prefersDark;
+    if (isDark) root.classList.add('dark');
+
+    function toggleTheme() {
+      root.classList.toggle('dark');
+      localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
+    }
+
+    // ── Language Toggle ──
+    const copy = {
+      en: {
+        badge: 'Launching May 25, 2026',
+        headline: 'Get Certified.<br/><span class="highlight">Get Hired.</span>',
+        sub: 'The cert prep platform built to get you across the finish line. AI-powered mock exams, structured learning paths, and a <strong>pass guarantee</strong> — or we extend your access, free.',
+        f1: '<strong>AI-powered mock exams</strong> — timed, scored, and explained',
+        f2: '<strong>Pass guarantee</strong> — fail once, get 3 months free extension',
+        f3: '<strong>Beginner to intermediate</strong> — IPAS, AWS, Google certs & more',
+        waitlist: '127 people already on the waitlist',
+        emailPlaceholder: 'Enter your email address',
+        cta: 'Notify Me →',
+        formNote: '🎁 <strong>Early-bird: 20% off</strong> for everyone on the waitlist at launch.',
+        socialLabel: 'Follow for updates',
+        footer: '© 2026 GoCertNow.com — All rights reserved.',
+        days: 'Days', hours: 'Hours', mins: 'Mins', secs: 'Secs',
+      },
+      zh: {
+        badge: '即將於 2026 年 5 月 25 日上線',
+        headline: '考取證照。<br/><span class="highlight">贏得機會。</span>',
+        sub: '專為幫你通過考試而生的證照備考平台。AI 模擬考試、結構化學習路徑，以及<strong>通過保證</strong> — 考不過沒關係，免費延長使用期，再衝一次！',
+        f1: '<strong>AI 模擬考試</strong> — 計時作答、評分與解析',
+        f2: '<strong>通過保證</strong> — 第一次未過，免費延長 3 個月',
+        f3: '<strong>初級至中級</strong> — IPAS、AWS、Google 等證照',
+        waitlist: '已有 127 人加入候補名單',
+        emailPlaceholder: '輸入您的電子郵件',
+        cta: '立即訂閱 →',
+        formNote: '🎁 <strong>早鳥優惠：上線享 8 折</strong>，限候補名單成員。',
+        socialLabel: '追蹤我們，掌握最新消息',
+        footer: '© 2026 GoCertNow.com — 版權所有',
+        days: '天', hours: '時', mins: '分', secs: '秒',
+      }
+    };
+
+    let currentLang = 'en';
+
+    function setLang(lang) {
+      currentLang = lang;
+      const t = copy[lang];
+      document.getElementById('badge-text').textContent = t.badge;
+      document.getElementById('headline').innerHTML = t.headline;
+      document.getElementById('sub').innerHTML = t.sub;
+      document.getElementById('f1').innerHTML = t.f1;
+      document.getElementById('f2').innerHTML = t.f2;
+      document.getElementById('f3').innerHTML = t.f3;
+      document.getElementById('waitlist-text').textContent = t.waitlist;
+      document.getElementById('email-input').placeholder = t.emailPlaceholder;
+      document.getElementById('cta-btn').textContent = t.cta;
+      document.getElementById('form-note').innerHTML = '🎁 ' + t.formNote;
+      document.getElementById('social-label').textContent = t.socialLabel;
+      document.getElementById('footer-text').textContent = t.footer;
+      document.getElementById('label-days').textContent = t.days;
+      document.getElementById('label-hours').textContent = t.hours;
+      document.getElementById('label-mins').textContent = t.mins;
+      document.getElementById('label-secs').textContent = t.secs;
+      document.querySelectorAll('.lang-toggle button').forEach((btn, i) => {
+        btn.classList.toggle('active', (i === 0 && lang === 'en') || (i === 1 && lang === 'zh'));
+      });
+    }
+
+    // ── Live Countdown to May 25, 2026 ──
+    function updateCountdown() {
+      const target = new Date('2026-05-25T00:00:00');
+      const now = new Date();
+      const diff = target - now;
+      if (diff <= 0) return;
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      document.getElementById('days').textContent  = String(d).padStart(2, '0');
+      document.getElementById('hours').textContent = String(h).padStart(2, '0');
+      document.getElementById('mins').textContent  = String(m).padStart(2, '0');
+      document.getElementById('secs').textContent  = String(s).padStart(2, '0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>

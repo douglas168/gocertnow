@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+/* ── Light mode (default) ── */
+:root {
+  --bg:            #F8FAFF;
+  --surface:       #FFFFFF;
+  --border:        #C7D8F0;
+  --accent:        #2B85F0;
+  --accent-hover:  #1A6FD4;
+  --text-primary:  #0D1117;
+  --text-secondary:#4A6080;
+  --success:       #059669;
+  --badge-bg:      #EBF4FF;
+}
+
+/* ── Dark mode ── */
+.dark {
+  --bg:            #07080F;
+  --surface:       #0D1117;
+  --border:        #1F2D45;
+  --accent:        #51a2ff;
+  --accent-hover:  #6DB2FF;
+  --text-primary:  #EDF2FF;
+  --text-secondary:#7B9CC4;
+  --success:       #34D399;
+  --badge-bg:      #0D1A2E;
+}
+
+@theme inline {
+  --color-bg:            var(--bg);
+  --color-surface:       var(--surface);
+  --color-border:        var(--border);
+  --color-accent:        var(--accent);
+  --color-accent-hover:  var(--accent-hover);
+  --color-text-primary:  var(--text-primary);
+  --color-text-secondary:var(--text-secondary);
+  --color-success:       var(--success);
+  --color-badge-bg:      var(--badge-bg);
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  transition: background 0.25s, color 0.25s;
+}
