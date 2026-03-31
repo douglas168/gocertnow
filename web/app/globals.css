@@ -1,47 +1,155 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-/* ── Light mode (default) ── */
+/* ── LevelCert Design System — Dark Mode Only ── */
+
 :root {
-  --bg:            #F8FAFF;
-  --surface:       #FFFFFF;
-  --border:        #C7D8F0;
-  --accent:        #2B85F0;
-  --accent-hover:  #1A6FD4;
-  --text-primary:  #0D1117;
-  --text-secondary:#4A6080;
-  --success:       #059669;
-  --badge-bg:      #EBF4FF;
+  /* ── Core palette (MASTER.md) ── */
+  --lc-primary: #4F46E5;           /* indigo-600 */
+  --lc-secondary: #818CF8;         /* indigo-400 */
+  --lc-cta: #10B981;               /* emerald-500 */
+  --lc-background: #0F172A;        /* slate-900 */
+  --lc-surface: #1E293B;           /* slate-800 */
+  --lc-text: #F1F5F9;              /* slate-100 */
+  --lc-text-muted: #94A3B8;        /* slate-400 */
+  --lc-border: #334155;            /* slate-700 */
+
+  /* ── RPG accent colors ── */
+  --lc-xp: #FBBF24;               /* amber-400 */
+  --lc-streak: #F87171;            /* red-400 */
+  --lc-success: #34D399;           /* emerald-400 */
+  --lc-danger: #F87171;            /* red-400 */
+  --lc-badge: #A78BFA;             /* violet-400 */
+  --lc-radar: #818CF8;             /* indigo-400 */
+
+  /* ── Exam overrides ── */
+  --lc-exam-bg: #020617;           /* slate-950 */
+  --lc-exam-surface: #0F172A;      /* slate-900 */
+
+  /* ── Spacing tokens ── */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  /* ── shadcn/ui expected variables (mapped to our design system) ── */
+  --radius: 0.625rem;
+  --background: var(--lc-background);
+  --foreground: var(--lc-text);
+  --card: var(--lc-surface);
+  --card-foreground: var(--lc-text);
+  --popover: var(--lc-surface);
+  --popover-foreground: var(--lc-text);
+  --primary: var(--lc-primary);
+  --primary-foreground: #FFFFFF;
+  --secondary: var(--lc-secondary);
+  --secondary-foreground: #FFFFFF;
+  --muted: var(--lc-surface);
+  --muted-foreground: var(--lc-text-muted);
+  --accent: var(--lc-cta);
+  --accent-foreground: #FFFFFF;
+  --destructive: var(--lc-danger);
+  --border: var(--lc-border);
+  --input: var(--lc-border);
+  --ring: var(--lc-primary);
+
+  /* ── Chart colors ── */
+  --chart-1: var(--lc-primary);
+  --chart-2: var(--lc-cta);
+  --chart-3: var(--lc-xp);
+  --chart-4: var(--lc-badge);
+  --chart-5: var(--lc-streak);
+
+  /* ── Sidebar ── */
+  --sidebar: var(--lc-surface);
+  --sidebar-foreground: var(--lc-text);
+  --sidebar-primary: var(--lc-primary);
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: var(--lc-secondary);
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: var(--lc-border);
+  --sidebar-ring: var(--lc-primary);
 }
 
-/* ── Dark mode ── */
-.dark {
-  --bg:            #07080F;
-  --surface:       #0D1117;
-  --border:        #1F2D45;
-  --accent:        #51a2ff;
-  --accent-hover:  #6DB2FF;
-  --text-primary:  #EDF2FF;
-  --text-secondary:#7B9CC4;
-  --success:       #34D399;
-  --badge-bg:      #0D1A2E;
-}
-
+/* ── Tailwind v4 theme registration ── */
 @theme inline {
-  --color-bg:            var(--bg);
-  --color-surface:       var(--surface);
-  --color-border:        var(--border);
-  --color-accent:        var(--accent);
-  --color-accent-hover:  var(--accent-hover);
-  --color-text-primary:  var(--text-primary);
-  --color-text-secondary:var(--text-secondary);
-  --color-success:       var(--success);
-  --color-badge-bg:      var(--badge-bg);
-  --font-sans: "Inter", system-ui, sans-serif;
+  /* Font families */
+  --font-heading: var(--font-heading), var(--font-cjk), system-ui, sans-serif;
+  --font-body: var(--font-body), var(--font-cjk), system-ui, sans-serif;
+  --font-sans: var(--font-body), var(--font-cjk), system-ui, sans-serif;
+
+  /* Colors — shadcn semantic tokens */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Design system custom color tokens */
+  --color-cta: var(--lc-cta);
+  --color-surface: var(--lc-surface);
+  --color-text: var(--lc-text);
+  --color-text-muted: var(--lc-text-muted);
+  --color-xp: var(--lc-xp);
+  --color-streak: var(--lc-streak);
+  --color-success: var(--lc-success);
+  --color-danger: var(--lc-danger);
+  --color-badge: var(--lc-badge);
+  --color-radar: var(--lc-radar);
+  --color-exam-bg: var(--lc-exam-bg);
+  --color-exam-surface: var(--lc-exam-surface);
+
+  /* Chart colors */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Sidebar */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Border radius */
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-body {
-  background: var(--bg);
-  color: var(--text-primary);
-  font-family: var(--font-sans);
-  transition: background 0.25s, color 0.25s;
+/* ── Base styles ── */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    overflow-wrap: break-word;
+  }
 }

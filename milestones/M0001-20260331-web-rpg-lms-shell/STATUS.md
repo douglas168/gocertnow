@@ -107,8 +107,8 @@ No code implementation exists yet. The design system (Indigo + Emerald dark them
 
 ## Superpowers Artifacts
 
-- **Design spec**: [specs/2026-03-31-design.md]()
-- **Implementation plan**: [plans/2026-03-31-plan.md]()
+- **Design spec**: [specs/2026-03-31-design.md](specs/2026-03-31-design.md)
+- **Implementation plan**: [plans/2026-03-31-plan.md](plans/2026-03-31-plan.md)
 - **Notes**: [notes/]()
 
 ---

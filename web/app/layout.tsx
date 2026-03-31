@@ -1,14 +1,32 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { ThemeProvider } from "next-themes";
+import { Poppins, Open_Sans, Noto_Sans_TC } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  variable: "--font-heading",
+  display: "swap",
+});
+
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+const notoSansTC = Noto_Sans_TC({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-cjk",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: "LevelCert – Get Certified. Get Hired.",
+  title: "LevelCert — 考取證照，開啟未來",
   description:
-    "The cert prep platform built to get you across the finish line. AI-powered mock exams, pass guarantee, beginner to intermediate certifications.",
+    "專為幫你通過考試而生的證照備考平台。AI 模擬考試、結構化學習路徑，以及通過保證。",
 };
 
 export default function RootLayout({
@@ -17,11 +35,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
-        </ThemeProvider>
+    <html lang="zh-Hant">
+      <body
+        className={`${poppins.variable} ${openSans.variable} ${notoSansTC.variable} bg-background text-foreground font-body antialiased`}
+      >
+        {children}
       </body>
     </html>
   );
