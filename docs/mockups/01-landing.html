@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LevelCert – Landing Page Mockup</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Open+Sans:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Poppins', 'Noto Sans TC', 'system-ui', 'sans-serif'],
+            body: ['Open Sans', 'Noto Sans TC', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            surface: '#1E293B',
+            'surface-light': '#253349',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Open Sans', 'Noto Sans TC', system-ui, sans-serif; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', 'Noto Sans TC', system-ui, sans-serif; }
+    @keyframes countUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-in { animation: countUp 0.5s ease-out forwards; }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen">
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 bg-surface/95 backdrop-blur border-b border-slate-700">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+      <div class="text-xl font-heading font-bold tracking-tight">Level<span class="text-emerald-500">Cert</span></div>
+      <div class="flex items-center gap-4">
+        <button class="bg-emerald-500 text-white px-4 py-2 rounded-md font-semibold text-sm hover:bg-emerald-600 transition-colors cursor-pointer">開始學習</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-b from-slate-900 to-slate-950 pt-20 pb-24 px-6">
+    <div class="max-w-7xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold mb-8 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        Launching May 2026
+      </div>
+      <h1 class="text-5xl sm:text-6xl font-heading font-bold leading-tight mb-5">
+        Level Up Your<br/><span class="text-emerald-500">Certification.</span>
+      </h1>
+      <p class="text-lg max-w-xl mx-auto mb-10 text-slate-400 leading-relaxed">
+        The gamified cert prep platform built to get you across the finish line. AI-powered mock exams, RPG-style learning, and a pass guarantee.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center mb-8">
+        <button class="bg-emerald-500 text-white px-8 py-3 rounded-md font-semibold hover:bg-emerald-600 transition-colors cursor-pointer text-lg">Start Your Quest</button>
+        <button class="border border-indigo-500 text-indigo-400 px-8 py-3 rounded-md font-semibold hover:bg-indigo-500/10 transition-colors cursor-pointer text-lg">View Courses</button>
+      </div>
+      <p class="text-xs text-slate-500">127 adventurers already on the waitlist</p>
+    </div>
+  </section>
+
+  <!-- Problem -->
+  <section class="py-20 px-6 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto text-center">
+      <h2 class="text-3xl font-heading font-bold mb-4">Cert Prep Is Broken</h2>
+      <p class="text-slate-400 max-w-2xl mx-auto mb-12">Boring video lectures. No practice exams. No feedback. You study for months and still don't know if you're ready.</p>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-surface rounded-xl p-6 border border-slate-700">
+          <div class="text-3xl mb-3 text-red-400">
+            <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          <h3 class="font-heading font-semibold mb-2">No Progress Feedback</h3>
+          <p class="text-slate-400 text-sm">You read 200 pages but have no idea which topics you've actually mastered.</p>
+        </div>
+        <div class="bg-surface rounded-xl p-6 border border-slate-700">
+          <div class="text-3xl mb-3 text-red-400">
+            <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          <h3 class="font-heading font-semibold mb-2">Boring Content</h3>
+          <p class="text-slate-400 text-sm">Long lectures that put you to sleep. No motivation to keep going.</p>
+        </div>
+        <div class="bg-surface rounded-xl p-6 border border-slate-700">
+          <div class="text-3xl mb-3 text-red-400">
+            <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728L5.636 5.636"></path></svg>
+          </div>
+          <h3 class="font-heading font-semibold mb-2">No Mock Exams</h3>
+          <p class="text-slate-400 text-sm">You walk into the real exam without ever practicing under timed conditions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution — RPG Features -->
+  <section class="py-20 px-6 bg-slate-950 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto text-center">
+      <h2 class="text-3xl font-heading font-bold mb-4">Learn Like a Game. Pass Like a Pro.</h2>
+      <p class="text-slate-400 max-w-2xl mx-auto mb-12">Every feature is designed to help you pass — wrapped in RPG mechanics that make studying addictive.</p>
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="bg-surface rounded-xl p-6 border border-slate-700 hover:shadow-lg hover:-translate-y-1 transition-all cursor-pointer">
+          <div class="w-12 h-12 rounded-lg bg-amber-400/10 flex items-center justify-center mb-4 mx-auto">
+            <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          </div>
+          <h3 class="font-heading font-semibold mb-2">XP + Progress</h3>
+          <p class="text-slate-400 text-sm">Earn XP for every lesson. Watch your exam-readiness grow in real time.</p>
+        </div>
+        <div class="bg-surface rounded-xl p-6 border border-slate-700 hover:shadow-lg hover:-translate-y-1 transition-all cursor-pointer">
+          <div class="w-12 h-12 rounded-lg bg-indigo-400/10 flex items-center justify-center mb-4 mx-auto">
+            <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+          </div>
+          <h3 class="font-heading font-semibold mb-2">Weakness Radar</h3>
+          <p class="text-slate-400 text-sm">See exactly which topics to focus on with your personal skill radar chart.</p>
+        </div>
+        <div class="bg-surface rounded-xl p-6 border border-slate-700 hover:shadow-lg hover:-translate-y-1 transition-all cursor-pointer">
+          <div class="w-12 h-12 rounded-lg bg-emerald-400/10 flex items-center justify-center mb-4 mx-auto">
+            <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+          </div>
+          <h3 class="font-heading font-semibold mb-2">Mob Battles</h3>
+          <p class="text-slate-400 text-sm">Section quizzes after every chapter. Immediate AI-explained feedback.</p>
+        </div>
+        <div class="bg-surface rounded-xl p-6 border border-slate-700 hover:shadow-lg hover:-translate-y-1 transition-all cursor-pointer">
+          <div class="w-12 h-12 rounded-lg bg-violet-400/10 flex items-center justify-center mb-4 mx-auto">
+            <svg class="w-6 h-6 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+          </div>
+          <h3 class="font-heading font-semibold mb-2">Boss Battle Exam</h3>
+          <p class="text-slate-400 text-sm">Full timed mock exam with HP bar. Score report reveals every weakness.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-20 px-6 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto text-center">
+      <h2 class="text-3xl font-heading font-bold mb-12">How It Works</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <div class="w-16 h-16 rounded-full bg-indigo-500/20 flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-heading font-bold text-indigo-400">1</span>
+          </div>
+          <h3 class="font-heading font-semibold mb-2">Learn</h3>
+          <p class="text-slate-400 text-sm">Bite-sized micro-lessons. 5-9 minutes each. One testable concept per lesson.</p>
+        </div>
+        <div>
+          <div class="w-16 h-16 rounded-full bg-amber-400/20 flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-heading font-bold text-amber-400">2</span>
+          </div>
+          <h3 class="font-heading font-semibold mb-2">Battle</h3>
+          <p class="text-slate-400 text-sm">Section quizzes and mock exams. Get instant feedback. Level up your skills.</p>
+        </div>
+        <div>
+          <div class="w-16 h-16 rounded-full bg-emerald-400/20 flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-heading font-bold text-emerald-400">3</span>
+          </div>
+          <h3 class="font-heading font-semibold mb-2">Certify</h3>
+          <p class="text-slate-400 text-sm">Pass the real exam with confidence. If you fail, we extend your access free.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof -->
+  <section class="py-20 px-6 bg-slate-950 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto text-center">
+      <h2 class="text-3xl font-heading font-bold mb-4">Adventurers Who Passed</h2>
+      <p class="text-slate-400 mb-12">Real students, real certifications.</p>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-surface rounded-xl p-6 border border-slate-700 text-left">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-full bg-indigo-500 flex items-center justify-center text-white font-bold text-sm">W</div>
+            <div>
+              <div class="font-semibold text-sm">Wei-Lin Chen</div>
+              <div class="text-xs text-slate-400">IPAS AI Beginner - Passed</div>
+            </div>
+          </div>
+          <p class="text-slate-300 text-sm italic">"The mock exams were almost identical to the real thing. I knew exactly what to expect on exam day."</p>
+        </div>
+        <div class="bg-surface rounded-xl p-6 border border-slate-700 text-left">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center text-white font-bold text-sm">S</div>
+            <div>
+              <div class="font-semibold text-sm">Sarah Lin</div>
+              <div class="text-xs text-slate-400">IPAS AI Intermediate - Passed</div>
+            </div>
+          </div>
+          <p class="text-slate-300 text-sm italic">"The weakness radar showed me I was terrible at AI ethics. I reviewed those lessons and scored 92% on my exam."</p>
+        </div>
+        <div class="bg-surface rounded-xl p-6 border border-slate-700 text-left">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center text-white font-bold text-sm">M</div>
+            <div>
+              <div class="font-semibold text-sm">Ming-Hao Wu</div>
+              <div class="text-xs text-slate-400">IPAS AI Beginner - Passed</div>
+            </div>
+          </div>
+          <p class="text-slate-300 text-sm italic">"I studied on the MRT every morning. The 7-minute lessons were perfect for my commute."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="py-20 px-6 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto text-center">
+      <h2 class="text-3xl font-heading font-bold mb-4">Simple Pricing</h2>
+      <p class="text-slate-400 mb-12">One course, one price. No subscriptions. No hidden fees.</p>
+      <div class="max-w-md mx-auto bg-surface rounded-2xl p-8 border border-indigo-500/20 shadow-xl">
+        <div class="text-sm font-semibold text-indigo-400 mb-2">IPAS AI Beginner</div>
+        <div class="text-5xl font-heading font-bold mb-1">NT$1,990</div>
+        <div class="text-slate-400 text-sm mb-6">3-month access</div>
+        <ul class="text-left space-y-3 mb-8">
+          <li class="flex items-center gap-3 text-sm text-slate-300"><span class="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-xs shrink-0">&#10003;</span> All micro-lessons + audio narration</li>
+          <li class="flex items-center gap-3 text-sm text-slate-300"><span class="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-xs shrink-0">&#10003;</span> Section quizzes with AI explanations</li>
+          <li class="flex items-center gap-3 text-sm text-slate-300"><span class="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-xs shrink-0">&#10003;</span> Unlimited mock exams (boss battles)</li>
+          <li class="flex items-center gap-3 text-sm text-slate-300"><span class="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-xs shrink-0">&#10003;</span> Weakness radar + XP tracking</li>
+          <li class="flex items-center gap-3 text-sm text-slate-300"><span class="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-xs shrink-0">&#10003;</span> Pass guarantee — free 3-month extension</li>
+        </ul>
+        <button class="w-full bg-emerald-500 text-white py-3 rounded-md font-semibold hover:bg-emerald-600 transition-colors cursor-pointer text-lg">Start Learning</button>
+        <p class="text-xs text-slate-500 mt-3">Fail once? Forward your result email — we extend your access free.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 px-6 bg-slate-950 border-t border-slate-800">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl font-heading font-bold text-center mb-12">FAQ</h2>
+      <div class="space-y-4">
+        <details class="bg-surface rounded-xl border border-slate-700 group">
+          <summary class="p-5 cursor-pointer font-semibold text-sm flex justify-between items-center">How long do I have access? <span class="text-slate-400 group-open:rotate-180 transition-transform">&#9662;</span></summary>
+          <div class="px-5 pb-5 text-slate-400 text-sm">3 months from purchase date. If you fail the real exam, forward your result email and we'll extend your access for another 3 months — free.</div>
+        </details>
+        <details class="bg-surface rounded-xl border border-slate-700 group">
+          <summary class="p-5 cursor-pointer font-semibold text-sm flex justify-between items-center">What's the pass guarantee? <span class="text-slate-400 group-open:rotate-180 transition-transform">&#9662;</span></summary>
+          <div class="px-5 pb-5 text-slate-400 text-sm">If you complete the course and fail the real IPAS exam, forward your official failure email from your registered address. We'll extend your access for 3 months, free. One extension per purchase.</div>
+        </details>
+        <details class="bg-surface rounded-xl border border-slate-700 group">
+          <summary class="p-5 cursor-pointer font-semibold text-sm flex justify-between items-center">Are mock exams similar to the real exam? <span class="text-slate-400 group-open:rotate-180 transition-transform">&#9662;</span></summary>
+          <div class="px-5 pb-5 text-slate-400 text-sm">Yes. Same format (60 questions), same time limit, same topic distribution. Our question bank is built from the official IPAS syllabus.</div>
+        </details>
+        <details class="bg-surface rounded-xl border border-slate-700 group">
+          <summary class="p-5 cursor-pointer font-semibold text-sm flex justify-between items-center">Can I study on mobile? <span class="text-slate-400 group-open:rotate-180 transition-transform">&#9662;</span></summary>
+          <div class="px-5 pb-5 text-slate-400 text-sm">Absolutely. Lessons are 5-9 minutes — designed for commute and lunch break study sessions. Fully responsive on all devices.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer CTA -->
+  <section class="py-16 px-6 border-t border-slate-800 text-center">
+    <h2 class="text-3xl font-heading font-bold mb-4">Ready to Start Your Quest?</h2>
+    <p class="text-slate-400 mb-8">Join 127 adventurers already preparing for their certification.</p>
+    <button class="bg-emerald-500 text-white px-8 py-3 rounded-md font-semibold hover:bg-emerald-600 transition-colors cursor-pointer text-lg">Get Started Now</button>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+    &copy; 2026 LevelCert.com — All rights reserved.
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LevelCert – Mock Exam (Boss Battle) Mockup</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Open+Sans:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { heading: ['Poppins','Noto Sans TC','system-ui','sans-serif'], body: ['Open Sans','Noto Sans TC','system-ui','sans-serif'] } } } }
+  </script>
+  <style>
+    body { font-family: 'Open Sans','Noto Sans TC',system-ui,sans-serif; background: #020617; }
+    h1,h2,h3,h4 { font-family: 'Poppins','Noto Sans TC',system-ui,sans-serif; }
+  </style>
+</head>
+<body class="text-slate-100 min-h-screen flex flex-col">
+
+  <!-- Top Bar -->
+  <div class="sticky top-0 z-50 bg-slate-950/95 backdrop-blur border-b border-slate-800 px-6 py-3">
+    <div class="max-w-3xl mx-auto flex items-center justify-between">
+      <!-- HP Bar -->
+      <div class="flex items-center gap-3 flex-1 mr-6">
+        <span class="text-xs text-slate-500 shrink-0">HP</span>
+        <div class="flex-1 h-3 bg-slate-800 rounded-full overflow-hidden">
+          <div class="h-full rounded-full transition-all duration-500" style="width:72%; background: linear-gradient(90deg, #34D399, #FBBF24 60%, #F87171 100%)"></div>
+        </div>
+        <span class="text-xs text-slate-400 shrink-0">72%</span>
+      </div>
+
+      <!-- Timer -->
+      <div class="flex items-center gap-2 mx-4">
+        <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <span class="font-mono text-lg text-slate-200 tabular-nums">42:15</span>
+      </div>
+
+      <!-- Question Counter -->
+      <div class="text-sm text-slate-400 mx-4">
+        <span class="text-slate-200 font-semibold">23</span> / 60
+      </div>
+
+      <!-- Exit -->
+      <button class="text-sm text-slate-500 hover:text-slate-300 transition-colors cursor-pointer">Exit</button>
+    </div>
+  </div>
+
+  <!-- Question Grid (mini nav) -->
+  <div class="bg-slate-950 border-b border-slate-800 px-6 py-3">
+    <div class="max-w-3xl mx-auto flex flex-wrap gap-1.5 justify-center">
+      <!-- Answered questions -->
+      <button class="w-7 h-7 rounded text-[10px] font-semibold bg-indigo-500/30 text-indigo-300 cursor-pointer">1</button>
+      <button class="w-7 h-7 rounded text-[10px] font-semibold bg-indigo-500/30 text-indigo-300 cursor-pointer">2</button>
+      <button class="w-7 h-7 rounded text-[10px] font-semibold bg-indigo-500/30 text-indigo-300 cursor-pointer">3</button>
+      <button class="w-7 h-7 rounded text-[10px] font-semibold bg-indigo-500/30 text-indigo-300 cursor-pointer">4</button>
+      <button class="w-7 h-7 rounded text-[10px] font-semibold bg-indigo-500/30 text-indigo-300 cursor-pointer">5</button>
+      <button class="w-7 h-7 rounded text-[10px] font-semibold bg-indigo-500/30 text-indigo-300 cursor-pointer">6</button>
+      <button class="w-7 h-7 rounded text-[10px] font-semibold bg-indigo-500/30 text-indigo-300 cursor-pointer">7</button>
+      <button class="w-7 h-7 rounded text-[10px] font-semibold bg-indigo-500/30 text-indigo-300 cursor-pointer">8</button>
+      <button class="w-7 h-7 rounded text-[10px] font-semibold bg-amber-400/30 text-amber-300 cursor-pointer" title="Flagged">9</button>
+      <button class="w-7 h-7 rounded text-[10px] font-semibold bg-indigo-500/30 text-indigo-300 cursor-pointer">10</button>
+      <button class="w-7 h-7 rounded text-[10px] font-semibold bg-indigo-500/30 text-indigo-300 cursor-pointer">11</button>
+      <button class="w-7 h-7 rounded text-[10px] font-semibold bg-indigo-500/30 text-indigo-300 cursor-pointer">12</button>
+      <button class="w-7 h-7 rounded text-[10px] font-semibold bg-indigo-500/30 text-indigo-300 cursor-pointer">13</button>
+      <button class="w-7 h-7 rounded text-[10px] font-semibold bg-indigo-500/30 text-indigo-300 cursor-pointer">14</button>
+      <button class="w-7 h-7 rounded text-[10px] font-semibold bg-indigo-500/30 text-indigo-300 cursor-pointer">15</button>
+      <button class="w-7 h-7 rounded text-[10px] font-semibold bg-amber-400/30 text-amber-300 cursor-pointer" title="Flagged">16</button>
+      <button class="w-7 h-7 rounded text-[10px] font-semibold bg-indigo-500/30 text-indigo-300 cursor-pointer">17</button>
+      <button class="w-7 h-7 rounded text-[10px] font-semibold bg-indigo-500/30 text-indigo-300 cursor-pointer">18</button>
+      <button class="w-7 h-7 rounded text-[10px] font-semibold bg-indigo-500/30 text-indigo-300 cursor-pointer">19</button>
+      <button class="w-7 h-7 rounded text-[10px] font-semibold bg-indigo-500/30 text-indigo-300 cursor-pointer">20</button>
+      <button class="w-7 h-7 rounded text-[10px] font-semibold bg-indigo-500/30 text-indigo-300 cursor-pointer">21</button>
+      <button class="w-7 h-7 rounded text-[10px] font-semibold bg-indigo-500/30 text-indigo-300 cursor-pointer">22</button>
+      <!-- Current -->
+      <button class="w-7 h-7 rounded text-[10px] font-semibold bg-indigo-600 text-white ring-2 ring-indigo-400 cursor-pointer">23</button>
+      <!-- Unanswered -->
+      <button class="w-7 h-7 rounded text-[10px] font-semibold bg-slate-800 text-slate-500 border border-slate-700 cursor-pointer">24</button>
+      <button class="w-7 h-7 rounded text-[10px] font-semibold bg-slate-800 text-slate-500 border border-slate-700 cursor-pointer">25</button>
+      <button class="w-7 h-7 rounded text-[10px] font-semibold bg-slate-800 text-slate-500 border border-slate-700 cursor-pointer">26</button>
+      <span class="text-slate-600 text-xs self-center px-1">...</span>
+      <button class="w-7 h-7 rounded text-[10px] font-semibold bg-slate-800 text-slate-500 border border-slate-700 cursor-pointer">60</button>
+    </div>
+  </div>
+
+  <!-- Question -->
+  <main class="flex-1 flex items-start justify-center px-6 py-10">
+    <div class="max-w-3xl w-full">
+
+      <!-- Category Tag -->
+      <div class="mb-4">
+        <span class="text-xs text-slate-500 bg-slate-800 rounded px-2 py-1">Machine Learning</span>
+      </div>
+
+      <!-- Question Card -->
+      <div class="bg-slate-900 rounded-xl p-8 border border-slate-800 mb-6">
+        <h2 class="text-lg font-semibold mb-6 leading-relaxed">In supervised learning, which of the following best describes the relationship between the training data and the model?</h2>
+
+        <div class="space-y-3">
+          <label class="flex items-center gap-4 p-4 rounded-lg bg-slate-800 border border-slate-700 hover:border-indigo-500/50 transition-colors cursor-pointer">
+            <input type="radio" name="answer" class="w-4 h-4 accent-indigo-500" />
+            <span class="text-sm">A. The model discovers patterns without any labeled examples</span>
+          </label>
+          <label class="flex items-center gap-4 p-4 rounded-lg bg-indigo-500/10 border border-indigo-500 cursor-pointer">
+            <input type="radio" name="answer" class="w-4 h-4 accent-indigo-500" checked />
+            <span class="text-sm">B. The model learns from input-output pairs to predict outputs for new inputs</span>
+          </label>
+          <label class="flex items-center gap-4 p-4 rounded-lg bg-slate-800 border border-slate-700 hover:border-indigo-500/50 transition-colors cursor-pointer">
+            <input type="radio" name="answer" class="w-4 h-4 accent-indigo-500" />
+            <span class="text-sm">C. The model uses reinforcement signals to maximize a reward function</span>
+          </label>
+          <label class="flex items-center gap-4 p-4 rounded-lg bg-slate-800 border border-slate-700 hover:border-indigo-500/50 transition-colors cursor-pointer">
+            <input type="radio" name="answer" class="w-4 h-4 accent-indigo-500" />
+            <span class="text-sm">D. The model generates new data samples from learned distributions</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button class="text-sm text-slate-500 hover:text-slate-300 transition-colors cursor-pointer flex items-center gap-1">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            Previous
+          </button>
+          <label class="flex items-center gap-2 text-sm text-amber-400/70 hover:text-amber-400 cursor-pointer transition-colors">
+            <input type="checkbox" class="accent-amber-400" />
+            Flag for review
+          </label>
+        </div>
+        <button class="bg-emerald-500 text-white px-8 py-2.5 rounded-md font-semibold hover:bg-emerald-600 transition-colors cursor-pointer">Next</button>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

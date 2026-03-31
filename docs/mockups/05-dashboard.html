@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LevelCert – Dashboard Mockup</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Open+Sans:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { heading: ['Poppins','Noto Sans TC','system-ui','sans-serif'], body: ['Open Sans','Noto Sans TC','system-ui','sans-serif'] }, colors: { surface: '#1E293B' } } } }
+  </script>
+  <style>body { font-family: 'Open Sans','Noto Sans TC',system-ui,sans-serif; } h1,h2,h3,h4 { font-family: 'Poppins','Noto Sans TC',system-ui,sans-serif; }</style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen">
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 bg-surface/95 backdrop-blur border-b border-slate-700">
+    <div class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+      <a href="01-landing.html" class="text-xl font-heading font-bold tracking-tight">Level<span class="text-emerald-500">Cert</span></a>
+      <div class="flex items-center gap-4">
+        <!-- Streak in nav -->
+        <div class="flex items-center gap-1.5 text-sm">
+          <svg class="w-4 h-4 text-red-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 23c-3.866 0-7-3.134-7-7 0-3.037 2.453-6.834 4.452-9.076l.548-.524.548.524C12.547 9.166 15 12.963 15 16c0 .727-.195 1.41-.536 2A4.996 4.996 0 0017 16c0-2.186-1.247-4.768-2.656-6.916A39.7 39.7 0 0012 5.762a39.7 39.7 0 00-2.344 3.322C8.247 11.232 7 13.814 7 16a5 5 0 005 5 5 5 0 005-5h2c0 3.866-3.134 7-7 7z"/></svg>
+          <span class="font-semibold text-red-400">12</span>
+        </div>
+        <div class="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center text-white text-sm font-bold cursor-pointer">W</div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-6xl mx-auto px-6 py-8">
+    <!-- Welcome -->
+    <div class="mb-8">
+      <h1 class="text-2xl font-heading font-bold">Welcome back, Wei-Lin</h1>
+      <p class="text-slate-400 text-sm">Your quest continues.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-8">
+      <!-- Left: Main Content -->
+      <div class="lg:col-span-2 space-y-8">
+
+        <!-- Daily Quest -->
+        <div class="bg-surface rounded-xl p-6 border border-amber-400/20">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-amber-400/10 flex items-center justify-center">
+                <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+              </div>
+              <div>
+                <div class="font-semibold text-sm">Daily Quest</div>
+                <div class="text-xs text-slate-400">Answer 5 questions today</div>
+              </div>
+            </div>
+            <span class="text-amber-400 font-semibold text-sm">3/5</span>
+          </div>
+          <div class="w-full h-2 bg-slate-700 rounded-full">
+            <div class="h-2 bg-amber-400 rounded-full transition-all" style="width:60%"></div>
+          </div>
+        </div>
+
+        <!-- Course Cards -->
+        <div>
+          <h2 class="text-lg font-heading font-semibold mb-4">My Courses</h2>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <!-- Active Course -->
+            <div class="bg-surface rounded-xl p-5 border border-slate-700 hover:shadow-lg transition-all cursor-pointer">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="px-2 py-0.5 rounded text-xs font-semibold bg-emerald-500/20 text-emerald-400">Beginner</span>
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span class="text-xs text-emerald-400">In Progress</span>
+              </div>
+              <h3 class="font-semibold mb-1">IPAS AI Planner — Beginner</h3>
+              <p class="text-xs text-slate-400 mb-3">24 lessons &middot; ~3 hours</p>
+              <div class="mb-2">
+                <div class="flex justify-between text-xs mb-1">
+                  <span class="text-amber-400">68%</span>
+                  <span class="text-amber-400">+340 XP</span>
+                </div>
+                <div class="w-full h-2 bg-slate-700 rounded-full">
+                  <div class="h-2 bg-amber-400 rounded-full" style="width:68%"></div>
+                </div>
+              </div>
+              <div class="flex justify-between items-center mt-3">
+                <span class="text-xs text-slate-500">Expires in 52 days</span>
+                <a href="03-lesson-player.html" class="text-emerald-400 text-xs font-semibold hover:underline cursor-pointer">Continue &rarr;</a>
+              </div>
+            </div>
+
+            <!-- Completed Course -->
+            <div class="bg-surface rounded-xl p-5 border border-slate-700 hover:shadow-lg transition-all cursor-pointer">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="px-2 py-0.5 rounded text-xs font-semibold bg-indigo-500/20 text-indigo-400">Intermediate</span>
+                <span class="w-2 h-2 rounded-full bg-slate-500"></span>
+                <span class="text-xs text-slate-500">Not Started</span>
+              </div>
+              <h3 class="font-semibold mb-1">IPAS AI Planner — Intermediate</h3>
+              <p class="text-xs text-slate-400 mb-3">36 lessons &middot; ~5 hours</p>
+              <div class="mb-2">
+                <div class="flex justify-between text-xs mb-1">
+                  <span class="text-slate-500">0%</span>
+                  <span class="text-slate-500">0 XP</span>
+                </div>
+                <div class="w-full h-2 bg-slate-700 rounded-full">
+                  <div class="h-2 bg-slate-600 rounded-full" style="width:0%"></div>
+                </div>
+              </div>
+              <div class="flex justify-between items-center mt-3">
+                <span class="text-xs text-slate-500">Expires in 82 days</span>
+                <a href="03-lesson-player.html" class="text-indigo-400 text-xs font-semibold hover:underline cursor-pointer">Start &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div>
+          <h2 class="text-lg font-heading font-semibold mb-4">Recent Activity</h2>
+          <div class="space-y-3">
+            <div class="flex items-center gap-4 bg-surface rounded-lg p-4 border border-slate-700/50">
+              <div class="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              </div>
+              <div class="flex-1">
+                <div class="text-sm">Completed "History of AI Development"</div>
+                <div class="text-xs text-slate-500">2 hours ago</div>
+              </div>
+              <span class="text-amber-400 text-sm font-semibold">+15 XP</span>
+            </div>
+            <div class="flex items-center gap-4 bg-surface rounded-lg p-4 border border-slate-700/50">
+              <div class="w-8 h-8 rounded-full bg-indigo-500/20 flex items-center justify-center shrink-0">
+                <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+              </div>
+              <div class="flex-1">
+                <div class="text-sm">Passed Section 1 Quiz — 4/4 correct</div>
+                <div class="text-xs text-slate-500">Yesterday</div>
+              </div>
+              <span class="text-amber-400 text-sm font-semibold">+50 XP</span>
+            </div>
+            <div class="flex items-center gap-4 bg-surface rounded-lg p-4 border border-slate-700/50">
+              <div class="w-8 h-8 rounded-full bg-violet-500/20 flex items-center justify-center shrink-0">
+                <svg class="w-4 h-4 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+              </div>
+              <div class="flex-1">
+                <div class="text-sm">Badge unlocked: <span class="text-violet-400">Mob Slayer</span></div>
+                <div class="text-xs text-slate-500">Yesterday</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: RPG Stats Sidebar -->
+      <div class="space-y-6">
+
+        <!-- XP Total -->
+        <div class="bg-surface rounded-xl p-6 border border-slate-700 text-center">
+          <div class="text-4xl font-heading font-bold text-amber-400">1,240</div>
+          <div class="text-xs text-slate-400 mt-1">Total XP</div>
+        </div>
+
+        <!-- Streak -->
+        <div class="bg-surface rounded-xl p-6 border border-slate-700">
+          <div class="flex items-center justify-between mb-4">
+            <div class="text-sm font-semibold">Streak</div>
+            <div class="flex items-center gap-1.5">
+              <svg class="w-5 h-5 text-red-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 23c-3.866 0-7-3.134-7-7 0-3.037 2.453-6.834 4.452-9.076l.548-.524.548.524C12.547 9.166 15 12.963 15 16c0 .727-.195 1.41-.536 2A4.996 4.996 0 0017 16c0-2.186-1.247-4.768-2.656-6.916A39.7 39.7 0 0012 5.762a39.7 39.7 0 00-2.344 3.322C8.247 11.232 7 13.814 7 16a5 5 0 005 5 5 5 0 005-5h2c0 3.866-3.134 7-7 7z"/></svg>
+              <span class="text-xl font-heading font-bold text-red-400">12 days</span>
+            </div>
+          </div>
+          <!-- Streak Calendar -->
+          <div class="grid grid-cols-7 gap-1">
+            <div class="w-full aspect-square rounded bg-emerald-500/30"></div>
+            <div class="w-full aspect-square rounded bg-emerald-500/30"></div>
+            <div class="w-full aspect-square rounded bg-emerald-500/30"></div>
+            <div class="w-full aspect-square rounded bg-emerald-500/30"></div>
+            <div class="w-full aspect-square rounded bg-emerald-500/30"></div>
+            <div class="w-full aspect-square rounded bg-slate-700"></div>
+            <div class="w-full aspect-square rounded bg-emerald-500/30"></div>
+            <div class="w-full aspect-square rounded bg-emerald-500/30"></div>
+            <div class="w-full aspect-square rounded bg-emerald-500/30"></div>
+            <div class="w-full aspect-square rounded bg-emerald-500/30"></div>
+            <div class="w-full aspect-square rounded bg-emerald-500/30"></div>
+            <div class="w-full aspect-square rounded bg-emerald-500/30"></div>
+            <div class="w-full aspect-square rounded bg-emerald-500/30"></div>
+            <div class="w-full aspect-square rounded bg-emerald-500/50 ring-1 ring-emerald-400"></div>
+            <div class="w-full aspect-square rounded bg-slate-700"></div>
+            <div class="w-full aspect-square rounded bg-slate-700"></div>
+            <div class="w-full aspect-square rounded bg-slate-700"></div>
+            <div class="w-full aspect-square rounded bg-slate-700"></div>
+            <div class="w-full aspect-square rounded bg-slate-700"></div>
+            <div class="w-full aspect-square rounded bg-slate-700"></div>
+            <div class="w-full aspect-square rounded bg-slate-700"></div>
+          </div>
+        </div>
+
+        <!-- Weakness Radar (simplified as bars since SVG radar is complex) -->
+        <div class="bg-surface rounded-xl p-6 border border-slate-700">
+          <div class="text-sm font-semibold mb-4">Skill Radar</div>
+          <div class="space-y-3">
+            <div>
+              <div class="flex justify-between text-xs mb-1"><span class="text-slate-400">AI Fundamentals</span><span class="text-indigo-400">85%</span></div>
+              <div class="w-full h-2 bg-slate-700 rounded-full"><div class="h-2 bg-indigo-400 rounded-full" style="width:85%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs mb-1"><span class="text-slate-400">Machine Learning</span><span class="text-indigo-400">72%</span></div>
+              <div class="w-full h-2 bg-slate-700 rounded-full"><div class="h-2 bg-indigo-400 rounded-full" style="width:72%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs mb-1"><span class="text-slate-400">Data Processing</span><span class="text-amber-400">45%</span></div>
+              <div class="w-full h-2 bg-slate-700 rounded-full"><div class="h-2 bg-amber-400 rounded-full" style="width:45%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs mb-1"><span class="text-slate-400">AI Ethics</span><span class="text-red-400">30%</span></div>
+              <div class="w-full h-2 bg-slate-700 rounded-full"><div class="h-2 bg-red-400 rounded-full" style="width:30%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs mb-1"><span class="text-slate-400">Applications</span><span class="text-indigo-400">68%</span></div>
+              <div class="w-full h-2 bg-slate-700 rounded-full"><div class="h-2 bg-indigo-400 rounded-full" style="width:68%"></div></div>
+            </div>
+          </div>
+          <p class="text-xs text-slate-500 mt-3">Focus on: AI Ethics, Data Processing</p>
+        </div>
+
+        <!-- Badges -->
+        <div class="bg-surface rounded-xl p-6 border border-slate-700">
+          <div class="text-sm font-semibold mb-4">Badges</div>
+          <div class="grid grid-cols-4 gap-3">
+            <!-- Earned -->
+            <div class="flex flex-col items-center gap-1 cursor-pointer" title="First Steps">
+              <div class="w-10 h-10 rounded-full bg-violet-500/20 flex items-center justify-center border border-violet-500/30">
+                <svg class="w-5 h-5 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+              </div>
+              <span class="text-[10px] text-slate-400">First Steps</span>
+            </div>
+            <div class="flex flex-col items-center gap-1 cursor-pointer" title="Mob Slayer">
+              <div class="w-10 h-10 rounded-full bg-violet-500/20 flex items-center justify-center border border-violet-500/30">
+                <svg class="w-5 h-5 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+              </div>
+              <span class="text-[10px] text-slate-400">Mob Slayer</span>
+            </div>
+            <!-- Locked -->
+            <div class="flex flex-col items-center gap-1 opacity-40" title="Knowledge Seeker">
+              <div class="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center">
+                <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+              </div>
+              <span class="text-[10px] text-slate-500">Seeker</span>
+            </div>
+            <div class="flex flex-col items-center gap-1 opacity-40" title="Exam Slayer">
+              <div class="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center">
+                <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+              </div>
+              <span class="text-[10px] text-slate-500">Slayer</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

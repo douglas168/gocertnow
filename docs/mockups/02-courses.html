@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LevelCert – Courses Mockup</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Open+Sans:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { heading: ['Poppins','Noto Sans TC','system-ui','sans-serif'], body: ['Open Sans','Noto Sans TC','system-ui','sans-serif'] }, colors: { surface: '#1E293B' } } } }
+  </script>
+  <style>body { font-family: 'Open Sans','Noto Sans TC',system-ui,sans-serif; } h1,h2,h3,h4 { font-family: 'Poppins','Noto Sans TC',system-ui,sans-serif; }</style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen">
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 bg-surface/95 backdrop-blur border-b border-slate-700">
+    <div class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+      <a href="01-landing.html" class="text-xl font-heading font-bold tracking-tight">Level<span class="text-emerald-500">Cert</span></a>
+      <div class="flex items-center gap-4">
+        <a href="05-dashboard.html" class="text-sm text-slate-400 hover:text-slate-200 transition-colors">Dashboard</a>
+        <button class="bg-emerald-500 text-white px-4 py-2 rounded-md font-semibold text-sm cursor-pointer">Sign In</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Course Listing -->
+  <section class="py-12 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h1 class="text-3xl font-heading font-bold mb-2">Courses</h1>
+      <p class="text-slate-400 mb-8">Choose your certification quest.</p>
+
+      <!-- Filters -->
+      <div class="flex gap-3 mb-8">
+        <button class="px-4 py-2 rounded-lg bg-indigo-500/20 text-indigo-400 text-sm font-semibold border border-indigo-500/30 cursor-pointer">All</button>
+        <button class="px-4 py-2 rounded-lg bg-surface text-slate-400 text-sm font-semibold border border-slate-700 hover:border-slate-600 cursor-pointer">Beginner</button>
+        <button class="px-4 py-2 rounded-lg bg-surface text-slate-400 text-sm font-semibold border border-slate-700 hover:border-slate-600 cursor-pointer">Intermediate</button>
+      </div>
+
+      <!-- Course Cards Grid -->
+      <div class="grid md:grid-cols-2 gap-6 mb-16">
+        <!-- Course Card 1 — Enrolled -->
+        <div class="bg-surface rounded-xl border border-slate-700 hover:shadow-lg hover:-translate-y-1 transition-all cursor-pointer overflow-hidden">
+          <div class="h-40 bg-gradient-to-br from-indigo-600 to-indigo-800 flex items-center justify-center">
+            <span class="text-4xl font-heading font-bold text-white/20">IPAS</span>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2 py-0.5 rounded text-xs font-semibold bg-emerald-500/20 text-emerald-400">Beginner</span>
+              <span class="text-xs text-slate-500">24 lessons</span>
+            </div>
+            <h3 class="font-heading font-semibold text-lg mb-2">IPAS AI Application Planner — Beginner</h3>
+            <p class="text-sm text-slate-400 mb-4">Master the fundamentals of AI planning for the IPAS certification exam.</p>
+            <!-- Progress bar (enrolled) -->
+            <div class="mb-3">
+              <div class="flex justify-between text-xs mb-1">
+                <span class="text-amber-400">68% complete</span>
+                <span class="text-amber-400">+340 XP</span>
+              </div>
+              <div class="w-full h-2 bg-slate-700 rounded-full">
+                <div class="h-2 bg-amber-400 rounded-full" style="width:68%"></div>
+              </div>
+            </div>
+            <button class="w-full bg-emerald-500 text-white py-2.5 rounded-md font-semibold text-sm hover:bg-emerald-600 transition-colors cursor-pointer">Continue Learning</button>
+          </div>
+        </div>
+
+        <!-- Course Card 2 — Not enrolled -->
+        <div class="bg-surface rounded-xl border border-slate-700 hover:shadow-lg hover:-translate-y-1 transition-all cursor-pointer overflow-hidden">
+          <div class="h-40 bg-gradient-to-br from-violet-600 to-violet-800 flex items-center justify-center">
+            <span class="text-4xl font-heading font-bold text-white/20">IPAS</span>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2 py-0.5 rounded text-xs font-semibold bg-indigo-500/20 text-indigo-400">Intermediate</span>
+              <span class="text-xs text-slate-500">36 lessons</span>
+            </div>
+            <h3 class="font-heading font-semibold text-lg mb-2">IPAS AI Application Planner — Intermediate</h3>
+            <p class="text-sm text-slate-400 mb-4">Advanced AI planning concepts for the intermediate IPAS certification.</p>
+            <div class="flex items-center justify-between">
+              <span class="text-2xl font-heading font-bold">NT$2,990</span>
+              <button class="bg-indigo-600 text-white px-6 py-2.5 rounded-md font-semibold text-sm hover:bg-indigo-700 transition-colors cursor-pointer">View Course</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course Card 3 — Coming Soon -->
+        <div class="bg-surface rounded-xl border border-slate-700 opacity-60 overflow-hidden">
+          <div class="h-40 bg-gradient-to-br from-slate-600 to-slate-700 flex items-center justify-center">
+            <span class="text-4xl font-heading font-bold text-white/10">AWS</span>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2 py-0.5 rounded text-xs font-semibold bg-slate-600 text-slate-400">Coming Soon</span>
+            </div>
+            <h3 class="font-heading font-semibold text-lg mb-2 text-slate-400">AWS Cloud Practitioner</h3>
+            <p class="text-sm text-slate-500 mb-4">Foundational cloud concepts for the AWS certification exam.</p>
+            <button class="w-full border border-slate-600 text-slate-400 py-2.5 rounded-md font-semibold text-sm cursor-not-allowed">Notify Me</button>
+          </div>
+        </div>
+
+        <!-- Course Card 4 — Coming Soon -->
+        <div class="bg-surface rounded-xl border border-slate-700 opacity-60 overflow-hidden">
+          <div class="h-40 bg-gradient-to-br from-slate-600 to-slate-700 flex items-center justify-center">
+            <span class="text-4xl font-heading font-bold text-white/10">GCP</span>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2 py-0.5 rounded text-xs font-semibold bg-slate-600 text-slate-400">Coming Soon</span>
+            </div>
+            <h3 class="font-heading font-semibold text-lg mb-2 text-slate-400">Google Cloud Digital Leader</h3>
+            <p class="text-sm text-slate-500 mb-4">Cloud computing fundamentals for Google Cloud certification.</p>
+            <button class="w-full border border-slate-600 text-slate-400 py-2.5 rounded-md font-semibold text-sm cursor-not-allowed">Notify Me</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course Detail Preview -->
+      <div class="border-t border-slate-800 pt-12">
+        <h2 class="text-2xl font-heading font-bold mb-8">Course Detail Preview</h2>
+        <div class="grid lg:grid-cols-3 gap-8">
+          <!-- Left: Course Info -->
+          <div class="lg:col-span-2 space-y-8">
+            <div>
+              <div class="flex items-center gap-2 mb-3">
+                <span class="px-2 py-0.5 rounded text-xs font-semibold bg-emerald-500/20 text-emerald-400">Beginner</span>
+                <span class="text-xs text-slate-500">24 lessons &middot; ~3 hours &middot; 6 sections</span>
+              </div>
+              <h2 class="text-2xl font-heading font-bold mb-3">IPAS AI Application Planner — Beginner</h2>
+              <p class="text-slate-400">Master the fundamentals needed to pass the IPAS AI Application Planner beginner certification. Covers machine learning basics, data processing, AI ethics, and practical applications.</p>
+            </div>
+
+            <!-- Syllabus -->
+            <div>
+              <h3 class="font-heading font-semibold text-lg mb-4">Course Syllabus</h3>
+              <div class="space-y-3">
+                <details class="bg-surface rounded-xl border border-slate-700 group" open>
+                  <summary class="p-4 cursor-pointer font-semibold text-sm flex justify-between items-center">
+                    <span>Section 1: AI Fundamentals <span class="text-slate-500 font-normal ml-2">4 lessons</span></span>
+                    <span class="text-slate-400 group-open:rotate-180 transition-transform">&#9662;</span>
+                  </summary>
+                  <div class="px-4 pb-4 space-y-2">
+                    <div class="flex items-center gap-3 text-sm text-slate-300 py-1"><span class="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-xs shrink-0">&#10003;</span> What is Artificial Intelligence?</div>
+                    <div class="flex items-center gap-3 text-sm text-slate-300 py-1"><span class="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-xs shrink-0">&#10003;</span> Types of AI: Narrow vs General</div>
+                    <div class="flex items-center gap-3 text-sm text-slate-300 py-1"><span class="w-5 h-5 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-xs shrink-0">&#9656;</span> History of AI Development</div>
+                    <div class="flex items-center gap-3 text-sm text-slate-300 py-1"><span class="w-5 h-5 rounded-full bg-slate-700 flex items-center justify-center text-slate-500 text-xs shrink-0">&#9675;</span> AI in Taiwan's Industry</div>
+                    <div class="flex items-center gap-3 text-sm text-slate-400 py-1 pl-8">
+                      <svg class="w-4 h-4 text-indigo-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                      Section Quiz (Mob Battle)
+                    </div>
+                  </div>
+                </details>
+                <details class="bg-surface rounded-xl border border-slate-700 group">
+                  <summary class="p-4 cursor-pointer font-semibold text-sm flex justify-between items-center">
+                    <span>Section 2: Machine Learning Basics <span class="text-slate-500 font-normal ml-2">5 lessons</span></span>
+                    <span class="text-slate-400 group-open:rotate-180 transition-transform">&#9662;</span>
+                  </summary>
+                </details>
+                <details class="bg-surface rounded-xl border border-slate-700 group">
+                  <summary class="p-4 cursor-pointer font-semibold text-sm flex justify-between items-center">
+                    <span>Section 3: Data Processing <span class="text-slate-500 font-normal ml-2">4 lessons</span></span>
+                    <span class="text-slate-400 group-open:rotate-180 transition-transform">&#9662;</span>
+                  </summary>
+                </details>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Purchase Card (sticky) -->
+          <div class="lg:sticky lg:top-24 lg:self-start">
+            <div class="bg-surface rounded-2xl p-6 border border-indigo-500/20 shadow-xl">
+              <div class="text-4xl font-heading font-bold mb-1">NT$1,990</div>
+              <div class="text-slate-400 text-sm mb-6">3-month access</div>
+              <button class="w-full bg-emerald-500 text-white py-3 rounded-md font-semibold hover:bg-emerald-600 transition-colors cursor-pointer mb-3">Start Learning</button>
+              <p class="text-xs text-slate-500 text-center mb-4">Pass guarantee — fail once, get 3 months free</p>
+              <div class="space-y-2 text-xs text-slate-400">
+                <div class="flex items-center gap-2"><span class="text-emerald-400">&#10003;</span> 24 micro-lessons</div>
+                <div class="flex items-center gap-2"><span class="text-emerald-400">&#10003;</span> 6 section quizzes</div>
+                <div class="flex items-center gap-2"><span class="text-emerald-400">&#10003;</span> Unlimited mock exams</div>
+                <div class="flex items-center gap-2"><span class="text-emerald-400">&#10003;</span> AI-explained answers</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-slate-800 py-6 text-center text-xs text-slate-500">&copy; 2026 LevelCert.com</footer>
+</body>
+</html>

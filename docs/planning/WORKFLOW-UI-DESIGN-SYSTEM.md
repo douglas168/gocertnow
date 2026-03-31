@@ -24,7 +24,7 @@ Run this once before any UI code is written. It queries 5 domains in parallel an
 
 ```bash
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py \
-  "edtech SaaS certification exam bilingual Taiwan professional trust" \
+  "edtech SaaS certification exam Taiwan professional trust dark gamified" \
   --design-system --persist -p "LevelCert" -f markdown
 ```
 
@@ -67,9 +67,9 @@ Use these when you need more detail on a specific aspect. Run before building th
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py \
   "animation accessibility loading" --domain ux
 
-# Typography — bilingual CJK + Latin
+# Typography — Traditional Chinese CJK
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py \
-  "professional modern bilingual" --domain typography
+  "professional modern traditional-chinese" --domain typography
 
 # Color — trust-building edtech palette
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py \
@@ -145,7 +145,7 @@ These are project-specific requirements to add to every design system query and 
 
 | Constraint | Reason |
 |---|---|
-| Bilingual: Traditional Chinese + English | Taiwan IPAS pilot (zh) + future international certs (en) |
+| Traditional Chinese only (Phase 1) | Taiwan IPAS pilot — all UI in 繁體中文. English added in Phase 2+ |
 | Trust-first visual tone | Cert prep is outcome-binary — credibility drives purchase |
 | Text-heavy lesson content | Students scan/review 5–10× before exam; no video |
 | Mobile-responsive required | Exam prep happens on mobile/commute |
@@ -200,10 +200,10 @@ design-system/
 - [ ] `prefers-reduced-motion` respected
 - [ ] Tab order matches visual order
 
-### Bilingual (LevelCert-specific)
+### Traditional Chinese (LevelCert-specific)
 - [ ] CJK font renders correctly (Traditional Chinese characters)
 - [ ] Line height sufficient for CJK text (≥ 1.7 recommended)
-- [ ] Layout doesn't break when text length differs between zh/en
+- [ ] All UI copy in 繁體中文 (no English strings in Phase 1)
 
 ---
 

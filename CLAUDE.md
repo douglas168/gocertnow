@@ -55,7 +55,7 @@ levelcert/
 ### Web (`web/`)
 - **Framework:** Next.js 14+ (App Router) — rendering layer only, no business logic
 - **Styling:** Tailwind CSS + shadcn/ui
-- **i18n:** `i18next` + `react-i18next` — shared translation files with future mobile app
+- **i18n:** Not needed in Phase 1 (Traditional Chinese only). Add `i18next` + `react-i18next` in Phase 2+ when expanding to international certs
 - **Auth:** Clerk (Google + email login) — has React Native SDK for mobile parity
 - **Payments:** Stripe — has `stripe-react-native` SDK for mobile parity
 - **Deployment:** Vercel (deploys from `web/`)
@@ -75,16 +75,14 @@ levelcert/
 - **Image generation:** Node.js using `sharp` + `canvas`
 - **AI content:** Gemini 2.0 Flash for course content generation, social media copy, and mock exam answer explanations (fallback to Claude Haiku/Sonnet if quality insufficient)
 
-### Shared
-- **i18n translation files:** `shared/locales/en.json` + `shared/locales/zh.json` — consumed by both web and mobile
-
 ## Key Architecture Decisions
 
-- **Language strategy — Dual market:**
-  - **Traditional Chinese (繁體中文):** Taiwan-specific certs (IPAS) — UI, content, and marketing all in Chinese
-  - **English:** International certs (AWS, Google, PMP, etc.) — UI, content, and marketing in English
-  - Pilot (IPAS) launches in Traditional Chinese first; English language support added when expanding to international cert verticals
-  - Next.js i18n routing handles both — `/zh/` for Chinese, `/en/` for English (or subdomain strategy: `tw.levelcert.com` vs `levelcert.com`)
+- **Language strategy — Phase 1: Traditional Chinese only:**
+  - All UI, content, and marketing in 繁體中文 for Taiwan IPAS pilot
+  - No i18n library, no language toggle, no translation files in Phase 1
+  - English support and i18n (`i18next` + `react-i18next`) added in Phase 2+ when expanding to international certs (e.g., AI-900)
+  - Future routing TBD: `/zh/` + `/en/` routes or subdomain strategy (`tw.levelcert.com` vs `levelcert.com`)
+- **Theme: Dark mode only (Phase 1)** — Single dark theme, no light mode toggle. Matches gaming platforms the 20-35 target audience uses daily. Light mode may be added in Phase 2 based on user feedback.
 - Course access is time-gated via `access_expires_at` in Supabase
 - Mock exam is the core differentiator: timed 60-question simulator, score breakdown by category, AI-generated explanations for wrong answers
 - **Content format — Hybrid model:**

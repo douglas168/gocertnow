@@ -7,7 +7,7 @@
 |---|---|---|
 | Framework | **Next.js 14+ (App Router)** | SEO-friendly, fast — rendering layer only, no business logic |
 | Styling | **Tailwind CSS + shadcn/ui** | Beautiful components fast |
-| i18n | **i18next + react-i18next** | Portable to React Native — shared translation files with mobile |
+| i18n | Not needed in Phase 1 (TC only) | Add `i18next` + `react-i18next` in Phase 2+ for international certs |
 | Auth | **Clerk** | Google login, free tier, has React Native SDK for mobile parity |
 | Payments | **Stripe** | Taiwan + international cards, has `stripe-react-native` for mobile parity |
 | Video | **Bunny.net** | Affordable CDN streaming, works on any platform |
@@ -27,11 +27,6 @@
 | Automation | **n8n (self-hosted)** | Social media pipeline + exam failure email extension |
 | Image gen | **Node.js sharp + canvas** | Social media image card generation |
 | AI content | **Gemini 2.0 Flash** | Course content gen, exam explanations, social copy (fallback: Claude) |
-
-### Shared
-| Layer | Tool | Why |
-|---|---|---|
-| i18n files | **`shared/locales/en.json` + `zh.json`** | Single source of truth for all UI strings across web and mobile |
 
 **Estimated monthly infra cost at launch: ~$5–15/mo** (Bunny.net + Supabase free + Vercel free)
 
@@ -160,5 +155,5 @@
 1. **AI-explained wrong answers** — nobody in your competitor list does this
 2. **Access expiry with failed-exam guarantee** — builds trust, reduces purchase friction
 3. **Clean async self-paced UX** — beats iSpan/CPC's live session model
-4. **Chinese-first design** — Traditional Chinese UI, Taiwan-focused content
+4. **Traditional Chinese only (Phase 1)** — All UI and content in 繁體中文, Taiwan-focused
 5. **Progress bar per course** — motivation loop Duotify doesn't have
