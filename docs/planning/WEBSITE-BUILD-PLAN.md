@@ -54,13 +54,13 @@
 
 ### Long-term Benchmark
 
-| Benchmark | What They Do | How GoCertNow Differs |
+| Benchmark | What They Do | How LevelCert Differs |
 |---|---|---|
-| **Coursebox.ai** | B2B SaaS LMS — sell course creation tools to training companies | GoCertNow is outcome-focused (pass the exam), not just content creation |
-| **Udemy** | Open marketplace, any topic | GoCertNow is cert-specific — every course maps to a real exam |
-| **Teachable / Kajabi** | Creator tools, B2C courses | GoCertNow adds AI exam simulation + pass guarantee as platform-level features |
+| **Coursebox.ai** | B2B SaaS LMS — sell course creation tools to training companies | LevelCert is outcome-focused (pass the exam), not just content creation |
+| **Udemy** | Open marketplace, any topic | LevelCert is cert-specific — every course maps to a real exam |
+| **Teachable / Kajabi** | Creator tools, B2C courses | LevelCert adds AI exam simulation + pass guarantee as platform-level features |
 
-**Long-term moat:** Cert prep is binary — pass or fail. GoCertNow owns the outcome, not just the content. When the platform opens to other instructors, that outcome focus (mock exams, AI explanations, pass guarantee) becomes a platform-level differentiator no generic LMS can match.
+**Long-term moat:** Cert prep is binary — pass or fail. LevelCert owns the outcome, not just the content. When the platform opens to other instructors, that outcome focus (mock exams, AI explanations, pass guarantee) becomes a platform-level differentiator no generic LMS can match.
 
 ---
 
@@ -113,9 +113,9 @@
 
 ### Phase 4 — Open the Platform (18+ months)
 
-- Instructor onboarding flow — other cert trainers can apply to sell on GoCertNow
+- Instructor onboarding flow — other cert trainers can apply to sell on LevelCert
 - Creator dashboard — upload content, set pricing, view earnings
-- Platform revenue share — GoCertNow takes 20–30% of each sale
+- Platform revenue share — LevelCert takes 20–30% of each sale
 - All platform courses get access to: mock exam builder, AI explanation engine, pass guarantee framework
 - Affiliate / referral links
 

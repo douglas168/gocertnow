@@ -159,7 +159,7 @@ This table shows which RPG elements appear on which pages. Use this when generat
 When running `ui-ux-pro-max` queries, include these constraints:
 
 1. **RPG elements must feel professional, not childish** — target audience includes career switchers (25-35). Think "polished game UI" not "cartoon gamification."
-2. **RPG is a layer, not the identity** — GoCertNow is a cert prep platform that uses game mechanics, not a game that teaches certs. The brand should lead with credibility and outcomes.
+2. **RPG is a layer, not the identity** — LevelCert is a cert prep platform that uses game mechanics, not a game that teaches certs. The brand should lead with credibility and outcomes.
 3. **Dashboard is the most RPG-dense page** — it needs to balance data density (courses, progress, access expiry) with the game elements (XP, streak, radar, badges) without feeling cluttered.
 4. **Exam page needs maximum focus** — RPG skin should enhance the battle intensity, not add visual noise. Dark/focused color scheme during exam.
 5. **Lesson player is the least gamified page** — students are reading and studying here. Only a subtle XP toast and progress bar. No distractions.

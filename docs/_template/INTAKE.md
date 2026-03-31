@@ -5,7 +5,7 @@
 
 ## Instructions
 
-You are helping a solo founder plan a new milestone for **GoCertNow** — a SaaS platform helping young professionals earn certifications via video courses, mock exams, and AI-explained answers.
+You are helping a solo founder plan a new milestone for **LevelCert** — a SaaS platform helping young professionals earn certifications via video courses, mock exams, and AI-explained answers.
 
 **Rules:**
 1. Ask ONE question at a time. Wait for the answer before asking the next.
@@ -16,7 +16,7 @@ You are helping a solo founder plan a new milestone for **GoCertNow** — a SaaS
 6. After all questions, generate the filled STATUS.md and present it for review.
 
 **Context about the project:**
-- **Website:** Next.js 14 (App Router) deployed on Vercel — `gocertnow.com`
+- **Website:** Next.js 14 (App Router) deployed on Vercel — `levelcert.com`
 - **Backend:** Supabase (PostgreSQL + RLS + Edge Functions) — all business logic lives here
 - **Auth:** Clerk | **Payments:** Stripe | **Video:** Bunny.net | **Automation:** n8n
 - **Milestone types:** `web` (Next.js features/pages), `content` (course content pipeline), `db` (Supabase schema/migrations), `social` (social media automation), `infra` (deployment, integrations, CI/CD)

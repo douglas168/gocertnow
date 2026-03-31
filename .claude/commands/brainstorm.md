@@ -1,4 +1,4 @@
-You are running a deep design brainstorming session for a GoCertNow milestone.
+You are running a deep design brainstorming session for a LevelCert milestone.
 
 The milestone ID is: $ARGUMENTS
 

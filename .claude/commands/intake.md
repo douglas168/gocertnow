@@ -1,6 +1,6 @@
 Read the file `docs/_template/INTAKE.md` carefully.
 
-You are running the milestone intake questionnaire for GoCertNow. Follow the instructions in that file exactly:
+You are running the milestone intake questionnaire for LevelCert. Follow the instructions in that file exactly:
 
 1. Ask the user questions ONE AT A TIME. Wait for each answer before asking the next.
 2. Adapt based on answers — skip questions that don't apply.

@@ -28,7 +28,7 @@ const copy = {
       duplicate: "You're already on the waitlist!",
     },
     social: "Follow for updates",
-    footer: "© 2026 GoCertNow.com — All rights reserved.",
+    footer: "© 2026 LevelCert.com — All rights reserved.",
   },
   zh: {
     badge: "即將於 2026 年 5 月 25 日上線",
@@ -50,7 +50,7 @@ const copy = {
       duplicate: "您已在候補名單中！",
     },
     social: "追蹤我們，掌握最新消息",
-    footer: "© 2026 GoCertNow.com — 版權所有",
+    footer: "© 2026 LevelCert.com — 版權所有",
   },
 };
 

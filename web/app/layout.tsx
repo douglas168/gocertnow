@@ -6,7 +6,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "GoCertNow – Get Certified. Get Hired.",
+  title: "LevelCert – Get Certified. Get Hired.",
   description:
     "The cert prep platform built to get you across the finish line. AI-powered mock exams, pass guarantee, beginner to intermediate certifications.",
 };

@@ -8,10 +8,10 @@ When a student fails the IPAS exam, they forward the official failure email to a
 
 ## Trigger Email Address
 
-Set up a dedicated inbox, e.g.: `extend@gocertnow.com`
+Set up a dedicated inbox, e.g.: `extend@levelcert.com`
 
 Students are instructed (in dashboard + post-purchase email) to:
-> "Failed your exam? Forward your official IPAS result email from your **registered email address** to extend@gocertnow.com and we'll extend your access within minutes."
+> "Failed your exam? Forward your official IPAS result email from your **registered email address** to extend@levelcert.com and we'll extend your access within minutes."
 
 ---
 
@@ -19,7 +19,7 @@ Students are instructed (in dashboard + post-purchase email) to:
 
 ### 1. Trigger — Email Received
 - **Node:** Email Trigger (IMAP) or Gmail Trigger
-- Watches `extend@gocertnow.com` for new emails
+- Watches `extend@levelcert.com` for new emails
 
 ---
 
@@ -72,10 +72,10 @@ Students are instructed (in dashboard + post-purchase email) to:
 - **Node:** Send Email
 - Template:
   > 您好，
-  > 您的 GoCertNow 課程存取權限已延長 3 個月。
+  > 您的 LevelCert 課程存取權限已延長 3 個月。
   > 新的到期日：{{new_expiry_date}}
   > 繼續加油，下次一定過！
-  > — GoCertNow 團隊
+  > — LevelCert 團隊
 
 ---
 
@@ -89,7 +89,7 @@ Students are instructed (in dashboard + post-purchase email) to:
   > 您的免費延長次數已使用過一次。
   > 我們提供您 **5折優惠碼**重新購買課程：`{{discount_code}}`
   > 有效期限：30 天
-  > — GoCertNow 團隊
+  > — LevelCert 團隊
 
 ---
 
@@ -97,15 +97,15 @@ Students are instructed (in dashboard + post-purchase email) to:
 
 - **Node:** Send Email (to sender)
   > 您好，
-  > 我們無法找到與此 Email 對應的 GoCertNow 帳號。
+  > 我們無法找到與此 Email 對應的 LevelCert 帳號。
   > 請使用您**註冊時的 Email** 轉寄考試結果通知信。
-  > 如需協助，請聯絡 support@gocertnow.com
+  > 如需協助，請聯絡 support@levelcert.com
 
 ---
 
 ## Branch: Cannot Verify (Manual Review)
 
-- **Node:** Send Email to `support@gocertnow.com`
+- **Node:** Send Email to `support@levelcert.com`
 - Flag: sender email, forwarded email body, timestamp
 - Also send auto-reply to student:
   > 您好，我們正在人工審核您的申請，將於 1 個工作天內回覆。

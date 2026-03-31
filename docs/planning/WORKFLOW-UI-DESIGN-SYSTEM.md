@@ -25,7 +25,7 @@ Run this once before any UI code is written. It queries 5 domains in parallel an
 ```bash
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py \
   "edtech SaaS certification exam bilingual Taiwan professional trust" \
-  --design-system --persist -p "GoCertNow" -f markdown
+  --design-system --persist -p "LevelCert" -f markdown
 ```
 
 **What this outputs:**
@@ -90,32 +90,32 @@ Before building each major page, generate a page override. This captures deviati
 # Landing page
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py \
   "landing page certification course hero trust social-proof" \
-  --design-system --persist -p "GoCertNow" --page "landing"
+  --design-system --persist -p "LevelCert" --page "landing"
 
 # Course listing + detail pages
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py \
   "course listing e-learning product card purchase" \
-  --design-system --persist -p "GoCertNow" --page "courses"
+  --design-system --persist -p "LevelCert" --page "courses"
 
 # Lesson player (text + audio, no video)
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py \
   "reading focused content player distraction-free" \
-  --design-system --persist -p "GoCertNow" --page "lesson-player"
+  --design-system --persist -p "LevelCert" --page "lesson-player"
 
 # Mock exam simulator
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py \
   "exam quiz timed focused minimal high-stakes" \
-  --design-system --persist -p "GoCertNow" --page "exam"
+  --design-system --persist -p "LevelCert" --page "exam"
 
 # Score report + AI explanations
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py \
   "results report data breakdown score explanation" \
-  --design-system --persist -p "GoCertNow" --page "exam-result"
+  --design-system --persist -p "LevelCert" --page "exam-result"
 
 # User dashboard
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py \
   "dashboard progress tracking course access expiry" \
-  --design-system --persist -p "GoCertNow" --page "dashboard"
+  --design-system --persist -p "LevelCert" --page "dashboard"
 ```
 
 **Saves to:** `design-system/pages/<page>.md`
@@ -139,7 +139,7 @@ or styles not in the system.
 
 ---
 
-## GoCertNow Design Constraints
+## LevelCert Design Constraints
 
 These are project-specific requirements to add to every design system query and to note in MASTER.md:
 
@@ -200,7 +200,7 @@ design-system/
 - [ ] `prefers-reduced-motion` respected
 - [ ] Tab order matches visual order
 
-### Bilingual (GoCertNow-specific)
+### Bilingual (LevelCert-specific)
 - [ ] CJK font renders correctly (Traditional Chinese characters)
 - [ ] Line height sufficient for CJK text (≥ 1.7 recommended)
 - [ ] Layout doesn't break when text length differs between zh/en

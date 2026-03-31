@@ -1,4 +1,4 @@
-You are creating a detailed implementation plan for a GoCertNow milestone.
+You are creating a detailed implementation plan for a LevelCert milestone.
 
 The milestone ID is: $ARGUMENTS
 

@@ -4,17 +4,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**GoCertNow.com** — A platform helping young professionals and career-switchers earn beginner-to-intermediate certifications. Combines video courses, a mock exam system with AI-explained answers, and social media content automation.
+**LevelCert.com** — A platform helping young professionals and career-switchers earn beginner-to-intermediate certifications. Combines video courses, a mock exam system with AI-explained answers, and social media content automation.
 
 **Starting vertical:** IPAS AI應用規劃師 (初級 + 中級) — used as the pilot to build and validate the content generation workflow and website before expanding to other cert verticals.
 
 **Long-term vision:** B2C → Marketplace → SaaS layer.
 1. Prove the model with IPAS (B2C, Taiwan)
 2. Expand to more cert verticals using the AI workflow
-3. Open the platform — invite other cert instructors and training companies to create and sell on GoCertNow (take a 20–30% platform cut)
+3. Open the platform — invite other cert instructors and training companies to create and sell on LevelCert (take a 20–30% platform cut)
 4. Package the AI cert-content generation workflow as a paid creator tool (SaaS subscription for platform creators)
 
-**Defensible moat:** Cert prep is outcome-binary (pass or fail). GoCertNow owns that outcome — AI-generated content + mock exam system + pass guarantee. This survives AI commoditization because the passing score can't be faked.
+**Defensible moat:** Cert prep is outcome-binary (pass or fail). LevelCert owns that outcome — AI-generated content + mock exam system + pass guarantee. This survives AI commoditization because the passing score can't be faked.
 
 **Business model:** Pay-per-course with 3-month access.
 - **Failed exam (1st time):** 1 free 3-month extension — student forwards official IPAS failure email (from registered email) to trigger n8n automation that verifies and extends `access_expires_at` in Supabase.
@@ -26,7 +26,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This repo contains everything about the project — not just website code.
 
 ```
-gocertnow/
+levelcert/
 ├── web/                    # Next.js website (the product)
 ├── content/                # Course content creation pipeline (internal tool)
 │   ├── _templates/         # Reusable prompt + lesson templates
@@ -84,7 +84,7 @@ gocertnow/
   - **Traditional Chinese (繁體中文):** Taiwan-specific certs (IPAS) — UI, content, and marketing all in Chinese
   - **English:** International certs (AWS, Google, PMP, etc.) — UI, content, and marketing in English
   - Pilot (IPAS) launches in Traditional Chinese first; English language support added when expanding to international cert verticals
-  - Next.js i18n routing handles both — `/zh/` for Chinese, `/en/` for English (or subdomain strategy: `tw.gocertnow.com` vs `gocertnow.com`)
+  - Next.js i18n routing handles both — `/zh/` for Chinese, `/en/` for English (or subdomain strategy: `tw.levelcert.com` vs `levelcert.com`)
 - Course access is time-gated via `access_expires_at` in Supabase
 - Mock exam is the core differentiator: timed 60-question simulator, score breakdown by category, AI-generated explanations for wrong answers
 - **Content format — Hybrid model:**
@@ -114,7 +114,7 @@ gocertnow/
 1. **Pilot — IPAS B2C (Now):** Content generation workflow for IPAS 初級/中級, website with landing page, course pages, lesson player, Stripe checkout, Clerk auth, progress tracking
 2. **Mock Exam System:** Question bank in Supabase (tagged by topic + level), timed exam simulator, score reports, AI explanations for wrong answers, n8n failure-email extension automation
 3. **Scale Verticals (6–18 months):** Add 2–3 more cert verticals (AWS, Google, PMP etc.) using the proven AI content workflow. Each new cert = days of work, not months.
-4. **Open the Platform (18+ months):** Invite other cert instructors and training companies to create and sell on GoCertNow. Platform takes 20–30% cut. Add creator dashboard, instructor onboarding, revenue sharing.
+4. **Open the Platform (18+ months):** Invite other cert instructors and training companies to create and sell on LevelCert. Platform takes 20–30% cut. Add creator dashboard, instructor onboarding, revenue sharing.
 5. **SaaS Layer:** Package the AI cert-content generation workflow as a paid add-on for platform creators (subscription for AI credits — content gen, exam question gen, explanation gen).
 
 ## UI Design System
