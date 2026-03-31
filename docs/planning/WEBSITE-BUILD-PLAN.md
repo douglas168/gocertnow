@@ -1,36 +1,11 @@
 # Online Course Website — Build Plan
 
-## Recommended Tech Stack
+## Tech Stack & Architecture
 
-### Web
-| Layer | Tool | Why |
-|---|---|---|
-| Framework | **Next.js 14+ (App Router)** | SEO-friendly, fast — rendering layer only, no business logic |
-| Styling | **Tailwind CSS + shadcn/ui** | Beautiful components fast |
-| i18n | Not needed in Phase 1 (TC only) | Add `i18next` + `react-i18next` in Phase 2+ for international certs |
-| Auth | **Clerk** | Google login, free tier, has React Native SDK for mobile parity |
-| Payments | **Stripe** | Taiwan + international cards, has `stripe-react-native` for mobile parity |
-| Video | **Bunny.net** | Affordable CDN streaming, works on any platform |
-| Deployment | **Vercel** | Free tier, zero-config for Next.js |
+See `docs/planning/ARCHITECTURE.md` for full tech stack, architecture decisions, content protection strategy, data flow, and Supabase RLS rules.
 
-### Mobile (future)
-| Layer | Tool | Why |
-|---|---|---|
-| Framework | **React Native + Expo** | Natural companion to Next.js/Supabase stack — same TypeScript, same SDKs |
-| Styling | **NativeWind** | Tailwind syntax in React Native — familiar to web devs |
-| Deployment | **Expo EAS** | Standard for Expo apps |
-
-### Backend (shared — web + mobile)
-| Layer | Tool | Why |
-|---|---|---|
-| Database | **Supabase** | PostgreSQL + RLS + Edge Functions — business logic lives here, not in Next.js |
-| Automation | **n8n (self-hosted)** | Social media pipeline + exam failure email extension |
-| Image gen | **Node.js sharp + canvas** | Social media image card generation |
-| AI content | **Gemini 2.0 Flash** | Course content gen, exam explanations, social copy (fallback: Claude) |
-
-**Estimated monthly infra cost at launch: ~$5–15/mo** (Bunny.net + Supabase free + Vercel free)
-
-**Critical architecture rule:** All business logic (access control, exam rules, extension eligibility) lives in **Supabase RLS policies and Edge Functions** — never in Next.js server components. This ensures mobile app can reuse the same backend without rewriting rules.
+**Quick reference:** Next.js 14+ · Tailwind + shadcn/ui · Clerk · Stripe · Supabase · Bunny.net · n8n · Gemini 2.0 Flash · Vercel
+**Estimated monthly infra cost at launch: ~$5–15/mo**
 
 ---
 
@@ -124,19 +99,9 @@
 
 ---
 
-## Site Structure (Duotify-inspired)
+## Site Structure
 
-```
-/                          ← Landing page
-/courses                   ← All courses (filter by level: 初級 / 中級)
-/courses/ipas-junior       ← Course detail + buy
-/courses/ipas-intermediate
-/learn/ipas-junior/01      ← Lesson player (auth-gated)
-/exam/ipas-junior          ← Mock exam (auth-gated)
-/exam/ipas-junior/result   ← Score report + AI explanations
-/dashboard                 ← My courses, progress, access expiry
-/login
-```
+See `CLAUDE.md` for route listing or `docs/planning/ARCHITECTURE.md` for full page classification (public vs auth-gated) and content protection strategy.
 
 ---
 

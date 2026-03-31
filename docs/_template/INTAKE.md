@@ -16,9 +16,8 @@ You are helping a solo founder plan a new milestone for **LevelCert** — a SaaS
 6. After all questions, generate the filled STATUS.md and present it for review.
 
 **Context about the project:**
-- **Website:** Next.js 14 (App Router) deployed on Vercel — `levelcert.com`
-- **Backend:** Supabase (PostgreSQL + RLS + Edge Functions) — all business logic lives here
-- **Auth:** Clerk | **Payments:** Stripe | **Video:** Bunny.net | **Automation:** n8n
+- **Architecture:** See `docs/planning/ARCHITECTURE.md` for full tech stack, data flow, and content protection strategy
+- **Quick ref:** Next.js 14+ · Tailwind + shadcn/ui · Clerk · Stripe · Supabase · Bunny.net · n8n · Vercel
 - **Milestone types:** `web` (Next.js features/pages), `content` (course content pipeline), `db` (Supabase schema/migrations), `social` (social media automation), `infra` (deployment, integrations, CI/CD)
 - **Naming convention:** `M{NNNN}-{YYYYMMDD}-{type}-{short-name}` — e.g., `M0001-20260101-web-landing`
 - **Milestone folder:** `milestones/{milestone-id}/` — all specs, plans, and notes live inside this folder
@@ -193,7 +192,7 @@ Remove checklist sections that don't apply to the milestone type.
 - [ ] Vercel production deploy works
 - [ ] Clerk auth gating works (if applicable)
 - [ ] Stripe integrated (if applicable)
-- [ ] i18n strings added to `shared/locales/zh.json` + `en.json`
+- [ ] i18n strings added (Phase 2+ only — skip for TC-only milestones)
 - [ ] Mobile responsive
 - [ ] No console errors on prod
 

@@ -50,61 +50,29 @@ levelcert/
 └── .github/workflows/      # CI/CD
 ```
 
-## Tech Stack
+## Tech Stack & Architecture
 
-### Web (`web/`)
-- **Framework:** Next.js 14+ (App Router) — rendering layer only, no business logic
-- **Styling:** Tailwind CSS + shadcn/ui
-- **i18n:** Not needed in Phase 1 (Traditional Chinese only). Add `i18next` + `react-i18next` in Phase 2+ when expanding to international certs
-- **Auth:** Clerk (Google + email login) — has React Native SDK for mobile parity
-- **Payments:** Stripe — has `stripe-react-native` SDK for mobile parity
-- **Deployment:** Vercel (deploys from `web/`)
+**Full details:** See `docs/planning/ARCHITECTURE.md` (single source of truth for tech stack, architecture decisions, content protection strategy, data flow, and Supabase RLS).
 
-### Mobile (future — `mobile/`)
-- **Framework:** React Native + Expo
-- **Styling:** NativeWind (Tailwind syntax in React Native) + custom components
-- **Auth:** Clerk React Native SDK
-- **Payments:** `stripe-react-native`
-- **Deployment:** Expo EAS
-
-### Backend (shared by web + mobile)
-- **Database + business logic:** Supabase (PostgreSQL + Row Level Security + Edge Functions)
-  - All business logic lives here — never in Next.js server code — so mobile can reuse it
-- **Video hosting:** Bunny.net (private CDN streaming — works on any platform)
-- **Automation:** n8n (self-hosted) for social media pipeline + exam failure extension
-- **Image generation:** Node.js using `sharp` + `canvas`
-- **AI content:** Gemini 2.0 Flash for course content generation, social media copy, and mock exam answer explanations (fallback to Claude Haiku/Sonnet if quality insufficient)
-
-## Key Architecture Decisions
-
-- **Language strategy — Phase 1: Traditional Chinese only:**
-  - All UI, content, and marketing in 繁體中文 for Taiwan IPAS pilot
-  - No i18n library, no language toggle, no translation files in Phase 1
-  - English support and i18n (`i18next` + `react-i18next`) added in Phase 2+ when expanding to international certs (e.g., AI-900)
-  - Future routing TBD: `/zh/` + `/en/` routes or subdomain strategy (`tw.levelcert.com` vs `levelcert.com`)
-- **Theme: Dark mode only (Phase 1)** — Single dark theme, no light mode toggle. Matches gaming platforms the 20-35 target audience uses daily. Light mode may be added in Phase 2 based on user feedback.
-- Course access is time-gated via `access_expires_at` in Supabase
-- Mock exam is the core differentiator: timed 60-question simulator, score breakdown by category, AI-generated explanations for wrong answers
-- **Content format — Hybrid model:**
-  - **Module intro (1–2 min):** AI avatar video (HeyGen + TTS) — one per module for premium feel
-  - **Lesson content:** Text + diagrams + audio narration — scannable, updatable, SEO-friendly, AI-workflow-native
-  - **Concept summaries:** Bullet callout boxes for fast pre-exam review
-  - **Wrong answer explanations:** Text only — students re-read, not re-watch
-  - Rationale: exam prep students review content 5–10× before the exam; text is scannable, video is not. Text is also trivial to update when syllabus changes and is generated natively by the Gemini content workflow.
-- Social media automation: RSS → Gemini API → image cards + captions → Airtable review queue → Buffer publish
-- Content generation workflow is an **internal tool first** — scripts in `content/_scripts/`, run locally, push output to Supabase
+**Quick reference:**
+- **Web:** Next.js 14+ (App Router) + Tailwind CSS + shadcn/ui → Vercel
+- **Backend:** Supabase (PostgreSQL + RLS + Edge Functions) — all business logic here, never in Next.js
+- **Auth:** Clerk | **Payments:** Stripe | **Video:** Bunny.net | **Automation:** n8n | **AI:** Gemini 2.0 Flash
+- **Phase 1:** Traditional Chinese only, dark mode only
+- **Content protection:** Auth middleware + client-side content loading + robots.txt (see ARCHITECTURE.md)
 
 ## Site Routes (`web/`)
 
 ```
-/                          — Landing page
-/courses                   — Course listing (filter by 初級/中級)
-/courses/[slug]            — Course detail + purchase
-/learn/[slug]/[lesson]     — Lesson player (auth-gated)
-/exam/[slug]               — Mock exam (auth-gated)
-/exam/[slug]/result        — Score report + AI explanations
-/dashboard                 — User courses, progress, access expiry
-/login                     — Clerk auth
+/                              — Landing page (public, SSG)
+/courses                       — Course listing (public, SSG)
+/courses/[slug]                — Course detail + purchase (public, SSG)
+/learn/[slug]/[lesson]         — Lesson player (auth-gated)
+/learn/[slug]/quiz/[section]   — Section quiz / mob battle (auth-gated)
+/exam/[slug]                   — Mock exam / boss battle (auth-gated)
+/exam/[slug]/result            — Score report + AI explanations (auth-gated)
+/dashboard                     — User courses, progress, RPG stats (auth-gated)
+/login                         — Clerk auth
 ```
 
 ## Build Phases
