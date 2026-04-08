@@ -1,0 +1,632 @@
+# L11102 — AI治理概念
+# IPAS AI應用規劃師能力鑑定（初級）
+# Generated: 2026-04-08
+# Total: 25 questions (5 per difficulty level)
+
+# ============================================================
+# Difficulty 1 — Remember (Bloom's: 記憶)
+# ============================================================
+
+- id: "L11102-Q01"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 1
+  question: "台灣《人工智慧基本法》的中央主管機關為下列何者？"
+  options:
+    a: "數位發展部"
+    b: "國家科學及技術委員會（國科會）"
+    c: "經濟部"
+    d: "行政院資通安全處"
+  correct: "b"
+  explanation:
+    why_correct: "依《人工智慧基本法》規定，中央主管機關為國家科學及技術委員會（國科會），負責統籌 AI 政策推動。"
+    why_not_a: "數位發展部負責建立風險分類框架等執行面工作，但中央主管機關是國科會。學生常因數位發展部發布多項 AI 相關文件而誤選。"
+    why_not_c: "經濟部負責產業政策，但《人工智慧基本法》的主管機關不是經濟部。"
+    why_not_d: "行政院資通安全處主管資安事務，與 AI 治理的主管機關不同。"
+  keywords:
+    - "人工智慧基本法"
+    - "國科會"
+    - "中央主管機關"
+  exam_trap: true
+
+- id: "L11102-Q02"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 1
+  question: "歐盟《人工智慧法》（EU AI Act）將 AI 系統風險分為幾個等級？"
+  options:
+    a: "二級"
+    b: "三級"
+    c: "四級"
+    d: "五級"
+  correct: "c"
+  explanation:
+    why_correct: "EU AI Act 將風險分為四級：不可接受風險（Unacceptable）、高風險（High）、有限風險（Limited）、最小風險（Minimal）。"
+    why_not_a: "二級分類過於簡化，EU AI Act 的風險分類比單純的「高/低」更為細緻。"
+    why_not_b: "三級是常見誤答，通常是學生遺漏了「有限風險」或「最小風險」其中一個層級。"
+    why_not_d: "五級不正確，EU AI Act 並未設立第五級風險分類。"
+  keywords:
+    - "EU AI Act"
+    - "歐盟AI法"
+    - "風險分類"
+    - "四級風險"
+  exam_trap: false
+
+- id: "L11102-Q03"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 1
+  question: "金管會《金融業運用人工智慧（AI）指引》於何時發布？"
+  options:
+    a: "2023 年 3 月"
+    b: "2024 年 6 月"
+    c: "2025 年 1 月"
+    d: "2025 年 12 月"
+  correct: "b"
+  explanation:
+    why_correct: "金管會《金融業運用 AI 指引》於 2024 年 6 月 20 日正式發布，是台灣金融業 AI 治理的重要行政指導文件。"
+    why_not_a: "2023 年 3 月並非該指引的發布時間。"
+    why_not_c: "2025 年 1 月並非發布時間，學生可能與其他 AI 政策時間混淆。"
+    why_not_d: "2025 年 12 月是《人工智慧基本法》三讀通過的時間，非金管會指引的發布時間。"
+  keywords:
+    - "金管會"
+    - "金融業運用AI指引"
+    - "2024"
+  exam_trap: false
+
+- id: "L11102-Q04"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 1
+  question: "台灣《人工智慧基本法》全文共有幾條？"
+  options:
+    a: "10 條"
+    b: "15 條"
+    c: "20 條"
+    d: "30 條"
+  correct: "c"
+  explanation:
+    why_correct: "《人工智慧基本法》全文共 20 條，於 2025 年 12 月 23 日三讀通過，2026 年 1 月 14 日生效。"
+    why_not_a: "10 條過少，不足以涵蓋法律所規範的所有面向。"
+    why_not_b: "15 條並非正確條文數，學生可能因記憶模糊而誤選。"
+    why_not_d: "30 條並非正確條文數。"
+  keywords:
+    - "人工智慧基本法"
+    - "20條"
+  exam_trap: false
+
+- id: "L11102-Q05"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 1
+  question: "下列何者為全球首個針對生成式 AI 具有法律約束力的法規制定國家？"
+  options:
+    a: "美國"
+    b: "歐盟"
+    c: "中國"
+    d: "日本"
+  correct: "c"
+  explanation:
+    why_correct: "中國於 2023 年 8 月實施《生成式人工智能服務管理暫行辦法》，是全球首個針對生成式 AI 具有法律約束力的法規。"
+    why_not_a: "美國至今無聯邦層級的全面 AI 立法，Biden 時期的行政命令已被 Trump 廢止。"
+    why_not_b: "EU AI Act 雖是全面性法規，但其生效時間較晚（2024 年 8 月），且非專門針對生成式 AI。"
+    why_not_d: "日本採取促進式（promotional）治理路徑，AI 推進法於 2025 年 5 月才通過，且較不具強制性。"
+  keywords:
+    - "中國"
+    - "生成式AI法規"
+    - "國際比較"
+  exam_trap: false
+
+# ============================================================
+# Difficulty 2 — Understand (Bloom's: 理解)
+# ============================================================
+
+- id: "L11102-Q06"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 2
+  question: "關於台灣《人工智慧基本法》七大治理原則，下列何者不屬於其中？"
+  options:
+    a: "透明與可解釋（Transparency & Explainability）"
+    b: "公平與不歧視（Fairness & Non-discrimination）"
+    c: "創新與競爭力（Innovation & Competitiveness）"
+    d: "問責（Accountability）"
+  correct: "c"
+  explanation:
+    why_correct: "七大原則為：永續發展與福祉、人類自主（HITL）、隱私保護與資料治理、資安與安全、透明與可解釋、公平與不歧視、問責。「創新與競爭力」並非七大原則之一。"
+    why_not_a: "透明與可解釋確實是七大原則之一，不是正確答案。"
+    why_not_b: "公平與不歧視確實是七大原則之一，不是正確答案。"
+    why_not_d: "問責確實是七大原則之一，不是正確答案。"
+  keywords:
+    - "人工智慧基本法"
+    - "七大治理原則"
+    - "永人隱資透公問"
+  exam_trap: true
+
+- id: "L11102-Q07"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 2
+  question: "關於金管會《金融業運用 AI 指引》的法律性質，下列敘述何者正確？"
+  options:
+    a: "具有法律強制力，違反者將受罰鍰處分"
+    b: "屬於行政指導性質，不具強制約束力"
+    c: "僅適用於銀行業，不包含保險業與證券業"
+    d: "為國際組織制定之標準，由金管會翻譯引用"
+  correct: "b"
+  explanation:
+    why_correct: "金管會《金融業運用 AI 指引》為行政指導性質，提供金融業運用 AI 的原則與建議，不具法律上的強制約束力。"
+    why_not_a: "該指引非法律，不具強制力，也無罰則。學生常誤以為「指引」等同於「法規」。"
+    why_not_c: "該指引適用於所有金融業，包含銀行、保險、證券等，並非僅限銀行業。"
+    why_not_d: "該指引由金管會自行制定，雖參考國際趨勢，但非翻譯自國際組織標準。"
+  keywords:
+    - "金管會"
+    - "金融業運用AI指引"
+    - "行政指導"
+  exam_trap: true
+
+- id: "L11102-Q08"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 2
+  question: "數位發展部《公部門 AI 應用參考手冊》建議從哪四大面向進行 AI 應用評估？"
+  options:
+    a: "技術面、法律面、組織面、效益面"
+    b: "成本面、時間面、品質面、風險面"
+    c: "安全面、隱私面、公平面、效能面"
+    d: "策略面、流程面、人力面、技術面"
+  correct: "a"
+  explanation:
+    why_correct: "數位發展部《公部門 AI 應用參考手冊》明確指出四大評估面向為：技術面、法律面、組織面、效益面。"
+    why_not_b: "「成本、時間、品質、風險」是一般專案管理的面向，非該手冊的分類方式。"
+    why_not_c: "「安全、隱私、公平、效能」偏向 AI 倫理原則，非手冊的四大評估面向。"
+    why_not_d: "「策略、流程、人力、技術」偏向組織管理框架，非手冊的分類方式。"
+  keywords:
+    - "公部門AI應用參考手冊"
+    - "數位發展部"
+    - "四大評估面向"
+  exam_trap: false
+
+- id: "L11102-Q09"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 2
+  question: "關於「人類在迴圈中」（Human-in-the-Loop, HITL）的概念，下列敘述何者最正確？"
+  options:
+    a: "指 AI 系統必須由人類全程手動操作"
+    b: "指在 AI 決策流程中保留人類監督與介入的機制"
+    c: "指 AI 系統只能作為輔助工具，不可自動執行任何決策"
+    d: "指所有 AI 系統都必須在每一步驟取得人類核准"
+  correct: "b"
+  explanation:
+    why_correct: "HITL 的核心概念是在 AI 決策流程中保留人類監督與介入的機制，確保人類對重要決策保有最終控制權。"
+    why_not_a: "HITL 不代表全程手動操作，AI 仍可自動處理部分流程，關鍵是人類能在必要時介入。"
+    why_not_c: "HITL 不排除 AI 自動執行決策，而是強調人類可以監督並在需要時覆寫 AI 決策。"
+    why_not_d: "每一步驟都需人類核准是過度解讀，HITL 強調的是關鍵節點的人類介入，而非每一步驟。"
+  keywords:
+    - "HITL"
+    - "Human-in-the-Loop"
+    - "人類自主"
+    - "人類監督"
+  exam_trap: false
+
+- id: "L11102-Q10"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 2
+  question: "依據 EU AI Act，下列哪一種 AI 應用屬於「不可接受風險」（Unacceptable Risk）而被完全禁止？"
+  options:
+    a: "AI 聊天機器人（Chatbot）"
+    b: "垃圾郵件過濾系統"
+    c: "政府大規模社會信用評分系統（Social Scoring）"
+    d: "AI 輔助醫療診斷系統"
+  correct: "c"
+  explanation:
+    why_correct: "EU AI Act 將政府大規模社會信用評分系統列為不可接受風險，因其嚴重侵害基本人權，屬於完全禁止類別。"
+    why_not_a: "聊天機器人屬於「有限風險」（Limited Risk），只需標示即可，並非禁止。"
+    why_not_b: "垃圾郵件過濾屬於「最小風險」（Minimal Risk），無強制要求。"
+    why_not_d: "AI 輔助醫療診斷屬於「高風險」（High Risk），需嚴格合規與人為監督，但並非被禁止。"
+  keywords:
+    - "EU AI Act"
+    - "不可接受風險"
+    - "Unacceptable Risk"
+    - "社會信用評分"
+  exam_trap: false
+
+# ============================================================
+# Difficulty 3 — Apply (Bloom's: 應用)
+# ============================================================
+
+- id: "L11102-Q11"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 3
+  question: "某台灣銀行計畫導入 AI 信用評分系統來決定個人貸款核准與否。依據金管會《金融業運用 AI 指引》六大核心原則，下列何者是該銀行應優先考量的？"
+  options:
+    a: "盡快上線以搶占市場先機"
+    b: "確保模型決策可被解釋，並建立問責機制"
+    c: "僅需確保系統運算速度夠快即可"
+    d: "只要客戶同意使用條款，即可免除所有風險"
+  correct: "b"
+  explanation:
+    why_correct: "金管會指引的六大核心原則包含「透明可解釋」與「治理問責」，信用評分直接影響客戶權益，銀行應確保 AI 決策可被解釋並建立明確問責機制。"
+    why_not_a: "搶占市場先機忽略了治理要求，金融 AI 應用必須先確保合規與風險管理。"
+    why_not_c: "運算速度是技術考量，但指引更強調的是公平性、透明性與問責等治理面向。"
+    why_not_d: "客戶同意不能取代銀行的治理責任，指引要求銀行本身應建立完善的 AI 治理架構。"
+  keywords:
+    - "金管會"
+    - "金融業運用AI指引"
+    - "透明可解釋"
+    - "治理問責"
+    - "信用評分"
+  exam_trap: false
+
+- id: "L11102-Q12"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 3
+  question: "一家歐洲新創公司開發了 AI 履歷篩選系統，用於企業招聘。依據 EU AI Act，此系統屬於哪一風險等級？"
+  options:
+    a: "最小風險（Minimal Risk）"
+    b: "有限風險（Limited Risk）"
+    c: "高風險（High Risk）"
+    d: "不可接受風險（Unacceptable Risk）"
+  correct: "c"
+  explanation:
+    why_correct: "EU AI Act 明確將招聘與員工評估相關的 AI 系統列為高風險（High Risk），需要嚴格合規與人為監督。"
+    why_not_a: "最小風險適用於如垃圾郵件過濾等低影響應用，招聘決策直接影響個人就業權益，不屬此類。"
+    why_not_b: "有限風險適用於聊天機器人、深偽內容等，僅需標示義務。招聘 AI 的影響程度遠高於此。"
+    why_not_d: "不可接受風險是完全禁止的應用（如社會信用評分），招聘 AI 未被禁止，但屬高度管制。"
+  keywords:
+    - "EU AI Act"
+    - "高風險"
+    - "High Risk"
+    - "招聘"
+    - "員工評估"
+  exam_trap: false
+
+- id: "L11102-Q13"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 3
+  question: "某政府機關欲導入 AI 系統協助公文分類。依數位發展部《公部門 AI 應用參考手冊》，評估時下列哪一項不屬於四大評估面向？"
+  options:
+    a: "評估現有技術能否達成預期準確率（技術面）"
+    b: "確認是否涉及個資法規範（法律面）"
+    c: "分析導入後是否能有效提升效率（效益面）"
+    d: "調查競爭對手是否已導入類似系統（市場面）"
+  correct: "d"
+  explanation:
+    why_correct: "四大評估面向為技術面、法律面、組織面、效益面。「市場面」不在其中，因為公部門導入 AI 的目的是提升公共服務，而非市場競爭。"
+    why_not_a: "技術面確實是四大評估面向之一，評估技術可行性是必要的。"
+    why_not_b: "法律面確實是四大評估面向之一，個資法規範是重要法律考量。"
+    why_not_c: "效益面確實是四大評估面向之一，評估導入效益是決策的關鍵依據。"
+  keywords:
+    - "公部門AI應用參考手冊"
+    - "數位發展部"
+    - "四大評估面向"
+  exam_trap: false
+
+- id: "L11102-Q14"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 3
+  question: "某公司開發了一款能生成擬真人臉影片的 AI 工具（Deepfake）。依據 EU AI Act，此工具最可能適用哪一風險等級，以及需要遵守何種義務？"
+  options:
+    a: "最小風險，無強制要求"
+    b: "有限風險，須明確標示內容為 AI 生成"
+    c: "高風險，須通過第三方合規評估"
+    d: "不可接受風險，完全禁止"
+  correct: "b"
+  explanation:
+    why_correct: "深偽（Deepfake）內容在 EU AI Act 中屬於有限風險（Limited Risk），主要義務是透明標示，讓使用者知道該內容為 AI 生成。"
+    why_not_a: "深偽影片具有欺騙潛力，風險高於垃圾郵件過濾等最小風險應用。"
+    why_not_c: "深偽工具本身未被列入高風險類別（除非用於高風險用途），一般標示義務即可。"
+    why_not_d: "深偽技術本身未被完全禁止，但若用於不可接受的目的（如潛意識操縱），則另當別論。"
+  keywords:
+    - "EU AI Act"
+    - "有限風險"
+    - "Limited Risk"
+    - "Deepfake"
+    - "深偽"
+    - "標示義務"
+  exam_trap: false
+
+- id: "L11102-Q15"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 3
+  question: "某台灣科技公司開發了高風險 AI 醫療診斷產品，希望了解國內評測時程。依數位發展部《AI 產品與系統評測》規劃，國內產品預計何時可通過評測？"
+  options:
+    a: "2024 年"
+    b: "2025 年"
+    c: "2026 年"
+    d: "2028 年"
+  correct: "c"
+  explanation:
+    why_correct: "依數位發展部規劃：2024 年建立評測框架、2025 年對接國際標準、2026 年國內產品可通過評測。"
+    why_not_a: "2024 年為建立評測框架的階段，尚未開放產品評測。"
+    why_not_b: "2025 年為對接國際標準的階段，非國內產品通過評測的時間。"
+    why_not_d: "2028 年過晚，評測規劃並未延伸至此時間點。"
+  keywords:
+    - "AI產品與系統評測"
+    - "數位發展部"
+    - "評測時程"
+  exam_trap: false
+
+# ============================================================
+# Difficulty 4 — Analyze (Bloom's: 分析)
+# ============================================================
+
+- id: "L11102-Q16"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 4
+  question: "比較台灣《人工智慧基本法》七大原則與金管會《金融業運用 AI 指引》六大原則，下列何者為兩者皆涵蓋的共同核心概念？"
+  options:
+    a: "永續發展、問責、透明可解釋"
+    b: "問責、公平、資料主權"
+    c: "隱私保護、市場競爭、安全"
+    d: "創新促進、人才培育、問責"
+  correct: "a"
+  explanation:
+    why_correct: "《人工智慧基本法》包含永續發展與福祉、問責、透明與可解釋；金管會指引包含永續發展、治理問責、透明可解釋。兩者皆涵蓋這三項核心概念。"
+    why_not_b: "「資料主權」並非兩者原則的正式用詞。公平和問責雖有涵蓋，但此選項的組合不完全正確。"
+    why_not_c: "「市場競爭」不屬於任一框架的原則內容。"
+    why_not_d: "「創新促進」與「人才培育」不屬於任一框架的核心原則。"
+  keywords:
+    - "人工智慧基本法"
+    - "金管會"
+    - "七大原則"
+    - "六大原則"
+    - "原則比較"
+  exam_trap: false
+
+- id: "L11102-Q17"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 4
+  question: "比較美國與日本在 AI 治理上的策略差異，下列敘述何者最正確？"
+  options:
+    a: "美國與日本皆已通過全面性 AI 專法"
+    b: "美國已通過聯邦 AI 專法，日本則採用敏捷治理"
+    c: "美國目前無聯邦全面 AI 立法且傾向去監管化，日本採促進式治理與敏捷治理"
+    d: "日本的 AI 法規比美國更嚴格，與歐盟相當"
+  correct: "c"
+  explanation:
+    why_correct: "美國在 Trump 時期廢止了 Biden 的 AI 行政命令（EO 14110），改為 EO 14179 去監管化路線，且無聯邦全面 AI 立法。日本採促進式（promotional）治理，於 2025 年通過 AI 推進法，強調敏捷治理。"
+    why_not_a: "美國至今無聯邦全面 AI 專法，此敘述不正確。"
+    why_not_b: "美國並未通過聯邦 AI 專法，此為事實錯誤。"
+    why_not_d: "日本的治理策略偏向促進與敏捷，遠不如歐盟嚴格，此比較不正確。"
+  keywords:
+    - "美國"
+    - "日本"
+    - "AI治理"
+    - "國際比較"
+    - "敏捷治理"
+    - "去監管化"
+  exam_trap: false
+
+- id: "L11102-Q18"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 4
+  question: "某企業在台灣部署 AI 系統用於人資招聘篩選，同時也要銷售到歐盟市場。分析此情境，該企業至少需要同時遵守哪些治理要求？"
+  options:
+    a: "僅遵守台灣《人工智慧基本法》即可"
+    b: "遵守台灣《人工智慧基本法》高風險應用標示要求，以及 EU AI Act 高風險合規要求"
+    c: "僅遵守 EU AI Act 即可，因為歐盟標準較高"
+    d: "無須特別遵守任何法規，因為招聘系統不受 AI 法規管制"
+  correct: "b"
+  explanation:
+    why_correct: "台灣《人工智慧基本法》要求高風險應用須明確標示警語及權責歸屬。EU AI Act 將招聘 AI 列為高風險，要求嚴格合規與人為監督。在兩地運營需同時遵守兩套規範。"
+    why_not_a: "銷售到歐盟市場必須遵守 EU AI Act，僅守台灣法規不夠。"
+    why_not_c: "在台灣營運也必須遵守台灣法規，不能只守歐盟法規。"
+    why_not_d: "招聘 AI 在 EU AI Act 中被明確列為高風險，在台灣也受《人工智慧基本法》規範。"
+  keywords:
+    - "人工智慧基本法"
+    - "EU AI Act"
+    - "高風險"
+    - "跨國合規"
+    - "招聘AI"
+  exam_trap: false
+
+- id: "L11102-Q19"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 4
+  question: "數位發展部《AI 產品與系統評測》參考 ISO/IEC TR-24028，其中語言模型的十項評測指標涵蓋多個面向。下列哪一組指標最完整地反映了該評測框架的核心要求？"
+  options:
+    a: "準確性、速度、可擴展性、成本效益"
+    b: "安全性、可解釋性、公平性、透明性、問責性"
+    c: "創意度、流暢度、文法正確性、回應速度"
+    d: "市場接受度、用戶滿意度、技術成熟度、商業可行性"
+  correct: "b"
+  explanation:
+    why_correct: "十項評測指標為：安全性、可解釋性、韌性、公平性、準確性、透明性、問責性、可靠性、隱私、資安。選項 B 列出的五項皆在其中，最完整反映核心要求。"
+    why_not_a: "「速度」「可擴展性」「成本效益」均非十項評測指標。準確性雖在其中，但此組合偏向效能指標而非治理指標。"
+    why_not_c: "「創意度」「流暢度」「文法正確性」「回應速度」均非該評測框架指標，更像自然語言生成的品質評估。"
+    why_not_d: "「市場接受度」等指標屬商業分析面向，與 AI 安全與治理評測無關。"
+  keywords:
+    - "AI產品與系統評測"
+    - "ISO/IEC TR-24028"
+    - "十項評測指標"
+    - "數位發展部"
+  exam_trap: false
+
+- id: "L11102-Q20"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 4
+  question: "EU AI Act 將「利用弱勢族群的脆弱性進行 AI 操縱」與「職場情緒辨識」分別歸入不同風險等級。下列分類何者正確？"
+  options:
+    a: "兩者皆為高風險（High Risk）"
+    b: "前者為不可接受風險（Unacceptable），後者為有限風險（Limited）"
+    c: "兩者皆為不可接受風險（Unacceptable），完全禁止"
+    d: "前者為有限風險（Limited），後者為不可接受風險（Unacceptable）"
+  correct: "c"
+  explanation:
+    why_correct: "EU AI Act 將利用弱勢族群進行 AI 操縱以及職場/學校情緒辨識皆列為不可接受風險，完全禁止。"
+    why_not_a: "這兩項都不是高風險，而是更嚴格的不可接受風險。學生常低估這些應用的風險等級。"
+    why_not_b: "職場情緒辨識不是有限風險，而是被完全禁止的不可接受風險。這是常見的考試陷阱。"
+    why_not_d: "兩者的風險等級分類顛倒且不正確，實際上兩者都屬於最嚴格的禁止類別。"
+  keywords:
+    - "EU AI Act"
+    - "不可接受風險"
+    - "弱勢族群"
+    - "情緒辨識"
+    - "Unacceptable Risk"
+  exam_trap: true
+
+# ============================================================
+# Difficulty 5 — Evaluate/Create (Bloom's: 評鑑/創造)
+# ============================================================
+
+- id: "L11102-Q21"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 5
+  question: "某跨國保險公司在台灣與歐盟皆有營運，計畫導入 AI 理賠審核系統。該系統會自動判斷理賠是否核准，並使用客戶的健康數據。綜合考量金管會指引、台灣《人工智慧基本法》、EU AI Act，以及 HITL 原則，下列哪一項做法最為適當？"
+  options:
+    a: "由 AI 全自動核准或拒絕理賠，以提升效率，無須人工介入"
+    b: "建立 AI 輔助審核加人工覆核機制，確保模型可解釋，並在台灣與歐盟分別符合各自法規要求"
+    c: "僅遵守歐盟法規即可，因為歐盟標準最為嚴格"
+    d: "將所有決策權交給 AI 系統，但事後提供客戶申訴管道"
+  correct: "b"
+  explanation:
+    why_correct: "此做法同時滿足：(1) HITL 原則——人工覆核確保人類監督；(2) 金管會指引——透明可解釋與治理問責；(3)《人工智慧基本法》——高風險應用標示與人類自主；(4) EU AI Act——保險理賠涉及信用評分類高風險應用，需嚴格合規。"
+    why_not_a: "全自動無人工介入違反 HITL 原則和金管會「以人為本」要求，且理賠決策屬高風險，在 EU AI Act 下需人為監督。"
+    why_not_c: "跨國營運需同時遵守兩地法規，台灣《人工智慧基本法》和金管會指引有各自的要求，不能僅守歐盟法規。"
+    why_not_d: "事後申訴雖重要，但不能取代事前的 HITL 機制。AI 全自動決策在涉及個人權益的高風險場景中不符合任何框架的要求。"
+  keywords:
+    - "HITL"
+    - "金管會"
+    - "EU AI Act"
+    - "人工智慧基本法"
+    - "跨國合規"
+    - "高風險"
+    - "保險理賠"
+  exam_trap: false
+
+- id: "L11102-Q22"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 5
+  question: "OECD AI 原則（2019 年）提出五大原則，UNESCO 於 2021 年通過全球首個 AI 倫理綜合框架。比較兩者與台灣《人工智慧基本法》的關係，下列分析何者最正確？"
+  options:
+    a: "台灣《人工智慧基本法》完全照搬 OECD 五大原則，未參考 UNESCO"
+    b: "台灣七大原則涵蓋範圍廣於 OECD 五大原則，且與 OECD 和 UNESCO 在透明、問責、以人為本等核心理念上高度一致"
+    c: "OECD 原則具有法律約束力，因此台灣必須遵守"
+    d: "UNESCO 框架僅適用於教育領域，與台灣的 AI 治理無關"
+  correct: "b"
+  explanation:
+    why_correct: "台灣《人工智慧基本法》七大原則（永續發展、人類自主、隱私保護、資安、透明、公平、問責）涵蓋範圍廣於 OECD 五大原則（包容性成長、以人為本、透明可解釋、穩健安全、問責），且在透明、問責、以人為本等核心理念上與 OECD 和 UNESCO 高度一致。"
+    why_not_a: "台灣七大原則並非照搬 OECD，而是參考多個國際框架後自行制定，涵蓋面更廣。"
+    why_not_c: "OECD AI 原則屬於國際建議性質，不具法律約束力，各國自行決定是否及如何立法。"
+    why_not_d: "UNESCO AI 倫理框架是綜合性的，涵蓋所有 AI 應用領域（193 國通過），非僅限教育。"
+  keywords:
+    - "OECD"
+    - "UNESCO"
+    - "人工智慧基本法"
+    - "國際比較"
+    - "AI倫理"
+  exam_trap: false
+
+- id: "L11102-Q23"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 5
+  question: "某台灣大學使用 AI 系統自動評定學生成績，該系統同時使用攝影機偵測學生考試時的情緒狀態。若此系統要銷售至歐盟市場，依 EU AI Act 分析，下列何者正確？"
+  options:
+    a: "教育評分屬高風險，情緒辨識屬有限風險，兩者皆可上市但須分別合規"
+    b: "教育評分屬高風險可上市，但學校情緒辨識屬不可接受風險，該功能被禁止"
+    c: "整個系統屬有限風險，只需標示即可"
+    d: "整個系統屬不可接受風險，完全不可銷售至歐盟"
+  correct: "b"
+  explanation:
+    why_correct: "EU AI Act 將教育評分（如自動評定成績）列為高風險，可上市但須嚴格合規。然而，學校場域的情緒辨識被列為不可接受風險，完全禁止。因此系統中的評分功能可保留，但情緒辨識功能必須移除。"
+    why_not_a: "學校情緒辨識不是有限風險，而是不可接受風險，被完全禁止。這是 EU AI Act 的重要考點。"
+    why_not_c: "教育評分屬高風險而非有限風險，且學校情緒辨識更是被禁止，不可能整體僅為有限風險。"
+    why_not_d: "教育評分功能本身屬高風險可合規上市，並非整個系統都被禁止，只需移除被禁止的情緒辨識功能。"
+  keywords:
+    - "EU AI Act"
+    - "教育評分"
+    - "情緒辨識"
+    - "高風險"
+    - "不可接受風險"
+  exam_trap: true
+
+- id: "L11102-Q24"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 5
+  question: "EU AI Act 於 2024 年 8 月生效後，各風險等級的規範分階段適用。下列關於適用時程的排列，何者正確？"
+  options:
+    a: "2025/2 禁止類適用 → 2025/8 GPAI 規範 → 2026/8 高風險適用 → 2027/8 嵌入產品"
+    b: "2025/2 GPAI 規範 → 2025/8 禁止類適用 → 2026/8 嵌入產品 → 2027/8 高風險適用"
+    c: "2025/8 禁止類適用 → 2026/2 GPAI 規範 → 2026/8 高風險適用 → 2027/8 嵌入產品"
+    d: "2024/8 所有規範同時生效，無分階段適用"
+  correct: "a"
+  explanation:
+    why_correct: "EU AI Act 的分階段時程為：2024/8 生效 → 2025/2 禁止類適用 → 2025/8 GPAI 規範 → 2026/8 高風險適用 → 2027/8 嵌入產品。選項 A 正確排列此順序。"
+    why_not_b: "禁止類與 GPAI 的適用時間順序顛倒，禁止類（2025/2）先於 GPAI（2025/8）。"
+    why_not_c: "禁止類適用時間應為 2025/2 而非 2025/8，整體順序錯誤。"
+    why_not_d: "EU AI Act 採分階段適用，並非所有規範同時生效，這是為了給業者足夠的合規準備時間。"
+  keywords:
+    - "EU AI Act"
+    - "適用時程"
+    - "分階段"
+    - "GPAI"
+  exam_trap: false
+
+- id: "L11102-Q25"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 5
+  question: "某台灣金融科技公司同時面對金管會指引、《人工智慧基本法》、以及準備進軍歐盟市場。公司決定建立統一的 AI 治理架構。在設計治理框架時，下列哪一項策略最能有效涵蓋所有法規要求？"
+  options:
+    a: "採用最嚴格的 EU AI Act 標準即可，其他法規自然達標"
+    b: "建立以風險分級為核心的治理架構，納入 HITL 機制、透明可解釋要求，並針對各法域（台灣/歐盟）的差異設置補充合規模組"
+    c: "聘請歐盟法律顧問，完全依照歐盟標準運作，忽略台灣特有要求"
+    d: "等所有法規完全成熟後再建立治理架構，目前先專注產品開發"
+  correct: "b"
+  explanation:
+    why_correct: "此策略的優勢在於：(1) 風險分級為核心——同時對應 EU AI Act 四級風險與台灣高風險標示要求；(2) HITL 機制——滿足所有框架的人類監督要求；(3) 透明可解釋——金管會、基本法、EU AI Act 皆要求；(4) 差異化合規模組——處理各法域的特殊要求（如金管會六大原則中的「穩健安全」、台灣基本法的「永續發展」等）。"
+    why_not_a: "EU AI Act 雖嚴格，但台灣有特有要求（如金管會指引的金融業特定原則、基本法的國科會治理架構），僅守歐盟標準不足以完全合規。"
+    why_not_c: "忽略台灣法規會造成國內合規風險，尤其金管會指引對金融業有特定治理要求。"
+    why_not_d: "AI 治理法規已經持續生效中（台灣基本法 2026/1 已生效、EU AI Act 2024/8 已生效），等待不是可行策略，且會增加未來合規成本。"
+  keywords:
+    - "AI治理架構"
+    - "風險分級"
+    - "跨國合規"
+    - "HITL"
+    - "金管會"
+    - "EU AI Act"
+    - "人工智慧基本法"
+  exam_trap: false
+
+# ============================================================
+# Coverage & Statistics
+# ============================================================
+#
+# Total questions: 25
+#
+# Breakdown by difficulty:
+#   Level 1 (Remember):  Q01, Q02, Q03, Q04, Q05 = 5 questions
+#   Level 2 (Understand): Q06, Q07, Q08, Q09, Q10 = 5 questions
+#   Level 3 (Apply):      Q11, Q12, Q13, Q14, Q15 = 5 questions
+#   Level 4 (Analyze):    Q16, Q17, Q18, Q19, Q20 = 5 questions
+#   Level 5 (Evaluate):   Q21, Q22, Q23, Q24, Q25 = 5 questions
+#
+# Breakdown by coverage area:
+#   台灣《人工智慧基本法》七大原則: Q01, Q04, Q06, Q16, Q22 = 5 questions
+#   EU AI Act 四級風險分類:         Q02, Q10, Q12, Q14, Q20, Q23, Q24 = 7 questions
+#   金管會《金融業運用AI指引》:     Q03, Q07, Q11, Q16, Q21 = 5 questions
+#   數位發展部 documents:           Q08, Q13, Q15, Q19 = 4 questions
+#   國際比較:                       Q05, Q17, Q22 = 3 questions
+#   HITL concept:                   Q09, Q21, Q25 = 3 questions
+#   AI治理框架/跨國合規:            Q18, Q21, Q25 = 3 questions
+#
+# Exam traps (exam_trap: true): Q01, Q06, Q07, Q20, Q23 = 5 questions
+#
+# Note: Some questions cover multiple areas (e.g., Q21 covers 金管會 + HITL + 跨國合規)

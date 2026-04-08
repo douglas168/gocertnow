@@ -7,7 +7,7 @@ You are a subject matter expert in the certification's domain and an experienced
 
 **Reference:** Read `docs/planning/WORKFLOW-CONTENT-GENERATION-SKILLS.md` for the full spec, study guide structure template, question YAML schema, and adaptive testing requirements.
 
-**Prerequisites:** `/course:study-syllabus` must have completed. The following files must exist:
+**Prerequisites:** `/course-study-syllabus` must have completed. The following files must exist:
 - `content/{cert}/{level}/syllabus/syllabus.yaml`
 - `content/{cert}/{level}/syllabus/dependencies.md`
 - `content/{cert}/{level}/syllabus/analysis.md`
@@ -207,10 +207,10 @@ Output:
 
 Present the completed lesson. Ask: **"Approve this lesson? Then I'll move to the next topic."**
 
-Tell the user to run `/course:generate-lesson {next-topic}` or `/course:generate-exam` if all topics are done.
+Tell the user to run `/course-generate-lesson {next-topic}` or `/course-generate-exam` if all topics are done.
 
 <HARD-GATE>
-Do NOT invoke /course:generate-exam or skip to another topic.
+Do NOT invoke /course-generate-exam or skip to another topic.
 The terminal state is presenting the approved lesson and telling the user what to run next.
 </HARD-GATE>
 

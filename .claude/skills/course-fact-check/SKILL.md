@@ -13,7 +13,7 @@ This skill does NOT follow the 4-phase Superpower Pattern — it's a simple util
 
 User provides a file path:
 ```
-/course:fact-check content/ipas/beginner/lessons/L111-人工智慧概念/study-guide.md
+/course-fact-check content/ipas/beginner/lessons/L111-人工智慧概念/study-guide.md
 ```
 
 Or asks a question like: "Is the L111 study guide still accurate?"
@@ -74,7 +74,7 @@ Print directly to the user (not saved to file):
 
 ## When to Suggest Running This
 
-Content goes stale. Suggest `/course:fact-check` when:
+Content goes stale. Suggest `/course-fact-check` when:
 - More than 3 months have passed since the content was generated
 - The certification vendor announces a syllabus update
 - The user mentions that exam questions seem different from the study material

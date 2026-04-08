@@ -1,0 +1,489 @@
+# L11101 — AI的定義與分類
+# IPAS AI應用規劃師能力鑑定（初級）
+# Generated: 2026-04-08
+# Total: 20 questions (4 per difficulty level)
+
+# ============================================================
+# Difficulty 1 — Remember (Bloom's: 記憶)
+# ============================================================
+
+- id: "L11101-Q01"
+  topic_code: "L11101"
+  item_code: "L11101"
+  difficulty: 1
+  question: "圖靈測試（Turing Test）最早於哪一年被提出？"
+  options:
+    a: "1943 年"
+    b: "1950 年"
+    c: "1956 年"
+    d: "1966 年"
+  correct: "b"
+  explanation:
+    why_correct: "Alan Turing 於 1950 年發表論文《Computing Machinery and Intelligence》，提出了「模仿遊戲」（Imitation Game），即後來廣為人知的圖靈測試。"
+    why_not_a: "1943 年是 McCulloch 和 Pitts 提出人工神經元模型的年份，並非圖靈測試。"
+    why_not_c: "1956 年是達特茅斯會議（Dartmouth Conference），被視為 AI 學科正式誕生的起點，但圖靈測試早了六年。"
+    why_not_d: "1966 年與 ELIZA 聊天程式有關，並非圖靈測試的提出年份。"
+  keywords:
+    - "圖靈測試"
+    - "Turing Test"
+    - "1950"
+  exam_trap: false
+
+- id: "L11101-Q02"
+  topic_code: "L11101"
+  item_code: "L11101"
+  difficulty: 1
+  question: "「人工智慧」（Artificial Intelligence）一詞首次在哪場學術會議中被正式使用？"
+  options:
+    a: "1950 年曼徹斯特大學研討會"
+    b: "1956 年達特茅斯會議（Dartmouth Conference）"
+    c: "1969 年國際人工智慧聯合會議（IJCAI）"
+    d: "1980 年美國人工智慧學會（AAAI）年會"
+  correct: "b"
+  explanation:
+    why_correct: "1956 年 John McCarthy 等人於達特茅斯學院舉辦的研討會正式使用「Artificial Intelligence」一詞，被視為 AI 學科的誕生。"
+    why_not_a: "1950 年雖有圖靈的重要論文，但當時尚未正式使用「人工智慧」這個名稱。"
+    why_not_c: "IJCAI 首屆會議在 1969 年舉行，此時 AI 一詞已使用了十三年。"
+    why_not_d: "AAAI 成立於 1979 年，1980 年舉辦首屆年會，遠晚於 AI 名稱的誕生。"
+  keywords:
+    - "達特茅斯會議"
+    - "Dartmouth Conference"
+    - "1956"
+  exam_trap: false
+
+- id: "L11101-Q03"
+  topic_code: "L11101"
+  item_code: "L11101"
+  difficulty: 1
+  question: "依照 AI 能力分類，目前所有商用 AI 系統屬於下列哪一種類型？"
+  options:
+    a: "通用人工智慧（AGI）"
+    b: "超級人工智慧（ASI）"
+    c: "弱人工智慧（ANI）"
+    d: "自我意識人工智慧（Self-Aware AI）"
+  correct: "c"
+  explanation:
+    why_correct: "目前所有實際運作的 AI 系統——包括 ChatGPT、自駕車視覺系統等——都屬於弱人工智慧（Artificial Narrow Intelligence, ANI），只能在特定任務上表現出智慧行為。"
+    why_not_a: "AGI（Artificial General Intelligence）指能像人類一樣處理各種認知任務的 AI，目前尚未實現。"
+    why_not_b: "ASI（Artificial Super Intelligence）指在所有領域超越人類的 AI，目前僅存在於理論討論中。"
+    why_not_d: "自我意識 AI 屬於功能分類中的最高層級，目前僅為理論推測，尚未實現。"
+  keywords:
+    - "弱人工智慧"
+    - "ANI"
+    - "Artificial Narrow Intelligence"
+  exam_trap: false
+
+- id: "L11101-Q04"
+  topic_code: "L11101"
+  item_code: "L11101"
+  difficulty: 1
+  question: "在 AI 技術的層次關係中，下列何者正確描述了 AI、ML、DL 三者的包含關係？"
+  options:
+    a: "DL ⊃ ML ⊃ AI"
+    b: "ML ⊃ AI ⊃ DL"
+    c: "AI ⊃ ML ⊃ DL"
+    d: "AI ⊃ DL ⊃ ML"
+  correct: "c"
+  explanation:
+    why_correct: "人工智慧（AI）是最廣泛的概念，機器學習（ML）是 AI 的子集，而深度學習（DL）是 ML 的子集。即 AI ⊃ ML ⊃ DL。"
+    why_not_a: "完全顛倒了三者的包含關係。DL 是最小的範疇，不可能包含 ML 和 AI。"
+    why_not_b: "ML 不包含 AI；ML 是 AI 的一部分，非反過來。"
+    why_not_d: "DL 不包含 ML。DL 是 ML 的子集（特定方法），兩者順序錯誤。"
+  keywords:
+    - "AI"
+    - "ML"
+    - "DL"
+    - "層次關係"
+  exam_trap: false
+
+# ============================================================
+# Difficulty 2 — Understand (Bloom's: 理解)
+# ============================================================
+
+- id: "L11101-Q05"
+  topic_code: "L11101"
+  item_code: "L11101"
+  difficulty: 2
+  question: "Russell 與 Norvig 在《Artificial Intelligence: A Modern Approach》中，以 2×2 矩陣將 AI 分為四種研究方向。下列哪一項不是其中之一？"
+  options:
+    a: "像人一樣思考（Thinking Humanly）"
+    b: "理性地行動（Acting Rationally）"
+    c: "像人一樣行動（Acting Humanly）"
+    d: "自主地學習（Learning Autonomously）"
+  correct: "d"
+  explanation:
+    why_correct: "Russell & Norvig 的 2×2 矩陣由 Thinking/Acting × Humanly/Rationally 組成，共四類：Thinking Humanly、Thinking Rationally、Acting Humanly、Acting Rationally。「自主地學習」並非其中之一。"
+    why_not_a: "Thinking Humanly（像人一樣思考）是四個象限之一，屬於認知科學取向。"
+    why_not_b: "Acting Rationally（理性地行動）是四個象限之一，屬於理性代理人取向。"
+    why_not_c: "Acting Humanly（像人一樣行動）是四個象限之一，圖靈測試即屬此類。"
+  keywords:
+    - "Russell & Norvig"
+    - "2×2 矩陣"
+    - "Thinking Rationally"
+    - "Acting Rationally"
+  exam_trap: false
+
+- id: "L11101-Q06"
+  topic_code: "L11101"
+  item_code: "L11101"
+  difficulty: 2
+  question: "關於「強人工智慧（Strong AI）」與「弱人工智慧（Weak AI）」的哲學區分，下列敘述何者正確？"
+  options:
+    a: "強 AI 指計算能力很強的 AI 系統，弱 AI 指計算能力較弱的系統"
+    b: "強 AI 認為機器可以真正擁有意識與理解力，弱 AI 認為機器僅能模擬智慧行為"
+    c: "強 AI 指 AGI，弱 AI 指 ANI，兩者完全相同概念"
+    d: "強 AI 與弱 AI 的區分已被學術界廢除，不再使用"
+  correct: "b"
+  explanation:
+    why_correct: "John Searle 提出的哲學區分：強 AI（Strong AI）主張機器能真正擁有心智、意識與理解力；弱 AI（Weak AI）主張機器只是模擬智慧行為，並不具有真正的理解。"
+    why_not_a: "這是最常見的誤解。「強」和「弱」並非指計算能力的強弱，而是哲學立場上對機器能否擁有意識的主張。"
+    why_not_c: "雖然 Strong AI 與 AGI、Weak AI 與 ANI 有時被混用，但嚴格來說它們分屬哲學討論與能力分類，概念內涵不完全相同。"
+    why_not_d: "強 AI / 弱 AI 的哲學區分至今仍是 AI 哲學中的核心議題，並未被廢除。"
+  keywords:
+    - "強人工智慧"
+    - "弱人工智慧"
+    - "Strong AI"
+    - "Weak AI"
+    - "Searle"
+  exam_trap: true
+
+- id: "L11101-Q07"
+  topic_code: "L11101"
+  item_code: "L11101"
+  difficulty: 2
+  question: "在 AI 功能分類中，「有限記憶（Limited Memory）」型 AI 的主要特徵為何？"
+  options:
+    a: "只能根據當前輸入做出反應，無法利用過去的經驗"
+    b: "能利用過去的資料或經驗來改善當前的決策"
+    c: "能理解他人的情緒與意圖"
+    d: "具有自我意識，能反思自身的存在"
+  correct: "b"
+  explanation:
+    why_correct: "有限記憶（Limited Memory）型 AI 能儲存並利用過去的資料或經驗來輔助當前決策，如自駕車利用過去的道路感測資料、ChatGPT 利用對話上下文。"
+    why_not_a: "這是「反應式機器（Reactive Machines）」的特徵，如 IBM Deep Blue 只根據當下棋盤狀態下棋。"
+    why_not_c: "這是「心智理論（Theory of Mind）」型 AI 的特徵，目前仍在研究階段。"
+    why_not_d: "這是「自我意識（Self-Aware）」型 AI 的特徵，目前僅為理論推測。"
+  keywords:
+    - "有限記憶"
+    - "Limited Memory"
+    - "功能分類"
+  exam_trap: false
+
+- id: "L11101-Q08"
+  topic_code: "L11101"
+  item_code: "L11101"
+  difficulty: 2
+  question: "關於 AI 發展史上的「AI 寒冬（AI Winter）」，下列敘述何者正確？"
+  options:
+    a: "AI 寒冬只發生過一次，約在 1970 年代"
+    b: "AI 寒冬是指 AI 技術被政府禁止研究的時期"
+    c: "AI 歷史上經歷了至少兩次 AI 寒冬，分別在 1970 年代與 1980 年代末期"
+    d: "AI 寒冬是因為硬體技術倒退所導致"
+  correct: "c"
+  explanation:
+    why_correct: "AI 歷史上經歷了至少兩次寒冬：第一次在 1970 年代（因專家系統的侷限與 Lighthill 報告導致資金大幅縮減），第二次在 1980 年代末至 1990 年代初（因專家系統維護成本過高與日本第五代計算機計畫失敗）。"
+    why_not_a: "AI 寒冬不只一次，至少有兩次明顯的低潮期。"
+    why_not_b: "AI 寒冬並非政府禁令，而是因為技術無法達到預期、資金撤出、研究熱度驟降的時期。"
+    why_not_d: "AI 寒冬主要原因是技術瓶頸與資金縮減，並非硬體技術倒退。硬體在這段期間持續進步。"
+  keywords:
+    - "AI 寒冬"
+    - "AI Winter"
+    - "1970s"
+    - "1980s"
+  exam_trap: false
+
+# ============================================================
+# Difficulty 3 — Apply (Bloom's: 應用)
+# ============================================================
+
+- id: "L11101-Q09"
+  topic_code: "L11101"
+  item_code: "L11101"
+  difficulty: 3
+  question: "小明開發了一個 AI 系統，能根據病患過去的檢查紀錄和即時的生理數據來預測心臟病風險。依 AI 功能分類，這個系統最可能屬於哪一類？"
+  options:
+    a: "反應式機器（Reactive Machines）"
+    b: "有限記憶（Limited Memory）"
+    c: "心智理論（Theory of Mind）"
+    d: "自我意識（Self-Aware）"
+  correct: "b"
+  explanation:
+    why_correct: "該系統能利用「過去的檢查紀錄」（歷史資料）搭配即時數據來做預測，這正是有限記憶型 AI 的特徵——能儲存並運用過去的資料來改善當前決策。"
+    why_not_a: "反應式機器只根據當前輸入做出反應，無法利用歷史資料。此系統明確使用了過去的檢查紀錄。"
+    why_not_c: "心智理論型 AI 需要能理解人類的情緒、信念和意圖，該系統僅分析生理數據，不涉及理解病患心理狀態。"
+    why_not_d: "自我意識型 AI 需具備自我認知能力，目前僅存在於理論中，此系統不具備此特徵。"
+  keywords:
+    - "有限記憶"
+    - "Limited Memory"
+    - "醫療 AI"
+    - "預測"
+  exam_trap: false
+
+- id: "L11101-Q10"
+  topic_code: "L11101"
+  item_code: "L11101"
+  difficulty: 3
+  question: "一家台灣企業聲稱其新產品是「通用人工智慧（AGI）」，能在任何認知任務上達到人類水準。身為 AI 專案規劃師，你對此主張的最佳回應為何？"
+  options:
+    a: "這是合理的，因為 ChatGPT 已經證明 AGI 已經實現"
+    b: "需要進一步評估，因為目前尚無公認的 AGI 系統，該產品很可能是 ANI"
+    c: "這不可能，因為 AGI 永遠不會被實現"
+    d: "無需質疑，因為 AGI 的定義尚未標準化"
+  correct: "b"
+  explanation:
+    why_correct: "截至目前，所有商用 AI 系統（包括最先進的大型語言模型）都屬於 ANI。尚無公認達到 AGI 標準的系統，因此需要仔細評估該企業的主張。"
+    why_not_a: "ChatGPT 雖然功能強大，但仍屬於 ANI（弱人工智慧），在特定任務上有明顯侷限，並非 AGI。這是常見的考試陷阱。"
+    why_not_c: "「永遠不會被實現」過於絕對。學術界對 AGI 是否可能實現仍有爭論，不應斷言不可能。"
+    why_not_d: "雖然 AGI 的精確定義確實仍有討論空間，但此回應迴避了專業判斷的責任。作為 AI 規劃師應具備辨識能力。"
+  keywords:
+    - "AGI"
+    - "ANI"
+    - "ChatGPT"
+    - "通用人工智慧"
+  exam_trap: true
+
+- id: "L11101-Q11"
+  topic_code: "L11101"
+  item_code: "L11101"
+  difficulty: 3
+  question: "某公司開發了一套西洋棋 AI，它只會根據當前棋盤上的棋子位置計算最佳走法，不會記住前幾步的走法歷史。依 AI 功能分類，此系統屬於哪一類？"
+  options:
+    a: "有限記憶（Limited Memory）"
+    b: "反應式機器（Reactive Machines）"
+    c: "心智理論（Theory of Mind）"
+    d: "弱人工智慧（Weak AI）"
+  correct: "b"
+  explanation:
+    why_correct: "該系統「只根據當前棋盤狀態」做決策，不利用歷史走法資料，符合反應式機器的定義。IBM Deep Blue 就是經典的反應式機器案例。"
+    why_not_a: "有限記憶型 AI 會利用過去的資料來輔助決策，但題目明確指出此系統不會記住前幾步走法。"
+    why_not_c: "心智理論型 AI 需要理解對手的情緒和意圖，此系統僅做棋盤分析，不涉及理解對手心理。"
+    why_not_d: "弱人工智慧（Weak AI）是哲學分類，非功能分類。題目問的是功能分類。學生容易混淆這兩種分類體系。"
+  keywords:
+    - "反應式機器"
+    - "Reactive Machines"
+    - "Deep Blue"
+  exam_trap: false
+
+- id: "L11101-Q12"
+  topic_code: "L11101"
+  item_code: "L11101"
+  difficulty: 3
+  question: "依據台灣《人工智慧基本法》第三條的定義，下列何者最符合「人工智慧」的核心要素？"
+  options:
+    a: "具備自主運行能力，透過機器學習及演算法，能產出預測、內容、建議或決策"
+    b: "能通過圖靈測試，使人類無法區分其與真人的差異"
+    c: "具備自我意識，能反思自身的運算過程"
+    d: "以深度學習為核心技術，必須使用神經網路架構"
+  correct: "a"
+  explanation:
+    why_correct: "台灣《人工智慧基本法》第三條定義人工智慧的三大核心要素：(1) 自主運行能力、(2) 透過機器學習及演算法、(3) 產出預測、內容、建議或決策。"
+    why_not_b: "圖靈測試是 Alan Turing 在 1950 年提出的 AI 判定方法，並非台灣法律對 AI 的定義。"
+    why_not_c: "自我意識是最高層級 AI 功能分類的理論特徵，台灣法律定義並未要求 AI 具備自我意識。"
+    why_not_d: "台灣法律定義使用的是「機器學習及演算法」，涵蓋範圍比深度學習更廣，未限定必須使用神經網路。"
+  keywords:
+    - "人工智慧基本法"
+    - "第三條"
+    - "自主運行能力"
+    - "機器學習及演算法"
+  exam_trap: false
+
+# ============================================================
+# Difficulty 4 — Analyze (Bloom's: 分析)
+# ============================================================
+
+- id: "L11101-Q13"
+  topic_code: "L11101"
+  item_code: "L11101"
+  difficulty: 4
+  question: "「能力分類（ANI / AGI / ASI）」與「功能分類（Reactive / Limited Memory / Theory of Mind / Self-Aware）」是兩種常見的 AI 分類方式。下列關於兩者的比較，何者正確？"
+  options:
+    a: "兩種分類完全對應：ANI = Reactive，AGI = Limited Memory，ASI = Self-Aware"
+    b: "能力分類側重 AI 能執行任務的廣度，功能分類側重 AI 處理資訊的方式與認知層次"
+    c: "功能分類是能力分類的子集，所有功能分類都可以歸入 ANI"
+    d: "兩種分類互斥，不能同時使用於描述同一個 AI 系統"
+  correct: "b"
+  explanation:
+    why_correct: "能力分類（ANI/AGI/ASI）關注 AI 能處理的任務範圍——從單一任務到超越人類全面能力。功能分類（Reactive 到 Self-Aware）關注 AI 如何處理資訊——從純反應到具備自我意識。兩者是不同維度的分類。"
+    why_not_a: "這是錯誤的一一對應。例如，目前的 Limited Memory AI（如 ChatGPT）仍屬於 ANI，而非 AGI。兩種分類並非簡單對應關係。"
+    why_not_c: "功能分類中的 Theory of Mind 和 Self-Aware 是未來可能實現的類型，不一定全部歸入 ANI。當 AGI 實現時，可能同時具備 Theory of Mind 功能。"
+    why_not_d: "兩種分類並非互斥。同一個 AI 系統可以同時被描述為「ANI + Limited Memory」（如自駕車），兩種分類從不同角度描述 AI。"
+  keywords:
+    - "能力分類"
+    - "功能分類"
+    - "ANI"
+    - "AGI"
+    - "分類比較"
+  exam_trap: false
+
+- id: "L11101-Q14"
+  topic_code: "L11101"
+  item_code: "L11101"
+  difficulty: 4
+  question: "2012 年 AlexNet 在 ImageNet 競賽中大幅領先傳統方法，被視為深度學習崛起的關鍵事件。從 AI 發展史的角度分析，AlexNet 的成功主要歸功於哪些因素的結合？"
+  options:
+    a: "演算法突破（卷積神經網路）+ 大量標註資料（ImageNet）+ GPU 運算能力提升"
+    b: "量子運算技術的成熟 + 新型演算法 + 政府大規模資助"
+    c: "專家系統技術的延續 + 規則式推理的改良 + 雲端運算普及"
+    d: "強化學習的突破 + 自我對弈訓練 + 聯邦學習（Federated Learning）技術"
+  correct: "a"
+  explanation:
+    why_correct: "AlexNet 的成功仰賴三大因素：(1) 卷積神經網路（CNN）架構的改良與 ReLU、Dropout 等技巧、(2) ImageNet 提供的大規模標註影像資料集、(3) NVIDIA GPU 平行運算大幅加速訓練。這三者的匯聚開啟了深度學習的黃金時代。"
+    why_not_b: "2012 年量子運算尚未成熟到可用於深度學習訓練，這是錯誤的時間線。AlexNet 使用的是 GPU，非量子電腦。"
+    why_not_c: "AlexNet 的成功恰好標誌著從規則式系統（專家系統）轉向資料驅動的深度學習，而非專家系統的延續。"
+    why_not_d: "AlexNet 是監督式學習的影像分類任務，並非強化學習或自我對弈。聯邦學習是後來才提出的分散式訓練方法。"
+  keywords:
+    - "AlexNet"
+    - "2012"
+    - "ImageNet"
+    - "深度學習"
+    - "GPU"
+  exam_trap: false
+
+- id: "L11101-Q15"
+  topic_code: "L11101"
+  item_code: "L11101"
+  difficulty: 4
+  question: "圖靈測試在 Russell & Norvig 的 2×2 分類框架中，屬於「像人一樣行動（Acting Humanly）」象限。但有學者批評圖靈測試有其侷限性。下列哪一項是對圖靈測試最合理的批評？"
+  options:
+    a: "圖靈測試太簡單，現在的聊天機器人都能輕鬆通過"
+    b: "圖靈測試著重外在行為表現，無法判定機器是否真正理解或具備智慧"
+    c: "圖靈測試只能測試英語能力，無法用於其他語言"
+    d: "圖靈測試已被國際學術界正式廢除，不具參考價值"
+  correct: "b"
+  explanation:
+    why_correct: "圖靈測試的核心批評之一（也與 Searle 的「中文房間」論證相關）：測試僅關注外在行為是否「像人」，無法判斷機器內部是否真正具備理解、意識或智慧。機器可能只是精巧的模擬。"
+    why_not_a: "雖然部分系統聲稱通過了圖靈測試的某些版本，但嚴格定義的圖靈測試仍然極具挑戰性。「太簡單」並非學術界的主要批評方向。"
+    why_not_c: "圖靈測試的概念與語言無關，可以用任何語言實施。語言限制並非其設計上的本質問題。"
+    why_not_d: "圖靈測試至今仍是 AI 哲學討論中的重要基準概念，並未被正式廢除。"
+  keywords:
+    - "圖靈測試"
+    - "Turing Test"
+    - "中文房間"
+    - "Chinese Room"
+    - "Acting Humanly"
+  exam_trap: false
+
+- id: "L11101-Q16"
+  topic_code: "L11101"
+  item_code: "L11101"
+  difficulty: 4
+  question: "ChatGPT 能進行複雜對話、撰寫文章、回答各領域問題。有人因此認為 ChatGPT 已達到 AGI 水準。從 AI 分類的角度分析，這個說法的關鍵錯誤為何？"
+  options:
+    a: "ChatGPT 是雲端服務而非本地端 AI，所以不能算 AGI"
+    b: "ChatGPT 缺乏跨領域的自主推理與遷移學習能力，仍屬於 ANI，其表現的多功能性來自大量訓練數據而非通用智能"
+    c: "ChatGPT 只是搜尋引擎的進化版，不算是真正的 AI"
+    d: "ChatGPT 雖然不是 AGI 但已經是 ASI，因為在許多任務上超越人類"
+  correct: "b"
+  explanation:
+    why_correct: "ChatGPT 雖然看似「什麼都會」，但它的多功能性來自海量訓練語料，而非真正的通用智能。它無法像人類一樣自主推理未見過的新問題、在全新領域自主遷移知識。在特定任務上仍有明顯失誤。因此仍屬 ANI。"
+    why_not_a: "AGI/ANI 的分類與部署方式（雲端或本地）無關，而是關於能力的廣度和深度。"
+    why_not_c: "ChatGPT 使用大型語言模型（LLM）生成文字，與搜尋引擎的資訊檢索機制完全不同，確實是 AI 系統。"
+    why_not_d: "ASI 要求在「所有」認知領域超越人類。ChatGPT 雖在某些特定任務表現優異，但在許多方面仍不如人類（如物理世界推理、持續學習等），更遠遠達不到 ASI。"
+  keywords:
+    - "ChatGPT"
+    - "AGI"
+    - "ANI"
+    - "大型語言模型"
+    - "LLM"
+  exam_trap: true
+
+# ============================================================
+# Difficulty 5 — Evaluate (Bloom's: 評鑑)
+# ============================================================
+
+- id: "L11101-Q17"
+  topic_code: "L11101"
+  item_code: "L11101"
+  difficulty: 5
+  question: "依據台灣《人工智慧基本法》，AI 的中央主管機關是下列哪一個單位？"
+  options:
+    a: "數位發展部"
+    b: "國家科學及技術委員會（國科會）"
+    c: "經濟部"
+    d: "行政院資通安全處"
+  correct: "b"
+  explanation:
+    why_correct: "依台灣《人工智慧基本法》，AI 的中央主管機關為國家科學及技術委員會（國科會），負責 AI 政策的統籌與協調。"
+    why_not_a: "數位發展部負責數位發展相關政策，但在《人工智慧基本法》中，AI 的中央主管機關並非數位發展部。這是考試中非常常見的混淆點。"
+    why_not_c: "經濟部負責產業政策，雖與 AI 產業推動有關，但並非《人工智慧基本法》指定的中央主管機關。"
+    why_not_d: "行政院資通安全處負責資通安全政策，與 AI 治理有交集但並非 AI 中央主管機關。"
+  keywords:
+    - "人工智慧基本法"
+    - "中央主管機關"
+    - "國科會"
+    - "國家科學及技術委員會"
+  exam_trap: true
+
+- id: "L11101-Q18"
+  topic_code: "L11101"
+  item_code: "L11101"
+  difficulty: 5
+  question: "一位主管在會議上說：「我們公司的 AI 客服機器人是強人工智慧，因為它表現得很強、回答很精準。」作為 AI 規劃師，你認為這個說法的問題在哪裡？下列分析何者最完整？"
+  options:
+    a: "說法正確，只要 AI 在特定領域表現優秀就可以稱為強人工智慧"
+    b: "主管混淆了「強 AI」的哲學定義與日常用語。哲學上的強 AI 指機器具有真正的意識與理解力（Searle），與系統表現的「強弱」無關；該客服機器人屬於 ANI + Weak AI"
+    c: "說法錯誤，因為客服機器人的計算能力不夠強，算力達到一定門檻才能稱為強 AI"
+    d: "說法錯誤，強人工智慧必須通過圖靈測試才能成立"
+  correct: "b"
+  explanation:
+    why_correct: "此題綜合三個核心概念：(1) 強 AI 是 Searle 提出的哲學概念，指機器具有真正的意識與理解力，與表現好壞無關；(2) 該客服機器人仍屬 ANI（只處理客服任務）；(3) 從哲學分類角度屬 Weak AI（模擬智慧行為但無真正意識）。主管犯了將「強弱」誤解為能力高低的常見錯誤。"
+    why_not_a: "完全錯誤。「強人工智慧」有明確的哲學定義，不等於「表現很好的 AI」。"
+    why_not_c: "強 AI 的定義與算力無關。即使算力極高，只要機器不具備真正的意識與理解力，仍然是弱 AI。"
+    why_not_d: "通過圖靈測試是 AI 研究中的一個里程碑，但圖靈測試本身也被批評無法判定機器是否真正具有智慧。強 AI 的定義並非以圖靈測試為標準。"
+  keywords:
+    - "強人工智慧"
+    - "Strong AI"
+    - "Weak AI"
+    - "Searle"
+    - "ANI"
+    - "哲學定義"
+  exam_trap: true
+
+- id: "L11101-Q19"
+  topic_code: "L11101"
+  item_code: "L11101"
+  difficulty: 5
+  question: "綜觀 AI 發展歷程，下列哪一組事件的時間順序排列是正確的？"
+  options:
+    a: "達特茅斯會議 → 第一次 AI 寒冬 → AlexNet → ChatGPT → 台灣人工智慧基本法"
+    b: "圖靈測試 → AlexNet → 達特茅斯會議 → ChatGPT → 台灣人工智慧基本法"
+    c: "達特茅斯會議 → 圖靈測試 → 第一次 AI 寒冬 → ChatGPT → AlexNet"
+    d: "圖靈測試 → 達特茅斯會議 → AlexNet → 台灣人工智慧基本法 → ChatGPT"
+  correct: "a"
+  explanation:
+    why_correct: "正確時間順序：圖靈測試（1950）→ 達特茅斯會議（1956）→ 第一次 AI 寒冬（1970s）→ AlexNet（2012）→ ChatGPT（2022）→ 台灣人工智慧基本法（2026）。選項 A 從達特茅斯開始，後續順序完全正確。"
+    why_not_b: "AlexNet（2012）被放在達特茅斯會議（1956）之前，時間順序錯誤。"
+    why_not_c: "圖靈測試（1950）在達特茅斯會議（1956）之前，選項中順序顛倒。且 ChatGPT（2022）被放在 AlexNet（2012）之前也是錯的。"
+    why_not_d: "台灣人工智慧基本法（2026）被放在 ChatGPT（2022）之前，時間順序錯誤。"
+  keywords:
+    - "AI 發展歷程"
+    - "Dartmouth"
+    - "AlexNet"
+    - "ChatGPT"
+    - "人工智慧基本法"
+    - "時間排序"
+  exam_trap: false
+
+- id: "L11101-Q20"
+  topic_code: "L11101"
+  item_code: "L11101"
+  difficulty: 5
+  question: "某新創公司宣稱其 AI 產品「具備自主運行能力，使用深度學習演算法，能根據用戶行為產出個人化推薦」。依據台灣《人工智慧基本法》的定義以及 AI 分類體系，下列對該產品的綜合分析何者最正確？"
+  options:
+    a: "符合《人工智慧基本法》的 AI 定義；能力分類為 AGI（因為具備自主運行能力）；功能分類為 Limited Memory"
+    b: "符合《人工智慧基本法》的 AI 定義；能力分類為 ANI；功能分類為 Limited Memory（因為利用用戶歷史行為資料）"
+    c: "不符合《人工智慧基本法》的 AI 定義（因為只用深度學習而非機器學習）；分類無法判定"
+    d: "符合《人工智慧基本法》的 AI 定義；能力分類為 ANI；功能分類為 Reactive Machines（因為只做推薦）"
+  correct: "b"
+  explanation:
+    why_correct: "綜合分析：(1) 自主運行能力 + 演算法 + 產出推薦 → 符合《人工智慧基本法》第三條定義；(2) 專注於推薦任務 → ANI（非 AGI）；(3) 利用「用戶行為」歷史資料做預測 → Limited Memory（非 Reactive）。三個面向分析皆正確。"
+    why_not_a: "「自主運行能力」是台灣法律對 AI 的基本定義要素，並非 AGI 的判定標準。AGI 要求在所有認知領域達到人類水準，僅有自主運行能力遠不足以構成 AGI。"
+    why_not_c: "深度學習是機器學習的子集（DL ⊂ ML），使用深度學習當然也符合「機器學習及演算法」的定義。這是利用 AI ⊃ ML ⊃ DL 層次關係設計的陷阱。"
+    why_not_d: "該產品利用「用戶行為」（歷史資料）來做推薦，這正是 Limited Memory 的特徵。Reactive Machines 不會使用歷史資料，只根據當前輸入做反應。"
+  keywords:
+    - "人工智慧基本法"
+    - "ANI"
+    - "Limited Memory"
+    - "深度學習"
+    - "綜合分析"
+  exam_trap: true

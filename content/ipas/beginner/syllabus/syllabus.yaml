@@ -1,0 +1,213 @@
+certification: "IPAS AI應用規劃師能力鑑定"
+level: "初級"
+updated: "115.02"
+sources:
+  - type: "pdf"
+    path: "content/ipas/AI應用規劃師能力鑑定_評鑑內容範圍參考_11502_20260226174411.pdf"
+
+exam_format:
+  subjects: 2
+  questions_per_subject: 50
+  total_questions: 100
+  time_limit_minutes_per_subject: 75
+  passing_score_average: 70
+  passing_score_minimum_per_subject: 60
+  question_types:
+    - single_choice
+  adaptive: false
+  certificate_validity_years: 3
+
+subjects:
+  - code: "L11"
+    name: "人工智慧基礎概論"
+    weight: null
+    topics:
+      - code: "L111"
+        name: "人工智慧概念"
+        items:
+          - code: "L11101"
+            name: "AI的定義與分類"
+            keywords: []
+            notes: null
+            external_docs_needed: false
+          - code: "L11102"
+            name: "AI治理概念"
+            keywords:
+              - "AI治理框架"
+              - "歐盟AI法規"
+              - "數位發展部《公部門人工智慧應用參考手冊》"
+              - "《AI產品與系統評測》"
+              - "金融監督管理委員會《金融業運用人工智慧（AI）指引》"
+              - "國內外AI相關政策法規"
+              - "AI風險評估"
+              - "AI監管"
+            notes: "如框架、歐盟、數位發展部《公部門人工智慧應用參考手冊》、《AI產品與系統評測》、金融監督管理委員會《金融業運用人工智慧（AI）指引》等國內外相關政策法規、AI風險評估與監管等"
+            external_docs_needed: true
+
+      - code: "L112"
+        name: "資料處理與分析概念"
+        items:
+          - code: "L11201"
+            name: "資料基本概念與來源"
+            keywords:
+              - "大數據"
+              - "資料型態與結構"
+              - "數值型資料"
+              - "文字資料"
+              - "圖像資料"
+            notes: "大數據、資料型態與結構，如數值型資料、文字資料、圖像資料等"
+            external_docs_needed: false
+          - code: "L11202"
+            name: "資料整理與分析流程"
+            keywords:
+              - "資料收集"
+              - "資料清理"
+              - "資料分析"
+              - "資料呈現"
+              - "特徵工程"
+              - "資料標準化"
+            notes: "如資料收集、清理、分析和呈現、特徵工程、資料標準化等"
+            external_docs_needed: false
+          - code: "L11203"
+            name: "資料隱私與安全"
+            keywords: []
+            notes: null
+            external_docs_needed: false
+
+      - code: "L113"
+        name: "機器學習概念"
+        items:
+          - code: "L11301"
+            name: "機器學習基本原理"
+            keywords:
+              - "機器學習基本原理"
+              - "機器學習目的"
+              - "模型訓練"
+              - "泛化機制"
+            notes: "如機器學習基本原理與目的、模型訓練與泛化機制概念等"
+            external_docs_needed: false
+          - code: "L11302"
+            name: "常見的機器學習模型"
+            keywords:
+              - "機器學習模型評估"
+              - "監督式學習"
+              - "非監督式學習"
+              - "半監督式學習"
+              - "強化式學習"
+              - "多模態學習"
+              - "深度學習"
+            notes: "機器學習模型與評估，如監督式學習、非監督式學習、半監督式學習、強化式學習、多模態學習、深度學習等"
+            external_docs_needed: false
+
+      - code: "L114"
+        name: "鑑別式AI與生成式AI概念"
+        items:
+          - code: "L11401"
+            name: "鑑別式AI與生成式AI的基本原理"
+            keywords:
+              - "鑑別式AI基本原理"
+              - "生成式AI基本原理"
+              - "技術測試與驗證"
+              - "模型目的與特性"
+              - "模型部署"
+              - "效能管理"
+            notes: "基本原理、運用技術測試與驗證、目的與特性、模型部署與效能管理等"
+            external_docs_needed: false
+          - code: "L11402"
+            name: "鑑別式AI與生成式AI的整合應用"
+            keywords:
+              - "應用場域與情境"
+              - "電腦視覺"
+              - "語音辨識"
+              - "生成技術"
+            notes: "應用場域與情境，如電腦視覺、語音辨識、生成技術等"
+            external_docs_needed: false
+
+  - code: "L12"
+    name: "生成式AI應用與規劃"
+    weight: null
+    topics:
+      - code: "L121"
+        name: "No code / Low code 概念"
+        items:
+          - code: "L12101"
+            name: "No Code / Low Code的基本概念"
+            keywords:
+              - "No Code工具"
+              - "Low Code工具"
+              - "基本認知與基礎概念"
+            notes: "No code / Low code工具本身的基本認知與基礎概念"
+            external_docs_needed: false
+          - code: "L12102"
+            name: "No Code / Low Code的優勢與限制"
+            keywords:
+              - "No Code / Low Code理論知識"
+              - "各場域應用情況"
+            notes: "No code / Low code一般基本的理論知識與實際在各場域應用的情況"
+            external_docs_needed: false
+
+      - code: "L122"
+        name: "生成式AI應用領域與工具使用"
+        items:
+          - code: "L12201"
+            name: "生成式AI應用領域與常見工具"
+            keywords:
+              - "文本生成"
+              - "圖像生成"
+              - "聲音生成"
+              - "OpenAI API"
+              - "ChatGPT"
+              - "Midjourney"
+              - "Copilot Studio"
+              - "VS Code for Copilot"
+              - "Github Copilot"
+              - "Cursor"
+              - "Gemini"
+            notes: "領域如文本、圖像和聲音等；工具如OpenAI API、ChatGPT、Midjourney、Copilot Studio、VS Code for Copilot、Github Copilot、Cursor、Gemini等"
+            external_docs_needed: false
+          - code: "L12202"
+            name: "如何善用生成式AI工具"
+            keywords:
+              - "提示工程"
+              - "提示詞框架"
+              - "提示詞設計與優化"
+              - "RAG"
+              - "AI工具整合"
+            notes: "如提示工程（提示詞框架、設計與優化等）、RAG、AI工具整合等"
+            external_docs_needed: false
+
+      - code: "L123"
+        name: "生成式AI導入評估規劃"
+        items:
+          - code: "L12301"
+            name: "生成式AI導入評估"
+            keywords:
+              - "技術評估"
+              - "工具評估"
+              - "模型評估"
+              - "效能評估"
+              - "適用解決方案選擇"
+              - "成本效益分析"
+              - "AI代理"
+              - "經濟部產業發展署《AI導入指引》"
+            notes: "如技術、工具、模型或效能評估、適用解決方案選擇、成本效益分析、AI代理等；經濟部產業發展署《AI導入指引》相關資料等。"
+            external_docs_needed: true
+          - code: "L12302"
+            name: "生成式AI導入規劃"
+            keywords:
+              - "目標設置"
+              - "資源分配"
+              - "導入策略"
+              - "因應措施"
+              - "測試"
+            notes: "如目標設置、資源分配、導入策略、因應措施、測試等"
+            external_docs_needed: false
+          - code: "L12303"
+            name: "生成式AI風險管理"
+            keywords:
+              - "生成式AI倫理風險"
+              - "資料安全隱私"
+              - "合規性"
+              - "風險影響"
+            notes: "如生成式AI倫理風險、資料安全隱私與合規性、風險影響等"
+            external_docs_needed: false

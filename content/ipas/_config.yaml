@@ -1,0 +1,16 @@
+certification: "IPAS AI應用規劃師能力鑑定"
+vendor: "經濟部產業人才能力鑑定 (iPAS)"
+levels:
+  - slug: "beginner"
+    name: "初級"
+    language: "zh-TW"
+    target_audience: "College students, recent graduates, and career-switchers entering AI/tech from non-technical backgrounds"
+  - slug: "intermediate"
+    name: "中級"
+    language: "zh-TW"
+    target_audience: "Professionals with foundational AI knowledge seeking advanced skills"
+
+content:
+  questions_per_topic: 20
+  mock_exams_to_generate: 3
+  tone: "Encouraging mentor"

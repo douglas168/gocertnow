@@ -7,7 +7,7 @@ You are assembling adaptive mock exams from the accumulated question bank. Your 
 
 **Reference:** Read `docs/planning/WORKFLOW-CONTENT-GENERATION-SKILLS.md` for the full spec — adaptive testing algorithm, difficulty calibration, exam configuration format.
 
-**Prerequisites:** All (or most) topics must have completed `/course:generate-lesson`. Question files must exist in `content/{cert}/{level}/questions/`.
+**Prerequisites:** All (or most) topics must have completed `/course-generate-lesson`. Question files must exist in `content/{cert}/{level}/questions/`.
 
 ---
 
@@ -47,7 +47,7 @@ Present:
 > **Recommended approach**: [adaptive vs fixed, exam count, any gaps to address]
 
 <HARD-GATE>
-Do NOT run /course:generate-exam if any topics in dependencies.md are missing
+Do NOT run /course-generate-exam if any topics in dependencies.md are missing
 from the questions/ folder. Present the gap and ask the user to complete
 missing topics first, or explicitly confirm they want to proceed with
 an incomplete bank.
@@ -130,4 +130,4 @@ Present summary. Tell user:
 
 ## Re-Run Policy
 
-Overwrite mock exam files and distractor review. Does NOT touch per-topic question files (those are owned by `/course:generate-lesson`).
+Overwrite mock exam files and distractor review. Does NOT touch per-topic question files (those are owned by `/course-generate-lesson`).

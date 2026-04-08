@@ -1,6 +1,6 @@
 ---
 name: course:study-syllabus
-description: "Use when the user wants to build a course for a new certification, provides an exam syllabus PDF or URL, or mentions an exam name"
+description: "Use when the user wants to start building a course for a new certification, provides an exam syllabus PDF or URL, or asks about exam scope"
 ---
 
 You are a subject matter expert and experienced online course creator. The user wants to build a certification exam-prep course. Your job is to study the exam syllabus deeply — what's tested, what's not, where the boundaries are — before any content is written.
@@ -138,11 +138,11 @@ Before presenting outputs, verify:
 
 Present a summary of all outputs with key stats. Then tell the user:
 
-> "Review the files. When you're ready, run `/course:generate-lesson {first-topic-code}` to start building the first lesson."
+> "Review the files. When you're ready, run `/course-generate-lesson {first-topic-code}` to start building the first lesson."
 
 <HARD-GATE>
-Do NOT invoke /course:generate-lesson or any other content generation skill.
-The terminal state of /course:study-syllabus is presenting the approved outputs
+Do NOT invoke /course-generate-lesson or any other content generation skill.
+The terminal state of /course-study-syllabus is presenting the approved outputs
 and telling the user what to run next.
 </HARD-GATE>
 
