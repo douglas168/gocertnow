@@ -11,6 +11,14 @@ levels:
     target_audience: "Professionals with foundational AI knowledge seeking advanced skills"
 
 content:
-  questions_per_topic: 20
-  mock_exams_to_generate: 3
   tone: "Encouraging mentor"
+  mock_exams_to_generate: 3
+  section_quiz:
+    questions_per_attempt: 10
+    pool_size:
+      shallow: 25
+      medium: 30
+      deep: 35
+  mock_exam:
+    source: "fresh"  # never reuse practice questions
+    questions_per_subject: 50

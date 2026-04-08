@@ -1,0 +1,713 @@
+# L11201 — 資料基本概念與來源
+# IPAS AI應用規劃師能力鑑定（初級）
+# Generated: 2026-04-08
+# Total: 30 questions (6 per difficulty level)
+
+# ============================================================
+# Difficulty 1 — Remember (Bloom's: 記憶)
+# ============================================================
+
+- id: "L11201-Q01"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 1
+  question: "大數據（Big Data）的「3V」特性最早由哪位分析師於 2001 年提出？"
+  options:
+    a: "Tim Berners-Lee"
+    b: "Doug Laney"
+    c: "Andrew Ng"
+    d: "Geoffrey Hinton"
+  correct: "b"
+  explanation:
+    why_correct: "Gartner 分析師 Doug Laney 於 2001 年首先提出大數據的 3V 特性（Volume、Velocity、Variety），後續擴展為 5V。"
+    why_not_a: "Tim Berners-Lee 是全球資訊網（World Wide Web）的發明者，與大數據定義無關。"
+    why_not_c: "Andrew Ng 是知名 AI 學者，但並非提出大數據 3V 概念的人。"
+    why_not_d: "Geoffrey Hinton 是深度學習先驅，被稱為「AI 教父」，但與大數據 3V 定義無關。"
+  keywords:
+    - "Big Data"
+    - "3V"
+    - "Doug Laney"
+  exam_trap: false
+
+- id: "L11201-Q02"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 1
+  question: "大數據 5V 特性中，「Velocity」的中文意義為何？"
+  options:
+    a: "巨量性"
+    b: "多樣性"
+    c: "時效性"
+    d: "真實性"
+  correct: "c"
+  explanation:
+    why_correct: "Velocity 對應「時效性」，指數據流動連續且迅速，需要即時或近即時處理才能發揮最大價值。"
+    why_not_a: "「巨量性」對應的是 Volume，指數據規模龐大。"
+    why_not_b: "「多樣性」對應的是 Variety，指數據來源種類繁多。"
+    why_not_d: "「真實性」對應的是 Veracity，指數據須具備真實性與品質。"
+  keywords:
+    - "Velocity"
+    - "時效性"
+    - "5V"
+  exam_trap: false
+
+- id: "L11201-Q03"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 1
+  question: "GIGO 原則（Garbage In, Garbage Out）所強調的核心觀念為何？"
+  options:
+    a: "資料量越大，AI 模型越準確"
+    b: "輸入的資料品質差，輸出結果也會很差"
+    c: "非結構化資料無法用於 AI 訓練"
+    d: "大數據必須使用雲端運算才能處理"
+  correct: "b"
+  explanation:
+    why_correct: "GIGO（Garbage In, Garbage Out）意為「垃圾進，垃圾出」，強調資料品質決定分析結果品質——若輸入的資料有偏差、錯誤或不完整，產出的結果也不可靠。"
+    why_not_a: "資料量大不代表品質好，大量低品質資料反而會降低模型表現。GIGO 強調的是品質而非數量。"
+    why_not_c: "非結構化資料可以透過 NLP、電腦視覺等技術進行 AI 訓練，並非無法使用。"
+    why_not_d: "大數據的處理方式與 GIGO 原則是不同概念，GIGO 關注的是資料品質而非運算環境。"
+  keywords:
+    - "GIGO"
+    - "Garbage In Garbage Out"
+    - "資料品質"
+  exam_trap: false
+
+- id: "L11201-Q04"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 1
+  question: "下列何者屬於「非結構化資料」（Unstructured Data）？"
+  options:
+    a: "CSV 檔案"
+    b: "JSON 檔案"
+    c: "關聯式資料庫表格"
+    d: "監視器錄影影片"
+  correct: "d"
+  explanation:
+    why_correct: "監視器錄影影片沒有預定義的格式或表格結構，屬於非結構化資料，需要電腦視覺等 AI 技術才能分析。"
+    why_not_a: "CSV 檔案有固定的欄位分隔規則（逗號分隔），以行和列儲存資料，屬於結構化資料。"
+    why_not_b: "JSON 檔案透過鍵值對（key-value pairs）提供部分組織結構，屬於半結構化資料。"
+    why_not_c: "關聯式資料庫表格有固定的 schema 定義（欄位名稱、資料類型），是最典型的結構化資料。"
+  keywords:
+    - "非結構化資料"
+    - "Unstructured Data"
+    - "影片"
+  exam_trap: false
+
+- id: "L11201-Q05"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 1
+  question: "台灣的中央政府資料開放平臺網址為何？"
+  options:
+    a: "opendata.tw"
+    b: "data.gov.tw"
+    c: "gov.data.tw"
+    d: "data.taiwan.gov"
+  correct: "b"
+  explanation:
+    why_correct: "台灣中央政府資料開放平臺的網址為 data.gov.tw，提供跨部門的政府開放資料集，格式包含 CSV、JSON、XML 等。"
+    why_not_a: "opendata.tw 不是台灣政府資料開放平臺的正式網址。"
+    why_not_c: "gov.data.tw 並非存在的網址，正確順序是 data.gov.tw。"
+    why_not_d: "data.taiwan.gov 並非存在的網址，台灣政府網域使用 .tw 結尾。"
+  keywords:
+    - "data.gov.tw"
+    - "政府資料開放平臺"
+    - "開放資料"
+  exam_trap: false
+
+- id: "L11201-Q06"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 1
+  question: "下列何種資料型態需要透過自然語言處理（NLP）技術進行分析？"
+  options:
+    a: "數值型資料（Numerical Data）"
+    b: "文字資料（Text Data）"
+    c: "圖像資料（Image Data）"
+    d: "音訊資料（Audio Data）"
+  correct: "b"
+  explanation:
+    why_correct: "文字資料（Text Data）是語言內容，需要透過自然語言處理（NLP）技術進行斷詞、語意分析、情感分析等處理。"
+    why_not_a: "數值型資料通常使用傳統機器學習或迴歸分析等統計方法，不需要 NLP。"
+    why_not_c: "圖像資料使用電腦視覺（Computer Vision）和 CNN 等技術進行分析，而非 NLP。"
+    why_not_d: "音訊資料主要使用語音辨識（Speech Recognition）技術，雖然後續可能涉及 NLP，但音訊本身的處理屬於不同技術領域。"
+  keywords:
+    - "NLP"
+    - "自然語言處理"
+    - "文字資料"
+  exam_trap: false
+
+# ============================================================
+# Difficulty 2 — Understand (Bloom's: 理解)
+# ============================================================
+
+- id: "L11201-Q07"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 2
+  question: "大數據 5V 中的「Veracity（真實性）」與下列哪個原則最密切相關？"
+  options:
+    a: "80/20 法則"
+    b: "GIGO 原則"
+    c: "摩爾定律"
+    d: "帕累托法則"
+  correct: "b"
+  explanation:
+    why_correct: "Veracity（真實性）強調資料品質，需過濾偏差、偽造或異常的「髒數據」。GIGO 原則（Garbage In, Garbage Out）同樣強調資料品質決定輸出品質，兩者核心觀念一致。"
+    why_not_a: "80/20 法則在資料領域通常指約 80% 的資料是非結構化資料，與真實性（品質）無直接關聯。"
+    why_not_c: "摩爾定律描述積體電路上電晶體數量的成長趨勢，與資料品質無關。"
+    why_not_d: "帕累托法則（Pareto Principle）是 80/20 法則的另一種說法，與資料真實性無直接關聯。"
+  keywords:
+    - "Veracity"
+    - "真實性"
+    - "GIGO"
+  exam_trap: false
+
+- id: "L11201-Q08"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 2
+  question: "電子郵件（Email）在資料結構分類中屬於下列何者？"
+  options:
+    a: "結構化資料"
+    b: "半結構化資料"
+    c: "非結構化資料"
+    d: "純文字資料"
+  correct: "b"
+  explanation:
+    why_correct: "電子郵件具有結構化欄位（寄件人、收件人、主旨、日期），但郵件內文是自由格式的文字，因此介於結構化與非結構化之間，屬於半結構化資料。"
+    why_not_a: "電子郵件雖有部分欄位是結構化的，但內文沒有固定 schema，不能歸類為完全結構化資料。"
+    why_not_c: "非結構化資料是完全沒有預定義格式的資料。電子郵件有寄件人、收件人等固定欄位，不算完全非結構化。"
+    why_not_d: "「純文字資料」不是資料結構的標準分類方式，且電子郵件包含的不只是文字。"
+  keywords:
+    - "Email"
+    - "半結構化資料"
+    - "Semi-structured Data"
+  exam_trap: true
+
+- id: "L11201-Q09"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 2
+  question: "關於全球資料的結構化程度，下列敘述何者最接近事實？"
+  options:
+    a: "約 80% 為結構化資料，20% 為非結構化資料"
+    b: "結構化與非結構化資料各約 50%"
+    c: "約 80% 為非結構化資料，20% 為結構化及半結構化資料"
+    d: "約 60% 為半結構化資料，40% 為其他"
+  correct: "c"
+  explanation:
+    why_correct: "業界普遍引用的比例為約 80% 的資料屬於非結構化資料（圖片、影片、自由文字等），僅約 20% 為結構化及半結構化資料。這解釋了為何 NLP、電腦視覺等處理非結構化資料的 AI 技術如此重要。"
+    why_not_a: "實際比例恰好相反。結構化資料只佔約 20%，非結構化資料佔約 80%。"
+    why_not_b: "兩者比例並非各半，非結構化資料遠多於結構化資料。"
+    why_not_d: "半結構化資料（JSON、XML、Email 等）並非佔最大比例，非結構化資料才是。"
+  keywords:
+    - "80/20"
+    - "非結構化資料"
+    - "資料比例"
+  exam_trap: false
+
+- id: "L11201-Q10"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 2
+  question: "數值型資料（Numerical Data）可進一步分為離散型與連續型，下列何者屬於「連續型」資料？"
+  options:
+    a: "班級學生人數"
+    b: "商品庫存數量"
+    c: "氣溫變化數值"
+    d: "每日訂單筆數"
+  correct: "c"
+  explanation:
+    why_correct: "氣溫是連續型（continuous）資料，可以是任意數值（如 25.3°C、25.31°C），透過測量取得，數值之間可以無限細分。"
+    why_not_a: "學生人數是離散型（discrete）資料，只能是整數（不會有 0.5 個學生），透過計數取得。"
+    why_not_b: "庫存數量是離散型資料，只能是整數，屬於可數的數值。"
+    why_not_d: "訂單筆數是離散型資料，只能是正整數，透過計數取得。"
+  keywords:
+    - "連續型"
+    - "離散型"
+    - "Numerical Data"
+  exam_trap: false
+
+- id: "L11201-Q11"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 2
+  question: "下列哪一組資料格式全部屬於「半結構化資料」？"
+  options:
+    a: "CSV、Excel、SQL 資料庫"
+    b: "JSON、XML、HTML"
+    c: "JPEG、MP3、PDF"
+    d: "JSON、CSV、MP4"
+  correct: "b"
+  explanation:
+    why_correct: "JSON、XML、HTML 都使用標籤（tags）或鍵值對（key-value pairs）提供部分結構，但沒有固定的表格 schema，屬於半結構化資料。"
+    why_not_a: "CSV、Excel、SQL 資料庫都有固定的行列結構（schema），屬於結構化資料。"
+    why_not_c: "JPEG（圖片）、MP3（音訊）、PDF（文件）都沒有預定義的資料結構，屬於非結構化資料。"
+    why_not_d: "JSON 是半結構化，但 CSV 是結構化、MP4 是非結構化，三者分屬不同類別。"
+  keywords:
+    - "半結構化資料"
+    - "JSON"
+    - "XML"
+    - "HTML"
+  exam_trap: true
+
+- id: "L11201-Q12"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 2
+  question: "「Data is the fuel for AI」這句話最能說明下列哪個觀念？"
+  options:
+    a: "AI 系統需要耗費大量電力才能運作"
+    b: "沒有資料，AI 模型無法學習和做出預測"
+    c: "AI 技術的發展取決於半導體產業"
+    d: "資料分析只能由 AI 系統來完成"
+  correct: "b"
+  explanation:
+    why_correct: "「資料是 AI 的燃料」意味著 AI 模型的學習、訓練和預測都依賴於資料。沒有資料，AI 模型就如同沒有燃料的引擎，無法運作。"
+    why_not_a: "電力消耗是 AI 系統的硬體需求，並非「fuel for AI」這個比喻要表達的意思。"
+    why_not_c: "半導體產業影響的是運算能力（算力），而非「資料是燃料」的核心概念。"
+    why_not_d: "資料分析可以由人工或傳統統計方法完成，不一定需要 AI。這句話強調的是 AI 需要資料，而非資料只能由 AI 處理。"
+  keywords:
+    - "Data is the fuel for AI"
+    - "資料與AI關係"
+  exam_trap: false
+
+# ============================================================
+# Difficulty 3 — Apply (Bloom's: 應用)
+# ============================================================
+
+- id: "L11201-Q13"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 3
+  question: "蝦皮購物（Shopee）收集了用戶的瀏覽紀錄、購買金額、商品圖片評價和客服對話文字。其中「商品圖片評價」屬於哪一種資料型態？"
+  options:
+    a: "數值型資料（Numerical Data）"
+    b: "文字資料（Text Data）"
+    c: "圖像資料（Image Data）"
+    d: "類別型資料（Categorical Data）"
+  correct: "c"
+  explanation:
+    why_correct: "商品圖片評價中的圖片是視覺資訊，以像素矩陣表示，屬於圖像資料（Image Data），需透過電腦視覺技術分析。"
+    why_not_a: "購買金額才是數值型資料，商品圖片不是可量化的數字。"
+    why_not_b: "客服對話文字才是文字資料。圖片評價雖可能附帶文字說明，但「商品圖片」本身屬於圖像資料。"
+    why_not_d: "類別型資料是將資訊分為不同群組（如商品類別、評分等級），圖片本身不是類別。"
+  keywords:
+    - "圖像資料"
+    - "Image Data"
+    - "電腦視覺"
+  exam_trap: false
+
+- id: "L11201-Q14"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 3
+  question: "全聯福利中心想分析每日各分店的銷售資料（包含：交易編號、日期、商品名稱、數量、金額），這類資料最適合以哪種格式儲存？"
+  options:
+    a: "JSON 檔案"
+    b: "MP4 影片檔"
+    c: "CSV 檔案或關聯式資料庫"
+    d: "純文字筆記"
+  correct: "c"
+  explanation:
+    why_correct: "銷售資料有固定的欄位（交易編號、日期、商品名稱、數量、金額），以行列結構呈現，屬於結構化資料，最適合用 CSV 或關聯式資料庫（如 MySQL）儲存。"
+    why_not_a: "JSON 適合半結構化資料（如 API 回傳結果），對於這種固定欄位的表格資料，CSV 或關聯式資料庫更為直覺且高效。"
+    why_not_b: "MP4 是影片格式，屬於非結構化資料，與銷售數字表格完全不相關。"
+    why_not_d: "純文字筆記沒有固定欄位分隔，無法有效率地查詢和分析大量銷售數據。"
+  keywords:
+    - "結構化資料"
+    - "CSV"
+    - "關聯式資料庫"
+  exam_trap: false
+
+- id: "L11201-Q15"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 3
+  question: "台鐵公司想用 AI 分析旅客在社群媒體上的搭乘心得文章，以了解旅客滿意度。這個情境中，社群媒體貼文屬於哪一種資料來源與結構分類？"
+  options:
+    a: "內部資料 / 結構化資料"
+    b: "外部資料 / 非結構化資料"
+    c: "內部資料 / 半結構化資料"
+    d: "外部資料 / 結構化資料"
+  correct: "b"
+  explanation:
+    why_correct: "社群媒體上的旅客貼文不是台鐵自己系統產生的資料，屬於外部資料。貼文的文字內容是自由撰寫的，沒有固定格式或 schema，屬於非結構化資料。"
+    why_not_a: "社群媒體貼文並非台鐵內部系統產生，且自由文字不是結構化資料。"
+    why_not_c: "社群媒體不是台鐵的內部來源。此外，雖然社群平台有作者、時間戳等半結構化元素，但貼文內容本身屬於非結構化的自由文字。"
+    why_not_d: "來源正確（外部），但自由撰寫的貼文不是結構化資料。"
+  keywords:
+    - "外部資料"
+    - "非結構化資料"
+    - "社群媒體"
+  exam_trap: false
+
+- id: "L11201-Q16"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 3
+  question: "7-11 超商想要預測各門市每小時的來客數量，以最佳化人力調度。下列哪些資料屬於「內部資料」？ ①POS 系統交易紀錄 ②門市附近氣象資料 ③會員 APP 使用紀錄 ④周邊競爭店家開店資訊"
+  options:
+    a: "①② "
+    b: "①③"
+    c: "②④"
+    d: "①②③"
+  correct: "b"
+  explanation:
+    why_correct: "POS 系統交易紀錄（①）和會員 APP 使用紀錄（③）都是 7-11 自有系統產生的資料，屬於內部資料。"
+    why_not_a: "門市附近氣象資料（②）來自外部氣象機構或氣象 API，不是 7-11 內部系統產生的。"
+    why_not_c: "氣象資料（②）和競爭店家開店資訊（④）都來自外部來源。"
+    why_not_d: "氣象資料（②）是外部資料，不應包含在內。"
+  keywords:
+    - "內部資料"
+    - "外部資料"
+    - "POS"
+    - "IoT"
+  exam_trap: false
+
+- id: "L11201-Q17"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 3
+  question: "LINE 客服機器人需要理解用戶傳來的語音訊息內容，這個過程主要涉及哪兩種 AI 技術的結合？"
+  options:
+    a: "電腦視覺（CV）+ 推薦系統"
+    b: "語音辨識（Speech Recognition）+ 自然語言處理（NLP）"
+    c: "動作辨識（Action Recognition）+ 電腦視覺（CV）"
+    d: "迴歸分析 + 分類演算法"
+  correct: "b"
+  explanation:
+    why_correct: "語音訊息首先需要語音辨識（Speech Recognition）將音訊資料轉為文字，再透過自然語言處理（NLP）理解文字語意，兩者結合才能完成「理解語音訊息內容」。"
+    why_not_a: "電腦視覺處理圖像資料，推薦系統用於個人化推薦，兩者都與語音理解無關。"
+    why_not_c: "動作辨識和電腦視覺處理的是影像資料，與語音訊息處理無關。"
+    why_not_d: "迴歸分析和分類演算法是通用的機器學習方法，不是處理語音理解的專門技術。"
+  keywords:
+    - "語音辨識"
+    - "NLP"
+    - "Speech Recognition"
+    - "音訊資料"
+  exam_trap: false
+
+- id: "L11201-Q18"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 3
+  question: "某公司從 data.gov.tw 下載了一份交通流量資料集，檔案格式為 CSV。關於這筆資料的描述，下列何者正確？"
+  options:
+    a: "屬於內部資料、非結構化資料"
+    b: "屬於外部資料、半結構化資料"
+    c: "屬於外部資料、結構化資料"
+    d: "屬於內部資料、結構化資料"
+  correct: "c"
+  explanation:
+    why_correct: "data.gov.tw 是政府開放資料平臺，對公司而言屬於外部資料來源。CSV 檔案使用逗號分隔欄位、每行代表一筆資料，有固定的行列結構，屬於結構化資料。"
+    why_not_a: "data.gov.tw 不是公司內部系統，且 CSV 不是非結構化資料。"
+    why_not_b: "來源判斷正確（外部），但 CSV 有固定欄位結構，是結構化資料而非半結構化資料。這是常見考試陷阱。"
+    why_not_d: "data.gov.tw 是外部來源，不是公司內部系統產生的資料。"
+  keywords:
+    - "data.gov.tw"
+    - "CSV"
+    - "外部資料"
+    - "結構化資料"
+  exam_trap: true
+
+# ============================================================
+# Difficulty 4 — Analyze (Bloom's: 分析)
+# ============================================================
+
+- id: "L11201-Q19"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 4
+  question: "健保署擁有超過 2,300 萬人、二十多年的就診紀錄資料庫。若以大數據 5V 分析，下列哪一項對此資料庫的描述是「不正確」的？"
+  options:
+    a: "Volume：資料量達 PB 級別，涵蓋全國就診紀錄"
+    b: "Velocity：需要即時串流處理，每筆就診紀錄在發生瞬間就必須完成分析"
+    c: "Variety：包含門診紀錄、住院紀錄、用藥紀錄、檢驗報告等多種類型"
+    d: "Value：可用於疾病趨勢預測、醫療資源配置等高價值分析"
+  correct: "b"
+  explanation:
+    why_correct: "健保資料庫主要用於事後的統計分析和研究（如疾病趨勢預測），不需要每筆就診紀錄在發生瞬間就完成分析。「即時串流處理」的描述過度誇大了其時效性需求。"
+    why_not_a: "健保資料庫確實資料量龐大，涵蓋二十多年全台灣就診紀錄，Volume 的描述合理。"
+    why_not_c: "健保資料庫確實包含多種不同類型的醫療紀錄，Variety 的描述正確。"
+    why_not_d: "健保資料庫已被用於癌症預測、流行病學研究等高價值應用，Value 描述正確。"
+  keywords:
+    - "5V"
+    - "Velocity"
+    - "健保資料庫"
+    - "反向題"
+  exam_trap: false
+
+- id: "L11201-Q20"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 4
+  question: "某電商平台收集了以下資料：①會員基本資料表（姓名、Email、生日）②商品圖片 ③用戶評論文字 ④API 回傳的推薦結果（JSON 格式）。若依資料結構分類，正確的配對為何？"
+  options:
+    a: "①結構化 ②非結構化 ③非結構化 ④半結構化"
+    b: "①結構化 ②半結構化 ③非結構化 ④非結構化"
+    c: "①半結構化 ②非結構化 ③非結構化 ④半結構化"
+    d: "①結構化 ②非結構化 ③半結構化 ④結構化"
+  correct: "a"
+  explanation:
+    why_correct: "①會員基本資料表有固定欄位 schema → 結構化。②商品圖片沒有預定義格式 → 非結構化。③用戶評論是自由文字 → 非結構化。④JSON 有鍵值對結構但無固定 schema → 半結構化。"
+    why_not_b: "商品圖片（②）是非結構化資料，不是半結構化。圖片沒有標籤或鍵值對結構。"
+    why_not_c: "會員基本資料表（①）有固定欄位定義，是結構化資料而非半結構化。"
+    why_not_d: "用戶評論文字（③）是自由格式文字，屬非結構化而非半結構化。JSON（④）有鍵值對但無固定 schema，是半結構化而非結構化。"
+  keywords:
+    - "結構化"
+    - "半結構化"
+    - "非結構化"
+    - "JSON"
+  exam_trap: true
+
+- id: "L11201-Q21"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 4
+  question: "某公司 HR 部門的員工資料包含以下欄位：姓名、部門、年資（年）、月薪（元）、性別、是否有管理職。若要對這些欄位進行分類，下列何者正確？"
+  options:
+    a: "姓名 = 文字資料、部門 = 數值型、年資 = 類別型、月薪 = 數值型"
+    b: "姓名 = 文字資料、部門 = 類別型、年資 = 數值型（連續）、月薪 = 數值型（連續）"
+    c: "姓名 = 類別型、部門 = 類別型、年資 = 數值型（離散）、月薪 = 數值型（離散）"
+    d: "姓名 = 文字資料、部門 = 類別型、年資 = 數值型（離散）、月薪 = 數值型（連續）"
+  correct: "d"
+  explanation:
+    why_correct: "姓名是辨識用的文字。部門（如：行銷部、研發部）是將員工分為不同群組，屬於類別型。年資以完整年數計算（1年、2年），是可數的離散型數值。月薪可以是任意金額（如 45,230 元），屬於連續型數值。"
+    why_not_a: "部門不是數值型（不能做數學運算），年資是數值型而非類別型。"
+    why_not_b: "年資通常以完整年數計算，是離散型而非連續型。月薪的連續型判斷正確。"
+    why_not_c: "姓名用於辨識而非分類，不適合歸為類別型。月薪可以是任意金額，屬連續型。"
+  keywords:
+    - "數值型"
+    - "類別型"
+    - "離散型"
+    - "連續型"
+  exam_trap: true
+
+- id: "L11201-Q22"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 4
+  question: "在台灣記憶大數據 5V 的口訣「大、快、雜、疑」中，「疑」對應的是哪一個特性？為什麼單獨以「疑」來記憶？"
+  options:
+    a: "Value — 因為大數據的商業價值令人存疑"
+    b: "Velocity — 因為資料流速太快令人質疑其可靠性"
+    c: "Veracity — 因為資料真實性需要被質疑和驗證"
+    d: "Variety — 因為資料來源太多樣令人懷疑其一致性"
+  correct: "c"
+  explanation:
+    why_correct: "「疑」對應 Veracity（真實性），因為我們需要對資料的真實性保持質疑態度——資料可能有偏差、造假、不完整或品質不佳，必須經過驗證和清理才能使用。"
+    why_not_a: "Value（價值性）不在「大快雜疑」的四字口訣中（四字口訣只涵蓋前 4V），且「疑」與商業價值無關。"
+    why_not_b: "Velocity 對應的是「快」，而非「疑」。資料流速快是客觀描述，與質疑無關。"
+    why_not_d: "Variety 對應的是「雜」，而非「疑」。資料多樣性不等同於懷疑其一致性。"
+  keywords:
+    - "大快雜疑"
+    - "Veracity"
+    - "真實性"
+    - "5V"
+  exam_trap: false
+
+- id: "L11201-Q23"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 4
+  question: "比較下列四種資料格式，哪一項的分類說明是「錯誤」的？"
+  options:
+    a: "CSV — 結構化資料，使用逗號分隔欄位，每行代表一筆資料"
+    b: "XML — 半結構化資料，使用自定義標籤組織資料"
+    c: "JSON — 非結構化資料，使用大括號包含自由格式文字"
+    d: "Excel — 結構化資料，以工作表的行列方式儲存"
+  correct: "c"
+  explanation:
+    why_correct: "JSON 使用鍵值對（key-value pairs）和大括號/方括號提供明確的階層結構，屬於半結構化資料而非非結構化資料。這是考試中的常見陷阱。"
+    why_not_a: "CSV 的描述正確：純文字格式，用逗號分隔，每行一筆紀錄，有固定欄位結構，確實是結構化資料。"
+    why_not_b: "XML 的描述正確：使用自定義標籤（tags）組織資料，有部分結構但無固定 schema，屬於半結構化資料。"
+    why_not_d: "Excel 的描述正確：以工作表（worksheet）的行列方式儲存，有固定的欄位結構，屬於結構化資料。"
+  keywords:
+    - "JSON"
+    - "半結構化"
+    - "CSV"
+    - "XML"
+  exam_trap: true
+
+- id: "L11201-Q24"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 4
+  question: "某智慧工廠部署了溫度感測器、振動感測器和攝影機。分析各感測器產生的資料，下列配對何者正確？"
+  options:
+    a: "溫度感測器 → 數值型/結構化、振動感測器 → 數值型/結構化、攝影機 → 圖像型/非結構化"
+    b: "溫度感測器 → 類別型/結構化、振動感測器 → 數值型/半結構化、攝影機 → 影片型/非結構化"
+    c: "溫度感測器 → 數值型/半結構化、振動感測器 → 數值型/結構化、攝影機 → 影片型/半結構化"
+    d: "溫度感測器 → 數值型/結構化、振動感測器 → 音訊型/非結構化、攝影機 → 圖像型/結構化"
+  correct: "a"
+  explanation:
+    why_correct: "溫度感測器產生連續的溫度數值，以固定格式（時間戳+溫度值）記錄 → 數值型/結構化。振動感測器同樣產生數值型的振動頻率數據 → 數值型/結構化。攝影機拍攝的影像沒有固定 schema → 圖像型（或影片型）/非結構化。"
+    why_not_b: "溫度數值不是類別型（溫度是可測量的連續數值）。振動感測器資料通常是結構化時序數據。"
+    why_not_c: "溫度和振動感測器資料通常以固定格式的時序資料儲存，屬結構化而非半結構化。攝影機影像沒有標籤結構，不是半結構化。"
+    why_not_d: "振動感測器量測的是振動頻率/強度的數值，不是聲音音訊。攝影機影像是非結構化資料，不是結構化。"
+  keywords:
+    - "IoT"
+    - "感測器"
+    - "資料型態"
+    - "結構化"
+  exam_trap: false
+
+# ============================================================
+# Difficulty 5 — Evaluate / Create (Bloom's: 評鑑/創造)
+# ============================================================
+
+- id: "L11201-Q25"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 5
+  question: "某醫院想建立一套 AI 系統來輔助皮膚癌早期診斷。團隊目前擁有：①醫生的文字診斷紀錄 ②病患皮膚病灶照片 ③血液檢驗數值報告 ④病患自述症狀的語音錄音。若要選擇「最直接有效」的訓練資料，應優先使用哪一項？"
+  options:
+    a: "①醫生的文字診斷紀錄"
+    b: "②病患皮膚病灶照片"
+    c: "③血液檢驗數值報告"
+    d: "④病患自述症狀的語音錄音"
+  correct: "b"
+  explanation:
+    why_correct: "皮膚癌診斷的核心是視覺判斷——醫生透過觀察皮膚病灶的形狀、顏色、邊界來判斷。因此皮膚病灶照片（圖像資料）是最直接的訓練資料，對應的 AI 技術是電腦視覺（Computer Vision）。"
+    why_not_a: "文字診斷紀錄雖有價值，但屬於間接資訊（醫生觀察後的文字描述），不如影像本身直接。"
+    why_not_c: "血液檢驗數值可作為輔助判斷資料，但皮膚癌的第一步診斷主要依靠視覺觀察，非血液指標。"
+    why_not_d: "病患自述症狀可能不精確（非專業描述），且語音資料需經語音辨識+NLP 兩步轉換，效率較低。"
+  keywords:
+    - "圖像資料"
+    - "Computer Vision"
+    - "資料選擇"
+    - "醫療AI"
+  exam_trap: false
+
+- id: "L11201-Q26"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 5
+  question: "一家新創公司計畫用 AI 預測台灣各縣市的空氣品質。在評估資料來源時，下列哪種組合最能兼顧資料的「多樣性（Variety）」和「真實性（Veracity）」？"
+  options:
+    a: "僅使用 data.gov.tw 的環保署空氣品質監測資料"
+    b: "結合 data.gov.tw 環保署資料 + 氣象局 API + 交通流量資料，並建立資料品質檢核機制"
+    c: "大量爬取社群媒體上民眾對空氣品質的主觀感受貼文"
+    d: "購買國外空氣品質商業資料集直接套用"
+  correct: "b"
+  explanation:
+    why_correct: "結合環保署、氣象局、交通流量三種不同來源的資料，提升了多樣性（Variety）。同時建立品質檢核機制確保真實性（Veracity）。這種做法在擴大資料面向的同時，也確保資料可靠。"
+    why_not_a: "僅使用單一來源缺乏多樣性，雖然政府資料通常較可靠，但無法從多角度分析空氣品質影響因素。"
+    why_not_c: "社群媒體上的主觀感受缺乏科學量測基礎，真實性（Veracity）堪憂。且「大量爬取」未提及品質檢核。"
+    why_not_d: "國外資料不一定適用台灣的地理環境和氣候條件，且未與本地資料整合，缺乏在地化的多樣性。"
+  keywords:
+    - "Variety"
+    - "Veracity"
+    - "data.gov.tw"
+    - "資料來源評估"
+  exam_trap: false
+
+- id: "L11201-Q27"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 5
+  question: "某 AI 團隊收到一份資料集，其中包含大量缺失值、重複紀錄和明顯異常值。從大數據 5V 的角度來看，這份資料集最主要違反了哪一個 V？該問題若不解決，最可能導致什麼後果？"
+  options:
+    a: "Volume — 資料量不足，模型無法學習到足夠的特徵"
+    b: "Velocity — 資料更新太慢，模型預測結果會過時"
+    c: "Veracity — 資料品質差，依 GIGO 原則模型輸出結果不可靠"
+    d: "Variety — 資料類型單一，模型無法從多角度學習"
+  correct: "c"
+  explanation:
+    why_correct: "缺失值、重複紀錄和異常值都是資料品質（Veracity）問題。根據 GIGO 原則（Garbage In, Garbage Out），品質差的資料會導致模型產出不可靠的結果，無論模型多先進都無法彌補。"
+    why_not_a: "題目描述的是資料品質問題（缺失、重複、異常），而非資料量不足的問題。"
+    why_not_b: "題目未提及資料的時效性或更新速度問題，缺失值和異常值與 Velocity 無關。"
+    why_not_d: "題目未提及資料類型單一的問題。缺失值和異常值存在於任何類型的資料中，與 Variety 無關。"
+  keywords:
+    - "Veracity"
+    - "GIGO"
+    - "資料品質"
+    - "5V"
+  exam_trap: false
+
+- id: "L11201-Q28"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 5
+  question: "某零售企業規劃建立 AI 客戶分析系統，需要整合以下資料：POS 交易紀錄（CSV）、客服錄音檔（MP3）、社群媒體評論（網頁文字）、會員 APP 使用行為（JSON log）。此專案面臨的最大資料整合挑戰為何？"
+  options:
+    a: "資料量太大，需要更多儲存空間"
+    b: "四種資料都是非結構化的，無法建立統一的資料庫"
+    c: "資料涵蓋結構化、半結構化和非結構化三種類型，需要不同的 AI 技術分別處理後才能整合分析"
+    d: "所有資料都來自外部來源，公司無法控制資料品質"
+  correct: "c"
+  explanation:
+    why_correct: "POS 交易 CSV 是結構化、客服錄音 MP3 是非結構化、社群評論是非結構化、JSON log 是半結構化。三種結構類型需要不同的處理技術（結構化 → SQL/統計分析、非結構化音訊 → 語音辨識、非結構化文字 → NLP、半結構化 → JSON 解析），整合後才能做綜合分析。"
+    why_not_a: "儲存空間是基礎設施問題，不是「最大的資料整合挑戰」。增加儲存相對容易解決。"
+    why_not_b: "這四種資料並非全部是非結構化的——CSV 是結構化、JSON 是半結構化。錯誤的分類前提導致錯誤的結論。"
+    why_not_d: "POS 紀錄和會員 APP 行為是公司內部資料，並非所有資料都來自外部。"
+  keywords:
+    - "資料整合"
+    - "結構化"
+    - "半結構化"
+    - "非結構化"
+    - "AI技術"
+  exam_trap: false
+
+- id: "L11201-Q29"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 5
+  question: "政府資料開放平臺（data.gov.tw）推動「高應用價值」主題資料，下列哪一項「不是」其八大優先聚焦領域之一？"
+  options:
+    a: "農業永續"
+    b: "交通運輸"
+    c: "電子商務"
+    d: "健康醫療"
+  correct: "c"
+  explanation:
+    why_correct: "data.gov.tw 的八大優先領域為：農業永續、空間資訊、氣候環境、災害防救、交通運輸、健康醫療、能源管理、社會救助。其中不包含「電子商務」——電子商務屬於民間商業行為，非政府開放資料的優先主題。"
+    why_not_a: "農業永續是八大優先領域之一，台灣以農業數位轉型為重要政策方向。"
+    why_not_b: "交通運輸是八大優先領域之一，政府積極開放交通即時資料供民間應用。"
+    why_not_d: "健康醫療是八大優先領域之一，與健保資料庫等醫療大數據開放相關。"
+  keywords:
+    - "data.gov.tw"
+    - "八大領域"
+    - "高應用價值"
+    - "反向題"
+  exam_trap: false
+
+- id: "L11201-Q30"
+  topic_code: "L11201"
+  item_code: "L11201"
+  difficulty: 5
+  question: "某 AI 新創公司正在評估一個大型資料集是否值得購買。團隊發現該資料集的 Volume 和 Variety 都很優秀，但在抽樣檢查中發現約 30% 的紀錄存在明顯錯誤。從 5V 框架的角度，下列哪一項是最合理的決策建議？"
+  options:
+    a: "直接購買，因為 Volume 和 Variety 足以彌補品質問題"
+    b: "不購買，因為 Veracity 問題嚴重，依 GIGO 原則使用該資料訓練的模型不可靠"
+    c: "購買後直接用於模型訓練，AI 會自動修正資料中的錯誤"
+    d: "購買並全部刪除有錯誤的紀錄，只用剩餘 70% 的資料"
+  correct: "b"
+  explanation:
+    why_correct: "30% 的錯誤率極高，嚴重違反 Veracity（真實性）。根據 GIGO 原則，品質差的資料會直接導致模型輸出不可靠。即使 Volume 和 Variety 優秀，真實性的嚴重缺陷使得整體資料的可用價值大幅降低，不建議購買。"
+    why_not_a: "Volume 和 Variety 無法彌補 Veracity 的缺陷。大量多樣但錯誤的資料，訓練出的模型可能比小量高品質資料更差。"
+    why_not_c: "AI 模型不會自動修正訓練資料中的錯誤——模型是從資料中學習模式，如果資料本身有錯誤，模型只會學到錯誤的模式。"
+    why_not_d: "簡單刪除有錯誤的紀錄可能導致樣本偏差（selection bias），且剩餘 70% 的資料中可能也存在未被抽樣檢查發現的錯誤。更根本的問題是資料源頭的品質就有問題。"
+  keywords:
+    - "Veracity"
+    - "Value"
+    - "GIGO"
+    - "資料品質評估"
+    - "5V"
+  exam_trap: false
+
+# ============================================================
+# Coverage Summary
+# ============================================================
+# Big Data 5Vs:         Q01, Q02, Q07, Q19, Q22, Q26, Q27, Q30 (8 questions)
+# Data types by nature:  Q06, Q10, Q13, Q17, Q21, Q25 (6 questions)
+# Data structure:        Q04, Q08, Q09, Q11, Q20, Q23, Q24, Q28 (8 questions)
+# Data sources:          Q05, Q15, Q16, Q18 (4 questions)
+# Data & AI:             Q03, Q12, Q17, Q25 (4 questions)
+# Taiwan-specific:       Q05, Q18, Q19, Q26, Q29 (5 questions)
+# Cross-concept:         Q14, Q24, Q28, Q30 (4 questions)
+# Exam traps:            Q08, Q11, Q18, Q20, Q21, Q23 (6 questions)

@@ -17,6 +17,10 @@ Tracks open items across all lessons that need resolution before publishing.
 - [ ] **Verify: AI評測10項指標用詞 彈性/當責性** — Fact check flagged 韌性→彈性、問責性→當責性 as correct terms. Already fixed in study guide, but confirm against the actual 數位發展部 PDF when available.
 - [ ] **Verify: 公部門手冊四大評估面向 exact wording** — "技術面、法律面、組織面、效益面" needs confirmation against the full PDF (currently based on web summaries).
 
+### L11201 — 資料基本概念與來源
+
+- [ ] **Generate 3 Gemini diagrams** — Prompts ready in `lessons/L11201-資料基本概念與來源/diagrams/`. Save generated images to the same folder.
+
 ### L12301 — 生成式AI導入評估 (not yet started)
 
 - [ ] **Source external document**: 經濟部產業發展署《AI導入指引》— ida.gov.tw or moea.gov.tw
@@ -29,7 +33,7 @@ Tracks open items across all lessons that need resolution before publishing.
 |---|---|---|---|---|
 | 1 | L11101 | AI的定義與分類 | **Done** | 2 (verify claim, generate diagrams) |
 | 2 | L11102 | AI治理概念 | **Done** | 3 (generate diagrams, verify 2 terms) |
-| 3 | L11201 | 資料基本概念與來源 | Not started | — |
+| 3 | L11201 | 資料基本概念與來源 | **Done** | 1 (generate diagrams) |
 | 4 | L11202 | 資料整理與分析流程 | Not started | — |
 | 5 | L11203 | 資料隱私與安全 | Not started | — |
 | 6 | L11301 | 機器學習基本原理 | Not started | — |
@@ -54,7 +58,8 @@ Tracks open items across all lessons that need resolution before publishing.
 
 | Priority | Topic Code | Topic Name | Notes |
 |---|---|---|---|
-| **Next** | L11201 | 資料基本概念與來源 | Medium depth, no external docs needed |
+| ~~Done~~ | ~~L11201~~ | ~~資料基本概念與來源~~ | ~~Complete~~ |
+| **Next** | L11202 | 資料整理與分析流程 | Medium depth, no external docs needed |
 | 4 | L11202 | 資料整理與分析流程 | Medium depth, no external docs needed |
 | 5 | L11203 | 資料隱私與安全 | Medium depth, ambiguous scope (see analysis.md) |
 | 6 | L11301 | 機器學習基本原理 | Medium depth |

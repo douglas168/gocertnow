@@ -1,7 +1,7 @@
 # L11102 — AI治理概念
 # IPAS AI應用規劃師能力鑑定（初級）
 # Generated: 2026-04-08
-# Total: 25 questions (5 per difficulty level)
+# Total: 35 questions (5 per difficulty level + 10 top-up)
 
 # ============================================================
 # Difficulty 1 — Remember (Bloom's: 記憶)
@@ -606,27 +606,275 @@
   exam_trap: false
 
 # ============================================================
+# Top-up questions Q26-Q35 (added to reach 35-question pool)
+# ============================================================
+
+- id: "L11102-Q26"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 1
+  question: "依據台灣《人工智慧基本法》，國家人工智慧策略委員會由何人擔任召集人？"
+  options:
+    a: "國科會主委"
+    b: "數位發展部部長"
+    c: "行政院院長"
+    d: "總統"
+  correct: "c"
+  explanation:
+    why_correct: "依《人工智慧基本法》規定，行政院設國家人工智慧策略委員會，由行政院院長擔任召集人，統籌國家 AI 發展策略。"
+    why_not_a: "國科會主委為中央主管機關首長，但策略委員會的召集人層級更高，為行政院院長。學生常因國科會是主管機關而誤選。"
+    why_not_b: "數位發展部負責風險分類框架等執行工作，非策略委員會召集人。"
+    why_not_d: "總統並非該委員會的召集人，《人工智慧基本法》將委員會設於行政院層級。"
+  keywords:
+    - "人工智慧基本法"
+    - "國家人工智慧策略委員會"
+    - "行政院院長"
+    - "召集人"
+  exam_trap: true
+
+- id: "L11102-Q27"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 1
+  question: "OECD 於 2019 年提出的 AI 原則共有幾項核心原則？"
+  options:
+    a: "三項"
+    b: "五項"
+    c: "七項"
+    d: "十項"
+  correct: "b"
+  explanation:
+    why_correct: "OECD 於 2019 年提出五大 AI 原則：包容性成長（Inclusive Growth）、以人為本（Human-centred Values）、透明可解釋（Transparency）、穩健安全（Robustness & Safety）、問責（Accountability）。2024 年更新但維持五項。"
+    why_not_a: "三項過少，無法涵蓋 OECD 所提出的完整原則架構。"
+    why_not_c: "七項是台灣《人工智慧基本法》的原則數量，非 OECD。學生常將兩者混淆。"
+    why_not_d: "十項是數位發展部 AI 評測指標的數量，非 OECD 原則數。"
+  keywords:
+    - "OECD"
+    - "AI原則"
+    - "五大原則"
+    - "2019"
+  exam_trap: true
+
+- id: "L11102-Q28"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 2
+  question: "關於「治理（Governance）」、「監管（Regulation）」與「倫理（Ethics）」三個概念的關係，下列敘述何者最正確？"
+  options:
+    a: "三者意義完全相同，可以互換使用"
+    b: "治理是最廣義的概念，涵蓋監管（法律規範）與倫理（價值原則）等面向"
+    c: "監管是最廣義的概念，治理與倫理都是監管的子集"
+    d: "倫理高於治理與監管，只要遵守倫理就不需要治理與監管"
+  correct: "b"
+  explanation:
+    why_correct: "AI 治理（Governance）是最廣義的概念，涵蓋法律監管（Regulation，如 EU AI Act、人工智慧基本法）、倫理原則（Ethics，如 OECD 原則、UNESCO 框架）、技術標準、組織制度等多個面向。"
+    why_not_a: "三者層次不同：治理是整體框架，監管專指法律規範，倫理專指價值與道德原則，不可互換。"
+    why_not_c: "監管僅指法律法規層面，範圍窄於治理。治理還包含倫理、技術標準、組織制度等。"
+    why_not_d: "倫理是治理的重要組成部分，但不能取代法律監管和組織制度等其他治理面向。"
+  keywords:
+    - "治理"
+    - "Governance"
+    - "監管"
+    - "Regulation"
+    - "倫理"
+    - "Ethics"
+  exam_trap: false
+
+- id: "L11102-Q29"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 2
+  question: "關於 EU AI Act 中「通用目的 AI」（General-Purpose AI, GPAI）的規範，下列敘述何者正確？"
+  options:
+    a: "GPAI 一律被歸類為高風險 AI 系統"
+    b: "GPAI 提供者須遵守透明義務，包括維護技術文件與提供 AI 素養（AI Literacy）相關資訊"
+    c: "GPAI 規範自 2024 年 8 月起即全面適用"
+    d: "GPAI 不受 EU AI Act 管轄，因其非特定用途"
+  correct: "b"
+  explanation:
+    why_correct: "EU AI Act 針對 GPAI 制定專章規範，要求提供者維護技術文件、遵守著作權法、提供模型資訊摘要等透明義務。同時，EU AI Act 第 4 條要求所有 AI 系統的部署者確保 AI 素養（AI Literacy）。"
+    why_not_a: "GPAI 並非一律歸為高風險，而是依據其系統性風險（systemic risk）程度區分不同義務層級。"
+    why_not_c: "GPAI 規範的適用時間為 2025 年 8 月，非 2024 年 8 月（2024/8 為法案整體生效日）。"
+    why_not_d: "EU AI Act 專門針對 GPAI 設有規範，GPAI 明確受管轄。"
+  keywords:
+    - "GPAI"
+    - "General-Purpose AI"
+    - "EU AI Act"
+    - "AI Literacy"
+    - "AI素養"
+    - "透明義務"
+  exam_trap: false
+
+- id: "L11102-Q30"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 3
+  question: "某歐盟法院計畫導入 AI 系統協助法官進行量刑建議。依據 EU AI Act 的風險分類，此系統屬於哪一風險等級，且需符合何種要求？"
+  options:
+    a: "有限風險，僅需標示為 AI 生成即可"
+    b: "最小風險，無強制合規要求"
+    c: "高風險，需通過合規評估、建立風險管理系統，並確保人類監督"
+    d: "不可接受風險，司法 AI 一律被禁止"
+  correct: "c"
+  explanation:
+    why_correct: "EU AI Act 明確將司法與民主程序領域的 AI 系統（包括量刑輔助）列為高風險，需進行合規評估、建立風險管理系統、確保資料品質、提供人類監督機制。"
+    why_not_a: "司法量刑建議直接影響個人自由與權利，其風險遠高於「有限風險」的標示義務所能涵蓋。"
+    why_not_b: "最小風險適用於低影響應用（如遊戲推薦），司法決策影響重大，不屬此類。"
+    why_not_d: "EU AI Act 並未全面禁止司法 AI，而是將其列為高風險加以嚴格管制。被禁止的是社會信用評分等不可接受風險應用。"
+  keywords:
+    - "EU AI Act"
+    - "高風險"
+    - "司法"
+    - "量刑"
+    - "人類監督"
+  exam_trap: false
+
+- id: "L11102-Q31"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 3
+  question: "某台灣金融機構希望確保其 AI 交易系統在遭受對抗性攻擊（adversarial attack）時仍能穩定運作。依金管會《金融業運用 AI 指引》六大核心原則，此需求最直接對應下列哪一項原則？"
+  options:
+    a: "透明可解釋（Transparency & Explainability）"
+    b: "穩健安全（Robustness & Security）"
+    c: "治理問責（Governance & Accountability）"
+    d: "公平與不歧視（Fairness & Non-discrimination）"
+  correct: "b"
+  explanation:
+    why_correct: "穩健安全原則要求 AI 系統在面對異常情境、惡意攻擊或資料品質問題時仍能穩定可靠運作，對抗性攻擊的防禦正是此原則的具體實踐。"
+    why_not_a: "透明可解釋關注的是模型決策邏輯能否被理解，而非系統面對攻擊時的穩定性。"
+    why_not_c: "治理問責關注的是組織的治理架構與責任歸屬，非技術層面的系統韌性。"
+    why_not_d: "公平與不歧視關注的是模型對不同群體的決策是否公正，與抵禦攻擊無直接關聯。"
+  keywords:
+    - "金管會"
+    - "金融業運用AI指引"
+    - "穩健安全"
+    - "Robustness"
+    - "對抗性攻擊"
+  exam_trap: false
+
+- id: "L11102-Q32"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 4
+  question: "台灣《人工智慧基本法》規定國科會為中央主管機關，數位發展部則負責建立風險分類框架與評測制度。分析兩者的角色定位，下列敘述何者最正確？"
+  options:
+    a: "國科會負責政策統籌與跨部會協調，數位發展部負責風險分類框架與技術評測的執行落地"
+    b: "國科會與數位發展部職能完全重疊，未來將合併"
+    c: "數位發展部為主管機關，國科會僅負責科技研究經費分配"
+    d: "國科會負責風險管理框架，數位發展部負責法律制定"
+  correct: "a"
+  explanation:
+    why_correct: "國科會作為中央主管機關，負責整體 AI 政策統籌與跨部會協調。數位發展部則負責具體的風險分類框架（非風險管理框架）建立與 AI 產品評測制度的執行落地，兩者分工明確。"
+    why_not_b: "兩個機關職能並不重疊：國科會統籌政策方向，數位發展部執行風險分類與評測，各有明確分工。"
+    why_not_c: "中央主管機關是國科會，非數位發展部。數位發展部負責的是風險分類框架與評測，非主管角色。"
+    why_not_d: "數位發展部負責的是「風險分類框架」而非「法律制定」，國科會也非負責「風險管理框架」。用詞精確度是此題關鍵。"
+  keywords:
+    - "國科會"
+    - "數位發展部"
+    - "風險分類框架"
+    - "人工智慧基本法"
+    - "角色分工"
+  exam_trap: true
+
+- id: "L11102-Q33"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 4
+  question: "「人類在迴圈中」（HITL）的概念同時出現在台灣《人工智慧基本法》、EU AI Act 與金管會指引中。比較三個框架中 HITL 的定位，下列分析何者最正確？"
+  options:
+    a: "三個框架對 HITL 的定義完全相同，皆要求 AI 每一步驟都需人類核准"
+    b: "台灣基本法將其列為「人類自主」原則，EU AI Act 在高風險系統要求人類監督（Human Oversight），金管會指引則強調「以人為本」——三者表述不同但核心理念一致"
+    c: "HITL 僅出現在 EU AI Act 中，台灣法規並未採納此概念"
+    d: "金管會指引要求完全禁止 AI 自動化決策，與 EU AI Act 的立場相反"
+  correct: "b"
+  explanation:
+    why_correct: "台灣《人工智慧基本法》七大原則中的「人類自主」、EU AI Act 高風險系統的 Human Oversight 要求、金管會指引的「以人為本」原則，三者用語不同但核心理念一致：在 AI 決策中保留人類監督與介入機制。"
+    why_not_a: "三個框架的 HITL 表述各異，且都不要求「每一步驟都需人類核准」，而是在關鍵節點保留人類介入能力。"
+    why_not_c: "HITL 概念在三個框架中皆有體現，只是用語不同（人類自主、Human Oversight、以人為本）。"
+    why_not_d: "金管會指引並未要求完全禁止自動化決策，而是要求建立人類監督機制，與 EU AI Act 立場一致。"
+  keywords:
+    - "HITL"
+    - "Human Oversight"
+    - "人類自主"
+    - "以人為本"
+    - "跨框架比較"
+  exam_trap: false
+
+- id: "L11102-Q34"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 5
+  question: "台灣《人工智慧基本法》對「人工智慧」的法律定義包含四個要素。某新創公司開發了一套純粹基於固定規則的專家系統（Rule-based Expert System），不具機器學習能力。評估此系統是否符合《人工智慧基本法》中 AI 的定義，下列分析何者最合理？"
+  options:
+    a: "只要是軟體系統就一定符合 AI 定義，此系統當然受《人工智慧基本法》規範"
+    b: "AI 定義四要素包含「自主性」與「自我學習或推理能力」，純固定規則系統若不具備這些要素，可能不符合法律定義中的 AI"
+    c: "任何能做出決策的系統都是 AI，不論其技術實現方式"
+    d: "《人工智慧基本法》不區分技術類型，所有資訊系統一律視為 AI"
+  correct: "b"
+  explanation:
+    why_correct: "《人工智慧基本法》對 AI 的法律定義包含四個要素，其中涉及「自主性」與「自我學習、推理或其他認知能力」。純粹基於固定規則的專家系統若不具備自主性或學習推理能力，可能不符合法律定義，這是法律適用範圍的關鍵判斷。"
+    why_not_a: "並非所有軟體系統都符合 AI 定義，《人工智慧基本法》對 AI 有明確的定義要素限制。"
+    why_not_c: "決策能力只是 AI 定義的面向之一，技術實現方式（是否具備學習或推理能力）也是判斷要素。"
+    why_not_d: "《人工智慧基本法》有明確的 AI 定義，並非將所有資訊系統一律視為 AI。"
+  keywords:
+    - "人工智慧基本法"
+    - "AI定義"
+    - "四要素"
+    - "自主性"
+    - "法律適用"
+  exam_trap: false
+
+- id: "L11102-Q35"
+  topic_code: "L11102"
+  item_code: "L11102"
+  difficulty: 5
+  question: "UNESCO 於 2021 年通過全球首個 AI 倫理綜合框架，獲 193 個會員國一致採納。某發展中國家欲參考國際框架建立本國 AI 治理制度，同時考量 OECD 五大原則、UNESCO 框架、EU AI Act、以及台灣《人工智慧基本法》的經驗。下列哪一項建議最為務實且全面？"
+  options:
+    a: "直接翻譯採用 EU AI Act 全文，因為歐盟法規最為完善"
+    b: "以 UNESCO 框架為倫理基礎、參考 OECD 原則建立政策方向、借鏡台灣基本法的七大原則與分工架構、依本國發展程度選擇性採納 EU AI Act 風險分級制度"
+    c: "僅需採用 OECD 五大原則即可，無需考慮其他框架"
+    d: "等待聯合國制定全球統一 AI 法規後再行立法，目前不需任何行動"
+  correct: "b"
+  explanation:
+    why_correct: "此策略整合多層次框架：(1) UNESCO 框架提供倫理基礎且具最廣泛國際共識（193 國）；(2) OECD 五大原則（包容性成長、以人為本、透明、穩健、問責）提供政策方向；(3) 台灣基本法展示如何將國際原則在地化（七大原則 + 國科會/數位發展部分工）；(4) EU AI Act 的風險分級制度可依發展程度選擇性採納。"
+    why_not_a: "直接翻譯 EU AI Act 忽略了各國發展程度差異，歐盟法規對發展中國家可能過度嚴格且不切實際。"
+    why_not_c: "OECD 原則為高層次指引，缺乏具體實施機制（如風險分級、機關分工），需搭配其他框架才完整。"
+    why_not_d: "全球統一 AI 法規短期內不可能實現，等待不是可行策略。UNESCO 框架已是目前最接近全球共識的文件。"
+  keywords:
+    - "UNESCO"
+    - "OECD"
+    - "EU AI Act"
+    - "人工智慧基本法"
+    - "國際框架"
+    - "AI治理策略"
+    - "193國"
+  exam_trap: false
+
+# ============================================================
 # Coverage & Statistics
 # ============================================================
 #
-# Total questions: 25
+# Total questions: 35
 #
 # Breakdown by difficulty:
-#   Level 1 (Remember):  Q01, Q02, Q03, Q04, Q05 = 5 questions
-#   Level 2 (Understand): Q06, Q07, Q08, Q09, Q10 = 5 questions
-#   Level 3 (Apply):      Q11, Q12, Q13, Q14, Q15 = 5 questions
-#   Level 4 (Analyze):    Q16, Q17, Q18, Q19, Q20 = 5 questions
-#   Level 5 (Evaluate):   Q21, Q22, Q23, Q24, Q25 = 5 questions
+#   Level 1 (Remember):  Q01, Q02, Q03, Q04, Q05, Q26, Q27 = 7 questions
+#   Level 2 (Understand): Q06, Q07, Q08, Q09, Q10, Q28, Q29 = 7 questions
+#   Level 3 (Apply):      Q11, Q12, Q13, Q14, Q15, Q30, Q31 = 7 questions
+#   Level 4 (Analyze):    Q16, Q17, Q18, Q19, Q20, Q32, Q33 = 7 questions
+#   Level 5 (Evaluate):   Q21, Q22, Q23, Q24, Q25, Q34, Q35 = 7 questions
 #
 # Breakdown by coverage area:
-#   台灣《人工智慧基本法》七大原則: Q01, Q04, Q06, Q16, Q22 = 5 questions
-#   EU AI Act 四級風險分類:         Q02, Q10, Q12, Q14, Q20, Q23, Q24 = 7 questions
-#   金管會《金融業運用AI指引》:     Q03, Q07, Q11, Q16, Q21 = 5 questions
-#   數位發展部 documents:           Q08, Q13, Q15, Q19 = 4 questions
-#   國際比較:                       Q05, Q17, Q22 = 3 questions
-#   HITL concept:                   Q09, Q21, Q25 = 3 questions
-#   AI治理框架/跨國合規:            Q18, Q21, Q25 = 3 questions
+#   台灣《人工智慧基本法》七大原則: Q01, Q04, Q06, Q16, Q22, Q26, Q32, Q34 = 8 questions
+#   EU AI Act 四級風險分類:         Q02, Q10, Q12, Q14, Q20, Q23, Q24, Q29, Q30 = 9 questions
+#   金管會《金融業運用AI指引》:     Q03, Q07, Q11, Q16, Q21, Q31 = 6 questions
+#   數位發展部 documents:           Q08, Q13, Q15, Q19, Q32 = 5 questions
+#   國際比較:                       Q05, Q17, Q22, Q27, Q35 = 5 questions
+#   HITL concept:                   Q09, Q21, Q25, Q33 = 4 questions
+#   AI治理框架/跨國合規:            Q18, Q21, Q25, Q33, Q35 = 5 questions
+#   治理概念辨析:                   Q28 = 1 question
+#   AI法律定義:                     Q34 = 1 question
 #
-# Exam traps (exam_trap: true): Q01, Q06, Q07, Q20, Q23 = 5 questions
+# Exam traps (exam_trap: true): Q01, Q06, Q07, Q20, Q23, Q26, Q27, Q32 = 8 questions
 #
 # Note: Some questions cover multiple areas (e.g., Q21 covers 金管會 + HITL + 跨國合規)
