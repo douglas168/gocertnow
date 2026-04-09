@@ -21,6 +21,14 @@ Tracks open items across all lessons that need resolution before publishing.
 
 - [ ] **Generate 3 Gemini diagrams** — Prompts ready in `lessons/L11201-資料基本概念與來源/diagrams/`. Save generated images to the same folder.
 
+### L11202 — 資料整理與分析流程
+
+- [ ] **Generate 3 Gemini diagrams** — Prompts ready in `lessons/L11202-資料整理與分析流程/diagrams/`. Save generated images to the same folder.
+  - Data pipeline 4-stage flow (收集→清理→分析→呈現)
+  - Feature engineering taxonomy (selection/extraction/transformation + One-Hot Encoding)
+  - 4 analytics types progression pyramid (descriptive→diagnostic→predictive→prescriptive)
+- [ ] **Borderline scope item: standardization numeric properties** — Scope review flagged lines 327/388 mentioning "mean=0, SD=1" as borderline. Currently acceptable with 中級 disclaimer present. Monitor if boundary owner wants stricter enforcement.
+
 ### L12301 — 生成式AI導入評估 (not yet started)
 
 - [ ] **Source external document**: 經濟部產業發展署《AI導入指引》— ida.gov.tw or moea.gov.tw
@@ -34,7 +42,7 @@ Tracks open items across all lessons that need resolution before publishing.
 | 1 | L11101 | AI的定義與分類 | **Done** | 2 (verify claim, generate diagrams) |
 | 2 | L11102 | AI治理概念 | **Done** | 3 (generate diagrams, verify 2 terms) |
 | 3 | L11201 | 資料基本概念與來源 | **Done** | 1 (generate diagrams) |
-| 4 | L11202 | 資料整理與分析流程 | Not started | — |
+| 4 | L11202 | 資料整理與分析流程 | **Done** | 2 (generate diagrams, borderline scope item) |
 | 5 | L11203 | 資料隱私與安全 | Not started | — |
 | 6 | L11301 | 機器學習基本原理 | Not started | — |
 | 7 | L11302 | 常見的機器學習模型 | Not started | — |
@@ -52,15 +60,14 @@ Tracks open items across all lessons that need resolution before publishing.
 
 ## What's Next
 
-**Next lesson:** `/course-generate-lesson L11201` — 資料基本概念與來源 (資料處理與分析概念 topic group)
+**Next lesson:** `/course-generate-lesson L11203` — 資料隱私與安全
 
-**Remaining lessons:** 14 of 16 topics left
+**Remaining lessons:** 12 of 16 topics left
 
 | Priority | Topic Code | Topic Name | Notes |
 |---|---|---|---|
 | ~~Done~~ | ~~L11201~~ | ~~資料基本概念與來源~~ | ~~Complete~~ |
-| **Next** | L11202 | 資料整理與分析流程 | Medium depth, no external docs needed |
-| 4 | L11202 | 資料整理與分析流程 | Medium depth, no external docs needed |
+| ~~Done~~ | ~~L11202~~ | ~~資料整理與分析流程~~ | ~~Complete~~ |
 | 5 | L11203 | 資料隱私與安全 | Medium depth, ambiguous scope (see analysis.md) |
 | 6 | L11301 | 機器學習基本原理 | Medium depth |
 | 7 | L11302 | 常見的機器學習模型 | **Deep** — 6+ learning paradigms, scope creep risk |

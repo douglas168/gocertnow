@@ -1,0 +1,694 @@
+# L11202 資料整理與分析流程 — Practice Questions
+# Generated: 2026-04-09
+# Total: 30 questions | Difficulty: 6 per level (1-5)
+
+# ============================================================
+# Difficulty 1 — Remember (Bloom's: 記憶)
+# ============================================================
+
+- id: "L11202-Q01"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 1
+  question: "資料處理流程的正確順序為何？"
+  options:
+    a: "資料清理→資料收集→資料分析→資料呈現"
+    b: "資料收集→資料分析→資料清理→資料呈現"
+    c: "資料收集→資料清理→資料分析→資料呈現"
+    d: "資料分析→資料收集→資料清理→資料呈現"
+  correct: "c"
+  explanation:
+    why_correct: "標準的資料處理流程依序為：收集（Collection）→ 清理（Cleaning）→ 分析（Analysis）→ 呈現（Presentation），先有資料才能清理，清理後才能正確分析並呈現結果。"
+    why_not_a: "清理必須在收集之後才能進行，因為沒有資料就無法清理。"
+    why_not_b: "尚未清理的資料直接分析會導致結果不可靠，清理應在分析之前。"
+    why_not_d: "分析不可能在收集之前進行，必須先有資料才能分析。"
+  keywords:
+    - "資料處理流程"
+    - "Data Pipeline"
+  exam_trap: false
+
+- id: "L11202-Q02"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 1
+  question: "在資料清理中，「缺失值（Missing Value）」指的是什麼？"
+  options:
+    a: "資料欄位中出現極端的數值"
+    b: "同一筆資料在資料集中出現了兩次以上"
+    c: "資料欄位中應該有值但實際上為空白的狀況"
+    d: "不同資料來源對同一事物的描述方式不一致"
+  correct: "c"
+  explanation:
+    why_correct: "缺失值（Missing Value）是指資料表中某些欄位本應有值卻為空白（如 NULL 或空字串），是資料清理中最常見的問題之一。"
+    why_not_a: "極端數值屬於「異常值（Outlier）」問題，不是缺失值。"
+    why_not_b: "同一筆資料出現多次屬於「重複值（Duplicate）」問題。"
+    why_not_d: "描述方式不一致屬於「不一致（Inconsistency）」問題，例如同一城市寫成「台北」和「臺北」。"
+  keywords:
+    - "缺失值"
+    - "Missing Value"
+    - "資料清理"
+  exam_trap: false
+
+- id: "L11202-Q03"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 1
+  question: "特徵工程（Feature Engineering）的主要目的為何？"
+  options:
+    a: "將資料儲存到資料庫中"
+    b: "從原始資料中建構出更有利於模型學習的特徵"
+    c: "將分析結果製作成視覺化圖表"
+    d: "刪除資料集中所有的異常值"
+  correct: "b"
+  explanation:
+    why_correct: "特徵工程（Feature Engineering）是從原始資料中選擇、萃取或轉換出更有利於機器學習模型學習與預測的特徵，是提升模型效能的關鍵步驟。"
+    why_not_a: "資料儲存屬於資料管理範疇，不是特徵工程的目的。"
+    why_not_c: "製作視覺化圖表屬於「資料呈現」階段，與特徵工程無關。"
+    why_not_d: "刪除異常值屬於「資料清理」階段，特徵工程的重點是建構更好的特徵，而非單純刪除資料。"
+  keywords:
+    - "特徵工程"
+    - "Feature Engineering"
+  exam_trap: false
+
+- id: "L11202-Q04"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 1
+  question: "下列何者屬於資料分析四大類型之一？"
+  options:
+    a: "結構化分析（Structured Analysis）"
+    b: "預測性分析（Predictive Analytics）"
+    c: "關聯式分析（Relational Analysis）"
+    d: "迴歸式分析（Regression Analysis）"
+  correct: "b"
+  explanation:
+    why_correct: "資料分析四大類型為：描述性分析（Descriptive）、診斷性分析（Diagnostic）、預測性分析（Predictive）、指示性分析（Prescriptive），預測性分析是其中之一。"
+    why_not_a: "「結構化分析」並非四大類型之一，容易與結構化資料混淆。"
+    why_not_c: "「關聯式分析」不屬於四大分析類型，這是資料庫相關的術語。"
+    why_not_d: "「迴歸式分析」是統計方法的一種，不是四大分析類型的分類名稱。"
+  keywords:
+    - "預測性分析"
+    - "Predictive Analytics"
+    - "資料分析四大類型"
+  exam_trap: false
+
+- id: "L11202-Q05"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 1
+  question: "獨熱編碼（One-Hot Encoding）主要用來處理哪一種資料？"
+  options:
+    a: "時間序列資料"
+    b: "連續型數值資料"
+    c: "類別型資料"
+    d: "影像型資料"
+  correct: "c"
+  explanation:
+    why_correct: "獨熱編碼（One-Hot Encoding）是將類別型資料（如「紅、藍、綠」）轉換為二元向量的方法，讓機器學習模型能夠處理非數值的類別變數。"
+    why_not_a: "時間序列資料通常需要的是時間特徵萃取（如年、月、星期幾），而非獨熱編碼。"
+    why_not_b: "連續型數值資料已經是數字，不需要獨熱編碼，通常使用標準化或正規化處理。"
+    why_not_d: "影像型資料通常透過卷積神經網路等技術處理，不使用獨熱編碼。"
+  keywords:
+    - "獨熱編碼"
+    - "One-Hot Encoding"
+    - "類別型資料"
+  exam_trap: false
+
+- id: "L11202-Q06"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 1
+  question: "資料標準化（Standardization）的核心概念為何？"
+  options:
+    a: "將所有數值壓縮到 0 和 1 之間"
+    b: "將資料轉換為平均值為 0、標準差為 1 的分布"
+    c: "將類別型資料轉換為數值"
+    d: "移除資料中的重複記錄"
+  correct: "b"
+  explanation:
+    why_correct: "資料標準化（Standardization）又稱 Z-Score 標準化，會將資料轉換為平均值為 0、標準差為 1 的標準分布，使不同量級的特徵具有可比較性。"
+    why_not_a: "將數值壓縮到 0 和 1 之間是「正規化（Normalization）」的做法，常見方法為 Min-Max Scaling，與標準化不同。"
+    why_not_c: "將類別型資料轉換為數值是「編碼（Encoding）」的工作，如獨熱編碼，不是標準化。"
+    why_not_d: "移除重複記錄是「資料清理」中的去重操作，與標準化無關。"
+  keywords:
+    - "標準化"
+    - "Standardization"
+    - "Z-Score"
+  exam_trap: true
+
+# ============================================================
+# Difficulty 2 — Understand (Bloom's: 理解)
+# ============================================================
+
+- id: "L11202-Q07"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 2
+  question: "下列關於資料收集方式的說明，何者正確？"
+  options:
+    a: "網路爬蟲（Web Scraping）收集的資料都是結構化的，可以直接使用"
+    b: "問卷調查屬於主動式資料收集，可針對特定需求設計收集項目"
+    c: "開放資料集（Open Data）不需要考慮資料品質問題"
+    d: "API 收集的資料一定是即時且完整的"
+  correct: "b"
+  explanation:
+    why_correct: "問卷調查是主動式資料收集方法，研究者可以根據分析需求自行設計問題與選項，針對性地收集所需資訊。"
+    why_not_a: "網路爬蟲收集的資料通常是半結構化或非結構化的（如 HTML 網頁），需要經過解析與清理才能使用。"
+    why_not_c: "開放資料集雖然免費可得，但仍可能存在缺失值、過時資訊等品質問題，必須經過評估與清理。"
+    why_not_d: "API 回傳的資料可能有延遲、缺漏或欄位限制，不保證即時且完整。"
+  keywords:
+    - "資料收集"
+    - "Data Collection"
+    - "問卷調查"
+  exam_trap: false
+
+- id: "L11202-Q08"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 2
+  question: "描述性分析（Descriptive Analytics）與診斷性分析（Diagnostic Analytics）的主要差異為何？"
+  options:
+    a: "描述性分析回答「發生了什麼」，診斷性分析回答「為什麼發生」"
+    b: "描述性分析使用 AI 模型，診斷性分析只使用統計方法"
+    c: "描述性分析著重未來預測，診斷性分析著重歷史回顧"
+    d: "兩者沒有實質差異，只是不同廠商的命名方式"
+  correct: "a"
+  explanation:
+    why_correct: "描述性分析（Descriptive）回答「What happened?（發生了什麼）」，例如上月銷售額為多少；診斷性分析（Diagnostic）回答「Why did it happen?（為什麼發生）」，例如銷售額下降的原因。"
+    why_not_b: "兩者都可以使用統計方法或 AI 模型，差異在於分析的「目的」而非「工具」。"
+    why_not_c: "描述性分析著重「過去發生了什麼」而非未來預測；未來預測屬於「預測性分析」的範疇。"
+    why_not_d: "這是國際通用的分類方式（Gartner 分析模型），不是廠商自定的命名。"
+  keywords:
+    - "描述性分析"
+    - "診斷性分析"
+    - "Descriptive Analytics"
+    - "Diagnostic Analytics"
+  exam_trap: false
+
+- id: "L11202-Q09"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 2
+  question: "特徵工程中的「特徵選擇（Feature Selection）」與「特徵萃取（Feature Extraction）」有何不同？"
+  options:
+    a: "特徵選擇是從現有特徵中挑選重要的，特徵萃取是創造全新的特徵"
+    b: "特徵選擇只能手動進行，特徵萃取只能由 AI 自動完成"
+    c: "特徵選擇用於數值資料，特徵萃取用於文字資料"
+    d: "兩者是相同概念的不同名稱"
+  correct: "a"
+  explanation:
+    why_correct: "特徵選擇（Feature Selection）是從已有的特徵中挑選出最重要、最相關的子集；特徵萃取（Feature Extraction）則是透過組合或轉換原始特徵來創造出新的特徵。"
+    why_not_b: "兩者都可以手動或自動進行。特徵選擇可用演算法（如相關性分析），特徵萃取也可手動設計。"
+    why_not_c: "兩者都適用於各種資料類型，不存在數值與文字的限制。"
+    why_not_d: "兩者概念不同——選擇是「挑」現有特徵，萃取是「造」新特徵。"
+  keywords:
+    - "特徵選擇"
+    - "Feature Selection"
+    - "特徵萃取"
+    - "Feature Extraction"
+  exam_trap: false
+
+- id: "L11202-Q10"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 2
+  question: "下列關於正規化（Normalization）的說明，何者正確？"
+  options:
+    a: "正規化後的資料平均值一定為 0"
+    b: "正規化會將數值縮放到固定範圍內，常見為 0 到 1 之間"
+    c: "正規化只適用於類別型變數"
+    d: "正規化與標準化完全相同，可以互相替換"
+  correct: "b"
+  explanation:
+    why_correct: "正規化（Normalization），如 Min-Max Scaling，會將數值線性縮放到固定範圍內，最常見的範圍為 [0, 1]。"
+    why_not_a: "平均值為 0 是「標準化（Standardization）」的特徵，不是正規化。正規化後的平均值取決於原始資料分布。"
+    why_not_c: "正規化適用於連續型數值變數，類別型變數需要使用編碼（如 One-Hot Encoding）來處理。"
+    why_not_d: "正規化與標準化是兩種不同的縮放方法，適用場景不同，不能隨意互換。"
+  keywords:
+    - "正規化"
+    - "Normalization"
+    - "Min-Max Scaling"
+  exam_trap: true
+
+- id: "L11202-Q11"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 2
+  question: "下列關於資料收集（Data Collection）的敘述，何者正確？"
+  options:
+    a: "資料收集只能使用單一來源，避免格式不一致"
+    b: "資料收集階段應考慮資料的代表性與涵蓋範圍，以確保後續分析結果的可靠性"
+    c: "資料收集完成後即可直接進行分析，不需要其他前置步驟"
+    d: "資料收集階段不需要考慮資料品質，品質問題留到清理階段處理即可"
+  correct: "b"
+  explanation:
+    why_correct: "資料收集階段就應該考慮資料的代表性（是否涵蓋目標群體）和涵蓋範圍（是否包含所需的維度和時間跨度），否則後續分析再精確也可能因為取樣偏差而不可靠。"
+    why_not_a: "實務上常需要整合多種資料來源（如資料庫、問卷、API 等），多來源可以互相補充提升完整性。"
+    why_not_c: "收集後通常需要資料清理（處理缺失值、異常值等），才能進入分析階段。"
+    why_not_d: "雖然清理階段會處理品質問題，但收集時就應初步評估來源可靠性，避免收集到根本無用的資料。"
+  keywords:
+    - "資料收集"
+    - "Data Collection"
+    - "代表性"
+  exam_trap: false
+
+- id: "L11202-Q12"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 2
+  question: "下列哪種圖表最適合用來呈現「不同產品類別的銷售佔比」？"
+  options:
+    a: "折線圖"
+    b: "散佈圖"
+    c: "圓餅圖"
+    d: "箱型圖"
+  correct: "c"
+  explanation:
+    why_correct: "圓餅圖（Pie Chart）最適合呈現「各部分佔整體的比例」，用來展示不同產品類別在總銷售額中的佔比非常直覺。"
+    why_not_a: "折線圖適合呈現「隨時間變化的趨勢」，不適合呈現佔比關係。"
+    why_not_b: "散佈圖適合呈現「兩個變數之間的關聯性」，不適合呈現佔比。"
+    why_not_d: "箱型圖適合呈現「資料的分布情況」（中位數、四分位距等），不適合呈現佔比。"
+  keywords:
+    - "圓餅圖"
+    - "Pie Chart"
+    - "資料呈現"
+  exam_trap: false
+
+# ============================================================
+# Difficulty 3 — Apply (Bloom's: 應用)
+# ============================================================
+
+- id: "L11202-Q13"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 3
+  question: "小華在整理客戶資料時發現，「地址」欄位中同一個地點有「台北市」和「臺北市」兩種寫法。這屬於哪一種資料清理問題？"
+  options:
+    a: "缺失值（Missing Value）"
+    b: "重複值（Duplicate）"
+    c: "異常值（Outlier）"
+    d: "不一致（Inconsistency）"
+  correct: "d"
+  explanation:
+    why_correct: "同一個地點使用不同的寫法（「台北市」vs「臺北市」）是典型的不一致（Inconsistency）問題，需要統一格式才能正確分析。"
+    why_not_a: "這些欄位有值，只是寫法不同，不是缺失值。"
+    why_not_b: "重複值是指整筆資料重複，而非單一欄位的寫法不同。"
+    why_not_c: "異常值是指數值上偏離正常範圍的資料（如年齡 -5），地址寫法差異不屬於異常值。"
+  keywords:
+    - "不一致"
+    - "Inconsistency"
+    - "資料清理"
+  exam_trap: false
+
+- id: "L11202-Q14"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 3
+  question: "一家電商公司想知道「為什麼上個月退貨率突然升高」，這屬於哪一種資料分析類型？"
+  options:
+    a: "描述性分析（Descriptive Analytics）"
+    b: "診斷性分析（Diagnostic Analytics）"
+    c: "預測性分析（Predictive Analytics）"
+    d: "指示性分析（Prescriptive Analytics）"
+  correct: "b"
+  explanation:
+    why_correct: "「為什麼退貨率突然升高」是在探究原因，屬於診斷性分析（Diagnostic Analytics）——回答「Why did it happen?」。"
+    why_not_a: "描述性分析只回答「發生了什麼」（例如退貨率是多少），不探究原因。"
+    why_not_c: "預測性分析回答「未來會發生什麼」（例如下個月退貨率會是多少），不是找原因。"
+    why_not_d: "指示性分析回答「應該怎麼做」（例如如何降低退貨率），比找原因更進一步。"
+  keywords:
+    - "診斷性分析"
+    - "Diagnostic Analytics"
+  exam_trap: false
+
+- id: "L11202-Q15"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 3
+  question: "某手搖飲品牌的資料集中，「飲料甜度」欄位的值有「全糖、半糖、微糖、無糖」四種。若要將此資料用於機器學習模型，最適合使用下列哪種方法？"
+  options:
+    a: "資料標準化（Standardization）"
+    b: "正規化（Normalization）"
+    c: "獨熱編碼（One-Hot Encoding）"
+    d: "缺失值填補（Imputation）"
+  correct: "c"
+  explanation:
+    why_correct: "「全糖、半糖、微糖、無糖」是類別型資料，需要使用獨熱編碼（One-Hot Encoding）將每個類別轉換為獨立的二元欄位（0 或 1），模型才能處理。"
+    why_not_a: "標準化適用於連續型數值資料的縮放，無法處理文字類別。"
+    why_not_b: "正規化同樣適用於連續型數值資料，無法將文字轉為數值。"
+    why_not_d: "缺失值填補是處理空值問題，此處的欄位有值但為文字類別，不需要填補。"
+  keywords:
+    - "獨熱編碼"
+    - "One-Hot Encoding"
+    - "類別型資料"
+  exam_trap: false
+
+- id: "L11202-Q16"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 3
+  question: "小明正在分析公司員工資料，發現「年薪」欄位中有一筆資料為「-50000 元」。他應該如何判斷這筆資料？"
+  options:
+    a: "這是缺失值，應該直接刪除"
+    b: "這是不一致問題，需要統一格式"
+    c: "這是異常值，需要進一步調查是否為輸入錯誤"
+    d: "這是正常資料，無需處理"
+  correct: "c"
+  explanation:
+    why_correct: "年薪為負值明顯偏離正常範圍，屬於異常值（Outlier）。應先調查是否為輸入錯誤（如漏了正號或多打了負號），再決定修正或刪除。"
+    why_not_a: "此欄位有值（-50000），不是空白，所以不是缺失值。"
+    why_not_b: "不一致問題是指同一事物的不同表達方式（如格式、命名不同），負數年薪是數值本身不合理。"
+    why_not_d: "年薪為負數在現實中不合理，不應視為正常資料直接使用。"
+  keywords:
+    - "異常值"
+    - "Outlier"
+    - "資料清理"
+  exam_trap: false
+
+- id: "L11202-Q17"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 3
+  question: "某零售業者想呈現「過去 12 個月每月營收的變化趨勢」，最適合使用哪種圖表？"
+  options:
+    a: "圓餅圖"
+    b: "長條圖"
+    c: "折線圖"
+    d: "散佈圖"
+  correct: "c"
+  explanation:
+    why_correct: "折線圖（Line Chart）最適合呈現「隨時間變化的趨勢」，能清楚看出 12 個月營收的上升或下降走勢。"
+    why_not_a: "圓餅圖適合呈現佔比，無法呈現時間趨勢。"
+    why_not_b: "長條圖可以顯示各月份的營收數字，但不如折線圖能直覺呈現連續的變化趨勢。"
+    why_not_d: "散佈圖適合呈現兩個變數之間的相關性，不適合呈現時間序列趨勢。"
+  keywords:
+    - "折線圖"
+    - "Line Chart"
+    - "資料呈現"
+  exam_trap: false
+
+- id: "L11202-Q18"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 3
+  question: "某健身房的會員資料中，「體重（公斤）」範圍約 40–120，「每月消費金額（元）」範圍約 500–5000。教練想用這兩個特徵預測會員續約率。最適合先做什麼處理？"
+  options:
+    a: "將體重欄位刪除，只保留消費金額"
+    b: "對兩個欄位進行正規化（Normalization）或標準化（Standardization），使數值範圍一致"
+    c: "對兩個欄位進行獨熱編碼（One-Hot Encoding）"
+    d: "不需要任何處理，模型會自動調整數值範圍"
+  correct: "b"
+  explanation:
+    why_correct: "體重和消費金額的數值範圍差距大，直接使用可能導致消費金額主導模型學習。正規化或標準化可以讓兩者的尺度一致，確保模型公平對待每個特徵。"
+    why_not_a: "體重可能是影響續約率的重要特徵（如健身目標），不應輕易刪除。"
+    why_not_c: "獨熱編碼用於類別型資料，體重和消費金額都是連續型數值，不適用。"
+    why_not_d: "雖然部分模型（如決策樹）不受尺度影響，但多數模型（如距離計算類模型）需要先做特徵縮放才能正確運作。"
+  keywords:
+    - "正規化"
+    - "Normalization"
+    - "標準化"
+    - "Standardization"
+    - "特徵縮放"
+  exam_trap: false
+
+# ============================================================
+# Difficulty 4 — Analyze (Bloom's: 分析)
+# ============================================================
+
+- id: "L11202-Q19"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 4
+  question: "某 AI 專案團隊的資料集中，「身高（公分）」的範圍約 150–190，而「月薪（元）」的範圍約 30000–120000。若不做任何縮放處理，直接餵入模型訓練，最可能產生什麼問題？"
+  options:
+    a: "模型會自動忽略月薪欄位"
+    b: "月薪數值較大，會主導模型的學習過程，導致身高的影響被低估"
+    c: "身高欄位會被視為異常值而自動刪除"
+    d: "模型訓練速度會加快但準確度不變"
+  correct: "b"
+  explanation:
+    why_correct: "當不同特徵的數值範圍差異懸殊時，數值較大的特徵（月薪）會在距離計算或梯度更新中佔主導地位，導致數值較小的特徵（身高）對模型的影響被嚴重低估。這就是需要標準化或正規化的原因。"
+    why_not_a: "模型不會自動忽略任何欄位，但會因為數值尺度差異而產生偏差。"
+    why_not_c: "身高的數值在正常範圍內，模型不會將其視為異常值。異常值判斷與特徵間的相對大小無關。"
+    why_not_d: "尺度差異通常會讓梯度下降收斂變慢，而且準確度也可能受影響，不是「加快且不變」。"
+  keywords:
+    - "特徵縮放"
+    - "Feature Scaling"
+    - "標準化"
+    - "正規化"
+  exam_trap: true
+
+- id: "L11202-Q20"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 4
+  question: "在特徵工程的三個類別中，「從日期欄位中提取出星期幾」屬於哪一種操作？"
+  options:
+    a: "特徵選擇（Feature Selection）"
+    b: "特徵萃取（Feature Extraction）"
+    c: "特徵轉換（Feature Transformation）"
+    d: "資料清理（Data Cleaning）"
+  correct: "b"
+  explanation:
+    why_correct: "從日期欄位中「提取出星期幾」是根據原始特徵創造出新的衍生特徵，屬於特徵萃取（Feature Extraction）。原始的日期欄位經過加工產生了新的有意義特徵。"
+    why_not_a: "特徵選擇是從已有特徵中「挑選」重要的子集，而非創造新特徵。"
+    why_not_c: "特徵轉換是改變現有特徵的「表示方式」（如對數轉換、編碼），而非從中萃取新資訊。"
+    why_not_d: "資料清理處理的是缺失值、異常值等品質問題，提取星期幾是為了增加模型可用的資訊。"
+  keywords:
+    - "特徵萃取"
+    - "Feature Extraction"
+    - "特徵工程"
+  exam_trap: false
+
+- id: "L11202-Q21"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 4
+  question: "下列哪一組分析類型的描述完全正確？"
+  options:
+    a: "描述性分析回答「為什麼」，預測性分析回答「會怎樣」"
+    b: "診斷性分析回答「為什麼」，指示性分析回答「該怎麼做」"
+    c: "預測性分析回答「發生了什麼」，指示性分析回答「為什麼」"
+    d: "描述性分析回答「該怎麼做」，診斷性分析回答「會怎樣」"
+  correct: "b"
+  explanation:
+    why_correct: "診斷性分析（Diagnostic）回答「Why did it happen?（為什麼發生）」；指示性分析（Prescriptive）回答「What should we do?（該怎麼做）」。這兩個對應關係完全正確。"
+    why_not_a: "描述性分析回答的是「發生了什麼（What happened?）」而非「為什麼」。"
+    why_not_c: "預測性分析回答的是「未來會發生什麼（What will happen?）」，不是「發生了什麼」；指示性分析回答的是「該怎麼做」，不是「為什麼」。"
+    why_not_d: "描述性分析回答「發生了什麼」而非「該怎麼做」；診斷性分析回答「為什麼」而非「會怎樣」。"
+  keywords:
+    - "資料分析四大類型"
+    - "Descriptive"
+    - "Diagnostic"
+    - "Predictive"
+    - "Prescriptive"
+  exam_trap: true
+
+- id: "L11202-Q22"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 4
+  question: "下列關於標準化（Standardization）與正規化（Normalization）的比較，何者正確？"
+  options:
+    a: "標準化將資料縮放到 [0,1]，正規化將資料轉換為平均值 0、標準差 1"
+    b: "標準化適合所有模型，正規化只適合神經網路"
+    c: "標準化轉換後的資料可能出現負值，正規化轉換後的資料都在 [0,1] 之間"
+    d: "兩者的數學公式完全相同，只是名稱不同"
+  correct: "c"
+  explanation:
+    why_correct: "標準化（Z-Score）以平均值為中心，低於平均值的資料會轉換為負數，因此結果可能包含負值。正規化（Min-Max Scaling）將資料線性映射到 [0,1]，結果都在 0 到 1 之間。"
+    why_not_a: "剛好相反——標準化是轉換為平均值 0、標準差 1 的分布；正規化才是縮放到 [0,1] 的範圍。這是考試中常見的混淆陷阱。"
+    why_not_b: "兩種方法都可用於多種模型，並非正規化只適合神經網路。選擇哪種取決於資料特性（如是否有異常值）。"
+    why_not_d: "兩者的公式不同——標準化使用平均值和標準差，正規化使用最大值和最小值。"
+  keywords:
+    - "標準化"
+    - "Standardization"
+    - "正規化"
+    - "Normalization"
+  exam_trap: true
+
+- id: "L11202-Q23"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 4
+  question: "標準化（Standardization）與正規化（Normalization）都是特徵縮放方法。當資料中存在極端異常值時，哪種方法受影響較小？為什麼？"
+  options:
+    a: "正規化受影響較小，因為它使用固定範圍 [0,1]"
+    b: "標準化受影響較小，因為它使用平均值和標準差，能分散異常值的影響"
+    c: "兩者受影響程度完全相同"
+    d: "正規化受影響較大，因為異常值會嚴重改變最大值和最小值，進而壓縮正常資料的分布範圍"
+  correct: "d"
+  explanation:
+    why_correct: "正規化（Min-Max Scaling）使用最大值和最小值計算，異常值會極端拉大範圍，導致正常資料被壓縮到很窄的區間。相較之下，標準化使用平均值和標準差，受單一異常值的影響相對較小。因此正規化受影響較大，標準化是較穩健的選擇。"
+    why_not_a: "正規化正是因為使用 [0,1] 固定範圍，異常值會將其他正常數據壓縮到極小區間，所以反而更容易受影響。"
+    why_not_b: "標準化確實受影響較小，但選項 B 的解釋不夠精確——平均值和標準差也會被異常值影響，只是相較 Min-Max 而言程度較輕。且本題問的是「哪種受影響較小」，選項 D 更完整地解釋了原因。"
+    why_not_c: "兩種方法的計算方式不同，受異常值影響的程度也不同。"
+  keywords:
+    - "標準化"
+    - "正規化"
+    - "異常值"
+    - "Feature Scaling"
+  exam_trap: true
+
+- id: "L11202-Q24"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 4
+  question: "某醫療研究團隊在收集資料時，同時使用了醫院病歷系統、患者問卷調查以及穿戴裝置的生理數據。這種做法在資料收集階段的主要好處是什麼？"
+  options:
+    a: "可以完全避免資料清理的需求"
+    b: "多元來源可以互相補充與交叉驗證，提升資料的完整性與可信度"
+    c: "多來源資料不需要任何整合即可直接分析"
+    d: "使用越多資料來源，分析結果一定越準確"
+  correct: "b"
+  explanation:
+    why_correct: "多元資料來源的優勢在於互相補充（如問卷可補充病歷未記錄的主觀感受）與交叉驗證（如穿戴裝置數據可驗證患者自述的活動量），提升整體資料的完整性與可信度。"
+    why_not_a: "多來源資料反而可能增加不一致和重複值等清理需求，不可能完全避免清理。"
+    why_not_c: "多來源資料格式通常不同，必須經過整合與清理才能一起分析。"
+    why_not_d: "資料來源多不一定等於更準確，如果來源品質差或整合不當，反而可能引入更多雜訊。"
+  keywords:
+    - "資料收集"
+    - "Data Collection"
+    - "多元資料來源"
+  exam_trap: false
+
+# ============================================================
+# Difficulty 5 — Evaluate/Create (Bloom's: 評鑑/創造)
+# ============================================================
+
+- id: "L11202-Q25"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 5
+  question: "某銀行正在建立信用卡詐欺偵測的 AI 模型。在訓練模型時，團隊不小心將「交易是否被標記為詐欺（結果標籤）」這個欄位的衍生特徵也放入了訓練資料中。這最可能導致什麼問題？"
+  options:
+    a: "模型訓練速度會大幅降低"
+    b: "模型在訓練集表現極好，但實際上線後偵測效果很差——這就是資料洩漏（Data Leakage）"
+    c: "模型會自動忽略該欄位"
+    d: "模型會因為特徵太多而無法收斂"
+  correct: "b"
+  explanation:
+    why_correct: "資料洩漏（Data Leakage）是指訓練資料中包含了不應該知道的未來資訊或結果資訊。將「是否為詐欺」的衍生特徵放入訓練集，模型等於直接「偷看答案」，訓練表現虛高但上線後面對真實交易卻無法有效偵測。"
+    why_not_a: "資料洩漏不會讓訓練變慢，反而會讓模型更快「學到」捷徑，收斂更快。"
+    why_not_c: "模型不會自動識別並忽略洩漏的特徵，它會把所有輸入的特徵都納入學習。"
+    why_not_d: "特徵數量多可能造成過擬合，但資料洩漏的問題本質不是特徵數量多，而是特徵包含了不合法的資訊。"
+  keywords:
+    - "資料洩漏"
+    - "Data Leakage"
+  exam_trap: true
+
+- id: "L11202-Q26"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 5
+  question: "某零售公司的資料分析師接到任務：「分析過去一年的銷售數據，找出業績下滑的原因，預測下一季的銷售趨勢，並建議三項改善策略。」這個任務涵蓋了哪些分析類型？"
+  options:
+    a: "僅描述性分析與診斷性分析"
+    b: "僅預測性分析與指示性分析"
+    c: "描述性分析、診斷性分析與預測性分析"
+    d: "描述性分析、診斷性分析、預測性分析與指示性分析"
+  correct: "d"
+  explanation:
+    why_correct: "此任務包含四個層次：分析銷售數據（描述性——發生了什麼）、找出下滑原因（診斷性——為什麼發生）、預測下一季趨勢（預測性——未來會怎樣）、建議改善策略（指示性——該怎麼做）。四大分析類型全部涵蓋。"
+    why_not_a: "此選項遺漏了「預測下一季趨勢」（預測性）和「建議改善策略」（指示性）。"
+    why_not_b: "此選項遺漏了「分析銷售數據」（描述性）和「找出下滑原因」（診斷性）。"
+    why_not_c: "此選項遺漏了「建議三項改善策略」，這屬於指示性分析（告訴你該怎麼做）。"
+  keywords:
+    - "資料分析四大類型"
+    - "Descriptive"
+    - "Diagnostic"
+    - "Predictive"
+    - "Prescriptive"
+  exam_trap: false
+
+- id: "L11202-Q27"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 5
+  question: "某電商平台的資料集中，「商品類別」有 500 種不同的值。若直接對該欄位使用獨熱編碼（One-Hot Encoding），最可能產生什麼問題？應如何改善？"
+  options:
+    a: "不會有任何問題，獨熱編碼可以處理任意數量的類別"
+    b: "會產生 500 個新欄位，導致維度爆炸（Curse of Dimensionality），應考慮先進行類別合併或使用其他編碼方式"
+    c: "獨熱編碼無法處理超過 100 個類別，系統會自動報錯"
+    d: "會導致所有欄位的值都變成 0，模型無法學習"
+  correct: "b"
+  explanation:
+    why_correct: "對 500 種類別進行獨熱編碼會產生 500 個新的二元欄位，大幅增加資料維度，可能導致維度災難（Curse of Dimensionality），使模型訓練效率下降且容易過擬合。改善方式包括：將低頻類別合併為「其他」、使用目標編碼（Target Encoding）等替代方法。"
+    why_not_a: "雖然技術上獨熱編碼可以處理任意數量的類別，但類別數過多會造成嚴重的維度問題，實務上不建議直接使用。"
+    why_not_c: "獨熱編碼沒有類別數量上限的技術限制，但不代表高類別數就沒有問題。"
+    why_not_d: "獨熱編碼會讓每筆資料在對應類別的欄位為 1、其餘為 0，不會全部變成 0。"
+  keywords:
+    - "獨熱編碼"
+    - "One-Hot Encoding"
+    - "維度災難"
+    - "Curse of Dimensionality"
+  exam_trap: false
+
+- id: "L11202-Q28"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 5
+  question: "某資料科學團隊在建模時，發現「客戶年齡」與「客戶出生年」這兩個特徵高度相關（相關係數接近 -1）。從特徵工程的角度，最適當的處理方式為何？"
+  options:
+    a: "保留兩個特徵，讓模型自己判斷哪個重要"
+    b: "透過特徵選擇（Feature Selection），僅保留其中一個特徵，避免多重共線性問題"
+    c: "將兩個特徵相加，創造一個新特徵"
+    d: "對兩個特徵分別進行獨熱編碼"
+  correct: "b"
+  explanation:
+    why_correct: "當兩個特徵高度相關時，它們提供的資訊幾乎重複（年齡 ≈ 當前年份 - 出生年），保留兩者會造成多重共線性（Multicollinearity），影響模型的穩定性。透過特徵選擇保留其一即可。"
+    why_not_a: "保留高度相關的兩個特徵會增加多重共線性風險，可能讓模型係數不穩定，不是最佳做法。"
+    why_not_c: "年齡加出生年的結果接近一個常數（約等於當前年份），沒有實際分析意義。"
+    why_not_d: "年齡和出生年是連續型數值，不適合使用獨熱編碼（獨熱編碼適用於類別型資料）。"
+  keywords:
+    - "特徵選擇"
+    - "Feature Selection"
+    - "多重共線性"
+    - "Multicollinearity"
+  exam_trap: false
+
+- id: "L11202-Q29"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 5
+  question: "某新創公司的行銷團隊想呈現以下三項資訊：(1) 各通路的廣告花費金額、(2) 各通路帶來的轉換率、(3) 各通路轉換率隨月份的變化趨勢。下列哪種圖表組合最適當？"
+  options:
+    a: "三張圓餅圖"
+    b: "一張長條圖呈現花費金額、一張散佈圖呈現轉換率、一張折線圖呈現趨勢"
+    c: "一張長條圖呈現花費金額、一張長條圖呈現轉換率、一張折線圖呈現趨勢"
+    d: "一張圓餅圖呈現花費金額、一張箱型圖呈現轉換率、一張散佈圖呈現趨勢"
+  correct: "c"
+  explanation:
+    why_correct: "各通路花費金額適合用長條圖比較大小；各通路轉換率也適合用長條圖比較；轉換率隨月份的變化趨勢適合用折線圖呈現。三者搭配最能清楚傳達各項資訊。"
+    why_not_a: "圓餅圖只適合呈現佔比，無法有效呈現金額比較或時間趨勢。"
+    why_not_b: "散佈圖適合呈現兩個連續變數的相關性，用來呈現各通路轉換率的比較不夠直覺，長條圖更適合。"
+    why_not_d: "圓餅圖不是比較金額的最佳選擇；箱型圖用於呈現資料分布而非各通路間的比較；散佈圖不適合呈現時間趨勢。"
+  keywords:
+    - "資料呈現"
+    - "圖表選擇"
+    - "長條圖"
+    - "折線圖"
+  exam_trap: false
+
+- id: "L11202-Q30"
+  topic_code: "L11202"
+  item_code: "L11202"
+  difficulty: 5
+  question: "某保險公司正在開發理賠風險預測模型。資料集中「客戶月收入」有 15% 的缺失值，且已知收入分布嚴重右偏（少數高收入者拉高平均值）。下列哪種缺失值處理方式最適合此情境？"
+  options:
+    a: "刪除所有含缺失值的資料列"
+    b: "使用全體客戶的平均月收入填補"
+    c: "使用全體客戶的中位數月收入填補"
+    d: "統一填入 0 元"
+  correct: "c"
+  explanation:
+    why_correct: "當資料分布嚴重右偏時，平均值會被少數極端高值拉高，不能代表多數人的收入水準。中位數不受極端值影響，更能反映「典型」收入，因此是右偏分布下填補缺失值的較佳選擇。"
+    why_not_a: "15% 的缺失率相當高，直接刪除會損失大量有效資料，影響模型的訓練品質與代表性。"
+    why_not_b: "右偏分布下平均值偏高，用平均值填補會讓缺失值客戶的「收入」普遍被高估，引入系統性偏差。"
+    why_not_d: "填入 0 元代表「沒有收入」，但缺失不等於沒有收入，這樣填補會嚴重扭曲資料分布並誤導模型。"
+  keywords:
+    - "缺失值"
+    - "Missing Value"
+    - "中位數填補"
+    - "右偏分布"
+  exam_trap: true
