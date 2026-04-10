@@ -16,10 +16,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Defensible moat:** Cert prep is outcome-binary (pass or fail). LevelCert owns that outcome — AI-generated content + mock exam system + pass guarantee. This survives AI commoditization because the passing score can't be faked.
 
-**Business model:** Pay-per-course with 3-month access.
-- **Failed exam (1st time):** 1 free 3-month extension — student forwards official IPAS failure email (from registered email) to trigger n8n automation that verifies and extends `access_expires_at` in Supabase.
+**Business model:** Pay-per-course with 3-month initial access.
+- **Failed exam (1st time):** 1 free **6-month** extension — student forwards official IPAS failure email (from registered email) to trigger n8n automation that verifies and extends `access_expires_at` in Supabase. Rationale: IPAS AI 應用規劃師 runs ~3 times per year, so a 3-month extension could miss the next exam window entirely. 6 months guarantees at least one more exam attempt.
 - **Failed exam (2nd time / after extension used):** 50% discount code to repurchase the course.
-- **Maximum free access:** 6 months (3 + 3). No further free extensions.
+- **Maximum free access:** 9 months (3 initial + 6 extension). No further free extensions.
+
+**Pricing ladder (IPAS AI 初級 pilot, decided 2026-04-10):**
+| Tier | Price (NTD) | Eligibility |
+|---|---|---|
+| 社團團購 | 1,200/seat | Verified university club/student org, 20+ seats |
+| 學生價 | 1,480 | Verified .edu.tw email OR student ID — 大學+研究所 only |
+| 創始會員 | 1,980 | First 20 seats (LINE group pre-sell) |
+| 早鳥價 | 2,980 | Seats 21–70 |
+| 正式價 | 3,980 | Seat 71+ |
+
+Student tier is cohort-locked (first 30 days after launch only) to protect the founding/early-bird anchors. Do not raise above NT$3,980 until 10+ documented alumni passes exist.
 
 ## Repository Structure
 
@@ -55,7 +66,7 @@ levelcert/
 **Full details:** See `docs/planning/ARCHITECTURE.md` (single source of truth for tech stack, architecture decisions, content protection strategy, data flow, and Supabase RLS).
 
 **Quick reference:**
-- **Web:** Next.js 14+ (App Router) + Tailwind CSS + shadcn/ui → Vercel
+- **Web:** Next.js 16.2 (App Router) + React 19 + Tailwind CSS 4 + shadcn/ui → Vercel. ⚠️ Next 16 has breaking changes vs. training data — read `web/AGENTS.md` and `web/node_modules/next/dist/docs/` before writing Next.js code.
 - **Backend:** Supabase (PostgreSQL + RLS + Edge Functions) — all business logic here, never in Next.js
 - **Auth:** Clerk | **Payments:** Stripe | **Video:** Bunny.net | **Automation:** n8n | **AI:** Gemini 2.0 Flash
 - **Phase 1:** Traditional Chinese only, dark mode only
@@ -89,7 +100,13 @@ Before building any UI page or component, read `design-system/MASTER.md` (global
 
 ## Current State
 
-Project is in **scaffolding phase** — repository structure is set up, no application code written yet. Existing files are planning documents in `docs/`.
+**Launch sprint (Phase 0):** Founder sits IPAS AI 中級 exam 2026-05-25 as a public forcing function. Target: 5 paying pre-orders by Apr 21, 40 students by May 25, 100 by Jul 10. Daily operating card is [docs/launch/START-HERE.md](docs/launch/START-HERE.md); week-by-week checklist is [docs/launch/TODO.md](docs/launch/TODO.md).
+
+**`web/` (the product):** Next.js 16.2 app, Vercel-linked, deployed to levelcert.com. The marketing landing page at `web/app/(marketing)/page.tsx` exists but has known fake-claim issues (92% 通過率 badge, `sampleTestimonials`) that must be fixed before sending traffic — see TODO.md Week 1. Existing components: marketing sections, course/lesson/quiz shells, RPG widgets (xp, hp, radar, streak, badges) under `web/components/rpg/`.
+
+**Content:** IPAS 初級 lessons L11101/L11102/L11201/L11202 are shipped with question pools; remaining 初級 lessons pending per `docs/content-roadmap.md`.
+
+**Not yet built:** Supabase schema/migrations, Clerk auth wiring, Stripe webhook → access provisioning, mock exam engine, n8n extension automation. Week 1 uses a Stripe Payment Link + manual provisioning as the cheapest path to pre-orders.
 
 <!-- VERCEL BEST PRACTICES START -->
 ## Best practices for developing on Vercel
