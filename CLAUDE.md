@@ -16,19 +16,22 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Defensible moat:** Cert prep is outcome-binary (pass or fail). LevelCert owns that outcome — AI-generated content + mock exam system + pass guarantee. This survives AI commoditization because the passing score can't be faked.
 
-**Business model:** Pay-per-course with 3-month initial access.
-- **Failed exam (1st time):** 1 free **6-month** extension — student forwards official IPAS failure email (from registered email) to trigger n8n automation that verifies and extends `access_expires_at` in Supabase. Rationale: IPAS AI 應用規劃師 runs ~3 times per year, so a 3-month extension could miss the next exam window entirely. 6 months guarantees at least one more exam attempt.
+**Business model:** Pay-per-course. Access policy differs by tier (see table below) because the 2026 exam calendar creates a pre-order access problem — students who buy in Apr–May on a standard 3-month clock would see their access expire before the first sittable exam (Aug 15).
+
+- **Failed exam (1st time):** 1 free **6-month** extension — student forwards official IPAS failure email (from registered email) to trigger n8n automation that verifies and extends `access_expires_at` in Supabase. Rationale: **中級 runs only 2× per year** (~6 months apart — in 2026, May 23 and Nov 14), so any extension shorter than 6 months would guarantee a failed 中級 student cannot reach the next exam. 初級 runs 4× per year (Mar/May/Aug/Nov) so it is not the binding constraint. Sizing the extension for 中級 keeps the policy simple (one number for both levels) and always leaves at least one retry window. See [docs/launch/ipas-exam-calendar-2026.md](docs/launch/ipas-exam-calendar-2026.md) for the full schedule.
 - **Failed exam (2nd time / after extension used):** 50% discount code to repurchase the course.
-- **Maximum free access:** 9 months (3 initial + 6 extension). No further free extensions.
+- **Maximum free access:** Through 2026-12-31 for pre-launch cohorts (founding, early-bird, student, club). Post-launch (正價) is 9 months (3 initial + 6 extension). No further free extensions beyond that.
 
 **Pricing ladder (IPAS AI 初級 pilot, decided 2026-04-10):**
-| Tier | Price (NTD) | Eligibility |
-|---|---|---|
-| 社團團購 | 1,200/seat | Verified university club/student org, 20+ seats |
-| 學生價 | 1,480 | Verified .edu.tw email OR student ID — 大學+研究所 only |
-| 創始會員 | 1,980 | First 20 seats (LINE group pre-sell) |
-| 早鳥價 | 2,980 | Seats 21–70 |
-| 正式價 | 3,980 | Seat 71+ |
+| Tier | Price (NTD) | Eligibility | Access policy |
+|---|---|---|---|
+| 社團團購 | 1,200/seat | Verified university club/student org, 20+ seats | Through **2026-12-31** (per-deal override OK) |
+| 學生價 | 1,480 | Verified .edu.tw email OR student ID — 大學+研究所 only | Through **2026-12-31** |
+| 創始會員 | 1,980 | First 20 seats (LINE group pre-sell) | Through **2026-12-31** (founding perk) |
+| 早鳥價 | 2,980 | Seats 21–70 | Through **2026-12-31** (early-bird perk) |
+| 正式價 | 3,980 | Seat 71+ | 3 months initial + 6-month extension on fail |
+
+**Why the through-2026-12-31 access window for all pre-launch tiers (decided 2026-04-10):** With a vanilla 3-month access clock, a Week 1 founding buyer (~Apr 16) would see access expire ~Jul 16, **30 days before** the first sittable 初級 exam on Aug 15 (because 初級 第二次 registration for May 16 already closed at noon on Apr 10 — every Week 1+ student's first real exam is Aug 15). Locking all pre-launch tiers to 2026-12-31 means every founding/early-bird/student/club buyer gets to attempt **both** the Aug 15 AND Nov 7 exams from a single purchase, with zero extension paperwork. It's also a legitimate founding perk that differentiates pre-launch from 正價. Marketing line: 「創始 / 早鳥會員享完整課程存取至 2026 年底，保證至少兩次正式考試機會。」
 
 Student tier is cohort-locked (first 30 days after launch only) to protect the founding/early-bird anchors. Do not raise above NT$3,980 until 10+ documented alumni passes exist.
 
@@ -100,7 +103,7 @@ Before building any UI page or component, read `design-system/MASTER.md` (global
 
 ## Current State
 
-**Launch sprint (Phase 0):** Founder sits IPAS AI 中級 exam 2026-05-25 as a public forcing function. Target: 5 paying pre-orders by Apr 21, 40 students by May 25, 100 by Jul 10. Daily operating card is [docs/launch/START-HERE.md](docs/launch/START-HERE.md); week-by-week checklist is [docs/launch/TODO.md](docs/launch/TODO.md).
+**Launch sprint (Phase 0):** Founder sits IPAS AI 中級 exam 2026-05-23 (Sat) as a public forcing function. Target: 5 paying pre-orders by Apr 21, 40 students by May 23, 100 by Jul 10. Daily operating card is [docs/launch/START-HERE.md](docs/launch/START-HERE.md); week-by-week checklist is [docs/launch/TODO.md](docs/launch/TODO.md); 2026 exam calendar source of truth is [docs/launch/ipas-exam-calendar-2026.md](docs/launch/ipas-exam-calendar-2026.md).
 
 **`web/` (the product):** Next.js 16.2 app, Vercel-linked, deployed to levelcert.com. The marketing landing page at `web/app/(marketing)/page.tsx` exists but has known fake-claim issues (92% 通過率 badge, `sampleTestimonials`) that must be fixed before sending traffic — see TODO.md Week 1. Existing components: marketing sections, course/lesson/quiz shells, RPG widgets (xp, hp, radar, streak, badges) under `web/components/rpg/`.
 

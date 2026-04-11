@@ -1,8 +1,10 @@
 # University Club Outreach Playbook
 
-**Purpose:** Land 2–3 bulk-deal partnerships with Taiwanese university AI/CS/business clubs by Week 10.
+**Purpose:** Land 2–3 bulk-deal partnerships with Taiwanese university AI/CS/business clubs.
 **Economics:** NT$1,200 × 20 seats = NT$24,000 per club deal. 3 clubs = NT$72,000 + 60 paying students in one motion.
-**Timing:** Run this campaign in Phase 2 (Weeks 7–10, after June IPAS exam pass data exists).
+**Timing:** **Earliest send date is 2026-09-05**, after 初級 第三次 results drop on 2026-09-02. Original plan targeted June — that was wrong for two reasons: (1) there IS no June IPAS exam in 2026 (first real student exam is **8/15**, results **9/2**), so you have no alumni testimonials before September; (2) university clubs are on summer break through August and don't plan fall-semester activities until early September. Outreach window: **Sep 5 – Oct 31**. See [ipas-exam-calendar-2026.md](./ipas-exam-calendar-2026.md) for the full schedule.
+
+> ⛔ **Do not send any club outreach email before 2026-09-05.** You only get one first-cold-email per club — wasting it without real alumni data burns the target. If it's before Sep 2 and you're tempted, re-read Warning 3 in [START-HERE.md](./START-HERE.md).
 
 ---
 
@@ -233,8 +235,8 @@ Create `docs/launch/outreach-tracker.md` with this structure:
 
 | # | University | Club | President | Contact | First contacted | Status | Next action | Notes |
 |---|---|---|---|---|---|---|---|---|
-| 1 | 台大 | AI Club | [name] | [email] | 2026-06-05 | sent_email | f/u Jun 10 | Referenced their April hackathon |
-| 2 | 政大 | 資訊社 | [name] | [FB msg] | 2026-06-05 | sent_email | f/u Jun 10 | |
+| 1 | 台大 | AI Club | [name] | [email] | 2026-09-05 | sent_email | f/u Sep 15 | Referenced their spring hackathon |
+| 2 | 政大 | 資訊社 | [name] | [FB msg] | 2026-09-05 | sent_email | f/u Sep 15 | |
 
 Status values: sent_email, followup_1, followup_2, replied_interested, discovery_call_scheduled, deal_closed, cold_no_reply, declined
 ```

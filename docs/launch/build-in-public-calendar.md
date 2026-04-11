@@ -1,6 +1,8 @@
-# 45-Day Build-in-Public Content Calendar
+# 43-Day Build-in-Public Content Calendar
 
-**Timeline:** 2026-04-10 → 2026-05-25 (founder sits IPAS AI 中級 exam)
+**Timeline:** 2026-04-10 → 2026-05-23 (founder sits IPAS AI 中級 exam — see [ipas-exam-calendar-2026.md](./ipas-exam-calendar-2026.md))
+
+> **Heads-up:** this file was originally drafted as a 45-day calendar. The real exam is on **May 23 (Sat)**, not May 25, so the calendar is **43 days**, not 45. The "Day X/45" numbering below hasn't been mass-renumbered yet — treat the last two days (Day 44 and Day 45) as cut, OR compress them into the final-week block. The exam-day post still lands on whichever day you actually sit the exam.
 **Hook:** *"I'm building an IPAS AI prep platform while studying for the 中級 exam with it."*
 **Primary channels:** Threads (main), IG Reels (cross-post), Dcard (weekly long-form)
 **Cross-post secondary:** FB社團 (weekly value), YouTube Shorts (cut from Reels)
@@ -166,7 +168,7 @@ Share a thought about iPAS exams, studying, career transitions, certifications, 
 
 ---
 
-### EXAM DAY: May 25 — The pivotal post
+### EXAM DAY: May 23 (Sat) — The pivotal post
 
 **Write BOTH versions in advance. Post within 24 hours of exam.**
 

@@ -1,7 +1,7 @@
 # LevelCert Launch TODO
 
 **Current phase:** Phase 0 — Validation Sprint
-**Founder 中級 exam:** 2026-05-25 (45 days)
+**Founder 中級 exam:** 2026-05-23 (Sat) — 43 days from 2026-04-10. See [ipas-exam-calendar-2026.md](./ipas-exam-calendar-2026.md) for full 2026 IPAS schedule.
 **North star metric:** Paying pre-orders per week
 
 Work top-to-bottom. Don't skip ahead. If something blocks you for >24h, raise it.
@@ -20,9 +20,9 @@ Work top-to-bottom. Don't skip ahead. If something blocks you for >24h, raise it
 ### Critical fixes to `web/app/(marketing)/page.tsx` (must do — some are legal risk)
 - [ ] **URGENT — Issue #1:** Remove the fake "92% 通過率" badge (~line 244). You have no pass rate yet. Replace with 「創始會員招募中 · 前 20 位 NT$1,980」scarcity badge. *(Taiwan 公平交易法 false-advertising risk.)*
 - [ ] **URGENT — Issue #2:** Remove fake testimonials (Section 5 uses `sampleTestimonials.slice(0, 3)`). Replace the entire section with a "創辦人自白" block (founder's real 初級 pass story + score). Alumni testimonials come in Phase 2.
-- [ ] **Issue #3:** Update "免費延長 **3** 個月" → "免費延長 **6** 個月" in pricing section (~line 319) AND FAQ (~line 358). Add one sentence: 「因為 iPAS 一年只考 2–3 次，6 個月保證你至少趕得上下一場。」
-- [ ] **Issue #4:** Add a founder story section (hero or just above pricing). Include: name, the fact you self-studied + passed 初級, why you're building this, your 中級 exam date (2026-05-25) as public accountability. This is your biggest asset — currently completely absent.
-- [ ] **Issue #5:** Replace the flat `sampleCourses` price with the full ladder — 創始會員 NT$1,980 (前 20 位) / 早鳥 NT$2,980 (21–70 位) / 正價 NT$3,980 — with a visible "剩 X 位" counter. Student price NT$1,480 as a small callout below.
+- [ ] **Issue #3:** Update "免費延長 **3** 個月" → "免費延長 **6** 個月" in pricing section (~line 319) AND FAQ (~line 358). Add one sentence: 「因為 iPAS AI 中級一年只考 2 次（5 月 + 11 月），6 個月保證你至少趕得上下一場。」
+- [ ] **Issue #4:** Add a founder story section (hero or just above pricing). Include: name, the fact you self-studied + passed 初級, why you're building this, your 中級 exam date (2026-05-23) as public accountability. This is your biggest asset — currently completely absent.
+- [ ] **Issue #5:** Replace the flat `sampleCourses` price with the full ladder — 創始會員 NT$1,980 (前 20 位) / 早鳥 NT$2,980 (21–70 位) / 正價 NT$3,980 — with a visible "剩 X 位" counter. Student price NT$1,480 as a small callout below. **Add the access-window line on every tier card**: 「創始 / 早鳥 / 學生 / 社團方案：完整課程存取至 2026/12/31，保證參加 8/15 + 11/7 兩次考試」. 正價 (seat 71+) shows the standard "3 個月初始 + 6 個月考不過延長".
 - [ ] **Issue #6:** Tone down RPG language in the hero and Section 3. "RPG 式學習體驗", "冒險者們", "小怪戰鬥測驗", "魔王戰模擬考", "HP 血條" → replace with outcome language: 「自學通過 iPAS AI 初級」, 「章節練習」, 「模擬考」, 「弱點雷達」. RPG stays in the product, not the marketing copy. (See memory: `project_positioning_and_rpg.md`.)
 
 ### Pre-order path (ship the cheapest possible checkout)
@@ -139,14 +139,14 @@ Work top-to-bottom. Don't skip ahead. If something blocks you for >24h, raise it
 
 ---
 
-## Week 6: May 15 – May 25 — Founder exam week
+## Week 6: May 15 – May 23 — Founder exam week
 
 ### Core ship (mostly content, minimal new build)
 - [ ] Lock 中級 content for founder's own study by May 15
 - [ ] Final 10-day cram: founder uses own platform exclusively
 - [ ] Daily *"Final 10 days"* countdown posts on Threads/IG
 - [ ] Ask founding cohort for public testimonials (*"Would you write 1 sentence I can share?"*)
-- [ ] **May 25: Founder sits IPAS AI 中級 exam**
+- [ ] **May 23 (Sat): Founder sits IPAS AI 中級 exam 第一次** (results 6/12)
 - [ ] **Target: 40 cumulative students by exam day**
 
 ### The pivotal post (write in advance)
@@ -162,43 +162,73 @@ Work top-to-bottom. Don't skip ahead. If something blocks you for >24h, raise it
 
 ---
 
-## Weeks 7–10: May 26 – Jun 22 — First alumni passes + university clubs
+## Weeks 7–16: May 26 – Aug 15 — Recovery + 初級 第三次 prep sprint
+
+> **There is no June exam.** First real student exam is **2026-08-15**, results **2026-09-02**. Do NOT send club outreach emails in June/July — no alumni testimonials yet, and clubs are on summer break. Club outreach is Phase 3 starting Sep 5.
 
 ### Core ship
-- [ ] Watch for June IPAS exam (exact date per official schedule)
-- [ ] Message each 初級 student 24h before their exam: *"You've got this. One message if you pass."*
-- [ ] Collect first alumni testimonials within 48h of each pass
-- [ ] Send university club outreach emails (use `docs/launch/university-club-outreach.md`)
-  - Target 10 clubs in Week 7
-  - Follow up non-responders in Week 9
-  - **Target: 2 confirmed bulk deals by end of Week 10**
-- [ ] **Target: 70 paying students cumulative**
+- [ ] Publish the founder exam-day post within 24h of the 6/12 result announcement (pass OR fail version)
+- [ ] Pivot daily content from "my own exam prep" to "coaching my students through 8/15"
+- [ ] Run a weekly cohort check-in (LINE group call or async Q&A) starting mid-June
+- [ ] 初級 content 100% locked by Jun 30 — no more lesson rewrites
+- [ ] Build alumni-testimonial collection flow (private LINE → public screenshot with consent) — ready to use on Sep 2
+- [ ] Draft university club pitch deck using placeholder alumni data — ready to swap in real data Sep 2
+- [ ] Early-bird CTA stays on landing page throughout; raise CTA only after Aug 1 when seats 21–70 start filling
+- [ ] Week before the exam: message every student individually: *"You've got this. One LINE message if you pass — I'll celebrate with you."*
+- [ ] **2026-08-15 (Sat):** 初級 students sit 第三次. Post the cohort exam-day thread. Nothing else to ship this day.
+- [ ] **Target by Jul 10: 70 paying students cumulative**
 
-### Landing page updates
-- [ ] Add first 3 alumni testimonials to hero (names, scores, photos if consent)
-- [ ] Add "已有 XX 位通過認證" counter
-- [ ] Raise main CTA from "founding" to "early bird NT$2,980"
+### Landing page updates (during Phase 2, not end)
+- [ ] Replace founder-story section with student-cohort-progress section by Jul 15
+- [ ] Add "founding cohort sitting 8/15 exam" public counter
+- [ ] Do NOT add alumni testimonials yet — wait for real Sep 2 data
 
-### Weeks 7–10 success criteria
-- [ ] 3+ documented alumni passes
-- [ ] 70 paying students
-- [ ] 1+ university club deal closed (20+ seats each)
+### Phase 2 success criteria
+- [ ] Founder exam result posted publicly within 24h of Jun 12
+- [ ] 70 paying students cumulative by Jul 10
+- [ ] Alumni testimonial collection flow ready and dry-run tested by Aug 1
+- [ ] Club pitch deck drafted (waiting on Sep 2 data)
 
 ---
 
-## Weeks 11–13: Jun 23 – Jul 10 — Scale proof
+## Weeks 17–24: Aug 16 – Oct 31 — First alumni + university club outreach
+
+### Core ship (waiting on Sep 2 results)
+- [ ] **2026-09-02:** iPAS publishes 初級 第三次 results. Message every student that day.
+- [ ] Collect alumni testimonials within 48h of results (real names + scores + photos with consent)
+- [ ] Add 3 real alumni testimonials to landing page hero by Sep 5
+- [ ] Add "已有 X 位學員通過認證" counter — use the real number
+- [ ] Raise main CTA from "founding" to "early bird NT$2,980"
+- [ ] Publish first public pass-rate post on Dcard / Threads by Sep 8: e.g., *"我的第一屆 10 位學員中，X 位通過"*
+- [ ] **Sep 5: Send first batch of 10 university club outreach emails** using [university-club-outreach.md](./university-club-outreach.md)
+  - Target 10 clubs in the first week (Sep 5 – Sep 12)
+  - Follow up non-responders after 10 days (Sep 15+)
+  - Second batch of 10 if first batch doesn't yield 2+ deals (Oct 1)
+  - **Target: 2 confirmed bulk deals by Oct 15**
+- [ ] Ship dashboard MVP (progress tracking, mock history, weak areas) by Sep 20 — needed as club pitch demo
+- [ ] Ship student verification flow (automated .edu.tw email check) by Sep 30 — needed before scaling student-tier sales
+- [ ] Minimal RPG layer: XP on lesson complete, level-up toast, daily streak counter (NOT guilds, NOT boss fights) — nice-to-have, cut if it delays club demos
+- [ ] **Target: 100 paying students cumulative by Oct 31**
+
+### Phase 3 success criteria
+- [ ] 3+ documented alumni passes on landing page
+- [ ] Published pass rate visible on hero
+- [ ] 100 paying students cumulative
+- [ ] 1+ university club deal closed (20+ seats)
+
+---
+
+## Weeks 25–32: Nov 1 – Dec 31 — Q4 exam cohorts + scale decision
 
 ### Core ship
-- [ ] Dashboard MVP: progress tracking, mock history, weak areas
-- [ ] Minimal RPG layer: XP on lesson complete, level-up toast, daily streak counter (NOT guilds, NOT boss fights)
-- [ ] Student verification flow (automated .edu.tw email check)
-- [ ] Publish first pass rate publicly (e.g., "8/10 初級 students passed")
-- [ ] **Target: 100 paying students cumulative**
-
-### Decision gate (Jul 10)
-- [ ] Count total paying students
-- [ ] If ≥50: green-light next vertical — choose between 中級 full launch, AWS AI Practitioner, Google AI Essentials
-- [ ] If <50: do not expand. Spend next 30 days fixing distribution, not supply.
+- [ ] **2026-11-07 (Sat):** 初級 第四次 exam — second student cohort sits. Student retakes from the Aug 15 failures also sit here.
+- [ ] **2026-11-14 (Sat):** 中級 第二次 exam — founder retakes if 5/23 failed. Any 中級 pre-sale students sit here.
+- [ ] **2026-11-25:** Results for both exams announced. Second alumni testimonial wave.
+- [ ] Publish year-end pass rate by Dec 5: cumulative "X / Y 學員通過" number
+- [ ] **2026-12-15: Next cert decision gate**
+  - If ≥50 paying students total: green-light next vertical — choose between 中級 full launch, AWS AI Practitioner, Google AI Essentials
+  - If <50: do not expand. Spend next 30 days fixing distribution, not supply.
+- [ ] **2026-12-31:** Pre-launch cohort access window closes. 正價 (seat 71+) tier becomes the only active tier. Extension policy kicks in normally from 2027 onward.
 
 ---
 

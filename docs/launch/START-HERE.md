@@ -61,7 +61,7 @@ Every Monday morning, in this order. Set a 5-minute timer.
 - [ ] Decide next week's ONE priority (will become Monday's sticky note)
 - [ ] Glance at the 3 warnings below — still honoring them?
 
-### Every month (Phase transitions: Apr 24, May 25, Jun 22, Jul 10)
+### Every month (Phase transitions: Apr 24, May 23, Jul 10, Sep 2, Oct 31, Dec 15)
 
 - [ ] Check the kill criteria in [ROADMAP.md](./ROADMAP.md)
 - [ ] Honest gut check: am I drifting toward the anti-distractions list?
@@ -76,12 +76,13 @@ Check the roadmap to see which phase you're in: [ROADMAP.md](./ROADMAP.md)
 | Phase | Dates | Target |
 |---|---|---|
 | **Phase 0: Validation Sprint** | Apr 10 – Apr 24 | 5 paying pre-orders, landing page live |
-| Phase 1: Build + Ship 初級 + Dogfood 中級 | Apr 25 – May 25 | 40 paying students, founder passes 中級 |
-| Phase 2: First Alumni + Club Outreach | May 26 – Jun 22 | 70 students, 3 alumni passes, 1 club deal |
-| Phase 3: Scale Proof | Jun 23 – Jul 10 | 100 students, published pass rate, next-cert decision |
+| Phase 1: Build + Ship 初級 + Dogfood 中級 | Apr 25 – May 23 | 40 paying students, founder sits 中級 第一次 |
+| Phase 2: Recovery + 初級 第三次 prep sprint | May 26 – Aug 15 | 70 students, student cohort ready for 8/15 exam |
+| Phase 3: First Alumni + Club Outreach | Aug 16 – Oct 31 | 100 students, 3+ alumni passes, 1+ club deal |
+| Phase 4: Q4 Exams + Scale Decision | Nov 1 – Dec 31 | Q4 results, year-end pass rate, next-cert gate |
 
 **Today's date:** Update mentally each week.
-**Hard deadline burned into brain:** 2026-05-25 — founder sits IPAS AI 中級 exam.
+**Hard deadline burned into brain:** 2026-05-23 — founder sits IPAS AI 中級 exam.
 
 ---
 
@@ -100,7 +101,7 @@ The Traditional Chinese copy in [landing-page-copy.md](./landing-page-copy.md) i
 - **By Apr 16:** All 6 critical fixes shipped to production; Stripe Payment Link live.
 - **By Apr 24:** Rewrite the 3 pain points using real verbatim quotes.
 - **By May 8:** Rewrite the FAQ from the top 5 objections the first buyers told you.
-- **By Jun 15:** Replace the founder-only hero with alumni testimonials.
+- **By Sep 5:** Replace the founder-only hero with real alumni testimonials (after 9/2 results).
 
 Never treat a single version of the copy as finished. The best landing page in Taiwan for iPAS AI prep doesn't exist yet — you're going to iterate into it.
 
@@ -115,15 +116,15 @@ The 45 daily post ideas in [build-in-public-calendar.md](./build-in-public-calen
 
 The calendar exists to remove decision fatigue, not to replace judgment.
 
-### Warning 3: University club outreach is Phase 2, not Week 1
+### Warning 3: University club outreach is Phase 3, not Phase 2
 
-Do NOT send cold emails to club presidents in Weeks 1–6.
+Do NOT send cold emails to club presidents before September.
 
-Your entire pitch to clubs depends on one sentence: *"My students are passing the exam."* Without at least 1 documented alumni pass, you have nothing to pitch.
+Your entire pitch to clubs depends on one sentence: *"My students are passing the exam."* Without at least 1 documented alumni pass, you have nothing to pitch. And until 2026-09-02, you don't have any — the first real student exam is **2026-08-15**, with results announced **2026-09-02**. (There IS no June IPAS exam — that assumption from the original plan was wrong. See [ipas-exam-calendar-2026.md](./ipas-exam-calendar-2026.md).)
 
-**Earliest date to start club outreach: 2026-06-01** (after the June IPAS exam results come in).
+**Earliest date to start club outreach: 2026-09-05** (after the Aug 15 exam results come in, and after fall semester begins).
 
-If you send cold emails to clubs in April or May and they say no, you've burned 10 of the best targets in the country. You only get one first cold email per club — save it for when the story is strong.
+If you send cold emails to clubs in April–August and they say no, you've burned 10 of the best targets in the country. You only get one first cold email per club — save it for when the story is strong AND the clubs are actually operating (they're on summer break through August).
 
 ---
 
@@ -184,8 +185,8 @@ When this file doesn't have the answer, go here:
 > I will fix the existing landing page's 6 critical issues by Apr 14 (especially the fake "92% 通過率" and fake testimonials).
 > I will post the LINE group pre-sell by Apr 15.
 > I will have 5 paying founding seats by Apr 21.
-> I will pass — or honestly fail — the IPAS AI 中級 exam on May 25 in public.
-> I will have 40 paying students by May 25.
+> I will pass — or honestly fail — the IPAS AI 中級 exam on May 23 in public.
+> I will have 40 paying students by May 23.
 > I will have 100 paying students by Jul 10.
 >
 > I will NOT read business-strategy docs.
