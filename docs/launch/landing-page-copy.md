@@ -1,8 +1,17 @@
 # Landing Page Copy (Traditional Chinese)
 
-**Purpose:** Copy for the Phase 0 landing page (Carrd/Framer).
-**Tone:** Founder-led, direct, Traditional Chinese, no translated-English feel.
-**Replace `[YOUR_NAME]`, `[EXAM_MONTH]`, `[LINE_ID]`, `[EMAIL]` before publishing.**
+**Purpose:** Copy for the Phase 0 landing page at `web/app/(marketing)/page.tsx` (real Next.js 16.2 app, NOT Carrd/Framer).
+**Tone:** Founder-led, **peer-voice not expert-voice**, direct, Traditional Chinese, no translated-English feel. The founder (郭呈祥) is explicitly positioning as "a working professional who self-studied and passed" — NOT as a teacher or expert. See Founder Section for the full rationale.
+**Embedded facts — do NOT edit without verifying against source documents:**
+- **Name:** 郭呈祥
+- **Age:** 54 (born 1971-09-12)
+- **初級 cert:** 115-01-Z01 (AI應用規劃師-初級能力鑑定), issued 2026 by 經濟部產業發展署 / 工研院
+- **初級 scores (2026-03-21 第一次):** 人工智慧基礎概論 **66 (N)** / 生成式 AI 應用與規劃 **80 (Y)** → 平均 **73**
+- **iPAS 初級 授證規則:** 兩科平均 ≥ 70 授證 (individual (N)/(Y) marks do NOT determine cert-level pass)
+- **中級 第一次 exam:** 2026-05-23 (Sat), results announced 2026-06-12
+- **中級 第二次 exam (retake window):** 2026-11-14 (Sat)
+
+**Remaining placeholders to replace before publishing:** `[LINE_ID]`, `[EMAIL]`, `[Threads: @LINE_ID]` (Threads handle).
 
 ---
 
@@ -27,8 +36,9 @@
 
 ### 副標題
 
-> AI 家教逐題解析，找出你的弱點，量身訂做複習路徑。
-> 這是為上班族、轉職者、學生做的 — 不是週末實體班。
+> **我不是要教你考 90 分 — 我要讓你「確定」過 70。**
+> AI 家教逐題解析 + 弱點雷達圖，直接幫你鎖定從 66 變 75 的那關鍵幾題。
+> 24/7 自學，為上班族、轉職者、學生設計 — 不是週末實體班。
 
 ### Hero CTA button
 
@@ -36,7 +46,7 @@
 
 ### Hero 下方信任條（social proof row）
 
-> 由 iPAS AI 應用規劃師初級通過者 [YOUR_NAME] 親自製作
+> 由自學通過初級、正在準備 2026/5/23 中級考試的上班族 **郭呈祥** 親自製作
 > ✓ 24/7 自學 ✓ AI 逐題家教 ✓ 不過延長 6 個月 ✓ 模擬考弱點分析
 
 ---
@@ -94,35 +104,64 @@
 
 ---
 
-## 4. Founder Section（我通過了）
+## 4. Founder Section（我不是老師）
+
+> **Voice note (do NOT delete):** This whole section is deliberately written in peer-voice, not expert-voice. 郭呈祥 is a working professional who passed 初級 self-studied — NOT a 補習班 老師, NOT an "AI expert," NOT a 大神. In the Taiwan IPAS prep market, every competitor leads with expert credentials — that's the sea. Our wedge is "I was in your exact seat 6 months ago." Resist the urge to inflate credentials when iterating this copy. A modest pass from a real working adult converts better than a fake high score from a polished persona, because the audience is terrified they're not smart enough — they need a beacon, not a benchmark.
 
 ### 區塊標題
 
-> **嗨，我是 [YOUR_NAME]。我通過了這張證照。**
+> **嗨，我是 郭呈祥。54 歲，上班族。不是 iPAS 老師，也不是 AI 專家。**
 
 ### 自我介紹內文
 
-> 我在 [EXAM_MONTH] 一次通過了 iPAS AI 應用規劃師 初級認證。
+> 我在業界上班快 30 年了。去年我的公司開始大量導入 AI 工具，我不想當那個被技術拋下的中年人 — 所以我決定考 iPAS AI 應用規劃師初級。不是為了換工作、不是為了當講師，就是想用一張能被業界認可的方式證明一件事：**54 歲也還學得動新東西。**
 >
 > 準備的過程中，我找遍了臺灣市面上的課程：
 >
-> - 工研院、政大 SCE、商研院 — 名氣大，但只有週末實體班，我根本去不了
+> - 工研院、政大 SCE、商研院 — 名氣大，但只有週末實體班，我下班根本去不了
 > - Tiandiren、iSpan — 混合班，影片卻只有 30 天權限
 > - TAIA — 線上課，但沒有 AI 解題、沒有弱點分析
 >
-> 我上班族，每天下班回家只剩 1 小時能讀書。**我需要的是：隨時可以看、不懂的地方有 AI 解釋給我聽、模擬考出分數告訴我還差多少。**
+> 沒有一個適合像我這樣白天要上班、只能晚上跟週末自學的中年人。
 >
-> 沒有人在做這個，所以我自己做了。
+> 所以我一邊自己準備、一邊把筆記整理成章節。**最後我通過了初級（證號 115-01-Z01，你可以到 iPAS 官網成績查詢系統查證）。**
 >
-> 現在我正在準備 **2026 年 5 月 23 日**的中級考試 — 用的就是 LevelCert 自己的中級課程，邊建邊學。你可以在我的 [Threads/IG] 看到每天的真實學習過程。
+> 但我要誠實告訴你我是怎麼通過的：
 >
-> 如果你也在找一個認真、但可以自學的 iPAS AI 課程 — 這是我做給自己用的，現在也做給你。
+> > **生成式 AI 應用與規劃：80 分 ✓**
+> > **人工智慧基礎概論：66 分 ✗**
+> > **平均 73 分 — iPAS 的授證規則是兩科平均 70 以上**
+>
+> 我是**壓線通過**的。人工智慧基礎概論那一科，我離沒過只差幾題。這不是神話故事 — 這是一個 54 歲上班族、第一次考 AI 證照、一科差點翻車的真實紀錄。
+>
+> 但這就是為什麼我做 LevelCert —
+>
+> **我不是要教你考 90 分。我是要讓你「確定」過 70。**
+>
+> 因為真正拿過 66 分的我，最清楚 66 到 73 之間那關鍵的幾題是什麼 — 哪些觀念最容易誤解、哪些題型是陷阱、AI 家教應該怎麼解釋你才會真正懂。這些細節我已經親身踩過坑了，不需要你再踩一次。
+>
+> LevelCert 就是我一路上希望存在的東西：
+>
+> - 24/7 自學，沒有直播課時間壓力
+> - AI 逐題解析，不是背教科書
+> - 弱點雷達圖，讓你知道自己哪裡最弱
+> - 考不過免費延長 6 個月 — 因為中級一年只考 2 次（5 月 + 11 月），我幫你顧到下一場
+
+### 我會公開考中級 — 不管通過或失敗
+
+> **2026 年 5 月 23 日（週六）我會親自上場考 iPAS AI 中級第一次**。結果 6/12 公布。
+>
+> 不管通過或沒通過，我都會在這個頁面和 Threads / IG 上**誠實**寫出來。因為如果連創辦人都不敢拿自己的成績當證據，這個平台就沒有存在的價值 — 我初級 66 分都敢攤開來講給你聽了，中級的結果我當然也會照實公開。
+>
+> 而且我會每一天把真實的讀書過程公開：哪些章節卡關、哪些題目寫錯、AI 家教怎麼幫我解釋的。你可以在 [Threads: @LINE_ID] 看到整個 43 天的過程 — 這本身就是 LevelCert 的公開 demo。
+>
+> 如果你也是白天上班、想用最短時間考過 iPAS — 加我 LINE，我們直接聊。我會親自回你。
 
 ### 附圖
 
-- 通過證書截圖（個資打碼）
-- 創辦人大頭照
-- 建議放一張正在讀書的照片，手機螢幕露出 LevelCert 介面（後期才有）
+- **創辦人大頭照（Option A）** — 拍攝規範見 [founder-photo-shoot.md](./founder-photo-shoot.md)。**絕不使用 AI 生成、AI 增強、或 stock 風格頭像** — 會直接觸發 Taiwan 讀者的詐騙訊號。必須是手機拍攝的真實自拍，自然光、普通服裝、least-weird 表情。
+- **創辦人讀書照（Option B，加分）** — 真實書桌 + 筆電打開 + 筆記本 + 向上望向鏡頭。比 Option A 更強 — 視覺上直接呼應「白天上班、晚上自學」的整個 founder-story 論述。
+- **通過證書截圖** — iPAS 官方通過證明（個資打碼：姓名遮 1 個字、ID 全遮、只露出「通過」結果）。不需要高畫質，手機截圖即可。
 
 ---
 
@@ -203,7 +242,7 @@
 
 ### Q8：創辦人真的考過嗎？
 
-> 是的。證書截圖在上面那張。有任何懷疑歡迎直接加我的 LINE 當面問我考試內容，我都能回答。
+> 是的。**證號 115-01-Z01**，你可以直接到 iPAS 官網成績查詢系統查證（輸入我的中文姓名 郭呈祥 + 身分證號 — 身分證號加 LINE 私訊我給你）。我是以 **66 + 80（平均 73）壓線通過**的 — iPAS 的授證規則是兩科平均 70 以上。我只通過了初級，沒有教學頭銜、沒有 AI 博士學位。但我會在 **2026 年 5 月 23 日**親自考中級給你看，通過或失敗都會公開寫在這個頁面上。有任何懷疑歡迎直接加我的 LINE 當面問我考試內容，我都能回答。
 
 ---
 
@@ -233,7 +272,9 @@
 ### What this copy gets right
 
 - **Pass guarantee is in the H1.** That's your only differentiator that can be verified instantly.
-- **Founder authority in paragraph form, not credentials.** You're new — lean on story, not titles.
+- **Peer-voice, not expert-voice, in the founder section.** 郭呈祥 is explicitly positioned as "working professional who self-studied and passed" — not a 老師, not an AI expert. The Taiwan IPAS prep market is saturated with expert-voice pages; peer-voice is an unoccupied position and matches the psychological reality of self-studiers who are afraid they're not smart enough.
+- **The modest pass is reframed as an asset, not a weakness.** "如果我可以做到，你也可以" beats "我是神話" for this audience every time. Do not let iterations of this copy drift back toward inflating the credential.
+- **The 2026-05-23 中級 exam is a public commitment, not marketing.** Whether 郭呈祥 passes or fails, the honest post-result post IS the marketing. A fail with a 6-month comeback is a stronger story than a clean pass.
 - **Competitor names are explicit.** Taiwanese buyers trust you more when you name the alternatives and explain the gap. Vague positioning loses.
 - **FAQ addresses the #1 objection first (考不過).** That's what stops 70% of buyers from clicking.
 - **Student tier is prominent, not hidden.** It's a marketing feature, not a discount.
@@ -248,11 +289,15 @@
 
 - ❌ Any mention of RPG, XP, levels, guilds, boss fights
 - ❌ Phase 3+ vision (marketplace, SaaS, multi-cert catalogue)
-- ❌ "Our team" or "we" language when it's just you
+- ❌ "Our team" or "we" language when it's just you (it's 郭呈祥, singular)
+- ❌ Inflated credentials: "資深講師", "AI 專家", "多年教學經驗", "名師" — peer-voice dies the moment you add any of these
+- ❌ AI-generated or AI-enhanced founder photo (see founder-photo-shoot.md — must be a real selfie)
+- ❌ Stock photos of "diverse students at laptops"
 - ❌ Generic edtech buzzwords: "revolutionary", "next-generation", "AI-powered learning experience"
 - ❌ A countdown timer (fake urgency damages trust)
 - ❌ Any "free trial" language (you have a free diagnostic, that's enough)
 - ❌ Email-gated lead magnet PDFs (no one reads them)
+- ❌ Claims of a pass rate, success stories, or testimonials until real alumni exist (legal risk under 公平交易法)
 
 ---
 

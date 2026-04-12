@@ -99,7 +99,7 @@ levelcert/
 
 ## UI Design System
 
-Before building any UI page or component, read `design-system/MASTER.md` (global source of truth) and `design-system/pages/<page>.md` if it exists (page-specific overrides). Do not invent colors, fonts, or styles not in the design system. If these files don't exist yet, follow `docs/planning/WORKFLOW-UI-DESIGN-SYSTEM.md` to generate them first.
+Before building any UI page or component, read `design-system/MASTER.md` (global source of truth) and `design-system/pages/<page>.md` if it exists (page-specific overrides). Do not invent colors, fonts, or styles not in the design system.
 
 ## Current State
 
