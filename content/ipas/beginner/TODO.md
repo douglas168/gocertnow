@@ -29,6 +29,26 @@ Tracks open items across all lessons that need resolution before publishing.
   - 4 analytics types progression pyramid (descriptive→diagnostic→predictive→prescriptive)
 - [ ] **Borderline scope item: standardization numeric properties** — Scope review flagged lines 327/388 mentioning "mean=0, SD=1" as borderline. Currently acceptable with 中級 disclaimer present. Monitor if boundary owner wants stricter enforcement.
 
+### L11203 — 資料隱私與安全
+
+- [ ] **Generate 4 Gemini diagrams** — Prompts ready in `lessons/L11203-資料隱私與安全/diagrams/`. Save generated images to the same folder.
+
+### L11301 — 機器學習基本原理
+
+- [ ] **Generate 4 Gemini diagrams** — Prompts ready in `lessons/L11301-機器學習基本原理/diagrams/`. Save generated images to the same folder.
+
+### L11302 — 常見的機器學習模型
+
+- [ ] **Generate 5 Gemini diagrams** — Prompts ready in `lessons/L11302-常見的機器學習模型/diagrams/`. Save generated images to the same folder.
+
+### L11401 — 鑑別式AI與生成式AI的基本原理
+
+- [ ] **Generate 4 Gemini diagrams** — Prompts ready in `lessons/L11401-鑑別式AI與生成式AI的基本原理/diagrams/`. Save generated images to the same folder.
+
+### L11402 — 鑑別式AI與生成式AI的整合應用
+
+- [ ] **Generate 4 Gemini diagrams** — Prompts ready in `lessons/L11402-鑑別式AI與生成式AI的整合應用/diagrams/`. Save generated images to the same folder.
+
 ### L12301 — 生成式AI導入評估 (not yet started)
 
 - [ ] **Source external document**: 經濟部產業發展署《AI導入指引》— ida.gov.tw or moea.gov.tw
@@ -43,11 +63,11 @@ Tracks open items across all lessons that need resolution before publishing.
 | 2 | L11102 | AI治理概念 | **Done** | 3 (generate diagrams, verify 2 terms) |
 | 3 | L11201 | 資料基本概念與來源 | **Done** | 1 (generate diagrams) |
 | 4 | L11202 | 資料整理與分析流程 | **Done** | 2 (generate diagrams, borderline scope item) |
-| 5 | L11203 | 資料隱私與安全 | Not started | — |
-| 6 | L11301 | 機器學習基本原理 | Not started | — |
-| 7 | L11302 | 常見的機器學習模型 | Not started | — |
-| 8 | L11401 | 鑑別式AI與生成式AI的基本原理 | Not started | — |
-| 9 | L11402 | 鑑別式AI與生成式AI的整合應用 | Not started | — |
+| 5 | L11203 | 資料隱私與安全 | **Done** | 1 (generate diagrams) |
+| 6 | L11301 | 機器學習基本原理 | **Done** | 1 (generate diagrams) |
+| 7 | L11302 | 常見的機器學習模型 | **Done** | 1 (generate diagrams) |
+| 8 | L11401 | 鑑別式AI與生成式AI的基本原理 | **Done** | 1 (generate diagrams) |
+| 9 | L11402 | 鑑別式AI與生成式AI的整合應用 | **Done** | 1 (generate diagrams) |
 | 10 | L12101 | No Code / Low Code的基本概念 | Not started | — |
 | 11 | L12102 | No Code / Low Code的優勢與限制 | Not started | — |
 | 12 | L12201 | 生成式AI應用領域與常見工具 | Not started | — |
@@ -60,19 +80,19 @@ Tracks open items across all lessons that need resolution before publishing.
 
 ## What's Next
 
-**Next lesson:** `/course-generate-lesson L11203` — 資料隱私與安全
+**Next lesson:** `/course-generate-lesson L12101` — No Code / Low Code的基本概念
 
-**Remaining lessons:** 12 of 16 topics left
+**Remaining lessons:** 7 of 16 topics left
 
 | Priority | Topic Code | Topic Name | Notes |
 |---|---|---|---|
 | ~~Done~~ | ~~L11201~~ | ~~資料基本概念與來源~~ | ~~Complete~~ |
 | ~~Done~~ | ~~L11202~~ | ~~資料整理與分析流程~~ | ~~Complete~~ |
-| 5 | L11203 | 資料隱私與安全 | Medium depth, ambiguous scope (see analysis.md) |
-| 6 | L11301 | 機器學習基本原理 | Medium depth |
-| 7 | L11302 | 常見的機器學習模型 | **Deep** — 6+ learning paradigms, scope creep risk |
-| 8 | L11401 | 鑑別式AI與生成式AI的基本原理 | Medium depth |
-| 9 | L11402 | 鑑別式AI與生成式AI的整合應用 | Medium depth |
+| ~~Done~~ | ~~L11203~~ | ~~資料隱私與安全~~ | ~~Complete~~ |
+| ~~Done~~ | ~~L11301~~ | ~~機器學習基本原理~~ | ~~Complete~~ |
+| ~~Done~~ | ~~L11302~~ | ~~常見的機器學習模型~~ | ~~Complete~~ |
+| ~~Done~~ | ~~L11401~~ | ~~鑑別式AI與生成式AI的基本原理~~ | ~~Complete~~ |
+| ~~Done~~ | ~~L11402~~ | ~~鑑別式AI與生成式AI的整合應用~~ | ~~Complete~~ |
 | 10 | L12101 | No Code / Low Code的基本概念 | Shallow |
 | 11 | L12102 | No Code / Low Code的優勢與限制 | Medium depth |
 | 12 | L12201 | 生成式AI應用領域與常見工具 | **Deep** — 8+ named tools |
