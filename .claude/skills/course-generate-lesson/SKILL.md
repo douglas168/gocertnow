@@ -67,42 +67,65 @@ Ask: *"Shall I proceed?"*
 
 ---
 
-## BUILD Phase — Step 1
+## BUILD Phase — Step 1: Content Generation
 
 ### Stage 1: Agent A — Researcher
 
 Launch Agent with prompt from `prompts/researcher.md`. Provide topic info (items, keywords, notes), boundary rule, INTAKE brief. Output: `content/{cert}/{level}/lessons/{topic-code}-{topic-name-zh}/research-notes.md`.
 
-### Stage 2: Agents B, C, D in parallel
+### Stage 2: Agents B, C in parallel
 
-Once research is complete, launch 3 agents in parallel:
+Once research is complete, launch 2 agents in parallel:
 
 - **Agent B — Study Guide Writer** (`prompts/study-guide-writer.md`) — follows the 7-section template. Output: `content/{cert}/{level}/lessons/{topic-code}-{topic-name-zh}/study-guide.md`. May also produce `supplement-*.md` files for subtopics over ~500 words.
 - **Agent C — Question Generator** (`prompts/question-generator.md`) — output: `content/{cert}/{level}/questions/{topic-code}-questions.yaml`.
-- **Agent D — Fact Checker** (`prompts/fact-checker.md`) — output: `content/{cert}/{level}/lessons/{topic-code}-{topic-name-zh}/fact-check-report.md`.
-
-### Stage 3: Agent E — Scope Reviewer
-
-After Agent D completes, launch Agent E (`prompts/scope-reviewer.md`). Checks **only** boundary compliance, separate from fact checking. Output: `content/{cert}/{level}/lessons/{topic-code}-{topic-name-zh}/scope-review.md`.
 
 ---
 
 ## Self-Review — Step 1
 
-Before presenting to the user, run the **Step 1 self-review checklist** in `docs/planning/WORKFLOW-CONTENT-GENERATION-SKILLS.md` (structure, content quality, supplements, questions, reviews). Do not summarize the checklist here — read it from the workflow doc.
+Before presenting to the user, run the **Step 1 self-review checklist** in `docs/planning/WORKFLOW-CONTENT-GENERATION-SKILLS.md` (structure, content quality, supplements, questions). Do not summarize the checklist here — read it from the workflow doc.
 
 ---
 
-## After Step 1 — Review Gate
+## BUILD Phase — Step 1.5: Multi-Model Review
 
-Present the lesson draft summary. Then:
+After content generation passes self-review, launch the **multi-model review**.
 
-1. Highlight fact-check issues that need attention.
-2. Highlight scope-review violations.
-3. Suggest sections that would benefit from visuals.
-4. Ask which visuals to generate (or "none needed").
+Ask the user: *"Content is ready. Run multi-model review (Claude + Gemini + Codex in parallel)? Or Claude-only review?"*
 
-**HARD-GATE:** Do not proceed to Step 2 until the user has reviewed the fact-check and scope-review reports, approved (or fixed) flagged issues, and confirmed which visuals to generate.
+### Option A — Multi-model review (recommended)
+
+Invoke `/course-multi-review` with the lesson folder path. This dispatches 4 reviewers in parallel:
+- **Agent D — Fact Checker** (Claude subagent)
+- **Agent E — Scope Reviewer** (Claude subagent)
+- **Agent F — Adversarial Reviewer** (Gemini CLI)
+- **Agent G — Pedagogy Reviewer** (Codex CLI)
+
+The multi-review skill consolidates all findings into a unified, prioritized report.
+
+### Option B — Claude-only review (fallback)
+
+If the user declines multi-model review, or if Gemini/Codex CLIs are unavailable:
+
+- **Agent D — Fact Checker** (`prompts/fact-checker.md`) — output: `fact-check-report.md`
+- **Agent E — Scope Reviewer** (`prompts/scope-reviewer.md`) — output: `scope-review.md`
+
+Launch D and E in parallel.
+
+---
+
+## After Step 1.5 — Review Gate
+
+Present the review findings (multi-model or Claude-only). Then:
+
+1. Highlight critical issues that need fixing before approval.
+2. Highlight cross-reviewer agreement (issues flagged by 2+ models — strongest signal).
+3. Highlight reviewer-unique finds (issues only one model caught — justifies multi-model approach).
+4. Suggest sections that would benefit from visuals.
+5. Ask: *"Which issues should I fix? Which visuals to generate?"*
+
+**HARD-GATE:** Do not proceed to Step 2 until the user has reviewed all reports, approved (or fixed) flagged issues, and confirmed which visuals to generate.
 
 ---
 
