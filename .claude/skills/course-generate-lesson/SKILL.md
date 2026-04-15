@@ -5,8 +5,6 @@ description: "Use when syllabus YAML exists and user wants to create or continue
 
 You are a subject matter expert in the certification's domain and an experienced online course creator. Your job is to generate a complete lesson for one exam topic — study guide, quiz questions, fact check, and visuals.
 
-**Reference:** Read `docs/planning/WORKFLOW-CONTENT-GENERATION-SKILLS.md` for the full spec, study guide structure template, question YAML schema, self-review checklists, and adaptive testing requirements.
-
 **Prerequisites:** `/course-study-syllabus` must have completed. These files must exist:
 - `content/{cert}/{level}/syllabus/syllabus.yaml`
 - `content/{cert}/{level}/syllabus/dependencies.md`
@@ -16,147 +14,152 @@ You are a subject matter expert in the certification's domain and an experienced
 
 ---
 
-## INTAKE Phase
+## Phase 1 — Combined Brief (INTAKE + BRAINSTORM + PLAN)
 
-Ask one question at a time:
+**Auto-derive everything. Do not ask the user individual questions.**
 
-1. Suggest the next topic from `dependencies.md`, or let the user specify.
-2. Tone/style for the study guide (or read from `_config.yaml`).
-3. Question count (minimum 20 for adaptive testing; suggest based on exam weight).
-4. Specific angles, sources, or context to focus on.
+**⚠️ TOKEN BUDGET RULE:** Do NOT read research notes, prompt templates, workflow spec, or full study guide / questions YAML into the main conversation context. Pass file paths to agents — they read what they need. Main context compounds across every turn (~10 turns × N tokens = 10N effective).
 
-Present a brief: "Building lesson for [topic code] — [topic name]. Tone: [X]. Questions: [N]. Focus: [Y]."
+1. Read `dependencies.md` and `TODO.md` to identify the next topic (or use the user-specified topic).
+2. Read `_config.yaml` for tone and pool sizes. Read the **depth tag** from the priority table in `TODO.md` to determine question count:
+   - Shallow → `pool_size.shallow` (25)
+   - Medium → `pool_size.medium` (30)
+   - Deep → `pool_size.deep` (35)
+3. Read `syllabus.yaml`, `analysis.md`, and `boundary-map.md` — extract ONLY the items for this topic. Do not read the full files if they are large.
 
-**HARD-GATE:** Do not proceed to BRAINSTORM until the user confirms the topic and approves the brief.
+Present **one combined brief** covering all three former phases:
 
----
+```
+## Lesson Brief: [topic-code] — [topic-name]
 
-## BRAINSTORM Phase
+**Tone:** [from _config.yaml]  |  **Questions:** [N] ([depth] depth)
 
-Read `syllabus.yaml`, `analysis.md`, and `boundary-map.md` for this topic. Present:
+### Syllabus Items
+- [items from syllabus.yaml]
 
-- **Syllabus items** to cover
-- **Keywords** to research
-- **External docs needed** (yes/no, which)
-- **Boundary rule** from boundary map
-- **Key observations:** likely high-frequency exam targets, easily-confused pairs needing comparison tables, spatial/sequential concepts that want ASCII diagrams, probable exam traps
-- **Recommended lesson approach**
+### Keywords to Research
+- [keywords]
 
-Ask: *"Does this look right? Anything to adjust?"*
+### Boundary Rule
+> [rule from boundary-map.md]
 
-**HARD-GATE:** Do not proceed to PLAN until the user approves the BRAINSTORM spec.
+### Key Observations
+- [high-frequency targets, confused pairs, exam traps, diagram candidates]
 
----
+### Execution Plan
+- Agent A (Researcher) → research-notes.md
+- Agent B (Study Guide Writer) → study-guide.md (7-section template)
+- Agent C (Question Generator) → [N] questions across difficulty 1–5
+- Multi-model review (4 reviewers in parallel)
+- Auto-fix all review findings
+- Auto-generate diagrams
+```
 
-## PLAN Phase
+Ask: *"Approve this brief to start building?"*
 
-Present the execution plan:
-
-> **Step 1 — Research + Write + Quiz + Fact Check + Scope:**
-> - Agent A (Researcher) — WebSearch for [specific queries]
-> - Agent B (Study Guide Writer) — 7-section study guide per the template in WORKFLOW-CONTENT-GENERATION-SKILLS.md
-> - Agent C (Question Generator) — [N] questions across difficulty 1–5
-> - Agent D (Fact Checker) — accuracy review
-> - Agent E (Scope Reviewer) — boundary compliance review
->
-> **Step 2 — Visuals** (after your review): diagrams/images for sections you identify.
-
-Ask: *"Shall I proceed?"*
-
-**HARD-GATE:** Do not launch BUILD agents until the user approves the PLAN.
+**HARD-GATE:** Do not proceed to BUILD until the user approves the combined brief. This is the ONLY pre-build approval gate.
 
 ---
 
-## BUILD Phase — Step 1: Content Generation
+## Phase 2 — BUILD (runs uninterrupted after approval)
+
+Everything below runs without asking the user any questions.
 
 ### Stage 1: Agent A — Researcher
 
-Launch Agent with prompt from `prompts/researcher.md`. Provide topic info (items, keywords, notes), boundary rule, INTAKE brief. Output: `content/{cert}/{level}/lessons/{topic-code}-{topic-name-zh}/research-notes.md`.
+Launch Agent with the researcher prompt (`prompts/researcher.md`). Include topic info (items, keywords), boundary rule, and brief **inline in the agent prompt** — do NOT tell it to read the prompt template file. Output: `content/{cert}/{level}/lessons/{topic-code}-{topic-name-zh}/research-notes.md`.
 
 ### Stage 2: Agents B, C in parallel
 
-Once research is complete, launch 2 agents in parallel:
+Once research is complete, launch 2 agents in parallel. For each agent, include the prompt template content **inline in the agent prompt** — do NOT tell agents to read prompt files or research notes from main context. Pass the **file path** to `research-notes.md` so agents read it themselves.
 
 - **Agent B — Study Guide Writer** (`prompts/study-guide-writer.md`) — follows the 7-section template. Output: `content/{cert}/{level}/lessons/{topic-code}-{topic-name-zh}/study-guide.md`. May also produce `supplement-*.md` files for subtopics over ~500 words.
 - **Agent C — Question Generator** (`prompts/question-generator.md`) — output: `content/{cert}/{level}/questions/{topic-code}-questions.yaml`.
 
----
+### Stage 3: Self-Review
 
-## Self-Review — Step 1
+Run the **Step 1 self-review checklist** in `docs/planning/WORKFLOW-CONTENT-GENERATION-SKILLS.md`. Do not present to user — fix issues inline and proceed.
 
-Before presenting to the user, run the **Step 1 self-review checklist** in `docs/planning/WORKFLOW-CONTENT-GENERATION-SKILLS.md` (structure, content quality, supplements, questions). Do not summarize the checklist here — read it from the workflow doc.
+### Stage 4: Multi-Model Review
 
----
+**Always run all 3 reviewers. Never ask the user to choose.** Never offer Claude-only as an option.
 
-## BUILD Phase — Step 1.5: Multi-Model Review
-
-After content generation passes self-review, launch the **multi-model review**.
-
-Ask the user: *"Content is ready. Run multi-model review (Claude + Gemini + Codex in parallel)? Or Claude-only review?"*
-
-### Option A — Multi-model review (recommended)
-
-Invoke `/course-multi-review` with the lesson folder path. This dispatches 4 reviewers in parallel:
-- **Agent D — Fact Checker** (Claude subagent)
-- **Agent E — Scope Reviewer** (Claude subagent)
+Invoke `/course-multi-review` with the lesson folder path. This dispatches 3 reviewers in parallel:
+- **Agent D — Fact & Scope Checker** (Claude subagent — combined fact-check + scope review, reads study guide once)
 - **Agent F — Adversarial Reviewer** (Gemini CLI)
 - **Agent G — Pedagogy Reviewer** (Codex CLI)
 
-The multi-review skill consolidates all findings into a unified, prioritized report.
+If Gemini or Codex CLI fails, continue with the remaining reviews.
 
-### Option B — Claude-only review (fallback)
+### Stage 5: Apply All Fixes via 2 Parallel Subagents
 
-If the user declines multi-model review, or if Gemini/Codex CLIs are unavailable:
+After consolidating review findings, **delegate fix application to 2 parallel subagents**. Do NOT read the full study guide or questions YAML into the main conversation context.
 
-- **Agent D — Fact Checker** (`prompts/fact-checker.md`) — output: `fact-check-report.md`
-- **Agent E — Scope Reviewer** (`prompts/scope-reviewer.md`) — output: `scope-review.md`
+Launch 2 Agents in parallel:
+- **Fix Agent A — Study Guide Fixes**: file path to study-guide.md + the study-guide-specific fixes from the review
+- **Fix Agent B — Questions Fixes**: file path to questions YAML + the questions-specific fixes from the review
 
-Launch D and E in parallel.
+Each agent reads only the file it needs, applies fixes, and reports a summary of changes. This halves the peak context vs. a single fix agent reading both files (~1300+ lines).
 
----
+### Stage 6: Auto-Generate Diagrams
 
-## After Step 1.5 — Review Gate
+Decide which diagrams the lesson needs (typically 3–5). Create them all without asking.
 
-Present the review findings (multi-model or Claude-only). Then:
+- **Mermaid diagrams** — flowcharts, trees, comparisons
+- **ASCII diagrams** — concept maps, hierarchies (already in study guide)
+- **Image generation prompts** — for Gemini rendering later
 
-1. Highlight critical issues that need fixing before approval.
-2. Highlight cross-reviewer agreement (issues flagged by 2+ models — strongest signal).
-3. Highlight reviewer-unique finds (issues only one model caught — justifies multi-model approach).
-4. Suggest sections that would benefit from visuals.
-5. Ask: *"Which issues should I fix? Which visuals to generate?"*
-
-**HARD-GATE:** Do not proceed to Step 2 until the user has reviewed all reports, approved (or fixed) flagged issues, and confirmed which visuals to generate.
+Output under `content/{cert}/{level}/lessons/{topic-code}-{topic-name-zh}/diagrams/`. Embed diagram references in `study-guide.md`.
 
 ---
 
-## BUILD Phase — Step 2: Visuals
+## Phase 3 — Final Presentation and Approval
 
-Generate only the visuals the user approved:
+Present the completed lesson with:
 
-- **Mermaid diagrams** — flowcharts, sequence, architecture
-- **ASCII diagrams** — concept maps, hierarchies
-- **Image generation prompts** — Gemini / Midjourney / Canva
+1. **Artifact summary table** (files created, line counts)
+2. **Review summary** (issues found per reviewer, fixes applied)
+3. **Diagram list** (what was generated)
+4. **Remaining open items** (if any — e.g., diagram images need Gemini rendering)
 
-Output under `content/{cert}/{level}/lessons/{topic-code}-{topic-name-zh}/diagrams/`. Embed references in `study-guide.md`.
+Ask: *"Approve this lesson?"*
 
-Run the **Step 2 self-review checklist** in `WORKFLOW-CONTENT-GENERATION-SKILLS.md` before presenting.
-
----
-
-## After Step 2 — Final Approval
-
-Present the completed lesson. Ask: *"Approve this lesson? Then I'll move to the next topic."*
-
-Tell the user to run `/course-generate-lesson {next-topic}`, or `/course-generate-exam` if all topics are done.
-
-**HARD-GATE:** Do not invoke `/course-generate-exam` or skip to another topic automatically. The terminal state is: approved lesson presented, next command told to the user.
+**HARD-GATE:** Do not proceed to TODO Sync until the user approves.
 
 ---
 
-## Error Handling and Re-Runs
+## Phase 4 — TODO Sync + Commit
+
+Once the user approves the lesson:
+
+### 1. Update TODO.md
+
+Read `content/{cert}/{level}/TODO.md`, then:
+
+- **Lesson Progress table:** Set the lesson's row to **Done** with open-item count.
+- **Open Items section:** Add heading with unresolved items (diagram rendering, flagged TODOs).
+- **What's Next section:** Update next lesson, remaining count, move topic to ~~Done~~ list.
+
+### 2. Auto-commit
+
+Stage all lesson files and commit with a meaningful message:
+```
+feat(content): complete [topic-code] lesson, [N]-question practice pool
+```
+
+### 3. Announce
+
+Tell the user what was updated and committed. Tell them to run `/course-generate-lesson {next-topic}`, or `/course-generate-exam` if all topics are done.
+
+**HARD-GATE:** Do not invoke the next lesson or exam automatically. Terminal state: approved, committed, next command told to the user.
+
+---
+
+## Error Handling
 
 - WebSearch empty → ask the user for an alternative source.
 - Incomplete agent output → re-run that agent only, not all agents.
-- Fact-check critical errors → present with severity flags; do not auto-fix.
+- Fact-check critical errors → apply fixes, flag truly ambiguous items as TODOs.
 - Scope-reviewer major violations → may indicate the boundary map needs adjustment.
+- Gemini/Codex CLI failure → report failure, continue with remaining reviewers.
 - Re-running a topic overwrites all files for that topic. Old versions live in git history.

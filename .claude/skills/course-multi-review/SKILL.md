@@ -38,36 +38,32 @@ If only a topic code is given, resolve the full path from the content directory.
 
 ---
 
-## Step 1 — Locate and Read Files
+## Step 1 — Locate Files (do NOT read into main context)
 
-Read the following files to prepare context for all reviewers:
+Resolve the file paths for all reviewers. **Do NOT read study guide, research notes, or questions YAML into main context** — pass file paths to agents and let them read what they need. This is the single biggest token saver.
+
+Verify these files exist (use Glob, not Read):
 
 1. **Study guide:** `content/{cert}/{level}/lessons/{topic-folder}/study-guide.md`
 2. **Research notes:** `content/{cert}/{level}/lessons/{topic-folder}/research-notes.md`
 3. **Questions:** `content/{cert}/{level}/questions/{topic-code}-questions.yaml`
-4. **Syllabus:** `content/{cert}/{level}/syllabus/syllabus.yaml` (extract this topic's items)
-5. **Boundary map:** `content/{cert}/syllabus/boundary-map.md` (extract this topic's boundary rule)
+4. **Syllabus:** `content/{cert}/{level}/syllabus/syllabus.yaml`
+5. **Boundary map:** `content/{cert}/syllabus/boundary-map.md`
 6. **Supplements:** any `supplement-*.md` files in the lesson folder
 
-If any required file is missing, tell the user and stop.
+Read ONLY the syllabus (extract this topic's items) and boundary map (extract this topic's rule) — these are small and needed to brief agents. If any required file is missing, tell the user and stop.
 
 ---
 
-## Step 2 — Dispatch 4 Reviewers in Parallel
+## Step 2 — Dispatch 3 Reviewers in Parallel
 
-Launch **all four** agents simultaneously using the Agent tool. Each reviewer is independent — no dependencies between them.
+Launch **all three** agents simultaneously using the Agent tool. Each reviewer is independent — no dependencies between them.
 
-### Agent D — Fact Checker (Claude subagent)
+### Agent D — Fact & Scope Checker (Claude subagent)
 
-Use the prompt template from `prompts/fact-checker.md` (same as the one in `/course-generate-lesson`). Fill in the context variables. The agent writes its review to stdout (do not save to file yet).
+Use the combined prompt template from `prompts/fact-scope-checker.md` (in `/course-generate-lesson`). Fill in the context variables — include the **file paths** to study guide, research notes, syllabus items, and boundary rule. The agent reads these files itself (do NOT paste content into the prompt). It writes its combined review to stdout.
 
-Focus: **Every factual claim verified against sources, syllabus, and current knowledge.**
-
-### Agent E — Scope Reviewer (Claude subagent)
-
-Use the prompt template from `prompts/scope-reviewer.md` (same as the one in `/course-generate-lesson`). Fill in the context variables. The agent writes its review to stdout.
-
-Focus: **Boundary-map compliance. No level drift.**
+Focus: **Every factual claim verified + boundary-map compliance. One agent, one read of the study guide, two checklists.** This saves ~40K tokens vs. two separate agents reading the same file.
 
 ### Agent F — Adversarial Reviewer (Gemini CLI)
 
@@ -103,8 +99,7 @@ After all 4 agents complete, merge their findings into a unified report. Structu
 ## Reviewers
 | Reviewer | Model | Focus | Issues Found |
 |---|---|---|---|
-| Fact Checker | Claude | Factual accuracy | [N] |
-| Scope Reviewer | Claude | Boundary compliance | [N] |
+| Fact & Scope Checker | Claude | Factual accuracy + boundary compliance | [N] |
 | Adversarial Reviewer | Gemini | Weak spots & edge cases | [N] |
 | Pedagogy Reviewer | Codex | Question & explanation quality | [N] |
 
@@ -137,15 +132,16 @@ _Issues only one reviewer caught (this is why we use multiple models):_
 
 - **Gemini only:** "[issue]"
 - **Codex only:** "[issue]"
-- **Claude Fact-Check only:** "[issue]"
-- **Claude Scope only:** "[issue]"
+- **Claude Fact & Scope only:** "[issue]"
 ```
 
 ---
 
-## Step 4 — Present and Get Approval
+## Step 4 — Return Consolidated Report
 
-Present the consolidated report to the user. Then ask:
+When invoked from `/course-generate-lesson`, return the consolidated report directly — do NOT ask the user which fixes to apply. The lesson skill handles fix application (all fixes, delegated to a subagent).
+
+When invoked standalone (`/course-multi-review [path]`), present the report and ask:
 
 1. "Which critical/important issues should I fix now?"
 2. "Any suggestions you want to adopt?"
@@ -162,7 +158,7 @@ If the user wants the report saved:
 
 ## Rules
 
-- **All 4 agents run in parallel.** Do not wait for one to finish before starting another.
+- **All 3 agents run in parallel.** Do not wait for one to finish before starting another.
 - **Do not auto-fix.** Present issues and let the user decide what to fix.
 - **Preserve reviewer attribution.** Every issue must say which model found it.
 - **Highlight cross-reviewer agreement.** Issues found by 2+ models are highest confidence.

@@ -115,3 +115,6 @@ Flag: questions labeled difficulty 1 that actually require analysis, difficulty 
 - Every finding must include a concrete, actionable suggestion.
 - If the question bank is genuinely strong, say so — but spend your effort finding improvements.
 - Pay special attention to questions marked `exam_trap: true` — these should target real, documented misconceptions, not obscure trivia.
+
+## Output Length
+**Maximum 150 lines.** Report issues only — do not narrate the review process. If questions are strong, say so briefly.

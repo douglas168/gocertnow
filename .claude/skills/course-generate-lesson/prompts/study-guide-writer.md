@@ -119,3 +119,6 @@ Write the study guide to: `content/[CERT_SLUG]/[LEVEL_SLUG]/lessons/[TOPIC_CODE]
 - Do NOT exceed the boundary rule. If a concept naturally leads deeper, stop and note: "（此為中級內容，初級只需了解概念）"
 - All content in Traditional Chinese. Every technical term bilingual on first use.
 - No placeholder text. Every section must have real content.
+
+## Output Length
+**Target 500–650 lines.** If a subtopic would push you over, split it into a `supplement-*.md` file. Do NOT sacrifice coverage to hit the line target — completeness matters more.

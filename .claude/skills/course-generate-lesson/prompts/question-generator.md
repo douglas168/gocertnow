@@ -57,14 +57,15 @@ Every question MUST follow this exact schema:
 1. **Every syllabus item must have at least 2 questions** covering it.
 2. **Wrong answer options (distractors) must be plausible** — not obviously wrong. Each should represent a real misconception or common confusion.
 3. **Wrong-answer explanations must explain WHY students commonly pick this wrong answer**, not just say "this is incorrect."
-4. **Questions at difficulty 4-5 should combine multiple concepts** or require judgment between similar options.
+4. **Questions at difficulty 4-5 should combine multiple concepts** or require judgment between similar options. Difficulty 5 MUST require evaluation or trade-off judgment (e.g., "which approach is BEST given constraints X, Y, Z"), not just pattern matching or recall.
 5. **Set `exam_trap: true`** for questions that specifically test a common misconception identified in the research.
 6. **Technical terms must be bilingual** in the question text: `聯邦學習（Federated Learning）`.
 7. **Scenario questions (difficulty 3+)** should use realistic workplace/student scenarios relevant to the target audience.
 8. **Do NOT write trick questions** that depend on ambiguous wording. Test knowledge, not reading comprehension.
+9. **CRITICAL — Balanced answer distribution:** Distribute correct answers evenly across a/b/c/d. For N questions, each letter should be correct approximately N/4 times (±1). NEVER have more than 3 consecutive questions with the same correct letter. Verify distribution before outputting.
 
 ## Output
 
 Write the questions to: `content/[CERT_SLUG]/[LEVEL_SLUG]/questions/[TOPIC_CODE]-questions.yaml`
 
-Report back: total questions, breakdown by difficulty level, breakdown by syllabus item.
+Report back a brief summary (under 20 lines): total questions, breakdown by difficulty level, breakdown by syllabus item, answer distribution (a/b/c/d counts).

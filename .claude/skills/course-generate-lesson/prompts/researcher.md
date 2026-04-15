@@ -63,3 +63,6 @@ Write `research-notes.md` with:
 - Cite sources. The study guide writer needs to verify claims.
 - If you can't find good sources for a specific syllabus item, say so explicitly — don't pad with generic content.
 - Focus on **exam relevance**, not general knowledge. What does the exam actually test?
+
+## Output Length
+**Maximum 200 lines.** Be concise — bullet points over paragraphs. The study guide writer and question generator will expand on your findings.

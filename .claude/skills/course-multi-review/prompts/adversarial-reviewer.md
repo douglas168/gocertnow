@@ -96,3 +96,6 @@ You are NOT a fact-checker (another reviewer handles that). You are NOT a scope 
 - Do NOT check scope/boundary compliance (another reviewer does that).
 - If the content is genuinely good in an area, say so briefly — but spend your time finding problems.
 - Prioritize findings by exam impact: issues that could cause wrong answers > issues that cause confusion > nice-to-have improvements.
+
+## Output Length
+**Maximum 150 lines.** Focus on the highest-impact findings. If the content is clean, say so briefly — a short report is fine.
