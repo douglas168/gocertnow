@@ -1,0 +1,29 @@
+graph TD
+    LCNC["🚀 LCNC 快速開發\n低門檻 + 高速度"] --> RISK_TITLE["⚠️ 四大風險「鎖影脹債」"]
+
+    RISK_TITLE --> VL["🔒 供應商鎖定\nVendor Lock-in"]
+    RISK_TITLE --> SI["👻 影子 IT\nShadow IT"]
+    RISK_TITLE --> SB["📏 擴展性瓶頸\nScalability Bottleneck"]
+    RISK_TITLE --> TD["💳 技術債\nTechnical Debt"]
+
+    VL -->|"無法匯出原始碼\n專有格式綁定"| VL_IMPACT["失去技術策略自主權\n遷移 = 重寫"]
+
+    SI -->|"非 IT 部門自行建系統\nIT 完全不知情"| SI_IMPACT["資安漏洞 + 合規風險\n系統無法整合"]
+
+    SB -->|"需求變複雜\n高併發超出能力"| SB_IMPACT["效能下降\n複雜邏輯力不從心"]
+
+    TD -->|"MVP 上線後不重構\n功能不斷疊加"| TD_IMPACT["維護成本飆升\n修一個 bug 生三個"]
+
+    SB -.->|"擴展不了\n→ 被迫留在原平台"| VL
+    SI -.->|"無治理\n→ 累積更多"| TD
+    TD -.->|"越來越亂\n→ 更難遷移"| VL
+
+    style LCNC fill:#6366f1,color:#fff,stroke:#4f46e5
+    style VL fill:#ef4444,color:#fff,stroke:#dc2626
+    style SI fill:#ef4444,color:#fff,stroke:#dc2626
+    style SB fill:#f97316,color:#fff,stroke:#ea580c
+    style TD fill:#f97316,color:#fff,stroke:#ea580c
+    style VL_IMPACT fill:#fecaca,color:#991b1b,stroke:#ef4444
+    style SI_IMPACT fill:#fecaca,color:#991b1b,stroke:#ef4444
+    style SB_IMPACT fill:#fed7aa,color:#9a3412,stroke:#f97316
+    style TD_IMPACT fill:#fed7aa,color:#9a3412,stroke:#f97316

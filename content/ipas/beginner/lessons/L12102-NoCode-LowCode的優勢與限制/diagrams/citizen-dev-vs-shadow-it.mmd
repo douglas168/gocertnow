@@ -1,0 +1,21 @@
+graph LR
+    NEED["👤 業務人員\n發現需求"] --> PATH{"選擇路徑"}
+
+    PATH -->|"使用組織核可工具\n在 IT 治理框架下"| CD["✅ 公民開發者\nCitizen Developer"]
+    PATH -->|"自行註冊工具\nIT 完全不知情"| SH["❌ 影子 IT\nShadow IT"]
+
+    CD --> CD1["IT 知情 ✔"]
+    CD --> CD2["工具經核可 ✔"]
+    CD --> CD3["合規有保障 ✔"]
+    CD --> CD_RESULT["🎯 正面價值\n企業鼓勵的趨勢"]
+
+    SH --> SH1["IT 不知情 ✘"]
+    SH --> SH2["工具未核可 ✘"]
+    SH --> SH3["資安合規風險 ✘"]
+    SH --> SH_RESULT["⚠️ 負面風險\n需要防範管控"]
+
+    style CD fill:#10b981,color:#fff,stroke:#059669
+    style SH fill:#ef4444,color:#fff,stroke:#dc2626
+    style CD_RESULT fill:#d1fae5,color:#065f46,stroke:#10b981
+    style SH_RESULT fill:#fecaca,color:#991b1b,stroke:#ef4444
+    style NEED fill:#6366f1,color:#fff,stroke:#4f46e5

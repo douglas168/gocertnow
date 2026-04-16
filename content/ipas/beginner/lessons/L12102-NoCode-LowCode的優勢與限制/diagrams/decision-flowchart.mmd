@@ -1,0 +1,20 @@
+graph TD
+    START["🏢 新應用需求產生"] --> Q1{"需求複雜度？"}
+
+    Q1 -->|"簡單表單 / 自動化 / 內部小工具"| Q2{"使用者技術背景？"}
+    Q1 -->|"企業級應用 / 流程系統 / 需要整合"| Q3{"安全合規要求？"}
+    Q1 -->|"高併發 / 複雜演算法 / 核心系統"| TRAD
+
+    Q2 -->|"非技術人員（業務、行銷、教育）"| NC["✅ No Code\n（小時～天）\nAppSheet / Airtable / Zapier"]
+    Q2 -->|"有基本程式概念"| LC_SIMPLE["✅ Low Code\n（天～週）\nPower Apps / OutSystems"]
+
+    Q3 -->|"高（金融、醫療）\n需 IT 治理 + 資料落地"| LC["✅ Low Code\n（天～週）\n在 IT 監管框架下開發"]
+    Q3 -->|"一般"| LC_SIMPLE
+
+    TRAD["✅ Traditional 全程式碼\n（月～季）\n完全客製化 + 高擴展性"]
+
+    style NC fill:#10b981,color:#fff,stroke:#059669
+    style LC fill:#3b82f6,color:#fff,stroke:#2563eb
+    style LC_SIMPLE fill:#3b82f6,color:#fff,stroke:#2563eb
+    style TRAD fill:#f59e0b,color:#fff,stroke:#d97706
+    style START fill:#6366f1,color:#fff,stroke:#4f46e5
