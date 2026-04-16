@@ -1,0 +1,20 @@
+---
+title: RAG 工作流程（檢索增強生成）
+---
+graph TD
+    subgraph offline["離線準備階段"]
+        A["① 資料提取<br/>從文件取出文字"] --> B["② 文本分割<br/>切成小段落 Chunking"]
+        B --> C["③ 向量化<br/>Embedding 轉成數字向量"]
+        C --> D["④ 入庫<br/>存入向量資料庫"]
+    end
+
+    subgraph online["線上查詢階段"]
+        E["⑤ 使用者提問"] --> F["⑥ 檢索<br/>從向量資料庫找相關段落"]
+        F --> G["⑦ 注入 Prompt<br/>把資料塞進提示詞"]
+        G --> H["⑧ LLM 生成<br/>根據提示詞+資料生成答案"]
+    end
+
+    D -.->|"語義搜尋<br/>Semantic Search"| F
+
+    style offline fill:#1a1a2e,stroke:#16213e,color:#e0e0e0
+    style online fill:#0f3460,stroke:#16213e,color:#e0e0e0

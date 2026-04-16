@@ -75,7 +75,17 @@ Tracks open items across all lessons that need resolution before publishing.
   - Three domains overview poster
 - [ ] **D5 questions light** — Difficulty distribution is D1=8, D2=8, D3=10, D4=9, D5=5. Consider upgrading 3 stronger D4 questions to D5 if needed for adaptive testing balance.
 
-### L12301 — 生成式AI導入評估 (not yet started)
+### L12202 — 如何善用生成式AI工具
+
+- [ ] **Render 3 Mermaid diagrams** — `.mmd` files in `lessons/L12202-如何善用生成式AI工具/diagrams/` need rendering to PNG/SVG.
+  - Prompt framework comparison (RTF → CRISPE → CO-STAR)
+  - RAG workflow (8-step pipeline)
+  - Prompting techniques spectrum (Zero-shot → ToT)
+- [ ] **Generate 2 Gemini images** — Prompts ready in `lessons/L12202-如何善用生成式AI工具/diagrams/`. Save generated images to the same folder.
+  - AI tool integration four modes infographic
+  - RAG vs Fine-tuning comparison poster
+
+### L12301 — ���成式AI導入評估 (not yet started)
 
 - [ ] **Source external document**: 經濟部產業發展署《AI導入指引》— ida.gov.tw or moea.gov.tw
 
@@ -97,7 +107,7 @@ Tracks open items across all lessons that need resolution before publishing.
 | 10 | L12101 | No Code / Low Code的基本概念 | **Done** | 2 (render diagrams, generate image) |
 | 11 | L12102 | No Code / Low Code的優勢與限制 | **Done** | 2 (render diagrams, generate images) |
 | 12 | L12201 | 生成式AI應用領域與常見工具 | **Done** | 3 (render diagrams, generate images, D5 balance) |
-| 13 | L12202 | 如何善用生成式AI工具 | Not started | — |
+| 13 | L12202 | 如何善用生成式AI工具 | **Done** | 2 (render diagrams, generate images) |
 | 14 | L12301 | 生成式AI導入評估 | Not started | 1 external doc needed |
 | 15 | L12302 | 生成式AI導入規劃 | Not started | — |
 | 16 | L12303 | 生成式AI風險管理 | Not started | — |
@@ -106,9 +116,9 @@ Tracks open items across all lessons that need resolution before publishing.
 
 ## What's Next
 
-**Next lesson:** `/course-generate-lesson L12202` — 如何善用生成式AI工具
+**Next lesson:** `/course-generate-lesson L12301` — 生成式AI導入評估
 
-**Remaining lessons:** 4 of 16 topics left
+**Remaining lessons:** 3 of 16 topics left
 
 | Priority | Topic Code | Topic Name | Notes |
 |---|---|---|---|
@@ -122,7 +132,7 @@ Tracks open items across all lessons that need resolution before publishing.
 | ~~Done~~ | ~~L12101~~ | ~~No Code / Low Code的基本概念~~ | ~~Complete~~ |
 | ~~Done~~ | ~~L12102~~ | ~~No Code / Low Code的優勢與限制~~ | ~~Complete~~ |
 | ~~Done~~ | ~~L12201~~ | ~~生成式AI應用領域與常見工具~~ | ~~Complete~~ |
-| 13 | L12202 | 如何善用生成式AI工具 | **Deep** — prompt engineering, RAG |
+| ~~Done~~ | ~~L12202~~ | ~~如何善用生成式AI工具~~ | ~~Complete~~ |
 | 14 | L12301 | 生成式AI導入評估 | **Deep** — external doc needed |
 | 15 | L12302 | 生成式AI導入規劃 | Medium depth |
 | 16 | L12303 | 生成式AI風險管理 | Medium depth |

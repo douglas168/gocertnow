@@ -1,0 +1,20 @@
+---
+title: 提示設計技術 — 複雜度光譜
+---
+graph LR
+    subgraph techniques["由簡到繁"]
+        ZS["Zero-shot<br/>零樣本<br/>不給範例"] -->|"加範例"| FS["Few-shot<br/>少樣本<br/>2-5 個範例"]
+        FS -->|"加推理步驟"| COT["CoT 思維鏈<br/>一步步推理<br/>單一路徑"]
+        COT -->|"加多分支"| TOT["ToT 思維樹<br/>多路徑探索<br/>選最佳方案"]
+    end
+
+    ZSC["Zero-shot CoT<br/>加一句「讓我們<br/>一步一步想」"] -.->|"觸發"| COT
+
+    RP["Role Prompting<br/>角色提示"] -.->|"可搭配任何技術"| ZS
+    RP -.-> FS
+    RP -.-> COT
+
+    style ZS fill:#2d4059,stroke:#ea5455,color:#fff
+    style FS fill:#2d4059,stroke:#f07b3f,color:#fff
+    style COT fill:#2d4059,stroke:#ffd460,color:#fff
+    style TOT fill:#2d4059,stroke:#2ec4b6,color:#fff

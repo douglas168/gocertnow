@@ -1,0 +1,31 @@
+---
+title: 提示詞框架複雜度比較
+---
+graph LR
+    subgraph RTF["RTF（3 維度）"]
+        R1[Role 角色]
+        R2[Task 任務]
+        R3[Format 格式]
+    end
+
+    subgraph CRISPE["CRISPE（5 維度）"]
+        C1[CR: Capacity & Role]
+        C2[I: Insight]
+        C3[S: Statement]
+        C4[P: Personality]
+        C5[E: Experiment]
+    end
+
+    subgraph COSTAR["CO-STAR（6 維度）"]
+        S1[C: Context]
+        S2[O: Objective]
+        S3[S: Style]
+        S4[T: Tone]
+        S5[A: Audience]
+        S6[R: Response]
+    end
+
+    簡潔 -->|簡單任務| RTF
+    RTF -->|創意迭代| CRISPE
+    CRISPE -->|結構化商務| COSTAR
+    COSTAR --> 完整
