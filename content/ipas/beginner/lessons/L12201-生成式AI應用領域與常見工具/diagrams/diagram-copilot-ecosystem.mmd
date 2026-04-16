@@ -1,0 +1,49 @@
+graph TD
+    MS["Microsoft 生態系"]
+
+    MS --> GH_SIDE["GitHub 平台"]
+    MS --> M365["Microsoft 365<br>Power Platform"]
+    MS --> INDIE["獨立生態"]
+
+    %% GitHub Copilot branch
+    GH_SIDE --> GHC["GitHub Copilot<br>AI程式碼補全"]
+    GHC -->|"功能"| GHC_F1["行內自動補全"]
+    GHC -->|"功能"| GHC_F2["AI Chat對話"]
+    GHC -->|"功能"| GHC_F3["多檔案上下文理解"]
+    GHC -->|"安裝於"| VSCODE["VS Code 編輯器"]
+    GHC -->|"安裝於"| JETBRAINS["JetBrains IDE"]
+    GHC -->|"$10/月"| DEVS["👨‍💻 程式開發者"]
+
+    %% VS Code for Copilot
+    VSCODE -->|"合稱"| VSCFC["VS Code for Copilot<br>= VS Code + Copilot<br>不是獨立產品！"]
+
+    %% Copilot Studio branch
+    M365 --> CS["Copilot Studio<br>低程式碼Agent平台"]
+    CS -->|"功能"| CS_F1["建聊天機器人"]
+    CS -->|"功能"| CS_F2["自動化流程"]
+    CS -->|"同系列"| PA["Power Automate"]
+    CS -->|"$200/pack/月"| BIZ["👔 業務/IT人員"]
+
+    %% Cursor branch
+    INDIE --> CURSOR["Cursor<br>獨立AI IDE"]
+    CURSOR -->|"基於"| FORK["VS Code 的 Fork"]
+    CURSOR -->|"特色"| VIBE["Vibe Coding<br>自然語言寫程式"]
+    CURSOR -->|"$20/月"| DEVS2["👨‍💻 程式開發者"]
+
+    %% Key distinction callout
+    DIFF["⚠️ 關鍵區別<br>GitHub Copilot = 寫code<br>Copilot Studio = 建bot<br>Cursor = AI編程式<br>三者完全不同！"]
+
+    %% Styling
+    classDef ms fill:#1e3a5f,stroke:#4a9eff,color:#fff
+    classDef tool fill:#2d2d2d,stroke:#22c55e,color:#e0e0e0
+    classDef feature fill:#1a1a2e,stroke:#666,color:#aaa
+    classDef user fill:#3d1f5c,stroke:#a855f7,color:#fff
+    classDef warning fill:#5c1f1f,stroke:#ef4444,color:#fff
+    classDef sub fill:#1a2a1a,stroke:#4a9eff,color:#ccc
+
+    class MS,GH_SIDE,M365,INDIE ms
+    class GHC,CS,CURSOR,VSCFC tool
+    class GHC_F1,GHC_F2,GHC_F3,CS_F1,CS_F2,FORK,VIBE feature
+    class DEVS,DEVS2,BIZ user
+    class DIFF warning
+    class VSCODE,JETBRAINS,PA sub

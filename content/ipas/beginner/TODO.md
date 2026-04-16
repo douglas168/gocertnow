@@ -64,6 +64,17 @@ Tracks open items across all lessons that need resolution before publishing.
   - Advantages triangle infographic
   - Domain application spectrum infographic
 
+### L12201 — 生成式AI應用領域與常見工具
+
+- [ ] **Render 3 Mermaid diagrams** — `.mmd` files in `lessons/L12201-生成式AI應用領域與常見工具/diagrams/` need rendering to PNG/SVG.
+  - Domain taxonomy tree (文本/圖像/聲音 + tools)
+  - Tool selection decision flowchart
+  - Microsoft Copilot ecosystem clarification
+- [ ] **Generate 2 Gemini images** — Prompts ready in `lessons/L12201-生成式AI應用領域與常見工具/diagrams/`. Save generated images to the same folder.
+  - Tool comparison infographic (all 8+ tools)
+  - Three domains overview poster
+- [ ] **D5 questions light** — Difficulty distribution is D1=8, D2=8, D3=10, D4=9, D5=5. Consider upgrading 3 stronger D4 questions to D5 if needed for adaptive testing balance.
+
 ### L12301 — 生成式AI導入評估 (not yet started)
 
 - [ ] **Source external document**: 經濟部產業發展署《AI導入指引》— ida.gov.tw or moea.gov.tw
@@ -85,7 +96,7 @@ Tracks open items across all lessons that need resolution before publishing.
 | 9 | L11402 | 鑑別式AI與生成式AI的整合應用 | **Done** | 1 (generate diagrams) |
 | 10 | L12101 | No Code / Low Code的基本概念 | **Done** | 2 (render diagrams, generate image) |
 | 11 | L12102 | No Code / Low Code的優勢與限制 | **Done** | 2 (render diagrams, generate images) |
-| 12 | L12201 | 生成式AI應用領域與常見工具 | Not started | — |
+| 12 | L12201 | 生成式AI應用領域與常見工具 | **Done** | 3 (render diagrams, generate images, D5 balance) |
 | 13 | L12202 | 如何善用生成式AI工具 | Not started | — |
 | 14 | L12301 | 生成式AI導入評估 | Not started | 1 external doc needed |
 | 15 | L12302 | 生成式AI導入規劃 | Not started | — |
@@ -95,9 +106,9 @@ Tracks open items across all lessons that need resolution before publishing.
 
 ## What's Next
 
-**Next lesson:** `/course-generate-lesson L12201` — 生成式AI應用領域與常見工具
+**Next lesson:** `/course-generate-lesson L12202` — 如何善用生成式AI工具
 
-**Remaining lessons:** 5 of 16 topics left
+**Remaining lessons:** 4 of 16 topics left
 
 | Priority | Topic Code | Topic Name | Notes |
 |---|---|---|---|
@@ -110,7 +121,7 @@ Tracks open items across all lessons that need resolution before publishing.
 | ~~Done~~ | ~~L11402~~ | ~~鑑別式AI與生成式AI的整合應用~~ | ~~Complete~~ |
 | ~~Done~~ | ~~L12101~~ | ~~No Code / Low Code的基本概念~~ | ~~Complete~~ |
 | ~~Done~~ | ~~L12102~~ | ~~No Code / Low Code的優勢與限制~~ | ~~Complete~~ |
-| 12 | L12201 | 生成式AI應用領域與常見工具 | **Deep** — 8+ named tools |
+| ~~Done~~ | ~~L12201~~ | ~~生成式AI應用領域與常見工具~~ | ~~Complete~~ |
 | 13 | L12202 | 如何善用生成式AI工具 | **Deep** — prompt engineering, RAG |
 | 14 | L12301 | 生成式AI導入評估 | **Deep** — external doc needed |
 | 15 | L12302 | 生成式AI導入規劃 | Medium depth |

@@ -1,0 +1,42 @@
+graph TD
+    ROOT["生成式AI應用領域<br>(GenAI Domains)"]
+
+    ROOT --> TEXT["✍️ 文本生成<br>(Text Generation)"]
+    ROOT --> IMAGE["🎨 圖像生成<br>(Image Generation)"]
+    ROOT --> AUDIO["🔊 聲音生成<br>(Audio Generation)"]
+    ROOT --> CODE["💻 程式碼輔助<br>(Code Assistance)"]
+    ROOT --> TW["🇹🇼 台灣本土"]
+
+    TEXT --> ChatGPT["ChatGPT<br>對話式AI助手"]
+    TEXT --> API["OpenAI API<br>開發者介面"]
+    TEXT --> TAIDE2["TAIDE<br>繁中LLM"]
+
+    IMAGE --> MJ["Midjourney<br>照片級繪圖"]
+    IMAGE --> GPTI["GPT Image<br>原DALL-E"]
+
+    AUDIO --> EL["ElevenLabs<br>語音合成"]
+    AUDIO --> SUNO["Suno AI<br>音樂創作"]
+
+    CODE --> GHC["GitHub Copilot<br>IDE擴充套件"]
+    CODE --> CURSOR["Cursor<br>獨立AI IDE"]
+    CODE --> CS["Copilot Studio<br>低程式碼平台"]
+
+    TW --> TAIDE["TAIDE<br>國科會主導"]
+
+    %% Multimodal tools spanning domains
+    ROOT --> MULTI["🔀 多模態工具<br>(Multimodal)"]
+    MULTI --> GEMINI["Gemini<br>Google多模態AI"]
+    MULTI --> CHATPLUS["ChatGPT Plus<br>文+圖+聲+碼"]
+
+    %% Styling
+    classDef domain fill:#1e3a5f,stroke:#4a9eff,color:#fff
+    classDef tool fill:#2d2d2d,stroke:#666,color:#e0e0e0
+    classDef multi fill:#3d1f5c,stroke:#a855f7,color:#fff
+    classDef root fill:#0d4429,stroke:#22c55e,color:#fff
+    classDef tw fill:#5c1f1f,stroke:#ef4444,color:#fff
+
+    class ROOT root
+    class TEXT,IMAGE,AUDIO,CODE domain
+    class MULTI multi
+    class TW tw
+    class ChatGPT,API,MJ,GPTI,EL,SUNO,GHC,CURSOR,CS,GEMINI,CHATPLUS,TAIDE,TAIDE2 tool

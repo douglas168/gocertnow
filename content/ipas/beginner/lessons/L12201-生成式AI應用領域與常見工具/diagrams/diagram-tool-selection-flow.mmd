@@ -1,0 +1,40 @@
+graph TD
+    START(("你需要什麼？<br>What do you need?"))
+
+    START --> Q1{"輸出類型？"}
+
+    Q1 -->|"文字/對話"| TEXT_Q{"誰在用？"}
+    Q1 -->|"圖片/設計"| IMG_Q{"需求類型？"}
+    Q1 -->|"語音/音樂"| AUD_Q{"聲音類型？"}
+    Q1 -->|"程式碼"| CODE_Q{"開發方式？"}
+    Q1 -->|"聊天機器人"| BOT["Copilot Studio<br>低程式碼Agent平台"]
+
+    %% Text branch
+    TEXT_Q -->|"個人日常使用"| CHATGPT["ChatGPT<br>月費制・有免費方案"]
+    TEXT_Q -->|"整合進自家產品"| OPENAI_API["OpenAI API<br>按token計費"]
+    TEXT_Q -->|"需Google整合"| GEMINI["Gemini<br>多模態・Google生態"]
+    TEXT_Q -->|"台灣繁中需求"| TAIDE["TAIDE<br>國科會・數位主權"]
+
+    %% Image branch
+    IMG_Q -->|"照片級品質"| MJ_Q{"預算？"}
+    IMG_Q -->|"搭配ChatGPT使用"| GPTI["GPT Image<br>內建於ChatGPT"]
+
+    MJ_Q -->|"可付費 $10/月起"| MJ["Midjourney<br>無免費方案"]
+    MJ_Q -->|"需免費方案"| GPTI
+
+    %% Audio branch
+    AUD_Q -->|"文字轉語音 TTS"| EL["ElevenLabs<br>語音合成品質最高"]
+    AUD_Q -->|"AI作曲/歌曲"| SUNO["Suno AI<br>完整歌曲生成"]
+
+    %% Code branch
+    CODE_Q -->|"IDE內補全輔助"| GHC["GitHub Copilot<br>擴充套件 $10/月"]
+    CODE_Q -->|"自然語言生成<br>Vibe Coding"| CURSOR["Cursor<br>獨立AI IDE $20/月"]
+
+    %% Styling
+    classDef decision fill:#1e3a5f,stroke:#4a9eff,color:#fff
+    classDef tool fill:#2d2d2d,stroke:#22c55e,color:#e0e0e0
+    classDef start fill:#0d4429,stroke:#22c55e,color:#fff
+
+    class START start
+    class Q1,TEXT_Q,IMG_Q,AUD_Q,CODE_Q,MJ_Q decision
+    class CHATGPT,OPENAI_API,GEMINI,TAIDE,MJ,GPTI,EL,SUNO,GHC,CURSOR,BOT tool
