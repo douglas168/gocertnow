@@ -1,0 +1,47 @@
+---
+title: 四大評估維度（技工模效）
+---
+flowchart TB
+    CENTER(("適用解決方案<br/>選擇<br/>Solution Selection"))
+
+    subgraph TE["🔧 技術評估<br/>Technical Assessment"]
+        TE1["基礎設施足夠？"]
+        TE2["資料品質與可用性"]
+        TE3["團隊技術能力"]
+        TE4["安全合規要求"]
+    end
+
+    subgraph TOE["🛠️ 工具評估<br/>Tool Evaluation"]
+        TOE1["功能完整度比較"]
+        TOE2["API 整合能力"]
+        TOE3["供應商穩定度"]
+        TOE4["成本結構分析"]
+    end
+
+    subgraph ME["📊 模型評估<br/>Model Evaluation"]
+        ME1["準確度 Accuracy"]
+        ME2["回應延遲 Latency"]
+        ME3["成本效率 Cost"]
+        ME4["場景適配度"]
+    end
+
+    subgraph PE["📈 效能評估<br/>Performance Evaluation"]
+        PE1["導入前後 KPI 比較"]
+        PE2["使用者滿意度"]
+        PE3["錯誤率與品質指標"]
+        PE4["ROI 追蹤"]
+    end
+
+    TE -->|"導入前"| CENTER
+    TOE -->|"導入前"| CENTER
+    ME -->|"導入前"| CENTER
+
+    CENTER -->|"導入決策"| DEPLOY["正式導入"]
+    DEPLOY -->|"導入後"| PE
+
+    style TE fill:#1a365d,stroke:#63b3ed,color:#fff
+    style TOE fill:#1a365d,stroke:#63b3ed,color:#fff
+    style ME fill:#1a365d,stroke:#63b3ed,color:#fff
+    style PE fill:#553c1a,stroke:#f6ad55,color:#fff
+    style CENTER fill:#2d3748,stroke:#a0aec0,color:#fff
+    style DEPLOY fill:#22543d,stroke:#68d391,color:#fff

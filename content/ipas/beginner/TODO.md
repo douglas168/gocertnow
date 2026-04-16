@@ -85,9 +85,16 @@ Tracks open items across all lessons that need resolution before publishing.
   - AI tool integration four modes infographic
   - RAG vs Fine-tuning comparison poster
 
-### L12301 — ���成式AI導入評估 (not yet started)
+### L12301 — 生成式AI導入評估
 
-- [ ] **Source external document**: 經濟部產業發展署《AI導入指引》— ida.gov.tw or moea.gov.tw
+- [ ] **Render 4 Mermaid diagrams** — `.mmd` files in `lessons/L12301-生成式AI導入評估/diagrams/` need rendering to PNG/SVG.
+  - Four-phase framework flowchart (構方驗實)
+  - Four evaluation dimensions (技工模效)
+  - AI Agent vs GenAI tool comparison
+  - Solution selection decision tree (Build vs Buy vs SaaS)
+- [ ] **Generate 2 Gemini images** — Prompts ready in `lessons/L12301-生成式AI導入評估/diagrams/`. Save generated images to the same folder.
+  - Cost iceberg infographic (顯性/隱藏成本)
+  - Four-phase journey map infographic
 
 ---
 
@@ -108,7 +115,7 @@ Tracks open items across all lessons that need resolution before publishing.
 | 11 | L12102 | No Code / Low Code的優勢與限制 | **Done** | 2 (render diagrams, generate images) |
 | 12 | L12201 | 生成式AI應用領域與常見工具 | **Done** | 3 (render diagrams, generate images, D5 balance) |
 | 13 | L12202 | 如何善用生成式AI工具 | **Done** | 2 (render diagrams, generate images) |
-| 14 | L12301 | 生成式AI導入評估 | Not started | 1 external doc needed |
+| 14 | L12301 | 生成式AI導入評估 | **Done** | 2 (render diagrams, generate images) |
 | 15 | L12302 | 生成式AI導入規劃 | Not started | — |
 | 16 | L12303 | 生成式AI風險管理 | Not started | — |
 
@@ -116,9 +123,9 @@ Tracks open items across all lessons that need resolution before publishing.
 
 ## What's Next
 
-**Next lesson:** `/course-generate-lesson L12301` — 生成式AI導入評估
+**Next lesson:** `/course-generate-lesson L12302` — 生成式AI導入規劃
 
-**Remaining lessons:** 3 of 16 topics left
+**Remaining lessons:** 2 of 16 topics left
 
 | Priority | Topic Code | Topic Name | Notes |
 |---|---|---|---|
@@ -133,7 +140,7 @@ Tracks open items across all lessons that need resolution before publishing.
 | ~~Done~~ | ~~L12102~~ | ~~No Code / Low Code的優勢與限制~~ | ~~Complete~~ |
 | ~~Done~~ | ~~L12201~~ | ~~生成式AI應用領域與常見工具~~ | ~~Complete~~ |
 | ~~Done~~ | ~~L12202~~ | ~~如何善用生成式AI工具~~ | ~~Complete~~ |
-| 14 | L12301 | 生成式AI導入評估 | **Deep** — external doc needed |
+| ~~Done~~ | ~~L12301~~ | ~~生成式AI導入評估~~ | ~~Complete~~ |
 | 15 | L12302 | 生成式AI導入規劃 | Medium depth |
 | 16 | L12303 | 生成式AI風險管理 | Medium depth |
 

@@ -1,0 +1,41 @@
+---
+title: 經濟部《AI導入指引》四階段框架（構方驗實）
+---
+flowchart LR
+    subgraph P1["1. 構想評估<br/>Ideation & Assessment"]
+        P1A["分析業務痛點"]
+        P1B["盤點內部資源"]
+        P1C["選定應用場景"]
+    end
+
+    subgraph P2["2. 方案設計<br/>Solution Design"]
+        P2A["定義 KPI"]
+        P2B["資料需求分析"]
+        P2C["估算成本"]
+    end
+
+    subgraph P3["3. 驗證 POC<br/>Proof of Concept"]
+        P3A["開發模型原型"]
+        P3B["模擬營運測試"]
+        P3C["評估 ROI"]
+    end
+
+    subgraph P4["4. 實施營運<br/>Deployment & Operations"]
+        P4A["正式部署上線"]
+        P4B["監控再訓練門檻"]
+        P4C["擴展 AI 文化"]
+    end
+
+    P1 -->|"場景清單<br/>完成"| G1{{"方案可行？"}}
+    G1 -->|"是"| P2
+    G1 -->|"否：重新評估"| P1
+
+    P2 -->|"專案計畫<br/>完成"| G2{{"預算核准？"}}
+    G2 -->|"是"| P3
+    G2 -->|"否：調整方案"| P2
+
+    P3 -->|"POC 報告<br/>完成"| G3{{"POC 成功？"}}
+    G3 -->|"是"| P4
+    G3 -->|"否：回到方案設計"| P2
+
+    P4 -.->|"持續優化<br/>可回到前一階段"| P1

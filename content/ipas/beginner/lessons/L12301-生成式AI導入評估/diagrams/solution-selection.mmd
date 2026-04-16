@@ -1,0 +1,44 @@
+---
+title: 解決方案選擇決策樹（建買租）
+---
+flowchart TD
+    START(("業務問題<br/>出現"))
+    Q1{{"這個問題<br/>需要 AI 嗎？"}}
+    NO_AI["✅ 不需要 AI<br/>用 Excel / 傳統程式<br/>即可解決"]
+
+    Q2{{"是否為<br/>核心競爭力？"}}
+    Q3{{"有足夠的<br/>技術團隊？"}}
+    Q4{{"預算是否<br/>充足？"}}
+    Q5{{"需要高度<br/>客製化？"}}
+    Q6{{"想先小規模<br/>試水溫？"}}
+
+    BUILD["🔨 自建 Build<br/>────────────<br/>自組團隊從頭開發<br/>✅ 最高客製化<br/>✅ 完全掌控<br/>⚠️ 成本最高、最耗時"]
+
+    BUY["🛒 購買 Buy<br/>────────────<br/>買現成 AI 解決方案<br/>✅ 快速上線<br/>✅ 有廠商支援<br/>⚠️ 客製化有限"]
+
+    SAAS["☁️ 訂閱 SaaS<br/>────────────<br/>訂閱雲端 AI 服務<br/>✅ 成本最低門檻<br/>✅ 彈性大、可隨時退<br/>⚠️ 長期可能更貴"]
+
+    START --> Q1
+    Q1 -->|"不需要<br/>簡單問題"| NO_AI
+    Q1 -->|"需要 AI"| Q2
+
+    Q2 -->|"是：涉及核心<br/>競爭優勢"| Q3
+    Q2 -->|"否：標準化需求"| Q5
+
+    Q3 -->|"有：工程團隊<br/>具 AI 能力"| BUILD
+    Q3 -->|"沒有"| BUY
+
+    Q5 -->|"是"| Q4
+    Q5 -->|"否：標準功能<br/>即可滿足"| Q6
+
+    Q4 -->|"充足"| BUY
+    Q4 -->|"有限"| SAAS
+
+    Q6 -->|"是：先驗證<br/>價值再決定"| SAAS
+    Q6 -->|"否：確定<br/>要長期使用"| BUY
+
+    style START fill:#2d3748,stroke:#a0aec0,color:#fff
+    style NO_AI fill:#553c1a,stroke:#f6ad55,color:#fff
+    style BUILD fill:#1a365d,stroke:#63b3ed,color:#fff
+    style BUY fill:#22543d,stroke:#68d391,color:#fff
+    style SAAS fill:#3c1a55,stroke:#b794f4,color:#fff

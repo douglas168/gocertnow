@@ -1,0 +1,48 @@
+---
+title: AI Agent vs 一般 GenAI 工具比較
+---
+flowchart TB
+    subgraph AGENT["🤖 AI 代理（AI Agent）"]
+        direction TB
+        A1["🧠 LLM 大腦<br/>思考與推理"]
+        A2["📝 記憶 Memory<br/>跨步驟保持上下文"]
+        A3["🔧 工具呼叫 Tool Calling<br/>使用外部工具執行任務"]
+        A4["🎯 自主決策<br/>自行規劃下一步"]
+        A5["多步驟自主完成任務"]
+
+        A1 --> A4
+        A2 --> A4
+        A3 --> A4
+        A4 --> A5
+    end
+
+    subgraph GENAI["💬 一般 GenAI 工具"]
+        direction TB
+        G1["🧠 LLM 大腦<br/>思考與推理"]
+        G2["❌ 記憶有限<br/>僅限當次對話"]
+        G3["❌ 無工具呼叫<br/>或極有限"]
+        G4["❌ 被動等待<br/>等使用者下指令"]
+        G5["單步驟一問一答"]
+
+        G1 --> G4
+        G2 --> G4
+        G3 --> G4
+        G4 --> G5
+    end
+
+    EXAMPLE_A["✅ Agent 範例<br/>「幫我安排出差」<br/>→ 自動查高鐵、訂飯店、<br/>排行程、預訂餐廳"]
+    EXAMPLE_G["💬 GenAI 範例<br/>「幫我寫封信」<br/>→ 生成一封信<br/>（對話結束）"]
+
+    A5 --> EXAMPLE_A
+    G5 --> EXAMPLE_G
+
+    KEY["核心差異：自主性 + 多步驟執行能力"]
+
+    EXAMPLE_A --> KEY
+    EXAMPLE_G --> KEY
+
+    style AGENT fill:#1a365d,stroke:#63b3ed,color:#fff
+    style GENAI fill:#3c1a55,stroke:#b794f4,color:#fff
+    style KEY fill:#553c1a,stroke:#f6ad55,color:#fff,font-weight:bold
+    style EXAMPLE_A fill:#22543d,stroke:#68d391,color:#fff
+    style EXAMPLE_G fill:#553c1a,stroke:#f6ad55,color:#fff
