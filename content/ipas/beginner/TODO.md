@@ -49,6 +49,11 @@ Tracks open items across all lessons that need resolution before publishing.
 
 - [ ] **Generate 4 Gemini diagrams** — Prompts ready in `lessons/L11402-鑑別式AI與生成式AI的整合應用/diagrams/`. Save generated images to the same folder.
 
+### L12101 ��� No Code / Low Code的基本概念
+
+- [ ] **Generate 1 Gemini image** — Prompt ready in `lessons/L12101-NoCode-LowCode的基本概念/diagrams/gemini-prompt-citizen-developer.md`. Save generated image to the same folder.
+- [ ] **Render 3 Mermaid diagrams** — `.mmd` files in `lessons/L12101-NoCode-LowCode的基本概念/diagrams/` need rendering to PNG/SVG.
+
 ### L12301 — 生成式AI導入評估 (not yet started)
 
 - [ ] **Source external document**: 經濟部產業發展署《AI導入指引》— ida.gov.tw or moea.gov.tw
@@ -68,7 +73,7 @@ Tracks open items across all lessons that need resolution before publishing.
 | 7 | L11302 | 常見的機器學習模型 | **Done** | 1 (generate diagrams) |
 | 8 | L11401 | 鑑別式AI與生成式AI的基本原理 | **Done** | 1 (generate diagrams) |
 | 9 | L11402 | 鑑別式AI與生成式AI的整合應用 | **Done** | 1 (generate diagrams) |
-| 10 | L12101 | No Code / Low Code的基本概念 | Not started | — |
+| 10 | L12101 | No Code / Low Code的基本概念 | **Done** | 2 (render diagrams, generate image) |
 | 11 | L12102 | No Code / Low Code的優勢與限制 | Not started | — |
 | 12 | L12201 | 生成式AI應用領域與常見工具 | Not started | — |
 | 13 | L12202 | 如何善用生成式AI工具 | Not started | — |
@@ -80,9 +85,9 @@ Tracks open items across all lessons that need resolution before publishing.
 
 ## What's Next
 
-**Next lesson:** `/course-generate-lesson L12101` — No Code / Low Code的基本概念
+**Next lesson:** `/course-generate-lesson L12102` — No Code / Low Code的優勢與限制
 
-**Remaining lessons:** 7 of 16 topics left
+**Remaining lessons:** 6 of 16 topics left
 
 | Priority | Topic Code | Topic Name | Notes |
 |---|---|---|---|
@@ -93,7 +98,7 @@ Tracks open items across all lessons that need resolution before publishing.
 | ~~Done~~ | ~~L11302~~ | ~~常見的機器學習模型~~ | ~~Complete~~ |
 | ~~Done~~ | ~~L11401~~ | ~~鑑別式AI與生成式AI的基本原理~~ | ~~Complete~~ |
 | ~~Done~~ | ~~L11402~~ | ~~鑑別式AI與生成式AI的整合應用~~ | ~~Complete~~ |
-| 10 | L12101 | No Code / Low Code的基本概念 | Shallow |
+| ~~Done~~ | ~~L12101~~ | ~~No Code / Low Code的基本概念~~ | ~~Complete~~ |
 | 11 | L12102 | No Code / Low Code的優勢與限制 | Medium depth |
 | 12 | L12201 | 生成式AI應用領域與常見工具 | **Deep** — 8+ named tools |
 | 13 | L12202 | 如何善用生成式AI工具 | **Deep** — prompt engineering, RAG |

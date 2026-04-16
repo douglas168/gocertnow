@@ -1,0 +1,26 @@
+%%{ init: { "theme": "dark", "flowchart": { "nodeSpacing": 30, "rankSpacing": 50 } } }%%
+flowchart LR
+    subgraph NC["No Code（無程式碼）"]
+        direction TB
+        NC_CODE["編碼需求\n**零程式碼**\n100% 視覺化拖放"]
+        NC_USER["目標用戶\n**非技術業務人員**"]
+        NC_COMPLEX["應用複雜度\n**簡單**\n表單、報表、自動化"]
+        NC_CUSTOM["客製化程度\n**低**\n受限於平台模板"]
+        NC_PLAT["代表平台\nBubble / Airtable\nZapier / AppSheet"]
+        NC_CODE --> NC_USER --> NC_COMPLEX --> NC_CUSTOM --> NC_PLAT
+    end
+
+    subgraph LC["Low Code（低程式碼）"]
+        direction TB
+        LC_CODE["編碼需求\n**少量程式碼**\n視覺化 + 可選寫 Code"]
+        LC_USER["目標用戶\n**開發者 / 公民開發者**"]
+        LC_COMPLEX["應用複雜度\n**中～高**\n企業級、複雜整合"]
+        LC_CUSTOM["客製化程度\n**高**\n可寫程式碼擴展"]
+        LC_PLAT["代表平台\nPower Apps / OutSystems\nMendix"]
+        LC_CODE --> LC_USER --> LC_COMPLEX --> LC_CUSTOM --> LC_PLAT
+    end
+
+    NC ---|"口訣：零碼大眾簡，少碼進階全"| LC
+
+    style NC fill:#1a365d,stroke:#63b3ed,color:#fff
+    style LC fill:#2d3748,stroke:#68d391,color:#fff

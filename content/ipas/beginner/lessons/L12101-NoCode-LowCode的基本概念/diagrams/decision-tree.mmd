@@ -1,0 +1,25 @@
+%%{ init: { "theme": "dark", "flowchart": { "curve": "stepAfter" } } }%%
+flowchart TD
+    START(["情境題：該選 No Code 還是 Low Code？"])
+
+    START --> STEP1{"**Step 1：看人**\n使用者有技術背景嗎？"}
+
+    STEP1 -->|"完全沒有\n（業務人員、行政、社團幹部）"| NC1["→ **No Code**"]:::ncNode
+
+    STEP1 -->|"有一些 / 公民開發者\n（IT 外但有技術概念）"| STEP2{"**Step 2：看需求**\n應用複雜度？"}
+
+    STEP2 -->|"簡單\n（表單、自動化、報表）"| NC2["→ **No Code**"]:::ncNode
+
+    STEP2 -->|"複雜\n（企業整合、客製邏輯）"| LC1["→ **Low Code**"]:::lcNode
+
+    STEP1 -->|"專業開發者"| STEP3{"**Step 3：看整合**\n需要串接 API？"}
+
+    STEP3 -->|"不需要\n（獨立應用）"| NC3["→ **No Code**\n（快速原型）"]:::ncNode
+
+    STEP3 -->|"需要\n（ERP/CRM/外部系統）"| LC2["→ **Low Code**"]:::lcNode
+
+    STEP1 -.-|"目標是建 ML 模型？"| AUTOML["→ **AutoML**\n❌ 不是 NC/LC！"]:::trapNode
+
+    classDef ncNode fill:#2b6cb0,stroke:#63b3ed,color:#fff,font-weight:bold
+    classDef lcNode fill:#276749,stroke:#68d391,color:#fff,font-weight:bold
+    classDef trapNode fill:#9b2c2c,stroke:#fc8181,color:#fff,font-weight:bold

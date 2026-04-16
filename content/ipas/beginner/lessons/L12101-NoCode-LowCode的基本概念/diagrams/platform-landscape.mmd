@@ -1,0 +1,27 @@
+%%{ init: { "theme": "dark" } }%%
+flowchart TD
+    ROOT(["NC / LC 平台生態系"])
+
+    ROOT --> NC_GROUP["**No Code 平台**\nBAZA — 爸爸不寫 Code"]:::ncGroup
+    ROOT --> LC_GROUP["**Low Code 平台**\nPOM — 龐大企業用"]:::lcGroup
+    ROOT --> TRAP["**❌ 不屬於 NC/LC**\n（高頻陷阱）"]:::trapGroup
+
+    NC_GROUP --> BUBBLE["**Bubble**\n全功能 Web App\n做 MVP、SaaS"]:::ncNode
+    NC_GROUP --> AIRTABLE["**Airtable**\n試算表式關聯資料庫\n進階 Excel"]:::ncNode
+    NC_GROUP --> ZAPIER["**Zapier**\n跨應用流程自動化\nZap = 串接"]:::ncNode
+    NC_GROUP --> MAKE["**Make**\n多步驟流程自動化\n前身 Integromat"]:::ncNode
+    NC_GROUP --> APPSHEET["**AppSheet**\n試算表 → App\nGoogle 家的"]:::ncNode
+
+    LC_GROUP --> POWERAPPS["**Power Apps**\n企業應用\nM365 / Azure 整合"]:::lcNode
+    LC_GROUP --> OUTSYSTEMS["**OutSystems**\n企業級安全應用\n擴展性 + 治理"]:::lcNode
+    LC_GROUP --> MENDIX["**Mendix**\n企業級開發部署\n西門子旗下"]:::lcNode
+
+    TRAP --> AUTOML["**Google AutoML**\n自動化 ML 模型建構\n目標：Model ≠ App"]:::trapNode
+    TRAP --> H2O["**H2O.ai**\n自動化機器學習\n目標：ML Pipeline"]:::trapNode
+
+    classDef ncGroup fill:#1a365d,stroke:#63b3ed,color:#fff,font-weight:bold
+    classDef lcGroup fill:#22543d,stroke:#68d391,color:#fff,font-weight:bold
+    classDef trapGroup fill:#742a2a,stroke:#fc8181,color:#fff,font-weight:bold
+    classDef ncNode fill:#2b6cb0,stroke:#90cdf4,color:#fff
+    classDef lcNode fill:#276749,stroke:#9ae6b4,color:#fff
+    classDef trapNode fill:#9b2c2c,stroke:#feb2b2,color:#fff
