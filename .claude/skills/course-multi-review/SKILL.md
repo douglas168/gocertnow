@@ -51,7 +51,12 @@ Verify these files exist (use Glob, not Read):
 5. **Boundary map:** `content/{cert}/syllabus/boundary-map.md`
 6. **Supplements:** any `supplement-*.md` files in the lesson folder
 
-Read ONLY the syllabus (extract this topic's items) and boundary map (extract this topic's rule) — these are small and needed to brief agents. If any required file is missing, tell the user and stop.
+Read ONLY the syllabus (extract this topic's items) and boundary map (extract this topic's rule) — these are small and needed to brief agents. Do NOT read reviewer prompt templates into main context — agents F and G read their own prompts. If any required file is missing, tell the user and stop.
+
+**Prompt template paths (do NOT search — use directly):**
+- Fact & Scope Checker: `.claude/skills/course-generate-lesson/prompts/fact-scope-checker.md`
+- Adversarial Reviewer: `.claude/skills/course-multi-review/prompts/adversarial-reviewer.md`
+- Pedagogy Reviewer: `.claude/skills/course-multi-review/prompts/pedagogy-reviewer.md`
 
 ---
 
@@ -61,29 +66,33 @@ Launch **all three** agents simultaneously using the Agent tool. Each reviewer i
 
 ### Agent D — Fact & Scope Checker (Claude subagent)
 
-Use the combined prompt template from `prompts/fact-scope-checker.md` (in `/course-generate-lesson`). Fill in the context variables — include the **file paths** to study guide, research notes, syllabus items, and boundary rule. The agent reads these files itself (do NOT paste content into the prompt). It writes its combined review to stdout.
+Include the fact-scope-checker prompt **inline in the agent prompt** — you already know the template structure (context vars, boundary rule, file paths, two-checklist approach). Do NOT tell the agent to read the prompt template file. Include **file paths** to study guide, research notes; include syllabus items and boundary rule inline (they're small). The agent reads the large files itself.
 
 Focus: **Every factual claim verified + boundary-map compliance. One agent, one read of the study guide, two checklists.** This saves ~40K tokens vs. two separate agents reading the same file.
 
 ### Agent F — Adversarial Reviewer (Gemini CLI)
 
 Launch a Claude subagent that:
-1. Reads the prompt from `prompts/adversarial-reviewer.md`
-2. Fills in the context (topic code, level, lesson content summary, file paths)
+1. Reads the prompt template from `.claude/skills/course-multi-review/prompts/adversarial-reviewer.md` (agent reads it, NOT main context)
+2. Fills in the context (topic code, level, file paths)
 3. Writes a temporary prompt file at `/tmp/gemini-review-{topic-code}.md` with the filled prompt
 4. Runs: `cat /tmp/gemini-review-{topic-code}.md | gemini -p "Read the prompt from stdin, then read the referenced files and complete the review." --approval-mode plan 2>&1`
 5. Captures and returns Gemini's output
+
+Tell the agent the prompt template path, context variables to fill in, and the file paths. It handles the rest.
 
 Focus: **Devil's advocate — weak explanations, misleading simplifications, missing edge cases, Taiwan-specific cultural errors.**
 
 ### Agent G — Pedagogy Reviewer (Codex CLI)
 
 Launch a Claude subagent that:
-1. Reads the prompt from `prompts/pedagogy-reviewer.md`
+1. Reads the prompt template from `.claude/skills/course-multi-review/prompts/pedagogy-reviewer.md` (agent reads it, NOT main context)
 2. Fills in the context (topic code, level, question file path, study guide path)
 3. Writes a temporary prompt file at `/tmp/codex-review-{topic-code}.md` with the filled prompt
 4. Runs: `cat /tmp/codex-review-{topic-code}.md | codex exec 2>&1`
 5. Captures and returns Codex's output
+
+Tell the agent the prompt template path, context variables to fill in, and the file paths. It handles the rest.
 
 Focus: **Question quality — plausible distractors, real student misconceptions, difficulty calibration, explanation depth.**
 

@@ -20,6 +20,8 @@ You are a subject matter expert in the certification's domain and an experienced
 
 **⚠️ TOKEN BUDGET RULE:** Do NOT read research notes, prompt templates, workflow spec, or full study guide / questions YAML into the main conversation context. Pass file paths to agents — they read what they need. Main context compounds across every turn (~10 turns × N tokens = 10N effective).
 
+**⚠️ PROMPT TEMPLATE PATH:** All prompt templates live in `.claude/skills/course-generate-lesson/prompts/` (NOT `content/{cert}/{level}/prompts/`). Do NOT search for them — use this path directly.
+
 1. Read `dependencies.md` and `TODO.md` to identify the next topic (or use the user-specified topic).
 2. Read `_config.yaml` for tone and pool sizes. Read the **depth tag** from the priority table in `TODO.md` to determine question count:
    - Shallow → `pool_size.shallow` (25)
@@ -78,7 +80,18 @@ Once research is complete, launch 2 agents in parallel. For each agent, include 
 
 ### Stage 3: Self-Review
 
-Run the **Step 1 self-review checklist** in `docs/planning/WORKFLOW-CONTENT-GENERATION-SKILLS.md`. Do not present to user — fix issues inline and proceed.
+**Delegate to a subagent.** Do NOT read the study guide or questions YAML into main context for self-review. Launch an Agent with the checklist below inline and the file paths — let it read, verify, and report back.
+
+Self-review checklist (include this in the agent prompt):
+- All 7 study guide sections present in order: exam mapping → knowledge tree → core concepts → comparison tables → mnemonics → exam traps → scenario quick-judge
+- Section 1 references correct syllabus codes
+- Section 3 has bilingual terminology, 白話說明, ASCII diagrams, 🔥 markers
+- Section 4 covers confused concept pairs; Section 5 has mnemonics; Section 6 uses ❌→✅; Section 7 has keyword→answer lookups
+- Study guide covers every syllabus item, doesn't exceed boundary rule, no placeholder text
+- Questions: count meets minimum (20+), distributed across 5 difficulty levels, tagged with valid item codes
+- If supplements exist, they're linked from study guide with 📖 延伸閱讀 format
+
+Do not present to user — fix issues inline and proceed.
 
 ### Stage 4: Multi-Model Review
 
