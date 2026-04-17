@@ -1,0 +1,20 @@
+%% L12302 — 五種測試方法比較 Testing Types Comparison
+%% Render: mmdc -i testing-types-comparison.mmd -o testing-types-comparison.png -b transparent
+flowchart TB
+    classDef root fill:#1e40af,stroke:#1e3a8a,color:#fff,stroke-width:2px
+    classDef type fill:#0f766e,stroke:#115e59,color:#fff
+    classDef purpose fill:#f3f4f6,stroke:#6b7280,color:#111827
+
+    R["🧪 生成式AI 上線前<br/>測試方法五選"]:::root
+
+    R --> UAT["UAT 使用者驗收測試"]:::type
+    R --> AB["A/B 測試"]:::type
+    R --> BETA["Beta 測試"]:::type
+    R --> RED["Red Team 紅隊演練"]:::type
+    R --> PAR["Parallel Run 並行運作"]:::type
+
+    UAT --> UATP["✅ 場景：業務流程是否可被真實使用者完成<br/>👥 由誰：終端用戶 / 關鍵使用者<br/>🎯 判定：通過/不通過清單"]:::purpose
+    AB  --> ABP["✅ 場景：兩種版本比較效果<br/>👥 由誰：真實流量隨機分組<br/>🎯 判定：統計顯著性 + 業務 KPI"]:::purpose
+    BETA --> BETAP["✅ 場景：對外小範圍測試<br/>👥 由誰：自願早期使用者<br/>🎯 判定：真實回饋 + 穩定度"]:::purpose
+    RED --> REDP["✅ 場景：惡意輸入 / 越獄 / 偏見測試<br/>👥 由誰：內部或外部紅隊<br/>🎯 判定：攻擊成功率、風險缺口"]:::purpose
+    PAR --> PARP["✅ 場景：舊系統與新AI 同時運作並比對<br/>👥 由誰：系統自動<br/>🎯 判定：誤差、差異原因（⚠️生成式AI 有非決定性）"]:::purpose

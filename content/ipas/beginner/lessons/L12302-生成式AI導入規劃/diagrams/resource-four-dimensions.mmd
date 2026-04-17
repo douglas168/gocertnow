@@ -1,0 +1,31 @@
+%% L12302 — 資源分配四維度 Resource Allocation 4 Dimensions
+%% Render: mmdc -i resource-four-dimensions.mmd -o resource-four-dimensions.png -b transparent
+flowchart TB
+    classDef root fill:#1e40af,stroke:#1e3a8a,color:#fff,stroke-width:2px
+    classDef dim fill:#0f766e,stroke:#115e59,color:#fff,stroke-width:2px
+    classDef detail fill:#f3f4f6,stroke:#6b7280,color:#111827
+
+    R["🎯 生成式AI 導入資源分配<br/>Resource Allocation"]:::root
+
+    R --> P["👥 人 People<br/>角色與權責"]:::dim
+    R --> M["💰 錢 Money<br/>預算與隱藏成本"]:::dim
+    R --> D["📊 料 Data<br/>資料準備度"]:::dim
+    R --> T["⏱ 時 Time<br/>時程與里程碑"]:::dim
+
+    P --> P1["Sponsor（高層支持）"]:::detail
+    P --> P2["PM / 產品負責人"]:::detail
+    P --> P3["SME 領域專家（Prompting 關鍵）"]:::detail
+    P --> P4["IT / Data 團隊"]:::detail
+    P --> P5["終端使用者代表（UAT）"]:::detail
+
+    M --> M1["授權 / API Token 費"]:::detail
+    M --> M2["人力 / 訓練費"]:::detail
+    M --> M3["❗隱藏：資料治理、重工、<br/>Token 漂移（使用量一放量即跳升）"]:::detail
+
+    D --> D1["資料來源與完整性"]:::detail
+    D --> D2["PDPA 個資規劃（清理 / 最小化）"]:::detail
+    D --> D3["台灣資料準備率僅 5–10%（AIF 2025）"]:::detail
+
+    T --> T1["POC（2–4 週）"]:::detail
+    T --> T2["Pilot（1–3 月）"]:::detail
+    T --> T3["Scale（3–6 月）"]:::detail

@@ -1,0 +1,31 @@
+%% L12302 — 四階段導入規劃流程 Four-Phase Rollout Flowchart
+%% Render: mmdc -i four-phase-rollout.mmd -o four-phase-rollout.png -b transparent
+flowchart LR
+    classDef phase fill:#1e40af,stroke:#1e3a8a,color:#fff,stroke-width:2px
+    classDef gate fill:#b45309,stroke:#92400e,color:#fff,stroke-width:2px
+    classDef artifact fill:#0f766e,stroke:#115e59,color:#fff
+
+    P1["① 目標設置<br/>Goal Setting<br/>（SMART / OKR）"]:::phase
+    P2["② 資源規劃<br/>Resource Planning<br/>（人 / 錢 / 料 / 時）"]:::phase
+    P3["③ 試行測試<br/>Pilot & Testing<br/>（POC → Pilot）"]:::phase
+    P4["④ 擴大部署<br/>Scale & Operate<br/>（全面上線＋監控）"]:::phase
+
+    G1{{"Exit Criteria<br/>是否通過？"}}:::gate
+    G2{{"Exit Criteria<br/>是否通過？"}}:::gate
+    G3{{"Exit Criteria<br/>是否通過？"}}:::gate
+
+    A1["產出：KPI 定義書<br/>成功指標、風險清單"]:::artifact
+    A2["產出：預算、團隊、<br/>資料清單、時程表"]:::artifact
+    A3["產出：試行報告、<br/>UAT / A/B 測試結果"]:::artifact
+    A4["產出：上線系統<br/>＋監控儀表板"]:::artifact
+
+    P1 --> A1 --> G1
+    G1 -- 通過 --> P2
+    G1 -- 未通過 --> P1
+    P2 --> A2 --> G2
+    G2 -- 通過 --> P3
+    G2 -- 未通過 --> P2
+    P3 --> A3 --> G3
+    G3 -- 通過 --> P4
+    G3 -- 未通過 --> P3
+    P4 --> A4

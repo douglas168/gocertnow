@@ -1,0 +1,23 @@
+%% L12302 — POC → Pilot → Scale 導入策略進程
+%% Render: mmdc -i poc-pilot-scale.mmd -o poc-pilot-scale.png -b transparent
+flowchart LR
+    classDef stage fill:#1e40af,stroke:#1e3a8a,color:#fff,stroke-width:2px
+    classDef exit fill:#b45309,stroke:#92400e,color:#fff
+    classDef note fill:#f3f4f6,stroke:#6b7280,color:#111827
+
+    S1["🧪 POC<br/>Proof of Concept<br/>2–4 週 / 小樣本"]:::stage
+    S2["🚀 Pilot<br/>試行<br/>1–3 月 / 限定部門"]:::stage
+    S3["🌐 Scale<br/>全面部署<br/>3–6 月 / 全公司標準化"]:::stage
+
+    E1{{"Exit Criteria<br/>✓ 可行性證實<br/>✓ 準確率達門檻<br/>✓ 無重大法遵風險"}}:::exit
+    E2{{"Exit Criteria<br/>✓ UAT 通過<br/>✓ 使用者滿意度 ≥ 目標<br/>✓ SLA 與成本可控"}}:::exit
+    E3{{"維運指標<br/>監控 / SLA / 事件回報"}}:::exit
+
+    N1["目的：驗證「做不做得到」<br/>失敗成本低、快速淘汰"]:::note
+    N2["目的：驗證「做了有沒有用」<br/>蒐集真實使用者回饋"]:::note
+    N3["目的：把流程標準化、納入<br/>日常營運與治理"]:::note
+
+    S1 --> E1 --> S2 --> E2 --> S3 --> E3
+    S1 -.說明.-> N1
+    S2 -.說明.-> N2
+    S3 -.說明.-> N3

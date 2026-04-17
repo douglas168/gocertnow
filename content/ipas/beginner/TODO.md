@@ -96,6 +96,17 @@ Tracks open items across all lessons that need resolution before publishing.
   - Cost iceberg infographic (顯性/隱藏成本)
   - Four-phase journey map infographic
 
+### L12302 — 生成式AI導入規劃
+
+- [ ] **Render 5 Mermaid diagrams** — `.mmd` files in `lessons/L12302-生成式AI導入規劃/diagrams/` need rendering to PNG/SVG.
+  - Four-phase rollout flowchart with Exit Criteria gates
+  - Resource allocation 4-dimensions (人/錢/料/時)
+  - POC → Pilot → Scale progression
+  - Contingency decision tree (Fallback / Rollback / Kill Switch / HITL)
+  - Testing types comparison (UAT / A/B / Beta / Red Team / Parallel Run)
+- [ ] **Generate 1 Gemini image** — Prompt ready in `lessons/L12302-生成式AI導入規劃/diagrams/gemini-prompt-rollout-roadmap.md`. Save generated image to the same folder.
+  - Rollout roadmap infographic (four phases + resource pyramid + POC/Pilot/Scale bar)
+
 ---
 
 ## Lesson Progress
@@ -116,16 +127,16 @@ Tracks open items across all lessons that need resolution before publishing.
 | 12 | L12201 | 生成式AI應用領域與常見工具 | **Done** | 3 (render diagrams, generate images, D5 balance) |
 | 13 | L12202 | 如何善用生成式AI工具 | **Done** | 2 (render diagrams, generate images) |
 | 14 | L12301 | 生成式AI導入評估 | **Done** | 2 (render diagrams, generate images) |
-| 15 | L12302 | 生成式AI導入規劃 | Not started | — |
+| 15 | L12302 | 生成式AI導入規劃 | **Done** | 2 (render diagrams, generate image) |
 | 16 | L12303 | 生成式AI風險管理 | Not started | — |
 
 ---
 
 ## What's Next
 
-**Next lesson:** `/course-generate-lesson L12302` — 生成式AI導入規劃
+**Next lesson:** `/course-generate-lesson L12303` — 生成式AI風險管理
 
-**Remaining lessons:** 2 of 16 topics left
+**Remaining lessons:** 1 of 16 topics left
 
 | Priority | Topic Code | Topic Name | Notes |
 |---|---|---|---|
@@ -141,7 +152,7 @@ Tracks open items across all lessons that need resolution before publishing.
 | ~~Done~~ | ~~L12201~~ | ~~生成式AI應用領域與常見工具~~ | ~~Complete~~ |
 | ~~Done~~ | ~~L12202~~ | ~~如何善用生成式AI工具~~ | ~~Complete~~ |
 | ~~Done~~ | ~~L12301~~ | ~~生成式AI導入評估~~ | ~~Complete~~ |
-| 15 | L12302 | 生成式AI導入規劃 | Medium depth |
+| ~~Done~~ | ~~L12302~~ | ~~生成式AI導入規劃~~ | ~~Complete~~ |
 | 16 | L12303 | 生成式AI風險管理 | Medium depth |
 
 **When all 16 lessons are done:** Run `/course-generate-exam` to assemble mock exams from the question bank.
