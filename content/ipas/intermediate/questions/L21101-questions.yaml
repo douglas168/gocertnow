@@ -1,0 +1,901 @@
+# L21101 自然語言處理技術與應用 — 練習題庫 (42 題)
+# Topic: NLP 核心技術（Tokenization / Word Embedding / Transformer / 架構家族 / 任務對應）
+# Level: iPAS AI應用規劃師 中級
+# Total: 42 | Difficulty: D1=8, D2=8, D3=9, D4=9, D5=8
+# Answer distribution: a=11, b=11, c=10, d=10
+
+questions:
+
+# ===== Difficulty 1: Remember (8 questions) =====
+
+  - id: "L21101-Q01"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 1
+    question: "在自然語言處理（NLP）流程中，將一段連續文字切分為最小處理單位（詞、子詞或字元）的步驟稱為什麼？"
+    options:
+      a: "詞幹還原（Stemming）"
+      b: "斷詞 / 分詞（Tokenization）"
+      c: "停用詞移除（Stop-word Removal）"
+      d: "詞形還原（Lemmatization）"
+    correct: "b"
+    explanation:
+      why_correct: "Tokenization（斷詞）是將原始文本切成 token 的前置步驟，所有後續 embedding、模型輸入都依賴此結果。iPAS 樣題 Q2 標準答案。"
+      why_not_a: "Stemming 是把已切好的詞去字尾（running→run），屬於詞的**正規化**，不是切分動作。"
+      why_not_c: "停用詞移除是過濾「的、是、了」等低資訊詞，前提是已經完成 tokenization。"
+      why_not_d: "Lemmatization 是把詞變回字典原型（went→go），也是正規化步驟而非切分步驟。"
+    keywords:
+      - "斷詞"
+      - "tokenization"
+    exam_trap: true
+
+  - id: "L21101-Q02"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 1
+    question: "下列何者屬於「靜態詞向量（static word embedding）」技術？"
+    options:
+      a: "BERT"
+      b: "ELMo"
+      c: "Word2Vec"
+      d: "GPT"
+    correct: "c"
+    explanation:
+      why_correct: "Word2Vec 為每個詞學一個固定向量，與上下文無關，是典型的靜態詞向量。iPAS 樣題 Q10 標準答案。"
+      why_not_a: "BERT 產生「上下文相關」的動態向量，同一詞在不同句中向量不同。"
+      why_not_b: "ELMo 是第一代 contextualized embedding（LSTM 版），也是動態的。"
+      why_not_d: "GPT 是自回歸語言模型，其 hidden state 亦隨上下文變化，不屬靜態。"
+    keywords:
+      - "word2vec"
+      - "static embedding"
+    exam_trap: false
+
+  - id: "L21101-Q03"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 1
+    question: "Transformer 自注意力（Self-Attention）機制中的三個核心向量分別稱為什麼？"
+    options:
+      a: "Input、Hidden、Output"
+      b: "Query、Key、Value"
+      c: "Encoder、Decoder、Attention"
+      d: "Embedding、Position、Mask"
+    correct: "b"
+    explanation:
+      why_correct: "Self-Attention 以 Query 與所有 Key 計算相似度，得到權重後對 Value 加權求和，Q/K/V 為 Vaswani et al. 2017 定義。"
+      why_not_a: "Input/Hidden/Output 是一般神經網路層的通稱，不是 attention 的專有名詞。"
+      why_not_c: "Encoder/Decoder 是架構模組名稱，非 attention 內部向量。"
+      why_not_d: "Embedding、Positional Encoding、Mask 是 Transformer 輸入端的組件，不是注意力計算的 Q/K/V。"
+    keywords:
+      - "Q/K/V"
+      - "self-attention"
+    exam_trap: false
+
+  - id: "L21101-Q04"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 1
+    question: "下列關於 BERT 與 GPT 的敘述，何者正確？"
+    options:
+      a: "BERT 是雙向（bidirectional）、GPT 是單向（unidirectional / causal）"
+      b: "BERT 是單向、GPT 是雙向"
+      c: "兩者都是雙向"
+      d: "兩者都是單向"
+    correct: "a"
+    explanation:
+      why_correct: "BERT 使用 Masked LM：遮掉 ~15% token，模型依左右兩側剩餘 token 還原，天然學到雙向語境表示（bidirectional encoder）。GPT 使用 causal LM：透過 attention mask 禁止看未來 token，每個位置只能看左側歷史（unidirectional/causal decoder），以支援逐字生成。這正是兩大家族分流的根本原因，05/17 實考直接考此題。"
+      why_not_b: "方向剛好顛倒，是最常見的混淆選項（若考生記錯 MLM 與 causal LM 的對應就會選到）。"
+      why_not_c: "GPT 為自回歸生成模型，若允許看未來 token 會洩漏答案，故必是單向；『兩者都是雙向』與 causal LM 的定義直接矛盾。"
+      why_not_d: "BERT 的預訓練目標 MLM 本身就要求『同時利用左右上下文』還原被遮位置，『兩者都是單向』與 BERT 架構核心設計直接矛盾。"
+    keywords:
+      - "BERT 雙向"
+      - "GPT 單向"
+    exam_trap: true
+
+  - id: "L21101-Q05"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 1
+    question: "情感分析（Sentiment Analysis）屬於下列哪一類 NLP 任務？"
+    options:
+      a: "序列生成（Sequence Generation）"
+      b: "文本分類（Text Classification）"
+      c: "機器翻譯（Machine Translation）"
+      d: "命名實體識別（NER）"
+    correct: "b"
+    explanation:
+      why_correct: "情感分析是將整段文本分類為正面/負面/中性，屬於 sentence-level classification，是文本分類的子任務。iPAS 樣題 Q3 標準答案。"
+      why_not_a: "序列生成輸出變長文字，情感分析只輸出一個類別標籤。"
+      why_not_c: "機器翻譯為 seq2seq，輸入輸出皆為句子。"
+      why_not_d: "NER 是 token-level 分類（每個詞標一個實體類別），情感分析為 sentence-level。"
+    keywords:
+      - "sentiment analysis"
+      - "text classification"
+    exam_trap: false
+
+  - id: "L21101-Q06"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 1
+    question: "下列哪一項子詞分詞（subword tokenization）演算法最常與 GPT 系列模型搭配？"
+    options:
+      a: "WordPiece"
+      b: "SentencePiece + Unigram"
+      c: "Byte-Pair Encoding（BPE）"
+      d: "字元級（Character-level）切分"
+    correct: "c"
+    explanation:
+      why_correct: "GPT-2、GPT-3、Llama 皆使用 BPE（byte-level BPE），透過合併高頻字元對形成子詞。"
+      why_not_a: "WordPiece 是 BERT 家族使用的演算法，與 GPT 不同。"
+      why_not_b: "SentencePiece + Unigram 常用於 T5、XLNet、多語模型。"
+      why_not_d: "字元級切分序列過長、效率低，主流 LLM 皆不採用。"
+    keywords:
+      - "BPE"
+      - "GPT tokenizer"
+    exam_trap: false
+
+  - id: "L21101-Q07"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 1
+    question: "Transformer 架構中引入「位置編碼（Positional Encoding）」的主要原因為何？"
+    options:
+      a: "因 self-attention 對輸入順序排列對稱，需額外資訊讓模型能分辨 token 在序列中的相對/絕對位置"
+      b: "取代 attention 中的 Q/K/V 計算，減少注意力分數的運算量"
+      c: "讓模型在推論時能自動延長最大序列長度至訓練時的兩倍"
+      d: "等價於 BERT 的 [CLS] token，用來彙整整句的句子級表示"
+    correct: "a"
+    explanation:
+      why_correct: "Self-Attention 本身對順序不敏感（排列對稱），若無位置編碼，模型無法分辨「狗咬人」與「人咬狗」，故須加入位置資訊（sinusoidal 或 learned）。"
+      why_not_b: "位置編碼只是與 token embedding 相加，並未取代 Q/K/V 運算，也不降低 attention 複雜度。"
+      why_not_c: "原始 sinusoidal 雖具外推可能，但實務上外推效果有限，且並非位置編碼的主要目的；更長序列通常需 ALiBi / RoPE 等設計。"
+      why_not_d: "[CLS] 是 BERT 額外加入的分類 token，與位置編碼的功能無關（[CLS] 做句子表徵，PE 做位置資訊）。"
+    keywords:
+      - "positional encoding"
+      - "位置編碼"
+    exam_trap: false
+
+  - id: "L21101-Q08"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 1
+    question: "下列哪一組屬於「編碼器-解碼器（encoder-decoder）」架構的代表模型？"
+    options:
+      a: "BERT、RoBERTa（僅保留 encoder，使用 MLM 預訓練）"
+      b: "GPT、Llama（僅保留 decoder，使用 causal LM 預訓練）"
+      c: "T5、BART（同時使用 encoder 處理輸入、decoder 生成輸出）"
+      d: "ELMo、Word2Vec（使用 bi-LSTM 或淺層神經網路得到詞向量）"
+    correct: "c"
+    explanation:
+      why_correct: "T5 以 text-to-text 統一框架 + span corruption 預訓練；BART 以 denoising autoencoder 預訓練，皆保留完整 encoder-decoder 結構，天然適合 seq2seq 任務（翻譯、摘要）。"
+      why_not_a: "BERT、RoBERTa 屬 encoder-only：只保留 Transformer encoder 堆疊，透過 MLM 做雙向理解，不含 decoder。"
+      why_not_b: "GPT、Llama 屬 decoder-only：只保留含 causal mask 的 decoder，逐字自回歸生成，不含 encoder。"
+      why_not_d: "ELMo 是 bi-LSTM 產生 contextual embedding、Word2Vec 是淺層預測型詞向量，兩者都不是 Transformer 架構，更不是 encoder-decoder。"
+    keywords:
+      - "encoder-decoder"
+      - "T5 BART"
+    exam_trap: false
+
+# ===== Difficulty 2: Understand (8 questions) =====
+
+  - id: "L21101-Q09"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 2
+    question: "為何子詞（subword）分詞比傳統「以空白切詞」更適合處理大型預訓練模型的詞彙表？"
+    options:
+      a: "子詞完全避免任何未知詞（OOV）問題，且詞彙量可無限壓縮"
+      b: "子詞能在固定詞彙量內兼顧常見詞完整保留與罕見詞可再拆解，降低 OOV 機率"
+      c: "子詞切分速度比空白切分快十倍以上"
+      d: "子詞是語言學正式分析單位，具備語意最小性保證"
+    correct: "b"
+    explanation:
+      why_correct: "BPE/WordPiece 對高頻詞保留完整 token，對低頻詞拆成更小片段，以固定詞彙量涵蓋幾乎所有輸入，大幅降低 OOV。"
+      why_not_a: "子詞可顯著降低但非「完全避免」OOV，且詞彙量固定並非「可無限壓縮」。"
+      why_not_c: "速度非主要優勢，空白切分其實更快；子詞的價值在模型效能而非分詞速度。"
+      why_not_d: "子詞是統計切分結果，未必對應語言學形素，不具語意最小性保證。"
+    keywords:
+      - "subword"
+      - "OOV"
+    exam_trap: true
+
+  - id: "L21101-Q10"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 2
+    question: "以下對 word2vec 與 BERT 產生的詞向量，最關鍵的差異描述為何？"
+    options:
+      a: "word2vec 為每個詞一個固定向量；BERT 向量隨上下文改變"
+      b: "word2vec 需要 GPU 才能訓練；BERT 可用 CPU 訓練"
+      c: "word2vec 支援中文；BERT 僅支援英文"
+      d: "word2vec 是 Transformer-based；BERT 是 RNN-based"
+    correct: "a"
+    explanation:
+      why_correct: "word2vec 屬 static embedding，bank 在任何句子向量相同；BERT 為 contextualized embedding，河岸 vs 銀行向量不同。這是 114.09 樣題解析標註的「進階細節」。"
+      why_not_b: "兩者皆可在 CPU/GPU 上訓練，硬體不是本質差異。"
+      why_not_c: "兩者皆有中文版本（如中文 word2vec、bert-base-chinese）。"
+      why_not_d: "word2vec 為淺層神經網路（非 Transformer），BERT 為 Transformer encoder（非 RNN）— 敘述顛倒。"
+    keywords:
+      - "contextualized embedding"
+      - "polysemy"
+    exam_trap: true
+
+  - id: "L21101-Q11"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 2
+    question: "「多頭自注意力（Multi-Head Self-Attention）」的主要效益為何？"
+    options:
+      a: "可完全取代前饋神經網路（FFN），減少一半參數"
+      b: "讓模型同時在不同子空間關注不同類型的關聯（語法、語意、共指等）"
+      c: "將注意力複雜度從 O(n²) 降為 O(n log n)"
+      d: "使模型自動學會最佳 tokenization 方式"
+    correct: "b"
+    explanation:
+      why_correct: "多頭將 Q/K/V 投影到多個子空間各自做 attention，每個 head 可專注不同語言現象（長距、短距、句法、指代），再拼接回去增強表示能力。"
+      why_not_a: "Multi-head 與 FFN 是 Transformer block 中並存且互補的模組，無法互相取代。"
+      why_not_c: "Multi-head 不改變 attention 的 O(n²) 複雜度，加速複雜度需 Linformer/Longformer 類改造。"
+      why_not_d: "Tokenization 由 tokenizer 獨立完成，與 attention head 無關。"
+    keywords:
+      - "multi-head attention"
+      - "子空間"
+    exam_trap: false
+
+  - id: "L21101-Q12"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 2
+    question: "BERT 的 MLM（Masked Language Modeling）預訓練為什麼能產生「雙向」語境表示？"
+    options:
+      a: "因為 BERT 把輸入反向再正向各跑一次"
+      b: "因為被 mask 的位置可同時使用左側與右側 token 作為線索預測"
+      c: "因為 BERT 用了 bidirectional RNN 取代自注意力"
+      d: "因為 MLM 每一步都會重新洗牌 token 順序"
+    correct: "b"
+    explanation:
+      why_correct: "MLM 遮掉 ~15% token，讓模型依據剩餘「兩側」上下文還原目標詞，這使 encoder 的每個位置都同時吸收左右資訊，形成雙向表示。"
+      why_not_a: "BERT 並非正反跑兩次（這是 ELMo LSTM 做法）；BERT 的雙向性來自 attention 無方向限制 + MLM 訓練目標。"
+      why_not_c: "BERT 基於 Transformer encoder，不使用 RNN。"
+      why_not_d: "MLM 不改變 token 順序，僅遮蔽部分位置。"
+    keywords:
+      - "MLM"
+      - "bidirectional"
+    exam_trap: false
+
+  - id: "L21101-Q13"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 2
+    question: "GPT 系列採用「因果語言建模（causal LM / autoregressive）」，這對生成任務的影響為何？"
+    options:
+      a: "每一步預測時只能看左側歷史，確保生成過程可逐字延伸"
+      b: "每一步可同時看左右，所以輸出比 BERT 更流暢"
+      c: "訓練時已看完整個序列，推論時必須一次產生所有 token"
+      d: "生成過程隨機排序，因此 token 順序不重要"
+    correct: "a"
+    explanation:
+      why_correct: "Causal mask 使位置 t 只能關注 ≤t 的 token，和人類逐字往下寫的過程一致，也讓 next-token prediction 可自然延伸出新內容。"
+      why_not_b: "Decoder-only 的 GPT 不能看右側未來 token，否則會洩漏答案。"
+      why_not_c: "自回歸推論是逐 token 生成，不是一次輸出整串。"
+      why_not_d: "順序對因果 LM 至關重要，絕非隨機。"
+    keywords:
+      - "causal LM"
+      - "autoregressive"
+    exam_trap: false
+
+  - id: "L21101-Q14"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 2
+    question: "下列對「抽取式摘要（extractive）」與「生成式摘要（abstractive）」的比較，何者正確？"
+    options:
+      a: "抽取式是選原文句子組合、生成式可重寫並產生原文沒有的新句"
+      b: "抽取式可產生原文沒有的新表達，生成式則逐字複製"
+      c: "兩者輸出內容完全相同，只是用詞不同"
+      d: "抽取式只能用 decoder-only 模型，生成式只能用 encoder-only"
+    correct: "a"
+    explanation:
+      why_correct: "Extractive 的輸出必然是原文既有句/片段的組合，具可追溯性；abstractive 由模型解碼，可跨句融合並產生原文從未出現的新表達（改寫、綜合）。『是否允許新表達』即兩者的本質分界。"
+      why_not_b: "方向顛倒：能產生新表達的是生成式，不是抽取式。抽取式在定義上即不允許產生原文沒有的字串。"
+      why_not_c: "兩者輸出風格、忠實度、幻覺風險差異顯著：抽取式近乎零幻覺但僵硬；生成式流暢但可能捏造。兩者不可視為相同。"
+      why_not_d: "架構對應顛倒：抽取式常用 encoder-only（如 BERT 判斷句子是否納入摘要）；生成式常用 encoder-decoder（T5/BART）或 decoder-only。"
+    keywords:
+      - "extractive summarization"
+      - "abstractive summarization"
+    exam_trap: false
+
+  - id: "L21101-Q15"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 2
+    question: "「pretrain → fine-tune」範式的意義為何？"
+    options:
+      a: "先用大規模無標註語料學通用語言表示，再用少量標註資料調整以解決特定任務"
+      b: "預訓練與微調各自訓練不同的隨機初始化模型，下游階段不繼承預訓練權重"
+      c: "預訓練階段就已完成所有下游標註分類頭的參數學習，微調僅微調 embedding"
+      d: "僅適用於 encoder-only 模型（如 BERT），decoder-only 與 encoder-decoder 無法採用此範式"
+    correct: "a"
+    explanation:
+      why_correct: "BERT 所確立的範式：無監督預訓練掌握廣泛語言知識，再以少量標註資料將通用模型調整為 classification / QA / NER 等下游任務專用模型，本質是『通用語言能力→特定任務能力』的兩階段轉移。"
+      why_not_b: "微調階段必然繼承預訓練權重（否則與從零訓練無異），『不繼承』即不是 pretrain→fine-tune。"
+      why_not_c: "下游分類頭是微調階段才新加的，預訓練模型對下游類別一無所知；且微調通常解凍整個模型，而非僅 embedding。"
+      why_not_d: "GPT、T5、BART 皆採用此範式（只是訓練目標不同：causal LM / span corruption / denoising），並非 encoder-only 專利。"
+    keywords:
+      - "pretrain"
+      - "fine-tune"
+    exam_trap: false
+
+  - id: "L21101-Q16"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 2
+    question: "下列關於 tokenizer 與模型家族的對應，何者正確？"
+    options:
+      a: "BERT → BPE；GPT → WordPiece；T5 → SentencePiece"
+      b: "BERT → WordPiece；GPT → BPE；T5 → SentencePiece"
+      c: "BERT → SentencePiece；GPT → WordPiece；T5 → BPE"
+      d: "三者皆使用字元級切分，無差別"
+    correct: "b"
+    explanation:
+      why_correct: "Hugging Face 官方文件與原論文對應：BERT/ALBERT 用 WordPiece、GPT/GPT-2/GPT-3/Llama 用（byte-level）BPE、T5/mT5/XLNet 以 SentencePiece 作為 tokenizer 函式庫（內部演算法為 Unigram LM）。"
+      why_not_a: "BERT 與 GPT 的 tokenizer 對調。BERT 原論文即明確指定 WordPiece。"
+      why_not_c: "三者全錯位，是標準干擾選項形態。"
+      why_not_d: "現代 LLM 皆採子詞（subword）分詞，字元級序列過長、效率極差，主流模型未採用。"
+    keywords:
+      - "tokenizer mapping"
+      - "WordPiece vs BPE"
+    exam_trap: true
+
+# ===== Difficulty 3: Apply (8 questions) =====
+
+  - id: "L21101-Q17"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 3
+    question: "某電商想針對中文商品評論做「正面／負面／中性」三分類。團隊的約束是：(i) 只能輸出固定類別標籤、不得生成文字，(ii) 需要雙向上下文理解（例如『不難吃』這類雙重否定），(iii) 標註資料僅約 2,000 筆，希望微調成本最低。以下哪一種架構最適合直接微調用於此任務？"
+    options:
+      a: "encoder-only（如中文 BERT / RoBERTa-wwm），在 [CLS] 上接一個三分類線性頭做 fine-tune"
+      b: "decoder-only（如 GPT），要求模型逐字生成「正面／負面／中性」再解析輸出字串"
+      c: "encoder-decoder（如 T5），把分類包裝成 text-to-text 目標輸出字串標籤"
+      d: "word2vec 取平均 + Logistic Regression，不使用 Transformer"
+    correct: "a"
+    explanation:
+      why_correct: "三個約束 (i) 僅輸出 label、(ii) 雙向上下文、(iii) 低資料量微調，恰好對應 encoder-only 的強項：MLM 預訓練提供雙向表示、[CLS] + 線性頭參數極少收斂快、且封閉類別不需生成。這是 iPAS 中級「任務特性→架構家族」的標準答案。"
+      why_not_b: "Decoder-only 是單向（causal），違反約束 (ii)；且需要 prompt 設計與字串解析，違反約束 (i) 不得生成文字的硬性條件。"
+      why_not_c: "T5 雖能做，但把 3 類封閉標籤包成 seq2seq 會同時激活 encoder+decoder（參數量與推論成本更高），違反約束 (iii) 成本最低原則。"
+      why_not_d: "靜態詞向量對「不難吃」這類雙重否定無法區分（『不』與『難吃』都各是一個固定向量），直接違反約束 (ii)。"
+    keywords:
+      - "sentiment classification"
+      - "BERT [CLS]"
+    exam_trap: false
+
+  - id: "L21101-Q18"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 3
+    question: "某法務團隊要把 30 頁合約濃縮成 1 頁摘要，並且允許改寫措辭。下列哪一類架構最自然適合？"
+    options:
+      a: "word2vec 詞向量聚類"
+      b: "encoder-only BERT 直接分類"
+      c: "encoder-decoder 模型（如 T5/BART）執行抽象式摘要"
+      d: "TF-IDF 關鍵字抽取取代摘要"
+    correct: "c"
+    explanation:
+      why_correct: "摘要同時需「輸入長序列」與「輸出變長新句」，encoder-decoder 的 seq2seq 結構天生契合抽象式摘要，T5/BART 為主流選擇。"
+      why_not_a: "詞向量聚類無法生成可讀摘要句。"
+      why_not_b: "Encoder-only 主要做分類，無法輸出多句自然語言。"
+      why_not_d: "TF-IDF 僅能抽關鍵字，無法產生連貫摘要，也無法改寫。"
+    keywords:
+      - "abstractive summarization"
+      - "seq2seq"
+    exam_trap: false
+
+  - id: "L21101-Q19"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 3
+    question: "某新聞 App 要從中文新聞內文標出「人名、機構、地點」等實體欄位，下列哪種做法最直接？"
+    options:
+      a: "用 decoder-only GPT 做 zero-shot 生成實體清單"
+      b: "用 encoder-only 模型（如 BERT）在每個 token 上加一個 BIO 標籤分類頭（NER）"
+      c: "用 encoder-decoder 模型輸出整段翻譯"
+      d: "用 Word2Vec 計算詞相似度排序"
+    correct: "b"
+    explanation:
+      why_correct: "NER 為 token-level 分類，encoder-only 的 BERT 可雙向吸收上下文，再對每個 token 預測 B-PER / I-ORG 等標籤，是業界標準 SOTA 起點。"
+      why_not_a: "Decoder-only zero-shot 可做但不穩定，且對齊原文位置困難，非標註任務首選。"
+      why_not_c: "翻譯與 NER 完全不同任務。"
+      why_not_d: "詞相似度無法判斷實體邊界與類別。"
+    keywords:
+      - "NER"
+      - "token classification"
+    exam_trap: false
+
+  - id: "L21101-Q20"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 3
+    question: "某銀行客服機器人需要支援多輪對話、few-shot prompt 指令調整、口吻可變。下列哪一類架構最契合此需求？"
+    options:
+      a: "encoder-only BERT"
+      b: "word2vec + 規則式 FAQ 比對"
+      c: "decoder-only LLM（如 GPT、Llama、Qwen）"
+      d: "純 LSTM 雙向分類器"
+    correct: "c"
+    explanation:
+      why_correct: "多輪對話與 few-shot in-context learning 是 decoder-only LLM 的強項：autoregressive 生成 + 長 context window + instruction tuning，這三點 BERT/T5 缺乏。"
+      why_not_a: "BERT 不擅長長篇生成與對話續寫。"
+      why_not_b: "規則式 FAQ 難處理自由語言與多輪上下文。"
+      why_not_d: "LSTM 分類器只能分類不能生成。"
+    keywords:
+      - "decoder-only"
+      - "few-shot"
+    exam_trap: false
+
+  - id: "L21101-Q21"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 3
+    question: "某跨境電商需要把中文商品描述翻譯成英、日、越三語，應優先選擇哪一種架構家族？"
+    options:
+      a: "encoder-decoder 多語預訓練模型（如 mT5、mBART）"
+      b: "encoder-only 單語 BERT"
+      c: "Word2Vec 多語對齊"
+      d: "純規則式字典翻譯"
+    correct: "a"
+    explanation:
+      why_correct: "機器翻譯為經典 seq2seq，encoder 處理來源語、decoder 生成目標語；mT5 / mBART 多語預訓練可共用一個模型服務多語言對。"
+      why_not_b: "encoder-only 無生成能力，無法直接輸出目標語句子。"
+      why_not_c: "多語詞向量對齊僅能做詞對應，無法處理詞序與句法重構。"
+      why_not_d: "規則式翻譯覆蓋有限，長句與慣用語表現差。"
+    keywords:
+      - "machine translation"
+      - "mT5"
+    exam_trap: false
+
+  - id: "L21101-Q22"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 3
+    question: "某新聞平台要把中文新聞自動歸類成「政治／財經／體育／科技」四類，採用 BERT 微調為最適方案。下列搭配何者最合理？"
+    options:
+      a: "使用 bert-base-chinese，在 [CLS] 之後接一個四分類的線性層做 fine-tune"
+      b: "凍結 bert-base-chinese 所有參數，僅抽取最後一層 hidden state 餵入 XGBoost"
+      c: "改用 bert-base-uncased（英文版），對中文新聞直接做 zero-shot 分類"
+      d: "把 word2vec 詞向量取平均後餵入 SVM，完全不使用 Transformer 上下文表示"
+    correct: "a"
+    explanation:
+      why_correct: "文本多類分類是 encoder-only 的強項：[CLS] 能彙整整句語意、線性分類頭參數極少收斂快、所需標註資料最少。這是 Hugging Face `BertForSequenceClassification` 預設做法。"
+      why_not_b: "凍結特徵抽取雖可行但通常準確率顯著低於 full fine-tune，且『接 XGBoost』脫離 BERT 原生微調工作流，屬次佳實踐。"
+      why_not_c: "bert-base-uncased 只學英文 WordPiece 詞彙表，對中文 token 覆蓋率極差（大量 [UNK]），效能會崩盤。"
+      why_not_d: "Word2Vec 平均向量無法區分「蘋果發表新品（科技）」與「蘋果產季（財經/生活）」，失去上下文訊息。"
+    keywords:
+      - "news classification"
+      - "BERT fine-tune"
+    exam_trap: false
+
+  - id: "L21101-Q23"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 3
+    question: "某 FAQ 系統要做「抽取式問答（extractive QA）」：給一段文件與問題，回傳原文片段作答。最適合的骨幹為？"
+    options:
+      a: "encoder-only BERT，預測答案片段的 start/end 位置"
+      b: "word2vec 計算問題與文件詞相似度最高的詞"
+      c: "decoder-only GPT，開放式生成長答案"
+      d: "TF-IDF 排序整篇文件"
+    correct: "a"
+    explanation:
+      why_correct: "SQuAD-style extractive QA 的標準做法是 BERT 讀入「[CLS] 問題 [SEP] 文件 [SEP]」，輸出答案片段起訖位置，精準且不幻覺。"
+      why_not_b: "單詞相似度無法定位答案片段範圍。"
+      why_not_c: "GPT 生成式 QA 易幻覺，且難保證答案必在原文中。"
+      why_not_d: "TF-IDF 只能做檢索排序，無法指出答案邊界。"
+    keywords:
+      - "extractive QA"
+      - "start/end"
+    exam_trap: false
+
+  - id: "L21101-Q24"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 3
+    question: "某 AI 規劃師要處理中、日、韓、越 四語混合的社群貼文。在 tokenizer 層面，下列選擇最穩健？"
+    options:
+      a: "以空白切分為主，對 CJK 語言自訂規則"
+      b: "採用 SentencePiece 類 tokenizer（如 T5/mT5 使用者），將輸入視為 raw byte stream 不依賴空白"
+      c: "改用 one-hot 編碼"
+      d: "每種語言訓練不同詞彙表後於下游層拼接"
+    correct: "b"
+    explanation:
+      why_correct: "SentencePiece 的關鍵優勢是不依賴空白切分，對中/日/泰等無空白語言統一處理，這也是 iPAS 繁中考試會強調的區別。"
+      why_not_a: "中日韓本無空白，規則式在混語時不一致且易錯。"
+      why_not_c: "one-hot 完全無法應付龐大詞彙量。"
+      why_not_d: "多 tokenizer 拼接工程複雜且破壞 embedding 共享。"
+    keywords:
+      - "SentencePiece"
+      - "multilingual"
+    exam_trap: false
+
+# ===== Difficulty 4: Analyze (8 questions) =====
+
+  - id: "L21101-Q25"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 4
+    question: "比較 Transformer 與傳統 RNN/LSTM 處理長序列時的差異，下列敘述何者最完整且正確？"
+    options:
+      a: "Transformer 循序計算但不會梯度消失；RNN 可平行運算"
+      b: "兩者本質相同，僅名稱不同"
+      c: "Transformer 的計算複雜度恆低於 RNN，故總是更快"
+      d: "Transformer 以自注意力捕捉任意距離依賴並支援平行運算；RNN 依循序計算易梯度消失、難以平行"
+    correct: "d"
+    explanation:
+      why_correct: "Self-Attention 任意位置兩兩相連，不受距離影響，且矩陣運算天然可平行；RNN 依時間步循序推進，長距依賴易梯度消失且難平行化 — 四關鍵詞常一起出現於考題。"
+      why_not_a: "Transformer 可平行、RNN 循序，此選項把兩者特性顛倒。"
+      why_not_b: "機制與特性差異顯著，不可等同。"
+      why_not_c: "Attention 為 O(n²)，序列極長時未必快於 RNN 的 O(n)；「總是更快」錯。"
+    keywords:
+      - "transformer vs rnn"
+      - "parallelism"
+    exam_trap: true
+
+  - id: "L21101-Q26"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 4
+    question: "若要在法務文件中「同時做雙向語境理解 AND 抽取式 NER」，下列哪一種架構決策最合理？"
+    options:
+      a: "word2vec + SVM"
+      b: "decoder-only（GPT/Llama）"
+      c: "encoder-decoder（T5/BART）"
+      d: "encoder-only（BERT/RoBERTa）"
+    correct: "d"
+    explanation:
+      why_correct: "雙向語境理解是 encoder-only 的預訓練目標（MLM）直接提供；抽取式 NER 又是 token-level 分類的典型應用，兩條件共同指向 BERT 家族。"
+      why_not_a: "靜態詞向量缺乏上下文敏感性，雙向理解條件無法滿足。"
+      why_not_b: "Decoder-only 是單向生成，雙向條件直接不符。"
+      why_not_c: "Encoder-decoder 擅長 seq2seq 生成任務，NER 非其強項。"
+    keywords:
+      - "dual constraint"
+      - "BERT NER"
+    exam_trap: true
+
+  - id: "L21101-Q27"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 4
+    question: "若任務要求「可變長輸入 AND 可變長輸出 AND 允許改寫原文措辭」，下列哪種架構家族最契合？"
+    options:
+      a: "encoder-only"
+      b: "decoder-only 但禁止生成新字"
+      c: "encoder-decoder（如 T5、BART、mT5）"
+      d: "以 word2vec 為核心的 IR 檢索"
+    correct: "c"
+    explanation:
+      why_correct: "可變長輸入→encoder 處理；可變長輸出→decoder 生成；允許改寫→抽象式生成。Encoder-decoder 正好三條件齊備，翻譯與抽象式摘要皆屬此情境。"
+      why_not_a: "Encoder-only 固定輸出為分類或片段，不符可變長輸出。"
+      why_not_b: "decoder-only 能生成但「禁止生成新字」是矛盾條件。"
+      why_not_d: "IR 只能回傳既有文件片段，不支援改寫。"
+    keywords:
+      - "dual constraint"
+      - "encoder-decoder"
+    exam_trap: false
+
+  - id: "L21101-Q28"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 4
+    question: "下列關於「BPE / WordPiece / Unigram LM」三種 subword 分詞『演算法』的比較，何者最正確？（提示：SentencePiece 為 Google 開源的 tokenizer 函式庫，內部演算法為 BPE 或 Unigram LM，本身不是一種新演算法）"
+    options:
+      a: "三者完全等價，只是命名不同，訓練結果永遠相同"
+      b: "BPE 以合併最高頻字元對為核心（GPT/Llama）；WordPiece 以最大化語言模型概率選擇合併對（BERT）；Unigram LM 從大詞彙表逐步移除、保留概率最大子集（T5/XLNet，常透過 SentencePiece 實作）"
+      c: "BPE 只能處理英文，WordPiece 只能處理德文，Unigram LM 只能處理日文"
+      d: "三者皆是深度神經網路，需要 GPU 訓練數週才能得到 tokenizer"
+    correct: "b"
+    explanation:
+      why_correct: "三者皆為子詞演算法但訓練準則不同：BPE 依頻率反覆合併、WordPiece 以合併後語言模型概率最大者優先、Unigram LM 則反向從大詞彙開始裁減。SentencePiece 是 Google 開源 tokenizer 函式庫，內部演算法是 BPE 或 Unigram LM；T5/ALBERT/XLNet 通常用 Unigram LM（via SentencePiece）。這是 iPAS 中級『函式庫 vs 演算法』的關鍵陷阱。"
+      why_not_a: "訓練目標與結果顯著不同（頻率 vs 概率 vs 反向裁減），同語料下三者產生的詞彙表與切分結果並不相同。"
+      why_not_c: "三種演算法皆為語言無關（只依賴字元/位元組統計），都可處理任何語言，語種限制描述錯誤。"
+      why_not_d: "三者皆是統計/啟發式演算法，完全不需要神經網路訓練，通常在 CPU 數十分鐘內即可訓出。"
+    keywords:
+      - "subword comparison"
+      - "tokenizer"
+    exam_trap: true
+
+  - id: "L21101-Q29"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 3
+    question: "word2vec 的 CBOW 與 Skip-gram 皆屬「預測型（predictive）」，而 GloVe 屬於「共現統計型（count-based）」。下列敘述何者正確？"
+    options:
+      a: "兩者都是動態詞向量，會隨句子變化"
+      b: "GloVe 是 Transformer-based 模型，內含 self-attention"
+      c: "兩者產生的皆為靜態詞向量，但訓練目標與資料利用方式不同"
+      d: "CBOW 實際上是矩陣分解法，與 GloVe 的數學推導完全等價"
+    correct: "c"
+    explanation:
+      why_correct: "word2vec 以上下文預測目標詞（CBOW）或反之（Skip-gram）；GloVe 分解全域共現矩陣。兩者最終都得到「每詞一向量」的靜態表示，只是訓練信號來源不同（預測 vs 統計共現）。"
+      why_not_a: "兩者皆為靜態詞向量，同一個詞在任何句子中向量都相同，與上下文無關。"
+      why_not_b: "GloVe 早於 Transformer (2014 vs 2017)，是矩陣分解法，內部完全沒有 self-attention 或 Transformer 模組。"
+      why_not_d: "CBOW 是預測型 shallow NN（用 softmax/負採樣），並非矩陣分解；雖有論文證明 word2vec 與矩陣分解有理論關聯，但訓練過程本身不是矩陣分解。"
+    keywords:
+      - "predictive vs count-based"
+      - "GloVe"
+    exam_trap: false
+
+  - id: "L21101-Q30"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 3
+    question: "下列對「MLM / causal LM / span corruption」三個預訓練目標的對應，何者正確？"
+    options:
+      a: "MLM→GPT；causal LM→BERT；span corruption→T5"
+      b: "三者皆對應 decoder-only 架構，只是命名不同"
+      c: "三者皆為 encoder-only 的同一種訓練目標，只是不同論文換了別的名字"
+      d: "MLM→BERT（encoder-only）；causal LM→GPT（decoder-only）；span corruption→T5（encoder-decoder）"
+    correct: "d"
+    explanation:
+      why_correct: "MLM 為 BERT 的雙向 token 還原；causal LM 為 GPT 的逐字預測；span corruption 為 T5 遮一段連續片段再重生，三者對應不同架構家族，是考試核心對照。"
+      why_not_a: "MLM 與 causal LM 對應顛倒，是最常見的混淆陷阱。"
+      why_not_b: "三者對應不同架構家族（encoder-only / decoder-only / encoder-decoder），非皆 decoder-only。"
+      why_not_c: "三者差異本質即在架構家族與訓練方向皆不同，不是同一目標的別名。"
+    keywords:
+      - "pretrain objectives"
+      - "architecture family"
+    exam_trap: false
+
+  - id: "L21101-Q31"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 4
+    question: "比較「抽取式 QA」與「生成式 QA」下列何者最能描述兩者的取捨？"
+    options:
+      a: "抽取式答案必在原文、可追溯、但無法跨段綜合；生成式可綜合改寫但可能幻覺"
+      b: "抽取式一定比生成式正確、且演算法保證永不幻覺"
+      c: "抽取式答案若跨多段即自動融合，且不會超出原文語意；生成式僅能回傳單句原文片段，無改寫能力"
+      d: "兩者僅模型規模不同（抽取式用小模型、生成式用大模型），機制完全相同"
+    correct: "a"
+    explanation:
+      why_correct: "抽取式以原文片段作答具可追溯性但侷限於單段；生成式可跨段綜合改寫但存在幻覺風險，這是選型的核心 trade-off（醫法金場景常因此選抽取式以降低法律風險）。"
+      why_not_b: "抽取式若原文根本沒寫到答案時也會錯（選錯片段），並非一律更正確；『演算法保證永不幻覺』是過度誇大。"
+      why_not_c: "敘述與事實顛倒：能跨段綜合與改寫的是生成式；抽取式反而是輸出原文片段、不能改寫。"
+      why_not_d: "兩者機制本質不同（一個做 span classification、一個做 seq2seq 生成），與模型規模無關。"
+    keywords:
+      - "extractive vs generative QA"
+      - "hallucination"
+    exam_trap: true
+
+  - id: "L21101-Q32"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 3
+    question: "分析 Self-Attention 的計算複雜度，下列何者最正確？"
+    options:
+      a: "對序列長度 n 為 O(n²)，因此長序列（如整本書）會面臨顯著算力與記憶體挑戰"
+      b: "複雜度恆為 O(1)，與序列長度無關"
+      c: "複雜度為 O(log n)，比 RNN 明顯更優"
+      d: "複雜度為 O(n³)，比 RNN 差"
+    correct: "a"
+    explanation:
+      why_correct: "標準 self-attention 需計算每一對 token 的相似度，形成 n×n 矩陣，複雜度 O(n²)，這也是長文檔必須引入 Longformer、FlashAttention 等優化的動機。"
+      why_not_b: "O(1) 與序列無關明顯不合事實。"
+      why_not_c: "RNN 為 O(n)，attention 並沒有降到 O(log n)。"
+      why_not_d: "並非 O(n³)；標準實作是 O(n²)。"
+    keywords:
+      - "attention complexity"
+      - "O(n^2)"
+    exam_trap: false
+
+# ===== Difficulty 5: Evaluate (8 questions) =====
+
+  - id: "L21101-Q33"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 5
+    question: "某保險公司要建構系統：同時（a）從多頁保單「抽取式」定位條款原文、（b）對條款做「正負面傾向」分類。在不為每個任務維護獨立大型 LLM 的前提下，最佳骨幹選擇為何？"
+    options:
+      a: "以兩個不同 decoder-only GPT 分別訓練，互不共享參數"
+      b: "以 word2vec 為核心，兩個任務都用餘弦相似度"
+      c: "以 encoder-decoder T5 做兩次 seq2seq 生成，忽略 BERT"
+      d: "以單一 encoder-only 中文 BERT 為基座，分別微調 token-classification（抽取定位）與 sentence-classification（傾向）兩個頭"
+    correct: "d"
+    explanation:
+      why_correct: "兩個子任務皆屬理解型（token-level 抽取 + sentence-level 分類），都是 BERT 強項；共用 encoder 基座只接兩個輕量頭最省算力與維運成本。"
+      why_not_a: "雙 LLM 維運成本極高，且兩任務都不是生成式。"
+      why_not_b: "word2vec 無法做片段起訖定位。"
+      why_not_c: "T5 對此任務過重，且 seq2seq 生成分類標籤不易穩定。"
+    keywords:
+      - "multi-task BERT"
+      - "architecture selection"
+    exam_trap: false
+
+  - id: "L21101-Q34"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 5
+    question: "某醫療新創需要：(i) 長文件輸入、(ii) 可改寫並綜合多段生成衛教摘要、(iii) 要求每句可回溯到來源段落。在單一模型骨幹前提下，最合理的架構 + 補強設計為何？"
+    options:
+      a: "以 encoder-only BERT 做句子分類，放棄生成需求"
+      b: "以 decoder-only GPT 直接生成，不處理可追溯性"
+      c: "以 encoder-decoder（如 BART/T5）做抽象式摘要，並搭配檢索/引用標註機制提供可追溯性"
+      d: "以 word2vec 相似度排序原句取代摘要生成"
+    correct: "c"
+    explanation:
+      why_correct: "條件 i+ii 指向 encoder-decoder 抽象式摘要；條件 iii 則需在模型外加檢索或引用對齊來補足可追溯，是最符合三條件的折衷方案。"
+      why_not_a: "放棄生成即不符條件 ii。"
+      why_not_b: "不處理可追溯即不符條件 iii，醫療場域高風險。"
+      why_not_d: "相似度排序無法改寫與綜合，不符條件 ii。"
+    keywords:
+      - "abstractive + traceability"
+      - "encoder-decoder"
+    exam_trap: false
+
+  - id: "L21101-Q35"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 5
+    question: "某團隊比較三模型：M1（encoder-only）、M2（decoder-only）、M3（encoder-decoder）。若任務為「多輪對話機器人 + few-shot 指令控制口吻 + 長上下文續寫」，且希望維運單一模型，最佳選擇與理由為何？"
+    options:
+      a: "M1；因為 BERT 擅長雙向，故對話也最佳"
+      b: "M3；因為 T5 同時包含 encoder 與 decoder，一定最強"
+      c: "三者皆不適合，應回到 RNN"
+      d: "M2；因為 causal LM + in-context learning + 長 context window 是 decoder-only 的原生強項"
+    correct: "d"
+    explanation:
+      why_correct: "多輪對話與 few-shot prompting 為 decoder-only LLM 的核心能力；2024–2026 LLM 主流亦為 decoder-only（GPT/Llama/Qwen）。"
+      why_not_a: "BERT 不能做長生成，多輪續寫非其能力。"
+      why_not_b: "T5 可用但多輪對話與 in-context learning 非其優勢，通常不選它做對話主機。"
+      why_not_c: "RNN 在長距依賴與平行化上皆劣於 Transformer。"
+    keywords:
+      - "decoder-only"
+      - "in-context learning"
+    exam_trap: false
+
+  - id: "L21101-Q36"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 5
+    question: "某多語客服系統需要：(A) 支援繁中、日、越 三語輸入；(B) 兼顧翻譯與摘要；(C) 儘量控制 token 切分對 CJK 語言的不一致。最合理設計為？"
+    options:
+      a: "為每種語言各自訓練一個 bert-base 單語模型，tokenizer 全用空白切分"
+      b: "用 GPT-2 單語英文模型，輸入全部翻成英文再處理"
+      c: "採用 mT5 或 mBART 等多語 encoder-decoder，搭配 SentencePiece tokenizer"
+      d: "以 Word2Vec + TF-IDF 取代 Transformer"
+    correct: "c"
+    explanation:
+      why_correct: "mT5/mBART 為多語 seq2seq（滿足 B），預訓練涵蓋多語（滿足 A），SentencePiece 不依賴空白對 CJK 更穩健（滿足 C），三條件一次到位。"
+      why_not_a: "空白切分對中日越都不適用，且分模型違反單一系統原則。"
+      why_not_b: "先英譯再處理有雙重誤差放大與語意流失。"
+      why_not_d: "Word2Vec+TF-IDF 無法處理翻譯與摘要生成。"
+    keywords:
+      - "multilingual"
+      - "mT5"
+    exam_trap: false
+
+  - id: "L21101-Q37"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 5
+    question: "某工程師以 word2vec 處理「蘋果」這個詞時發現：無論句子是「蘋果發表新手機」或「產季蘋果好吃」，向量都相同，影響下游情感分析效果。下列診斷與改進組合何者最完整正確？"
+    options:
+      a: "word2vec 為靜態詞向量、無法處理一詞多義；應改用 BERT 等 contextualized embedding，讓向量依句子上下文變化"
+      b: "word2vec 原本就動態，是程式有 bug；修 bug 即可"
+      c: "應堆疊多層 word2vec 形成深層模型，即可變動態"
+      d: "問題無解，只能忽略一詞多義"
+    correct: "a"
+    explanation:
+      why_correct: "現象符合 word2vec 靜態特性的本質限制，處理 polysemy 的正解是改採 contextualized embedding（BERT/RoBERTa 等）。"
+      why_not_b: "靜態是設計本質非 bug。"
+      why_not_c: "word2vec 是淺層 NN，堆疊不會改變「每詞一向量」的前提。"
+      why_not_d: "明確有可行解（contextualized embedding）。"
+    keywords:
+      - "polysemy"
+      - "static vs contextualized"
+    exam_trap: true
+
+  - id: "L21101-Q38"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 5
+    question: "某團隊同時面對兩個約束：(1) 標註資料極少（< 500 筆），(2) 任務為中文「法律條文分類」。下列哪一策略最符合成本/效果 trade-off？"
+    options:
+      a: "使用大規模預訓練中文 BERT 做少量資料微調（pretrain→fine-tune 範式）"
+      b: "從零訓練一個 billion 參數的 decoder-only 模型"
+      c: "放棄深度學習改回純規則式專家系統"
+      d: "將 500 筆資料複製 1000 倍後當大資料訓練"
+    correct: "a"
+    explanation:
+      why_correct: "這正是 BERT 確立 pretrain→fine-tune 範式的核心價值：以通用預訓練補足標註稀缺，下游僅需少量樣本即可達高準確度。"
+      why_not_b: "從零訓練 billion 模型在 500 筆資料上必過擬合，且成本極高。"
+      why_not_c: "法律條文語言變異大，規則式難以涵蓋，且未充分利用可用 AI 能力。"
+      why_not_d: "資料複製不會增加資訊量，反而造成過擬合。"
+    keywords:
+      - "low-resource"
+      - "fine-tuning"
+    exam_trap: false
+
+  - id: "L21101-Q39"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 5
+    question: "某平台負責人在選 tokenizer 時收到四個建議：(甲) BERT 中文用 BPE；(乙) GPT 用 WordPiece；(丙) T5 用 SentencePiece；(丁) 多語混合場景可採 SentencePiece。下列哪一組判斷全部正確？"
+    options:
+      a: "甲、乙"
+      b: "丙、丁"
+      c: "甲、丁"
+      d: "乙、丙"
+    correct: "b"
+    explanation:
+      why_correct: "逐項驗證：(甲) BERT→WordPiece（非 BPE），錯；(乙) GPT→BPE（非 WordPiece），錯；(丙) T5→SentencePiece（內部 Unigram LM），正確；(丁) 多語混合場景因 SentencePiece 不依賴空白、對 CJK/泰語/越南語更穩健，首選正確。因此正確組合為『丙、丁』。"
+      why_not_a: "甲、乙皆為 tokenizer 對應錯誤的典型陷阱（BERT/GPT 對調），兩者皆錯。"
+      why_not_c: "甲錯（BERT 不是 BPE），只有丁正確，故組合不完整。"
+      why_not_d: "乙錯（GPT 不是 WordPiece），只有丙正確，故組合不完整。"
+    keywords:
+      - "tokenizer mapping"
+      - "trap distractor"
+    exam_trap: true
+
+  - id: "L21101-Q40"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 5
+    question: "某主管在選型會議上聽到以下四個主張，哪一項綜合評估後最能代表 2026 年中級考試所期望的 NLP 架構選型觀念？"
+    options:
+      a: "Encoder-only 適合理解型任務（分類、NER、抽取式 QA）；decoder-only 適合生成與對話；encoder-decoder 適合 seq2seq（翻譯、摘要）；三者依任務特性互補而非取代"
+      b: "現代 LLM 已全面由 decoder-only 取代 encoder-only，BERT 類模型完全棄用"
+      c: "只要用大型 decoder-only LLM，所有任務都不需要微調，prompt 即可達到最佳效果"
+      d: "NER、翻譯、摘要全都應用 word2vec 詞向量解決，無須 Transformer"
+    correct: "a"
+    explanation:
+      why_correct: "iPAS 中級核心即「任務特性 → 架構家族對應」，三家族互補、選型依任務，與研究結論一致（BERT/T5 仍為 NER、抽取式 QA SOTA 基準）。"
+      why_not_b: "BERT/RoBERTa 在 NER、抽取式 QA、分類任務仍是 SOTA 基準之一，未被取代，僅是 LLM 通用應用倒向 decoder-only。"
+      why_not_c: "高專業領域（醫法金）仍普遍需要微調、檢索或工具化補強。"
+      why_not_d: "word2vec 為靜態詞向量，無法處理序列生成與長距語境依賴。"
+    keywords:
+      - "architecture selection"
+      - "exam core"
+    exam_trap: true
+
+# ===== Coverage gap fills (added post-review) =====
+
+  - id: "L21101-Q41"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 3
+    question: "下列對「Transformer」一詞的定位，何者最正確？"
+    options:
+      a: "Transformer 就是 ChatGPT 的商品名，指特定的聊天機器人產品"
+      b: "Transformer 是 2017 年 Vaswani 等人提出的『架構』（encoder-decoder + self-attention），而 BERT / GPT / T5 是以此架構不同配置（encoder-only / decoder-only / encoder-decoder）建出的『模型』"
+      c: "Transformer 是 LSTM 的升級版，內部仍是 RNN 循序展開，只是多了注意力層"
+      d: "Transformer 只能用於機器翻譯任務，不能拿來做其他 NLP 任務"
+    correct: "b"
+    explanation:
+      why_correct: "Transformer 原論文《Attention Is All You Need》(2017) 提出的是一種『架構』：以 self-attention + FFN 為核心，預設為 encoder-decoder 結構。後續的 BERT（encoder-only）、GPT（decoder-only）、T5/BART（encoder-decoder）都是基於此架構的不同配置 + 不同預訓練目標所得到的『模型』。區分『架構 (architecture) / 模型 (model) / 產品 (product)』三層是 iPAS 中級常見陷阱。"
+      why_not_a: "ChatGPT 是 OpenAI 推出的產品，底層模型是 GPT 家族，Transformer 則是 GPT 所基於的架構。把架構等同產品是最典型的概念混淆。"
+      why_not_c: "Transformer 刻意『捨棄 RNN 的循序依賴』，以純 attention + 位置編碼實現平行運算，與 LSTM 運作機制本質不同，並非 RNN 的升級版。"
+      why_not_d: "原論文以機器翻譯為示範任務，但架構本身是通用的（後續廣泛用於分類、生成、摘要、視覺 ViT 等），並未受限於單一任務。"
+    keywords:
+      - "architecture vs model"
+      - "transformer"
+    exam_trap: true
+
+  - id: "L21101-Q42"
+    topic_code: "L21101"
+    item_code: "L21101"
+    difficulty: 4
+    question: "在 encoder-decoder Transformer（如 T5、BART）做翻譯時，decoder 如何獲取 encoder 已經編碼的來源句資訊？"
+    options:
+      a: "透過 cross-attention：Q 來自 decoder hidden state，K 與 V 來自 encoder 輸出"
+      b: "透過 decoder 內部的 self-attention：Q、K、V 全部都來自 encoder 輸出"
+      c: "將 encoder 輸出直接與 decoder 的 token embedding 串接（concat），不使用任何注意力機制"
+      d: "藉由 residual skip connection，把 encoder 輸出直接加到 decoder 的最終 logits 上"
+    correct: "a"
+    explanation:
+      why_correct: "Encoder-decoder Transformer 的核心橋梁就是 cross-attention（又稱 encoder-decoder attention）：Query 來自 decoder 當前層的 hidden state、Key/Value 來自 encoder 最終輸出。這使 decoder 在生成每個目標 token 時都能『對齊』到來源句相關位置，是翻譯與抽象式摘要的關鍵。"
+      why_not_b: "Self-attention 的定義是 Q、K、V 來自同一序列。若 Q/K/V 全來自 encoder 輸出，就變成 encoder 的 self-attention，decoder 無法取得來源句資訊，架構上錯誤。"
+      why_not_c: "Concat 方式失去位置對齊彈性，且 decoder 無法學習『當前輸出字』該對齊到來源句哪個位置；這不是 Transformer 的設計方式。"
+      why_not_d: "Residual skip 是同一層輸入/輸出的捷徑（add & norm），並非跨模組資訊橋梁；且『加到 logits 上』維度與語意都不匹配。"
+    keywords:
+      - "cross-attention"
+      - "encoder-decoder"
+    exam_trap: true
