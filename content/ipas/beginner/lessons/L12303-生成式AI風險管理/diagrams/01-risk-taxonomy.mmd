@@ -1,0 +1,63 @@
+%% L12303 — 生成式AI 風險分類樹 Risk Taxonomy Tree
+%% Render: mmdc -i 01-risk-taxonomy.mmd -o 01-risk-taxonomy.png -b transparent
+flowchart LR
+    classDef root fill:#1e3a8a,stroke:#0f172a,color:#fff,stroke-width:2px
+    classDef cat fill:#1e40af,stroke:#1e3a8a,color:#fff,stroke-width:2px
+    classDef sub fill:#0f766e,stroke:#115e59,color:#fff
+    classDef law fill:#b45309,stroke:#92400e,color:#fff
+    classDef hot fill:#991b1b,stroke:#7f1d1d,color:#fff
+
+    ROOT["🎯 生成式AI 風險<br/>(GenAI Risk)"]:::root
+
+    %% 三大類
+    E["🎭 倫理風險<br/>Ethical Risk"]:::cat
+    S["🔐 資料安全隱私<br/>Data Security &amp; Privacy"]:::cat
+    C["⚖️ 合規性<br/>Compliance"]:::cat
+
+    ROOT --> E
+    ROOT --> S
+    ROOT --> C
+
+    %% 倫理風險子類
+    E1["幻覺 Hallucination<br/>（編造不存在的事實）"]:::sub
+    E2["偏見 Bias / 歧視<br/>Discrimination 🔥"]:::hot
+    E3["錯假訊息<br/>Misinformation"]:::sub
+    E4["智財／著作權<br/>IP &amp; Copyright"]:::sub
+    E5["深偽 Deepfake<br/>🔥 台灣 2024 熱點"]:::hot
+    E6["濫用 Misuse<br/>（釣魚 / 詐騙腳本 / 惡意碼）"]:::sub
+
+    E --> E1
+    E --> E2
+    E --> E3
+    E --> E4
+    E --> E5
+    E --> E6
+
+    %% 資安隱私子類
+    S1["Prompt Leakage<br/>提示洩漏（三星案 2023）"]:::sub
+    S2["Training Data Leakage<br/>訓練資料外洩"]:::sub
+    S3["Prompt Injection<br/>提示注入 OWASP LLM01 🔥"]:::hot
+    S4["PII Exposure<br/>個資曝露"]:::sub
+
+    S --> S1
+    S --> S2
+    S --> S3
+    S --> S4
+
+    %% Prompt Injection 三子類
+    S3A["Direct 直接注入"]:::sub
+    S3B["Indirect 間接注入<br/>（藏指令在 PDF / 網頁）"]:::sub
+    S3C["Jailbreak 越獄<br/>（角色扮演繞過）"]:::sub
+
+    S3 --> S3A
+    S3 --> S3B
+    S3 --> S3C
+
+    %% 合規性子類
+    C1["人工智慧基本法<br/>§16 風險分級 → moda 🔥🔥"]:::law
+    C2["個資法<br/>§20 / §27（詳見 L11203）"]:::law
+    C3["著作權法<br/>智慧局 2023-06 函釋"]:::law
+
+    C --> C1
+    C --> C2
+    C --> C3

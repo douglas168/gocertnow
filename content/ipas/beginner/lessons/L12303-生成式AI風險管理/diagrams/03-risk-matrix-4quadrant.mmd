@@ -1,0 +1,44 @@
+%% L12303 — 4 象限風險矩陣 Risk Matrix (Likelihood × Impact)
+%% Render: mmdc -i 03-risk-matrix-4quadrant.mmd -o 03-risk-matrix-4quadrant.png -b transparent
+flowchart TB
+    classDef axis fill:#0f172a,stroke:#1e3a8a,color:#fff,stroke-width:2px
+    classDef avoid fill:#991b1b,stroke:#7f1d1d,color:#fff,stroke-width:2px
+    classDef mitigate fill:#b45309,stroke:#92400e,color:#fff,stroke-width:2px
+    classDef transfer fill:#1e40af,stroke:#1e3a8a,color:#fff,stroke-width:2px
+    classDef accept fill:#0f766e,stroke:#115e59,color:#fff,stroke-width:2px
+    classDef note fill:#0f172a,stroke:#334155,color:#fff
+
+    %% 軸線
+    Y["衝擊 Impact ↑"]:::axis
+    X["可能性 Likelihood →"]:::axis
+
+    %% 四象限 —— 用 subgraph 視覺化 2x2
+    subgraph Q_HL["🔵 高衝擊 × 低可能性"]
+        TRANSFER["🛡️ Transfer 轉移 / Mitigate 降低<br/>(低發生高衝擊)<br/><br/>📌 例：深偽詐騙潛在損失<br/>→ 網路安全險 + 多因子驗證<br/>→ 企業保險 + 事件應變演練"]:::transfer
+    end
+
+    subgraph Q_HH["🔴 高衝擊 × 高可能性"]
+        AVOID["🚫 Avoid 避免 / Mitigate 最優先降低<br/>(最高風險象限)<br/><br/>📌 例：完全不讓 AI 做醫療診斷<br/>→ 高風險應用直接排除<br/>→ 若必用：Guardrails + HITL 事前介入"]:::avoid
+    end
+
+    subgraph Q_LL["🟢 低衝擊 × 低可能性"]
+        ACCEPT["✅ Accept 接受<br/>(僅觀察監控)<br/><br/>📌 例：小型文案偶爾錯字<br/>→ 使用者回報機制<br/>→ 列冊觀察，不緊急處理"]:::accept
+    end
+
+    subgraph Q_LH["🟡 低衝擊 × 高可能性"]
+        MITIGATE["🔧 Mitigate 降低 + SOP<br/>(標準作業程序)<br/><br/>📌 例：日常幻覺回答<br/>→ 加 RAG 檢索增強 + 來源引用<br/>→ 免責聲明 + 例行化處理"]:::mitigate
+    end
+
+    %% 2×2 排列（TB 方向）
+    Y --> Q_HL
+    Q_HL --- Q_HH
+    Q_LL --- Q_LH
+    Q_LH --> X
+
+    %% 口訣
+    MNEMONIC["🧠 口訣「避降轉接」<br/>避(Avoid) → 降(Mitigate) → 轉(Transfer) → 接(Accept)"]:::note
+
+    AVOID -.-> MNEMONIC
+    MITIGATE -.-> MNEMONIC
+    TRANSFER -.-> MNEMONIC
+    ACCEPT -.-> MNEMONIC

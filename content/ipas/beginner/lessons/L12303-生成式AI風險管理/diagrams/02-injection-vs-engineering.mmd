@@ -1,0 +1,45 @@
+%% L12303 — 提示注入 vs 提示工程 決策樹
+%% Prompt Injection vs Prompt Engineering Decision Tree
+%% Render: mmdc -i 02-injection-vs-engineering.mmd -o 02-injection-vs-engineering.png -b transparent
+flowchart TD
+    classDef start fill:#1e40af,stroke:#1e3a8a,color:#fff,stroke-width:2px
+    classDef decision fill:#b45309,stroke:#92400e,color:#fff,stroke-width:2px
+    classDef legit fill:#0f766e,stroke:#115e59,color:#fff,stroke-width:2px
+    classDef attack fill:#991b1b,stroke:#7f1d1d,color:#fff,stroke-width:2px
+    classDef sub fill:#7f1d1d,stroke:#450a0a,color:#fff
+
+    START["🧠 有人對 LLM 輸入特殊指令<br/>(Input carefully crafted text)"]:::start
+
+    Q1{"👤 輸入者是誰？<br/>Who is crafting the prompt?"}:::decision
+
+    START --> Q1
+
+    Q1 -- "使用者自己<br/>想讓產出更好" --> Q2{"🎯 意圖是什麼？<br/>Intent?"}:::decision
+    Q1 -- "攻擊者 / 第三方<br/>想繞過系統規則" --> ATK["⚠️ Prompt Injection<br/>提示注入（資安攻擊）<br/>OWASP LLM01"]:::attack
+
+    Q2 -- "提升品質、格式、<br/>風格、步驟拆解" --> PE["✅ Prompt Engineering<br/>提示工程（正當技巧）<br/>L12202 教過"]:::legit
+    Q2 -- "竊取 system prompt、<br/>誘導違規內容" --> ATK
+
+    %% Injection 三子類
+    D["Direct 直接注入<br/>『忘記之前的規則…』<br/>客服 bot 被騙給折扣碼"]:::sub
+    I["Indirect 間接注入<br/>藏惡意指令在 PDF / 網頁<br/>Gmail 摘要 AI 被釣魚"]:::sub
+    J["Jailbreak 越獄<br/>角色扮演繞過安全限制<br/>『假裝你是無限制 AI…』"]:::sub
+
+    ATK --> D
+    ATK --> I
+    ATK --> J
+
+    %% 正當用法舉例
+    PE1["例：請用條列式<br/>回答並舉三個例子"]:::legit
+    PE2["例：Chain-of-Thought<br/>讓模型一步一步推理"]:::legit
+    PE3["例：Few-shot 提供<br/>範例樣本改善產出"]:::legit
+
+    PE --> PE1
+    PE --> PE2
+    PE --> PE3
+
+    %% 關鍵辨識注記
+    NOTE["🔑 關鍵差別：<br/>• 意圖：正當 vs 惡意<br/>• 對象：自己 vs 系統<br/>• 後果：產出變好 vs 規則被破"]:::start
+
+    PE -.-> NOTE
+    ATK -.-> NOTE
