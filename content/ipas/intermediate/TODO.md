@@ -11,7 +11,9 @@ Tracks open items across all lessons that need resolution before publishing.
 
 ## Open Items
 
-*(Filled as lessons complete — one heading per lesson with unresolved items like diagram rendering, fact-check flags, external docs pending.)*
+### L21102 — 電腦視覺技術與應用
+- **Coverage gaps (pedagogy review):** image-matching and Precision/Recall/F1 each have only 1 question. Add 1–2 more when revisiting the pool.
+- **Diagram rendering:** 5 Mermaid diagrams exist as `.md` source under `lessons/L21102-電腦視覺技術與應用/diagrams/` — render to PNG via Gemini downstream (not blocking publish).
 
 ---
 
@@ -20,7 +22,7 @@ Tracks open items across all lessons that need resolution before publishing.
 | # | Topic Code | Topic Name | Subject | Track | Priority | Status | Open Items |
 |---|---|---|---|---|---|---|---|
 | 1 | L21101 | 自然語言處理技術與應用 | L21 | required | 1 | ✅ Done | 0 |
-| 2 | L21102 | 電腦視覺技術與應用 | L21 | required | 1 | Not started | — |
+| 2 | L21102 | 電腦視覺技術與應用 | L21 | required | 1 | ✅ Done | 2 |
 | 3 | L21103 | 生成式AI技術與應用 | L21 | required | 1 | Not started | — |
 | 4 | L21104 | 多模態人工智慧應用 | L21 | required | 1 | Not started | — |
 | 5 | L21201 | AI導入評估 | L21 | required | 1 | Not started | — |
@@ -58,9 +60,9 @@ Tracks open items across all lessons that need resolution before publishing.
 
 ## What's Next
 
-**Next lesson:** `/course-generate-lesson L21102` — 電腦視覺技術與應用
+**Next lesson:** `/course-generate-lesson L21103` — 生成式AI技術與應用
 
-**Remaining lessons:** 33 of 34 topics left (21 for 資料分析組 SKU; 21 for 機器學習組 SKU; 8 L21 items shared between both)
+**Remaining lessons:** 32 of 34 topics left (20 for 資料分析組 SKU; 21 for 機器學習組 SKU; 7 L21 items shared between both)
 
 ### Priority 1 — 資料分析組 sprint (founder 2026-05-23 exam)
 
@@ -69,7 +71,7 @@ Order from `syllabus/dependencies.md` §3. Build L21 (required) first, then L22.
 | Priority | Topic Code | Topic Name | Notes |
 |---|---|---|---|
 | ~~1~~ | ~~L21101~~ | ~~自然語言處理技術與應用~~ | ✅ Done (42-question pool, 5 diagrams) |
-| 2 | L21102 | 電腦視覺技術與應用 | Deep, keywords inferred |
+| ~~2~~ | ~~L21102~~ | ~~電腦視覺技術與應用~~ | ✅ Done (40-question pool, 5 diagrams) |
 | 3 | L21103 | 生成式AI技術與應用 | Deep, keywords inferred |
 | 4 | L21104 | 多模態人工智慧應用 | Medium |
 | 5 | L21201 | AI導入評估 | Deep |
@@ -119,3 +121,4 @@ Order from `syllabus/dependencies.md` §4 (L21 items already covered above).
 ## Resolved Items
 
 - **L21101** — 自然語言處理技術與應用 (2026-04-17). 42-question pool (D1-5 balanced, 14 exam_trap), 564-line study guide, 5 Mermaid diagrams. Multi-model review clean.
+- **L21102** — 電腦視覺技術與應用 (2026-04-18). 40-question pool (D1-5 = 8/8/8/8/8, a/b/c/d = 10/10/10/10, 14 exam_trap), 682-line study guide, 5 Mermaid diagrams (CNN forward pass, task-family tree, ResNet skip connection, YOLO vs Faster R-CNN, IoU/mAP). Multi-model review resolved 11 question fixes + 12 study-guide fixes (ResNet-50 conv1 math, LINE group cultural error, Q36 receptive-field math).

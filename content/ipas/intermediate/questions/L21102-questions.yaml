@@ -1,0 +1,915 @@
+# L21102 電腦視覺技術與應用 — 練習題庫 (40 題)
+# iPAS AI 應用規劃師 中級 · 科目一 · 電腦視覺
+# 難度分布 8/8/8/8/8 · 答案分布 a=10 b=10 c=10 d=10 · exam_trap = 14 題
+
+questions:
+  # ============================================================
+  # Difficulty 1 — Remember (Q01–Q08)
+  # ============================================================
+
+  - id: "L21102-Q01"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 1
+    question: "關於卷積神經網路（Convolutional Neural Network, CNN）的池化層（Pooling Layer），下列哪一項「不是」其主要目的？"
+    options:
+      a: "縮小特徵圖（feature map）尺寸"
+      b: "降低後續層的參數量與運算量"
+      c: "抽取新的局部特徵（local feature）"
+      d: "提升對平移變化的不變性（translation invariance）"
+    correct: "c"
+    explanation:
+      why_correct: "池化層的目的是「縮小尺寸、保留主要訊號、降低參數量、提升平移不變性」。抽取特徵是卷積層（convolutional layer）的工作，池化只是「降採樣」既有特徵圖，不會抽出新特徵。口訣「卷積負責生（特徵圖），池化負責縮（空間維度）」。"
+      why_not_a: "縮小特徵圖尺寸（down-sampling）正是池化的核心功能之一，選它等於答對。"
+      why_not_b: "池化把 H×W 縮小，後續層的參數量與運算量都會下降，這是真的。"
+      why_not_d: "最大池化（max pooling）讓輸入有小幅平移時輸出仍相似，這就是平移不變性的主要來源，是正確敘述。"
+    keywords:
+      - "池化層"
+      - "pooling"
+      - "平移不變性"
+      - "translation invariance"
+    exam_trap: true
+
+  - id: "L21102-Q02"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 1
+    question: "下列哪一項是卷積神經網路（CNN）卷積輸出尺寸公式？其中 W 為輸入邊長、F 為 kernel 大小、P 為 padding、S 為 stride。"
+    options:
+      a: "O = W / S"
+      b: "O = (W − F + 2P) / S + 1"
+      c: "O = (W + F − 2P) / S − 1"
+      d: "O = W × S − F + P"
+    correct: "b"
+    explanation:
+      why_correct: "卷積輸出尺寸公式為 O = (W − F + 2P) / S + 1，需為整數。此公式幾乎是中級 CV 計算題的唯一命題來源。"
+      why_not_a: "只用 W/S 忽略了 kernel 大小與 padding 的修正項，會得到錯誤結果。"
+      why_not_c: "符號顛倒，padding 應為加項（補 2P），kernel 應為減項，此選項完全反過來。"
+      why_not_d: "乘以 stride 是錯的方向——stride 越大輸出越小，應為除法。"
+    keywords:
+      - "卷積輸出"
+      - "convolution output"
+      - "stride"
+      - "padding"
+    exam_trap: true
+
+  - id: "L21102-Q03"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 1
+    question: "YOLO（You Only Look Once）屬於下列哪一類型的物件偵測（object detection）架構？"
+    options:
+      a: "單階段（single-shot / one-stage）偵測器"
+      b: "兩階段（two-stage）偵測器"
+      c: "Faster R-CNN 是單階段偵測器，速度通常優於 YOLO"
+      d: "純生成式（generative）模型"
+    correct: "a"
+    explanation:
+      why_correct: "YOLO 一次 forward pass 直接輸出整張圖的所有 bbox 與類別預測，屬於單階段偵測器，速度為其核心優勢。"
+      why_not_b: "兩階段偵測器（如 Faster R-CNN）先用 RPN 產生約 2000 個候選框再分類，不是 YOLO 的做法。"
+      why_not_c: "Faster R-CNN 是兩階段（先 RPN 再分類）；YOLO 才是單階段。兩階段精度略高但速度慢，屬常見混淆。"
+      why_not_d: "YOLO 是判別式模型（predicts labels），不是生成式（生成新影像）模型。"
+    keywords:
+      - "YOLO"
+      - "single-shot detector"
+      - "物件偵測"
+    exam_trap: false
+
+  - id: "L21102-Q04"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 1
+    question: "在物件偵測中，IoU（Intersection over Union）的定義為何？"
+    options:
+      a: "預測框的面積 ÷ 真實框的面積"
+      b: "預測框邊長 ÷ 真實框邊長"
+      c: "預測信心分數（confidence）× 類別機率"
+      d: "兩框交集面積 ÷ 兩框聯集面積"
+    correct: "d"
+    explanation:
+      why_correct: "IoU = Area(A ∩ B) / Area(A ∪ B)，即交集面積除以聯集面積，範圍 [0, 1]，≥ 0.5 通常視為正確偵測（True Positive）。"
+      why_not_a: "單純面積比不考慮「兩框是否真的重疊」，兩框完全錯開仍會得到 1.0，顯然不合理。"
+      why_not_b: "邊長比忽略了 2D 空間的重疊關係，不是 IoU 定義。"
+      why_not_c: "信心分數與類別機率是用於排序預測框、或計算 AP 的輸入，並不是 IoU。"
+    keywords:
+      - "IoU"
+      - "Intersection over Union"
+      - "交集比聯集"
+    exam_trap: false
+
+  - id: "L21102-Q05"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 1
+    question: "ResNet（Residual Network）最重要的架構創新是下列哪一項？"
+    options:
+      a: "引入 attention 機制取代卷積"
+      b: "池化層具有可訓練權重，透過梯度下降自動學習"
+      c: "在 block 之間加入恆等捷徑（identity shortcut / skip connection）"
+      d: "把卷積核固定為 1×1 以減少參數"
+    correct: "c"
+    explanation:
+      why_correct: "ResNet 的核心是殘差連接（residual / skip connection）：H(x) = F(x) + x，讓梯度有捷徑反傳、並讓深層最差也能退化成恆等映射，解決退化問題（degradation）。"
+      why_not_a: "Attention 機制屬於 Transformer / ViT 範疇，不是 ResNet 的創新。"
+      why_not_b: "池化層（max/avg pool）沒有可訓練參數，只是固定的降取樣操作，不會透過梯度下降學習；常與卷積層混淆。"
+      why_not_d: "ResNet 裡確實有用 1×1 bottleneck 降維，但那是效率優化、不是「最重要的創新」。"
+    keywords:
+      - "ResNet"
+      - "skip connection"
+      - "residual block"
+      - "殘差連接"
+    exam_trap: false
+
+  - id: "L21102-Q06"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 1
+    question: "下列何者是語意分割（Semantic Segmentation）的標準代表架構？"
+    options:
+      a: "ResNet-50"
+      b: "U-Net"
+      c: "Mask R-CNN 是典型的物件偵測模型，與 YOLO 同屬單階段架構"
+      d: "Faster R-CNN"
+    correct: "b"
+    explanation:
+      why_correct: "U-Net 由 Ronneberger 等人（2015）提出，採 encoder-decoder 搭配 skip connection，是語意分割（尤其醫學影像）的經典代表。其他常見架構還有 FCN、DeepLab。"
+      why_not_a: "ResNet-50 是影像分類（classification）的代表 backbone，輸出單一 label，不是分割架構。"
+      why_not_c: "Mask R-CNN 是實例分割模型（擴展自 Faster R-CNN 加 mask branch），屬兩階段架構，不是單階段偵測，也不是語意分割。"
+      why_not_d: "Faster R-CNN 也是物件偵測，分割要看 Mask R-CNN（而且是實例分割，不是語意）。"
+    keywords:
+      - "semantic segmentation"
+      - "U-Net"
+      - "語意分割"
+    exam_trap: false
+
+  - id: "L21102-Q07"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 1
+    question: "mAP@0.5:0.95（COCO 標準）實際上是幾個 IoU 門檻下的 mAP 平均？"
+    options:
+      a: "1 個（只取 0.5）"
+      b: "2 個（0.5 與 0.95）"
+      c: "5 個（0.5, 0.6, 0.7, 0.8, 0.9）"
+      d: "10 個（0.50, 0.55, 0.60, …, 0.95，間隔 0.05）"
+    correct: "d"
+    explanation:
+      why_correct: "COCO 評測的 mAP@0.5:0.95 是在 IoU 門檻 {0.50, 0.55, 0.60, …, 0.95} 共 10 個門檻各算一次 mAP 再平均，是現代論文標配的嚴格指標。"
+      why_not_a: "單一 0.5 門檻是 mAP@0.5（PASCAL VOC 傳統），不是 mAP@0.5:0.95。"
+      why_not_b: "只取兩個端點門檻不符合 COCO 定義。"
+      why_not_c: "間隔 0.1 會只得到 5 個門檻，但 COCO 實際用 0.05 間隔，共 10 個。"
+    keywords:
+      - "mAP"
+      - "COCO"
+      - "IoU threshold"
+    exam_trap: true
+
+  - id: "L21102-Q08"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 1
+    question: "下列何者是影像分類（Image Classification）的典型輸出？"
+    options:
+      a: "一個類別 label 與其機率"
+      b: "一組 bounding box 與類別"
+      c: "每個像素的類別（per-pixel label）"
+      d: "每個個體獨立的 mask"
+    correct: "a"
+    explanation:
+      why_correct: "影像分類的輸出就是「整張圖屬於哪一個類別」，通常伴隨 softmax 機率分布。"
+      why_not_b: "輸出 bbox + 類別是物件偵測（如 YOLO、Faster R-CNN）。"
+      why_not_c: "逐像素類別是語意分割（U-Net、DeepLab）。"
+      why_not_d: "逐個體 mask 是實例分割（Mask R-CNN）。"
+    keywords:
+      - "image classification"
+      - "影像分類"
+    exam_trap: false
+
+  # ============================================================
+  # Difficulty 2 — Understand (Q09–Q16)
+  # ============================================================
+
+  - id: "L21102-Q09"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 2
+    question: "卷積神經網路（CNN）之所以相較全連接網路（Fully Connected Network, FCN）更適合處理影像，主要因為下列哪兩個假設？"
+    options:
+      a: "隨機性（randomness）與稀疏性（sparsity）"
+      b: "局部性（locality）與平移不變性（translation invariance）"
+      c: "獨立性（independence）與正規化（normalization）"
+      d: "高維嵌入（high-dim embedding）與迴圈連接（recurrence）"
+    correct: "b"
+    explanation:
+      why_correct: "CNN 利用兩個先驗假設：(1) 局部性——邊緣紋理只在小塊區域內相關；(2) 平移不變性——同一個特徵偵測器在任何位置都有效。兩者一起大幅減少參數並增強泛化。"
+      why_not_a: "稀疏性比較是 L1 正則化概念，隨機性與 CNN 架構無關。"
+      why_not_c: "正規化是訓練技巧（BN、LayerNorm），不是 CNN 架構的底層假設。"
+      why_not_d: "迴圈連接屬於 RNN 家族，不是 CNN 核心。"
+    keywords:
+      - "locality"
+      - "translation invariance"
+      - "CNN 假設"
+    exam_trap: false
+
+  - id: "L21102-Q10"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 2
+    question: "下列關於殘差連接（skip connection / residual connection）的敘述，何者最能正確解釋其作用？"
+    options:
+      a: "讓模型在推論時可以跳過部分層以加速"
+      b: "把兩個不同模型的輸出相加以做 ensemble"
+      c: "讓梯度可以直接反傳至淺層，並讓 block 最差退化為恆等映射（identity mapping）"
+      d: "把輸入影像直接接到最後一層以保留原始像素"
+    correct: "c"
+    explanation:
+      why_correct: "殘差連接 H(x) = F(x) + x 提供梯度的高速公路，解決深層網路的退化問題；當 F(x)→0 時整個 block 就是恆等映射，避免加深反而變差。"
+      why_not_a: "skip connection 在推論時一樣要計算 F(x)，並不是動態「跳過」。"
+      why_not_b: "ensemble 是在模型層級合併，不是 block 內部的 + x 操作。"
+      why_not_d: "輸入影像不會直接接到最後一層；skip 是「block 級」的局部捷徑。"
+    keywords:
+      - "skip connection"
+      - "residual"
+      - "identity mapping"
+      - "退化問題"
+    exam_trap: true
+
+  - id: "L21102-Q11"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 2
+    question: "下列何者最能描述「平移不變性（translation invariance）」的來源？"
+    options:
+      a: "主要來自池化層的降採樣與視窗聚合"
+      b: "主要來自全連接層把特徵打亂"
+      c: "主要來自批次正規化（Batch Normalization）的標準化"
+      d: "主要來自 dropout 隨機丟棄神經元"
+    correct: "a"
+    explanation:
+      why_correct: "雖然卷積的權重共享也有貢獻，但 iPAS 與多數教材的標準答案是：池化（pooling）透過視窗聚合與降採樣，讓小幅平移的輸入產生相近的輸出，這是平移不變性的主要機制。觀念對比：卷積 → 等變性（Equivariance，輸入平移，輸出也平移）；池化 → 不變性（Invariance，輸入小幅擾動，輸出不變，max-pool 尤其明顯）。"
+      why_not_b: "全連接層反而對位置高度敏感——這正是為什麼要先用 CNN 再接 FC。"
+      why_not_c: "BN 是為了穩定訓練與加速收斂，與平移不變性無關。"
+      why_not_d: "Dropout 是正則化，防止過擬合，與平移無關。"
+    keywords:
+      - "translation invariance"
+      - "pooling"
+      - "池化"
+    exam_trap: true
+
+  - id: "L21102-Q12"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 2
+    question: "語意分割（semantic segmentation）與實例分割（instance segmentation）最關鍵的差異是？"
+    options:
+      a: "語意分割用 CNN，實例分割用 RNN"
+      b: "語意分割輸出 bbox，實例分割輸出類別"
+      c: "實例分割無法輸出像素級別的結果"
+      d: "語意分割同類不分個體，實例分割同類也會區分個體"
+    correct: "d"
+    explanation:
+      why_correct: "最核心差異是個體區分：同一張圖有 3 隻羊時，語意分割只輸出「一片羊色塊」，實例分割要分成羊₁、羊₂、羊₃ 三個獨立 mask。iPAS 114/05 曾現場考這題。"
+      why_not_a: "兩者都是 CNN 類架構（U-Net 屬 CNN、Mask R-CNN 也是），與 RNN 無關。"
+      why_not_b: "兩者都輸出像素級類別，bbox 是物件偵測的輸出。"
+      why_not_c: "實例分割本質上就是像素級輸出（per-instance mask），這個說法顛倒了實例分割的定義。"
+    keywords:
+      - "semantic segmentation"
+      - "instance segmentation"
+      - "語意分割"
+      - "實例分割"
+    exam_trap: true
+
+  - id: "L21102-Q13"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 2
+    question: "下列對 YOLO 與 CNN 關係的描述，何者最正確？"
+    options:
+      a: "YOLO 是全新架構，不屬於 CNN 家族，已完全取代 CNN"
+      b: "YOLO 是建立在 CNN backbone（如 CSPDarknet）之上的偵測頭架構"
+      c: "YOLO 只使用 transformer，與 CNN 無關"
+      d: "YOLO 因為是單階段，所以不使用非極大值抑制（NMS）"
+    correct: "b"
+    explanation:
+      why_correct: "YOLO 的 backbone（特徵抽取）本身就是 CNN（YOLOv8 用 CSPDarknet53），YOLO 提供的是偵測頭與整體 pipeline，兩者是「上層應用建在 CNN 之上」的層級關係，不是替代。"
+      why_not_a: "CNN 是 YOLO 的底層元件，沒有「取代」的關係。"
+      why_not_c: "雖有 transformer 偵測器（DETR）存在，但 YOLO v3–v10 主線架構都仍是 CNN backbone。"
+      why_not_d: "YOLOv1–v9 都依賴 NMS 去除重疊框，YOLOv10 才以 one-to-one head 改為 NMS-free。單階段與是否用 NMS 無關，常見混淆。"
+    keywords:
+      - "YOLO"
+      - "CNN backbone"
+      - "CSPDarknet"
+    exam_trap: true
+
+  - id: "L21102-Q14"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 2
+    question: "卷積層中的 stride（步長）設為 2 而非 1，主要效果是？"
+    options:
+      a: "輸入通道數（C_in）加倍"
+      b: "kernel 數量加倍"
+      c: "輸出特徵圖空間尺寸大約縮小為 1/2"
+      d: "參數量加倍"
+    correct: "c"
+    explanation:
+      why_correct: "由公式 O = (W − F + 2P)/S + 1 可知 S 在分母，S=2 會讓輸出空間尺寸（H、W）大約縮半，是一種取代池化做降採樣的方式（stride-2 conv）。"
+      why_not_a: "stride 影響的是空間維度，與通道數無關。"
+      why_not_b: "kernel 數量由該層 C_out 決定，與 stride 無關。"
+      why_not_d: "參數量取決於 F×F×C_in×C_out + bias，stride 不影響參數量，只影響輸出尺寸與計算量。"
+    keywords:
+      - "stride"
+      - "步長"
+      - "降採樣"
+    exam_trap: false
+
+  - id: "L21102-Q15"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 2
+    question: "關於 mAP@0.5 與 mAP@0.5:0.95 兩個指標，下列敘述何者正確？"
+    options:
+      a: "mAP@0.5 較寬鬆；mAP@0.5:0.95 較嚴格，對定位精度更敏感"
+      b: "mAP@0.5 較嚴格；mAP@0.5:0.95 較寬鬆"
+      c: "兩者數值必定相同，只是名字不同"
+      d: "mAP@0.5:0.95 只在語意分割使用，不用於物件偵測"
+    correct: "a"
+    explanation:
+      why_correct: "mAP@0.5 只要 IoU ≥ 0.5 就算對，相對寬鬆；mAP@0.5:0.95 要在 10 個 IoU 門檻（0.50~0.95）都表現好才能拿高分，對 bbox 貼合度要求更嚴。"
+      why_not_b: "嚴格度方向反了。"
+      why_not_c: "兩者是不同計算方式，數值通常 mAP@0.5 > mAP@0.5:0.95。"
+      why_not_d: "mAP@0.5:0.95 就是 COCO 物件偵測的頭牌指標。"
+    keywords:
+      - "mAP@0.5"
+      - "mAP@0.5:0.95"
+      - "COCO"
+    exam_trap: false
+
+  - id: "L21102-Q16"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 2
+    question: "下列關於 ReLU（Rectified Linear Unit）激活函數的描述，何者最正確？"
+    options:
+      a: "ReLU 讓網路只做線性轉換，提升可解釋性"
+      b: "ReLU 把輸入壓縮到 [0, 1] 區間"
+      c: "ReLU 主要用於迴歸輸出層，不適合中間層"
+      d: "ReLU = max(0, x)，用於引入非線性，且計算簡單、不易飽和"
+    correct: "d"
+    explanation:
+      why_correct: "ReLU(x) = max(0, x)，作用是引入非線性（沒有它多層卷積等於一層線性變換），計算極便宜且正區段不會飽和，是 CNN 最常用的激活函數。"
+      why_not_a: "剛好相反——激活函數就是為了打破「全網路線性」這件事。"
+      why_not_b: "壓縮到 [0, 1] 是 Sigmoid 的功能，不是 ReLU。"
+      why_not_c: "ReLU 主要就是用於中間層；輸出層通常用 softmax（分類）或線性（迴歸）。"
+    keywords:
+      - "ReLU"
+      - "激活函數"
+      - "非線性"
+    exam_trap: false
+
+  # ============================================================
+  # Difficulty 3 — Apply (Q17–Q24)
+  # ============================================================
+
+  - id: "L21102-Q17"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 3
+    question: "某 ML 工程師要在 ResNet-50 的第一個卷積層處理 224×224×3 的輸入，參數為：kernel 7×7、stride 2、padding 3、64 個 filter。請問輸出特徵圖的空間尺寸為何？"
+    options:
+      a: "224 × 224"
+      b: "56 × 56"
+      c: "112 × 112"
+      d: "28 × 28"
+    correct: "c"
+    explanation:
+      why_correct: "套公式 O = (W − F + 2P)/S + 1 = (224 − 7 + 6)/2 + 1 = 223/2 + 1。PyTorch 以 floor 處理 → 111 + 1 = 112。輸出為 112×112×64，正是 ResNet-50 conv1 實際尺寸。"
+      why_not_a: "stride=2 就會讓尺寸縮半，不可能維持 224×224。"
+      why_not_b: "56×56 要再經過後面的 max-pool 才會得到，不是 conv1 的直接輸出。"
+      why_not_d: "28×28 是 ResNet 更深層的尺寸，不是第一層。"
+    keywords:
+      - "卷積輸出"
+      - "ResNet-50"
+      - "conv1"
+      - "output size"
+    exam_trap: false
+
+  - id: "L21102-Q18"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 3
+    question: "一家外送平台要在 iOS App 即時辨識使用者拍的便當照片裡有哪些餐點，必須在手機上 30 FPS 以上、幾乎零延遲。應優先選用下列哪一種架構？"
+    options:
+      a: "Faster R-CNN 兩階段偵測器"
+      b: "YOLO 系列單階段偵測器"
+      c: "U-Net 語意分割"
+      d: "ResNet 分類器 + 滑動視窗窮舉"
+    correct: "b"
+    explanation:
+      why_correct: "30 FPS 以上 + 手機端即時偵測 bbox 是 YOLO 的經典場景。單次 forward 完成所有預測，延遲低、硬體友善。"
+      why_not_a: "Faster R-CNN 先 RPN 再逐框分類，單張圖往往 50 ms 以上，手機端很難做到 30 FPS。"
+      why_not_c: "U-Net 做語意分割（逐像素），運算成本遠高於偵測，不適合即時。"
+      why_not_d: "滑動視窗配分類器是古早做法，效率極差，現代幾乎不用。"
+    keywords:
+      - "real-time detection"
+      - "YOLO"
+      - "mobile deployment"
+    exam_trap: false
+
+  - id: "L21102-Q19"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 3
+    question: "一個 3×3 的卷積層，輸入通道 64、輸出通道 128，且使用偏差（bias）。請問此層的參數量為何？"
+    options:
+      a: "36,864"
+      b: "18,432"
+      c: "147,456"
+      d: "73,856"
+    correct: "d"
+    explanation:
+      why_correct: "參數量 = (F×F×C_in + 1) × C_out = (3×3×64 + 1) × 128 = (576 + 1) × 128 = 577 × 128 = 73,856。"
+      why_not_a: "3×3×64×64 = 36,864——把 C_out 誤填成 64。"
+      why_not_b: "少算了 C_out 的一半（可能誤用 depthwise 的概念）。"
+      why_not_c: "誤算：3×3×64×128×2 = 147,456（沒理由的 ×2）。"
+    keywords:
+      - "parameter count"
+      - "參數量"
+      - "conv layer"
+    exam_trap: false
+
+  - id: "L21102-Q20"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 3
+    question: "某醫院要開發系統，需要從腦部 MRI 切片精確描繪腫瘤輪廓以供醫師判讀。下列何種架構最適合？"
+    options:
+      a: "U-Net（語意分割）"
+      b: "YOLOv8（物件偵測）"
+      c: "ResNet-50（影像分類）"
+      d: "Panoptic FPN（全景分割）"
+    correct: "a"
+    explanation:
+      why_correct: "腫瘤輪廓 = 像素級邊界描繪，屬語意分割任務。U-Net 的 encoder-decoder + skip connection 結構特別擅長醫學影像，原論文即為細胞分割而設計。"
+      why_not_b: "YOLO 輸出 bbox，只能框住腫瘤大致位置，無法描繪「輪廓」。"
+      why_not_c: "ResNet 只輸出「有腫瘤 / 無腫瘤」單一 label，不提供位置。"
+      why_not_d: "全景分割在「要同時標記 stuff + thing + 每個個體」時才需要；單純腫瘤輪廓用語意分割即可。"
+    keywords:
+      - "U-Net"
+      - "medical imaging"
+      - "tumor segmentation"
+    exam_trap: false
+
+  - id: "L21102-Q21"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 3
+    question: "預測 bbox = (0, 0) 到 (100, 100)；真實 bbox = (50, 50) 到 (150, 150)。請計算此預測的 IoU 值。"
+    options:
+      a: "0.25"
+      b: "約 0.143"
+      c: "0.5"
+      d: "約 0.333"
+    correct: "b"
+    explanation:
+      why_correct: "交集為 (50, 50) 到 (100, 100) 即 50×50 = 2,500。兩框各 10,000，聯集 = 10,000 + 10,000 − 2,500 = 17,500。IoU = 2,500 / 17,500 ≈ 0.143。低於 0.5 門檻，會被判為 False Positive。"
+      why_not_a: "0.25 = 交集/單框面積（2500/10000），這是混淆 IoU 與單框比率。"
+      why_not_c: "0.5 是常見判定門檻但不是此題的計算結果。"
+      why_not_d: "0.333 = 交集/(聯集−交集) 等錯誤算法。"
+    keywords:
+      - "IoU"
+      - "計算"
+      - "bounding box"
+    exam_trap: false
+
+  - id: "L21102-Q22"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 3
+    question: "大學新鮮人小陳接到第一個任務：要幫社區管委會做「監視器自動計算進出人數」。系統需要在一塊 Jetson Nano 邊緣裝置上 24 小時即時運行。建議優先選用？"
+    options:
+      a: "Mask R-CNN 實例分割"
+      b: "DeepLab v3+ 語意分割"
+      c: "YOLO 輕量版本（如 YOLOv8-n）"
+      d: "Faster R-CNN + ResNet-101 backbone"
+    correct: "c"
+    explanation:
+      why_correct: "Jetson Nano 算力有限、要 24 小時即時——這是 YOLO 輕量版本（YOLOv8-n / YOLOv8-s）的黃金場景。單階段、小模型、低延遲都符合。"
+      why_not_a: "Mask R-CNN 要產生 per-instance mask，運算量極大，邊緣裝置跑不動。"
+      why_not_b: "語意分割只會給「人形色塊」，無法直接計算個體數量。"
+      why_not_d: "Faster R-CNN 加 ResNet-101 是精度取向的重量組合，完全違反「邊緣即時」需求。"
+    keywords:
+      - "edge device"
+      - "YOLO"
+      - "real-time"
+      - "Jetson"
+    exam_trap: false
+
+  - id: "L21102-Q23"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 3
+    question: "某電商要對商品圖片做「分類 + 背景扣除」，需要同類商品（例如 3 件不同顏色的 T-shirt）都能被分開為獨立個體並取得 mask。應選用？"
+    options:
+      a: "Mask R-CNN（實例分割）"
+      b: "ResNet-50（分類）"
+      c: "FCN（語意分割）"
+      d: "YOLOv8（物件偵測）"
+    correct: "a"
+    explanation:
+      why_correct: "「同類但要區分個體 + 每個都要獨立 mask」=實例分割的精準定義。Mask R-CNN（Faster R-CNN 加 mask branch）是此任務的標準代表。"
+      why_not_b: "分類只輸出單一 label，無法產生 mask。"
+      why_not_c: "FCN 是語意分割，3 件 T-shirt 會變成一塊「T-shirt 色」區，無法分開個體。"
+      why_not_d: "YOLO 只給 bbox，不給像素級 mask。"
+    keywords:
+      - "instance segmentation"
+      - "Mask R-CNN"
+      - "實例分割"
+    exam_trap: false
+
+  - id: "L21102-Q24"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 3
+    question: "要在 28×28 的輸入特徵圖上進行 3×3 卷積，且保持輸出空間尺寸仍為 28×28（same padding）。應該設定 padding P 為多少、stride S 為多少？"
+    options:
+      a: "P = 0, S = 2"
+      b: "P = 2, S = 2"
+      c: "P = 0, S = 1"
+      d: "P = 1, S = 1"
+    correct: "d"
+    explanation:
+      why_correct: "Same padding 快捷規則：當 S=1 時 P = (F−1)/2。F=3 → P=1。代公式 O = (28 − 3 + 2)/1 + 1 = 28 ✓。"
+      why_not_a: "S=2 一定會縮半，出來是 14×14 或更小，不可能保持 28。"
+      why_not_b: "S=2 同上，就算 padding 調整也無法保持尺寸。"
+      why_not_c: "P=0, S=1 會得 O = (28−3)/1 + 1 = 26，比輸入小。"
+    keywords:
+      - "same padding"
+      - "stride"
+      - "padding"
+      - "公式"
+    exam_trap: false
+
+  # ============================================================
+  # Difficulty 4 — Analyze (Q25–Q32)
+  # ============================================================
+
+  - id: "L21102-Q25"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 5
+    question: "關於「兩階段偵測器（Faster R-CNN）一定比單階段偵測器（YOLO）更精準」的說法，下列分析何者最恰當？"
+    options:
+      a: "完全正確，兩階段一定更精準，單階段永遠比較不準"
+      b: "傳統上是如此，但近年 YOLOv8 / YOLOv10 的 mAP 已追平甚至超越 Faster R-CNN，應視版本與場景而定"
+      c: "完全錯誤，兩階段永遠比較不準"
+      d: "與精度無關，兩階段只是比較耗電"
+    correct: "b"
+    explanation:
+      why_correct: "YOLO 發展到 v8/v10，mAP 已經追平甚至超越傳統 Faster R-CNN（Keylabs benchmark 顯示 YOLOv8 mAP@0.5 > Faster R-CNN）。把「兩階段一定比較準」當絕對事實是過時說法，iPAS 陷阱常考。"
+      why_not_a: "「一定」「永遠」在 ML 領域通常是錯的——要看模型世代與資料集。"
+      why_not_c: "也不正確，經典兩階段在小物件、擁擠場景仍常有優勢。"
+      why_not_d: "兩階段的代價主要是「延遲」，不是「耗電」一詞可概括。"
+    keywords:
+      - "YOLO"
+      - "Faster R-CNN"
+      - "two-stage vs single-shot"
+    exam_trap: true
+
+  - id: "L21102-Q26"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 4
+    question: "一名學生說：「ResNet 的 skip connection 是為了解決過擬合（overfitting）」。下列評斷何者最正確？"
+    options:
+      a: "說法正確，過擬合就是深度網路最大問題"
+      b: "說法正確，skip connection 等同 dropout"
+      c: "說法正確，但只在訓練資料量小時成立"
+      d: "說法錯誤，skip connection 主要解決退化（degradation）與梯度消失（vanishing gradient），和過擬合是不同問題"
+    correct: "d"
+    explanation:
+      why_correct: "He et al. 2015 明白指出「退化問題」的特徵是「訓練誤差隨深度增加反而變大」，這是優化問題、不是過擬合（過擬合是訓練誤差低但測試誤差高）。Skip connection 讓梯度有捷徑反傳、並允許恆等映射，解決的是退化與梯度消失。"
+      why_not_a: "把退化誤認為過擬合是最常見的概念混淆。"
+      why_not_b: "dropout 是正則化（抑制過擬合），與 skip connection 的目的不同。"
+      why_not_c: "與資料量大小無關，退化問題在大資料集（ImageNet）也會出現。"
+    keywords:
+      - "degradation"
+      - "vanishing gradient"
+      - "ResNet"
+      - "overfitting"
+    exam_trap: true
+
+  - id: "L21102-Q27"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 4
+    question: "對比影像分類（classification）、物件偵測（detection）、語意分割（semantic seg）、實例分割（instance seg）四大任務族，下列分析何者最不正確？"
+    options:
+      a: "四者資訊量相同，只是輸出格式不同"
+      b: "分類輸出單一 label，偵測輸出 bbox，兩種分割都輸出像素級結果"
+      c: "實例分割需要同類分個體，資訊量通常最高"
+      d: "標準指標分別為：Top-k accuracy / mAP / mIoU / mAP (mask)"
+    correct: "a"
+    explanation:
+      why_correct: "四者資訊量差異顯著：分類一個 label ≪ 偵測數個 bbox+類 ≪ 語意分割逐像素類別 ≪ 實例分割逐像素類別+個體 ID。「資訊量相同」是典型錯誤。"
+      why_not_b: "分類→label、偵測→bbox、分割→像素級，分類方式正確。"
+      why_not_c: "實例分割要逐像素 + 同類分個體，資訊量最高是正確的。"
+      why_not_d: "四個指標對應正確：Top-k、mAP、mIoU、mAP (mask)。"
+    keywords:
+      - "task families"
+      - "資訊量"
+      - "四大任務"
+    exam_trap: false
+
+  - id: "L21102-Q28"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 4
+    question: "比較最大池化（Max Pooling）與平均池化（Average Pooling），下列何者最正確？"
+    options:
+      a: "兩者都會增加特徵圖的通道數"
+      b: "最大池化會平滑訊號、平均池化會保留銳利邊緣"
+      c: "最大池化傾向保留最強的局部訊號（例如邊緣），平均池化則較平滑、常用於全域平均池化（GAP）取代全連接層"
+      d: "平均池化一定比最大池化好，已完全取代最大池化"
+    correct: "c"
+    explanation:
+      why_correct: "最大池化留「最強」訊號，對邊緣、角點等局部強特徵較有利；平均池化把視窗內值平均，較平滑，ResNet 在最後一層 conv 後使用全域平均池化（Global Average Pooling）取代 flatten + FC，大幅減參數。"
+      why_not_a: "池化只改變空間尺寸，不改變通道數。"
+      why_not_b: "角色剛好相反。"
+      why_not_d: "兩者各有用途，並沒有誰取代誰。"
+    keywords:
+      - "max pooling"
+      - "average pooling"
+      - "Global Average Pooling"
+    exam_trap: false
+
+  - id: "L21102-Q29"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 4
+    question: "關於全景分割（Panoptic Segmentation），下列分析何者最正確？"
+    options:
+      a: "是一個全新與語意分割、實例分割無關的技術"
+      b: "只處理 stuff（背景），不處理 thing（個體）"
+      c: "只處理 thing（個體），不處理 stuff（背景）"
+      d: "結合語意分割（處理 stuff）與實例分割（處理 thing），每個像素都獲得 (類別, 個體 ID) 的唯一標籤"
+    correct: "d"
+    explanation:
+      why_correct: "全景分割把兩者整合：stuff（天空、路面等不可數）用語意標，thing（人、車等可數）用實例標，每像素只屬於一個 segment。不是全新概念，而是語意 + 實例的合併升級。對比最相似的錯誤選項 C（只處理 thing）：C 只涵蓋實例分割的範圍，D 才是「語意 + 實例」的完整整合，差別就在於是否涵蓋 stuff。"
+      why_not_a: "全景分割的定義就是「語意 + 實例」的合併。"
+      why_not_b: "全景分割「包含」thing 的個體區分。"
+      why_not_c: "也處理 stuff（這是相對實例分割的擴充）。"
+    keywords:
+      - "panoptic segmentation"
+      - "全景分割"
+      - "stuff vs thing"
+    exam_trap: true
+
+  - id: "L21102-Q30"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 4
+    question: "下列關於 NMS（Non-Maximum Suppression，非最大值抑制）在 YOLO 推論中的角色，何者最正確？"
+    options:
+      a: "NMS 是訓練時用來平衡類別不均衡的損失函數"
+      b: "NMS 是推論階段用來刪除重疊 bbox 的後處理，保留同一物件中信心最高的一個；YOLOv10 透過 one-to-one head 設計移除了此步驟"
+      c: "NMS 是卷積核初始化技巧"
+      d: "NMS 只用於兩階段偵測器，YOLO 從不使用"
+    correct: "b"
+    explanation:
+      why_correct: "NMS 在推論後處理階段執行：對同一物件常有多個重疊預測，NMS 用 IoU 門檻（常 0.45）抑制信心較低者。YOLOv10 的 Consistent Dual Assignments 讓訓練時多對一、推論時一對一，免除 NMS 後處理，可直接端對端部署。對比最相似的錯誤選項 D（YOLO 從不使用 NMS）：D 把「單階段」誤以為「不用 NMS」，但 YOLOv3–v9 都依賴 NMS，只有 YOLOv10 例外；關鍵差別在於 NMS 是後處理步驟，與是否單階段架構無直接關聯。"
+      why_not_a: "類別不均衡通常用 focal loss 等處理，與 NMS 無關。"
+      why_not_c: "與初始化無關。"
+      why_not_d: "YOLO v3–v8 都需要 NMS。"
+    keywords:
+      - "NMS"
+      - "Non-Maximum Suppression"
+      - "YOLOv10"
+    exam_trap: false
+
+  - id: "L21102-Q31"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 4
+    question: "一份技術文件寫道：「模型 X 在 COCO 上達到 mAP@0.5 = 0.68，但 mAP@0.5:0.95 只有 0.45」。此結果最可能反映何種情況？"
+    options:
+      a: "模型大致能框到物件（寬鬆門檻表現好），但 bbox 不夠貼合（嚴格門檻下降多），代表定位精度有進步空間"
+      b: "資料集過擬合，mAP@0.5 比較嚴格"
+      c: "mAP@0.5:0.95 只看單一門檻，應以 mAP@0.5 為準"
+      d: "兩個數值衝突，其中一定有一個算錯"
+    correct: "a"
+    explanation:
+      why_correct: "mAP@0.5 寬鬆，mAP@0.5:0.95 嚴格。兩者落差大代表模型能「抓到物件」，但框的四個邊沒貼很緊，IoU 往 0.75、0.9 走時 TP 數量迅速下降。這是 bbox regression 有優化空間的典型訊號。"
+      why_not_b: "嚴格度方向反了，mAP@0.5 較寬鬆。"
+      why_not_c: "mAP@0.5:0.95 是 10 個門檻的平均，不是單一。"
+      why_not_d: "兩數值不衝突，反而是互補訊息。"
+    keywords:
+      - "mAP"
+      - "定位精度"
+      - "COCO"
+    exam_trap: true
+
+  - id: "L21102-Q32"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 4
+    question: "比較「堆兩層 3×3 卷積」與「一層 5×5 卷積」，下列分析何者最正確？"
+    options:
+      a: "兩者感受野相同、但一層 5×5 參數更少"
+      b: "兩者運算量相同、感受野不同"
+      c: "兩層 3×3 的有效感受野（receptive field）約等同一層 5×5，且通常參數更少、非線性更多"
+      d: "一層 5×5 的效果永遠優於兩層 3×3"
+    correct: "c"
+    explanation:
+      why_correct: "疊兩層 3×3（不考慮 stride、padding 影響）有效感受野等同 5×5。參數量：2×(3×3×C²) = 18C² vs 5×5×C² = 25C²，兩層 3×3 少 28%。且每層間有 ReLU，非線性更強，這正是 VGG / ResNet 偏好小 kernel 堆疊的理由。"
+      why_not_a: "參數比較方向錯了——一層 5×5 的參數反而比兩層 3×3 多。"
+      why_not_b: "運算量與感受野都不一樣，且兩層 3×3 感受野 ≈ 5×5。"
+      why_not_d: "小 kernel 堆疊是現代 CNN 的主流設計，不是「永遠較差」。"
+    keywords:
+      - "receptive field"
+      - "kernel size"
+      - "3x3 vs 5x5"
+    exam_trap: false
+
+  # ============================================================
+  # Difficulty 5 — Evaluate (Q33–Q40)
+  # ============================================================
+
+  - id: "L21102-Q33"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 5
+    question: "某新創要為車牌辨識系統做架構選型，需求為：(1) 在高速公路攝影機上即時處理車流（< 50 ms 單張）、(2) 車牌位置精度要求高（IoU 至少 0.7）、(3) 部署在 NVIDIA Jetson 系列邊緣裝置。下列方案何者最合理？"
+    options:
+      a: "Faster R-CNN + ResNet-152，為了追求極致精度"
+      b: "YOLO 系列輕量版本（如 YOLOv8-s 或 YOLOv10-s）先偵測車牌框，再用小型 OCR 模型辨識字元"
+      c: "U-Net 對整張圖做語意分割後找出車牌色塊"
+      d: "Mask R-CNN 產生像素級 mask 後用電腦視覺傳統方法切字"
+    correct: "b"
+    explanation:
+      why_correct: "YOLO 輕量版滿足即時（單階段、<50ms），v8/v10 的 mAP@0.5:0.95 已足以達到 IoU 0.7 定位精度，Jetson 系列對 YOLO 有官方部署支援（TensorRT 導出、INT8 量化）。車牌辨識業界正是這個組合：YOLO 偵測車牌框 + 小型 OCR 辨字。"
+      why_not_a: "ResNet-152 + Faster R-CNN 延遲會遠超 50ms，無法在 Jetson 上即時達成需求；且精度上 YOLOv8+ 已追平，精度優勢不再絕對。"
+      why_not_c: "語意分割只給「車牌色塊」，還要後處理才能分出每個車牌個體，且 U-Net 運算量較大，不適合邊緣即時。"
+      why_not_d: "Mask R-CNN 像素級 mask 對車牌而言是 overkill（bbox 已足夠），且延遲高、不符合邊緣即時要求。"
+    keywords:
+      - "license plate"
+      - "YOLO"
+      - "edge deployment"
+      - "trade-off"
+    exam_trap: false
+
+  - id: "L21102-Q34"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 5
+    question: "一個 CV 團隊發現他們的 20 層 plain CNN 比 10 層版本在「訓練集上」誤差更高。資深工程師給出四種診斷，下列何者最合理？"
+    options:
+      a: "這是退化問題（degradation）——並非過擬合，而是深度造成優化困難。建議改用 ResNet 結構加入 skip connection"
+      b: "這是過擬合，應加強 dropout 與 L2 正則化"
+      c: "這是標註錯誤，重標資料即可"
+      d: "這是批次大小太小，調大 batch size 即可解決"
+    correct: "a"
+    explanation:
+      why_correct: "關鍵線索：「訓練集上」誤差反而更高——這不是過擬合（過擬合是訓練低測試高），而是 ResNet 論文定義的退化問題。解法正是加 skip connection，讓深層最差退化為恆等映射。"
+      why_not_b: "過擬合不會讓訓練誤差也變高。"
+      why_not_c: "標註錯誤通常隨資料一起進訓練，不會對深度特別敏感。"
+      why_not_d: "batch size 會影響收斂，但不會導致「加深」就突然變差這個特定模式。"
+    keywords:
+      - "degradation"
+      - "skip connection"
+      - "ResNet diagnosis"
+    exam_trap: true
+
+  - id: "L21102-Q35"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 5
+    question: "醫院要建置 AI 系統辨識病理切片上的多個癌細胞，不僅要標出位置，還要「分別數出每顆細胞」並畫出各自輪廓以便病理科醫師評估。下列架構組合何者最合適？"
+    options:
+      a: "ResNet-50 分類器 + sliding window"
+      b: "YOLOv8 + 單純 bbox 輸出"
+      c: "U-Net 語意分割"
+      d: "Mask R-CNN（實例分割 backbone + mask branch），並搭配 Faster R-CNN 的 RPN 做高精度候選框"
+    correct: "d"
+    explanation:
+      why_correct: "需求 = 同類（癌細胞）要分個體 + 逐細胞輪廓 → 實例分割。Mask R-CNN（= Faster R-CNN + mask branch + RoIAlign）是此任務的標準答案，醫學場景對精度要求高、通常不計延遲成本。"
+      why_not_a: "分類 + 滑動視窗無法產生逐細胞輪廓。"
+      why_not_b: "YOLO 只給 bbox，無法給出「輪廓」。"
+      why_not_c: "U-Net 是語意分割——多顆同類細胞會變成一片色塊，無法個別計數。"
+    keywords:
+      - "Mask R-CNN"
+      - "instance segmentation"
+      - "medical imaging"
+    exam_trap: false
+
+  - id: "L21102-Q36"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 5
+    question: "某工程師報告說：「我把卷積換成更大 kernel（9×9），不加 padding、stride=1，結果模型精度掉、運算量爆增」。下列評估何者最正確？"
+    options:
+      a: "大 kernel 一定比小 kernel 好，應改用 11×11"
+      b: "應把 stride 改為 0 以減少運算量"
+      c: "大 kernel（9×9）參數量為 81C_in·C_out，遠高於四層 3×3 堆疊（36C_in·C_out）即可達成的等效 9×9 感受野（節省約 55%）；且無 padding 會快速縮小特徵圖，使深層資訊不足。建議改用多層 3×3 堆疊或加 padding"
+      d: "應把 C_out 設為 1 以配合大 kernel"
+    correct: "c"
+    explanation:
+      why_correct: "兩個分析都對：(1) 感受野的正確對應是「四層 3×3 = 9×9」（每多堆一層 3×3，感受野每邊增加 2：3→5→7→9）。參數量 9×9 單層為 81C²，四層 3×3 為 4×9C² = 36C²，節省約 55%，現代 CNN 偏好小 kernel 堆疊。(2) 不加 padding 會讓每層 W 減 8，幾層下去特徵圖就消失了。"
+      why_not_a: "11×11 參數更爆炸，方向完全錯誤。"
+      why_not_b: "stride=0 沒有定義（公式分母為零）。"
+      why_not_d: "C_out=1 會讓後續層完全沒有容量。"
+    keywords:
+      - "kernel size trade-off"
+      - "padding"
+      - "receptive field"
+    exam_trap: false
+
+  - id: "L21102-Q37"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 5
+    question: "判斷：「在邊緣裝置（edge device）做自駕車前方物件即時偵測時，應該選擇 Faster R-CNN 以獲得最高精度，因為兩階段一定比較準」。這個判斷的主要問題是？"
+    options:
+      a: "同時犯了「精度不是唯一指標」與「兩階段不必然較準」兩個錯誤——自駕車要求毫秒級延遲，Faster R-CNN 的延遲通常不可接受，且 YOLOv8+ 已在精度上追平甚至領先傳統兩階段"
+      b: "沒有問題，兩階段的精度永遠高於單階段"
+      c: "問題在於 Faster R-CNN 耗電，應改用 Mask R-CNN"
+      d: "問題在於應該用 U-Net，因為自駕車只關心像素級分割"
+    correct: "a"
+    explanation:
+      why_correct: "這是一個雙重錯誤：(1) 架構選型要在精度、延遲、算力三維 trade-off，自駕車延遲敏感，Faster R-CNN（>50ms）幾乎不可接受；(2)「兩階段一定比較準」是過時說法，現代 YOLO 已追平。實務上自駕前方偵測採 YOLO 系列居多。"
+      why_not_b: "「永遠」一詞是 ML 領域的紅旗；YOLOv8 + benchmarks 都能反駁。"
+      why_not_c: "Mask R-CNN 比 Faster R-CNN 更慢，同樣不合邊緣即時場景。"
+      why_not_d: "自駕車除了分割還要知道「這是一個車」的個體與位置，單純語意分割不夠。"
+    keywords:
+      - "edge device"
+      - "trade-off"
+      - "autonomous driving"
+      - "exam trap"
+    exam_trap: true
+
+  - id: "L21102-Q38"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 4
+    question: "一個學生問：「既然 mAP@0.5 已經夠用，為什麼 COCO 還要多算 mAP@0.5:0.95？」下列解釋何者最完整？"
+    options:
+      a: "COCO 只是想讓指標看起來更複雜，實務上沒差別"
+      b: "因為 mAP@0.5:0.95 將 IoU 門檻從 0.5 延伸到 0.95（10 個門檻求平均），對 bbox 定位精度更敏感——鼓勵模型不只是「抓到物件」還要「貼得緊」。在醫療、自駕等高精度場景特別重要"
+      c: "因為 mAP@0.5 已被棄用，不再使用"
+      d: "因為 mAP@0.5:0.95 只適用語意分割"
+    correct: "b"
+    explanation:
+      why_correct: "mAP@0.5 給太寬鬆——bbox 大致對就給分；現代應用（自駕、醫療）需要精準定位。擴展到 10 個門檻平均，讓模型不能只滿足於「勉強 IoU 0.5」，而要在 0.75、0.9 等嚴格門檻也保持表現，這才是 COCO 把它當主要指標的原因。"
+      why_not_a: "有明確技術動機——對定位精度的敏感度。"
+      why_not_c: "mAP@0.5 仍廣泛用於 PASCAL VOC 與快速比較。"
+      why_not_d: "mAP@0.5:0.95 是物件偵測（bbox）指標，分割用 mIoU。"
+    keywords:
+      - "mAP@0.5:0.95"
+      - "COCO"
+      - "定位精度"
+    exam_trap: true
+
+  - id: "L21102-Q39"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 5
+    question: "綜合評估：一家公司要為零售店做「即時顧客動線分析」，需求為 (1) 在多支店內攝影機上 15+ FPS 運行；(2) 同時追蹤店內多位顧客（每人要分開成獨立 ID）；(3) 算力限制為中階 GPU server；(4) 預算緊、團隊人力有限。下列架構組合何者最合理？"
+    options:
+      a: "Mask R-CNN + 全系列 backbone，追求最高精度"
+      b: "ResNet 分類 + 手寫規則計數"
+      c: "YOLO 系列（v8/v10）做即時偵測 + 下游接 tracking（如 ByteTrack / BoT-SORT）進行 ID 關聯；若預算允許再加 pose 或 re-ID 以強化多攝影機 ID 一致"
+      d: "以 DeepLab 做語意分割後，用質心追蹤客群移動軌跡"
+    correct: "c"
+    explanation:
+      why_correct: "需求需平衡即時（15 FPS、中階 GPU）+ 個體追蹤 + 預算/人力有限。業界標準解法是「YOLO 偵測 + 輕量 tracker」。此組合可即時運行、成熟工具鏈多、調校門檻低。實例分割在此場景是 overkill。"
+      why_not_a: "Mask R-CNN 在 15+ FPS 多攝影機場景延遲過高，且像素級 mask 對動線分析並非必要——bbox 足夠。"
+      why_not_b: "ResNet 分類無法給位置，手寫規則很難擴展到多人追蹤。"
+      why_not_d: "語意分割不區分個體——同類別（顧客）都是同一片 mask，無法做個體軌跡追蹤；這需要實例分割 + ReID 或 bbox + tracker。單取質心會把整群顧客視為一個點，完全無法分人。"
+    keywords:
+      - "YOLO"
+      - "multi-object tracking"
+      - "retail analytics"
+      - "trade-off"
+    exam_trap: false
+
+  - id: "L21102-Q40"
+    topic_code: "L21102"
+    item_code: "L21102"
+    difficulty: 5
+    question: "某研究生把下列 CV 任務依難度由易到難排序：①影像分類 ②物件偵測 ③語意分割 ④實例分割 ⑤全景分割。他提出：「資訊量越高、任務通常越難」。下列評估何者最完整且正確？"
+    options:
+      a: "排序完全錯誤，五種任務難度相同"
+      b: "排序正確但理由不對，實際上只與模型大小相關"
+      c: "全景分割最簡單，因為它把所有任務合在一起反而最好訓練"
+      d: "排序方向基本正確——分類僅 1 label、偵測加 bbox、語意分割給每像素類別、實例分割再加個體 ID、全景分割同時涵蓋 stuff 與 thing；但「難度」也取決於資料標註成本、算力與任務語境，不是單一維度"
+    correct: "d"
+    explanation:
+      why_correct: "排序方向正確（資訊量遞增），但要補充「難度」也受標註成本、算力、應用語境影響，並非單一線性維度。例如醫療小資料集上語意分割可能比偵測更難訓；標註一張實例分割圖的成本遠高於一張分類。考量多維度才是完整評估。"
+      why_not_a: "五種任務資訊量差異明顯（從 1 個 label 到逐像素類別 + 個體 ID），難度不會相同。"
+      why_not_b: "模型大小不是決定難度的唯一因素——標註格式、資料量、評估方式都有影響。"
+      why_not_c: "全景分割是「語意 + 實例」的合併升級，標註最貴、模型設計最複雜，絕非「最簡單」。"
+    keywords:
+      - "task complexity"
+      - "classification to panoptic"
+      - "資訊量"
+    exam_trap: false
