@@ -1,0 +1,842 @@
+# L21104 多模態人工智慧應用 — Practice Question Pool
+# 38 questions · Bloom 1-5 · iPAS AI 中級 科目一
+# Scope: fusion strategies, CLIP, cross-attention, named architectures, use-case mapping, evaluation metrics
+# Taiwan terminology: 雜訊、交叉注意力、對比學習
+
+questions:
+  - id: "L21104-Q01"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 1
+    question: "「多模態人工智慧（Multimodal AI）」最精確的定義是什麼？"
+    options:
+      a: "一種只能同時處理多國語言文字的 AI 模型"
+      b: "能同時處理並整合兩種以上不同類型資料（如文字、圖像、聲音）的 AI 系統"
+      c: "使用多個 GPU 並行運算的深度學習模型"
+      d: "同時搭載多個不同模型版本的部署架構"
+    correct: "b"
+    explanation:
+      why_correct: "多模態（Multimodal）的「模態」指資料型態（modality），例如文字、圖像、聲音、影片等。多模態 AI 能同時接收並整合多種模態的資料進行推論或生成。"
+      why_not_a: "多國語言仍屬於單一「文字」模態，只是不同語系。這屬於多語言（multilingual），不是多模態。"
+      why_not_c: "多 GPU 並行是硬體運算架構，與資料模態無關。"
+      why_not_d: "部署多個模型版本屬於 MLOps 範疇（L21302），與多模態定義無關。"
+    keywords:
+      - "多模態"
+      - "multimodal"
+      - "modality"
+    exam_trap: true
+
+  - id: "L21104-Q02"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 1
+    question: "在多模態 AI 中，下列哪一組全部屬於不同的「模態（Modality）」？"
+    options:
+      a: "中文文字、英文文字、日文文字"
+      b: "RGB 影像、灰階影像、黑白影像"
+      c: "文字、圖像、聲音"
+      d: "JPEG、PNG、BMP 影像格式"
+    correct: "c"
+    explanation:
+      why_correct: "文字、圖像、聲音是三種本質不同的資料型態，屬於三種不同的模態。這也是 iPAS L21104 大綱關鍵字所列的三種代表性模態。"
+      why_not_a: "不同語言都屬於「文字」這單一模態，只是語種不同。"
+      why_not_b: "RGB/灰階/黑白都是影像的色彩表示方式，仍屬於「圖像」同一模態。"
+      why_not_d: "JPEG/PNG/BMP 只是影像的壓縮或編碼格式，內容仍是「圖像」一種模態。"
+    keywords:
+      - "模態"
+      - "modality"
+    exam_trap: true
+
+  - id: "L21104-Q03"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 1
+    question: "CLIP（Contrastive Language-Image Pre-training）模型的核心訓練方法是下列何者？"
+    options:
+      a: "對比學習（Contrastive Learning）"
+      b: "強化學習（Reinforcement Learning）"
+      c: "擴散模型訓練（Diffusion Training）"
+      d: "生成對抗訓練（Adversarial Training）"
+    correct: "a"
+    explanation:
+      why_correct: "CLIP 的全名即 Contrastive Language-Image Pre-training，核心為對稱 InfoNCE 對比學習——拉近配對的（圖、文）嵌入、拉開未配對者。"
+      why_not_b: "強化學習用於 RLHF、遊戲代理等，不是 CLIP 的訓練機制。"
+      why_not_c: "擴散模型訓練是 Stable Diffusion / DALL-E 的方法，雖然它們「使用」CLIP 文字編碼器，但 CLIP 本身不是擴散模型。"
+      why_not_d: "對抗訓練是 GAN 的方法，CLIP 沒有判別器 vs 生成器的對抗設定。"
+    keywords:
+      - "CLIP"
+      - "對比學習"
+      - "contrastive learning"
+    exam_trap: false
+
+  - id: "L21104-Q04"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 1
+    question: "在交叉注意力（Cross-Attention）機制中，Query、Key、Value 的來源為何？"
+    options:
+      a: "Q、K、V 全部來自同一個序列"
+      b: "Q、K、V 全部隨機產生"
+      c: "Q 來自某一模態，K、V 來自另一模態"
+      d: "Q 來自模型輸出，K、V 來自損失函數"
+    correct: "c"
+    explanation:
+      why_correct: "交叉注意力的定義：Query 由一個模態（如 U-Net 雜訊潛向量）提供，Key 與 Value 由另一模態（如文字嵌入）提供，使解碼端可「看向」另一模態的資訊。"
+      why_not_a: "Q/K/V 全來自同一序列是自注意力（Self-Attention），不是交叉注意力。這是最常見的混淆題。"
+      why_not_b: "Q/K/V 都是由可學習的線性投影產生，不是隨機產生。"
+      why_not_d: "損失函數不參與 Q/K/V 的計算。"
+    keywords:
+      - "交叉注意力"
+      - "cross-attention"
+      - "Q/K/V"
+    exam_trap: true
+
+  - id: "L21104-Q05"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 1
+    question: "Whisper 是由 OpenAI 推出的多模態模型，它的主要任務是下列何者？"
+    options:
+      a: "文字轉圖像（Text-to-Image）"
+      b: "語音辨識與語音翻譯（ASR / Speech Translation）"
+      c: "圖像分類（Image Classification）"
+      d: "文字轉語音（TTS）"
+    correct: "b"
+    explanation:
+      why_correct: "Whisper 是 encoder-decoder Transformer，輸入 log-Mel 頻譜（音訊模態），輸出文字 token，支援多語言轉錄與翻譯。屬於「audio → text」的跨模態任務。"
+      why_not_a: "文字轉圖像是 Stable Diffusion、DALL-E 的任務，不是 Whisper。"
+      why_not_c: "Whisper 不處理圖像模態。"
+      why_not_d: "TTS（Text-to-Speech，如 ElevenLabs、OpenAI TTS、VITS）方向相反——輸入文字、輸出語音；Whisper 是 ASR，方向是輸入語音、輸出文字，兩者容易混淆但任務方向相反。"
+    keywords:
+      - "Whisper"
+      - "ASR"
+      - "語音辨識"
+    exam_trap: false
+
+  - id: "L21104-Q06"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 1
+    question: "下列哪一種融合策略（Fusion Strategy）的特徵是「每個模態用獨立模型，最後在輸出層以投票或加權平均整合」？"
+    options:
+      a: "早期融合（Early Fusion）"
+      b: "晚期融合（Late Fusion / 決策層融合）"
+      c: "混合融合（Hybrid Fusion）"
+      d: "交叉注意力融合（Cross-Attention Fusion）"
+    correct: "b"
+    explanation:
+      why_correct: "晚期融合（決策層融合）讓每個模態有自己的獨立模型，只在最後輸出層（logits、分數、預測類別）合併，典型如加權平均、投票、堆疊。CLIP 常被視為 late fusion 的典型（嚴格來說更常被歸類為『對比式雙編碼器對齊』；但若以『何時合流』視角則屬 late fusion 的典型）。"
+      why_not_a: "早期融合是在「輸入或底層特徵階段」就把不同模態串接起來，送進同一個聯合模型。"
+      why_not_c: "混合融合是在不同層次（早/中/晚）組合多種融合策略，例如先 early 再 cross-attention；並不符合題幹「最後在輸出層以投票或加權平均整合」的純 late fusion 描述。另注意：原生/後接式（GPT-4o vs GPT-4V）是在談整體模型設計；而 early/late/hybrid/cross-attention 是在談『資訊何時融合』。兩者維度不同，不要混用。"
+      why_not_d: "交叉注意力融合是在中層以 Q/K/V 跨模態互動（Stable Diffusion、Flamingo），不是在輸出層以投票/加權平均整合。"
+    keywords:
+      - "晚期融合"
+      - "late fusion"
+      - "決策層融合"
+    exam_trap: false
+
+  - id: "L21104-Q07"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 1
+    question: "下列哪一個模型是「文字轉圖像（Text-to-Image）」的代表性架構？"
+    options:
+      a: "BERT"
+      b: "Whisper"
+      c: "CLIP"
+      d: "Stable Diffusion"
+    correct: "d"
+    explanation:
+      why_correct: "Stable Diffusion 是典型的文字轉圖像（T2I）潛空間擴散模型，透過 CLIP 文字編碼器 + U-Net + 交叉注意力完成條件生成。"
+      why_not_a: "BERT 是純文字理解模型（L21101），不處理圖像。"
+      why_not_b: "Whisper 是語音轉文字（ASR），不生成圖像。"
+      why_not_c: "CLIP 是「檢索與對齊」模型，本身不會生成圖像。這是最常見的陷阱：CLIP 的文字編碼器被 Stable Diffusion 使用，但 CLIP 本身不產生圖像。"
+    keywords:
+      - "Stable Diffusion"
+      - "text-to-image"
+      - "文字轉圖像"
+    exam_trap: true
+
+  - id: "L21104-Q08"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 4
+    question: "「多模態（Multimodal）」與「跨模態（Cross-modal）」最恰當的關係描述為下列何者？"
+    options:
+      a: "兩者完全等義，可互相替換"
+      b: "跨模態是多模態的超集合，範圍更大"
+      c: "多模態是能力（能處理多種模態），跨模態是任務方向（模態間轉換或檢索），多模態 ⊇ 跨模態"
+      d: "多模態指模型，跨模態指資料集，兩者無關"
+    correct: "c"
+    explanation:
+      why_correct: "多模態描述系統「同時處理多種模態」的能力（umbrella term）；跨模態描述「在模態之間轉換或檢索」的任務方向（如文字↔圖像檢索、文字→圖像生成）。跨模態任務是多模態系統的一個子集合。"
+      why_not_a: "在 iPAS 與學術文獻中兩者並非完全等義，這是常見誤解題。"
+      why_not_b: "範圍關係相反——多模態才是更大的範疇。"
+      why_not_d: "兩者都是描述任務或能力的術語，並非「一個指模型一個指資料集」。"
+    keywords:
+      - "多模態"
+      - "跨模態"
+      - "cross-modal"
+    exam_trap: true
+
+  - id: "L21104-Q09"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 2
+    question: "CLIP 採用「雙編碼器（Dual Encoder）+ 共享嵌入空間」的設計，對訓練目標的意義為何？"
+    options:
+      a: "讓同一張圖可以產生多種不同的文字描述"
+      b: "讓影像可被壓縮成固定大小的 JPEG 檔"
+      c: "讓模型能逐字生成圖像的像素值"
+      d: "讓配對的（圖像, 文字）在嵌入空間中距離拉近、未配對者距離拉遠（以餘弦相似度衡量）"
+    correct: "d"
+    explanation:
+      why_correct: "CLIP 的對稱 InfoNCE 目標：批次中正確配對（image_i, text_i）視為正樣本、其他組合視為負樣本，最大化正樣本相似度、最小化負樣本相似度，使雙模態在共享嵌入空間中對齊。"
+      why_not_a: "CLIP 不是生成模型，不會生成文字描述。"
+      why_not_b: "JPEG 壓縮屬於訊號處理，與深度學習嵌入無關。"
+      why_not_c: "CLIP 沒有像素生成能力（這是擴散/GAN 模型的任務）。"
+    keywords:
+      - "CLIP"
+      - "dual encoder"
+      - "共享嵌入空間"
+    exam_trap: false
+
+  - id: "L21104-Q10"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 2
+    question: "下列關於 GPT-4o 與 GPT-4V（Vision）的比較，哪一項描述最正確？"
+    options:
+      a: "GPT-4o 與 GPT-4V 是同一個模型的不同名稱，沒有架構差異"
+      b: "GPT-4V 是原生多模態（單一模型統一 token 空間）；GPT-4o 是在文字模型外加視覺接頭"
+      c: "GPT-4V 較早採視覺接上文字模型的作法；GPT-4o 是原生多模態（單一模型、統一 token 空間、支援文字/影像/語音）"
+      d: "GPT-4o 只支援語音，GPT-4V 只支援影像，兩者不能結合"
+    correct: "c"
+    explanation:
+      why_correct: "GPT-4V（2023）是視覺能力加在文字模型之上的 bolt-on 架構；GPT-4o（2024 Omni）是自回歸單一模型，輸入輸出都可為文字/影像/語音/影片的 token，屬於原生多模態。"
+      why_not_a: "兩者架構有本質差異，不是單純改名。"
+      why_not_b: "敘述與事實相反。"
+      why_not_d: "GPT-4o 同時支援文字、影像、語音；能力更廣而非更窄。"
+    keywords:
+      - "GPT-4o"
+      - "GPT-4V"
+      - "原生多模態"
+    exam_trap: true
+
+  - id: "L21104-Q11"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 2
+    question: "下列關於 Stable Diffusion 與 CLIP 關係的描述，何者正確？"
+    options:
+      a: "Stable Diffusion 內部完全沒有使用 CLIP"
+      b: "Stable Diffusion 使用 CLIP 的文字編碼器將提示轉為嵌入，再以交叉注意力注入 U-Net"
+      c: "CLIP 是 Stable Diffusion 的解碼器，負責把潛向量還原為像素"
+      d: "Stable Diffusion 是 CLIP 的升級版，功能完全取代 CLIP"
+    correct: "b"
+    explanation:
+      why_correct: "Stable Diffusion 採用 CLIP（ViT-L/14）文字編碼器將提示嵌入，透過交叉注意力在 U-Net 多層解析度注入條件訊號，引導雜訊逐步還原。"
+      why_not_a: "這是常見陷阱——Stable Diffusion 明確使用 CLIP 文字編碼器。"
+      why_not_c: "CLIP 是編碼器不是解碼器；Stable Diffusion 的解碼器是 VAE decoder。"
+      why_not_d: "CLIP 與 Stable Diffusion 任務方向不同（檢索對齊 vs 生成），不是升級取代關係。"
+    keywords:
+      - "Stable Diffusion"
+      - "CLIP"
+      - "交叉注意力"
+    exam_trap: true
+
+  - id: "L21104-Q12"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 2
+    question: "下列哪一個任務最適合用「對比式雙編碼器（如 CLIP）」架構處理？"
+    options:
+      a: "大規模文字-圖像檢索與零樣本分類"
+      b: "長篇中文文章寫作"
+      c: "即時語音對話"
+      d: "影片剪輯自動化"
+    correct: "a"
+    explanation:
+      why_correct: "CLIP 把圖與文各自編碼到共享嵌入空間，嵌入可事先計算並建索引，查詢時只需向量近似搜尋，非常適合大規模檢索與零樣本（把類別名當作文字嵌入查最近的影像嵌入）。"
+      why_not_b: "長文寫作屬於自回歸語言模型的任務，與雙編碼器檢索無關。"
+      why_not_c: "即時語音對話需要自回歸生成與低延遲解碼，CLIP 架構不適合。"
+      why_not_d: "影片剪輯屬於工作流自動化，不是 CLIP 的核心用例。"
+    keywords:
+      - "CLIP"
+      - "retrieval"
+      - "zero-shot"
+    exam_trap: false
+
+  - id: "L21104-Q13"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 2
+    question: "下列哪一組對「圖像模態編碼器（Image Encoder）」的描述最正確？"
+    options:
+      a: "只能使用傳統 CNN（如 ResNet）"
+      b: "影像需先轉成文字才能進入模型"
+      c: "必須使用 RNN/LSTM 處理影像"
+      d: "常見選擇包含 CNN（ResNet）與 ViT（Vision Transformer），兩者皆可"
+    correct: "d"
+    explanation:
+      why_correct: "現代多模態系統的影像編碼器常見兩大類：CNN（如 ResNet）與 ViT。CLIP 原論文同時提供 ResNet 與 ViT 兩種版本；LLaVA、Qwen-VL、Flamingo 等多以 ViT 為主。"
+      why_not_a: "ViT 已是主流選擇，不限於 CNN。"
+      why_not_b: "影像直接以像素/patch 編碼進入模型，不需要先轉文字。"
+      why_not_c: "RNN/LSTM 是序列模型，不是影像編碼器的主流選擇。"
+    keywords:
+      - "ViT"
+      - "CNN"
+      - "image encoder"
+    exam_trap: false
+
+  - id: "L21104-Q14"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 2
+    question: "下列關於 LLaVA 的敘述，哪一項最正確？"
+    options:
+      a: "LLaVA 是專門做文字轉圖像的擴散模型"
+      b: "LLaVA 使用視覺編碼器（CLIP ViT）+ 線性投影層把影像特徵送進 LLM，是開源視覺語言助理"
+      c: "LLaVA 是 OpenAI 的閉源模型，只能付費使用"
+      d: "LLaVA 只能辨識語音，不能處理影像"
+    correct: "b"
+    explanation:
+      why_correct: "LLaVA（2023）採用 CLIP ViT 取影像特徵，經一個線性投影層對齊到 LLM（Vicuna/Llama）的 token 空間，再與文字 token 連接一同進入解碼器。架構簡單、開源、VQA 效果好。"
+      why_not_a: "LLaVA 是視覺理解/VQA 助理，不生成圖像。"
+      why_not_c: "LLaVA 是開源專案（arXiv:2304.08485，程式碼公開）。"
+      why_not_d: "LLaVA 核心能力是影像理解，而非語音處理。"
+    keywords:
+      - "LLaVA"
+      - "VQA"
+      - "linear projection"
+    exam_trap: false
+
+  - id: "L21104-Q15"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 3
+    question: "一家台灣電商想做「以文找圖、以圖找文」的商品檢索系統，需支援百萬級商品、亞秒級查詢，且使用者常輸入細粒度屬性（如「紅色短袖配藍色口袋」）。下列哪一種架構最合適？"
+    options:
+      a: "先用 CLIP 做大規模粗篩（Recall / 向量近似搜尋），再用交叉注意力重排模型做精排（Ranking）的兩階段架構"
+      b: "只用單一 CLIP 雙編碼器做向量相似度查詢，無需重排"
+      c: "訓練一個 GAN 生成所有商品圖片後再比對"
+      d: "只用單一 CNN 做影像分類即可"
+    correct: "a"
+    explanation:
+      why_correct: "工業級電商檢索的最佳實務是「兩階段」：第一階段用 CLIP 做百萬級向量粗篩（Recall@K，可預先索引、亞秒查詢）；第二階段用交叉注意力重排模型（如 BLIP-2、CoCa）對 top-K 做細粒度屬性比對（紅色、短袖、藍色口袋）。純 CLIP 的雙編碼器在細粒度屬性組合上有已知弱點，需靠 reranker 補足。"
+      why_not_b: "純 CLIP 雙編碼器對細粒度屬性組合（紅色+短袖+藍口袋）的匹配能力不足，會漏失關鍵屬性；實務須加 reranker。"
+      why_not_c: "GAN 生成與檢索任務無關，且無法回答「以圖找文」。"
+      why_not_d: "單一 CNN 分類無法支援「以文找圖」方向，也沒有跨模態對齊。"
+    keywords:
+      - "CLIP"
+      - "cross-modal retrieval"
+      - "跨模態檢索"
+    exam_trap: false
+
+  - id: "L21104-Q16"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 4
+    question: "某醫院想建立一個系統，整合「醫學影像（CT/MRI）」與「臨床文字病歷」進行輔助診斷，需要深層語意對齊。下列哪一種融合策略最合適？"
+    options:
+      a: "早期融合（直接把影像像素與文字字元串接）"
+      b: "晚期融合（兩個獨立模型各自輸出後投票）"
+      c: "交叉注意力融合（以 Transformer 在中層做跨模態注意力）"
+      d: "不用融合，各自做單模態模型即可"
+    correct: "c"
+    explanation:
+      why_correct: "深層語意對齊（病歷描述 ↔ 影像病灶）需要中層語意互動，交叉注意力能讓文字 Q 動態關注影像 K/V（或反之），是 2022 年後多模態深度整合的主流。iPAS 考情也偏好此類答案。"
+      why_not_a: "像素與字元直接串接會因特徵尺度差異與序列長度問題而無法捕捉語意。"
+      why_not_b: "晚期融合只在輸出端整合，無法在中層進行語意級互動。"
+      why_not_d: "單模態模型無法回答跨模態診斷問題。"
+    keywords:
+      - "交叉注意力"
+      - "醫療影像"
+      - "多模態融合"
+    exam_trap: false
+
+  - id: "L21104-Q17"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 3
+    question: "客服中心要自動處理「顧客上傳產品照片 + 文字敘述故障」的訊息，回覆對應說明。下列何者最合適？"
+    options:
+      a: "用 Whisper 將圖片轉成文字再處理"
+      b: "用純文字 LLM 忽略圖片"
+      c: "用 Stable Diffusion 先把問題產生另一張圖再比對"
+      d: "用視覺語言模型（如 GPT-4V、LLaVA、Qwen-VL）處理影像 + 文字輸入，再生成回覆"
+    correct: "d"
+    explanation:
+      why_correct: "VQA 類任務（影像 + 文字 → 文字）最適合視覺語言助理架構：GPT-4V、LLaVA、Qwen-VL、Flamingo 等皆屬此類，支援 zh-TW 情境下可優先選用 Qwen-VL 或 GPT-4o。"
+      why_not_a: "Whisper 只處理音訊模態，不能轉換圖片。"
+      why_not_b: "忽略圖片就不是多模態方案，會喪失關鍵資訊。"
+      why_not_c: "Stable Diffusion 是生成器，不是理解器。"
+    keywords:
+      - "VQA"
+      - "visual question answering"
+      - "GPT-4V"
+    exam_trap: false
+
+  - id: "L21104-Q18"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 3
+    question: "一家新創要做「會議錄音逐字稿 + 自動生成會議摘要」，前段需高準確率中英混合語音辨識。下列哪一組合最恰當？"
+    options:
+      a: "Stable Diffusion 轉錄 + CLIP 摘要"
+      b: "Whisper 做語音辨識 + LLM 做摘要"
+      c: "Conformer / Wav2Vec2 做 ASR + LLM 做摘要"
+      d: "純 CNN 做語音辨識 + Diffusion 做摘要"
+    correct: "b"
+    explanation:
+      why_correct: "Whisper 是當前多語種 ASR 的主流選擇（支援中英混雜），再將轉錄文字交給 LLM（GPT / Gemini / Claude）做摘要，是工程上最直接有效的組合。"
+      why_not_a: "Stable Diffusion 是圖像生成；CLIP 不做文字摘要。"
+      why_not_c: "Conformer / Wav2Vec2 + LLM 是「可行但次優」的替代方案：Conformer/Wav2Vec2 是強 ASR 主幹，但開箱即用的中英混雜準確率通常不如 Whisper（Whisper 在 680k 小時多語資料上預訓練，對 code-switching 與口音更穩健）。要達到相同品質需額外 fine-tune，不是最直接的選擇。"
+      why_not_d: "純 CNN 不足以達到 Whisper 的 ASR 水準；Diffusion 非摘要工具。"
+    keywords:
+      - "Whisper"
+      - "ASR"
+      - "meeting summary"
+    exam_trap: false
+
+  - id: "L21104-Q19"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 3
+    question: "台灣某媒體要做「輸入一段中文描述自動生成社群貼文配圖」，追求成本低、可自架、可商用。下列哪一種架構最合適？"
+    options:
+      a: "用 BERT 寫文字然後手繪"
+      b: "用 CLIP 檢索現有相片"
+      c: "用 Whisper 把文字轉成聲音再轉圖"
+      d: "用 Stable Diffusion 等開源文字轉圖像擴散模型"
+    correct: "d"
+    explanation:
+      why_correct: "Stable Diffusion 系列為開源可自架 T2I 擴散模型，社群有大量微調權重與 LoRA，商用授權靈活，適合成本敏感的媒體部署。"
+      why_not_a: "BERT 不生成圖像；手繪不是自動化方案。"
+      why_not_b: "CLIP 檢索只能找既有圖，不能生成新圖（題意要生成配圖）。"
+      why_not_c: "Whisper 不生成圖像。"
+    keywords:
+      - "Stable Diffusion"
+      - "text-to-image"
+      - "開源"
+    exam_trap: false
+
+  - id: "L21104-Q20"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 4
+    question: "某監控系統要整合「攝影機畫面」與「麥克風聲音」偵測異常事件，兩模態可能其中一路訊號中斷。最適合的融合策略為何？"
+    options:
+      a: "早期融合（串接原始特徵）"
+      b: "晚期融合（各模態獨立模型 + 決策加權）"
+      c: "自注意力融合（同模態內部）"
+      d: "完全不融合"
+    correct: "b"
+    explanation:
+      why_correct: "當模態可能缺失時，晚期融合最具「優雅降級」特性——即使一路訊號中斷，另一個獨立模型仍可產出決策，再以加權或投票整合。"
+      why_not_a: "早期融合對模態同步與完整性敏感，缺一路會導致特徵對不齊。"
+      why_not_c: "自注意力發生在同模態內部，不是跨模態融合策略。self-attention 可存在於各分支內部，但不能解決模態缺失下的決策整合；本題關鍵是 graceful degradation，所以 late fusion 才是對的。"
+      why_not_d: "完全不融合就失去多模態綜合判斷的好處。"
+    keywords:
+      - "late fusion"
+      - "晚期融合"
+      - "robustness"
+    exam_trap: true
+
+  - id: "L21104-Q21"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 3
+    question: "一個台灣新創要做「看圖說故事」（輸入一張圖，輸出一段繁體中文描述）。下列哪一組架構最符合需求？"
+    options:
+      a: "視覺編碼器（ViT/CLIP ViT）+ 大型語言模型解碼，如 LLaVA / Qwen-VL"
+      b: "純 CLIP（只做檢索）"
+      c: "Stable Diffusion 自動逆向生成文字"
+      d: "Whisper 加上 GAN"
+    correct: "a"
+    explanation:
+      why_correct: "圖像描述生成（image captioning）是典型的「image → text」任務，以 ViT 類視覺編碼器抽取影像特徵，透過投影層或交叉注意力送進 LLM 解碼器。Qwen-VL 對繁體中文友善，是台灣部署常見選擇。"
+      why_not_b: "CLIP 不是生成模型，無法直接輸出自由文字敘述。"
+      why_not_c: "Stable Diffusion 是 T2I 方向（text → image），反方向沒有此功能。"
+      why_not_d: "Whisper 處理音訊；GAN 是圖像生成；組合起來不做看圖說故事。"
+    keywords:
+      - "image captioning"
+      - "LLaVA"
+      - "Qwen-VL"
+    exam_trap: false
+
+  - id: "L21104-Q22"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 4
+    question: "有學生說：「自注意力與交叉注意力只是『輸入來源是 1 個還是 2 個』的差別，其餘完全一樣。」這個說法哪裡不精確？"
+    options:
+      a: "自注意力的 Q/K/V 皆源自同一序列；交叉注意力的 Q 源自一個序列，K/V 源自另一序列——這在資訊流與可學習的跨模態條件上有本質差異，不僅是輸入來源不同"
+      b: "兩者其實完全等義，教科書分兩個名詞只是慣例"
+      c: "自注意力一定比交叉注意力慢"
+      d: "交叉注意力沒有 softmax 操作"
+    correct: "a"
+    explanation:
+      why_correct: "關鍵差異在資訊流：自注意力讓序列內部互相「看自己」；交叉注意力把 K/V 鎖在另一模態，強迫模型學「給定條件下該注意哪裡」。這讓交叉注意力成為多模態條件生成（Stable Diffusion、Flamingo、Whisper 解碼器）的核心組件。"
+      why_not_b: "兩者在架構語意上有本質差異，並非同義詞。"
+      why_not_c: "速度取決於序列長度與維度，沒有「一定比較慢」的通則。"
+      why_not_d: "交叉注意力同樣使用 softmax(QK^T/√d)V 的計算形式。"
+    keywords:
+      - "self-attention"
+      - "cross-attention"
+      - "Q/K/V"
+    exam_trap: true
+
+  - id: "L21104-Q23"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 2
+    question: "比較「CLIP」與「Stable Diffusion」兩個模型，下列敘述哪一項最正確？"
+    options:
+      a: "兩者都是檢索模型，功能重複"
+      b: "兩者都是生成模型，功能重複"
+      c: "CLIP 是對齊/檢索模型（無生成能力），Stable Diffusion 是生成模型；但 Stable Diffusion 內部使用 CLIP 文字編碼器"
+      d: "CLIP 是 Stable Diffusion 的後處理步驟"
+    correct: "c"
+    explanation:
+      why_correct: "任務方向完全相反：CLIP 做文字–圖像對齊與檢索、不生成像素；Stable Diffusion 做 T2I 生成。然而 Stable Diffusion 採用 CLIP 文字編碼器作為條件嵌入源，因此兩者既對立又相關——這是 iPAS 中級常見混淆陷阱。注意：CLIP 嚴格來說更常被歸類為『對比式雙編碼器對齊』；但若以『何時合流』視角則屬 late fusion 的典型。"
+      why_not_a: "Stable Diffusion 是生成，非檢索。"
+      why_not_b: "CLIP 不是生成模型。"
+      why_not_d: "CLIP 在 Stable Diffusion 中是「前置編碼器」，不是後處理步驟。"
+    keywords:
+      - "CLIP"
+      - "Stable Diffusion"
+      - "任務方向"
+    exam_trap: true
+
+  - id: "L21104-Q24"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 4
+    question: "下列關於「早期融合（Early Fusion）」與「晚期融合（Late Fusion）」的比較，哪一項最精確？"
+    options:
+      a: "早期融合一定優於晚期融合"
+      b: "早期融合在底層捕捉跨模態相關性較強但對模態同步/尺度差異敏感；晚期融合模組化、對模態缺失健壯，但無法建模中層語意互動"
+      c: "兩者效果完全相同，只是命名不同"
+      d: "晚期融合可以完全取代交叉注意力融合"
+    correct: "b"
+    explanation:
+      why_correct: "早期融合把模態在原始/低階特徵就串接，能利用低階共變異；代價是對對齊/尺度敏感。晚期融合結構鬆耦合、可單模態推論、對缺失健壯；代價是丟失中層語意對齊空間。交叉注意力/混合融合是為了取中庸。"
+      why_not_a: "這是常見迷思——沒有「永遠較優」的融合，視場景而定。"
+      why_not_c: "兩者性質差異明顯。"
+      why_not_d: "晚期融合不等同交叉注意力融合，任務特性不同，不能完全取代。"
+    keywords:
+      - "early fusion"
+      - "late fusion"
+      - "trade-off"
+    exam_trap: true
+
+  - id: "L21104-Q25"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 2
+    question: "某工程師宣稱：「只要是 ChatGPT，一定就是多模態模型。」這個說法哪裡有問題？"
+    options:
+      a: "ChatGPT 家族僅特定版本（如 GPT-4V、GPT-4o）具視覺/語音能力；早期的 GPT-3.5/基礎 GPT-4 純文字版本並不具備多模態"
+      b: "ChatGPT 全部都是純文字模型"
+      c: "ChatGPT 全部都是純語音模型"
+      d: "只有免費版才是多模態"
+    correct: "a"
+    explanation:
+      why_correct: "判斷口訣：先問版本，再問模態；產品名不等於能力名。「ChatGPT」是產品線名稱而非單一模型。是否多模態取決於背後模型版本：GPT-4V（2023）、GPT-4o（2024）、GPT-4.1/5 Vision 等才具視覺/語音；GPT-3.5 等則是純文字。這是 iPAS 常見迷思題。"
+      why_not_b: "GPT-4V/4o 明確是多模態。"
+      why_not_c: "主流 ChatGPT 仍以文字為核心，而非純語音。"
+      why_not_d: "多模態能力與免費/付費無關，是模型版本問題。"
+    keywords:
+      - "ChatGPT"
+      - "GPT-4o"
+      - "多模態"
+    exam_trap: true
+
+  - id: "L21104-Q26"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 4
+    question: "比較 Flamingo 與 LLaVA 兩個開源視覺語言系統的融合策略，下列敘述最精確的是？"
+    options:
+      a: "兩者皆使用簡單線性投影（prefix）把影像特徵接入 LLM"
+      b: "兩者皆使用門控交叉注意力把影像特徵注入凍結 LLM"
+      c: "Flamingo 使用 Perceiver Resampler + 門控交叉注意力（注入凍結 LLM）；LLaVA 僅用線性投影層把 CLIP ViT 特徵前置到 LLM"
+      d: "Flamingo 是擴散模型，LLaVA 是 GAN"
+    correct: "c"
+    explanation:
+      why_correct: "Flamingo 的 Perceiver Resampler 壓縮可變長視覺特徵為 64 個固定 token，再經「門控交叉注意力」層插入凍結 LLM；LLaVA 則採最簡單的「線性投影到 LLM token 空間」策略。兩者代表多模態融合的複雜 vs 簡潔兩個方向。"
+      why_not_a: "Flamingo 並非僅用線性投影。"
+      why_not_b: "LLaVA 不使用門控交叉注意力。"
+      why_not_d: "兩者都不是擴散或 GAN。"
+    keywords:
+      - "Flamingo"
+      - "LLaVA"
+      - "gated cross-attention"
+    exam_trap: false
+
+  - id: "L21104-Q27"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 5
+    question: "比較「對稱 InfoNCE（CLIP 用）」與「cross-entropy 語言模型損失」的差異，下列哪一點最關鍵？"
+    options:
+      a: "InfoNCE 在批次中用『配對 vs 未配對』做對比；LM cross-entropy 在每個位置對整個詞彙表做下一 token 機率分類——兩者目標空間與訊號來源本質不同"
+      b: "兩者完全等義，只是不同文獻的名稱"
+      c: "InfoNCE 不需要標註資料"
+      d: "InfoNCE 只能用於文字"
+    correct: "a"
+    explanation:
+      why_correct: "InfoNCE 是「對比學習」損失，把配對樣本視為正樣本、未配對視為負樣本在嵌入空間拉近/推遠；LM cross-entropy 則是針對每一步預測下一個 token 的離散分類。兩者訊號型態（相似度 vs 分類機率）完全不同。"
+      why_not_b: "兩者並非同義。"
+      why_not_c: "InfoNCE 需要配對資料（弱標註，如圖與描述）才能區分正負。"
+      why_not_d: "InfoNCE 廣泛用於影像、語音、多模態對比，不限於文字。"
+    keywords:
+      - "InfoNCE"
+      - "contrastive"
+      - "cross-entropy"
+    exam_trap: true
+
+  - id: "L21104-Q28"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 2
+    question: "下列對「原生多模態（GPT-4o / Gemini）」與「後接式多模態（GPT-4V / LLaVA）」的比較，哪一點最正確？"
+    options:
+      a: "原生多模態通常在預訓練階段就於統一 token 空間聯合訓練多模態；後接式多模態是將視覺/語音模組接到既有文字 LLM 上做對齊訓練"
+      b: "原生多模態只是改名，架構與後接式完全相同"
+      c: "後接式多模態才是單一模型，原生多模態是多模型串接"
+      d: "兩者皆由 diffusion model 組成"
+    correct: "a"
+    explanation:
+      why_correct: "原生多模態（GPT-4o、Gemini）從預訓練起就以統一 token 空間同時學文字/影像/語音/影片；後接式（GPT-4V、LLaVA、Qwen-VL 等）是在既有文字 LLM 上加視覺或語音模組並用對齊資料微調。"
+      why_not_b: "架構與訓練流程有本質差異。"
+      why_not_c: "敘述反了——原生才是單一模型統一訓練。"
+      why_not_d: "兩者主幹皆為 Transformer-based LLM，非 diffusion。"
+    keywords:
+      - "native multimodal"
+      - "GPT-4o"
+      - "Gemini"
+    exam_trap: true
+
+  - id: "L21104-Q29"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 5
+    question: "一家台灣新創要做「法律文件（文字）+ 現場照片（影像）」的智能風險評估 SaaS。團隊小、預算有限、需可私有化部署、客戶資料不得外洩（含地緣政治合規要求）、兩模態資料量差異大。下列哪一種架構取捨最合理？"
+    options:
+      a: "直接呼叫 GPT-4o API（純 SaaS）處理所有模態"
+      b: "自訓一個超大原生多模態模型"
+      c: "選擇非中國系開源視覺語言模型（如 LLaVA-NeXT、Llama-3-Vision 或 TAIDE 本土視覺語言計畫）做地端（on-premise）私有化部署，文字部份配以既有 LLM、用指令微調與小樣本對齊，必要時配合 CLIP 做檢索增強"
+      d: "用 CNN 影像分類 bolt-on 既有文字系統，不採用 VLM"
+    correct: "c"
+    explanation:
+      why_correct: "為敏感台灣法務資料，首選可地端部署（on-premise）的開源模型，避免資料外流與地緣政治風險；Qwen 系列為中國阿里巴巴模型，即使開源、對台灣企業敏感資料有合規疑慮，應避免。合理選擇是 LLaVA-NeXT / Llama-3-Vision / TAIDE 等非中國系開源 VLM，搭配指令微調與 CLIP 檢索增強，這是 2024–26 台灣產業實務主流。"
+      why_not_a: "純 SaaS GPT-4o API 屬第三方雲端服務，資料需上傳到 OpenAI 伺服器，違反私有化與資料不外洩要求（洩漏風險）。"
+      why_not_b: "自訓大型原生多模態需大量算力與資料，小團隊無法負擔。"
+      why_not_d: "純 CNN 影像分類能力不足——法務現場照片需要跨模態語意推論（文字問題↔影像證據），單純 bolt-on CNN 分類器無法支援 VQA/跨模態檢索類需求。"
+    keywords:
+      - "open-source VLM"
+      - "LLaVA-NeXT"
+      - "地端部署"
+      - "合規"
+    exam_trap: false
+
+  - id: "L21104-Q30"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 5
+    question: "對於一個「即時手語辨識 + 口語回應」的無障礙對話系統（攝影機影像 + 使用者語音輸入 → 文字與語音回應），下列哪一種設計最能兼顧延遲與語意整合？"
+    options:
+      a: "用三個獨立模型各自處理手語影像、語音、文字，最後在輸出層投票"
+      b: "只用 Whisper 辨識聲音，忽略手語影像"
+      c: "用 Stable Diffusion 生成手語圖像後再處理"
+      d: "用視覺編碼器 + 語音編碼器 + LLM 解碼器的混合融合架構，以交叉注意力在中層整合，再接上低延遲 TTS"
+    correct: "d"
+    explanation:
+      why_correct: "即時對話需低延遲與跨模態語意整合：各模態有專屬編碼器並在中層以交叉注意力融合語意，最後解碼器做統一語言推論並串接 TTS，既保留模態細節又能低延遲生成。這也接近 GPT-4o Realtime / Gemini Live 的實務模式。"
+      why_not_a: "純晚期融合難以整合手語與語音的語意脈絡，且投票方式無法生成自由文字回應。"
+      why_not_b: "忽略手語就違背無障礙需求。"
+      why_not_c: "生成式擴散方向錯誤，不是辨識工具，且延遲高。"
+    keywords:
+      - "real-time"
+      - "cross-attention"
+      - "無障礙"
+    exam_trap: false
+
+  - id: "L21104-Q31"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 5
+    question: "某團隊嘗試用 CLIP 直接做「台灣健保醫學影像 → 診斷報告文字生成」。系統上線後發現報告品質極差。最可能的根本原因是下列何者？"
+    options:
+      a: "CLIP 模型訓練時 batch 太大"
+      b: "把 CLIP 當成可直接解碼長文本的生成器"
+      c: "CLIP 是對比檢索/對齊模型，本質上不具自由文字生成能力；要做診斷報告生成需改用 encoder-decoder 或 VLM（ViT + LLM），CLIP 僅適合做「選擇/檢索」類任務"
+      d: "健保資料格式不支援 CLIP"
+    correct: "c"
+    explanation:
+      why_correct: "這是 iPAS 的核心任務方向陷阱：CLIP 做「共享嵌入空間對齊」（檢索、零樣本分類），沒有自由文字解碼器，無法生成自由形式報告。要生成報告需 encoder-decoder 或 VLM（ViT + LLM）。"
+      why_not_a: "批次大小是訓練超參，不是「無法生成文字」的根本原因。"
+      why_not_b: "此選項描述的是「誤用模式」——把 CLIP 當生成器使用；這是現象，不是根本原因。根本原因是 CLIP 架構本身沒有自由文字解碼器（c 選項），必須改用 VLM 才能生成。容易與 c 混淆，但 c 點出的是「架構限制」，才是正解。"
+      why_not_d: "資料格式與 CLIP 本身架構限制無關。"
+    keywords:
+      - "CLIP"
+      - "任務方向"
+      - "generation vs retrieval"
+    exam_trap: true
+
+  - id: "L21104-Q32"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 5
+    question: "評估兩種多模態 VQA 系統，下列哪一種「評估策略」最能同時兼顧準確性、穩健性與實務可用性？"
+    options:
+      a: "只看單一公開 benchmark（如 VQAv2）的單一指標"
+      b: "同時採用公開 benchmark 多項指標（如 VQA accuracy、CIDEr/BLEU for captioning、retrieval R@K）+ 自建領域測試集 + 分布外（OOD）樣本 + 對抗性樣本（如含雜訊、偏題）+ 人類評估"
+      c: "僅用訓練集上的 loss"
+      d: "只看公開 benchmark，缺 OOD 測試與自建領域資料集"
+    correct: "b"
+    explanation:
+      why_correct: "評估框架：公開指標 + 自建領域集 + OOD 測試 + 人類評估 = 完整評估四元組。多模態系統評估應採多維度：公開 benchmark 指標避免自嗨、領域測試集驗證實務適用、OOD 與對抗樣本檢驗穩健性、人類評估補足自動指標的盲區。單一 benchmark/單一指標易被過擬合。"
+      why_not_a: "單一 benchmark 容易被「刷榜」樂觀估計。"
+      why_not_c: "訓練集 loss 不能代表泛化能力。"
+      why_not_d: "這是常見的「半套」評估方法——公開 benchmark 可反映一般表現，但缺 OOD 與領域資料集，無法驗證穩健性與實務適用性；屬「可行但不完整」的評估，不是最成熟的策略。"
+    keywords:
+      - "evaluation"
+      - "benchmark"
+      - "multimodal"
+    exam_trap: false
+
+  - id: "L21104-Q33"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 4
+    question: "某台灣影像新創從「Stable Diffusion 文字轉圖像」升級到「Sora/Veo 文字轉影片」時，最關鍵的架構差異與工程挑戰是？"
+    options:
+      a: "T2V 需在時間維度建模（spacetime patches / DiT + 時序交叉注意力），訓練資料、算力與時序一致性要求顯著提升；推論延遲與記憶體需求也大幅增加"
+      b: "T2V 只需把 T2I 重複跑每一幀，無其他差異"
+      c: "T2V 不需要文字編碼器"
+      d: "T2V 架構和 CLIP 完全相同"
+    correct: "a"
+    explanation:
+      why_correct: "Sora/Veo 採用 Diffusion Transformer（DiT）在時空 patch 上建模，新增時間維度自注意力以維持時序一致性；算力與訓練資料量級皆大幅跳升，這是 T2V 與 T2I 的核心差異。"
+      why_not_b: "逐幀獨立生成會導致閃爍、主體不一致。"
+      why_not_c: "T2V 仍以文字嵌入作為生成條件，需要文字編碼器。"
+      why_not_d: "DiT 與 CLIP 任務方向與架構不同。"
+    keywords:
+      - "Sora"
+      - "text-to-video"
+      - "spacetime patches"
+    exam_trap: false
+
+  - id: "L21104-Q34"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 5
+    question: "一家製造業客戶要導入多模態 AI（產線影像 + 機台感測時序 + 維修工單文字）做預測性維護，下列「融合策略選擇」的思考最成熟？"
+    options:
+      a: "直接全部用早期融合串接原始訊號"
+      b: "只用單模態影像模型，其他訊號丟棄"
+      c: "用 GAN 生成缺失資料再做早期融合"
+      d: "根據模態特性分層設計：感測時序 + 影像採中層混合融合（交叉注意力或 Transformer 融合），工單文字經 LLM 編碼後以晚期融合加權；模態缺失時使用晚期分支回退；整體以可解釋性與可維運性為取捨依據"
+    correct: "d"
+    explanation:
+      why_correct: "成熟的企業多模態系統設計會依模態特性選擇融合層級：強時序相關的（影像 + 感測）宜中層融合、獨立語意訊號（工單文字）晚期加權；同時設計模態缺失時的晚期回退路徑並把可解釋性與維運成本納入決策。"
+      why_not_a: "「一律早期融合」忽略模態同步與尺度差異的問題。"
+      why_not_b: "放棄模態資訊違背題目要求的多模態整合。"
+      why_not_c: "用 GAN 補資料會引入雜訊與偏差，不是穩健工程方案。"
+    keywords:
+      - "hybrid fusion"
+      - "industrial AI"
+      - "預測性維護"
+    exam_trap: false
+
+  - id: "L21104-Q35"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 5
+    question: "比較「原生多模態模型（GPT-4o、Gemini）」與「基於 CLIP + 文字 LLM 的 pipeline（文字化 VQA 中介層）」的長期策略取捨，下列判斷最完整？"
+    options:
+      a: "原生多模態一律優於 pipeline，不論成本與隱私"
+      b: "pipeline 一律優於原生多模態，因為更可解釋"
+      c: "兩者無差異，皆可隨意互換"
+      d: "兩者各有取捨：原生多模態在延遲、語意整合、語音即時性上有優勢，但成本、供應商鎖定、資料外流風險較高；CLIP + LLM pipeline 可解釋性佳、可私有化部署、模組化，但語意整合深度與即時性較差。應依成本、延遲、隱私、法遵、資料量與維運能力綜合選擇"
+    correct: "d"
+    explanation:
+      why_correct: "成熟的架構決策不是選「最強模型」而是選「最符合約束」的架構。原生多模態在語意整合與即時性上強；pipeline 在可解釋、私有化、成本上強。關鍵是把延遲、成本、隱私、法遵、資料與維運能力一起納入決策。"
+      why_not_a: "忽略成本、供應商風險、私有化需求等重要約束，不成熟。"
+      why_not_b: "忽略原生多模態的延遲與整合優勢。"
+      why_not_c: "兩者架構與取捨不同，不是「隨意互換」。"
+    keywords:
+      - "trade-off"
+      - "native multimodal"
+      - "pipeline"
+    exam_trap: false
+
+  - id: "L21104-Q36"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 1
+    question: "語音辨識（ASR）系統最常使用的評估指標是哪一個？"
+    options:
+      a: "WER（Word Error Rate，字錯誤率）"
+      b: "BLEU"
+      c: "FID"
+      d: "Recall@K"
+    correct: "a"
+    explanation:
+      why_correct: "WER（Word Error Rate）= (S + D + I) / N，是 ASR 的標準指標，計算轉錄文字與參考文字之間的替換（S）、刪除（D）、插入（I）錯誤佔參考字數（N）的比例，Whisper、Wav2Vec2、Conformer 等 ASR 論文都以 WER 做主指標。"
+      why_not_b: "BLEU 用於機器翻譯與圖像描述（captioning），以 n-gram 重疊衡量生成文字與參考文字的相似度，不是 ASR 指標。"
+      why_not_c: "FID（Fréchet Inception Distance）用於評估圖像生成品質（T2I、GAN、Diffusion），衡量生成圖分布與真實圖分布距離。"
+      why_not_d: "Recall@K 用於檢索任務（如 CLIP 跨模態檢索），衡量 top-K 中包含正解的比例。"
+    keywords:
+      - "WER"
+      - "ASR"
+      - "評估指標"
+    exam_trap: false
+
+  - id: "L21104-Q37"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 2
+    question: "若要評估 CLIP 在 100 萬張圖片庫中「以文找圖」的效能，最合適的指標組合是下列何者？"
+    options:
+      a: "Accuracy / F1（分類指標）"
+      b: "Recall@1、Recall@5、Recall@10（檢索指標）"
+      c: "BLEU / CIDEr（圖像描述指標）"
+      d: "WER（語音辨識指標）"
+    correct: "b"
+    explanation:
+      why_correct: "大規模檢索任務的標準指標是 Recall@K：對每個查詢（文字），看 top-K 檢索結果中是否包含正解圖片，在 K=1/5/10 時計算命中率。CLIP 原論文與所有檢索系統皆以此為主指標，能同時反映 top-1 嚴格命中與 top-K 寬容命中。"
+      why_not_a: "Accuracy/F1 是分類指標，適用於固定類別數的場景；100 萬張圖的檢索是開集合排序任務，不是分類。"
+      why_not_c: "BLEU/CIDEr 用於評估生成文字與參考文字的 n-gram 重疊，是 captioning 任務的指標，與檢索方向不同。"
+      why_not_d: "WER 是 ASR 任務的字錯誤率，與圖像檢索無關。"
+    keywords:
+      - "Recall@K"
+      - "retrieval"
+      - "CLIP"
+      - "評估指標"
+    exam_trap: false
+
+  - id: "L21104-Q38"
+    topic_code: "L21104"
+    item_code: "L21104-1"
+    difficulty: 3
+    question: "一個系統先將影像、聲音、文字在淺層各自抽特徵後融合一次（early），再以交叉注意力（cross-attention）在深層再次融合以做最終分類。這屬於哪一種融合策略？"
+    options:
+      a: "只能算早期融合（Early Fusion）"
+      b: "只能算晚期融合（Late Fusion）"
+      c: "混合融合（Hybrid Fusion）"
+      d: "只能算交叉注意力融合（Cross-Attention Fusion）"
+    correct: "c"
+    explanation:
+      why_correct: "混合融合（Hybrid Fusion）= 在不同層次組合多種融合策略。此題同時包含早期特徵串接（early）與深層交叉注意力（cross-attention），屬典型 hybrid fusion。許多 SOTA 多模態系統（如 LXMERT、ViLBERT、MultiModal Transformer）都是 hybrid。"
+      why_not_a: "本題有「深層再次融合」，不只有早期融合。"
+      why_not_b: "本題未在輸出層做獨立模型的決策整合，不是純 late fusion。"
+      why_not_d: "本題還包含淺層 early 融合，不純粹是 cross-attention；cross-attention 只是 hybrid 的一部份。"
+    keywords:
+      - "hybrid fusion"
+      - "混合融合"
+      - "fusion strategy"
+    exam_trap: true
