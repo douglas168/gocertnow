@@ -1,0 +1,875 @@
+# L21202 AI導入規劃 — 練習題庫 (40題)
+# 難度分布: D1×8, D2×8, D3×8, D4×8, D5×8
+# 覆蓋: 需求分析/方案設計/目標設置/資源分配/5-phase/RACI/Pilot-PoC-MVP/導入框架/AI-specific/邊界
+
+questions:
+  # ============================================================
+  # Difficulty 1 — Remember (8題)
+  # ============================================================
+  - id: "L21202-Q01"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 1
+    question: "iPAS 中級 L21202「AI 導入規劃」官方四大關鍵字為何？"
+    options:
+      a: "需求分析、目標設置、資源分配、技術應用方案設計"
+      b: "風險識別、合規檢核、倫理審查、資料治理"
+      c: "模型訓練、超參數調校、部署監控、版本管理"
+      d: "投資報酬率、回收期、淨現值、敏感度分析"
+    correct: "a"
+    explanation:
+      why_correct: "iPAS 115 年度簡章中級 L21202 明列「需求分析、目標設置、資源分配、技術應用方案設計」為四大關鍵字。"
+      why_not_b: "這些屬於 L21203 風險管理的關鍵字，常被誤認為規劃範圍。"
+      why_not_c: "這些屬於 L21302 部署與維運，不在 L21202 規劃階段的考點。"
+      why_not_d: "這些屬於 L21201 評估的財務分析工具，L21202 以評估結果為輸入、不再重算。"
+    keywords:
+      - "四大關鍵字"
+      - "L21202"
+    exam_trap: true
+
+  - id: "L21202-Q02"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 1
+    question: "SMART 原則中的 M 代表下列何者？"
+    options:
+      a: "Motivational（激勵性）"
+      b: "Measurable（可衡量）"
+      c: "Mandatory（強制性）"
+      d: "Multidimensional（多維度）"
+    correct: "b"
+    explanation:
+      why_correct: "SMART = Specific / Measurable / Achievable / Relevant / Time-bound，M 為 Measurable 可衡量。"
+      why_not_a: "激勵性非 SMART 指標的組成要素，屬於 OKR 精神但非字母對應。"
+      why_not_c: "強制性不在 SMART 架構，混淆了目標強度與可衡量性。"
+      why_not_d: "多維度屬績效儀表板設計語彙，非 SMART 字母定義。"
+    keywords:
+      - "SMART"
+      - "目標設置"
+    exam_trap: false
+
+  - id: "L21202-Q03"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 1
+    question: "RACI 矩陣中的 R 與 A 各自代表何種角色？"
+    options:
+      a: "R = Reporter 回報者；A = Approver 核准者"
+      b: "R = Resource 資源；A = Activity 活動"
+      c: "R = Responsible 執行者；A = Accountable 最終負責人"
+      d: "R = Reviewer 審閱者；A = Author 作者"
+    correct: "c"
+    explanation:
+      why_correct: "RACI 中 R 為 Responsible（實際動手做），A 為 Accountable（唯一最終負責人，通常只有一位）。"
+      why_not_a: "Reporter/Approver 較接近 DACI 中 I（Informed）/A（Approver）而非 RACI。"
+      why_not_b: "Resource/Activity 屬專案管理詞彙但與 RACI 字母定義無關。"
+      why_not_d: "Reviewer/Author 不是 RACI 的定義，常見於文件審閱流程誤植。"
+    keywords:
+      - "RACI"
+      - "Responsible"
+      - "Accountable"
+    exam_trap: true
+
+  - id: "L21202-Q04"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 1
+    question: "北極星指標（North Star Metric）在 AI 導入規劃中的主要用途為何？"
+    options:
+      a: "衡量模型在驗證集上的準確率"
+      b: "量化雲端 GPU 的每小時成本"
+      c: "列舉所有需要部署的技術元件"
+      d: "作為組織長期願景的單一最重要指標，用以對齊各層級目標"
+    correct: "d"
+    explanation:
+      why_correct: "北極星指標為一個最能反映產品長期核心價值的指標，用以對齊策略層級目標。"
+      why_not_a: "模型準確率是技術 KPI，屬 3+2+1 中的 operational metric，非 North Star。"
+      why_not_b: "成本指標屬資源規劃衡量項，不是北極星的角色。"
+      why_not_c: "技術元件清單屬方案設計產出，非目標設置指標。"
+    keywords:
+      - "North Star Metric"
+      - "北極星指標"
+    exam_trap: false
+
+  - id: "L21202-Q05"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 1
+    question: "Gartner AI Maturity Model 五級成熟度由低到高依序為？"
+    options:
+      a: "Awareness → Active → Operational → Systemic → Transformational"
+      b: "Ad-hoc → Managed → Defined → Quantitative → Optimizing"
+      c: "Collect → Organize → Analyze → Infuse → Govern"
+      d: "Tactical → Strategic → Transformational → Sustainable → Visionary"
+    correct: "a"
+    explanation:
+      why_correct: "Gartner 的五級 AI 成熟度依序為 Awareness / Active / Operational / Systemic / Transformational。"
+      why_not_b: "這是 CMMI 軟體能力成熟度五級，不是 Gartner AI 模型。"
+      why_not_c: "這是 IBM AI Ladder 四階段（Collect/Organize/Analyze/Infuse），非 Gartner。"
+      why_not_d: "Tactical/Strategic/Transformational 是 Google AI Adoption Framework 的三階段，非五級。"
+    keywords:
+      - "Gartner AI Maturity"
+    exam_trap: true
+
+  - id: "L21202-Q06"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 1
+    question: "IBM AI Ladder 的四階段依序為？"
+    options:
+      a: "Plan → Design → Build → Run"
+      b: "Data → Model → Deploy → Monitor"
+      c: "Collect → Organize → Analyze → Infuse"
+      d: "Explore → Experiment → Evaluate → Expand"
+    correct: "c"
+    explanation:
+      why_correct: "IBM AI Ladder 主張「沒有資料梯度就沒有 AI 梯度」，四階為 Collect（蒐集）→ Organize（整理）→ Analyze（分析）→ Infuse（融入）。"
+      why_not_a: "Plan/Design/Build/Run 是一般 IT 生命週期命名，非 IBM AI Ladder。"
+      why_not_b: "Data/Model/Deploy/Monitor 是 MLOps 生命週期，屬 L21302 範圍。"
+      why_not_d: "Explore/Experiment/Evaluate/Expand 接近 PoC→Pilot→Scale 階段，但不是 IBM 官方命名。"
+    keywords:
+      - "IBM AI Ladder"
+    exam_trap: false
+
+  - id: "L21202-Q07"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 1
+    question: "在 AI 導入規劃中，「3+2+1 KPI 規則」指下列何種組合？"
+    options:
+      a: "3 個技術、2 個人力、1 個時程指標"
+      b: "3 個短期、2 個中期、1 個長期指標"
+      c: "3 個領先、2 個落後、1 個複合指標"
+      d: "3 個 operational、2 個 business、1 個 risk 指標"
+    correct: "d"
+    explanation:
+      why_correct: "3+2+1 為業界常見啟發式：3 個 operational、2 個 business、1 個 risk 指標，避免指標偏食。記憶鉤：先看系統跑得穩不穩（3 operational），再看業務有沒有賺（2 business），最後看會不會出事（1 risk）。"
+      why_not_a: "技術/人力/時程是資源分配類別而非 KPI 型態。"
+      why_not_b: "時間軸分層是 OKR 節奏而非 3+2+1 的設計意圖。"
+      why_not_c: "領先/落後指標屬平衡計分卡語彙，非 3+2+1 規則。"
+    keywords:
+      - "3+2+1 KPI"
+    exam_trap: false
+
+  - id: "L21202-Q08"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 1
+    question: "中級 AI 導入規劃的「5-phase adoption roadmap」一般順序為何？"
+    options:
+      a: "蒐集 → 整理 → 分析 → 部署 → 監控"
+      b: "需求分析 → 方案設計 → 資源規劃 → 試點 → 擴展"
+      c: "策略 → 採購 → 招募 → 訓練 → 交付"
+      d: "PoC → MVP → Alpha → Beta → GA"
+    correct: "b"
+    explanation:
+      why_correct: "教材採用線性五階：需求分析 → 方案設計 → 資源規劃 → 試點（Pilot）→ 擴展（Scale），每階段有 gate criteria。"
+      why_not_a: "這是 IBM AI Ladder + 監控，混合了不同方法論。"
+      why_not_c: "接近採購/HR 流程，不具 AI 規劃專屬性。"
+      why_not_d: "PoC→MVP→GA 是產品版本節奏，不等於組織導入五階段。"
+    keywords:
+      - "5-phase roadmap"
+    exam_trap: false
+
+  # ============================================================
+  # Difficulty 2 — Understand (8題)
+  # ============================================================
+  - id: "L21202-Q09"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 2
+    question: "為什麼 AI 專案需要在擴展（Scale）之前先做試點（Pilot），而一般 IT 專案常可直接全面上線？"
+    options:
+      a: "因為 AI 具資料與模型不確定性，須以受控範圍驗證假設後再放大"
+      b: "因為試點不需預算只須小團隊即可"
+      c: "因為 AI 法規規定必須試點"
+      d: "因為 AI 不相容於舊系統，必須先試點再重寫"
+    correct: "a"
+    explanation:
+      why_correct: "AI 表現受訓練資料分布、真實流程 feedback 影響，試點可在可控範圍驗證假設、收集真實資料再決定是否擴展。"
+      why_not_b: "試點仍需預算與跨職能人力，不是省錢理由。"
+      why_not_c: "目前台灣無強制試點法規，選項為過度推論。"
+      why_not_d: "系統相容性是部署議題，不是 Pilot 必要性的主因。"
+    keywords:
+      - "Pilot"
+      - "模型不確定性"
+    exam_trap: false
+
+  - id: "L21202-Q10"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 2
+    question: "在需求分析階段，「業務目標 → 流程 → 決策點 → 資料 → 技術」這個映射鏈的主要意義為何？"
+    options:
+      a: "強迫從技術選型倒推業務需求"
+      b: "確保 AI 技術是為了可衡量的業務決策與資料條件而選，而非為技術而技術"
+      c: "讓資料科學家主導業務決策"
+      d: "保證一次涵蓋所有 AI 類型（判別/生成/傳統 ML）"
+    correct: "b"
+    explanation:
+      why_correct: "需求分析的核心是由業務目標往下推導至技術，避免「我們要導入 AI 然後想用在哪」的倒因為果。"
+      why_not_a: "鏈條方向是由業務往下不是由技術倒推。"
+      why_not_c: "資料科學家是技術提供者，業務決策仍由業務負責人決定。"
+      why_not_d: "涵蓋所有 AI 類型不是需求分析的目的，而是方案設計時的技術選擇。"
+    keywords:
+      - "需求分析"
+      - "business-to-tech mapping"
+    exam_trap: false
+
+  - id: "L21202-Q11"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 2
+    question: "為什麼在 AI 導入規劃中，「資源分配」不能只等於「編列預算」？"
+    options:
+      a: "因為主要成本都已內含在雲端訂閱費中，故不必另外規劃資料與算力"
+      b: "因為預算規劃屬於財務部職權，規劃師不應介入"
+      c: "因為雲端服務已包含所有資源，毋須分別規劃"
+      d: "因為 AI 資源包含錢、人、算力、資料、時間五個面向（錢人算料時），任一不足都會卡關"
+    correct: "d"
+    explanation:
+      why_correct: "教材以「錢、人、算力、資料、時間」五向量總結 AI 資源分配；單獨預算無法反映資料清洗 2-8 週或人才稀缺等限制。"
+      why_not_a: "只看雲端帳單而忽略資源向量 是常見誤解；資料取得、標註、算力峰值、人員訓練均需獨立編列，不會全部內含在訂閱費中。"
+      why_not_b: "導入規劃師須整合各資源向量，財務僅是其中一環。"
+      why_not_c: "雲端供應商不替您解決資料品質、人才、時間等內部資源缺口。"
+    keywords:
+      - "資源分配"
+      - "錢人算料時"
+    exam_trap: true
+
+  - id: "L21202-Q12"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 2
+    question: "規劃師在編列 AI 導入預算時，若未將『上線後的模型監控、再訓練、重新標註』納入多年期 OpEx，最可能造成下列哪一種規劃失誤？"
+    options:
+      a: "AI 專案一次部署即可永久使用，無後續成本"
+      b: "AI 只需要軟體授權費，算力是免費的"
+      c: "上線一段時間後模型效能自然衰退，卻因預算未編列而無資源進行再訓練與標註，導致業務指標下滑卻只能被動關案"
+      d: "AI 導入後可大幅降低一線人力，因此維運與標註人力可不列入長期規劃"
+    correct: "c"
+    explanation:
+      why_correct: "規劃階段若把 AI 視為一次性 CAPEX、未在多年期預算中預留再訓練／標註／監控 OpEx，模型退化時將無資源搶救；這是規劃師常見的預算錯誤，而非技術偵測問題。"
+      why_not_a: "把 AI 視為一次部署永久使用的 CAPEX，正是題目要警示的規劃誤區，非正解。"
+      why_not_b: "算力（尤其雲端 GPU 推論）本身就是主要持續成本之一，忽略它也是預算失誤的一種，但題目問的是『維運/再訓練未編列』的具體後果。"
+      why_not_d: "AI 導入後仍需維運、標註、審核人力，規劃時把這些人力預算砍到零，會使模型上線後無人可以補標註／覆核，同屬預算失誤。"
+    keywords:
+      - "持續性成本"
+      - "預算規劃"
+      - "OpEx"
+    exam_trap: false
+
+  - id: "L21202-Q13"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 2
+    question: "「MVP（Minimum Viable Product）」在 AI 導入脈絡下最貼切的定義為何？"
+    options:
+      a: "以最小功能集合、向真實使用者交付端對端價值以驗證假設的產品版本"
+      b: "只展示技術原型、不給真實使用者用的實驗"
+      c: "每日最多可服務的使用者數"
+      d: "模型最小可接受準確率"
+    correct: "a"
+    explanation:
+      why_correct: "MVP 重點在真實使用者 × 端對端價值 × 最小範圍，用於驗證業務假設。"
+      why_not_b: "這個描述接近 PoC（Proof of Concept），不是 MVP。"
+      why_not_c: "使用者容量屬於負載規格，與 MVP 定義無關。"
+      why_not_d: "準確率門檻屬模型評估指標，與 MVP 概念不同層級。"
+    keywords:
+      - "MVP"
+      - "Minimum Viable Product"
+    exam_trap: true
+
+  - id: "L21202-Q14"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 1
+    difficulty_original_note: "recalibrated D2→D1 (pure recall)"
+    question: "Microsoft Cloud Adoption Framework for AI 中「Plan」階段強調的重點為何？"
+    options:
+      a: "digital estate 盤點、技能缺口分析、以及 30-60-90 天 roadmap"
+      b: "完成模型 A/B 測試"
+      c: "選擇容器化技術與 Kubernetes 版本"
+      d: "撰寫公司 AI 倫理守則"
+    correct: "a"
+    explanation:
+      why_correct: "Microsoft CAF-AI 的 Plan 階段重點是盤點數位資產、盤點人才缺口、建立短中期 roadmap。"
+      why_not_b: "A/B 測試屬試點實驗階段的戰術動作，不是 Plan 主軸。"
+      why_not_c: "容器技術選型屬 Adopt/Manage 階段（L21302 範圍）。"
+      why_not_d: "AI 倫理守則屬 Govern 階段（L21203 風險範圍）。"
+    keywords:
+      - "Microsoft CAF"
+      - "Plan phase"
+    exam_trap: true
+
+  - id: "L21202-Q15"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 2
+    question: "關於 Microsoft Cloud Adoption Framework 的六大方法論與 Secure 的定位，下列敘述何者最正確？"
+    options:
+      a: "CAF 僅由 Strategy 與 Plan 兩個方法論構成，其餘皆屬廠商行銷"
+      b: "CAF 的六大方法論為 Strategy、Plan、Ready、Adopt、Govern、Manage，其中 Secure 為跨越所有方法論的 cross-cutting 主題，而非單一階段"
+      c: "CAF 為五級成熟度模型（Awareness→Transformational），無方法論階段"
+      d: "CAF 的核心是 Secure，其他五個方法論皆為 Secure 的子階段"
+    correct: "b"
+    explanation:
+      why_correct: "Microsoft CAF 由 Strategy、Plan、Ready、Adopt、Govern、Manage 六大方法論組成；Secure 被設計為跨越這六個方法論的 cross-cutting 主題，而非另起一個獨立階段。"
+      why_not_a: "CAF 完整包含六個方法論，僅取兩個是過度簡化。"
+      why_not_c: "五級成熟度是 Gartner AI Maturity Model，不是 Microsoft CAF。"
+      why_not_d: "Secure 是跨切主題而非中心階段，其餘方法論不是 Secure 的子階段。"
+    keywords:
+      - "Microsoft CAF"
+      - "六大方法論"
+      - "Secure cross-cutting"
+    exam_trap: true
+
+  - id: "L21202-Q16"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 2
+    question: "關於 OKR 與 KPI 在 AI 導入規劃中的關係，下列敘述何者最正確？"
+    options:
+      a: "OKR 取代 KPI，擇一使用即可"
+      b: "KPI 屬財務層指標，OKR 屬技術層指標"
+      c: "OKR 是季度報告，KPI 是年度報告"
+      d: "OKR 定義階段性挑戰方向，KPI 衡量穩態營運績效，兩者互補"
+    correct: "d"
+    explanation:
+      why_correct: "OKR 聚焦挑戰型目標（quarterly stretch），KPI 監控穩態績效；AI 導入常上層用 OKR、下層用 KPI。"
+      why_not_a: "兩者互補，非替代關係。"
+      why_not_b: "OKR/KPI 不以財務/技術切分，兩者可跨層級定義。"
+      why_not_c: "兩者週期皆可配置，以報告頻率區分是誤解。"
+    keywords:
+      - "OKR"
+      - "KPI"
+    exam_trap: false
+
+  # ============================================================
+  # Difficulty 3 — Apply (8題)
+  # ============================================================
+  - id: "L21202-Q17"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 3
+    question: "104 人力銀行 HR 團隊打算導入 AI 履歷篩選，期望 12 個月內把平均面試前篩選時間從 30 分鐘降至 10 分鐘。依 SMART 原則，下列目標敘述最完整的是？"
+    options:
+      a: "大幅加速履歷篩選流程"
+      b: "導入最先進的生成式 AI 模型"
+      c: "於 2027-Q1 前，將資深職缺平均履歷篩選時間由 30 分鐘縮短至 10 分鐘，誤拒率不高於 5%"
+      d: "降低 HR 團隊工時成本"
+    correct: "c"
+    explanation:
+      why_correct: "涵蓋 Specific（資深職缺）、Measurable（30→10 分鐘、誤拒率 5%）、Time-bound（2027-Q1 前），且隱含 Achievable/Relevant。"
+      why_not_a: "「大幅」缺乏可衡量指標與時間軸。"
+      why_not_b: "以技術為目標違反業務驅動原則，且缺乏 SMART 屬性。"
+      why_not_d: "缺乏量化與時間軸，且未定義成本計算基準。"
+    keywords:
+      - "SMART"
+      - "需求分析"
+      - "情境題"
+    exam_trap: false
+
+  - id: "L21202-Q18"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 3
+    question: "7-11 規劃導入 AI 需求預測以減少鮮食報廢。套用「業務目標 → 流程 → 決策 → 資料 → 技術」鏈條，下列哪一項屬於『決策點（Decision）』？"
+    options:
+      a: "每日鮮食報廢率降低 30%"
+      b: "門市店員於早班前須下訂當日鮮食數量"
+      c: "歷史銷售資料、天氣、節慶資料"
+      d: "採用時間序列 + 迴歸組合模型"
+    correct: "b"
+    explanation:
+      why_correct: "『早班前下訂多少鮮食』是需要模型建議的關鍵決策點，對應 Decision 層。"
+      why_not_a: "報廢率是業務目標（Business Goal），位於鏈條最上層。"
+      why_not_c: "這是資料層（Data），為決策提供輸入。"
+      why_not_d: "這是技術層（Technique），是決策點的技術實現。"
+    keywords:
+      - "需求分析"
+      - "決策點"
+    exam_trap: true
+
+  - id: "L21202-Q19"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 3
+    question: "一間中小企業首次導入 AI，預算 300 萬元。依教材（§3.5.2）「70/20/10 啟發式」的資源分配定義，下列配比最合理的是？"
+    options:
+      a: "70% 模型訓練、20% 資料、10% 人力"
+      b: "70% 雲端服務、20% 硬體、10% 授權"
+      c: "70% 外包、20% 招募、10% 教育訓練"
+      d: "70% 基礎設施（資料、算力、平台、整合）、20% 模型（建模與調校）、10% 運維治理（監控、稽核、風險）"
+    correct: "d"
+    explanation:
+      why_correct: "教材 §3.5.2 明確定義 70/20/10 為：70% 基礎設施（資料/算力/平台/整合）+ 20% 模型 + 10% 運維治理。新手專案常誤把預算壓在模型，忽略資料與平台才是真正的瓶頸。"
+      why_not_a: "把 70% 壓在模型訓練違反 §3.5.2 的 infra/model/ops 切分，且忽略資料與平台是更大的投入。"
+      why_not_b: "這是雲端採購分類，不是 infra/model/ops 切分。"
+      why_not_c: "人力招募策略細項不對應 §3.5.2 的 70/20/10 定義。"
+    keywords:
+      - "70/20/10"
+      - "資源分配"
+      - "infra/model/ops"
+    exam_trap: true
+
+  - id: "L21202-Q20"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 3
+    question: "蝦皮物流想導入 AI 預測包裹延遲。規劃師希望 KPI 組合能同時兼顧『營運穩定、業務價值、風險控管』三面向，下列組合最能體現 3+2+1 啟發式 的精神？"
+    options:
+      a: "3 個業務 KPI + 2 個技術 KPI + 1 個時程 KPI"
+      b: "3 個財務 KPI + 2 個人力 KPI + 1 個法規 KPI"
+      c: "3 個 operational（預測 precision/recall/延遲率）+ 2 個 business（客服單量、客戶留存）+ 1 個 risk（誤報造成物流爆倉風險）"
+      d: "3 個短期 + 2 個中期 + 1 個長期 KPI"
+    correct: "c"
+    explanation:
+      why_correct: "3+2+1 是業界啟發式，概念在於平衡 operational / business / risk 三類指標避免偏食；此選項最貼合這個精神（operational=預測品質，business=客戶體驗，risk=誤報的物流連鎖風險）。整數比例 3+2+1 是記憶錨，真正關鍵是三類都有被覆蓋。"
+      why_not_a: "把 KPI 切成業務/技術/時程忽略了風險面向，無法反映 3+2+1 想要的三面向平衡。"
+      why_not_b: "財務/人力/法規切分與 3+2+1 強調的 operational/business/risk 三類本質不同。"
+      why_not_d: "時間軸分層（短中長期）屬 OKR/roadmap 節奏設計，並非 3+2+1 啟發式的立意。"
+    keywords:
+      - "3+2+1 KPI"
+      - "啟發式"
+      - "情境題"
+    exam_trap: false
+
+  - id: "L21202-Q21"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 3
+    question: "LINE 客服要導入生成式 AI 回覆助手。依 5-phase adoption roadmap，「Pilot」階段的 gate criteria（通關標準）最應包含下列哪一項？"
+    options:
+      a: "技術白皮書通過 CTO 審閱"
+      b: "限定 1 條產品線 × 最多 200 位客服真人協作、連續 4 週達到 answer-correct rate ≥ 85% 且 CSAT 不低於既有水準"
+      c: "雲端帳單月花費低於 5 萬元"
+      d: "招募到 2 位資料科學家完成 onboarding"
+    correct: "b"
+    explanation:
+      why_correct: "Pilot gate 應包含受控範圍、時間、關鍵指標的量化驗證，才決定是否進 Scale。"
+      why_not_a: "文件審閱不構成 Pilot 通關標準。"
+      why_not_c: "成本監控是必要但非 Pilot gate 的主指標。"
+      why_not_d: "人力到位屬前置條件而非 Pilot 成果判準。"
+    keywords:
+      - "Pilot"
+      - "gate criteria"
+    exam_trap: false
+
+  - id: "L21202-Q22"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 3
+    question: "某大學附設醫院要導入影像 AI 協助判讀。在 RACI 矩陣中，下列角色配置何者最合理？"
+    options:
+      a: "R = 放射科主任（領導臨床驗證）與資料科學家（建模）；A = 醫院資訊長（最終負責人）；C = 法遵；I = 全院"
+      b: "R = 病患；A = AI 供應商業務"
+      c: "R = 醫院院長；A = 資料標註員"
+      d: "A = 放射科主任，R = 醫院資訊長"
+    correct: "a"
+    explanation:
+      why_correct: "R 是實際執行的主角（臨床 + 建模），A 是最終負責人（資訊長層級），並區分 Consulted/Informed。"
+      why_not_b: "病患與供應商皆非內部專案角色的主要 R/A。"
+      why_not_c: "角色配置反了，院長不該是 R、標註員不該是 A。"
+      why_not_d: "放射科主任扛臨床成敗、資訊長負責系統交付，兩者容易與專案當責混淆；在 AI 導入專案中，Accountable 應對準資訊長或指定專案 PM（對整個專案交付負責），放射科主任更適合在 Consulted／Responsible 的臨床驗證位置。"
+    keywords:
+      - "RACI"
+      - "情境題"
+    exam_trap: false
+
+  - id: "L21202-Q23"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 3
+    question: "全家便利商店想試行 AI 動態定價。規劃師評估「資料準備時間」時，應以下列哪個時間尺度為基準規劃？"
+    options:
+      a: "1-2 天，只要接 API 即可"
+      b: "2-8 週，因為需要清洗、對齊、標註 POS + 促銷 + 商圈資料"
+      c: "6-12 個月，因為要從零建資料倉儲"
+      d: "不需估算，由模型自行處理髒資料"
+    correct: "b"
+    explanation:
+      why_correct: "教材指出資料清洗/標註通常 2-8 週，是 AI 規劃的典型前置時間。"
+      why_not_a: "1-2 天僅夠串接，通常不足以清洗與驗證品質。"
+      why_not_c: "6-12 個月屬於全新資料倉儲建置，不是單一 AI 用例的資料準備基準。"
+      why_not_d: "模型無法自行處理嚴重髒資料，這違反 AI 導入現實。"
+    keywords:
+      - "資料準備"
+      - "資源分配"
+    exam_trap: false
+
+  - id: "L21202-Q24"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 3
+    question: "一家 50 人中小企業要導入 AI 客服。下列哪個『北極星指標』最能反映業務價值？"
+    options:
+      a: "每月 GPU 小時使用量"
+      b: "程式碼 commit 數"
+      c: "招募的資料科學家人數"
+      d: "客戶滿意度（CSAT）加權後的自助解決率（self-service resolution rate）"
+    correct: "d"
+    explanation:
+      why_correct: "北極星指標應反映客戶價值與業務成長；CSAT 加權自助解決率綜合體驗與效率。"
+      why_not_a: "GPU 小時是資源使用指標，屬營運層。"
+      why_not_b: "Commit 數是工程活動量，非業務北極星。"
+      why_not_c: "招募人數是輸入指標，不反映產出價值。"
+    keywords:
+      - "North Star"
+      - "情境題"
+    exam_trap: false
+
+  # ============================================================
+  # Difficulty 4 — Analyze (8題)
+  # ============================================================
+  - id: "L21202-Q25"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 4
+    question: "關於 PoC（Proof of Concept）、Pilot、MVP 三者，下列敘述何者最能區分三者差異？"
+    options:
+      a: "三者是同義詞，可互換使用"
+      b: "PoC 證明『技術能否做到』；Pilot 證明『在受控真實場域能否運作』；MVP 證明『真實使用者是否會用且帶來價值』"
+      c: "PoC 是 Pilot 的子集合，MVP 是 Pilot 的別稱"
+      d: "PoC 只談硬體、Pilot 只談軟體、MVP 只談 UI"
+    correct: "b"
+    explanation:
+      why_correct: "三者問題定位不同：技術可行性（PoC）／受控場域可行性（Pilot）／真實使用者價值（MVP），是規劃師必須區分的三把尺。"
+      why_not_a: "混用三者是導入失敗常見原因之一。"
+      why_not_c: "三者並非包含關係，目的也不同。"
+      why_not_d: "三者皆可跨硬/軟體/UI，以範圍切分錯誤。"
+    keywords:
+      - "PoC"
+      - "Pilot"
+      - "MVP"
+    exam_trap: true
+
+  - id: "L21202-Q26"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 4
+    question: "某電商規劃導入推薦系統 AI，本週內需召開一場跨部門會議拍板「自建 vs 外購（方案 A/B）」。規劃師該在這場會議採用 RACI 還是 DACI？為什麼？"
+    options:
+      a: "用 RACI：因為要釐清每週誰執行、誰覆核，確保任務不漏接"
+      b: "用 DACI：因為這是一場多部門決策會議，需要明確的 Driver 推動、Approver 拍板，避免『會而不議、議而不決』"
+      c: "兩者擇一皆可，沒差別"
+      d: "兩者都不用，直接由 CEO 裁示即可"
+    correct: "b"
+    explanation:
+      why_correct: "AI 方案 A/B 拍板型會議應採 DACI：Driver 推動會議、Approver 最終拍板、Contributor 提供資訊、Informed 被告知。口訣：『每週任務分工用 RACI；方案 A/B 拍板會議用 DACI』。本題情境是一次性決策會議而非穩態執行分工，DACI 更契合。"
+      why_not_a: "RACI 適合穩態執行分工（每週誰做什麼），放到拍板會議容易出現 R 與 A 混淆、會議拖延。"
+      why_not_c: "兩者情境適用性不同，不可互換；誤把兩者視為同義是常見陷阱。"
+      why_not_d: "跳過結構化工具直接由 CEO 裁示，會失去跨部門意見收斂的機會，也不符合 L21202 規劃師的角色。"
+    keywords:
+      - "RACI"
+      - "DACI"
+      - "決策會議"
+      - "情境題"
+    exam_trap: true
+
+  - id: "L21202-Q27"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 4
+    question: "某傳產企業 CEO 想了解公司目前的 AI 導入程度究竟在『哪個水平』，並據此規劃未來 3 年投資藍圖。規劃師應建議採用下列哪個框架為主要診斷工具，並說明理由？"
+    options:
+      a: "Gartner AI Maturity Model：以五級成熟度（Awareness→Active→Operational→Systemic→Transformational）直接對應組織 AI 成熟度的當前位置，最適合『診斷現況 + 設定進階目標』"
+      b: "CMMI：以 Ad-hoc→Managed→Defined→Quantitative→Optimizing 五級評估軟體工程能力，是 AI 導入成熟度的業界標準"
+      c: "Microsoft CAF：以 Strategy→Plan→Ready→Adopt→Govern→Manage 六大方法論，可直接給出一個成熟度分數"
+      d: "不需任何框架，直接問 CEO 想聽到哪一級的結論即可"
+    correct: "a"
+    explanation:
+      why_correct: "Gartner AI Maturity Model 的五級是針對『組織 AI 成熟度診斷』設計，能直接落點當前水平並指出下一級需要補的能力；對這類『我們現在在哪、下一步去哪』的問題最契合。"
+      why_not_b: "CMMI 是軟體工程能力成熟度，不是 AI 組織成熟度；套到 AI 導入會失焦。"
+      why_not_c: "Microsoft CAF 是 lifecycle 方法論（做什麼階段要做什麼事），不是用來給成熟度分數的診斷工具。"
+      why_not_d: "規劃師應以結構化框架做客觀診斷，迎合上意是反模式。"
+    keywords:
+      - "Gartner AI Maturity"
+      - "CMMI"
+      - "Microsoft CAF"
+      - "成熟度診斷"
+    exam_trap: true
+
+  - id: "L21202-Q28"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 4
+    question: "某公司把 100% 的 AI 預算全部投入『單一旗艦模型的訓練與調校』，幾乎沒有預算花在資料基礎建設與運維治理上。依教材 §3.5.2 的 70/20/10 定義，此做法最大的規劃風險為？"
+    options:
+      a: "有利於集中火力，因此比 70/20/10 更能提高成功率"
+      b: "違反 §3.5.2 70/20/10（70% 基礎設施 + 20% 模型 + 10% 運維治理）定義：基礎設施（資料/算力/平台）與運維治理被忽略，模型縱使訓練成功，也會因資料品質差、缺監控與稽核而無法在真實環境穩定運作"
+      c: "無法通過 ISO 9001 稽核"
+      d: "雲端費用必然暴漲"
+    correct: "b"
+    explanation:
+      why_correct: "§3.5.2 將 70/20/10 定義為基礎設施 / 模型 / 運維治理。把 100% 押在模型，等於抽掉 70% 的基礎設施與 10% 的治理，模型即使做得好也會因為資料品質、平台整合、監控稽核缺位而無法落地。"
+      why_not_a: "70/20/10 的核心是風險分散 + 資源配比，單押單一技術並不會提高整體成功率，反而放大基礎設施與治理缺口風險。"
+      why_not_c: "ISO 9001 是品質管理標準，與 70/20/10 分配比例沒有直接關聯。"
+      why_not_d: "雲端費用高低取決於用量與架構，不是單一專案就必然暴漲；題目問的是配比失衡的結構性風險。"
+    keywords:
+      - "70/20/10"
+      - "infra/model/ops"
+      - "資源分配"
+    exam_trap: false
+
+  - id: "L21202-Q29"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 4
+    question: "某 SaaS 公司導入 AI 客戶流失預測，北極星指標是『年續約率』，最大的風險是『預測誤警造成客服騷擾客戶』。以下哪個 KPI 配置雖然都能數到 3+2+1 的整數，但哪一組更貼近『對齊北極星 + 收斂真正的風險』？"
+    options:
+      a: "operational = precision / recall / F1；business = 月活躍數 / 新註冊數；risk = 雲端帳單超支警示。看似 3+2+1，但 business 與 risk 都沒對準續約率和誤警這兩條主線"
+      b: "operational = precision / recall / 推論 P95 延遲；business = 年續約率 / 高價值客戶續約率；risk = 誤警（FP）對客服 NPS 的影響。3+2+1 的每一格都對準北極星與題目指出的最大風險"
+      c: "只用一個年續約率指標，其他都不量測"
+      d: "資料科學家的 commit 數 × 3、模型實驗次數 × 2、論文投稿數 × 1"
+    correct: "b"
+    explanation:
+      why_correct: "3+2+1 不只是湊數字，每一格都要對準業務的北極星與最大風險。本題北極星是年續約率、最大風險是誤警騷擾客戶；選項 b 的 business 對準續約率、risk 對準誤警對 NPS 影響，才是真正的 3+2+1 精神。"
+      why_not_a: "數量上看似 3+2+1，但 business 指標（月活/註冊）沒對到北極星（續約率），risk 指標（雲端超支）也沒收斂真正的風險（誤警騷擾）；結構對、方向錯。"
+      why_not_c: "只量一個北極星，缺少 operational 與 risk 的安全網，AI 穩定性失守時會沒有早期訊號。"
+      why_not_d: "工程活動量（commit / 投稿）與客戶價值無關，湊出 3+2+1 整數也無意義。"
+    keywords:
+      - "3+2+1 KPI"
+      - "North Star 對齊"
+      - "風險收斂"
+    exam_trap: false
+
+  - id: "L21202-Q30"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 4
+    question: "在需求分析中，「利害關係人盤點」若遺漏了第一線使用者，最可能造成何種後果？"
+    options:
+      a: "模型訓練速度變慢"
+      b: "雲端帳單增加"
+      c: "違反 GDPR"
+      d: "上線後流程抵抗（resistance to change）嚴重、採用率低，即使模型技術指標達標也無法帶來業務價值"
+    correct: "d"
+    explanation:
+      why_correct: "AI 導入常敗在 change management，忽略第一線使用者會造成抗拒與低採用率。"
+      why_not_a: "訓練速度與利害關係人盤點無直接關係。"
+      why_not_b: "雲端成本與此環節不直接相關。"
+      why_not_c: "GDPR 違反屬資料治理（L21203）議題。"
+    keywords:
+      - "利害關係人"
+      - "change management"
+    exam_trap: true
+
+  - id: "L21202-Q31"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 4
+    question: "下列何者最能分辨『AI 導入規劃（L21202）』與『AI 評估（L21201）』的產出差異？"
+    options:
+      a: "評估與規劃產出相同，只是名稱不同"
+      b: "評估負責技術選型，規劃只做簡報"
+      c: "評估的產出是『工具／方案比較矩陣、ROI/TCO 計算、build-vs-buy 建議』；規劃的產出是『需求規格、方案藍圖、資源配置表、5-phase roadmap、RACI』"
+      d: "評估屬 L213，規劃屬 L212"
+    correct: "c"
+    explanation:
+      why_correct: "兩者產出物不同：評估重比較與判斷，規劃重藍圖與資源配置。"
+      why_not_a: "兩者是不同階段，產出明確區分。"
+      why_not_b: "規劃不只是簡報，涵蓋整個執行藍圖。"
+      why_not_d: "兩者都在 L212，此分類錯誤。"
+    keywords:
+      - "L21201 vs L21202"
+      - "邊界"
+    exam_trap: true
+
+  - id: "L21202-Q32"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 4
+    question: "在技術應用方案設計時，同時考慮「功能設計、資料設計、模型設計、整合設計」四者的主要原因是？"
+    options:
+      a: "因為這四項都屬於軟體工程課綱"
+      b: "AI 價值取決於四者的相容性：功能若無資料可用、模型若無整合可部署，皆無法落地，規劃階段需綜合考量"
+      c: "四項可以獨立規劃，互不相關"
+      d: "為了滿足 ISO 27001 要求"
+    correct: "b"
+    explanation:
+      why_correct: "AI 方案設計是系統性決策，四個面向互相牽動，缺一則落地失敗。"
+      why_not_a: "僅屬課綱分類不構成設計理由。"
+      why_not_c: "四者緊耦合，獨立規劃會造成介面斷裂。"
+      why_not_d: "ISO 27001 是資安管理標準，非方案設計主因。"
+    keywords:
+      - "方案設計"
+      - "功能/資料/模型/整合"
+    exam_trap: false
+
+  # ============================================================
+  # Difficulty 5 — Evaluate (8題)
+  # ============================================================
+  - id: "L21202-Q33"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 5
+    question: "Uber Eats 台灣要導入 AI 配送時間預測。約束：(1) 上線後 P95 預測誤差 ≤ 3 分鐘，(2) 首年總預算 ≤ 1,500 萬元，(3) 必須在 6 個月內達成 Pilot gate。下列何方案最合理？"
+    options:
+      a: "招募 10 位資料科學家從零研發 Transformer，先做 12 個月 R&D 再談上線"
+      b: "採 Buy-then-Build：以雲端 forecasting 服務（如 Vertex AI Forecasting）快速建立 baseline，Pilot 雙北外送熱區驗證 P95 指標，後半年再評估自研替代；以 §3.5.2 70/20/10（70% 基礎設施資料/平台/整合、20% 模型、10% 運維治理）配置年度預算"
+      c: "直接全台上線生成式 LLM 預測，跳過 Pilot"
+      d: "先以既有規則引擎全台上線，再於營運中逐步蒐集資料優化模型"
+    correct: "b"
+    explanation:
+      why_correct: "三約束（時程 6 個月、預算 1,500 萬、P95 ≤ 3 分鐘）同時緊箍，只有 Buy-then-Build 能兼顧：Buy 快速入場滿足時程；雲端 forecasting 以 OpEx 管控預算；雙北熱區 Pilot 聚焦驗證 P95。這是『時程／預算／驗證策略』三重約束下的決策題，而非 70/20/10 定義題。"
+      why_not_a: "12 個月 R&D 直接撞破 6 個月 Pilot gate 時程約束，且人力與研發成本會超出 1,500 萬預算。"
+      why_not_c: "跳過 Pilot 全台上線違反風險收斂紀律；生成式 LLM 也非延遲預測的首選架構。"
+      why_not_d: "規則引擎全台上線看似省時，但在雙北外送熱區這種高變動場域會嚴重偏誤，P95 ≤ 3 分鐘難達標；且『先上線再蒐資料』等於把驗證責任推給正式用戶，違反 AI 導入的 Pilot gate 紀律。"
+    keywords:
+      - "多重約束"
+      - "Buy-vs-Build"
+      - "情境題"
+    exam_trap: false
+
+  - id: "L21202-Q34"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 5
+    question: "某銀行要導入 AI 反詐騙。約束：(1) 須符合金管會監理沙盒規範，(2) 誤殺正常交易（false positive）率 ≤ 0.5%，(3) 18 個月內擴展至全行。下列規劃何者最優？"
+    options:
+      a: "先以信用卡線上交易子集做 Pilot（6 個月）→ 通過沙盒與 FP 指標後再擴展至全行（12 個月）；規劃階段保留 15% governance budget 供稽核與合規審查；RACI 的 A（Accountable）= 風險管理部主管或業務單位主管，法遵（Compliance）任 C（Consulted）"
+      b: "直接全行同步上線，靠事後調整閾值；RACI 中 A 由法遵主管擔任"
+      c: "把 100% 預算投入模型訓練，0% 治理預算"
+      d: "仿造國外銀行的 AI，不做本地 Pilot"
+    correct: "a"
+    explanation:
+      why_correct: "以 Pilot + gate 驗證 FP 指標與沙盒合規、預留 15% 治理預算；RACI 把業務成敗的 A 放在風險管理／業務主管，法遵任 C 負責確保規範遵循，角色切分正確。"
+      why_not_b: "金融全行同步上線違反監理沙盒精神、FP 風險失控；且法遵（Compliance）的職責是『確保規範遵循』而非『扛業務成敗』，把 A 放在法遵是 RACI 常見誤配。"
+      why_not_c: "治理預算為 0 將無法滿足監理要求。"
+      why_not_d: "未經本地驗證的照搬會在資料分布差異下失效。"
+    keywords:
+      - "金融監理"
+      - "多重約束"
+      - "governance budget"
+    exam_trap: true
+
+  - id: "L21202-Q35"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 5
+    question: "一家台灣製造廠要導入瑕疵檢測 AI。約束：(1) 必須達 recall ≥ 99.5%（漏檢 ≤ 0.5%），(2) 每條產線導入成本 ≤ 300 萬，(3) 既有 5 條產線需在 12 個月內全部上線。下列規劃最合適？"
+    options:
+      a: "5 條產線 12 個月同時上線同一模型"
+      b: "只做 PoC 技術展示而不上線"
+      c: "先在歷史缺陷資料最完整的 1 條產線 Pilot 3 個月達成 recall gate → 再以 2-2 批次擴展至其餘 4 條產線（各 4-5 個月）；每條線保留治理/人員訓練預算；以產線經理為 A，資料科學家為 R"
+      d: "五條線同步部署同一 baseline，之後依產線個別微調"
+    correct: "c"
+    explanation:
+      why_correct: "以資料最完整產線 Pilot 先驗證 recall gate，再批次擴展，符合時程/成本/指標三約束且保留治理與人員訓練。"
+      why_not_a: "同時上線失去逐線調校機會，高 recall 要求難達成。"
+      why_not_b: "PoC 不上線違背題目前提「12 個月內全部上線」。"
+      why_not_d: "未考量五條產線的異質性（機型、料號、缺陷分布），直接同步部署同一 baseline 會讓多數產線 recall 不足 99.5%，事後才個別微調會造成 recall gate 失守期間的重大漏檢風險，違反題目的 recall 約束。"
+    keywords:
+      - "製造瑕疵檢測"
+      - "多重約束"
+    exam_trap: false
+
+  - id: "L21202-Q36"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 5
+    question: "某 50 人新創（台灣）要導入客戶分群 AI。約束：(1) 6 週內 PoC 結論，(2) 團隊僅 1 位資料分析師無 ML 工程師，(3) 首年運算預算 ≤ 60 萬元。下列規劃最佳？"
+    options:
+      a: "先招 3 位資料科學家再開始 PoC"
+      b: "採中型 AutoML SaaS 年約 55 萬，PoC 與正式上線共用同一套流程"
+      c: "跳過 PoC 直接上線大型 LLM API 做客戶分群"
+      d: "先採開源 scikit-learn + 小型 SaaS（雲端筆電）執行 PoC → 以現有分析師 + 1 位外包顧問輔導；6 週做群集 baseline → 決定是否招募 ML 工程師"
+    correct: "d"
+    explanation:
+      why_correct: "以現有人力 + 外包顧問 + 輕量工具，符合 6 週、人力稀缺、預算 60 萬三約束，並保留後續擴張選項。"
+      why_not_a: "招募週期與預算皆超限。"
+      why_not_b: "55 萬雖壓在 60 萬預算內，但 PoC 與正式上線共用同一套流程忽略了兩者對 SLA／可用性／資料治理的不同要求；上線後才發現 SaaS 合約不支援 PII 遮罩等合規需求，需再換供應商，反而製造二次成本與時程延誤。"
+      why_not_c: "LLM API 對分群任務 overkill 且跳過 PoC 風險高。"
+    keywords:
+      - "新創"
+      - "多重約束"
+    exam_trap: false
+
+  - id: "L21202-Q37"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 5
+    question: "公部門（如數發部）要導入 AI 文件摘要系統服務全國公務員。約束：(1) 國產化 ≥ 60% 的政策要求，(2) 個資法合規，(3) 2 年內推廣至 12 個部會。下列規劃何者最佳？"
+    options:
+      a: "採用國產 LLM + 地端部署做 Pilot 於 1 個示範部會（6-9 個月，gate：使用者滿意度、個資洩漏事件零件）→ 通過後以 3 個部會為一波批次擴展；保留 20% governance budget；RACI 由各部會資訊主管為 A、數發部統籌為 C"
+      b: "直接用公有雲 GPT-4 處理全部公文"
+      c: "每個部會自行挑選不同 LLM 供應商，無統一規劃"
+      d: "一年內 12 部會同步導入同一國外 SaaS"
+    correct: "a"
+    explanation:
+      why_correct: "滿足國產化、地端（個資）、Pilot-gate、批次擴展、治理預算、跨部會 RACI 等多重約束。"
+      why_not_b: "公有雲境外傳輸且未示範 Pilot，個資與國產化皆違反。"
+      why_not_c: "無統一規劃將重工並製造維運負擔。"
+      why_not_d: "未 Pilot 且違反國產化約束。"
+    keywords:
+      - "公部門"
+      - "國產化"
+      - "多重約束"
+    exam_trap: false
+
+  - id: "L21202-Q38"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 5
+    question: "Dcard 社群平台要導入生成式 AI 仇恨言論偵測。約束：(1) 誤刪（false positive）率須 ≤ 1%（以免箝制言論），(2) 用戶隱私須符合個資法，(3) 預算 500 萬/年。下列規劃最佳？"
+    options:
+      a: "全站 7 天內上線、所有疑似仇恨言論一律自動刪除"
+      b: "Pilot 3 個熱門版（3 個月）混用規則 + 判別式模型 baseline → gate：FP ≤ 1% 且有人工覆核流程；規劃中保留 20% governance 預算供外部倫理審查；North Star = 健康社群互動指數；3+2+1 KPI 覆蓋 operational/business/risk"
+      c: "把誤刪率目標移除，只追求高召回率"
+      d: "改以人工 24/7 審核放棄 AI"
+    correct: "b"
+    explanation:
+      why_correct: "Pilot 熱版 + 規則 + 判別式混搭確保精度、FP gate 明確、保留倫理審查預算、3+2+1 KPI 覆蓋面完整，綜合滿足三約束。"
+      why_not_a: "自動刪除違反 FP 約束且法遵風險極高。"
+      why_not_c: "移除指標等於放棄言論平衡，違反題目約束。"
+      why_not_d: "放棄 AI 不符合題意且成本不相稱。"
+    keywords:
+      - "內容審核"
+      - "多重約束"
+    exam_trap: true
+
+  - id: "L21202-Q39"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 5
+    question: "規劃師面對雙重約束：『預算緊縮（600 萬上限）』與『上線期限（3 個月內交出 Pilot 結果）』，在有限資源下該如何分配『錢、人、算力、資料、時間』五向量，才最能降低落地失敗風險？"
+    options:
+      a: "優先確保算力與預算，資料與 RACI 待 Pilot 前再補齊"
+      b: "只分錢與人、忽略資料與時間"
+      c: "把所有預算凍結到 Scale 階段才使用"
+      d: "即使預算與時程都緊，仍以五向量同步配置為原則：資料準備 2-8 週、人力含跨職能 RACI、算力 build-vs-buy 比較、時間至少預留 6 週端對端驗證、預算含最少 3 年 TCO；保留 10-20% 未分配餘裕供迭代"
+    correct: "d"
+    explanation:
+      why_correct: "雙重約束下五向量仍須同步配置並留餘裕；資料與 RACI 不能待後補，否則 Pilot 階段會因為資料不可用、owner 不明而反覆卡關。"
+      why_not_a: "五向量不是序列補齊，資料與 RACI 一旦晚配，Pilot 期會因授權、隱私、owner 不明反覆退回；緊縮反而更需要前期把資料與 RACI 鎖定，避免小預算被試錯燒光。"
+      why_not_b: "忽略資料與時間是 AI 導入常見死因，緊縮預算也無法免除。"
+      why_not_c: "Pilot 階段就需投資，凍結預算將無法驗證，時程約束下更不可行。"
+    keywords:
+      - "資源分配"
+      - "錢人算料時"
+      - "雙重約束"
+    exam_trap: false
+
+  - id: "L21202-Q40"
+    topic_code: "L21202"
+    item_code: "L21202"
+    difficulty: 5
+    question: "高管下達雙重約束：『2 週內必須提出完整 AI 導入提案』，但同時『全公司的資料盤點尚未完成』。規劃師應如何回應最能兼顧時程與風險控管？"
+    options:
+      a: "立刻在 2 週內交出提案並承諾所有數字，會後再想辦法自圓其說"
+      b: "各部門同時平行啟動全部 AI 用例，賭一個能活下來"
+      c: "2 週內交出提案，但明確標註『資料盤點未完成』為前提假設，分兩段：第一段為 4 週資料盤點 + 利害關係人對齊的前置 gate，第二段為 5-phase roadmap 草案，並附帶『若資料盤點發現 X 則重新議價』的條件句"
+      d: "拒絕高管的排程，堅持必須先花 2 個月做完資料盤點才願意出提案"
+    correct: "c"
+    explanation:
+      why_correct: "規劃師的工作不是選擇『快』或『穩』其中之一，而是設計出能兼顧兩者的結構：按期交出提案守住時程，同時以條件句與前置 gate 圈出風險暴露範圍。這是『有計畫地承擔不確定性』，而不是假裝確定或直接拒絕。"
+      why_not_a: "承諾所有數字卻建立在未盤點的資料上，是把不確定性隱藏在提案裡，之後任何一個假設破裂都會連鎖爆炸。"
+      why_not_b: "平行啟動全部用例違反資源分配原則，且在資料未盤點時會放大失敗面積。"
+      why_not_d: "直接拒絕高管排程等於失去規劃師的協商角色；適當做法是重新設計提案結構，而不是改變交付期。"
+    keywords:
+      - "雙重約束"
+      - "規劃師判斷"
+      - "反模式"
+      - "邊界"
+    exam_trap: true

@@ -24,6 +24,9 @@ Tracks open items across all lessons that need resolution before publishing.
 ### L21201 — AI導入評估
 - **Diagram rendering:** 5 Mermaid diagrams exist as `.md` source under `lessons/L21201-AI導入評估/diagrams/` — render to PNG via Gemini downstream (not blocking publish).
 
+### L21202 — AI導入規劃
+- **Diagram rendering:** 5 Mermaid diagrams exist as `.md` source under `lessons/L21202-AI導入規劃/diagrams/` — render to PNG via Gemini downstream (not blocking publish).
+
 ---
 
 ## Lesson Progress
@@ -35,7 +38,7 @@ Tracks open items across all lessons that need resolution before publishing.
 | 3 | L21103 | 生成式AI技術與應用 | L21 | required | 1 | ✅ Done | 1 |
 | 4 | L21104 | 多模態人工智慧應用 | L21 | required | 1 | ✅ Done | 1 |
 | 5 | L21201 | AI導入評估 | L21 | required | 1 | ✅ Done | 1 |
-| 6 | L21202 | AI導入規劃 | L21 | required | 1 | Not started | — |
+| 6 | L21202 | AI導入規劃 | L21 | required | 1 | ✅ Done | 1 |
 | 7 | L21203 | AI風險管理 | L21 | required | 1 | Not started | — |
 | 8 | L21301 | 數據準備與模型選擇 | L21 | required | 1 | Not started | — |
 | 9 | L21302 | AI技術系統集成與部署 | L21 | required | 1 | Not started | — |
@@ -69,9 +72,9 @@ Tracks open items across all lessons that need resolution before publishing.
 
 ## What's Next
 
-**Next lesson:** `/course-generate-lesson L21202` — AI導入規劃
+**Next lesson:** `/course-generate-lesson L21203` — AI風險管理
 
-**Remaining lessons:** 29 of 34 topics left (17 for 資料分析組 SKU; 18 for 機器學習組 SKU; 4 L21 items shared between both)
+**Remaining lessons:** 28 of 34 topics left (16 for 資料分析組 SKU; 18 for 機器學習組 SKU; 3 L21 items shared between both)
 
 ### Priority 1 — 資料分析組 sprint (founder 2026-05-23 exam)
 
@@ -84,7 +87,7 @@ Order from `syllabus/dependencies.md` §3. Build L21 (required) first, then L22.
 | ~~3~~ | ~~L21103~~ | ~~生成式AI技術與應用~~ | ✅ Done (40-question pool, 5 diagrams) |
 | ~~4~~ | ~~L21104~~ | ~~多模態人工智慧應用~~ | ✅ Done (38-question pool, 5 diagrams) |
 | ~~5~~ | ~~L21201~~ | ~~AI導入評估~~ | ✅ Done (40-question pool, 5 diagrams) |
-| 6 | L21202 | AI導入規劃 | Deep |
+| ~~6~~ | ~~L21202~~ | ~~AI導入規劃~~ | ✅ Done (40-question pool, 5 diagrams) |
 | 7 | L21203 | AI風險管理 | Deep, external docs needed (人工智慧基本法) |
 | 8 | L21301 | 數據準備與模型選擇 | Deep |
 | 9 | L21302 | AI技術系統集成與部署 | Medium |
@@ -134,3 +137,4 @@ Order from `syllabus/dependencies.md` §4 (L21 items already covered above).
 - **L21103** — 生成式AI技術與應用 (2026-04-18). 40-question pool (D1-5 = 8/8/8/8/8, a/b/c/d = 10/10/9/11, 20 exam_trap), 630-line study guide, 5 Mermaid diagrams (Transformer block, GAN loop, Diffusion process, LLM pipeline, architecture comparison). Multi-model review resolved 8 question fixes + 10 study-guide fixes (GAN Discriminator BCE, 噪聲→雜訊 Taiwan terminology, Q34 RAG scope clarification, D4 difficulty recalibration on Q25/27/28/29).
 - **L21104** — 多模態人工智慧應用 (2026-04-18). 38-question pool (D1-5 = 8/10/6/7/7, a/b/c/d = 10/10/10/8), 633-line study guide, 5 Mermaid diagrams (fusion strategies, CLIP contrastive loop, Flamingo cross-attention, modality encoder comparison, use-case decision tree). Multi-model review resolved 12 question fixes + 9 study-guide fixes (CLIP fusion classification nuance, Qwen-VL→LLaVA-NeXT/TAIDE geopolitical swap on Q29, evaluation-metrics coverage gap filled with Q36 WER + Q37 Recall@K + Q38 hybrid fusion, semantic mnemonic rewrite, D-calibration on Q23/25/28/33).
 - **L21201** — AI導入評估 (2026-04-18). 40-question pool (D1-5 = 8/8/8/8/8, a/b/c/d = 11/11/9/9, 16 exam_trap), 810-line study guide + 226-line cost-arithmetic supplement, 5 Mermaid diagrams (evaluation funnel, scoring matrix template, TCO breakdown, build-vs-buy tree, dual-constraint feasible region). Multi-model review resolved 14 question fixes + 10 study-guide fixes (Q34 unit error 750萬→7.5億 token rewrite to true D5, Q32「以上皆是」→version-rocking distractor, SLA arithmetic 43.8→43.2 min/月, Gemini 2.0 sunset hedged, Haiku p95 hedged, ROI formula reconciled, accuracy bands reconciled, deadlock fallback subsection added, opportunity cost quantified, 8 D4/D5 stems upgraded with multi-constraint scenarios).
+- **L21202** — AI導入規劃 (2026-04-18). 40-question pool (D1-5 = 8/8/8/8/8, a/b/c/d = 8/12/10/10, 16 exam_trap), 800-line study guide, 5 Mermaid diagrams (5-phase roadmap + Pilot Gate, five vectors 錢人算料時 mindmap, Microsoft CAF 6 methodologies + Secure cross-cutting, RACI vs DACI A-meaning contrast, three-layer goals North Star → SMART → 3+2+1). Multi-model review resolved 18 question fixes + 9 study-guide fixes (70/20/10 canonicalized to infra/model/ops with Build-vs-Buy caveat, Q19/Q28/Q33 rewritten to match, RACI「當責簽核」→「當責（扛最終成敗責任）」with DACI contrast, Q34 governance fix 風險管理部/業務主管任 A 法遵任 C, Microsoft CAF 6+cross-cutting rewrite, Google CAF themes/pillars swapped back, Q15 fictional "2026 CAF Governance-First" removed, Spaceo.ai attribution stripped from Q07/Q20, 5-year TCO caveat, Taiwan SMB reality paragraph, final review checklist).
