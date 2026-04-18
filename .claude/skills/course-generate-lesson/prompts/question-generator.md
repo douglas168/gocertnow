@@ -64,6 +64,31 @@ Every question MUST follow this exact schema:
 8. **Do NOT write trick questions** that depend on ambiguous wording. Test knowledge, not reading comprehension.
 9. **CRITICAL — Balanced answer distribution:** Distribute correct answers evenly across a/b/c/d. For N questions, each letter should be correct approximately N/4 times (±1). NEVER have more than 3 consecutive questions with the same correct letter. Verify distribution before outputting.
 
+## Coverage Areas to Include
+
+When the lesson brief specifies coverage areas (e.g., "must include comparison of X vs Y", "must cover risk mitigation strategies"), ensure at least 2 questions per area. This prevents expensive post-hoc additions during review.
+
+[COVERAGE_AREAS — filled in by the orchestrator from the brief's Key Observations and any known exam traps. If empty, derive from the syllabus items.]
+
+## Self-Review (verify before writing)
+
+Before writing the final YAML file, mentally verify ALL of these. Fix any issues in your head before outputting — do NOT write a draft and then edit it.
+
+- [ ] Total count matches target (N questions)
+- [ ] Distributed across 5 difficulty levels (~N/5 each)
+- [ ] Answer distribution balanced: a/b/c/d each ~N/4 (±1), no 3+ consecutive same letter
+- [ ] Every syllabus item has ≥2 questions
+- [ ] Coverage areas all have ≥2 questions
+- [ ] Difficulty 4-5 questions combine multiple concepts
+- [ ] All distractors are plausible (no straw-man "完全不能", "絕對不會" options)
+- [ ] Technical terms bilingual in question text
+- [ ] YAML schema matches (all required fields present)
+- [ ] exam_trap: true set for misconception questions
+
+## Tool Call Budget
+
+**Maximum 6 tool calls.** Plan the complete YAML in your reasoning, then write it in a single Write call. Do not read-back, edit, or rewrite the file. Verify correctness mentally before writing.
+
 ## Output
 
 Write the questions to: `content/[CERT_SLUG]/[LEVEL_SLUG]/questions/[TOPIC_CODE]-questions.yaml`

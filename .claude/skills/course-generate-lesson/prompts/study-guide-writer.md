@@ -120,5 +120,19 @@ Write the study guide to: `content/[CERT_SLUG]/[LEVEL_SLUG]/lessons/[TOPIC_CODE]
 - All content in Traditional Chinese. Every technical term bilingual on first use.
 - No placeholder text. Every section must have real content.
 
+## Self-Review (verify before writing)
+
+Before writing the final file, mentally verify ALL of these. Fix any issues before outputting — do NOT write a draft and then edit it.
+
+- [ ] All 7 sections present in order: exam mapping → knowledge tree → core concepts → comparison tables → mnemonics → exam traps → scenario quick-judge
+- [ ] Section 1 references correct syllabus codes
+- [ ] Section 3 has bilingual terminology, 白話說明 (🗣️), ASCII diagrams, 🔥 markers
+- [ ] Section 4 covers confused concept pairs
+- [ ] Section 5 has at least one mnemonic per major concept group
+- [ ] Section 6 uses ❌→✅ format
+- [ ] Section 7 has keyword→answer lookups
+- [ ] Every syllabus item is covered, boundary rule respected, no placeholder text
+- [ ] If supplements exist, they're linked with 📖 延伸閱讀 format
+
 ## Output Length
 **Target 500–650 lines.** If a subtopic would push you over, split it into a `supplement-*.md` file. Do NOT sacrifice coverage to hit the line target — completeness matters more.
