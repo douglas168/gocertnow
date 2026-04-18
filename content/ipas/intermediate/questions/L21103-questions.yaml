@@ -1,0 +1,879 @@
+# L21103 生成式AI技術與應用 — 練習題庫 (40 題)
+# 難度分佈: D1×8, D2×8, D3×8, D4×8, D5×8
+# 答案分佈: a=10, b=10, c=9, d=11 (Fix F 將 Q06 由 c 改為 d，允許 ±1 偏移)
+# exam_trap: 20 題 (Fix F 新增 FID 集合分布陷阱)
+# 覆蓋區: GAN / Diffusion / Transformer / BERT-GPT-T5 / Pretrain-SFT-RLHF / Metrics / 架構情境 / Confused-Pairs
+
+- id: "L21103-Q01"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 1
+  question: "在生成對抗網路（GAN, Generative Adversarial Network）中，「生成器（Generator）」的主要任務為何？"
+  options:
+    a: "判斷輸入樣本是真實資料還是生成資料"
+    b: "接收隨機噪聲（noise z）並產生仿真樣本"
+    c: "計算真實資料分布的機率密度函數"
+    d: "對生成樣本進行標籤分類"
+  correct: "b"
+  explanation:
+    why_correct: "Goodfellow 2014 原論文中，Generator G 定義為 G: z → x_fake，輸入隨機噪聲 z，輸出偽造樣本，目標是讓 D 無法分辨真偽。"
+    why_not_a: "判斷真假是判別器（Discriminator）的任務，此選項混淆了 G 與 D 的角色——這是 GAN 最常見的陷阱。"
+    why_not_c: "GAN 不顯式估計機率密度，這是 GAN 與 VAE 的關鍵差異。"
+    why_not_d: "GAN 不做監督式分類；分類是 D 的副產品而非 G 的任務。"
+  keywords:
+    - "GAN"
+    - "Generator"
+    - "生成器"
+  exam_trap: true
+
+- id: "L21103-Q02"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 1
+  question: "Diffusion Model 的「正向過程（Forward Process）」具有下列哪項特性？"
+  options:
+    a: "由神經網路學習參數"
+    b: "需要文字條件（text condition）引導"
+    c: "以固定噪聲排程（fixed noise schedule）逐步加噪，不含可學習參數"
+    d: "由判別器評估噪聲品質"
+  correct: "c"
+  explanation:
+    why_correct: "DDPM（Ho 2020）定義 forward process q(x_t|x_{t-1}) 為固定高斯噪聲排程，沒有任何可學習參數，純屬數學定義。"
+    why_not_a: "被學習的是 reverse process（去噪），不是 forward。這是 Diffusion 考題最常見的陷阱。"
+    why_not_b: "文字條件只在 classifier-free guidance 或 Stable Diffusion 的 reverse 階段出現，forward 與條件無關。"
+    why_not_d: "Diffusion 不使用判別器，這是 GAN 的概念被誤植。"
+  keywords:
+    - "Diffusion"
+    - "Forward Process"
+    - "固定噪聲"
+  exam_trap: true
+
+- id: "L21103-Q03"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 1
+  question: "Transformer 自注意力機制（Self-Attention）的核心計算公式為下列何者？"
+  options:
+    a: "Attention(Q,K,V) = softmax(QK^T / √d_k) · V"
+    b: "Attention(Q,K,V) = tanh(Q + K) · V"
+    c: "Attention(Q,K,V) = sigmoid(QV^T) · K"
+    d: "Attention(Q,K,V) = softmax(QK^T) · V（漏掉 √d_k 縮放）"
+  correct: "a"
+  explanation:
+    why_correct: "Vaswani 2017《Attention Is All You Need》定義 Scaled Dot-Product Attention 即此公式；除以 √d_k 為了防止維度放大時 softmax 飽和。"
+    why_not_b: "tanh 與相加運算是 RNN / LSTM 的閘門設計，非 Transformer attention。"
+    why_not_c: "sigmoid 輸出非機率分布（總和不為 1），無法做 attention 加權。"
+    why_not_d: "這正是 Vaswani 2017 前人已知會造成 softmax 梯度飽和的錯誤版本——d_k 大時點積變異數隨維度增長，未經 √d_k 縮放會使 softmax 趨於 one-hot，梯度趨近 0 導致訓練停滯。看似只差一個縮放因子，實為強力干擾選項。"
+  keywords:
+    - "Self-Attention"
+    - "自注意力"
+    - "Transformer"
+  exam_trap: false
+
+- id: "L21103-Q04"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 1
+  question: "BERT 與 GPT 的訓練方向性（directionality）主要差異為何？"
+  options:
+    a: "BERT 是單向訓練，GPT 是雙向訓練"
+    b: "BERT 是雙向訓練（bidirectional），GPT 是單向訓練（unidirectional）"
+    c: "BERT 與 GPT 皆為雙向訓練"
+    d: "BERT 與 GPT 皆為單向訓練"
+  correct: "b"
+  explanation:
+    why_correct: "BERT 為 encoder-only 雙向 Masked LM；GPT 為 decoder-only 單向（因果遮罩）next-token prediction。此為 114/05 CCChen 現場回報考題，逐字出題。"
+    why_not_a: "方向性相反，為最常見的反向混淆。"
+    why_not_c: "GPT 採因果遮罩只能看左側，不可能雙向。"
+    why_not_d: "BERT 的 MLM 預訓練目標需同時看左右 context，否則失去其設計意義。"
+  keywords:
+    - "BERT"
+    - "GPT"
+    - "雙向"
+    - "單向"
+  exam_trap: true
+
+- id: "L21103-Q05"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 1
+  question: "現代大型語言模型（LLM）訓練流程中，下列哪項是最常見的三階段順序？"
+  options:
+    a: "SFT → Pretrain → RLHF"
+    b: "Pretrain → RLHF → SFT"
+    c: "RLHF → Pretrain → SFT"
+    d: "Pretrain → SFT → RLHF"
+  correct: "d"
+  explanation:
+    why_correct: "標準 pipeline：先 Pretrain（自監督學語言知識）→ SFT（監督式微調教格式與指令跟隨）→ RLHF（人類偏好對齊）。Llama、GPT、Claude 皆採此序。"
+    why_not_a: "SFT 需先有預訓練好的基礎模型才有微調意義。"
+    why_not_b: "RLHF 需要已完成 SFT 的模型作為起點，不可跳過 SFT。"
+    why_not_c: "未經預訓練無法進行任何對齊，RLHF 絕不會最先。"
+  keywords:
+    - "Pretrain"
+    - "SFT"
+    - "RLHF"
+  exam_trap: false
+
+- id: "L21103-Q06"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 1
+  question: "某團隊生成了 10,000 張貓的圖，想用 FID 評估品質。下列關於 FID 使用的陳述，**哪一個是錯的**？"
+  options:
+    a: "FID 越低代表生成分布與真實資料分布越接近"
+    b: "FID 不能評估「單張圖的品質」，只能評估「整個資料集的分布距離」"
+    c: "FID 通常搭配 Inception 特徵做統計距離計算"
+    d: "任意一張生成的貓圖只要夠清晰，FID 就會低"
+  correct: "d"
+  explanation:
+    why_correct: "FID 是「集合對集合」的分布距離（Fréchet distance on Inception features），必須有大量樣本才能估算生成分布與真實分布的高斯統計量。單張圖清晰度與 FID 無直接關係——若 10,000 張圖全長得像同一隻貓（mode collapse），每張都清晰但 FID 仍會很高。此為研究筆記標註的 FID 主陷阱。"
+    why_not_a: "正確陳述：FID 越低代表兩個高斯分布的距離越小，越接近真實資料分布。"
+    why_not_b: "正確陳述：FID 本質是集合層級指標，需要一組生成樣本與一組真實樣本才能計算，不能對單張圖打分。"
+    why_not_c: "正確陳述：標準 FID 使用 Inception-v3 pool3 層特徵計算兩個多變量高斯分布的 Fréchet 距離。"
+  keywords:
+    - "FID"
+    - "生成評估"
+    - "集合分布"
+  exam_trap: true
+
+- id: "L21103-Q07"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 1
+  question: "下列哪個變體屬於 GAN 家族？"
+  options:
+    a: "StyleGAN"
+    b: "DDPM"
+    c: "BERT"
+    d: "T5"
+  correct: "a"
+  explanation:
+    why_correct: "StyleGAN（NVIDIA 2018）為 style-based 生成器的 GAN 變體，專攻高解析度人臉合成。"
+    why_not_b: "DDPM 是 Denoising Diffusion Probabilistic Models，屬 Diffusion 家族。"
+    why_not_c: "BERT 是 encoder-only Transformer，用於 NLP 理解。"
+    why_not_d: "T5 為 encoder-decoder Transformer，屬 seq2seq 模型。"
+  keywords:
+    - "StyleGAN"
+    - "GAN 變體"
+  exam_trap: false
+
+- id: "L21103-Q08"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 1
+  question: "Transformer 為何需要加入位置編碼（Positional Encoding）？"
+  options:
+    a: "為了減少模型參數量"
+    b: "因為自注意力計算本身對位置不敏感（permutation-invariant），需額外注入序列順序資訊"
+    c: "為了防止梯度消失"
+    d: "為了加速推論速度"
+  correct: "b"
+  explanation:
+    why_correct: "Self-attention 是 permutation-invariant（排列不變）：交換輸入位置不影響計算結果，因此必須額外注入位置資訊，否則模型無法分辨 '我愛你' 與 '你愛我'。"
+    why_not_a: "位置編碼反而增加而非減少參數或維度。"
+    why_not_c: "梯度消失由 residual connection + LayerNorm 處理，與位置編碼無關。"
+    why_not_d: "位置編碼不改變推論速度。"
+  keywords:
+    - "Positional Encoding"
+    - "位置編碼"
+    - "permutation-invariant"
+  exam_trap: false
+
+- id: "L21103-Q09"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 2
+  question: "關於 GAN 的訓練目標（min-max 賽局），下列敘述何者正確？"
+  options:
+    a: "Generator 與 Discriminator 都最小化同一個損失函數"
+    b: "兩者皆最大化交叉熵損失"
+    c: "Generator 最大化自身輸出機率，Discriminator 最小化自身損失"
+    d: "Discriminator 最大化正確分類機率，Generator 最小化 Discriminator 正確分類機率（即盡量騙過 D）"
+  correct: "d"
+  explanation:
+    why_correct: "Goodfellow min-max: min_G max_D V(D,G)。D 最大化正確分類，G 最小化 D 的正確率，形成對抗賽局，Nash 均衡於 p_g = p_data。"
+    why_not_a: "若目標相同即非對抗；對抗性是 GAN 的核心定義。"
+    why_not_b: "兩者若同向最大化就不是對抗，這是 min-max 最常被誤解的陷阱。"
+    why_not_c: "將 max/min 對象寫反；G 的目標是「最小化被識破」。"
+  keywords:
+    - "min-max"
+    - "對抗訓練"
+    - "GAN"
+  exam_trap: true
+
+- id: "L21103-Q10"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 2
+  question: "下列何者最準確描述「Mode Collapse（模式崩潰）」現象？"
+  options:
+    a: "判別器損失無法下降"
+    b: "訓練資料被過度記憶（overfitting）"
+    c: "模型權重變為 NaN"
+    d: "生成器只產生極少種類的樣本，失去多樣性，即使能騙過判別器"
+  correct: "d"
+  explanation:
+    why_correct: "Mode collapse 指 Generator 學到少數能騙過 D 的模式即收斂，放棄涵蓋真實資料分布其他模式，導致生成樣本多樣性消失。"
+    why_not_a: "D 損失停滯是另一個症狀（不收斂），與 mode collapse 不同。"
+    why_not_b: "過擬合是監督式學習的記憶訓練集，不等於生成多樣性喪失。"
+    why_not_c: "NaN 是數值不穩定，屬訓練發散問題。"
+  keywords:
+    - "Mode Collapse"
+    - "模式崩潰"
+    - "GAN 失敗模式"
+  exam_trap: true
+
+- id: "L21103-Q11"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 2
+  question: "關於 Stable Diffusion（潛在擴散模型, Latent Diffusion）的說法，下列何者正確？"
+  options:
+    a: "直接在 512×512 像素空間進行擴散運算"
+    b: "以 GAN 作為核心生成器"
+    c: "使用 VAE 將影像壓縮為低維潛在向量（latent），在 latent space 執行 U-Net 去噪，最後再解碼回像素"
+    d: "不需要任何文字編碼器即可進行文生圖"
+  correct: "c"
+  explanation:
+    why_correct: "Rombach 2022 提出 Latent Diffusion：VAE encoder 壓縮 → U-Net 在 latent 做 diffusion → VAE decoder 還原，計算量約減 50×。"
+    why_not_a: "原始 DDPM 才是 pixel-space，Stable Diffusion 的關鍵創新就是移到 latent。"
+    why_not_b: "Stable Diffusion 核心是 U-Net denoiser + VAE，與 GAN 無關。"
+    why_not_d: "文字條件透過 CLIP ViT-L/14 text encoder 經 cross-attention 注入 U-Net，缺文字編碼器無法文生圖。"
+  keywords:
+    - "Latent Diffusion"
+    - "Stable Diffusion"
+    - "VAE"
+  exam_trap: true
+
+- id: "L21103-Q12"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 2
+  question: "關於多頭注意力（Multi-Head Attention）的設計動機，下列敘述何者最正確？"
+  options:
+    a: "讓 h 個平行的注意力頭從不同子空間學習不同類型的關係（如語法、語義、指代），再拼接整合"
+    b: "為了減少參數量與節省運算"
+    c: "為了強制每個 head 學習完全相同的表徵"
+    d: "取代 Feed-Forward Network 的功能"
+  correct: "a"
+  explanation:
+    why_correct: "Multi-head 將 Q/K/V 投影到 h 個子空間平行計算，各 head 可關注不同關係（句法、語意、長距依賴等），最後 concat + linear 融合。"
+    why_not_b: "Multi-head 參數量與單頭相當或略多，並非為了節省。"
+    why_not_c: "若所有 head 學相同表徵就失去多頭意義，設計上透過不同初始化鼓勵差異化。"
+    why_not_d: "FFN 與 attention 為 Transformer block 的兩個互補子層，功能不同無法取代。"
+  keywords:
+    - "Multi-Head Attention"
+    - "多頭注意力"
+  exam_trap: false
+
+- id: "L21103-Q13"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 2
+  question: "對於「Encoder-Decoder」架構（如 T5、BART）的描述，下列何者正確？"
+  options:
+    a: "僅適合分類任務"
+    b: "Encoder 雙向處理輸入，Decoder 以 cross-attention 讀取 encoder 輸出並自回歸生成；擅長 seq2seq 任務如翻譯、摘要"
+    c: "與 Decoder-only 完全等價，只是命名不同"
+    d: "無法處理文字輸入"
+  correct: "b"
+  explanation:
+    why_correct: "T5/BART 的 encoder 雙向理解輸入，decoder 以 cross-attention 讀 encoder 表徵同時做 masked self-attention 自回歸解碼，適合翻譯、摘要、問答生成。"
+    why_not_a: "分類是 encoder-only（BERT）擅長，encoder-decoder 主攻生成。"
+    why_not_c: "Decoder-only 沒有獨立 encoder，無 cross-attention 到另一序列，兩者架構明顯不同。"
+    why_not_d: "T5 本名 Text-to-Text Transfer Transformer，全是文字任務。"
+  keywords:
+    - "Encoder-Decoder"
+    - "T5"
+    - "BART"
+  exam_trap: false
+
+- id: "L21103-Q14"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 2
+  question: "關於 LLM 的「SFT（Supervised Fine-Tuning, 監督式微調）」階段，下列敘述何者正確？"
+  options:
+    a: "使用人類偏好配對資料訓練獎勵模型"
+    b: "從零開始學習語言本身"
+    c: "使用精選的「指令 + 回應」配對資料，讓模型學會遵循指令格式與任務要求"
+    d: "僅使用未標註的大規模網路文本"
+  correct: "c"
+  explanation:
+    why_correct: "SFT 用人工精選 (instruction, response) 配對資料對預訓練模型做監督式微調，教模型回應格式與指令跟隨（instruction-following）。"
+    why_not_a: "獎勵模型（RM）是 RLHF 階段的組件，非 SFT。"
+    why_not_b: "「從零學語言」是 Pretrain 的目標。"
+    why_not_d: "未標註大規模文本是 Pretrain 的資料特徵，SFT 使用小量精標資料。"
+  keywords:
+    - "SFT"
+    - "監督式微調"
+  exam_trap: true
+
+- id: "L21103-Q15"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 2
+  question: "關於 Perplexity（困惑度, PPL）的描述，下列何者正確？"
+  options:
+    a: "PPL = exp(平均交叉熵)；值越低代表模型對測試文本的預測越準確"
+    b: "值越高代表語言模型越好"
+    c: "PPL 是影像生成模型的評估指標"
+    d: "PPL 僅適用分類任務"
+  correct: "a"
+  explanation:
+    why_correct: "PPL 可直觀理解為「模型在每個位置等效從幾個 token 中選擇」；平均交叉熵越小，PPL 越低，預測越確定。"
+    why_not_b: "方向相反；PPL 越高代表模型越不確定。"
+    why_not_c: "影像生成用 FID、CLIP score，非 PPL。"
+    why_not_d: "分類用 accuracy/F1，PPL 是語言模型專用指標。"
+  keywords:
+    - "Perplexity"
+    - "困惑度"
+    - "PPL"
+  exam_trap: false
+
+- id: "L21103-Q16"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 2
+  question: "關於 Self-Attention 中「除以 √d_k」的原因，下列何者最正確？"
+  options:
+    a: "為了將注意力權重限制在 0 到 1 之間"
+    b: "為了強制 Q 與 K 正交"
+    c: "為了加速矩陣乘法"
+    d: "當 key/query 維度 d_k 變大時，點積值的變異數變大，softmax 容易飽和梯度消失；除以 √d_k 穩定梯度"
+  correct: "d"
+  explanation:
+    why_correct: "Vaswani 2017 指出：d_k 大時 Q·K^T 變異數隨 d_k 增長，進 softmax 產生極端值使梯度趨近 0；除以 √d_k 讓變異數回到 O(1)，保持訓練穩定。"
+    why_not_a: "限制到 [0,1] 是 softmax 的功能，不是 √d_k 縮放。"
+    why_not_b: "Q 與 K 來自學習投影，本質不會強制正交。"
+    why_not_c: "縮放不改變乘法複雜度。"
+  keywords:
+    - "Scaled Dot-Product"
+    - "√d_k"
+  exam_trap: false
+
+- id: "L21103-Q17"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 3
+  question: "蝦皮賣家想替新上架商品自動生成「高擬真、多風格、1024×1024 解析度」的情境圖（含文字描述「暖色調咖啡廳書桌」），最適合的架構為下列何者？"
+  options:
+    a: "純 GAN（如 DCGAN）直接在像素空間生成"
+    b: "以 Stable Diffusion 為基礎的文生圖（text-to-image）潛在擴散模型"
+    c: "BERT encoder 生成圖像"
+    d: "StyleGAN3 搭配文字條件映射"
+  correct: "b"
+  explanation:
+    why_correct: "Stable Diffusion 已在高解析度文生圖決定性勝出 GAN：訓練穩定、模式覆蓋佳、CFG 可精確回應文字條件。蝦皮商品情境圖場景正是其強項。"
+    why_not_a: "純 GAN 在高解析度 + 自由文字條件下易 mode collapse 且文字對齊弱，2024 後幾已不用於通用 T2I。"
+    why_not_c: "BERT 是 encoder-only 用於理解與分類，不具生成影像能力。"
+    why_not_d: "StyleGAN 系列在固定解析度（如 1024 人臉）內品質卓越，但文字條件控制遠不及 Diffusion + CLIP；高解析度自由文字到圖仍是 Diffusion 勝出，StyleGAN3 缺乏原生 CFG 機制難以做「暖色調咖啡廳書桌」這類開放式條件。"
+  keywords:
+    - "Stable Diffusion"
+    - "文生圖"
+    - "情境"
+  exam_trap: false
+
+- id: "L21103-Q18"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 3
+  question: "104 人力銀行希望打造一個 AI 求職助手，能：(1) 閱讀中文履歷後與求職者多輪對話，(2) 回答開放式問題（如「我適合哪些職位？」），(3) 針對缺點給個人化建議。應選哪種架構？"
+  options:
+    a: "Decoder-only 自回歸 LLM（如 Llama、GPT 類）"
+    b: "純 Diffusion 模型"
+    c: "DCGAN"
+    d: "僅使用 Inception-v3 影像分類器"
+  correct: "a"
+  explanation:
+    why_correct: "多輪對話、開放式推理、個人化建議生成皆屬長文自回歸生成 + 指令跟隨任務，decoder-only LLM（經 Pretrain + SFT + RLHF）是現代主流且最適配的架構；encoder-decoder（如 T5）雖可做摘要，但在多輪對話與開放式問答上不如 decoder-only LLM 靈活。"
+    why_not_b: "Diffusion 主打影像/音訊連續模態，對離散 token 文字生成非主流選擇。"
+    why_not_c: "DCGAN 用於影像，與履歷文字無關。"
+    why_not_d: "Inception-v3 處理圖像分類，非語言任務。"
+  keywords:
+    - "Decoder-only"
+    - "LLM"
+    - "多輪對話"
+    - "開放式推理"
+  exam_trap: false
+
+- id: "L21103-Q19"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 3
+  question: "某大學教授要開發「LINE 客服聊天機器人」，主要任務是「客戶問句分類（intent classification）」與「重要詞彙抽取（NER）」，最符合需求的架構為下列何者？"
+  options:
+    a: "Encoder-only 模型（如 BERT / RoBERTa）微調做分類與 NER"
+    b: "Diffusion 模型"
+    c: "Encoder-Decoder T5 做 text-to-text 標註"
+    d: "CycleGAN"
+  correct: "a"
+  explanation:
+    why_correct: "分類與 NER 屬理解型任務（non-generative），BERT 類 encoder-only 雙向 contextual embedding 正是為此設計，在此類任務上效能與效率皆佳。"
+    why_not_b: "Diffusion 是生成模型，不擅長做離散類別分類。"
+    why_not_c: "T5 可以做分類（將標籤當作文字輸出），但對於「純分類」任務（給一段文本、輸出一個標籤）BERT 雙向編碼更高效且訓練成本低；T5 的 encoder-decoder 結構在此情境屬於殺雞用牛刀。"
+    why_not_d: "CycleGAN 做非配對影像轉換，與 NLP 無關。"
+  keywords:
+    - "BERT"
+    - "NER"
+    - "分類"
+  exam_trap: false
+
+- id: "L21103-Q20"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 3
+  question: "在 Stable Diffusion 中使用 Classifier-Free Guidance（CFG），若將 guidance scale w 從 7.5 調高到 15，最可能出現的現象為何？"
+  options:
+    a: "生成速度加快一倍"
+    b: "完全忽略 prompt 內容"
+    c: "生成結果更貼合 prompt 文字，但多樣性下降、可能出現過飽和或偽影"
+    d: "自動切換為 GAN 模型生成"
+  correct: "c"
+  explanation:
+    why_correct: "CFG 以 ε = ε_uncond + w·(ε_cond − ε_uncond) 外推條件方向；w 越大越「聽 prompt」但越容易失真、飽和，多樣性下降。預設 7.5 是品質/遵從平衡點。"
+    why_not_a: "CFG 每步仍需跑條件與無條件兩次，提高 w 不加速反而可能需要更多步。"
+    why_not_b: "w=0 才是無條件；w=15 屬強條件。"
+    why_not_d: "CFG 僅改採樣外推係數，不切換架構。"
+  keywords:
+    - "Classifier-Free Guidance"
+    - "CFG"
+    - "guidance scale"
+  exam_trap: true
+
+- id: "L21103-Q21"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 3
+  question: "某團隊要評估「YouTube 中文影片自動字幕」的語言模型品質，下列何者為最合適的核心指標組合？"
+  options:
+    a: "FID + Inception Score"
+    b: "Mode collapse 出現率"
+    c: "CLIP score 單一指標"
+    d: "Perplexity（流暢度）+ 人工評估或對照字幕的 WER / BLEU"
+  correct: "d"
+  explanation:
+    why_correct: "字幕生成屬語言任務，PPL 反映流暢度、人工評估或與參考字幕比對（WER/BLEU）反映正確性，雙指標互補。"
+    why_not_a: "FID/IS 是影像指標，與文字字幕評估無關。"
+    why_not_b: "Mode collapse 是 GAN 訓練現象，不是評估指標。"
+    why_not_c: "CLIP score 用於文生圖對齊，非評估純文字生成品質。"
+  keywords:
+    - "評估指標"
+    - "PPL"
+    - "字幕"
+  exam_trap: false
+
+- id: "L21103-Q22"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 3
+  question: "政大新聞系學生想將「夏季的台北 101」照片轉換為「冬季雪景」風格，且沒有配對訓練資料，下列哪個架構最適合？"
+  options:
+    a: "BERT"
+    b: "DDPM pixel-space 從零訓練"
+    c: "CycleGAN（非配對影像到影像轉換）"
+    d: "Conditional Diffusion Image-to-Image (paired)"
+  correct: "c"
+  explanation:
+    why_correct: "CycleGAN 以循環一致性（cycle-consistency loss）學習非配對（unpaired）兩個 domain 間的映射，正是此類風格轉換的經典應用。"
+    why_not_a: "BERT 無影像生成能力。"
+    why_not_b: "DDPM 可做影像風格遷移但需條件設計與大量訓練，非最佳第一選擇。"
+    why_not_d: "paired diffusion image-to-image（如 Pix2Pix-Diffusion、InstructPix2Pix 的訓練階段）需要成對的輸入/輸出圖片（同一場景夏季↔冬季）訓練；題目明確說「沒有配對訓練資料」，因此需要 CycleGAN 的 cycle-consistency 約束才能在無配對情境下學到 domain 映射。"
+  keywords:
+    - "CycleGAN"
+    - "影像轉換"
+    - "非配對"
+  exam_trap: false
+
+- id: "L21103-Q23"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 3
+  question: "下列哪個情境最適合使用「Cross-Attention（交叉注意力）」？"
+  options:
+    a: "BERT encoder 內部 token 之間的互動"
+    b: "GPT decoder-only 模型純做 next-token 預測"
+    c: "Stable Diffusion 的 U-Net 中將 CLIP 文字 embedding 注入影像 latent 做條件生成"
+    d: "單張圖的像素分類"
+  correct: "c"
+  explanation:
+    why_correct: "Cross-attention 的 Q 來自一個序列（影像 latent）、K/V 來自另一序列（CLIP 文字 embedding），正是 Stable Diffusion 將文字條件注入影像生成的機制。"
+    why_not_a: "BERT 內部是 self-attention（Q/K/V 皆來自同一序列）。"
+    why_not_b: "Decoder-only 純 next-token 僅用 masked self-attention，無 cross-attention。"
+    why_not_d: "像素分類為 CNN/ViT 任務，與 cross-attention 關聯薄弱。"
+  keywords:
+    - "Cross-Attention"
+    - "交叉注意力"
+  exam_trap: true
+
+- id: "L21103-Q24"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 3
+  question: "台大學生報告助手希望讓 LLM「不要輸出有害或冒犯內容，並以條列格式回答」。在 Pretrain / SFT / RLHF 三階段中，最直接負責此目標的階段為何？"
+  options:
+    a: "Pretrain（預訓練）"
+    b: "RLHF（人類偏好強化學習）"
+    c: "Tokenizer 訓練"
+    d: "VAE 編碼器訓練"
+  correct: "b"
+  explanation:
+    why_correct: "釐清兩者分工：SFT 教「格式 / 指令跟隨 / 條列輸出」等基礎能力；RLHF 教「避免有害、符合人類偏好、安全對齊」。本題問「不要輸出有害或冒犯內容」的最直接階段，答案是 RLHF（以偏好資料 + PPO/DPO 對齊）。條列格式的基礎能力其實主要來自 SFT，但題目的核心目標是「安全無害」，所以 RLHF 才是最直接負責的階段。"
+    why_not_a: "Pretrain 負責學語言與世界知識，不負責安全對齊。"
+    why_not_c: "Tokenizer 僅將文字切成 token，不涉及偏好對齊。"
+    why_not_d: "VAE 是 Stable Diffusion 的影像壓縮組件，與 LLM 無關。"
+  keywords:
+    - "RLHF"
+    - "偏好對齊"
+  exam_trap: true
+
+- id: "L21103-Q25"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 4
+  question: "某電商想同時做 (a) 商品評論情感分類 和 (b) 客服聊天對話生成。若只能選一個架構做為統一 backbone 以降低維運成本，應選哪個？原因為何？"
+  options:
+    a: "BERT；因為 encoder-only 架構可同時處理分類與長文生成"
+    b: "GAN；對抗訓練可同時支援理解與生成"
+    c: "兩者效能相同，隨便選一個即可"
+    d: "GPT（decoder-only）；因為 decoder-only 可做生成（對話），也可用 prompt 引導做分類（少樣本 in-context learning），反之 BERT 無法做開放式對話生成"
+  correct: "d"
+  explanation:
+    why_correct: "關鍵取捨：BERT 擅長理解但無生成能力（無法做對話）；GPT 生成是強項，同時可透過 prompting / in-context learning 做分類（雖比 fine-tuned BERT 略差，但可接受）。要統一 backbone 降成本，只能選能兩者兼做的那個——decoder-only LLM 是唯一答案。此為 114/05 考題核心 + 實務取捨。"
+    why_not_a: "BERT 為理解型 encoder，無開放式長文生成能力，無法做客服對話。"
+    why_not_b: "GAN 主要用於影像/離散樣本生成，對 NLP 分類與對話都非主流選擇。"
+    why_not_c: "BERT 與 GPT 架構、訓練目標、可做任務皆不同，效能與適用情境明顯有別。"
+  keywords:
+    - "BERT vs GPT"
+    - "理解 vs 生成"
+  exam_trap: true
+
+- id: "L21103-Q26"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 4
+  question: "GAN 的損失特徵與 Diffusion 的損失特徵，最核心的差異為何？"
+  options:
+    a: "GAN 為對抗式 min-max 損失；Diffusion 為對預測噪聲的 MSE 去噪損失（L_simple = ||ε − ε_θ||²）"
+    b: "兩者皆使用交叉熵損失"
+    c: "GAN 使用 MSE；Diffusion 使用對抗損失"
+    d: "兩者皆使用 KL divergence 為主要損失"
+  correct: "a"
+  explanation:
+    why_correct: "GAN 本質是 min-max 對抗；DDPM 簡化損失為預測噪聲的 MSE，訓練單一網路、穩定性遠優於 GAN。這是兩者最關鍵的訓練差異。"
+    why_not_b: "GAN 與 Diffusion 的核心損失皆非交叉熵。"
+    why_not_c: "恰好對調，為常見混淆陷阱。"
+    why_not_d: "KL 出現在 VAE 的 latent 正則項，不是 GAN/Diffusion 核心。"
+  keywords:
+    - "GAN 損失"
+    - "Diffusion 損失"
+    - "MSE"
+  exam_trap: true
+
+- id: "L21103-Q27"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 4
+  question: "工程師觀察 diffusion 訓練時發現 loss 長時間不下降。已知 forward process 為固定噪聲排程、reverse process 為 U-Net 可學習去噪。該問題最可能出在哪一個過程？為什麼？"
+  options:
+    a: "出在 forward process；因為 forward 是學到的降噪過程，參數配置錯誤會使 loss 卡住"
+    b: "出在 reverse process；因為 forward 是固定無參數的加噪 schedule（固定 Gaussian），不會影響訓練 loss；唯一可學習的 U-Net 去噪網路出問題（學習率、架構容量、條件注入）才會讓 loss 不下降"
+    c: "兩者皆有可能，因為兩者皆含可學習參數"
+    d: "出在 Discriminator 判別失敗；diffusion 需要 D 來判斷去噪品質"
+  correct: "b"
+  explanation:
+    why_correct: "DDPM 明確定義：forward q(x_t|x_{t-1}) 為固定 β_t 噪聲排程無參數，**不存在可訓練變數**，因此 loss 不下降絕不可能來自 forward；唯一可學習的是 reverse p_θ（U-Net），所以問題必然在此——檢查學習率、U-Net 容量、條件注入（cross-attention）、損失縮放等。此為 symptom-to-cause 的經典推理。"
+    why_not_a: "方向完全相反，forward 無參數無法「學壞」；這是研究筆記標註的 #1 Diffusion 陷阱。"
+    why_not_c: "forward 不含可學習參數，此選項混淆了 DDPM 定義。"
+    why_not_d: "Diffusion 架構不含 Discriminator，那是 GAN 的組件。"
+  keywords:
+    - "Forward"
+    - "Reverse"
+    - "Diffusion"
+  exam_trap: true
+
+- id: "L21103-Q28"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 4
+  question: "在訓練一個中翻英 Transformer 模型時，decoder 在生成第 t 個英文詞時需要同時考慮 (1) 已生成的前 t-1 個英文詞之間的依賴，(2) 完整的中文輸入序列。這兩個需求分別應對應哪種 attention 機制？"
+  options:
+    a: "(1) 用 self-attention（Q/K/V 皆來自已生成英文序列）、(2) 用 cross-attention（Q 來自 decoder 英文 embedding、K/V 來自 encoder 中文 embedding）"
+    b: "兩者皆用 self-attention，因為兩邊都是 Transformer"
+    c: "(1) 用 cross-attention、(2) 用 self-attention（與正確答案方向相反）"
+    d: "兩者皆用 cross-attention"
+  correct: "a"
+  explanation:
+    why_correct: "結構映射核心：(1) 已生成英文詞之間的依賴屬「同一序列內部」→ masked self-attention（Q/K/V 皆來自 decoder）；(2) 要把中文輸入帶進來屬「跨兩個序列」→ cross-attention（Q 來自 decoder，K/V 來自 encoder）。這是 Vaswani 2017 原始 encoder-decoder 架構的精確設計。"
+    why_not_b: "若兩者皆 self-attention，decoder 無從接觸 encoder 的中文表徵，翻譯無法進行。"
+    why_not_c: "方向錯誤：已生成英文序列內部不需 cross（那會讓 K/V 來自外部序列，語意崩壞）。"
+    why_not_d: "若兩者皆 cross-attention，decoder 內部英文上下文就無法被建模。"
+  keywords:
+    - "Self-Attention"
+    - "Cross-Attention"
+  exam_trap: true
+
+- id: "L21103-Q29"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 4
+  question: "某公司的 LLM 上線後收到兩類抱怨：(a) 回答專業術語經常錯誤（如把「因子分析」講成「主成分分析」）、(b) 偶爾生成攻擊性或冒犯言論。若要最直接地解決這兩類問題，應分別回到 Pretrain / SFT / RLHF 的哪一階段補強？下列配對何者正確？"
+  options:
+    a: "(a) 回到 RLHF 學新術語、(b) 回到 Pretrain 處理安全"
+    b: "兩者都靠 SFT 補強即可"
+    c: "(a) 事實知識錯誤應回到 Pretrain 補語料（或加 RAG 即時檢索）；(b) 攻擊性言論應回到 RLHF 做偏好/安全對齊"
+    d: "兩者都靠 RLHF 補強即可"
+  correct: "c"
+  explanation:
+    why_correct: "症狀—階段對應：事實知識不足 = pretrain 語料覆蓋問題（或 RAG 外掛解決）；有害輸出 = RLHF 偏好與安全對齊問題。不可混淆：RLHF 並不擅長「教新事實」（研究筆記列為常見陷阱），SFT 則主要教格式與指令跟隨。正確診斷後對症下藥是實務維運關鍵。"
+    why_not_a: "方向完全反了：RLHF 不負責教新事實，Pretrain 也不處理安全對齊。"
+    why_not_b: "SFT 教格式與指令跟隨，既不直接補事實也不直接對齊安全偏好。"
+    why_not_d: "RLHF 無法有效「新增事實知識」，那是 pretrain 語料或 RAG 的職責。"
+  keywords:
+    - "Pretrain"
+    - "SFT"
+    - "RLHF"
+  exam_trap: true
+
+- id: "L21103-Q30"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 4
+  question: "某新創要自動生成「蝦皮商品情境圖」與「商品文案」。下列哪個指標組合最能分別衡量兩者品質？"
+  options:
+    a: "情境圖用 BLEU；文案用 FID"
+    b: "兩者皆只用 Inception Score"
+    c: "兩者皆只用 Accuracy"
+    d: "情境圖用 FID 與 CLIP score（文字對齊）；文案用 Perplexity 與人工 A/B 測試"
+  correct: "d"
+  explanation:
+    why_correct: "先區分兩類指標：**模型品質指標**（PPL = 流暢度；人工評估 = 可用性/說服力/事實準確性；FID = 影像集合分布距離；CLIP score = 文字對齊）vs **產品營運指標**（A/B 測轉化率、點擊率）。本題要求同時覆蓋兩類：情境圖用 FID（品質/多樣性）+ CLIP score（文字對齊）；文案用 PPL（流暢度）+ 人工 A/B（實際轉化效果）。考試情境如為「判斷模型本身是否好」，首選人工評估與 PPL/FID 配合；A/B 測試是實務延伸，常用於上線後比較多版本的真實業務效果。"
+    why_not_a: "BLEU 為語言指標、FID 為影像指標，兩者對錯反了。"
+    why_not_b: "IS 已過時且不衡量文字；且無法評估文案。"
+    why_not_c: "生成任務非分類，Accuracy 不適用。"
+  keywords:
+    - "FID"
+    - "CLIP score"
+    - "PPL"
+    - "指標選擇"
+  exam_trap: false
+
+- id: "L21103-Q31"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 4
+  question: "關於「Transformer 為何能夠並行訓練，而傳統 RNN/LSTM 難以並行」的根本原因，下列何者最正確？"
+  options:
+    a: "Transformer 使用 ReLU，RNN 使用 sigmoid"
+    b: "Self-attention 一次性看到整個序列，每個位置的計算互相獨立；RNN 必須逐時步序列計算，時間步間有依賴"
+    c: "Transformer 沒有位置資訊，因此不需等序列"
+    d: "RNN 計算量較大所以無法平行"
+  correct: "b"
+  explanation:
+    why_correct: "RNN 的 h_t 依賴 h_{t-1}，迫使序列化計算；self-attention 以矩陣運算同時計算所有位置的 Q/K/V 與注意力分數，天然支援 GPU 平行，Vaswani 2017 明確指出此優勢。"
+    why_not_a: "啟動函數差異不是平行性根因。"
+    why_not_c: "位置編碼恰好是為了補回順序資訊，與平行能力無直接因果。"
+    why_not_d: "計算量多寡不等於是否可平行；關鍵是依賴關係。"
+  keywords:
+    - "平行訓練"
+    - "Self-Attention"
+    - "RNN"
+  exam_trap: false
+
+- id: "L21103-Q32"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 4
+  question: "下列哪組「模型家族 → 主要訓練目標 → 典型失敗模式」的配對正確？"
+  options:
+    a: "GAN → 預測下一 token → Hallucination"
+    b: "BERT → 預測噪聲 ε → 訓練不穩定"
+    c: "Decoder-only LLM → 對抗式 min-max → Mode collapse"
+    d: "Diffusion → 預測 ε（噪聲）→ 推論速度慢"
+  correct: "d"
+  explanation:
+    why_correct: "Diffusion 訓練目標即預測每一步的噪聲 ε（MSE L_simple）；主要弱點是 T 步迭代帶來推論慢（由 DDIM、consistency model 緩解）。"
+    why_not_a: "GAN 的目標是騙過 D，不是預測下一 token；hallucination 是 LLM 問題。"
+    why_not_b: "BERT 訓練目標是 Masked LM，非預測噪聲。"
+    why_not_c: "Decoder-only LLM 目標是預測下一 token，非 min-max；mode collapse 是 GAN 失敗。"
+  keywords:
+    - "架構比較"
+    - "訓練目標"
+    - "失敗模式"
+  exam_trap: true
+
+- id: "L21103-Q33"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 5
+  question: "某台灣電商要導入文生圖工具，限制條件：(1) 需要高解析度與多樣風格；(2) 需穩定可控避免 mode collapse；(3) 文字條件必須精準；(4) 可接受稍慢推論但要求能在 GPU 上部署。下列哪個架構組合最符合？"
+  options:
+    a: "純 DCGAN + 文字 embedding 拼接"
+    b: "Encoder-only Transformer 處理文字 + 無條件 Diffusion"
+    c: "僅以 BERT 做文字理解，直接輸出像素"
+    d: "以 Stable Diffusion（latent diffusion + VAE + U-Net）+ CLIP 文字編碼器 + Classifier-Free Guidance"
+  correct: "d"
+  explanation:
+    why_correct: "Stable Diffusion 同時滿足四條件：latent 空間支援高解析度、Diffusion 訓練穩定無 mode collapse、CLIP + cross-attention 精準文字對齊、CFG 可調控品質與遵從度，推論雖慢但可部署。"
+    why_not_a: "DCGAN 高解析度穩定度差且無好的文字條件機制，常 mode collapse。"
+    why_not_b: "無條件 Diffusion 無法根據文字生成，等於失去核心需求。"
+    why_not_c: "BERT 無生成影像能力，無法直接輸出像素。"
+  keywords:
+    - "架構選擇"
+    - "Stable Diffusion"
+    - "多約束"
+  exam_trap: false
+
+- id: "L21103-Q34"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 5
+  question: "某台灣新創要建構「法律文件問答助手」。限制：(1) 必須嚴格依法條文字作答不可幻覺；(2) 需長文上下文（單次 >20000 字）；(3) 在地法規可能隨時更新；(4) 回答格式需條列清晰。下列方案何者最合理？[提示：RAG = Retrieval-Augmented Generation，在生成前先檢索外部知識庫，把檢索到的文件當 context 一起餵給 LLM]"
+  options:
+    a: "僅用 BERT 做 MLM 預訓練並直接輸出答案"
+    b: "使用 GAN 生成答案文字"
+    c: "Decoder-only LLM（長 context）+ SFT 學格式 + RLHF 對齊風格 + RAG（外掛法條檢索）降低幻覺"
+    d: "僅做 RLHF，不需要 Pretrain 與 SFT"
+  correct: "c"
+  explanation:
+    why_correct: "長文生成需 decoder-only；SFT 教條列格式；RLHF 對齊風格/安全；RAG 以檢索即時法條當 context 同時解決幻覺與法規更新。多機制協作符合四項約束。"
+    why_not_a: "BERT 為理解型 encoder，無生成長文能力，且無法處理條列輸出。"
+    why_not_b: "GAN 生成離散 token 文字既不擅長亦難以保證事實準確。"
+    why_not_d: "跳過 Pretrain/SFT 直接 RLHF 無意義；RLHF 需已有能跟隨指令的模型。"
+  keywords:
+    - "RAG"
+    - "長文"
+    - "LLM pipeline"
+  exam_trap: false
+
+- id: "L21103-Q35"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 5
+  question: "比較 Transformer 三種變體的能力邊界，下列敘述何者最正確？"
+  options:
+    a: "Encoder-only（BERT）適合理解任務；Decoder-only（GPT）適合自回歸生成任務；Encoder-Decoder（T5/BART）適合需「完整讀入 → 生成新序列」的 seq2seq 任務（如翻譯、摘要）"
+    b: "三者可完全互換使用，沒有本質差異"
+    c: "Encoder-only 可做所有生成任務，Decoder-only 不能生成"
+    d: "Encoder-Decoder 僅能做分類，無法生成文字"
+  correct: "a"
+  explanation:
+    why_correct: "三變體根據注意力遮罩方向與組合不同（雙向 / 因果 / 雙向+交叉），各自最適任務明確：BERT→理解、GPT→生成、T5→seq2seq。此為 Hugging Face 官方教材三分法。"
+    why_not_b: "預訓練目標、遮罩設計皆不同，效能差距明顯。"
+    why_not_c: "完全相反：decoder-only 才是主要生成家族（GPT/Claude/Llama）。"
+    why_not_d: "T5/BART 的設計目標正是生成（翻譯、摘要、問答生成）。"
+  keywords:
+    - "Transformer 三變體"
+    - "任務邊界"
+  exam_trap: true
+
+- id: "L21103-Q36"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 5
+  question: "某實驗室要在「端側裝置」部署中型 LLM，限制：(1) 記憶體 ≤ 8GB；(2) 延遲 < 1 秒；(3) 品質可接受小幅下降。下列哪組技術組合最合適？"
+  options:
+    a: "直接部署 70B 參數原始 FP32 模型"
+    b: "透過模型壓縮（知識蒸餾 + 量化如 INT4/INT8 + 參數剪枝）將中型 LLM 體積縮小後部署"
+    c: "用 GAN 取代 LLM"
+    d: "只使用 RLHF 階段訓練即可減少模型大小"
+  correct: "b"
+  explanation:
+    why_correct: "端側部署標準做法為蒸餾（teacher→student）、量化（權重降精度）、剪枝（去除冗餘參數）三招並用，114/09 樣題亦將此列為生成式 AI 部署重點。"
+    why_not_a: "70B FP32 需數百 GB，遠超 8GB 限制。"
+    why_not_c: "GAN 無法做語言理解與生成，無法取代 LLM。"
+    why_not_d: "RLHF 不改變參數量，無法壓縮模型。"
+  keywords:
+    - "模型壓縮"
+    - "量化"
+    - "蒸餾"
+    - "剪枝"
+  exam_trap: false
+  note: "此題考實務延伸概念（模型壓縮），本課重點仍以 GAN / Diffusion / Transformer 三大架構為主。部署相關細節詳見 L21302 部署 / L21202 導入規劃。"
+
+- id: "L21103-Q37"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 5
+  question: "某台灣遊戲公司要訓練「二次元角色立繪生成」模型，限制：(1) 已有 10 萬張官方精修立繪（配對提示詞）；(2) 要求高解析度 1024×1024；(3) 需支援 LoRA 風格微調；(4) 推論可容忍秒級延遲。最合理的核心架構為下列何者？"
+  options:
+    a: "純 DCGAN 從零訓練"
+    b: "BERT 生成像素"
+    c: "以 Stable Diffusion 為基座 + 該資料集做微調或 LoRA 適配"
+    d: "純 RNN seq2seq"
+  correct: "c"
+  explanation:
+    why_correct: "Stable Diffusion 為高解析度 T2I 業界標準，原生支援 LoRA 微調特定畫風，秒級延遲可接受，10 萬張配對資料適合做 fine-tune，完整符合四條件。"
+    why_not_a: "純 DCGAN 高解析度不穩，風格控制弱。"
+    why_not_b: "BERT 無影像生成能力。"
+    why_not_d: "RNN seq2seq 架構舊且不適合像素生成。"
+  keywords:
+    - "LoRA"
+    - "Stable Diffusion"
+    - "微調"
+  exam_trap: false
+  note: "此題考實務延伸概念（LoRA 微調），本課重點仍以 GAN / Diffusion / Transformer 三大架構為主。微調策略細節詳見 L21302 部署 / L21202 導入規劃。"
+
+- id: "L21103-Q38"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 5
+  question: "在 GAN、Diffusion、Decoder-only LLM 三者中，若要同時滿足：「訓練相對穩定」、「高品質多樣生成」、「處理影像高解析度」，下列判斷何者最正確？"
+  options:
+    a: "Diffusion 是最佳選擇（訓練 MSE 穩定、無 mode collapse、latent diffusion 可高解析度）"
+    b: "Decoder-only LLM 是最佳選擇"
+    c: "GAN 是最佳選擇（穩定性佳）"
+    d: "三者皆不適合，須改用 RNN"
+  correct: "a"
+  explanation:
+    why_correct: "Diffusion 以 MSE 訓練避免對抗不穩；無 mode collapse 所以多樣性好；latent diffusion（Stable Diffusion）讓高解析度計算可行。三條件同時最佳。"
+    why_not_b: "Decoder-only LLM 處理離散 token 文字，非影像模態首選。"
+    why_not_c: "GAN 恰好以訓練不穩與 mode collapse 聞名，與條件一相反。"
+    why_not_d: "RNN 已被 Transformer 與 Diffusion 取代，不是解答。"
+  keywords:
+    - "架構比較"
+    - "多約束評估"
+  exam_trap: true
+
+- id: "L21103-Q39"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 5
+  question: "某 YouTuber 要做「AI 對話式影片助手」：輸入中文自然語句，輸出(1)回答文字、(2)符合語意的插圖。下列架構組合何者最合理？"
+  options:
+    a: "僅用 BERT 同時處理文字與圖像"
+    b: "只用 Inception Score 高的模型，不論架構"
+    c: "只用 StyleGAN 完成所有任務"
+    d: "Decoder-only LLM（回答文字）+ Stable Diffusion（CLIP 文字條件 + U-Net + VAE 生成插圖），兩管線串接"
+  correct: "d"
+  explanation:
+    why_correct: "文字生成用 decoder-only LLM；插圖用 Stable Diffusion 並透過 CLIP 注入文字條件；兩個專精模型串接為 2024 後主流「Agent + 多模態工具」架構。"
+    why_not_a: "BERT 無生成能力也無影像能力。"
+    why_not_b: "Inception Score 是評估指標不是架構，且不適用文字任務。"
+    why_not_c: "StyleGAN 僅高解析度人臉/風格，無法做文字問答。"
+  keywords:
+    - "多模態"
+    - "管線串接"
+  exam_trap: false
+
+- id: "L21103-Q40"
+  topic_code: "L21103"
+  item_code: "L21103"
+  difficulty: 5
+  question: "從「訓練穩定性、生成多樣性、推論速度、文字條件可控性」四個維度綜合比較 GAN 與 Diffusion，下列哪一項判斷最能代表 2024–2026 產業現況？"
+  options:
+    a: "GAN 在所有四個維度都優於 Diffusion"
+    b: "Diffusion 在訓練穩定性、多樣性、文字條件可控性優於 GAN；但推論速度較慢，需 DDIM、consistency model 等技術緩解。高解析度 T2I 已由 Diffusion 決定性主導，GAN 轉為人臉合成與風格遷移等利基應用"
+    c: "GAN 已完全被淘汰，沒有任何應用價值"
+    d: "Diffusion 僅在小解析度佔優，GAN 仍主導高解析度 T2I"
+  correct: "b"
+  explanation:
+    why_correct: "符合研究筆記「Diffusion has decisively won high-res T2I, GAN niche」的 2024–26 現況：Diffusion 穩定、多樣、可控但慢；GAN 僅保留人臉、風格轉換等特定場域。"
+    why_not_a: "Diffusion 在穩定性與多樣性皆優於 GAN，此說法過度簡化。"
+    why_not_c: "StyleGAN、CycleGAN 等仍活躍於特定場景，尚未完全淘汰。"
+    why_not_d: "事實恰好相反，高解析度 T2I 由 Stable Diffusion 等 Diffusion 模型主導。"
+  keywords:
+    - "GAN vs Diffusion"
+    - "產業現況"
+  exam_trap: true
