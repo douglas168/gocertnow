@@ -1,0 +1,934 @@
+# L21201 AI導入評估 — 練習題庫 (Deep depth pool, 40 題)
+# 對應 IPAS AI應用規劃師 中級 — 科目一 L212 AI導入評估規劃
+# 範圍: 技術效能評估 / 工具效能評估 / 適用解決方案選擇 / 成本效益分析
+# 邊界: 不含 L21202 規劃流程、L21203 風險框架、初級 L12301 入門檢核
+
+questions:
+
+  # ============================================================
+  # Difficulty 1 — Remember (8 題)
+  # ============================================================
+
+  - id: "L21201-Q01"
+    topic_code: "L21201"
+    item_code: "L21201-01"
+    difficulty: 1
+    question: "下列何者最能完整描述機器學習模型的「準確率（Accuracy）」？"
+    options:
+      a: "模型每秒可處理的請求數量"
+      b: "模型回傳第一個 token 所需的平均時間"
+      c: "模型在測試集上預測正確的樣本數佔總樣本數的比例"
+      d: "模型在尖峰負載下仍能維持服務的能力"
+    correct: "c"
+    explanation:
+      why_correct: "Accuracy = 預測正確樣本數 / 總樣本數，是分類模型最直觀的整體表現指標，屬於「技術效能」中模型品質維度。"
+      why_not_a: "每秒處理請求數是 Throughput（吞吐量），是延遲/容量類指標，不是準確率。"
+      why_not_b: "首字回應時間屬於 Latency（延遲，TTFT），衡量回應速度，不是答對比例。"
+      why_not_d: "尖峰維持服務能力屬於 Reliability / Scalability（可靠性/擴展性），不是預測正確比例。"
+    keywords:
+      - "準確率"
+      - "Accuracy"
+      - "技術效能"
+    exam_trap: false
+
+  - id: "L21201-Q02"
+    topic_code: "L21201"
+    item_code: "L21201-04"
+    difficulty: 1
+    question: "下列何者是 ROI（投資報酬率，Return on Investment）的標準計算公式？"
+    options:
+      a: "ROI = 初始投資金額 ÷ 年度淨效益"
+      b: "ROI = 總營收 ÷ 總成本"
+      c: "ROI = 未來現金流折現值總和 − 初始投資"
+      d: "ROI = （效益 − 成本）÷ 成本 × 100%"
+    correct: "d"
+    explanation:
+      why_correct: "ROI =（淨效益 − 成本）/ 成本 × 100%，衡量每投入 1 元能回收的百分比，是中級評估最常用的單期報酬指標。"
+      why_not_a: "初始投資 ÷ 年度淨效益 是 Payback Period（回收期）的公式，計算「幾年回本」，不是 ROI。"
+      why_not_b: "總營收 / 總成本 接近毛利率概念，沒有扣除成本，會嚴重高估 ROI。"
+      why_not_c: "未來現金流折現減初始投資是 NPV（淨現值）的概念，比 ROI 多了時間價值，不是 ROI。"
+    keywords:
+      - "ROI"
+      - "投資報酬率"
+      - "成本效益"
+    exam_trap: true
+
+  - id: "L21201-Q03"
+    topic_code: "L21201"
+    item_code: "L21201-04"
+    difficulty: 1
+    question: "TCO（Total Cost of Ownership，總體擁有成本）下列何者最能完整描述其涵蓋範圍？"
+    options:
+      a: "僅包含購買軟體授權與硬體的初始費用"
+      b: "僅包含每月雲端服務的訂閱費用"
+      c: "包含取得、部署、維運、人力、退役等整個生命週期的直接與間接成本"
+      d: "等同於每年的營運費用 OpEx 總和"
+    correct: "c"
+    explanation:
+      why_correct: "TCO 強調「全生命週期 + 直接與間接成本」，包含 CapEx（購置）、OpEx（雲端費/電費/人力）、整合成本、退役成本、機會成本等。是中級導入評估最常被低估的概念。"
+      why_not_a: "只算初始費用是常見錯誤——導入後 3–5 年的維運與人力往往大於初始投資。"
+      why_not_b: "只算雲端訂閱費漏掉了內部人力、整合、教育訓練、安全治理等成本。"
+      why_not_d: "TCO 同時包含 CapEx 與 OpEx，把 TCO 等同於 OpEx 是常見漏算間接成本的錯誤。"
+    keywords:
+      - "TCO"
+      - "總體擁有成本"
+      - "生命週期成本"
+    exam_trap: false
+
+  - id: "L21201-Q04"
+    topic_code: "L21201"
+    item_code: "L21201-02"
+    difficulty: 1
+    question: "在工具評估中，所謂「Vendor Lock-in（供應商鎖定）」最直接的意義為何？"
+    options:
+      a: "供應商提供的合約有最低使用期限"
+      b: "供應商保證 99.9% 服務可用性的條款"
+      c: "供應商提供獨家折扣，要求顧客排他採購"
+      d: "因技術、資料格式或介面深度綁定，使企業更換供應商的轉換成本顯著升高"
+    correct: "d"
+    explanation:
+      why_correct: "Vendor Lock-in 的核心是「轉換成本」高到難以離開，常見來源包含專有 API、資料格式、向量索引、微調權重不可攜出等。"
+      why_not_a: "最低使用期限是合約條款（commitment），與技術鎖定不同；可協商但不會綁住資料/技術。"
+      why_not_b: "99.9% 是 SLA（服務等級協定），是品質承諾，與是否難以更換無關。"
+      why_not_c: "獨家折扣屬於商務策略，不是技術綁定的本質。"
+    keywords:
+      - "Vendor Lock-in"
+      - "供應商鎖定"
+      - "轉換成本"
+    exam_trap: false
+
+  - id: "L21201-Q05"
+    topic_code: "L21201"
+    item_code: "L21201-03"
+    difficulty: 1
+    question: "依「適用解決方案選擇階梯」由低到高的成本/複雜度，下列順序何者正確？"
+    options:
+      a: "Prompt Engineering → RAG → Fine-tune → From-scratch（從頭訓練）"
+      b: "Fine-tune → Prompt Engineering → RAG → From-scratch"
+      c: "RAG → Prompt Engineering → From-scratch → Fine-tune"
+      d: "From-scratch → Fine-tune → RAG → Prompt Engineering"
+    correct: "a"
+    explanation:
+      why_correct: "業界共識的成本/複雜度階梯由低到高：Prompt（最便宜，幾乎零工程）→ RAG（加檢索層）→ Fine-tune（需資料+訓練算力）→ From-scratch（最貴，需大量算力與資料）。導入決策應由下往上，能用便宜方案達成 KPI 就不要往上爬。"
+      why_not_b: "Fine-tune 比 RAG 與 Prompt 都貴，順序顛倒。"
+      why_not_c: "RAG 比 Prompt 貴（多了檢索/向量庫成本），順序錯誤。"
+      why_not_d: "完全反向；From-scratch 是最後手段，不是第一步。"
+    keywords:
+      - "解決方案階梯"
+      - "Prompt Engineering"
+      - "RAG"
+      - "Fine-tune"
+    exam_trap: false
+
+  - id: "L21201-Q06"
+    topic_code: "L21201"
+    item_code: "L21201-01"
+    difficulty: 1
+    question: "下列關於「Throughput（吞吐量）」的描述何者最正確？"
+    options:
+      a: "系統在單位時間內可成功處理的請求或資料量"
+      b: "單一請求從送出到收到首個 token 的時間"
+      c: "模型在完全相同輸入下每次輸出一致的程度"
+      d: "服務在合約上承諾的可用時間百分比"
+    correct: "a"
+    explanation:
+      why_correct: "Throughput 衡量「容量」——例如 RPS（requests per second）或每秒生成的 token 數，反映系統能不能撐住流量。"
+      why_not_b: "首字延遲是 TTFT / Latency，不是吞吐量。"
+      why_not_c: "輸出一致性屬於 Determinism / Reliability 的一面，不是吞吐量。"
+      why_not_d: "可用時間百分比是 SLA / Availability，與單位時間處理量是不同維度的指標。"
+    keywords:
+      - "Throughput"
+      - "吞吐量"
+      - "RPS"
+    exam_trap: false
+
+  - id: "L21201-Q07"
+    topic_code: "L21201"
+    item_code: "L21201-04"
+    difficulty: 1
+    question: "下列何者最符合「Payback Period（回收期）」的定義？"
+    options:
+      a: "未來各期淨現金流折現後減去初始投資的差額"
+      b: "每年淨利除以初始投資的百分比"
+      c: "投資後達到收益等於成本所需的時間"
+      d: "達到內部收益率（IRR）為 0 所需的時間"
+    correct: "c"
+    explanation:
+      why_correct: "Payback Period = 多久能把初始投資賺回來，常用公式 = 初始投資 / 每年淨效益（簡化版）。中級導入評估的「幾個月回本」對話用這個指標。"
+      why_not_a: "折現後的差額是 NPV（淨現值）的概念，不是 Payback。"
+      why_not_b: "每年淨利除以初始投資是 ROI 的年化版本，不是回本「時間」。"
+      why_not_d: "IRR 是另一種折現概念，與回本期意義不同；Payback 不需要 IRR=0。"
+    keywords:
+      - "Payback Period"
+      - "回收期"
+      - "成本效益"
+    exam_trap: false
+
+  - id: "L21201-Q08"
+    topic_code: "L21201"
+    item_code: "L21201-02"
+    difficulty: 1
+    question: "「Data Residency（資料駐留地）」在工具評估中的核心意義為何？"
+    options:
+      a: "資料在實體上儲存與處理所在的地理區域與司法管轄"
+      b: "資料在資料庫中保存的最長期限"
+      c: "資料的備份頻率與保留份數"
+      d: "資料的加密演算法強度"
+    correct: "a"
+    explanation:
+      why_correct: "Data Residency 指資料實際儲存/處理的地理位置與適用法律，對於受個資法、金管會、政府機敏資料規範的場域是必要評估項目。"
+      why_not_b: "保存期限是 Data Retention，不同概念。"
+      why_not_c: "備份份數是 Backup / DR 設計，不是駐留地。"
+      why_not_d: "加密強度屬於資料安全的技術控制，不是地理位置議題。"
+    keywords:
+      - "Data Residency"
+      - "資料駐留地"
+      - "資料治理"
+    exam_trap: false
+
+  # ============================================================
+  # Difficulty 2 — Understand (8 題)
+  # ============================================================
+
+  - id: "L21201-Q09"
+    topic_code: "L21201"
+    item_code: "L21201-01"
+    difficulty: 2
+    question: "下列關於 p95 延遲與平均延遲（Average Latency）的敘述，何者正確？"
+    options:
+      a: "p95 延遲一定小於平均延遲，因為 95% 比 100% 小"
+      b: "平均延遲若良好，使用者體驗一定平順，不需再看 p95"
+      c: "p95 延遲反映尾端體驗，能揭露平均值掩蓋的偶發長尾請求"
+      d: "p95 與 average latency 永遠相等，只是表達單位不同"
+    correct: "c"
+    explanation:
+      why_correct: "p95 = 95% 的請求都比這個時間快；尾端 5% 的長尾請求往往是使用者抱怨的來源，p95/p99 能揭露平均值所掩蓋的偶發大延遲。"
+      why_not_a: "p95 不一定小於平均；長尾分布下 p95 通常顯著大於 average。把「95 < 100」誤類比到延遲是常見直覺錯誤。"
+      why_not_b: "只看 average 會被尾端拖累隱藏，這正是 SRE 圈強調看 p95/p99 的原因。"
+      why_not_d: "p95 與 average 是不同統計量，幾乎不會相等，僅在分布極為集中時才接近。"
+    keywords:
+      - "p95"
+      - "Latency"
+      - "尾端延遲"
+    exam_trap: true
+
+  - id: "L21201-Q10"
+    topic_code: "L21201"
+    item_code: "L21201-04"
+    difficulty: 2
+    question: "下列關於 TCO 與 ROI 的敘述何者正確？"
+    options:
+      a: "TCO 是成本面總額，ROI 衡量投入產出的比率關係，兩者互補不可互換"
+      b: "TCO 越低代表 ROI 一定越高"
+      c: "ROI 為正就代表 TCO 已被回收，不需再做回收期分析"
+      d: "TCO 與 ROI 都已內含時間折現，因此不需再算 NPV"
+    correct: "a"
+    explanation:
+      why_correct: "TCO 衡量「總成本」的絕對值；ROI 衡量「相對報酬」的百分比。低 TCO 不保證高 ROI（若效益更低）；高 ROI 也可能伴隨高 TCO。兩者必須一起看。"
+      why_not_b: "效益不變才成立；若低成本方案也帶來更低效益，ROI 反而可能更差。"
+      why_not_c: "ROI 為正只代表單期效益>成本，不直接告訴你「幾年內」回本，仍需 Payback。"
+      why_not_d: "ROI、TCO 在中級層級多採未折現算法，沒有內含時間價值，需要 NPV/IRR 才有折現。"
+    keywords:
+      - "TCO"
+      - "ROI"
+      - "成本效益"
+    exam_trap: true
+
+  - id: "L21201-Q11"
+    topic_code: "L21201"
+    item_code: "L21201-02"
+    difficulty: 2
+    question: "關於「Managed API（如 OpenAI、Claude、Gemini）」與「Self-hosted（如自建 TAIDE 於中華電信 hicloud）」的取捨，下列敘述何者正確？"
+    options:
+      a: "Managed API 完全沒有 vendor lock-in，可隨時無痛切換"
+      b: "Managed API 啟動快、初期成本低；Self-hosted 在資料留台與長期高用量時較有利"
+      c: "Self-hosted 因不需要付 token 費，TCO 必然低於 Managed API"
+      d: "Self-hosted 的延遲一定低於 Managed API"
+    correct: "b"
+    explanation:
+      why_correct: "Managed API 優勢=啟動快、無維運、按用量付費；Self-hosted 優勢=資料不出境、長期高用量單位成本低、可深度客製。決策依用量規模與資料治理需求。"
+      why_not_a: "Managed API 的 prompt/微調權重/向量索引都會造成可觀的轉換成本，不是「無 lock-in」。"
+      why_not_c: "Self-hosted 有 GPU、人力、運維、安全治理等隱性 TCO，低用量下往往比 API 貴很多。"
+      why_not_d: "Self-hosted 延遲取決於硬體與實作；多數企業自建反而比商業 API 慢。"
+    keywords:
+      - "Managed API"
+      - "Self-hosted"
+      - "TAIDE"
+      - "hicloud"
+    exam_trap: true
+
+  - id: "L21201-Q12"
+    topic_code: "L21201"
+    item_code: "L21201-04"
+    difficulty: 2
+    question: "下列關於 CapEx 與 OpEx 在 AI 導入評估的敘述何者正確？"
+    options:
+      a: "CapEx 為一次性資本支出（如 GPU 採購），OpEx 為持續性營運支出（如雲端與人力）"
+      b: "雲端訂閱費屬於 CapEx，因為簽約一次"
+      c: "CapEx 不會影響 TCO，只有 OpEx 才會"
+      d: "OpEx 一律可立即費用化，因此優於 CapEx"
+    correct: "a"
+    explanation:
+      why_correct: "CapEx＝資本支出（買硬體、機房）；OpEx＝營運支出（雲端、電費、人力、訂閱）。Self-hosted 偏 CapEx 重，Managed API 偏 OpEx 重，是 build-vs-buy 的核心會計差異。"
+      why_not_b: "雲端訂閱屬於 OpEx（持續支出），不是 CapEx。"
+      why_not_c: "TCO 同時包含 CapEx 與 OpEx，兩者都會影響。"
+      why_not_d: "OpEx 與 CapEx 各有會計與財務優劣，不能一概而論「OpEx 較好」。"
+    keywords:
+      - "CapEx"
+      - "OpEx"
+      - "TCO"
+    exam_trap: true
+
+  - id: "L21201-Q13"
+    topic_code: "L21201"
+    item_code: "L21201-03"
+    difficulty: 2
+    question: "下列關於 RAG（Retrieval-Augmented Generation，檢索增強生成）的敘述何者最正確？"
+    options:
+      a: "RAG 必須先 Fine-tune 模型才能使用"
+      b: "RAG 的成本與複雜度高於 From-scratch 訓練"
+      c: "RAG 只能用於英文場景"
+      d: "RAG 透過外部檢索把企業知識注入提示中，主要解決幻覺與資料時效問題"
+    correct: "d"
+    explanation:
+      why_correct: "RAG 在推論時動態檢索外部文件並塞入 prompt，不需改模型權重，是目前處理「企業私有知識+減少幻覺+資料即時更新」最 cost-effective 的方案。"
+      why_not_a: "RAG 與 Fine-tune 是獨立技術，可單用 RAG 不必微調；許多企業只用 RAG 就達標。"
+      why_not_b: "RAG 介於 Prompt 與 Fine-tune 之間，遠比 From-scratch 便宜。"
+      why_not_c: "RAG 與語言無關，只取決於 embedding/檢索器與 LLM 的繁中能力。"
+    keywords:
+      - "RAG"
+      - "檢索增強生成"
+      - "幻覺"
+    exam_trap: false
+
+  - id: "L21201-Q14"
+    topic_code: "L21201"
+    item_code: "L21201-01"
+    difficulty: 2
+    question: "下列關於 Scalability（擴展性）與 Reliability（可靠性）的敘述何者正確？"
+    options:
+      a: "Scalability 強調系統在負載增加時仍能維持效能；Reliability 強調系統在預期條件下穩定無故障"
+      b: "兩者意義完全相同，可互換使用"
+      c: "Scalability 等於 SLA 99.99%"
+      d: "Reliability 只適用於硬體，不適用於 AI 模型服務"
+    correct: "a"
+    explanation:
+      why_correct: "Scalability=隨流量成長而擴展能力（水平/垂直）；Reliability=正常運作不出錯、可預測。兩者是技術效能評估的不同維度。"
+      why_not_b: "兩者重點不同，混為一談會在採購評估時漏掉關鍵維度。"
+      why_not_c: "99.99% 是 Availability（可用性）的 SLA 數字，不是擴展性。"
+      why_not_d: "AI 服務同樣需要 Reliability（模型推論成功率、漂移、服務不中斷）。"
+    keywords:
+      - "Scalability"
+      - "Reliability"
+      - "技術效能"
+    exam_trap: false
+
+  - id: "L21201-Q15"
+    topic_code: "L21201"
+    item_code: "L21201-03"
+    difficulty: 2
+    question: "下列關於 Fine-tune（微調）的敘述何者正確？"
+    options:
+      a: "Fine-tune 主要透過修改模型權重，使模型更貼近特定任務的「行為樣態」或語氣"
+      b: "Fine-tune 可以替代知識更新，因此不需要 RAG"
+      c: "Fine-tune 一旦完成，模型可以即時學會剛發生的新聞事件"
+      d: "Fine-tune 適用所有商業 API，不需要任何資料準備"
+    correct: "a"
+    explanation:
+      why_correct: "Fine-tune 改的是「模型怎麼回應」（語氣、結構、特定領域風格、分類行為），對「事實知識更新」效果不佳——後者更適合 RAG。"
+      why_not_b: "Fine-tune 對「新事實」效果差，新知識仍需 RAG 才能即時注入。"
+      why_not_c: "Fine-tune 是離線訓練，無法即時學會剛發生的事件。"
+      why_not_d: "Fine-tune 需要高品質標註資料、訓練算力，且不是所有 API 都開放。"
+    keywords:
+      - "Fine-tune"
+      - "微調"
+      - "權重"
+    exam_trap: false
+
+  - id: "L21201-Q16"
+    topic_code: "L21201"
+    item_code: "L21201-02"
+    difficulty: 2
+    question: "下列何者不是 SLA（Service Level Agreement，服務等級協定）常見的承諾項目？"
+    options:
+      a: "服務可用率（Uptime）"
+      b: "回應延遲上限"
+      c: "服務未達標時的補償方式"
+      d: "API 回應的 token tokenizer 版本一致性"
+    correct: "d"
+    explanation:
+      why_correct: "SLA 是「對顧客的服務可用度與效能水準」的承諾，內容包含可用率、效能上限、事件處理時間、未達標賠償。Tokenizer 版本一致性屬於模型版本治理（Model Versioning）議題，是 model card / change-log 的範疇，不在 SLA 承諾項目內。"
+      why_not_a: "Uptime 是 SLA 最核心的承諾項。"
+      why_not_b: "效能/延遲上限是 SLA 的常見技術承諾。"
+      why_not_c: "違約補償（如月費抵免）是 SLA 必備條款。"
+    keywords:
+      - "SLA"
+      - "服務等級協定"
+      - "Uptime"
+      - "Model Versioning"
+    exam_trap: false
+
+  # ============================================================
+  # Difficulty 3 — Apply (8 題)
+  # ============================================================
+
+  - id: "L21201-Q17"
+    topic_code: "L21201"
+    item_code: "L21201-03"
+    difficulty: 3
+    question: "某電商客服場景需回答數萬筆「商品政策＋退換貨規則」問題，規則文件每週更新；資料皆可上雲端，預算有限。下列何者最合適作為導入第一階段方案？"
+    options:
+      a: "從頭訓練（From-scratch）一個專屬電商 LLM"
+      b: "用商業 LLM API 搭配 RAG 檢索企業政策文件"
+      c: "對 GPT-4o 進行全參數微調以記住所有政策"
+      d: "完全不使用 AI，由人工撰寫 FAQ 即可"
+    correct: "b"
+    explanation:
+      why_correct: "規則文件每週更新→必須走「外部知識注入」路線，RAG 最適合（Fine-tune 對新事實效果差且更新成本高）。預算有限→不需要從頭訓練。資料可上雲→Managed API+RAG 是業界主流第一步。"
+      why_not_a: "From-scratch 成本與算力投入過高，且大多無法贏過商業 LLM。"
+      why_not_c: "Fine-tune 對「事實/政策」記憶效果差，且每週更新會迫使每週重訓，TCO 暴增。"
+      why_not_d: "若已決定走 AI 路線且具規模問答需求，純人工 FAQ 缺乏可擴展性。"
+    keywords:
+      - "RAG"
+      - "電商客服"
+      - "解決方案選擇"
+    exam_trap: false
+
+  - id: "L21201-Q18"
+    topic_code: "L21201"
+    item_code: "L21201-04"
+    difficulty: 3
+    question: "某企業導入 AI 客服系統，初始投資 NT$1,200,000，預估每年可節省人力成本 NT$400,000。在不考慮折現的情況下，其 Payback Period（回收期）約為？"
+    options:
+      a: "1 年"
+      b: "2 年"
+      c: "3 年"
+      d: "4 年"
+    correct: "c"
+    explanation:
+      why_correct: "Payback = 初始投資 / 年淨效益 = 1,200,000 / 400,000 = 3 年。回收期是中級評估最常用的快速判斷指標。"
+      why_not_a: "若 1 年回本，年效益需 = 初始投資 = 120 萬，與題目 40 萬不符。"
+      why_not_b: "2 年代表年效益 = 60 萬，與題目不符。"
+      why_not_d: "4 年代表年效益 = 30 萬，與題目不符；可能誤算為 1,200,000/300,000。"
+    keywords:
+      - "Payback Period"
+      - "回收期計算"
+      - "成本效益"
+    exam_trap: false
+
+  - id: "L21201-Q19"
+    topic_code: "L21201"
+    item_code: "L21201-04"
+    difficulty: 3
+    question: "某 AI 專案投入成本 NT$500,000，第一年產生的可量化效益為 NT$650,000。在不考慮折現下，第一年 ROI 為何？"
+    options:
+      a: "23%"
+      b: "30%"
+      c: "100%"
+      d: "130%"
+    correct: "b"
+    explanation:
+      why_correct: "ROI =（效益 − 成本）/ 成本 × 100% =（650,000 − 500,000）/ 500,000 × 100% = 30%。"
+      why_not_a: "23% 約等於 (650-500)/650，是把分母誤算成「效益」而不是「成本」，常見錯誤。"
+      why_not_c: "100% 是把效益除以成本（650/500≈130%）但忘記減成本，又寫錯成 100%——數值即不對。"
+      why_not_d: "130% 是『效益對成本比 (Benefit-to-Cost Ratio)』 = 650/500 = 1.3 = 130%，不是 ROI。ROI 必須先扣除投資 (淨效益)，公式為 (650−500)/500 = 30%。把 BCR 當 ROI 是最常見的計算錯誤。"
+    keywords:
+      - "ROI 計算"
+      - "成本效益"
+      - "BCR"
+    exam_trap: true
+
+  - id: "L21201-Q20"
+    topic_code: "L21201"
+    item_code: "L21201-02"
+    difficulty: 3
+    question: "某政府機關（.gov.tw）需建置內部公文摘要 AI，要求所有資料不得離開台灣境內、不可上傳至國外公雲。下列方案何者最合適？"
+    options:
+      a: "直接呼叫海外 OpenAI GPT-4o API"
+      b: "使用 Anthropic Claude API 並開啟資料保留政策"
+      c: "在中華電信 hicloud AI 算力雲上自建 TAIDE 模型，搭配 RAG"
+      d: "把資料上傳至 Google Drive 後使用 Gemini"
+    correct: "c"
+    explanation:
+      why_correct: "資料駐留台灣＋政府機敏需求→必須 self-host 在台灣機房。中華電信 hicloud + TAIDE（國科會繁中開源模型）是符合「資料不出境＋繁中可用」的標準組合。"
+      why_not_a: "GPT-4o 為海外 API，資料會離境，違反需求。"
+      why_not_b: "Claude API 同為海外資料中心，不符合資料駐留要求。"
+      why_not_d: "Google Drive 上傳即離境，違反基本前提。"
+    keywords:
+      - "Data Residency"
+      - "TAIDE"
+      - "hicloud"
+      - "政府場景"
+    exam_trap: false
+
+  - id: "L21201-Q21"
+    topic_code: "L21201"
+    item_code: "L21201-03"
+    difficulty: 3
+    question: "某新創欲快速驗證「AI 生成商品文案」是否能提升轉換率，預算僅 NT$5 萬，2 週內要看到初步結果。下列何者最符合 PoC（概念驗證）精神？"
+    options:
+      a: "用商業 LLM API + 良好的 Prompt 設計，做 A/B 測試比較轉換率"
+      b: "立即啟動 6 個月的全參數微調專案"
+      c: "先採購 H100 GPU 自建模型"
+      d: "先簽 3 年雲端訂閱合約取得最低折扣"
+    correct: "a"
+    explanation:
+      why_correct: "PoC 的目的是「最低成本最快驗證假設」，用 Managed API + 好的 prompt + A/B 測試是 2 週內可達成的最小可行驗證，符合 Go/No-Go 決策需要。"
+      why_not_b: "6 個月微調與「2 週」的時程矛盾，且尚未驗證假設就重投資。"
+      why_not_c: "PoC 階段先燒硬體是反 PoC 思維。"
+      why_not_d: "未驗證價值就鎖長約是常見的「先採購再說」反模式。"
+    keywords:
+      - "PoC"
+      - "概念驗證"
+      - "Go/No-Go"
+    exam_trap: false
+
+  - id: "L21201-Q22"
+    topic_code: "L21201"
+    item_code: "L21201-01"
+    difficulty: 3
+    question: "某金融客戶要求語音交易輔助系統「機器對機器」串接，硬性要求 p95 延遲 < 200ms。下列哪一類方案最有機會滿足此延遲門檻？"
+    options:
+      a: "OpenAI GPT-4o 雲端 API"
+      b: "Anthropic Claude Sonnet 雲端 API"
+      c: "Groq / SambaNova 等專用推論晶片或在地自建小模型"
+      d: "Google Gemini 2.5 Pro 雲端 API"
+    correct: "c"
+    explanation:
+      why_correct: "依 2026 年公開 benchmark：Claude/GPT/Gemini 雲端 API 的 p95 TTFT 多在 800ms~1,800ms；Groq、SambaNova 等專用推論服務 p95 ≈ 280ms，較有機會壓在 200ms 以下；自建小模型於低延遲鏈路也可。"
+      why_not_a: "GPT-4o 雲端 p95 ≈ 1,200ms，難以穩定 < 200ms。"
+      why_not_b: "Claude Sonnet p95 ≈ 900ms，超過門檻。"
+      why_not_d: "Gemini 2.5 Pro p95 ≈ 1,800ms，超過門檻最多。"
+    keywords:
+      - "Latency"
+      - "p95"
+      - "Groq"
+      - "雙約束"
+    exam_trap: false
+
+  - id: "L21201-Q23"
+    topic_code: "L21201"
+    item_code: "L21201-04"
+    difficulty: 3
+    question: "某加權評分矩陣（Weighted Scoring Matrix）有四個準則：技術契合度（權重 0.4，得分 8）、TCO（權重 0.3，得分 6）、資料治理（權重 0.2，得分 9）、供應商風險（權重 0.1，得分 7）。其加權總分為何？（10 分制）"
+    options:
+      a: "7.0"
+      b: "7.6"
+      c: "7.2"
+      d: "7.5"
+    correct: "d"
+    explanation:
+      why_correct: "Σ(wᵢ × scoreᵢ) = 0.4×8 + 0.3×6 + 0.2×9 + 0.1×7 = 3.2 + 1.8 + 1.8 + 0.7 = 7.5。"
+      why_not_a: "7.0 可能來自漏算其中一項或記成 0.4×7。"
+      why_not_b: "7.6 接近但運算錯一項（如把 0.1×7 算成 0.1×8）。"
+      why_not_c: "7.2 來自把『資料治理』得分誤抄成 7（而非 9）：0.4×8 + 0.3×6 + 0.2×7 + 0.1×8 = 3.2 + 1.8 + 1.4 + 0.8 = 7.2。這是最常見的「抄錯一格分數」運算錯誤。"
+    keywords:
+      - "加權評分矩陣"
+      - "Weighted Scoring Matrix"
+    exam_trap: false
+
+  - id: "L21201-Q24"
+    topic_code: "L21201"
+    item_code: "L21201-03"
+    difficulty: 3
+    question: "某製造業欲上線「OCR 辨識生產報表」，現有商業 OCR API 在內部測試集準確率僅 68%（目標 ≥ 90%）。在現有資料量足夠（標註 5,000 張）的情況下，下列方案最合理的下一步為何？"
+    options:
+      a: "更換到另一家通用商業 OCR API 重試"
+      b: "在現有開源 OCR 上 Fine-tune 自家標註資料，提升領域準確率"
+      c: "從頭訓練（From-scratch）一個 OCR 模型"
+      d: "放棄 AI，改回人工輸入"
+    correct: "b"
+    explanation:
+      why_correct: "通用 API 落差 22% 多源於「領域字型/表格/欄位排版」不熟，這正是 Fine-tune 擅長的「行為適配」場景；5,000 張標註已足夠進行領域微調。"
+      why_not_a: "換另一家通用 API 仍是「通用模型用在領域問題」，預期差異有限。"
+      why_not_c: "From-scratch 在已有強大開源 OCR 預訓練權重的情況下不划算。"
+      why_not_d: "5,000 張標註已是寶貴資產，立即放棄不符合工程投資判斷。"
+    keywords:
+      - "Fine-tune"
+      - "OCR"
+      - "領域適配"
+    exam_trap: false
+
+  # ============================================================
+  # Difficulty 4 — Analyze (8 題)
+  # ============================================================
+
+  - id: "L21201-Q25"
+    topic_code: "L21201"
+    item_code: "L21201-03"
+    difficulty: 4
+    question: "在「Prompt Engineering」與「RAG」之間做選擇時，下列何種情況最應升級到 RAG，而非繼續調 Prompt？"
+    options:
+      a: "希望模型語氣更正式有禮貌"
+      b: "模型在通用知識題目上稍有錯誤"
+      c: "模型對企業內部 SOP 等私有/即時知識頻繁產生幻覺"
+      d: "希望模型回應速度更快"
+    correct: "c"
+    explanation:
+      why_correct: "RAG 解決的是「模型不知道你公司的私有/即時資訊」造成的幻覺。當問題本質是「資訊不在模型裡」，再怎麼調 prompt 都救不了，必須注入外部知識，這是升級到 RAG 的明確訊號。"
+      why_not_a: "語氣調整主要靠 Prompt 或少量 Fine-tune，不需要 RAG。"
+      why_not_b: "通用知識微誤靠換更強模型/Prompt 即可，引入 RAG 過度設計。"
+      why_not_d: "RAG 反而會增加延遲（多了檢索），不是延遲解決方案。"
+    keywords:
+      - "RAG vs Prompt"
+      - "幻覺"
+      - "升級訊號"
+    exam_trap: true
+
+  - id: "L21201-Q26"
+    topic_code: "L21201"
+    item_code: "L21201-04"
+    difficulty: 4
+    question: "甲乙兩供應商提交 3 年 TCO 報價：方案 A 列出 5 項（雲端訂閱 480 萬、API 額度 240 萬、PM 工時 60 萬、年度健檢 30 萬、合約管理 15 萬，合計 825 萬）；方案 B 列出 8 項（雲端訂閱 510 萬、API 額度 260 萬、PM 工時 80 萬、年度健檢 35 萬、合約管理 20 萬、整合測試 90 萬、員工再訓練 60 萬、退役/資料移轉 35 萬，合計 1,090 萬）。下列分析何者最正確？"
+    options:
+      a: "選 A，因為 A 報價較低 265 萬，B 把不必要的『再訓練、退役』灌水成本以墊高總額。"
+      b: "兩份報價在『可比口徑』下無法直接比較；A 顯著漏列『整合測試、員工再訓練、退役/資料移轉』約 185 萬間接成本，補齊後 A ≈ 1,010 萬，與 B 才是公平比較。"
+      c: "選 A，因為 5 項已涵蓋所有現金流出，多列項目只是行政上的細分。"
+      d: "兩方案數字差異主要來自 PM 工時，與 TCO 漏列無關。"
+    correct: "b"
+    explanation:
+      why_correct: "TCO 比較必須用同一個『可比口徑』。A 漏列了 B 確實標出的整合測試、員工再訓練、退役/資料移轉等三大常見間接成本（合計約 185 萬），補齊後 A ≈ 1,010 萬，與 B 1,090 萬差距僅約 80 萬，與表面 265 萬差距完全不同。中級評估最常見的錯誤就是「拿短報價對長報價」直接選便宜的。"
+      why_not_a: "把 B 多列的項目當作灌水，正是低估 TCO 的典型錯誤——這些項目是真實會發生的成本，不論是否寫進報價。"
+      why_not_c: "5 項報價省略了整合、訓練、退役等間接成本，並非「行政細分」，而是真實 TCO 構成。"
+      why_not_d: "兩方案 PM 工時差距僅 20 萬，遠小於 185 萬的口徑差，主因不在 PM。"
+    keywords:
+      - "TCO"
+      - "間接成本"
+      - "可比口徑"
+      - "報價比較"
+    exam_trap: true
+
+  - id: "L21201-Q27"
+    topic_code: "L21201"
+    item_code: "L21201-04"
+    difficulty: 4
+    question: |-
+      某評選會議的對話節錄如下：
+      ① 主管：「上次跟 A 廠商高層吃飯印象很好，我心裡 A 大概有 9 分，大家就以這個為基礎調整吧。」
+      ② 法務：「那我給 A 在『資料治理』8 分。」
+      ③ 採購：「A 報價偏高，但既然主管已經喊 9 分，我也給 8.5 分以免落差太大。」
+      下列分析何者最正確指出此會議的方法論問題？
+    options:
+      a: "問題在於法務只給 8 分而非 9 分，破壞了一致性，應該全員給 9 分。"
+      b: "問題在於主管在開場就丟出『9 分』作為錨點，後續評分被向 9 收斂；正確做法是各成員『先獨立評分、再彙整』，避免錨定偏誤。"
+      c: "問題在於採購提到報價，採購不應評論成本，這是越權。"
+      d: "問題在於沒有預先設權重，只要補上權重表即可解決。"
+    correct: "b"
+    explanation:
+      why_correct: "錨定偏誤（Anchoring Bias）= 先被丟出的數字會主導後續判斷。對話①的主管把『9 分』先放上桌，對話③的採購明確自承『以免落差太大』而向 9 靠攏——這正是錨定偏誤的教科書範例。標準解方是『獨立評分→彙整』流程，而非全員向 9 對齊。"
+      why_not_a: "全員給 9 分只會把錨定偏誤放大到 100%，而非解決問題。"
+      why_not_c: "採購評論成本屬其專業範疇，不是越權；真正的問題在於評分順序。"
+      why_not_d: "權重設定無法消除錨定偏誤；問題出在『先說數字再評分』的流程，不是權重缺失。"
+    keywords:
+      - "Anchoring Bias"
+      - "錨定偏誤"
+      - "獨立評分"
+      - "評選流程"
+    exam_trap: true
+
+  - id: "L21201-Q28"
+    topic_code: "L21201"
+    item_code: "L21201-02"
+    difficulty: 4
+    question: |-
+      公司面臨兩種遷移情境：
+      情境 X：從 OpenAI GPT-4o 遷移到 Anthropic Claude（Managed API → Managed API）。
+      情境 Y：從 OpenAI GPT-4o 遷移到自建 TAIDE on hicloud（Managed API → Self-host）。
+      已知雙方都有 200 條已調好的 prompt、5,000 筆評估資料、3 萬筆向量索引。下列分析哪一個最正確？
+    options:
+      a: "情境 X 較簡單，因為兩家都是 API；情境 Y 較難，因為需重新做 prompt 重調、評估重跑、向量重建、推論基建（vLLM/GPU 排程/監控）、合規驗證——Lock-in 轉換成本顯著高於情境 X。"
+      b: "情境 Y 較簡單，因為自建後就完全沒 Lock-in。"
+      c: "兩個情境的轉換成本完全相同，因為 prompt 條數一樣。"
+      d: "情境 X 較難，因為兩家 API 廠商互為競爭對手不會互相支援格式轉換。"
+    correct: "a"
+    explanation:
+      why_correct: "情境 X 仍是『API → API』，只需重調 prompt、重跑評估、改 SDK；情境 Y 多了『建置與運維推論基建』整個層級——GPU/vLLM/排程/監控/SRE on-call/合規驗證，這些是 Self-host 才有的固定成本。Lock-in 轉換成本 = 既有資產重做 + 新基建建置，後者只在情境 Y 出現。"
+      why_not_b: "Self-host 仍有 Lock-in：GPU 廠牌、推論框架、開源模型版本、向量庫格式都會綁住，只是 Lock-in 來源不同。"
+      why_not_c: "Prompt 條數只是 Lock-in 的『其中一個維度』；基建建置成本才是兩情境的主要差異。"
+      why_not_d: "API 廠商之間的競爭關係並不直接決定轉換難度；難度主要來自 prompt 行為差異與評估重跑，不是商業關係。"
+    keywords:
+      - "Vendor Lock-in"
+      - "Managed API"
+      - "Self-hosted"
+      - "遷移成本"
+    exam_trap: true
+
+  - id: "L21201-Q29"
+    topic_code: "L21201"
+    item_code: "L21201-01"
+    difficulty: 4
+    question: "某 AI 客服模型「離線測試準確率 95%」，但上線一個月後使用者抱怨頻繁。最可能的原因為何？"
+    options:
+      a: "離線測試的資料分布與上線後實際輸入分布有顯著落差（distribution shift）"
+      b: "上線後模型權重自動劣化"
+      c: "服務器的 SLA 從 99.9% 降到 99%"
+      d: "GPU 算力不足導致推論結果不一致"
+    correct: "a"
+    explanation:
+      why_correct: "離線高準確、上線體驗差最常見原因是「測試集 ≠ 真實流量分布」——也就是 distribution shift / 資料代表性不足；這提醒評估時必須用接近真實的代表性資料集。"
+      why_not_b: "模型權重在無重訓的狀況下不會自行劣化。"
+      why_not_c: "SLA 數字變動主要影響可用性，不直接造成「答錯」的抱怨。"
+      why_not_d: "GPU 不足會延遲變慢或失敗，但不會讓答案頻繁變錯。"
+    keywords:
+      - "distribution shift"
+      - "資料分布"
+      - "離線 vs 線上"
+    exam_trap: false
+
+  - id: "L21201-Q30"
+    topic_code: "L21201"
+    item_code: "L21201-04"
+    difficulty: 4
+    question: |-
+      董事會下達硬性財務指令：「任何 AI 投資的 Payback Period 必須 < 18 個月，否則不通過。」三個方案如下：
+      方案 P：ROI 80%、Payback 14 個月、TCO 600 萬
+      方案 Q：ROI 120%、Payback 24 個月、TCO 500 萬
+      方案 R：ROI 60%、Payback 12 個月、TCO 700 萬
+      下列分析何者最正確？
+    options:
+      a: "選 Q，因為 ROI 最高（120%），董事會的 Payback 條件可後續再協商。"
+      b: "選 R，因為 Payback 最短（12 個月），財務最安全。"
+      c: "Q 因 Payback = 24 個月不符董事會硬性指令直接淘汰；P 與 R 都符合，再從中比 ROI——P (80%) > R (60%)，因此選 P。Payback 是『過濾條件』而非『評分依據』。"
+      d: "三方案都不選，因為 ROI 與 Payback 沒有單一勝出者。"
+    correct: "c"
+    explanation:
+      why_correct: "硬性財務指令屬於『過濾條件 (filter)』而非『評分依據 (score)』。流程必須是：先過濾不合規方案 → 再從剩餘集合中比較主要 KPI。Q 雖 ROI 最高但 Payback 24 個月違反硬指令直接出局；剩 P、R 都符合，再比 ROI 取 P (80%)。"
+      why_not_a: "把董事會硬性指令當『可協商的軟需求』，是中級評估最常見的『硬約束軟用』錯誤。"
+      why_not_b: "Payback 短只是『過濾通過』的最低條件，不是『最佳化目標』；通過後仍須比 ROI。"
+      why_not_d: "P 在過濾後同時符合硬條件且 ROI 最高，已是明確勝出方案，沒有理由全棄。"
+    keywords:
+      - "Payback Period"
+      - "ROI"
+      - "硬性條件過濾"
+      - "雙約束決策"
+    exam_trap: true
+
+  - id: "L21201-Q31"
+    topic_code: "L21201"
+    item_code: "L21201-03"
+    difficulty: 4
+    question: "「Build vs Buy」的決策中，下列哪一種情境最支持「Buy（採用 Managed API）」而非「Build（自建）」？"
+    options:
+      a: "AI 能力是公司核心差異化、必須長期可控、且資料極度敏感不能離境"
+      b: "AI 模型是公司 IP 核心、需要深度客製"
+      c: "公司預期長期高用量、有專業 MLOps 團隊、且有資料留地需求"
+      d: "驗證階段的新業務、用量低、需求不確定、希望以最快時間上線"
+    correct: "d"
+    explanation:
+      why_correct: "Buy（Managed API）最適合「不確定、低用量、需要快速驗證」的場景，OpEx 為主、轉換代價可接受。其他三個選項都偏向 Build。"
+      why_not_a: "「核心差異化＋長期可控＋資料不能離境」是 Build 的經典訊號。"
+      why_not_b: "把模型視為核心 IP 時，需要 Build 才能擁有。"
+      why_not_c: "長期高量＋有 MLOps＋資料留地→ Build 在 TCO 上較有利。"
+    keywords:
+      - "Build vs Buy"
+      - "決策訊號"
+    exam_trap: false
+
+  - id: "L21201-Q32"
+    topic_code: "L21201"
+    item_code: "L21201-02"
+    difficulty: 4
+    question: "下列關於「Managed API 是否有 lock-in」的敘述，何者最正確？"
+    options:
+      a: "Managed API 換掉只是改 endpoint，幾乎沒有轉換成本。"
+      b: "Managed API 的 lock-in 來自 prompt 行為差異、微調權重不可攜出、向量索引/tool-calling schema 各家不同，是真實且可量化的轉換成本。"
+      c: "只要用 OpenAI 相容介面，所有 API 都能 1:1 替換、零驗證成本。"
+      d: "Managed API 永遠不會有版本變動造成的相容性風險，因此 vendor lock-in 比自建更小。"
+    correct: "b"
+    explanation:
+      why_correct: "Managed API 的真實 lock-in 來源包含：模型行為差異（同 prompt 不同模型回答不一致）、微調權重不可攜出、向量索引格式不一、tool-calling / function-calling schema 各家不同。這些都是換廠商時必須重新做的工程與驗證成本。"
+      why_not_a: "Prompt 在不同模型上表現不一致、評估需要重做，不是「改 endpoint」這麼簡單。"
+      why_not_c: "OpenAI 相容介面只能解決「協定相容」，無法保證「行為相同」，仍需大量重新驗證。"
+      why_not_d: "Managed API 有版本變動造成的相容性風險（如 Anthropic 棄用 Claude 1、OpenAI 變更模型行為、API 棄用 / deprecation 通知），這是真實的『版本鎖定』lock-in 事件。把『managed = 永遠穩定』當成理由是常見誤解。"
+    keywords:
+      - "Vendor Lock-in"
+      - "Managed API 誤解"
+      - "model deprecation"
+      - "版本鎖定"
+    exam_trap: true
+
+  # ============================================================
+  # Difficulty 5 — Evaluate / Create (8 題)
+  # ============================================================
+
+  - id: "L21201-Q33"
+    topic_code: "L21201"
+    item_code: "L21201-04"
+    difficulty: 5
+    question: "三個 AI 方案分數如下（10 分制）：A 加權總分 7.8，但 TCO 為 NT$300 萬/年；B 加權總分 7.5，TCO NT$120 萬/年；C 加權總分 8.2，但無法滿足「資料不出境」此一硬性需求。專案硬性條件為：① 資料必須留台 ② 年 TCO ≤ NT$200 萬。下列何者為合理選擇？"
+    options:
+      a: "選 A，加權總分接近最高"
+      b: "選 B，先通過硬性條件，再從通過者中選分數最高"
+      c: "選 C，因為加權總分最高"
+      d: "三個都不選，重新招標"
+    correct: "b"
+    explanation:
+      why_correct: "雙約束評估的正確順序為：先用硬性條件刪除不可行方案（C 違反留台、A 違反 TCO 上限），再從剩餘可行集合中比較加權分。B 是唯一同時滿足兩條約束的方案。"
+      why_not_a: "A TCO 300 萬 > 200 萬上限，違反硬性條件，分數再高都不能選。"
+      why_not_c: "C 違反「資料留台」這個硬性條件，無論分數多高都不可行。"
+      why_not_d: "已存在符合所有硬條件且加權達標的方案 B，重招屬於不必要的延宕。"
+    keywords:
+      - "雙約束"
+      - "硬性條件"
+      - "決策順序"
+    exam_trap: true
+
+  - id: "L21201-Q34"
+    topic_code: "L21201"
+    item_code: "L21201-04"
+    difficulty: 5
+    question: "某金融客服系統評估兩個方案：方案 A 採用 GPT-4o-mini API（每 1M token 約 US$5，無固定成本），方案 B 在 hicloud 自建 TAIDE-8B（每月固定 GPU 租用 NT$93,000 ≈ US$3,000，每 1M token 變動成本約 US$1）。資安要求方案 B 才能符合資料不出境，但預算限制 12 個月內 TCO 不得超過 US$50,000。下列哪一個推論最正確？（1 USD ≈ 31 NTD）"
+    options:
+      a: "因為 API 沒有固定成本，永遠都比自建便宜；資安要求應該重新評估必要性。"
+      b: "Break-even 在約 7.5 百萬 token / 月，超過此量級自建划算；資安要求可後續再談。"
+      c: "兩方案 12 個月 TCO 一定相同，因此選 API 即可。"
+      d: "Break-even 在約 7.5 億 token / 月（即年用量 90 億 token），低於此量級時 API 划算；但因資安要求，方案 B 仍是唯一可選。"
+    correct: "d"
+    explanation:
+      why_correct: "令 X 為月用量（百萬 token）。方案 A 月成本 = 5X (USD)；方案 B 月成本 = 3,000 + X (USD)。解 5X = 3,000 + X → X = 750（單位：百萬 token），即 break-even = 7.5 億 token/月。低於此量級 API 較便宜、高於則自建較便宜。但本題加上『資料不出境』硬約束（雙約束情境），方案 A 不符合資安條件直接被淘汰，剩方案 B；TCO 預算 US$50k / 年代表月度上限約 US$4,167，扣除固定 US$3,000 後可用 US$1,167 變動成本（≈ 116 萬 token / 月），業務需在此用量內運作或升級預算。"
+      why_not_a: "API 並非永遠便宜（高量級時自建反勝），且資安屬硬性合規約束（公司治理、個資法、金管會），不是『重新評估必要性』就能取消的軟需求。"
+      why_not_b: "單位錯誤：解出的 X = 750 是『百萬 token』，不是『萬 token』。750 百萬 = 7.5 億，不是 750 萬。此選項把單位差了 100 倍。另外『資安要求可後續再談』是硬約束被當軟約束的常見錯誤。"
+      why_not_c: "不同月用量下兩方案 TCO 差距很大；只有恰好在 break-even 量級時才相等。此選項忽略量級依存。"
+    keywords:
+      - "break-even"
+      - "雙約束"
+      - "TCO"
+      - "資料主權"
+      - "data residency"
+    exam_trap: true
+
+  - id: "L21201-Q35"
+    topic_code: "L21201"
+    item_code: "L21201-03"
+    difficulty: 5
+    question: "某金融銀行欲建置 AI 客服，需求為：① 部分查詢涉及客戶機敏資料、必須留地端 ② 一般 FAQ 可上雲端以節省成本 ③ 上線時程僅 3 個月。下列何者最符合「Hybrid（混合）」設計精神？"
+    options:
+      a: "全部走商業 Managed API，最快上線"
+      b: "機敏資料走地端 self-host（如 TAIDE on hicloud），一般 FAQ 走 Managed API + RAG，前端統一路由"
+      c: "全部自建於本地端，確保資料安全"
+      d: "資料先匿名化後全部上雲"
+    correct: "b"
+    explanation:
+      why_correct: "Hybrid 的核心：依資料敏感度與成本曲線分流——機敏走地端、非機敏走 API。前端用路由器決定走哪一條。同時兼顧資料治理、成本與時程。"
+      why_not_a: "違反第①點機敏資料留地端的硬性需求。"
+      why_not_c: "全部地端在 3 個月內難以完整上線且 TCO 偏高。"
+      why_not_d: "匿名化後仍有再識別風險，且銀行業對機敏資料外洩屬於零容忍。"
+    keywords:
+      - "Hybrid"
+      - "混合架構"
+      - "資料分級"
+    exam_trap: false
+
+  - id: "L21201-Q36"
+    topic_code: "L21201"
+    item_code: "L21201-04"
+    difficulty: 5
+    question: "下列哪一個流程最能正確描述「加權評分矩陣（Weighted Scoring Matrix）」的標準操作順序？四個選項都是真實會議上看過的提案，請挑出方法論最正確的一個。"
+    options:
+      a: "先找候選方案 → 各方案各自打分 → 事後合議出『最重要的準則』 → 加總"
+      b: "先訂準則與權重（事前敲定）→ 各方案獨立打分 → 加權加總 → 必要時做敏感度分析"
+      c: "先把所有可量化指標加總平均 → 補上權重做加權 → 再剔除低於門檻者"
+      d: "先用雙約束過濾 → 直接取淘汰後的方案數最少者 → 略過評分以節省時間"
+    correct: "b"
+    explanation:
+      why_correct: "標準順序：『事前敲定準則與權重 → 獨立打分 → 加權加總 → 敏感度分析』。先定義『該看什麼』與『多重要』才能避免事後被結果牽著走，敏感度分析則是對權重微調看排序是否穩定，是中級評估標準動作。"
+      why_not_a: "事後合議準則 = 用結果反推依據，是錨定偏誤與確認偏誤的雙重陷阱；典型『先射箭再畫靶』。"
+      why_not_c: "順序顛倒。應該先過濾（用雙約束/門檻刪除不可行者），再對剩餘集合評分；先平均再過濾會把不可行方案的分數帶進統計，污染決策。"
+      why_not_d: "『過濾 vs 評分』不是二選一；過濾後仍須評分以從多個合格方案中挑出最佳，『取數量最少』本身就不是有意義的決策依據。"
+    keywords:
+      - "Weighted Scoring Matrix"
+      - "操作順序"
+      - "敏感度分析"
+      - "確認偏誤"
+    exam_trap: true
+
+  - id: "L21201-Q37"
+    topic_code: "L21201"
+    item_code: "L21201-01"
+    difficulty: 5
+    question: "某 RAG 客服系統 KPI 為：① 答對率 ≥ 90% ② 整體回應 p95 ≤ 1.2 秒。目前測試結果為：答對率 92%、p95 = 2.5 秒。下列改善策略何者最直接對症？"
+    options:
+      a: "全力提升答對率到 95%，因為準確率最重要"
+      b: "把 LLM 換成更強更大的模型，全面升級"
+      c: "先什麼都不做，再觀察一個月"
+      d: "縮減檢索回傳片段數、改用較小且低延遲的模型、引入快取，主攻 p95 延遲"
+    correct: "d"
+    explanation:
+      why_correct: "雙約束下答對率已達標、延遲未達標→應集中資源解決卡點：減少 retrieval top-k、用較小模型、開 prompt cache、開 streaming，這些針對延遲的優化才是「對症下藥」。"
+      why_not_a: "答對率已達 92%（>90%）超過 KPI，盲目追加會犧牲延遲。"
+      why_not_b: "更大模型通常更慢，會讓 p95 進一步惡化。"
+      why_not_c: "明確未達 KPI 卻不行動，是專案治理問題。"
+    keywords:
+      - "雙約束"
+      - "對症優化"
+      - "p95 延遲"
+    exam_trap: true
+
+  - id: "L21201-Q38"
+    topic_code: "L21201"
+    item_code: "L21201-03"
+    difficulty: 5
+    question: "某中小企業（人數 28 人）想導入 AI 行銷文案工具，預算 NT$10 萬以下、希望搭配政府資源、希望 3 個月內看到成效。下列方案組合何者最務實？"
+    options:
+      a: "From-scratch 自建中文行銷 LLM"
+      b: "申請經濟部「30 人以下中小企業數位轉型培力補助」+ 採用商業 LLM API + 設計提示詞模板與少量 RAG，先做 PoC"
+      c: "聘 5 名 MLOps 工程師建置完整 MLOps 平台"
+      d: "立即簽 3 年企業級 Managed API 合約以鎖定折扣"
+    correct: "b"
+    explanation:
+      why_correct: "30 人以下中小企業可申請經濟部「最高 NT$10 萬」補助；商業 API + Prompt 模板（必要時加 RAG）是預算內 3 個月內可驗證的標準組合，符合 PoC + 小步快跑精神。"
+      why_not_a: "From-scratch 與 10 萬預算/3 個月時程矛盾。"
+      why_not_c: "5 名 MLOps 工程師人事費已遠超 10 萬預算與 28 人公司規模。"
+      why_not_d: "未驗證價值就 3 年長約是「先採購再說」反模式。"
+    keywords:
+      - "經濟部補助"
+      - "中小企業"
+      - "PoC"
+    exam_trap: false
+
+  - id: "L21201-Q39"
+    topic_code: "L21201"
+    item_code: "L21201-02"
+    difficulty: 5
+    question: "金融業 AI 客服採購評估，下列四組『6 大準則』候選組合中，哪一組最完整且符合中級評估『4–6 準則、各維度互不重疊』的設計原則？"
+    options:
+      a: "技術契合度（功能/效能）、TCO（成本）、資料治理與駐留（合規）、整合性（API/生態）、商業條款（SLA/Lock-in）、供應商風險（財務/路線圖）"
+      b: "功能性、效能、p95 延遲、Throughput、Accuracy、模型大小"
+      c: "技術契合度、TCO、整合性、商業條款（SLA/Lock-in）、供應商風險、品牌知名度"
+      d: "技術契合度、整合性、商業條款（SLA/Lock-in）、供應商風險、品牌知名度、UX 美感"
+    correct: "a"
+    explanation:
+      why_correct: "選項 a 涵蓋金融業必要的六大互斥維度：技術、成本、合規（資料治理對金管會與個資法是硬性要求）、整合、商業條款、供應商風險。每一面向都不重疊、且都對應一個必要決策問題。"
+      why_not_b: "全部 6 項都是『技術效能』的子維度（功能性、效能、p95、Throughput、Accuracy、模型大小都屬技術面），完全漏掉成本、合規、商業條款、供應商風險——是準則『重複』的典型錯誤。"
+      why_not_c: "漏掉『資料治理與駐留』；金融業必須符合金管會、個資法、資料不出境，缺此維度等於跳過合規審查，且把『品牌知名度』當主準則屬軟性印象，不應佔加權位置。"
+      why_not_d: "同時漏掉『TCO（成本）』與『資料治理（合規）』兩個關鍵維度，並加入兩個軟性印象指標（品牌、UX 美感），是準則設計『缺重要面向＋灌水軟指標』的雙重錯誤。"
+    keywords:
+      - "評估準則"
+      - "Weighted Scoring Matrix"
+      - "互斥維度"
+      - "金融合規"
+    exam_trap: false
+
+  - id: "L21201-Q40"
+    topic_code: "L21201"
+    item_code: "L21201-03"
+    difficulty: 5
+    question: "某團隊在 PoC 階段達成「答對率 88%、TCO 符合預算、3 週內可上線」的初步成果。在進入正式導入（Go-No-Go）決策前，下列何者是最不該做的？"
+    options:
+      a: "用接近真實流量的代表性資料集再做一次評估，確認分布偏移風險"
+      b: "與利害關係人確認上線後的維運責任、監控指標與退場機制"
+      c: "盤點 lock-in 與資料治理風險，預先準備備援方案"
+      d: "PoC 在小流量樣本（<5% 真實負載）上達成所有 KPI，即可逕行 Go，無須再做尖峰負載與代表性樣本驗證。"
+    correct: "d"
+    explanation:
+      why_correct: "PoC 在『不到 5% 真實負載』的小樣本上達標，無法外推到尖峰流量與真實使用者分布——這是『樣本代表性謬誤 (sampling fallacy)』與『以小推大謬誤』。Go/No-Go 必須補上尖峰負載測試、代表性樣本驗證、長尾流量驗證，才能信賴 KPI。直接 Go 上線是高風險決策。"
+      why_not_a: "用代表性資料集驗證是降低 distribution shift 風險的標準做法，應該做。"
+      why_not_b: "上線後責任、監控、退場機制是可治理的 AI 系統必備，應該做。"
+      why_not_c: "預先盤點 lock-in 與治理風險、備援方案，是正式導入前該做的事。"
+    keywords:
+      - "Go/No-Go"
+      - "PoC"
+      - "正式導入"
+      - "sampling fallacy"
+      - "代表性樣本"
+    exam_trap: false
