@@ -5,10 +5,32 @@ levels:
     name: "初級"
     language: "zh-TW"
     target_audience: "College students, recent graduates, and career-switchers entering AI/tech from non-technical backgrounds"
+    subjects_per_sitting: 2
+    time_limit_minutes_per_subject: 75
+    questions_per_subject: 50
+    question_types: ["single_choice"]
+    passing_score_average: 70
+    passing_score_minimum_per_subject: 60
+    includes_code_subjects: []
   - slug: "intermediate"
     name: "中級"
     language: "zh-TW"
-    target_audience: "Professionals with foundational AI knowledge seeking advanced skills"
+    target_audience: "Professionals with foundational AI knowledge choosing a track: 資料分析組 (L21+L22) or 機器學習組 (L21+L23)"
+    track_rule: "科目一 L21 必考 + (科目二 L22 或 科目三 L23) 擇一"
+    subjects_per_sitting: 2
+    time_limit_minutes_per_subject: 90
+    questions_per_subject: 50
+    question_types: ["single_choice"]
+    passing_score_average: 70
+    passing_score_minimum_per_subject: 60
+    includes_code_subjects: ["L22", "L23"]
+    skus:
+      - slug: "ipas-ai-intermediate-data"
+        name: "中級 資料分析組 (L21 + L22)"
+        priority: 1
+      - slug: "ipas-ai-intermediate-ml"
+        name: "中級 機器學習組 (L21 + L23)"
+        priority: 2
 
 content:
   tone: "Encouraging mentor"
@@ -17,8 +39,8 @@ content:
     questions_per_attempt: 10
     pool_size:
       shallow: 25
-      medium: 30
-      deep: 35
+      medium: 35
+      deep: 40
   mock_exam:
     source: "fresh"  # never reuse practice questions
     questions_per_subject: 50
