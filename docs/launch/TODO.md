@@ -21,7 +21,7 @@ Work top-to-bottom. Don't skip ahead. If something blocks you for >24h, raise it
 - [ ] **URGENT — Issue #1:** Remove the fake "92% 通過率" badge (~line 244). You have no pass rate yet. Replace with 「創始會員招募中 · 前 20 位 NT$1,980」scarcity badge. *(Taiwan 公平交易法 false-advertising risk.)*
 - [ ] **URGENT — Issue #2:** Remove fake testimonials (Section 5 uses `sampleTestimonials.slice(0, 3)`). Replace the entire section with a "創辦人自白" block (founder's real 初級 pass story + score). Alumni testimonials come in Phase 2.
 - [ ] **Issue #3:** Update "免費延長 **3** 個月" → "免費延長 **6** 個月" in pricing section (~line 319) AND FAQ (~line 358). Add one sentence: 「因為 iPAS AI 中級一年只考 2 次（5 月 + 11 月），6 個月保證你至少趕得上下一場。」
-- [ ] **Issue #4:** Add a founder story section (hero or just above pricing). Include: name, the fact you self-studied + passed 初級, why you're building this, your 中級 exam date (2026-05-23) as public accountability. This is your biggest asset — currently completely absent.
+- [ ] **Issue #4:** Add a founder story section (hero or just above pricing). Include: name (郭呈祥), the specific 初級 pressure-pass story (credential 115-01-Z01, avg 73, one subject 66 — "壓線通過" narrative), why you're building this, and visible course construction as the accountability mechanism. This is your biggest asset — currently completely absent. Do NOT frame the 2026-05-23 中級 exam as public accountability; it is a private operational deadline, not a marketing vehicle. The 2026-06-12 result becomes one honest evidence post afterward (not the hero marketing line).
 - [ ] **Issue #5:** Replace the flat `sampleCourses` price with the full ladder — 創始會員 NT$1,980 (前 20 位) / 早鳥 NT$2,980 (21–70 位) / 正價 NT$3,980 — with a visible "剩 X 位" counter. Student price NT$1,480 as a small callout below. **Add the access-window line on every tier card**: 「創始 / 早鳥 / 學生 / 社團方案：完整課程存取至 2026/12/31，保證參加 8/15 + 11/7 兩次考試」. 正價 (seat 71+) shows the standard "3 個月初始 + 6 個月考不過延長".
 - [ ] **Issue #6:** Tone down RPG language in the hero and Section 3. "RPG 式學習體驗", "冒險者們", "小怪戰鬥測驗", "魔王戰模擬考", "HP 血條" → replace with outcome language: 「自學通過 iPAS AI 初級」, 「章節練習」, 「模擬考」, 「弱點雷達」. RPG stays in the product, not the marketing copy. (See memory: `project_positioning_and_rpg.md`.)
 
@@ -149,11 +149,11 @@ Work top-to-bottom. Don't skip ahead. If something blocks you for >24h, raise it
 - [ ] **May 23 (Sat): Founder sits IPAS AI 中級 exam 第一次** (results 6/12)
 - [ ] **Target: 40 cumulative students by exam day**
 
-### The pivotal post (write in advance)
-- [ ] Draft TWO versions of "exam day" post:
-  - Pass version: celebration + lessons learned + "兩張都通過"
-  - Fail version: honesty + "using my own 6-month extension" + comeback narrative
-- [ ] Whichever one applies, post within 24h of exam result
+### The 6/12 evidence post (write in advance, publish once)
+- [ ] Draft TWO short versions of a **6/12 result** post (NOT an exam-day 5/23 post — 中級 sitting is private):
+  - Pass version: one honest sentence + 初級+中級 both passed → supplementary evidence under the existing 初級 pressure-pass hero
+  - Fail version: one honest sentence + "using my own 6-month extension for 11/14 retake" — no drama, no comeback-arc theater
+- [ ] Publish once within 24h of the 6/12 result announcement. This is evidence, not a campaign.
 
 ### Week 6 success criteria
 - [ ] 40 paying students cumulative (~NT$99,000 revenue)

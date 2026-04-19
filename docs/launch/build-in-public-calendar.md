@@ -1,383 +1,346 @@
 # 43-Day Build-in-Public Content Calendar
 
-**Timeline:** 2026-04-10 → 2026-05-23 (founder sits IPAS AI 中級 exam — see [ipas-exam-calendar-2026.md](./ipas-exam-calendar-2026.md))
-
-> **Heads-up:** this file was originally drafted as a 45-day calendar. The real exam is on **May 23 (Sat)**, not May 25, so the calendar is **43 days**, not 45. The "Day X/45" numbering below hasn't been mass-renumbered yet — treat the last two days (Day 44 and Day 45) as cut, OR compress them into the final-week block. The exam-day post still lands on whichever day you actually sit the exam.
-**Hook:** *"I'm building an IPAS AI prep platform while studying for the 中級 exam with it."*
-**Primary channels:** Threads (main), IG Reels (cross-post), Dcard (weekly long-form)
-**Cross-post secondary:** FB社團 (weekly value), YouTube Shorts (cut from Reels)
+**Timeline:** 2026-04-10 → 2026-05-23（43 天；exam dates source of truth: [ipas-exam-calendar-2026.md](./ipas-exam-calendar-2026.md)）
+**Hook:** *「43 天公開建構 LevelCert — 一個通過 iPAS AI 初級的上班族，邊上班邊打造自學平台」*
+**Primary channels:** Threads（主頻道）、IG Reels（交叉發布）、Dcard（每週日長文）
+**Cross-post secondary:** FB 社團（每週一篇價值文）、YouTube Shorts（從 Reels 剪出）
 
 ---
 
 ## Why this works
 
-You have a 45-day forced deadline (your own 中級 exam). Every day of study IS content. Every screenshot, every mistake, every breakthrough, every moment of doubt — all of it is material. You don't have to make stuff up. You just document.
+創辦人已經通過 iPAS AI 初級（115-01-Z01，平均 73，其中一科 66 壓線過）。這張證照＋一個真實在建構中的 SaaS 課程平台＋一個邊上班邊蓋平台的上班族故事，本身就是 45 天不缺內容的素材池。不需要虛構任何事，只要每天記錄。
 
-**The meta-narrative:** *"Ordinary working adult builds + studies for a real exam using his own platform. Live. In public. Pass or fail — all visible."*
+**Meta-narrative：** *「一個通過 iPAS 初級的上班族，公開建構一個讓其他人也能一次通過的課程平台。每個功能、每個 bug、每個定價決定都看得到。」*
 
-This is the single strongest founder marketing story available to you, and it's free.
+這是目前最強的創辦人行銷故事，而且零成本。**內容錨點不是『我邊讀中級邊發文』，而是『我邊蓋平台、邊教初級、邊做一個側項』。**
+
+> **關於 5/23 中級考試：** 創辦人會在 2026-05-23（六）私下考中級，**當天無特別貼文**，或只發一篇與考試無關的建構紀錄。2026-06-12 成績公布後，會發**一篇**誠實的結果貼文 — 通過或失敗都公開講 — 當作後續的證據，但**不是行銷活動的主軸**。這個日曆的主題不圍繞中級考試。
 
 ---
 
 ## Core content format
 
-### The daily template (60–90 seconds on camera OR 200 characters on Threads)
+### The daily template（Threads 200 字 / IG Reels 60–90 秒）
 
 ```
-[Day X / 45] 🎯 [Topic or theme]
+[Day X / 43] 🎯 [今天的主題]
 
-[1 specific thing you learned or did today]
-[1 concrete screenshot / quote / data point]
-[1 honest reaction — struggle, surprise, win]
+[一個具體今天學到 / 做到 / 決定的事]
+[一張截圖 / 一句引言 / 一個數字]
+[一句誠實反應 — 卡關、驚訝、小勝]
 
-[Optional soft CTA to landing page]
+[可選：軟性 CTA 導向落地頁]
 
-#iPAS #AI #證照 #上班族讀書 #建構在公開
+#iPAS #AI #證照 #上班族讀書 #公開建構
 ```
 
-### Three post types — rotate them
+### 三種貼文類型 — 輪流使用（三大內容支柱）
 
-**Type A: "Learning in public"** (60% of posts)
-Share what you studied today. One specific concept you learned or got wrong.
+**Type A：Building in public — 公開建構 LevelCert**（40%）
+分享今天在平台上做的決定 / 功能 / 重寫 / 修復 / 設計選擇。螢幕截圖、程式片段、定價鋪排、Supabase schema 選擇、Stripe 結帳流程。創辦人是工程師，這是最自然的聲音。
 
-**Type B: "Building in public"** (30% of posts)
-Share what you built in the platform today. Screenshot of a new feature, a lesson added, a mock exam question you wrote.
+**Type B：Teaching 初級 — iPAS AI 初級教學與學習內容**（40%）
+初級考試的概念解釋、題型範例、常見錯誤、答題策略、考前衝刺建議。目標是 8/15 初級第三次考試的學生族群。「壓線過」的一科 66 分故事 = 英雄級創辦人故事資產，要反覆使用。
 
-**Type C: "Founder thoughts"** (10% of posts)
-Share a thought about iPAS exams, studying, career transitions, certifications, or the AI job market. No direct sale.
+**Type C：Solo-founder journey — 側項創業日誌**（20%）
+邊上班邊蓋平台的取捨、工具選擇（Claude / Cursor / Gemini / AI workflow）、誠實的失敗貼文、真實指標更新（預購數，不是粉絲數）。
 
 ---
 
 ## Week-by-week themes
 
-### Week 1: Apr 10 – Apr 16 — "Why I'm doing this"
+### Week 1: Apr 10 – Apr 16 — 「為什麼我要做這件事」
 
-**Theme:** Establish founder identity and the origin story.
-
-**Post ideas (7 posts):**
-
-1. **[Day 1/45]** 介紹貼文：我是 [name]，我通過了 iPAS AI 初級。我正在準備 5/25 的中級考試，同時做一個自學課程。接下來 45 天我會每天發一篇，紀錄真實過程。
-2. **[Day 2/45]** 為什麼我要考 iPAS AI 中級？其實是因為 [具體原因，例如履歷、轉職、驗證學習]
-3. **[Day 3/45]** 我看了一圈市面上的中級課程。不是太貴、就是時間卡、要不就是影片會過期。所以我自己做了一個。
-4. **[Day 4/45]** Type B：第一天打開自己做的平台當學生身份 — 發現一個 UI bug 😂 截圖 + 修好
-5. **[Day 5/45]** iPAS AI 中級的考試範圍跟初級差在哪？我的整理（1 張圖）
-6. **[Day 6/45]** Type C：為什麼 AI 時代反而更需要「考得過的」證照？(2-sentence opinion post)
-7. **[Day 7/45]** Week 1 回顧：讀了 X 小時，寫了 Y 堂課，發現 Z 個觀念我其實沒搞懂
-
-**Sunday long-form (Dcard 工作板):** *"我為什麼要一邊考 iPAS 中級一邊自己做課程 — 一個上班族的決定"*
-
----
-
-### Week 2: Apr 17 – Apr 23 — "第一科：人工智慧基礎概論"
-
-**Theme:** Dig into syllabus Topic 1. Share specific lessons as you learn them.
+**Theme:** 建立創辦人身份與出發點。
 
 **Post ideas (7 posts):**
 
-1. **[Day 8/45]** 中級第一科開工：人工智慧基礎概論。跟初級比，深度差超多 — 舉一個例子
-2. **[Day 9/45]** 今天最有感的一個觀念：[specific concept]，iPAS 初級只問定義，中級直接問應用場景
-3. **[Day 10/45]** Type B：我把初級的第一題庫升級成中級版 — 同一個主題、兩個難度、AI 自動解題。截圖
-4. **[Day 11/45]** 我寫了一題中級模擬題，你要不要試試看？[貼題目] 答案明天公布
-5. **[Day 12/45]** 昨天那題的答案 + AI 的解題（示範我們平台的 AI 解題長什麼樣）
-6. **[Day 13/45]** Type C：為什麼「監督式學習」和「強化學習」的差別，中級會問三次（從不同角度）
-7. **[Day 14/45]** Week 2 回顧：第一科完成 70%，最卡的是 [specific topic]，下週要加強
+1. **[Day 1/43]** Type C：自我介紹。我是 [name]，去年通過 iPAS AI 初級（證照編號 115-01-Z01，平均 73，其中一科 66 壓線過）。我正在蓋一個叫 LevelCert 的自學平台，未來 43 天會每天發一篇公開紀錄。
+2. **[Day 2/43]** Type B：我那科 66 分是怎麼 recover 的？考前 2 週我做了一件事，讓我從 58 分拉到 66 分壓線過（分享具體方法）。
+3. **[Day 3/43]** Type A：今天 Next.js 16.2 的升級踩了一個坑 — [具體 bug + 解法]。截圖。
+4. **[Day 4/43]** Type C：為什麼一個上班族要邊工作邊做 SaaS？3 個誠實的理由（不是「被動收入」這種話）。
+5. **[Day 5/43]** Type B：iPAS AI 初級的考試範圍 — 一張圖整理四科重點（歡迎存檔）。
+6. **[Day 6/43]** Type A：定價決定 — 為什麼創始會員 NT$1,980，早鳥 NT$2,980，正價 NT$3,980？背後的思考。
+7. **[Day 7/43]** Type C：Week 1 回顧 — 這週寫了 X 行程式、做了 Y 個決定、發現 Z 個自己沒想到的問題。
 
-**Sunday long-form (Dcard):** *"iPAS AI 中級第一科重點整理 — 一個自學者的筆記分享"*
+**Sunday long-form (Dcard 工作板):** *「一個通過 iPAS AI 初級的上班族，決定邊上班邊做自學課程 — 為什麼，以及前 7 天學到什麼」*
 
 ---
 
-### Week 3: Apr 24 – Apr 30 — "第二科：資料與 AI 處理"
+### Week 2: Apr 17 – Apr 23 — 「真的有人會買嗎？」
 
-**Theme:** Data handling topic. Heavy on diagrams, visuals, relatable examples.
+**Theme:** Phase 0 驗證衝刺。LINE 群預售、顧客訪談、landing page 修正。
 
 **Post ideas (7 posts):**
 
-1. **[Day 15/45]** 第二科開工：資料與 AI 處理。這科是 iPAS 中級最技術的一科，同時也是上班族最容易被問到的。
-2. **[Day 16/45]** 我在讀「資料清理」的時候，想到我前公司的客戶資料庫就是這樣爛 😂（舉實例，不用真公司名）
-3. **[Day 17/45]** Type B：今天在 LevelCert 加了「弱點雷達圖」這個功能 — 模擬考完直接告訴你哪裡弱。截圖
-4. **[Day 18/45]** 5 個 iPAS 中級考生最常答錯的第二科題型（我在寫題庫時整理出來的）
-5. **[Day 19/45]** Type C：為什麼「資料偏差」是 iPAS 很愛考的題目？因為真實世界每家公司都有這個問題
-6. **[Day 20/45]** 今天讀書讀到頭爆 — 5 分鐘休息小技巧，我自己常用的（硬推 LevelCert 的主控台 UI 改進）
-7. **[Day 21/45]** Week 3 回顧：第二科完成，累計 X 小時，目前預估通過機率 ~Y%
+1. **[Day 8/43]** Type A：今天把 landing page 上的「92% 通過率」假數據整個砍掉 — 誠實貼出我目前只有 0 個學員。為什麼我選誠實。
+2. **[Day 9/43]** Type B：初級第一科「AI 基礎概論」一個常被考錯的觀念 — 「監督式學習」跟「半監督式學習」差在哪？30 秒解釋。
+3. **[Day 10/43]** Type C：我的第一個預購用戶出現了！分享一下他為什麼買（徵得同意後，不露名字）。
+4. **[Day 11/43]** Type A：Stripe Payment Link 接上 landing page 的 checkout 流程 — 最便宜的上線方式，15 分鐘搞定。截圖。
+5. **[Day 12/43]** Type B：iPAS 初級最容易被考倒的一題類型 — 情境式題目。給你一題實例，答案明天公布。
+6. **[Day 13/43]** Type B：昨天那題的答案 + AI 解題示範（示範 LevelCert 的 AI 解題長什麼樣）。
+7. **[Day 14/43]** Type C：Week 2 回顧 — 第一批創始會員 X 位！他們問最多的一個問題是 [具體]，這讓我改了 [具體 feature]。
 
-**Sunday long-form (Dcard):** *"iPAS AI 中級第二科學習重點 — 資料處理不是只有 pandas"*
+**Sunday long-form (Dcard):** *「一個側項 SaaS 的第一週 — 怎麼在一週內從 0 個用戶做到 5 個付費預購」*
 
 ---
 
-### Week 4: May 1 – May 7 — "第三科：ML 與生成式 AI 概論"
+### Week 3: Apr 24 – Apr 30 — 「把初級課程做完」
 
-**Theme:** Machine learning + GenAI. This is where the exam gets juicy and where your target audience will most engage.
+**Theme:** 內容衝刺 + 第一批教學貼文開始成系列。
 
 **Post ideas (7 posts):**
 
-1. **[Day 22/45]** 第三科開工：ML + 生成式 AI。這是 iPAS 中級最「熱門」的一科，也是考試變化最快的。
-2. **[Day 23/45]** 我在 LevelCert 加了 6 個最新的生成式 AI 案例（ChatGPT/Gemini/Claude 都有）。這科目的課程難寫的一點是「內容每個月都在變」
-3. **[Day 24/45]** Type B：今天碰到一個考古題 — 114 年第 4 次考試原題，來看看答案怎麼解 [截圖]
-4. **[Day 25/45]** 5 個 iPAS 考的 ML 模型名詞，一次搞懂（Decision Tree, Random Forest, CNN, RNN, Transformer）
-5. **[Day 26/45]** Type C：「生成式 AI」跟「判別式 AI」的差別 — 用臺灣夜市點餐來解釋
-6. **[Day 27/45]** 我做了一個 AI 家教 demo — 我故意答錯一題，讓你們看 AI 怎麼解釋 [影片]
-7. **[Day 28/45]** Week 4 回顧：ML 這科最卡的是 [具體]，明天開始第四科
+1. **[Day 15/43]** Type A：今天把初級的 L11201 章節內容寫完了。AI workflow 自動生成 + 我人工審核，一堂課 3 小時。分享流程。
+2. **[Day 16/43]** Type B：初級第二科「資料與 AI 處理」— 為什麼「資料偏差」每次都考？舉兩個真實台灣公司的例子（不點名）。
+3. **[Day 17/43]** Type A：今天在 LevelCert 加了「弱點雷達圖」功能 — 模擬考完直接告訴你哪一科最弱。截圖。
+4. **[Day 18/43]** Type B：我整理了初級考生最常答錯的 5 種題型 — 寫題庫的時候發現的。
+5. **[Day 19/43]** Type C：邊上班邊做 side project 的一天行程表 — 早上、午休、晚上、週末各做什麼。誠實版。
+6. **[Day 20/43]** Type A：今天把 access policy（創始會員存取到 2026-12-31）寫進 landing page 每一張 tier card — 為什麼這個小 UI 決定很重要。
+7. **[Day 21/43]** Type C：Week 3 回顧 — 初級課程內容完成 70%，累計預購數 X 位。下週目標：10 位。
 
-**Sunday long-form (Dcard):** *"如何用 30 分鐘搞懂 iPAS AI 中級的 ML 模型分類？"*
+**Sunday long-form (Dcard):** *「iPAS AI 初級第二科重點整理 — 一個壓線過關的人給你的筆記」*
 
 ---
 
-### Week 5: May 8 – May 14 — "第四科：生成式 AI 應用與風險評估"
+### Week 4: May 1 – May 7 — 「模擬考引擎上線」
 
-**Theme:** Applications + risk evaluation. This is where business-side students shine.
+**Theme:** Mock exam engine MVP，初級教學內容加速，創辦人故事深化。
 
 **Post ideas (7 posts):**
 
-1. **[Day 29/45]** 第四科開工：生成式 AI 應用 + 風險評估。這科是文組 / 商管生的主場 — 不用寫程式，但要會判斷
-2. **[Day 30/45]** 🎉 我們已經有 X 位創始會員了！分享一下創始會員們都是什麼背景（不露名字）
-3. **[Day 31/45]** Type B：今天在題庫加了「情境式題目」— AI 落地應用的實際案例題
-4. **[Day 32/45]** 一個真實案例：我前同事的公司用 GenAI 出事了，他們犯了哪 3 個 iPAS 會考的錯
-5. **[Day 33/45]** Type C：為什麼「AI 倫理」這題大家答錯比例最高？因為書上寫的跟實務完全脫節
-6. **[Day 34/45]** 公開預購今天開放！正式向 LINE 群外的人介紹 LevelCert [正式 launch 貼文]
-7. **[Day 35/45]** Week 5 回顧：4 科都讀完第一輪！剩 10 天，開始模考
+1. **[Day 22/43]** Type A：模擬考引擎今天 MVP 上線！40 題、計時 60 分鐘、自動計分、弱點分析。技術棧：Next.js + Supabase。截圖。
+2. **[Day 23/43]** Type B：初級第三科「ML 與生成式 AI 概論」— 5 個一定會考的 ML 模型名詞，30 秒一次搞懂（Decision Tree、Random Forest、CNN、RNN、Transformer）。
+3. **[Day 24/43]** Type A：今天開放了免費診斷模擬考（20 題，不需註冊）。來試試看你離初級通過還差多少分？[連結]
+4. **[Day 25/43]** Type B：「生成式 AI」跟「判別式 AI」的差別 — 用台灣夜市點餐來解釋（用白話，不是教科書定義）。
+5. **[Day 26/43]** Type C：我做 LevelCert 的第一個月燒了多少錢？誠實攤開：Vercel、Supabase、Clerk、Stripe、AI API、網域。每月 ~NT$X。
+6. **[Day 27/43]** Type A：昨天有個用戶回報 bug — 模擬考計時器在手機上會跳掉。今天修好了。Before / After 截圖。
+7. **[Day 28/43]** Type C：Week 4 回顧 — 模擬考上線、累計預購 X 位、收到第一個用戶的 bug report 覺得超爽。
 
-**Sunday long-form (Dcard):** *"我用 35 天準備 iPAS AI 中級 — 一個邊做課程邊學的上班族"* (這篇要拉最多流量)
+**Sunday long-form (Dcard):** *「一個免費的 iPAS AI 初級診斷測驗 — 20 題預測你目前的通過率（附解釋）」*
 
 ---
 
-### Week 6: May 15 – May 21 — "模擬考實戰 + 答題技巧"
+### Week 5: May 8 – May 14 — 「公開預購正式開放」
 
-**Theme:** Mock exams, exam day prep, the final grind. Show every mock score.
+**Theme:** 從 LINE 群預售擴大到全公開，landing page 正式對外。
 
 **Post ideas (7 posts):**
 
-1. **[Day 36/45]** 剩 10 天。今天做第一次完整模考，分數：___/___（真的貼分數）
-2. **[Day 37/45]** 昨天模考的弱點分析 — AI 告訴我要加強 [specific]。截圖 LevelCert 弱點雷達圖
-3. **[Day 38/45]** iPAS 中級的時間管理 — 我親身試過的 3 種解題順序，哪一種最快
-4. **[Day 39/45]** Type B：新功能上線 — 模擬考可以 bookmark 錯題，隔天複習時跳出來再練一次
-5. **[Day 40/45]** 第二次模考：___/___（對比第一次）。進步的地方 + 還在卡的地方
-6. **[Day 41/45]** iPAS 中級 5 個答題技巧，我在這 X 週整理出來的（類似 elimination、長選項通常對、etc.）
-7. **[Day 42/45]** Week 6 回顧：剩 4 天。預估通過機率從 60% 升到 85%。最後衝刺
+1. **[Day 29/43]** Type B：初級第四科「生成式 AI 應用與風險評估」— 這科是文組 / 商管背景的主場，不用寫程式，但要會判斷。重點整理。
+2. **[Day 30/43]** Type C：🎉 累計已有 20 位創始會員！分享一下他們的背景分布（不露名字，徵得同意）。
+3. **[Day 31/43]** Type A：Stripe 正式接上 Supabase，預購成功後自動開通帳號 — 不再手動 LINE 加人了。Schema 截圖。
+4. **[Day 32/43]** Type B：一個真實案例 — 前同事的公司用 GenAI 出包，犯了哪 3 個 iPAS 初級也會考的錯？（匿名改寫）。
+5. **[Day 33/43]** Type C：為什麼我做了 LevelCert 之後才真的懂一件事：做 SaaS 最難的不是寫 code，是每天面對一個空的 analytics 儀表板。
+6. **[Day 34/43]** 🚀 **公開預購今天正式開放！** LINE 群以外的人也可以買了。正式向 Threads / IG / Dcard 介紹 LevelCert — [正式 launch 貼文]。創始會員還剩 X 位（限量 20，之後跳早鳥）。
+7. **[Day 35/43]** Type B：Week 5 回顧 — 初級四科內容整理完成！創始會員 X 位、早鳥 Y 位。剩下 8 天就把目前版本做到『可以交付』的狀態。
 
-**Sunday long-form (Dcard):** *"iPAS AI 中級模擬考分享 — 實際 3 次模考的分數與心得"*
-
----
-
-### Final 3 days: May 22 – May 24 — "最後衝刺"
-
-**Post ideas (3 posts):**
-
-1. **[Day 43/45]** 剩 3 天。今天不讀新的、只複習弱點。手機截圖：我的弱點雷達圖變化（第一週 → 今天）
-2. **[Day 44/45]** 剩 2 天。我要怎麼睡、怎麼吃、怎麼準備考試當天 — 一個上班族的考前儀式
-3. **[Day 45/45]** 剩 1 天。今天停讀。來回答創始會員群裡大家的問題（公開 Q&A 直播 30 分鐘）
+**Sunday long-form (Dcard):** *「我用 35 天做了一個 iPAS AI 初級自學平台 — 一個上班族的公開建構紀錄」*（這篇拉最多流量）
 
 ---
 
-### EXAM DAY: May 23 (Sat) — The pivotal post
+### Week 6: May 15 – May 21 — 「交付衝刺 + 教學深化」
 
-**Write BOTH versions in advance. Post within 24 hours of exam.**
+**Theme:** 最後一週把產品體驗修到 ready-to-deliver，初級教學素材集中產出。不是考前衝刺。
 
-#### Version A: Pass
+**Post ideas (7 posts):**
 
-```
-🎉 [Day 45/45] 考完了。PASSED.
+1. **[Day 36/43]** Type A：今天在修一個卡了兩週的 edge case — 創始會員的 access_expires_at 如何鎖死 2026-12-31？一個 Supabase RLS 的小技巧。
+2. **[Day 37/43]** Type B：iPAS 初級的時間管理 — 我親身試過的 3 種解題順序，哪一種最快？（第一科→最後一科 vs 先做熟的 vs 先做分數高的）。
+3. **[Day 38/43]** Type A：模擬考引擎新功能 — 錯題自動進入「複習卡片」，隔天 push 提醒你重練一次。Spaced repetition 的簡單實作。
+4. **[Day 39/43]** Type B：初級 5 個答題技巧，我自己壓線過那次用到的（消去法、選項長度、極端用詞、雙重否定、題幹關鍵字）。
+5. **[Day 40/43]** Type C：做 side project 最怕的不是失敗 — 是「做一半覺得還不夠好」的 impostor syndrome。今天我怎麼 push 自己 ship。
+6. **[Day 41/43]** Type A：landing page 的轉換率這週數據 — 訪客 X、購買 Y、轉換率 Z%。誠實貼出數字（不管好壞）。
+7. **[Day 42/43]** Type C：Week 6 回顧 — 累計 X 位付費學員、初級課程內容 100%、模擬考引擎穩定、Stripe 自動化完成。下一步：8/15 學員第一梯次考試前衝刺。
 
-去年 [month] 通過 iPAS AI 初級，今天通過 iPAS AI 中級。
-45 天前我開始邊建構 LevelCert 中級課程、邊用它來學習。
+**Sunday long-form (Dcard):** *「做了 6 週 side project 的誠實成績單 — 累計預購、燒錢金額、最大一個錯誤、下一步」*
 
-分數：___ / ___
-準備時間：約 X 小時（邊做課程邊學）
-最困難的一科：[specific]
-最意外有幫助的功能：[specific feature of LevelCert]
+---
 
-接下來：
-1. 中級課程正式推出（Q2 底）
-2. 早鳥價 NT$3,980 對創始會員開放
-3. 繼續記錄後續的學員通過結果
+### Final day: May 23 — Day 43/43
 
-謝謝 45 天來每天看的朋友。
-這張證照值得一篇完整的心得 — 下週出完整版 🙏
+1. **[Day 43/43]** Type A 或 Type C（**不提考試**）：今天是 43 天公開建構的最後一天。分享一張 commit history 時間軸，或一個今天做完的建構決定。一句話收尾：「43 天連續發文完成。下一個階段：陪第一批學員準備 8/15 考試。」
 
-如果你也想考 iPAS AI 中級，我真的 recommend 自學系統 + AI 解題 + 模擬考分析這個組合。
-[landing URL]
-
-— [YOUR_NAME]
-```
-
-#### Version B: Fail
-
-```
-[Day 45/45] 考完了。FAILED.
-
-老實說，我考砸了。
-分數：___ / ___（差一點點）
-
-45 天公開紀錄，要我公開分享失敗不容易，但我答應過自己 — 這整個過程都公開。
-
-我還要繼續準備。而且，我要用我自己的政策 — **免費延長 6 個月的 LevelCert 存取** — 來準備下次考試。
-
-對，我就是那個「考不過延長 6 個月」的設計者。
-現在我是第一個 dogfood 自己政策的學員。
-
-接下來 6 個月：
-1. 我會繼續公開紀錄第二次準備過程
-2. 會從這次失敗分析出 LevelCert 還要加強的地方
-3. 會把下次考試的結果也一樣公開
-
-失敗不好受，但這是最好的長期 marketing — 因為它是真的。
-給所有還在準備的朋友：沒考過不是世界末日，延期 6 個月再戰。
-
-— [YOUR_NAME]
-
-（謝謝每天看這系列的朋友。你們的支持是我繼續的動力。LINE: [LINE_ID]）
-```
+> **2026-05-23（六）：** 創辦人私下考 iPAS AI 中級，當天**無特別貼文**，或只發一篇與考試無關的建構紀錄（例如 Day 43/43 的一張 commit history）。
+>
+> **2026-06-12：** 中級成績公布。當天會發**一篇**誠實的結果貼文 — **通過或失敗都公開講** — 當作後續中級課程路線圖的證據，但**不是行銷活動的主軸**。這篇貼文之後不再接續「中級旅程日記」系列。
 
 ---
 
 ## Distribution per post
 
-Every daily post goes to:
+每篇每日貼文去的地方：
 
-1. **Threads** (primary — main text version)
-2. **IG Reels** (60s video version if possible, still image + caption otherwise)
-3. **IG feed** (same as Reels)
-4. **LINE official account** (every 3rd post only — don't flood)
-5. **LevelCert FB group or page** (after launch)
+1. **Threads**（主頻道 — 文字主版本）
+2. **IG Reels**（60 秒影片版本，或靜態圖＋文案）
+3. **IG feed**（同 Reels）
+4. **LINE 官方帳號**（每 3 篇選 1 篇 — 不要洗版）
+5. **LevelCert FB 社群頁**（launch 後）
 
-**Do NOT cross-post to:**
-- LinkedIn (audience mismatch for Taiwan)
-- X/Twitter (Taiwan audience is tiny)
-- TikTok (can be added in Phase 2 if you have energy)
-
----
-
-## Weekly long-form Dcard posts (every Sunday)
-
-Dcard long-form posts are your highest-leverage cold reach. Each one should:
-
-- Be 800–1500 characters of real value
-- Have a specific catchy title
-- Be posted on 工作板 (primary) or 研究所板 (secondary)
-- NOT have a direct sales link in the post body — only in the comments or bio
-- Include a personal anecdote (makes it non-ad-like and avoids mod flags)
-
-**Dcard etiquette:**
-- Never post the same content twice
-- Always respond to comments within 2h of posting
-- Never argue with haters — delete nothing, just don't engage
-- If mods remove it, don't appeal. Move on.
+**不交叉發布到：**
+- LinkedIn（台灣受眾不對）
+- X/Twitter（台灣受眾太少）
+- TikTok（Phase 2 有餘力再加）
 
 ---
 
-## Hook library (50 hooks for when you're stuck)
+## Weekly long-form Dcard posts（每週日）
 
-Keep this list handy. When you don't know what to post, pull a hook.
+Dcard 長文是最高槓桿的冷啟動渠道。每篇應該：
 
-### Struggle hooks
-1. 今天讀到一個觀念，讀了 3 遍才懂
-2. 自己寫的模擬題，自己答錯
-3. 第一次模考分數曝光（不管有多糟）
-4. 我以為我搞懂了 — 然後錯了 3 題
-5. 準備考試的第 15 天，我想放棄了
+- 800–1500 字真正有價值的內容
+- 標題具體、鉤子明確
+- 發在工作板（主）或研究所板（副）
+- 內文**不要**直接放銷售連結 — 只放在留言或個人簡介
+- 包含個人經歷（讓它不像廣告，避免 mod 刪文）
+
+**Dcard 禮儀：**
+- 同樣內容不要發兩次
+- 發文後 2 小時內要回留言
+- 絕對不跟酸民吵架 — 不刪文，但不回應
+- 被 mod 刪文就不上訴，換個角度重寫
+
+---
+
+## Hook library（50 個鉤子備用）
+
+卡住沒梗時，從這裡挑一個。
+
+### Building-in-public hooks（Type A）
+1. 今天 debug 一個卡了 N 小時的問題 — 解法是 [具體]
+2. 這個功能我重寫了 3 次，現在長這樣
+3. 定價決定：為什麼我選 NT$1,980 不是 NT$999
+4. Supabase RLS 踩坑紀錄 — 我差點把所有人資料對外
+5. Stripe webhook 今天終於接通了！時間軸
+
+### 初級教學 hooks（Type B）
+6. iPAS 初級一張圖整理四科重點
+7. 5 個 iPAS 初級最容易答錯的觀念
+8. [specific term] 是什麼？30 秒白話版
+9. 初級考試的分數怎麼算？一張圖秒懂
+10. iPAS 初級 vs AWS AI Practitioner — 台灣人選哪個
+
+### Founder-story hooks（Type B + C）
+11. 我那科 66 分是怎麼從 58 拉上來的
+12. iPAS 初級我考前兩週才開始衝刺 — 怎麼不當砲灰
+13. 證照編號 115-01-Z01 — 這張是我的第一張 AI 證照
+14. 平均 73，壓線過 — 為什麼壓線過反而是好故事
+15. 我不是 AI 天才，所以我才要做 LevelCert
+
+### 側項創業 hooks（Type C）
+16. 邊上班邊做 side project 的一週作息表
+17. 我做 LevelCert 的第一個月燒了多少錢（誠實攤開）
+18. 為什麼我不做 YouTube 而做 Threads
+19. 為什麼不接廣告 / 不開課 / 不接專案 — 我只做這一件
+20. 一個側項最怕的 3 個陷阱，我怎麼避開
 
 ### Win hooks
-6. 終於搞懂 [concept] 是什麼意思！
-7. 模擬考從 ___ 進步到 ___
-8. 今天寫完了第一科所有題目
-9. 第一次全對的題型出現了
-10. 弱點雷達圖今天第一次變綠
+21. 第一個付費用戶出現了！他的背景
+22. landing page 轉換率從 0.5% 升到 X%
+23. 第一個「學員問到我答不出來」的問題
+24. 累計 X 位創始會員 — 他們都是誰
+25. 今天寫完第 Y 堂課的內容
 
-### Feature hooks (building in public)
-11. LevelCert 新功能：[feature]
-12. 一個用戶的 bug report 讓我改掉整個 [feature]
-13. 今天我重寫了模擬考的 UI — 看起來像這樣
-14. 加了 AI 家教的第一個版本 — 示範
-15. 第一個創始會員回饋：「___」
+### Honest-fail hooks
+26. 一個 landing page 改動讓轉換率 -30% — 我的學習
+27. 以為用戶會在乎的 feature 其實沒人用
+28. 一個 Dcard 貼文流量超慘 — 我檢討三件事
+29. 我低估了做課程內容的時間 — 原預計 2 小時，實際 6 小時
+30. 一次花太多時間在工具、太少時間在賣 — 警訊
 
 ### Education hooks
-16. iPAS AI 中級 vs 初級差在哪？3 分鐘搞懂
-17. 5 個 iPAS 最容易考錯的觀念
-18. [specific term] 是什麼？30 秒講完
-19. iPAS 考試的分數怎麼算？
-20. 為什麼 iPAS 一年只考 3 次？
+31. iPAS 初級考試報名流程圖（從註冊到收證照）
+32. iPAS vs 民間 AI 證照 — 5 個差異
+33. 初級通過後下一步 — 中級？實務？工作？
+34. 「AI 應用規劃師」這個頭銜在履歷上的實際價值
+35. 初級免費資源清單（政府 + 學校 + YouTube）
 
-### Opinion hooks (Type C)
-21. 為什麼我覺得 iPAS 比 AWS AI Practitioner 更適合臺灣人
-22. 「證照無用論」為什麼是錯的（在 AI 時代）
-23. 考試是最便宜的職涯投資
-24. 為什麼自學比上實體課更有效
-25. AI 家教會取代真人老師嗎？
+### Opinion hooks（Type C）
+36. 為什麼「證照無用論」在 AI 時代反而是錯的
+37. 考試是最便宜的職涯投資
+38. 為什麼自學比上實體課更有效（對上班族）
+39. AI 家教會取代真人老師嗎？
+40. 為什麼台灣的 AI 教育市場被國外工具壓著打
 
 ### Comparison hooks
-26. 市面上 5 個 iPAS 課程，我選了哪個（以及為什麼後來自己做一個）
-27. 工研院 vs 商研院 vs 政大 SCE — 上班族真實評估
-28. 為什麼 Tiandiren 的 30 天影片限制是致命傷
-29. TAIA 包 2 張考試費 vs LevelCert 6 個月延長 — 哪個真的保護你？
-30. 免費（工研院）vs 付費（我們）— 到底差在哪
-
-### Personal story hooks
-31. 為什麼我選擇當上班族邊考中級
-32. 我上一份工作跟 AI 有什麼關係
-33. 我為什麼決定做 LevelCert 而不是繼續只當一個學員
-34. 我 5 年前的學習方法 vs 現在的學習方法
-35. 如果我能跟剛開始準備的自己說一件事
+41. 市面上 5 個 iPAS 課程，我看過後為什麼自己做
+42. 工研院 vs 商研院 vs 政大 SCE — 上班族評估
+43. 免費（工研院）vs 付費（我們）到底差在哪
+44. 天地人 30 天影片限制 vs LevelCert 存取到 2026-12-31
+45. TAIA 包 2 張考試費 vs LevelCert 延長 6 個月 — 哪個保護你
 
 ### Social proof hooks
-36. 第 X 位創始會員加入了！來看看他們的背景
-37. 一位創始會員的第一次模考分數分享（他同意的）
-38. 我在 Dcard 收到的 3 個最常問的問題
-39. 一位讀者問：「真的考不過會延長 6 個月嗎？」— 我的回答
-40. 謝謝今天幫我 reach 到 ___ 個人的那位分享者
-
-### Meta hooks (about the journey)
-41. Day X / 45 — 一張圖總結我今天做了什麼
-42. 公開建構的第 X 天，我學到 3 件事
-43. 為什麼我選擇「建構在公開」而不是先做好再發布
-44. 有人問我：「你準備考試還有時間做課程？」— 我的時間管理
-45. 建構中級課程讓我學得比純看書快 3 倍，為什麼？
-
-### Exam-day approach hooks
-46. 剩 X 天。今天我的感覺是 ___
-47. 距離考試 10 天 — 我的讀書計畫表
-48. 考試前一週，最不該做的 3 件事
-49. 考試當天早上的儀式
-50. 考完第一件事：___
+46. 第 X 位創始會員加入 — 他們的背景
+47. 一位創始會員給我的回饋（徵得同意）
+48. Dcard 收到最多的 3 個問題
+49. 讀者問：「真的考不過可以延長 6 個月嗎？」我的回答
+50. 謝謝今天幫我分享的 [帳號] — 觸及 +X 人
 
 ---
 
 ## Production rhythm (daily schedule)
 
-**Morning (10 min):** Decide today's post type + topic (pick from hook library if stuck)
-**Lunch (20 min):** Write Threads post + any screenshots
-**Evening (20 min):** Record 60s Reel + edit + post everywhere
-**Before bed (5 min):** Reply to any comments/DMs from today
+**早上（10 分）：** 決定今天的貼文類型 + 主題（卡住就從 hook library 挑）
+**午休（20 分）：** 寫 Threads 文 + 截圖
+**晚上（20 分）：** 錄 60 秒 Reel + 剪輯 + 全平台發布
+**睡前（5 分）：** 回覆今天的留言 / DM
 
-**Total daily commitment:** ~55 minutes
+**每日總時間：** ~55 分鐘
 
-**Weekly extra:** +90 minutes for Sunday Dcard long-form post
+**每週加碼：** +90 分鐘寫週日 Dcard 長文
 
-**Total weekly commitment:** ~6.5 hours of content work + ~30 hours of study + whatever Next.js/content work you're doing
-
----
-
-## Anti-patterns (do NOT do these)
-
-- ❌ Don't overpost — 1 post/day is the max. 2/day feels thirsty.
-- ❌ Don't sell in every post. The 60/30/10 split (learning/building/opinion) exists for a reason.
-- ❌ Don't use AI-generated images that look AI (people hate this in TW, especially on Dcard)
-- ❌ Don't delete posts that got low engagement. Keep them. The trail matters.
-- ❌ Don't reply to haters. Delete is tempting; silence is better.
-- ❌ Don't promise pass. Say *"最大化通過機率"* not *"保證你通過"*. That's different from the course pass-guarantee policy.
-- ❌ Don't break character. If you said "邊做邊學" in Day 1, every subsequent post should reinforce that narrative.
+**每週總時間：** ~6.5 小時內容 + 上班本職 + 晚上 / 週末 Next.js + 內容建構
 
 ---
 
-## Metrics to track (weekly, Sunday night)
+## Anti-patterns（絕對不要做）
 
-Simple spreadsheet in `docs/launch/content-metrics.md`:
+- ❌ 一天發超過 1 篇 — 會顯得很渴
+- ❌ 每篇都在賣 — 40/40/20 分配是有原因的
+- ❌ 用看起來就是 AI 生成的圖片（台灣人，尤其 Dcard 討厭這個）
+- ❌ 刪低流量貼文 — 留著。軌跡才是價值
+- ❌ 回應酸民 — 刪留言不如沉默
+- ❌ 承諾「保證通過」— 說「最大化通過機率」— 課程的 pass guarantee 政策是另一回事
+- ❌ 出戲 — Day 1 說過的角色設定，後面每篇都要守住
+- ❌ 跳到中級考試敘事 — 這個日曆是關於建構 LevelCert + 教初級 + 側項旅程，不是中級衝刺
+
+---
+
+## Metrics to track（每週日晚上）
+
+簡單的試算表在 `docs/launch/content-metrics.md`：
 
 | Week | Posts published | Total views | Best post | Best post views | Replies | DMs | Landing page clicks | New pre-orders attributed |
 |---|---|---|---|---|---|---|---|---|
 | 1 | 7 | ___ | ___ | ___ | ___ | ___ | ___ | ___ |
 | 2 | 7 | ___ | ___ | ___ | ___ | ___ | ___ | ___ |
 
-**The ONE metric that matters:** "New pre-orders attributed to content this week."
+**唯一重要的指標：** 「這週從內容帶來的新預購數」。
 
-If that number is zero for 2 consecutive weeks, kill the calendar and rewrite from scratch based on what the LINE group buyers are actually saying.
+如果連續 2 週是 0 → 這個日曆要停，根據 LINE 群真實買家的反饋重寫。
+如果持續 >2/週 → double down，錄更多、發更多、重複使用爆款。
 
-If that number is consistently >2/week, double down — record MORE, post MORE, repurpose winners.
+---
+
+## Feature hooks list（當 Type A 卡題時可用的「今天建了什麼」選項）
+
+以下都是 Phase 0 – Phase 1 本來就要做的功能，做到哪裡就發到哪裡：
+
+1. Landing page 的哪一個區塊重寫了（hero / pricing / FAQ / founder story）
+2. 假通過率 / 假 testimonial 徹底清除（誠實敘事）
+3. Stripe Payment Link → 正式 Stripe Checkout → Supabase 自動開通
+4. 創始會員 access_expires_at 鎖死 2026-12-31 的實作
+5. 免費診斷模擬考（20 題，無需註冊）上線
+6. 模擬考引擎 MVP（40 題 / 60 分 / 計分 / 弱點分析）
+7. 弱點雷達圖按四科拆分
+8. 錯題自動進複習卡片 + 隔日提醒
+9. Clerk 登入 / Supabase RLS 的課程存取控管
+10. 第一堂影片上 Bunny.net → 課程播放器整合
+11. 學員 Dashboard（章節進度 / 模擬考歷史 / 弱點）
+12. LINE 官方帳號綁定 + 自動開通通知
+13. 「創始會員剩 X 位」的即時計數 UI
+14. 課程內容 AI 生成流程的誠實展示（workflow 截圖）
+15. 每週 KPI 儀表板 — 內建在自己用的 admin 介面
+
+這些每個都能拍一張截圖 / 寫一段技術決定 / 講一個取捨。永遠不會沒梗。

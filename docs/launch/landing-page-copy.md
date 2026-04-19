@@ -46,7 +46,7 @@
 
 ### Hero 下方信任條（social proof row）
 
-> 由自學通過初級、正在準備 2026/5/23 中級考試的上班族 **郭呈祥** 親自製作
+> 由自學通過 iPAS AI 初級（證照編號 115-01-Z01）的上班族 **郭呈祥** 親自製作
 > ✓ 24/7 自學 ✓ AI 逐題家教 ✓ 不過延長 6 個月 ✓ 模擬考弱點分析
 
 ---
@@ -147,15 +147,15 @@
 > - 弱點雷達圖，讓你知道自己哪裡最弱
 > - 考不過免費延長 6 個月 — 因為中級一年只考 2 次（5 月 + 11 月），我幫你顧到下一場
 
-### 我會公開考中級 — 不管通過或失敗
+### 我不是專家。我只是先你一步通過的上班族
 
-> **2026 年 5 月 23 日（週六）我會親自上場考 iPAS AI 中級第一次**。結果 6/12 公布。
+> 我的 iPAS AI 初級證照編號是 **115-01-Z01**，你可以到 iPAS 官網成績查詢系統查證。但比起那張證書，我更想告訴你我**怎麼**通過的。
 >
-> 不管通過或沒通過，我都會在這個頁面和 Threads / IG 上**誠實**寫出來。因為如果連創辦人都不敢拿自己的成績當證據，這個平台就沒有存在的價值 — 我初級 66 分都敢攤開來講給你聽了，中級的結果我當然也會照實公開。
+> 我的成績：生成式 AI 應用與規劃 **80 分**、人工智慧基礎概論 **66 分**，平均 **73 分** — 以兩科平均 70 以上的授證規則，我是貨真價實的**壓線通過**。人工智慧基礎概論那一科，我離沒過只差幾題。考完走出考場那個下午我根本不敢查成績。
 >
-> 而且我會每一天把真實的讀書過程公開：哪些章節卡關、哪些題目寫錯、AI 家教怎麼幫我解釋的。你可以在 [Threads: @LINE_ID] 看到整個 43 天的過程 — 這本身就是 LevelCert 的公開 demo。
+> 我講這個不是要謙虛，是要誠實：我不是 AI 專家、不是補習班名師、也沒有教過課。我只是一個 54 歲的上班族，下班晚上和週末自己 K 書，在第一次考試壓線通過了 iPAS AI 初級。
 >
-> 如果你也是白天上班、想用最短時間考過 iPAS — 加我 LINE，我們直接聊。我會親自回你。
+> 但也因為是壓線通過，我最清楚 66 到 73 之間那關鍵的幾題是什麼 — 哪些觀念最容易誤解、哪些題型是陷阱。我幫你把踩過的坑整理成 LevelCert 的課程、模擬考和 AI 解題，讓你用比我更短的時間，更有把握地過 70。創始會員價 NT$1,980，完整存取到 2026 年底。
 
 ### 附圖
 
@@ -226,7 +226,7 @@
 
 ### Q4：中級課程什麼時候推出？
 
-> 2026 年 Q2（約 6–7 月），跟著創辦人自己的中級考試 timeline 推出。創始會員享中級課程早鳥價 NT$3,980（之後正價 NT$4,980）。
+> 預計 2026 年 Q2（約 6–7 月）。創始會員享中級課程早鳥價 NT$3,980（之後正價 NT$4,980）。
 
 ### Q5：可以先試聽嗎？
 
@@ -274,7 +274,7 @@
 - **Pass guarantee is in the H1.** That's your only differentiator that can be verified instantly.
 - **Peer-voice, not expert-voice, in the founder section.** 郭呈祥 is explicitly positioned as "working professional who self-studied and passed" — not a 老師, not an AI expert. The Taiwan IPAS prep market is saturated with expert-voice pages; peer-voice is an unoccupied position and matches the psychological reality of self-studiers who are afraid they're not smart enough.
 - **The modest pass is reframed as an asset, not a weakness.** "如果我可以做到，你也可以" beats "我是神話" for this audience every time. Do not let iterations of this copy drift back toward inflating the credential.
-- **The 2026-05-23 中級 exam is a public commitment, not marketing.** Whether 郭呈祥 passes or fails, the honest post-result post IS the marketing. A fail with a 6-month comeback is a stronger story than a clean pass.
+- **The 2026-05-23 中級 exam is a private operational deadline, not a public commitment.** The 2026-06-12 result becomes one honest evidence post afterward — pass or fail — but is not the hero marketing line. The hero founder-story asset on this page is the 初級 pressure-pass (credential 115-01-Z01, avg 73, one subject 66 — 壓線通過 narrative).
 - **Competitor names are explicit.** Taiwanese buyers trust you more when you name the alternatives and explain the gap. Vague positioning loses.
 - **FAQ addresses the #1 objection first (考不過).** That's what stops 70% of buyers from clicking.
 - **Student tier is prominent, not hidden.** It's a marketing feature, not a discount.

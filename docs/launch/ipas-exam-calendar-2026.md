@@ -44,9 +44,9 @@ This document is the source of truth for exam dates across ROADMAP, TODO, landin
 |---|---|---|
 | **2026-04-10 中午 12:00** | Last moment to register for 初級 第二次 (5/16) AND 中級 第一次 (5/23) individually | Today. Anything after noon today → students' first sittable 初級 exam is **Aug 15**, not May 16. |
 | **2026-05-16 (Sat)** | 初級 第二次 — first possible student exam | Only students who registered by 4/10 noon can sit. Results 6/3. |
-| **2026-05-23 (Sat)** | **Founder sits 中級 第一次** | Public forcing function. Results 6/12. |
+| **2026-05-23 (Sat)** | **Founder sits 中級 第一次** | Private operational deadline for course readiness. NOT a public accountability event. Results 6/12. |
 | **2026-06-03** | 初級 第二次 results | Earliest possible "my student passed!" testimonial — but only for students who registered independently by 4/10. |
-| **2026-06-12** | Founder's 中級 result | The pivotal post. Pass or fail, publish within 24h. |
+| **2026-06-12** | Founder's 中級 result | One honest evidence post within 24h — pass or fail. Supplementary proof, not the hero marketing line. |
 | **2026-08-15 (Sat)** | 初級 第三次 — first real alumni cohort exam | Most Week 1-6 buyers will sit this one (not May). |
 | **2026-09-02** | 初級 第三次 results | **First meaningful alumni batch.** Triggers university club outreach and homepage testimonial updates. |
 | **2026-11-07 (Sat)** | 初級 第四次 — Q4 cohort exam | Second big batch; Nov 25 results. |

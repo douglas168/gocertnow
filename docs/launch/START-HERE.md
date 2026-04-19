@@ -82,7 +82,7 @@ Check the roadmap to see which phase you're in: [ROADMAP.md](./ROADMAP.md)
 | Phase 4: Q4 Exams + Scale Decision | Nov 1 – Dec 31 | Q4 results, year-end pass rate, next-cert gate |
 
 **Today's date:** Update mentally each week.
-**Hard deadline burned into brain:** 2026-05-23 — founder sits IPAS AI 中級 exam.
+**Hard deadline burned into brain:** 2026-05-23 — founder sits IPAS AI 中級 exam (private operational deadline for course readiness, NOT a public accountability event). Course must be usable by founder by May 15.
 
 ---
 
@@ -115,6 +115,8 @@ The 45 daily post ideas in [build-in-public-calendar.md](./build-in-public-calen
 - If a day's suggested post doesn't match what actually happened in your life/study that day → **write what actually happened instead.** Authentic beats clever every time.
 
 The calendar exists to remove decision fatigue, not to replace judgment.
+
+Also: the calendar has been rewritten to anchor on building LevelCert + 初級 teaching content + side-project solo-founder journey. Do NOT drift into 中級-exam-sprint theater — the founder's own 中級 prep is private operational work, not live-operated content.
 
 ### Warning 3: University club outreach is Phase 3, not Phase 2
 
@@ -185,7 +187,7 @@ When this file doesn't have the answer, go here:
 > I will fix the existing landing page's 6 critical issues by Apr 14 (especially the fake "92% 通過率" and fake testimonials).
 > I will post the LINE group pre-sell by Apr 15.
 > I will have 5 paying founding seats by Apr 21.
-> I will pass — or honestly fail — the IPAS AI 中級 exam on May 23 in public.
+> I am building LevelCert in public. My 中級 exam on 2026-05-23 is a private operational deadline for course readiness. The 2026-06-12 result will be one honest post afterward — pass or fail — as evidence, not a live-operated campaign. My hero founder-story asset is the 初級 pressure-pass (credential 115-01-Z01, avg 73, one subject 66).
 > I will have 40 paying students by May 23.
 > I will have 100 paying students by Jul 10.
 >

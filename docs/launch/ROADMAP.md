@@ -2,7 +2,7 @@
 
 **Created:** 2026-04-10
 **Founder exam date (hard deadline):** 2026-05-23 (IPAS AI 中級)
-**Strategy:** Validate demand with 初級 pre-orders while dogfooding 中級 content build as personal exam prep, turning the whole journey into public marketing.
+**Strategy:** Validate demand with 初級 pre-orders. The founder sits 中級 on 2026-05-23 privately — it's an operational deadline for course readiness, not live-operated marketing content. The public-facing narrative is (a) the founder's own 初級 pressure-pass (credential 115-01-Z01, avg 73) and (b) visibly building LevelCert in public.
 
 ---
 
@@ -52,7 +52,7 @@
 | Mock exam engine playable | May 7 | Can take a 40Q exam, get score |
 | Public pre-orders open (beyond LINE group) | May 8 | 1st post on Threads/Dcard |
 | 20 founding seats filled (NT$1,980) | May 15 | 20 × NT$1,980 = NT$39,600 |
-| **Founder passes 中級 exam** | **May 23** | Pass/fail result documented publicly |
+| **Founder sits 中級 exam** | **May 23** | Private operational deadline — course must be usable by founder by May 15. Result publishes 2026-06-12 as one honest evidence post (not a campaign). |
 | 40 total pre-orders by exam day | May 23 | 20 founding + 20 early bird ≈ NT$99,000 |
 
 **What gets BUILT in Phase 1:**
@@ -81,16 +81,17 @@
 
 | Milestone | Target date | Success metric |
 |---|---|---|
-| Publicly share 中級 exam result | Jun 13 | Post within 24h of 6/12 result announcement |
+| Publish 中級 exam result | Jun 13 | One honest post within 24h of 6/12 result announcement — pass or fail. Evidence artifact, not live-operated marketing. |
 | 初級 content 100% locked + student-tested | Jun 30 | No further lesson rewrites |
 | 70 total paying students | Jul 10 | 20 founding + 50 early bird ≈ NT$188,600 |
 | Founding cohort ready for 8/15 exam | Aug 5 | Full mock completion rate ≥ 80% in-cohort |
 | **First 初級 students sit 8/15** | Aug 15 | (student cohort sits, nothing to ship on exam day) |
 
 **Key content pivots:**
-- **If founder passed 中級:** lead all marketing with *"我兩張都一次通過"* + walk-through video
-- **If founder failed 中級:** lead with *"我考砸了，但我還有 6 個月到 11/14 再戰一次。來看看我怎麼準備第二次"* — use own 6-month extension publicly. This is a stronger story than passing.
-- Either way: the pivot from **founder-story marketing** to **student-cohort marketing** happens here. Daily content becomes "Day X of coaching my students through the Aug 15 exam" instead of "Day X of my own exam prep".
+- **Hero marketing asset stays constant regardless of 中級 outcome:** the founder's already-earned 初級 pressure-pass (credential 115-01-Z01, avg 73, one subject 66 — 壓線通過) plus visibly building LevelCert in public. The 中級 result is supplementary evidence, not the hero line.
+- **If founder passed 中級:** quietly integrate the second credential into the founder-story block as additional proof. Do not rebuild marketing around *"兩張都一次通過"* — it's not the hero narrative.
+- **If founder failed 中級:** one honest post about learnings + public use of the 6-month extension policy (dogfooding the pass guarantee). This is a legitimate supplementary story, but still not the hero — the 初級 pressure-pass remains the lead.
+- Either way: the pivot from **founder-story marketing** to **student-cohort marketing** happens here. Daily content becomes "Day X of coaching my students through the Aug 15 exam" instead of founder-exam-prep theater.
 
 **What gets BUILT in Phase 2:**
 - Alumni testimonial collection flow (private LINE → public screenshot) — *ready for Sep 2*
