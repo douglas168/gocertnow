@@ -210,7 +210,7 @@ AND EXISTS (
 | Theme (Phase 1) | Dark mode only | Matches target audience (20-35, gamers) platform preferences |
 | Content format | Text + diagrams + audio (not video-first) | Scannable, reviewable 5-10x before exam, AI-workflow-native |
 | Micro-lessons | One testable concept per lesson, 5-9 min | Cognitive load theory, mobile study sessions, exam traceability |
-| Gamification | RPG-lite (6 elements) | See `docs/planning/RPG-LITE-SCOPE.md` |
+| Gamification | RPG-lite (6 elements) | See `docs/product-development/RPG-LITE-SCOPE.md` |
 | Design system | Indigo + Emerald dark theme | See `design-system/MASTER.md` |
 
 ---

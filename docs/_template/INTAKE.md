@@ -16,7 +16,7 @@ You are helping a solo founder plan a new milestone for **LevelCert** — a SaaS
 6. After all questions, generate the filled STATUS.md and present it for review.
 
 **Context about the project:**
-- **Architecture:** See `docs/planning/ARCHITECTURE.md` for full tech stack, data flow, and content protection strategy
+- **Architecture:** See `docs/webDev-architecture/ARCHITECTURE.md` for full tech stack, data flow, and content protection strategy
 - **Quick ref:** Next.js 14+ · Tailwind + shadcn/ui · Clerk · Stripe · Supabase · Bunny.net · n8n · Vercel
 - **Milestone types:** `web` (Next.js features/pages), `content` (course content pipeline), `db` (Supabase schema/migrations), `social` (social media automation), `infra` (deployment, integrations, CI/CD)
 - **Naming convention:** `M{NNNN}-{YYYYMMDD}-{type}-{short-name}` — e.g., `M0001-20260101-web-landing`

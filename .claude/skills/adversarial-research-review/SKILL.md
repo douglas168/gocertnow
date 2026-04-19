@@ -145,7 +145,7 @@ Then write the synthesis. Recommended shape per question:
 
 ### Step 5 — Save outputs
 
-Save the synthesis to a permanent location (e.g., `docs/product development/SYNTHESIS-{DATE}.md`). Include at the bottom:
+Save the synthesis to a permanent location (e.g., `docs/product-development/SYNTHESIS-{DATE}.md`). Include at the bottom:
 
 - Path to the baseline answer file
 - Path to the attack prompts (`/tmp/attack-*.md`)
@@ -232,4 +232,4 @@ wait
 
 ## Reference: First use
 
-Originally designed 2026-04-19 to attack Perplexity's answers on LevelCert's five brand/product questions (mass vs premium pricing, moats, RPG for 18-35, web vs mobile, workflow-as-product). Synthesis artifact: `docs/product development/SYNTHESIS-2026-04-19.md`. Raw attack prompts and reviews: `/tmp/attack-Q{1..5}.md`, `/tmp/review-Q{1..5}-{gemini,codex}.md`.
+Originally designed 2026-04-19 to attack Perplexity's answers on LevelCert's five brand/product questions (mass vs premium pricing, moats, RPG for 18-35, web vs mobile, workflow-as-product). Synthesis artifact: `docs/product-development/SYNTHESIS-2026-04-19.md`. Raw attack prompts and reviews: `/tmp/attack-Q{1..5}.md`, `/tmp/review-Q{1..5}-{gemini,codex}.md`.

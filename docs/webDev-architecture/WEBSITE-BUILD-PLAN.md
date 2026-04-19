@@ -2,7 +2,7 @@
 
 ## Tech Stack & Architecture
 
-See `docs/planning/ARCHITECTURE.md` for full tech stack, architecture decisions, content protection strategy, data flow, and Supabase RLS rules.
+See `docs/webDev-architecture/ARCHITECTURE.md` for full tech stack, architecture decisions, content protection strategy, data flow, and Supabase RLS rules.
 
 **Quick reference:** Next.js 14+ · Tailwind + shadcn/ui · Clerk · Stripe · Supabase · Bunny.net · n8n · Gemini 2.0 Flash · Vercel
 **Estimated monthly infra cost at launch: ~$5–15/mo**
@@ -50,7 +50,7 @@ See `docs/planning/ARCHITECTURE.md` for full tech stack, architecture decisions,
 - **Splitting rule:** If a concept needs >9 min to explain, break it into independently testable sub-concepts
 - **Exam traceability:** Each mock exam question maps back to a specific micro-lesson, enabling the weakness radar to point students to the exact lesson they need to review
 - **Format:** Text + diagrams + audio narration (scannable, reviewable — exam prep students review 5–10× before the exam)
-- **See:** `docs/planning/RPG-LITE-SCOPE.md` for full micro-lesson rationale and RPG gamification layer
+- **See:** `docs/product-development/RPG-LITE-SCOPE.md` for full micro-lesson rationale and RPG gamification layer
 
 **Core features:**
 - Stripe checkout → grant access on payment success
@@ -101,7 +101,7 @@ See `docs/planning/ARCHITECTURE.md` for full tech stack, architecture decisions,
 
 ## Site Structure
 
-See `CLAUDE.md` for route listing or `docs/planning/ARCHITECTURE.md` for full page classification (public vs auth-gated) and content protection strategy.
+See `CLAUDE.md` for route listing or `docs/webDev-architecture/ARCHITECTURE.md` for full page classification (public vs auth-gated) and content protection strategy.
 
 ---
 

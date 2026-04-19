@@ -12,7 +12,7 @@ You are reviewing recent work on **LevelCert** — a Next.js certification prep 
 Read these files to understand the codebase and conventions:
 
 - `CLAUDE.md` — project overview, tech stack, directory structure, build phases, site routes
-- `docs/planning/ARCHITECTURE.md` — architecture decisions, data flow, Supabase RLS, content protection strategy
+- `docs/webDev-architecture/ARCHITECTURE.md` — architecture decisions, data flow, Supabase RLS, content protection strategy
 - `design-system/MASTER.md` — design tokens (colors, fonts, spacing), dark-mode-only constraint
 
 ### Step 2 — Identify what changed
@@ -21,7 +21,7 @@ Run `git log --oneline -20` to see recent commits. Identify the milestone that w
 
 Then read the milestone's key files (if they exist):
 
-1. **Milestone plan** — in `docs/planning/` (e.g., `WEBSITE-BUILD-PLAN.md` or milestone-specific files)
+1. **Milestone plan** — in `docs/webDev-architecture/` (e.g., `WEBSITE-BUILD-PLAN.md` or milestone-specific files)
 2. **Design specs** — in `design-system/pages/` for page-specific overrides
 
 ### Step 3 — Review the changes
@@ -51,7 +51,7 @@ Review against these criteria:
 
 #### Cross-document consistency
 - [ ] `CLAUDE.md` directory structure matches actual repo layout?
-- [ ] `docs/planning/ARCHITECTURE.md` tech stack and decisions are up to date?
+- [ ] `docs/webDev-architecture/ARCHITECTURE.md` tech stack and decisions are up to date?
 - [ ] Route table in `CLAUDE.md` matches actual `web/app/` directory structure?
 - [ ] Design system tokens in code match `design-system/MASTER.md`?
 - [ ] Supabase RLS rules in `ARCHITECTURE.md` match actual migration files?

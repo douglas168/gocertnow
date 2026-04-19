@@ -173,7 +173,7 @@ Each ⚠️ you find = a specific counter-message you need on your landing page.
 
 1. **Open all 10 URLs in separate browser tabs** before starting.
 2. **Use ⌘+F to search each page** for keywords: 價格, 退費, 保證, 學生, 時數, 線上, 實體, 模擬考, 講義, 延長, 期限.
-3. **Screenshot the pricing section of each** into `docs/launch/competitor-screenshots/` (you'll want these for reference).
+3. **Screenshot the pricing section of each** into `docs/_todo/competitor-screenshots/` (you'll want these for reference).
 4. **Set a timer: 10 minutes per competitor, hard limit.** If you're going longer, you're over-researching. Move on.
 5. **Don't sign up for their mailing lists during research** — you'll get polluted comparison emails. Do that separately if you want to study their email funnels.
 

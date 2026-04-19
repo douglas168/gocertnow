@@ -1,7 +1,7 @@
 # Claude Code Context Hygiene — Change Log
 
 **Date:** 2026-04-12
-**Driver:** Hitting Claude usage limits too often. Audited `docs/claude/stop-hitting-limits.md` + `docs/claude/context-audit/SKILL.md` and applied the valid recommendations.
+**Driver:** Hitting Claude usage limits too often. Audited `docs/webDev-claude/stop-hitting-limits.md` + `docs/webDev-claude/context-audit/SKILL.md` and applied the valid recommendations.
 
 ## TL;DR
 
@@ -46,7 +46,7 @@ The companion `context-audit/SKILL.md` is a concrete, valid playbook that implem
 
 ### 4. Updated `CLAUDE.md` "UI Design System" section
 
-**Before:** Told Claude to read `design-system/MASTER.md`, with a fallback: *"If these files don't exist yet, follow `docs/planning/WORKFLOW-UI-DESIGN-SYSTEM.md` to generate them first."*
+**Before:** Told Claude to read `design-system/MASTER.md`, with a fallback: *"If these files don't exist yet, follow `docs/product-workflows/WORKFLOW-UI-DESIGN-SYSTEM.md` to generate them first."*
 
 **After:** Dropped the fallback clause.
 
@@ -87,7 +87,7 @@ The companion `context-audit/SKILL.md` is a concrete, valid playbook that implem
 
 **Why:** This is the **highest-leverage single fix** for usage-limit hits. Opus-on-every-turn was almost certainly the dominant cause of hitting limits, given Opus's per-token cost. Sonnet handles the vast majority of coding, editing, refactoring, and research tasks at comparable quality for 4.6-class models. Opus is reserved for deep architectural planning (see Option B below).
 
-## Corrections to `docs/claude/stop-hitting-limits.md`
+## Corrections to `docs/webDev-claude/stop-hitting-limits.md`
 
 The doc has two wrong setting-key names. Verified against the actual Claude Code settings schema via the `update-config` skill:
 

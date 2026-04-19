@@ -185,7 +185,7 @@ LINE: [LINE_ID]
 
 ### No reply after follow-up #2 → Stop. Move on.
 
-Do not chase further. Move them to a `docs/launch/outreach-tracker.md` with status `cold_no_reply` and revisit in 6 months.
+Do not chase further. Move them to a `docs/_todo/outreach-tracker.md` with status `cold_no_reply` and revisit in 6 months.
 
 ---
 
@@ -228,7 +228,7 @@ Co-create the announcement with the club president. Post from:
 
 ## Outreach tracker template
 
-Create `docs/launch/outreach-tracker.md` with this structure:
+Create `docs/_todo/outreach-tracker.md` with this structure:
 
 ```markdown
 # University Club Outreach Tracker

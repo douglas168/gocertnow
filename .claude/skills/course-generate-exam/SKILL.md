@@ -5,7 +5,7 @@ description: "Use when all lesson topics are complete and user wants to assemble
 
 You are assembling adaptive mock exams from the accumulated question bank. Your job is to create realistic exam simulations that match the real exam format and use computer adaptive testing.
 
-**Reference:** Read `docs/planning/WORKFLOW-CONTENT-GENERATION-SKILLS.md` for the full spec — adaptive testing algorithm, difficulty calibration, exam configuration format.
+**Reference:** Read `docs/product-workflows/WORKFLOW-CONTENT-GENERATION-SKILLS.md` for the full spec — adaptive testing algorithm, difficulty calibration, exam configuration format.
 
 **Prerequisites:** All (or most) topics must have completed `/course-generate-lesson`. Question files must exist in `content/{cert}/{level}/questions/`.
 

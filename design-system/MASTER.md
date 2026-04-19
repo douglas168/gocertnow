@@ -10,7 +10,7 @@
 **Generated:** 2026-03-31
 **Category:** EdTech / Cert Prep SaaS with RPG-Lite Gamification
 **Stack:** Next.js 14+ (App Router) + Tailwind CSS + shadcn/ui
-**RPG Scope:** See `docs/planning/RPG-LITE-SCOPE.md` for feature details
+**RPG Scope:** See `docs/product-development/RPG-LITE-SCOPE.md` for feature details
 
 ---
 

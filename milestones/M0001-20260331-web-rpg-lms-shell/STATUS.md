@@ -15,7 +15,7 @@ No code implementation exists yet. The design system (Indigo + Emerald dark them
 ## Success Criteria
 
 - All 7 pages render in the browser with correct dark theme, fonts, and RPG elements
-- Pages match the HTML mockups in `docs/mockups/*.html`
+- Pages match the HTML mockups in `docs/product-mockups/*.html`
 - Navigation works between all pages
 - Responsive at 375px, 768px, 1024px, 1440px
 - Noto Sans TC renders correctly for all Traditional Chinese placeholder text
@@ -76,9 +76,9 @@ No code implementation exists yet. The design system (Indigo + Emerald dark them
 ## Reference / Inspiration
 - `design-system/MASTER.md` — Global design system (colors, fonts, spacing, components)
 - `design-system/pages/*.md` — Page-specific overrides (7 files)
-- `docs/mockups/*.html` — Visual reference mockups (7 files)
-- `docs/planning/RPG-LITE-SCOPE.md` — RPG element specifications
-- `docs/planning/WEBSITE-BUILD-PLAN.md` — Overall build plan and site structure
+- `docs/product-mockups/*.html` — Visual reference mockups (7 files)
+- `docs/product-development/RPG-LITE-SCOPE.md` — RPG element specifications
+- `docs/webDev-architecture/WEBSITE-BUILD-PLAN.md` — Overall build plan and site structure
 
 ---
 
@@ -96,7 +96,7 @@ No code implementation exists yet. The design system (Indigo + Emerald dark them
 
 ## Exit Criteria
 
-- [ ] All 7 pages visually match the HTML mockups in `docs/mockups/`
+- [ ] All 7 pages visually match the HTML mockups in `docs/product-mockups/`
 - [ ] Navigation between all pages works
 - [ ] RPG elements (XP, progress bars, streak, badges, radar, HP bar) render with placeholder data
 - [ ] Responsive — no horizontal scroll, no content hidden behind navbar

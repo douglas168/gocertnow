@@ -32,6 +32,9 @@ Work top-to-bottom. Don't skip ahead. If something blocks you for >24h, raise it
 - [ ] Collect email + LINE ID in Stripe checkout custom fields
 - [ ] Manually provision each buyer in a spreadsheet until Week 4 (don't build the Supabase flow yet)
 
+### Archived content
+- Old reference: See [docs/_todo/build-in-public-calendar.md](./build-in-public-calendar.md) for daily content calendar
+
 ### Ship + verify
 - [ ] Run `pnpm build` and fix any errors before pushing
 - [ ] Merge to `main`, confirm Vercel production deploy is green at `levelcert.com`
@@ -55,14 +58,14 @@ Work top-to-bottom. Don't skip ahead. If something blocks you for >24h, raise it
 ## Week 2: Apr 17 – Apr 23 — Sell the first 5 founding seats
 
 ### Core ship
-- [ ] Post the LINE group pre-sell message from `docs/launch/line-group-presell.md`
+- [ ] Post the LINE group pre-sell message from `docs/_todo/line-group-presell.md`
 - [ ] Follow up 1:1 with anyone who reacts within 2 hours
 - [ ] For each paying pre-order: send a welcome LINE message, add them to a founding-cohort LINE group you create
 - [ ] Ask each buyer: *"What ALMOST stopped you from buying?"* Capture verbatim in `docs/customer-quotes.md`
 - [ ] **Target: 5 paying pre-orders**
 
 ### Competitor research (do in parallel, max 2 hours)
-- [ ] Fill in `docs/launch/competitor-research.md` for all 10 competitors
+- [ ] Fill in `docs/business-competitors/competitor-research.md` for all 10 competitors
 - [ ] Write a 5-bullet summary at the bottom: what each does better than you, what you do better than each
 
 ### Content engine prep

@@ -309,7 +309,7 @@ Dcard 長文是最高槓桿的冷啟動渠道。每篇應該：
 
 ## Metrics to track（每週日晚上）
 
-簡單的試算表在 `docs/launch/content-metrics.md`：
+簡單的試算表在 `docs/_todo/content-metrics.md`：
 
 | Week | Posts published | Total views | Best post | Best post views | Replies | DMs | Landing page clicks | New pre-orders attributed |
 |---|---|---|---|---|---|---|---|---|
