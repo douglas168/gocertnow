@@ -1,0 +1,919 @@
+- id: "L22102-Q01"
+  topic_code: "L22102"
+  item_code: "L22102-1"
+  difficulty: 1
+  question: "對於連續型隨機變數的機率密度函數（PDF, Probability Density Function），下列何者正確？"
+  options:
+    a: "PDF 在某一點的函數值是密度，不等於該點本身的機率"
+    b: "PDF 可直接表示 `P(X=x)`，且通常大於 0"
+    c: "PDF 只適用於離散型資料"
+    d: "PDF 與累積分配函數（CDF, Cumulative Distribution Function）完全相同"
+  correct: "a"
+  explanation:
+    why_correct: "PDF 描述的是機率密度；對連續型變數而言，真正的機率來自區間下的面積，單點機率 `P(X=x)` 為 0。"
+    why_not_a: "此選項正確，因為 PDF 的函數值代表密度高低，而不是單點機率本身。"
+    why_not_b: "這是最常見誤區，考生容易把曲線高度誤當成機率值。"
+    why_not_c: "離散型資料應用 PMF；PDF 是連續型分佈的表示方式。"
+    why_not_d: "CDF 是累積到某點以下的機率，PDF 是密度函數，兩者用途不同。"
+  keywords:
+    - "PDF"
+    - "continuous"
+    - "單點機率"
+  exam_trap: true
+
+- id: "L22102-Q02"
+  topic_code: "L22102"
+  item_code: "L22102-2"
+  difficulty: 1
+  question: "在常態分佈（Normal Distribution）中，z-score 的主要作用是什麼？"
+  options:
+    a: "直接求出樣本變異數"
+    b: "把觀測值轉成距離平均數多少個標準差的標準化量"
+    c: "把離散分佈轉成連續分佈"
+    d: "檢查資料是否一定服從常態分佈"
+  correct: "b"
+  explanation:
+    why_correct: "z-score 為 `(x-μ)/σ`，表示某值離平均數幾個標準差，便於比較不同尺度的資料。"
+    why_not_a: "變異數描述整體散布；z-score 是對單一觀測值做位置標準化。"
+    why_not_b: "此選項正確，符合 z-score 的定義。"
+    why_not_c: "標準化不會改變資料是離散或連續的本質。"
+    why_not_d: "z-score 可協助判讀相對位置，但不能單靠它證明資料必為常態。"
+  keywords:
+    - "z-score"
+    - "Normal Distribution"
+    - "標準化"
+  exam_trap: false
+
+- id: "L22102-Q03"
+  topic_code: "L22102"
+  item_code: "L22102-3"
+  difficulty: 1
+  question: "下列哪一組參數是二項分佈（Binomial Distribution）的標準參數表示？"
+  options:
+    a: "平均數 `μ` 與標準差 `σ`"
+    b: "下界 `a` 與上界 `b`"
+    c: "試驗次數 `n` 與成功機率 `p`"
+    d: "平均發生率 `λ`"
+  correct: "c"
+  explanation:
+    why_correct: "二項分佈描述固定 `n` 次獨立試驗中成功次數，且每次成功機率固定為 `p`。"
+    why_not_a: "這較常用於常態分佈的描述，不是 Binomial 的核心參數。"
+    why_not_b: "這是均勻分佈常見的區間記號。"
+    why_not_c: "此選項正確，`n` 與 `p` 正是二項分佈的標準參數。"
+    why_not_d: "`λ` 是 Poisson 分佈常用參數，不足以描述二項分佈。"
+  keywords:
+    - "Binomial"
+    - "n"
+    - "p"
+  exam_trap: false
+
+- id: "L22102-Q04"
+  topic_code: "L22102"
+  item_code: "L22102-4"
+  difficulty: 1
+  question: "下列哪一個情境最適合使用卜瓦松分佈（Poisson Distribution）建模？"
+  options:
+    a: "一批 20 題選擇題中答對的題數"
+    b: "0 到 100 分之間任一分數都等可能的模擬值"
+    c: "全校身高近似鐘形分佈的情況"
+    d: "客服中心每 10 分鐘接到的來電件數"
+  correct: "d"
+  explanation:
+    why_correct: "Poisson 適合描述固定時間或空間區間內的事件次數，且事件以固定平均率發生。"
+    why_not_a: "這是固定次數試驗中的成功次數，較符合二項分佈。"
+    why_not_b: "這描述的是區間內等可能，較符合均勻分佈。"
+    why_not_c: "鐘形對稱較像常態分佈，不是事件計數。"
+    why_not_d: "此選項正確，因為來電件數是固定時間內的計數型事件。"
+  keywords:
+    - "Poisson"
+    - "rate"
+    - "rare events"
+  exam_trap: false
+
+- id: "L22102-Q05"
+  topic_code: "L22102"
+  item_code: "L22102-5"
+  difficulty: 1
+  question: "若隨機變數服從均勻分佈（Uniform Distribution） `U(a,b)`，其平均數為何？"
+  options:
+    a: "`(a+b)/2`"
+    b: "`(b-a)/2`"
+    c: "`1/(b-a)`"
+    d: "`ab/2`"
+  correct: "a"
+  explanation:
+    why_correct: "均勻分佈在區間兩端對稱，平均數位於區間中央，因此為 `(a+b)/2`。"
+    why_not_a: "此選項正確，直接反映均勻分佈的中心位置。"
+    why_not_b: "這是半個區間長度，不是平均數。"
+    why_not_c: "這是 PDF 高度，不是平均數。"
+    why_not_d: "將端點相乘沒有統計上的平均位置意義。"
+  keywords:
+    - "Uniform"
+    - "mean"
+    - "U(a,b)"
+  exam_trap: false
+
+- id: "L22102-Q06"
+  topic_code: "L22102"
+  item_code: "L22102-6"
+  difficulty: 1
+  question: "中央極限定理（Central Limit Theorem, CLT）主要說明在樣本數夠大時，哪一個量的分佈會趨近常態分佈（Normal Distribution）？"
+  options:
+    a: "每一筆原始觀測值本身"
+    b: "樣本平均數（sample mean）的抽樣分佈"
+    c: "資料表欄位名稱的出現次數"
+    d: "每一個機率密度函數的函數值"
+  correct: "b"
+  explanation:
+    why_correct: "CLT 講的是樣本平均數的抽樣分佈，而不是單一觀測值本身。"
+    why_not_a: "這是最常見誤解；CLT 不保證原始資料會變成常態。"
+    why_not_b: "此選項正確，CLT 的核心對象就是 sample mean。"
+    why_not_c: "欄位名稱與機率分佈無關。"
+    why_not_d: "CLT 討論的是統計量的分佈，不是 PDF 的點值。"
+  keywords:
+    - "CLT"
+    - "sample mean"
+    - "抽樣分佈"
+  exam_trap: true
+
+- id: "L22102-Q07"
+  topic_code: "L22102"
+  item_code: "L22102-7"
+  difficulty: 1
+  question: "若資料科學家要用 `scipy.stats` 計算 `X~N(70,5^2)` 時 `P(X<=75)`，下列哪個函式呼叫正確？"
+  options:
+    a: "`norm.pdf(75, loc=70, scale=5)`"
+    b: "`norm.cdf(75, loc=70, scale=25)`"
+    c: "`norm.cdf(75, loc=70, scale=5)`"
+    d: "`binom.cdf(75, n=70, p=0.5)`"
+  correct: "c"
+  explanation:
+    why_correct: "`norm.cdf` 計算累積機率 `P(X<=x)`，且 `scale` 應傳入標準差 `σ=5`，不是變異數。"
+    why_not_a: "`pdf` 回傳密度，不是累積機率。看到 `P(X<=75)` 時應優先想到 `cdf`。"
+    why_not_b: "25 是變異數 `σ^2`，但 SciPy 的 `scale` 參數要的是標準差。"
+    why_not_c: "此選項正確，函式與參數都符合題意。"
+    why_not_d: "這題是常態分佈累積機率，不是二項分佈。"
+  keywords:
+    - "scipy.stats"
+    - "norm.cdf"
+    - "scale"
+  exam_trap: true
+
+- id: "L22102-Q08"
+  topic_code: "L22102"
+  item_code: "L22102-1"
+  difficulty: 1
+  question: "累積分配函數（CDF, Cumulative Distribution Function） `F(x)` 的定義為何？"
+  options:
+    a: "`P(X=x)`"
+    b: "某點的機率密度值"
+    c: "`P(X>x)`"
+    d: "`P(X<=x)`"
+  correct: "d"
+  explanation:
+    why_correct: "CDF 定義就是隨機變數小於或等於某值 `x` 的累積機率。"
+    why_not_a: "這是單點機率，較接近 PMF 的語意。"
+    why_not_b: "這是 PDF 的語意，不是累積機率。"
+    why_not_c: "這是右尾機率，方向相反，是考試常見混淆。"
+    why_not_d: "此選項正確，完全符合 CDF 的標準定義。"
+  keywords:
+    - "CDF"
+    - "P(X<=x)"
+    - "累積機率"
+  exam_trap: true
+
+- id: "L22102-Q09"
+  topic_code: "L22102"
+  item_code: "L22102-2"
+  difficulty: 2
+  question: "關於常態分佈（Normal Distribution）的 68-95-99.7 rule，下列敘述何者正確？"
+  options:
+    a: "約有 95% 的資料會落在平均數上下 2 個標準差內"
+    b: "約有 68% 的資料會落在平均數上下 3 個標準差內"
+    c: "約有 99.7% 的資料會落在平均數上下 1 個標準差內"
+    d: "只有在離散型資料才適用"
+  correct: "a"
+  explanation:
+    why_correct: "經驗法則（即 68-95-99.7 法則）指出，常態分佈約 68%、95%、99.7% 分別落在 1、2、3 個標準差內。"
+    why_not_a: "此選項正確，對應到經驗法則的 95% 部分。"
+    why_not_b: "3 個標準差應約對應 99.7%，不是 68%。"
+    why_not_c: "1 個標準差只約有 68%，不是 99.7%。"
+    why_not_d: "常態分佈是連續型分佈，與離散型無關。"
+  keywords:
+    - "68-95-99.7 rule"
+    - "Normal Distribution"
+    - "empirical rule"
+  exam_trap: false
+
+- id: "L22102-Q10"
+  topic_code: "L22102"
+  item_code: "L22102-3"
+  difficulty: 2
+  question: "關於二項分佈（Binomial Distribution），下列敘述何者正確？"
+  options:
+    a: "每次試驗的成功機率可以隨次數改變"
+    b: "適合描述固定次數獨立試驗中的成功次數"
+    c: "只能用來近似連續型測量值"
+    d: "其參數一定是平均數與變異數"
+  correct: "b"
+  explanation:
+    why_correct: "Binomial 的基本條件是固定試驗次數、每次成功或失敗、試驗獨立且成功機率固定。"
+    why_not_a: "若成功機率改變，就不符合標準二項分佈前提。"
+    why_not_b: "此選項正確，完整描述了 Binomial 的典型使用情境。"
+    why_not_c: "二項分佈是離散型分佈，用來計數成功次數。"
+    why_not_d: "二項分佈的標準參數仍是 `n` 與 `p`。"
+  keywords:
+    - "Binomial"
+    - "independent trials"
+    - "success count"
+  exam_trap: false
+
+- id: "L22102-Q11"
+  topic_code: "L22102"
+  item_code: "L22102-4"
+  difficulty: 2
+  question: "關於卜瓦松分佈（Poisson Distribution），下列敘述何者正確？"
+  options:
+    a: "最適合描述固定 10 次實驗中成功幾次"
+    b: "其變異數一定與平均數不同"
+    c: "常用於固定時間或空間區間內稀有事件的發生次數"
+    d: "只能用在常態近似成立時"
+  correct: "c"
+  explanation:
+    why_correct: "Poisson 常用於固定區間內事件次數建模，例如每分鐘錯誤數、每頁錯字數。"
+    why_not_a: "固定次數試驗中的成功次數較像二項分佈。"
+    why_not_b: "Poisson 的重要性質正是平均數與變異數都等於 `λ`。"
+    why_not_c: "此選項正確，完整描述其典型應用。"
+    why_not_d: "Poisson 有自己的分佈模型，不是依賴常態近似才存在。"
+  keywords:
+    - "Poisson"
+    - "rare events"
+    - "count data"
+  exam_trap: false
+
+- id: "L22102-Q12"
+  topic_code: "L22102"
+  item_code: "L22102-5"
+  difficulty: 2
+  question: "若 `X~U(2,8)`，則其機率密度函數（PDF）在區間內的值為何？"
+  options:
+    a: "`1/2`"
+    b: "`1/8`"
+    c: "`1/10`"
+    d: "`1/6`"
+  correct: "d"
+  explanation:
+    why_correct: "均勻分佈 `U(a,b)` 的 PDF 為 `1/(b-a)`，因此此題是 `1/(8-2)=1/6`。"
+    why_not_a: "考生常把下界 2 拿來直接代入，但 PDF 只看區間長度。"
+    why_not_b: "把上界 8 當分母是常見速算錯誤，忽略了要先做 `b-a`。"
+    why_not_c: "這不是任何正確公式的結果。"
+    why_not_d: "此選項正確，因為區間長度是 6。"
+  keywords:
+    - "Uniform"
+    - "PDF"
+    - "1/(b-a)"
+  exam_trap: true
+
+- id: "L22102-Q13"
+  topic_code: "L22102"
+  item_code: "L22102-6"
+  difficulty: 2
+  question: "關於中央極限定理（CLT），下列敘述何者正確？"
+  options:
+    a: "當樣本數夠大時，樣本平均數的抽樣分佈會趨近常態分佈"
+    b: "不論樣本數大小，原始資料都一定變成常態分佈"
+    c: "CLT 只適用於 Poisson 分佈"
+    d: "CLT 只討論單筆資料的 z-score"
+  correct: "a"
+  explanation:
+    why_correct: "CLT 的直觀重點是 sample mean 的分佈逐漸接近常態，而不是原始資料本身改變形狀。"
+    why_not_a: "此選項正確，這正是 CLT 最常被考的核心。"
+    why_not_b: "這是典型誤解；原始母體可以不是常態。"
+    why_not_c: "CLT 是一般性的抽樣結果，不限於 Poisson。"
+    why_not_d: "z-score 是標準化工具，不是 CLT 的主題。"
+  keywords:
+    - "CLT"
+    - "Normal approximation"
+    - "sample mean"
+  exam_trap: true
+
+- id: "L22102-Q14"
+  topic_code: "L22102"
+  item_code: "L22102-7"
+  difficulty: 2
+  question: "某同學要計算 `X~N(100,16)` 的累積機率，寫成 `norm.cdf(104, loc=100, scale=16)`。這段 `scipy.stats` 程式的主要錯誤是什麼？"
+  options:
+    a: "應改用 `binom.cdf`，因為 104 是整數"
+    b: "`scale` 應傳入標準差 4，而不是變異數 16"
+    c: "應改用 `norm.pdf` 才能算累積機率"
+    d: "常態分佈不能計算 CDF"
+  correct: "b"
+  explanation:
+    why_correct: "在 `scipy.stats.norm` 中，`scale` 代表標準差 `σ`，本題變異數為 16，所以標準差是 4。"
+    why_not_a: "值是整數不代表要用二項分佈；是否用常態要看分佈型態。"
+    why_not_b: "此選項正確，這正是 SciPy 初學者最常犯的參數錯誤。"
+    why_not_c: "`cdf` 才是累積機率，`pdf` 只是密度。"
+    why_not_d: "常態分佈當然可以計算 CDF。"
+  keywords:
+    - "scipy.stats"
+    - "norm.cdf"
+    - "variance vs std"
+  exam_trap: true
+
+- id: "L22102-Q15"
+  topic_code: "L22102"
+  item_code: "L22102-1"
+  difficulty: 2
+  question: "對於連續型隨機變數 `X`，下列哪一個敘述正確？"
+  options:
+    a: "`P(X=2)` 一定等於該點 PDF 值"
+    b: "`P(X=2)` 通常比 `P(X<2)` 大"
+    c: "`P(X=2)=0`，但 `P(1.9<=X<=2.1)` 可能大於 0"
+    d: "只有當 PDF 為 0 時，`P(X=2)` 才為 0"
+  correct: "c"
+  explanation:
+    why_correct: "連續型變數的單點機率為 0，但任一有寬度的區間仍可有正機率。"
+    why_not_a: "PDF 值是密度，不是單點機率。"
+    why_not_b: "單點機率不會大於區間機率，這在連續型情況尤其明顯。"
+    why_not_c: "此選項正確，精準區分了單點與區間機率。"
+    why_not_d: "即使 PDF 在該點大於 0，單點機率仍然是 0。"
+  keywords:
+    - "continuous"
+    - "PDF"
+    - "P(X=x)=0"
+  exam_trap: true
+
+- id: "L22102-Q16"
+  topic_code: "L22102"
+  item_code: "L22102-2"
+  difficulty: 2
+  question: "關於常態分佈（Normal Distribution）曲線形狀的敘述，下列何者正確？"
+  options:
+    a: "曲線一定向右偏"
+    b: "曲線一定向左偏"
+    c: "所有常態分佈的平均數都等於 0"
+    d: "以平均數為中心左右對稱"
+  correct: "d"
+  explanation:
+    why_correct: "常態分佈的鐘形曲線以平均數為中心對稱，平均數、中位數、眾數重合。"
+    why_not_a: "右偏分佈不是常態分佈的特徵。"
+    why_not_b: "左偏也不是常態分佈的特徵。"
+    why_not_c: "只有標準常態分佈的平均數是 0，一般常態分佈不一定。"
+    why_not_d: "此選項正確，這是常態分佈最基本的幾何特徵。"
+  keywords:
+    - "Normal Distribution"
+    - "symmetry"
+    - "bell curve"
+  exam_trap: false
+
+- id: "L22102-Q17"
+  topic_code: "L22102"
+  item_code: "L22102-3"
+  difficulty: 3
+  question: "台北某補習班每天固定寄出 12 封招生 EDM，已知每封被點擊的機率約為 0.2，且彼此可視為獨立。若要估計一天內剛好有 3 封被點擊的機率，最適合使用哪一種分佈？"
+  options:
+    a: "二項分佈（Binomial Distribution）"
+    b: "卜瓦松分佈（Poisson Distribution）"
+    c: "常態分佈（Normal Distribution）"
+    d: "均勻分佈（Uniform Distribution）"
+  correct: "a"
+  explanation:
+    why_correct: "題目符合固定次數 `n=12`、每次成功機率固定 `p=0.2`、彼此獨立，因此應用 Binomial。"
+    why_not_a: "此選項正確，因為這正是固定次數成功次數問題。"
+    why_not_b: "Poisson 常用於固定區間內事件次數，通常不強調固定試驗次數。"
+    why_not_c: "常態分佈不適合直接表示小整數成功次數。"
+    why_not_d: "均勻分佈與此種成功次數計數無關。"
+  keywords:
+    - "Binomial"
+    - "scenario"
+    - "成功次數"
+  exam_trap: false
+
+- id: "L22102-Q18"
+  topic_code: "L22102"
+  item_code: "L22102-4"
+  difficulty: 3
+  question: "新竹某機房統計每小時的硬碟告警件數，長期平均約為 2.5 件。若要估計下一小時剛好出現 4 件告警的機率，最適合使用哪一種模型？"
+  options:
+    a: "常態分佈（Normal Distribution）"
+    b: "卜瓦松分佈（Poisson Distribution）"
+    c: "均勻分佈（Uniform Distribution）"
+    d: "二項分佈（Binomial Distribution）"
+  correct: "b"
+  explanation:
+    why_correct: "固定時間區間內的事件次數，且已知平均發生率，正是 Poisson 的標準使用情境。"
+    why_not_a: "常態分佈較適合連續型或近似對稱的大樣本情境。"
+    why_not_b: "此選項正確，平均每小時 2.5 件可直接視為 `λ=2.5`。"
+    why_not_c: "均勻分佈表示區間內等可能，與事件次數無關。"
+    why_not_d: "題目沒有固定試驗次數與固定成功機率，不符合 Binomial 的設定。"
+  keywords:
+    - "Poisson"
+    - "lambda"
+    - "scenario"
+  exam_trap: false
+
+- id: "L22102-Q19"
+  topic_code: "L22102"
+  item_code: "L22102-7"
+  difficulty: 3
+  question: "閱讀下列程式碼後，判斷它在計算什麼：`binom.pmf(2, n=5, p=0.3)`"
+  options:
+    a: "常態分佈下，值小於等於 2 的累積機率"
+    b: "卜瓦松分佈下，剛好發生 2 次的機率"
+    c: "5 次獨立試驗、成功率 0.3 時，剛好成功 2 次的機率"
+    d: "在區間 [0,5] 上取到 2 的密度"
+  correct: "c"
+  explanation:
+    why_correct: "`binom.pmf(k,n,p)` 回傳 Binomial 在剛好 `k` 次成功時的機率。"
+    why_not_a: "這是 `cdf` 語意，而且題目使用的是二項分佈不是常態。"
+    why_not_b: "Poisson 會用 `poisson.pmf`，不是 `binom.pmf`。"
+    why_not_c: "此選項正確，完整說出函式與參數意義。"
+    why_not_d: "`pmf` 是離散型機率，不是連續型密度。"
+  keywords:
+    - "scipy.stats"
+    - "binom.pmf"
+    - "code reading"
+  exam_trap: false
+
+- id: "L22102-Q20"
+  topic_code: "L22102"
+  item_code: "L22102-5"
+  difficulty: 3
+  question: "某模擬系統假設到站時間 `X~U(2,8)`。若工程師要用 `scipy.stats` 計算 `x=5` 的機率密度值，哪個寫法正確？"
+  options:
+    a: "`uniform.pdf(5, a=2, b=8)`"
+    b: "`uniform.pmf(5, loc=2, scale=6)`"
+    c: "`uniform.cdf(5, loc=2, scale=8)`"
+    d: "`uniform.pdf(5, loc=2, scale=6)`"
+  correct: "d"
+  explanation:
+    why_correct: "SciPy 的 `uniform` 用 `loc=a`、`scale=b-a`，因此 `U(2,8)` 應寫成 `loc=2, scale=6`，且題目要的是 PDF。"
+    why_not_a: "SciPy `uniform` 不是直接用 `a`、`b` 命名參數。"
+    why_not_b: "Uniform 是連續型分佈，應用 `pdf` 而不是 `pmf`。"
+    why_not_c: "這同時把函式與 `scale` 都用錯了；`cdf` 不是密度，`scale` 也應是 6。"
+    why_not_d: "此選項正確，完全符合 SciPy 的參數格式。"
+  keywords:
+    - "scipy.stats"
+    - "uniform.pdf"
+    - "loc scale"
+  exam_trap: true
+
+- id: "L22102-Q21"
+  topic_code: "L22102"
+  item_code: "L22102-6"
+  difficulty: 3
+  question: "台中某零售商的單筆訂單金額分佈明顯右偏，但分析師每天抽 100 筆訂單計算平均金額，並想評估這個平均值的分佈。此時最合理的說法是什麼？"
+  options:
+    a: "根據中央極限定理，樣本平均數的分佈可望接近常態分佈"
+    b: "因為原始資料右偏，所以樣本平均數一定也完全右偏"
+    c: "只有原始資料本來是均勻分佈時，樣本平均數才可近似常態"
+    d: "CLT 只適用於樣本數小於 30"
+  correct: "a"
+  explanation:
+    why_correct: "即使母體右偏，只要樣本數夠大，樣本平均數的抽樣分佈通常仍可近似常態。"
+    why_not_a: "此選項正確，正是 CLT 的實務直覺。"
+    why_not_b: "CLT 討論的是平均數分佈，不是原始資料形狀直接複製。"
+    why_not_c: "CLT 不限於均勻分佈。"
+    why_not_d: "一般是樣本數愈大愈有利於近似常態，不是小於 30。"
+  keywords:
+    - "CLT"
+    - "sample mean"
+    - "right-skewed"
+  exam_trap: false
+
+- id: "L22102-Q22"
+  topic_code: "L22102"
+  item_code: "L22102-1"
+  difficulty: 3
+  question: "某連續型變數的累積分配函數滿足 `F(10)=0.82`、`F(6)=0.31`。則 `P(6<X<=10)` 應為何？"
+  options:
+    a: "0.82"
+    b: "0.51"
+    c: "0.31"
+    d: "1.13"
+  correct: "b"
+  explanation:
+    why_correct: "區間機率可由 CDF 相減得到：`P(6<X<=10)=F(10)-F(6)=0.82-0.31=0.51`。"
+    why_not_a: "這只是 `P(X<=10)`，忽略了下界 6。"
+    why_not_b: "此選項正確，區間機率的讀法就是 CDF 相減。"
+    why_not_c: "這只是 `P(X<=6)`。"
+    why_not_d: "機率不可能大於 1，且把兩個 CDF 值相加也是錯誤做法。"
+  keywords:
+    - "CDF"
+    - "interval probability"
+    - "P(a<X<=b)"
+  exam_trap: false
+
+- id: "L22102-Q23"
+  topic_code: "L22102"
+  item_code: "L22102-2"
+  difficulty: 3
+  question: "某班統計測驗分數近似常態分佈（Normal Distribution），平均 70 分、標準差 10 分。學生甲考 85 分，其 z-score 為何？"
+  options:
+    a: "0.5"
+    b: "1.0"
+    c: "1.5"
+    d: "2.5"
+  correct: "c"
+  explanation:
+    why_correct: "z-score = `(85-70)/10 = 1.5`。"
+    why_not_a: "這表示只高於平均 5 分，計算少除或少減都容易得到。"
+    why_not_b: "若誤把差距 15 看成 10，常會選到 1.0。"
+    why_not_c: "此選項正確，依公式直接計算即可。"
+    why_not_d: "這相當於高出 25 分，與題目不符。"
+  keywords:
+    - "z-score"
+    - "Normal Distribution"
+    - "calculation"
+  exam_trap: false
+
+- id: "L22102-Q24"
+  topic_code: "L22102"
+  item_code: "L22102-3"
+  difficulty: 3
+  question: "某 AI 線上課程共有 8 名學員參加小測，每人答對題目的機率獨立且皆為 0.6。若要計算剛好 5 人答對的機率，哪個表示式最適合？"
+  options:
+    a: "`poisson.pmf(5, mu=4.8)`"
+    b: "`norm.cdf(5, loc=4.8, scale=1.39)`"
+    c: "`8C5 * 0.6^8 * 0.4^5`"
+    d: "`8C5 * 0.6^5 * 0.4^3`"
+  correct: "d"
+  explanation:
+    why_correct: "Binomial 的 PMF 為 `C(n,k)p^k(1-p)^(n-k)`，本題應為 `8C5 * 0.6^5 * 0.4^3`。"
+    why_not_a: "雖然 `np=4.8`，但題目是固定 8 人、每人成功率 0.6 的典型 Binomial，不應直接改用 Poisson。"
+    why_not_b: "常態近似不是本題最直接且精確的表示式。"
+    why_not_c: "成功與失敗次方寫反了，是常見公式記憶錯誤。"
+    why_not_d: "此選項正確，完整符合二項分佈 PMF。"
+  keywords:
+    - "Binomial"
+    - "PMF"
+    - "combination"
+  exam_trap: true
+
+- id: "L22102-Q25"
+  topic_code: "L22102"
+  item_code: "L22102-4"
+  difficulty: 4
+  question: "某資安團隊想估計『一天內 20000 封郵件中，被偵測為惡意連結的封數』。已知單封郵件為惡意的機率約 0.0005，彼此近似獨立。若想用較簡潔的模型近似，最合理的選擇是什麼？"
+  options:
+    a: "用卜瓦松分佈（Poisson Distribution）近似二項分佈，並取 `λ=np`"
+    b: "只能用均勻分佈，因為郵件數很多"
+    c: "只能用常態分佈，因為 `n` 很大"
+    d: "不能建模，因為惡意郵件是離散事件"
+  correct: "a"
+  explanation:
+    why_correct: "當 `n` 大、`p` 小時，Binomial 可用 Poisson 近似，且 `λ=np=20000*0.0005=10`。"
+    why_not_a: "此選項正確，這正是 Binomial vs Poisson selection 的經典情境。"
+    why_not_b: "均勻分佈不描述事件次數。"
+    why_not_c: "常態近似有時可用，但題目強調稀有事件與簡潔近似，Poisson 更貼切。"
+    why_not_d: "離散事件當然可以建模，Poisson 與 Binomial 都是離散分佈。"
+  keywords:
+    - "Poisson approximation"
+    - "Binomial"
+    - "lambda=np"
+  exam_trap: false
+
+- id: "L22102-Q26"
+  topic_code: "L22102"
+  item_code: "L22102-1"
+  difficulty: 4
+  question: "下列哪一個比較最能正確區分 PMF、PDF 與 CDF？"
+  options:
+    a: "PMF 與 PDF 都可直接表示 `P(X=x)`，CDF 只在常態分佈使用"
+    b: "PMF 用於離散型單點機率；PDF 用於連續型密度；CDF 表示累積到某值以下的機率"
+    c: "PMF 是區間機率、PDF 是單點機率、CDF 是平均數"
+    d: "CDF 只適用於連續型資料，離散型沒有 CDF"
+  correct: "b"
+  explanation:
+    why_correct: "這個選項完整區分了三者的對象與語意，是本章最重要的觀念之一。"
+    why_not_a: "PDF 不能直接表示單點機率，且 CDF 離散型、連續型都可以定義。"
+    why_not_b: "此選項正確，概念與適用情境都完整無誤。"
+    why_not_c: "三者角色幾乎全部對調，是典型混淆。"
+    why_not_d: "離散型資料同樣可以有 CDF。"
+  keywords:
+    - "PMF"
+    - "PDF"
+    - "CDF"
+  exam_trap: true
+
+- id: "L22102-Q27"
+  topic_code: "L22102"
+  item_code: "L22102-2"
+  difficulty: 4
+  question: "某團隊考慮把二項分佈（Binomial Distribution）用常態分佈（Normal Distribution）近似。下列哪一項判斷最合理？"
+  options:
+    a: "只要 `n` 大於 10 就一定可以"
+    b: "只要 `p=0.5` 就一定可以"
+    c: "通常需同時考慮 `np` 與 `n(1-p)` 是否都足夠大"
+    d: "只要資料是離散型就不能用常態近似"
+  correct: "c"
+  explanation:
+    why_correct: "Binomial 近似常態時，常見實務條件是 `np` 與 `n(1-p)` 都要夠大。"
+    why_not_a: "只有看 `n` 不夠，若 `p` 很極端仍可能偏斜。"
+    why_not_b: "`p=0.5` 有助於對稱，但若 `n` 太小仍不適合。"
+    why_not_c: "此選項正確，這也是正式考題已出現過的判斷方向。"
+    why_not_d: "離散型分佈在條件適當時仍可做常態近似。"
+  keywords:
+    - "Normal approximation"
+    - "Binomial"
+    - "np"
+  exam_trap: false
+
+- id: "L22102-Q28"
+  topic_code: "L22102"
+  item_code: "L22102-7"
+  difficulty: 4
+  question: "工程師寫下 `poisson.pmf(3, n=20, p=0.1)` 想計算『20 次操作中剛好 3 次失敗』的機率。這段程式的關鍵問題是什麼？"
+  options:
+    a: "應改用 `norm.pdf`，因為 3 是數值點"
+    b: "應把 `pmf` 改成 `cdf`，因為是離散型資料"
+    c: "Poisson 分佈不能計算機率"
+    d: "把二項分佈的 `n, p` 參數誤套到 Poisson；此情境應優先考慮 `binom.pmf(3, 20, 0.1)`"
+  correct: "d"
+  explanation:
+    why_correct: "題目是固定 20 次試驗中的失敗次數，明顯是 Binomial；Poisson 也不接受 `n, p` 這組 shape parameters。"
+    why_not_a: "`pdf` 用於連續型，這裡是離散型次數問題。"
+    why_not_b: "題目要的是剛好 3 次，不是累積到 3 次以下。"
+    why_not_c: "Poisson 當然能算機率，只是這裡模型選錯。"
+    why_not_d: "此選項正確，同時指出了模型與參數兩層錯誤。"
+  keywords:
+    - "scipy.stats"
+    - "poisson.pmf"
+    - "binom.pmf"
+  exam_trap: true
+
+- id: "L22102-Q29"
+  topic_code: "L22102"
+  item_code: "L22102-6"
+  difficulty: 4
+  question: "關於中央極限定理（CLT）與常態分佈（Normal Distribution）的關係，下列哪一項分析最合理？"
+  options:
+    a: "CLT 支持以常態分佈近似樣本平均數的分佈，但不代表原始資料必為常態"
+    b: "只要用到平均數，就表示原始資料一定服從常態分佈"
+    c: "CLT 說明 PDF 一定會收斂成 PMF"
+    d: "CLT 只在均勻分佈母體下成立"
+  correct: "a"
+  explanation:
+    why_correct: "CLT 的重點是 sample mean 的抽樣分佈，而不是母體形狀本身。"
+    why_not_a: "此選項正確，區分了『母體』與『樣本平均數分佈』。"
+    why_not_b: "平均數可來自任何分佈，不會因此強迫母體常態。"
+    why_not_c: "PDF 與 PMF 是不同類型函數，CLT 不在討論它們互相轉換。"
+    why_not_d: "CLT 並不限於均勻分佈。"
+  keywords:
+    - "CLT"
+    - "Normal Distribution"
+    - "sampling distribution"
+  exam_trap: true
+
+- id: "L22102-Q30"
+  topic_code: "L22102"
+  item_code: "L22102-3"
+  difficulty: 4
+  question: "若某製程每件產品瑕疵率為 0.001，每批檢查 5000 件，且各件獨立。下列哪一項最能說明為何可考慮用卜瓦松分佈（Poisson Distribution）近似？"
+  options:
+    a: "因為這是連續型資料"
+    b: "因為 `n` 大、`p` 小，且可令 `λ=np=5`"
+    c: "因為 Poisson 的平均數一定比變異數大"
+    d: "因為檢查件數固定，所以不能用二項分佈"
+  correct: "b"
+  explanation:
+    why_correct: "這是 Binomial 近似 Poisson 的標準條件：大量試驗、極小成功率，且 `λ=np`。"
+    why_not_a: "瑕疵件數是離散型，不是連續型。"
+    why_not_b: "此選項正確，也精準點出近似的量化依據。"
+    why_not_c: "Poisson 的平均數與變異數相等，不是平均數較大。"
+    why_not_d: "固定件數本來就符合二項分佈，Poisson 只是近似工具。"
+  keywords:
+    - "Binomial"
+    - "Poisson approximation"
+    - "lambda=np"
+  exam_trap: false
+
+- id: "L22102-Q31"
+  topic_code: "L22102"
+  item_code: "L22102-4"
+  difficulty: 4
+  question: "閱讀程式碼 `poisson.cdf(2, mu=4)`，下列哪一項解讀最正確？"
+  options:
+    a: "計算平均數為 2 的 Poisson 分佈"
+    b: "計算剛好發生 2 次的機率"
+    c: "計算當平均發生率為 4 時，事件次數小於等於 2 的機率"
+    d: "計算事件次數大於 2 的機率"
+  correct: "c"
+  explanation:
+    why_correct: "`cdf` 的語意是 `P(X<=k)`，因此此程式是在算 `P(X<=2)`，其中 `mu=4`。"
+    why_not_a: "題目中的平均發生率是 4，不是 2。"
+    why_not_b: "剛好發生 2 次應使用 `poisson.pmf(2, mu=4)`。"
+    why_not_c: "此選項正確，完整讀出函式與參數語意。"
+    why_not_d: "右尾機率方向相反，若要算大於 2 通常需用 `1-cdf`。"
+  keywords:
+    - "poisson.cdf"
+    - "CDF"
+    - "code reading"
+  exam_trap: true
+
+- id: "L22102-Q32"
+  topic_code: "L22102"
+  item_code: "L22102-1"
+  difficulty: 4
+  question: "分析師在報告中寫道：『某連續型指標在 50 的 PDF 值為 0.08，因此 `P(X=50)=0.08`。』下列何者是最適當的評論？"
+  options:
+    a: "正確，因為 PDF 就是單點機率"
+    b: "正確，只要 CDF 也等於 0.08 即可"
+    c: "部分正確，但只限於離散型資料"
+    d: "錯誤，連續型分佈的單點機率為 0，PDF 值只能解讀為密度"
+  correct: "d"
+  explanation:
+    why_correct: "連續型分佈的單點機率為 0；PDF 數值只說明該點附近密度高低，不是單點機率。"
+    why_not_a: "這正是 PMF/PDF 混淆的核心錯誤。"
+    why_not_b: "CDF 代表累積機率，也與單點機率不同。"
+    why_not_c: "離散型的單點機率應由 PMF 表示，不是 PDF。"
+    why_not_d: "此選項正確，能完整指出報告中的概念錯置。"
+  keywords:
+    - "PDF"
+    - "continuous"
+    - "exam trap"
+  exam_trap: true
+
+- id: "L22102-Q33"
+  topic_code: "L22102"
+  item_code: "L22102-2"
+  difficulty: 5
+  question: "某企業要用員工測驗分數做異常偵測，資料近似常態分佈（Normal Distribution），平均 60、標準差 8。若主管要找出『高於平均 2 個標準差以上』的員工，下列哪一位應被標記？"
+  options:
+    a: "分數 77 的員工"
+    b: "分數 68 的員工"
+    c: "分數 72 的員工"
+    d: "分數 75 的員工"
+  correct: "a"
+  explanation:
+    why_correct: "高於平均 2 個標準差的門檻是 `60 + 2*8 = 76`，因此 77 應被標記。"
+    why_not_a: "此選項正確，因為它超過了 76 的門檻。"
+    why_not_b: "68 只比平均高 1 個標準差。"
+    why_not_c: "72 僅高於平均 1.5 個標準差。"
+    why_not_d: "75 接近門檻，但仍未達 2 個標準差，是考生常因心算粗估而誤選的選項。"
+  keywords:
+    - "Normal Distribution"
+    - "z-score"
+    - "outlier screening"
+  exam_trap: false
+
+- id: "L22102-Q34"
+  topic_code: "L22102"
+  item_code: "L22102-7"
+  difficulty: 5
+  question: "某資料分析師要在 Python 中計算 `X~N(50,3^2)` 的 `P(47<=X<=53)`。下列哪一個 `scipy.stats` 寫法最符合題意且參數正確？"
+  options:
+    a: "`norm.pdf(53, loc=50, scale=3) - norm.pdf(47, loc=50, scale=3)`"
+    b: "`norm.cdf(53, loc=50, scale=3) - norm.cdf(47, loc=50, scale=3)`"
+    c: "`norm.cdf(53, loc=50, scale=9) - norm.cdf(47, loc=50, scale=9)`"
+    d: "`poisson.cdf(53, mu=50) - poisson.cdf(47, mu=50)`"
+  correct: "b"
+  explanation:
+    why_correct: "區間機率要用 CDF 相減，且 `scale` 應是標準差 3，不是變異數 9。"
+    why_not_a: "PDF 差值不是區間機率，這是把密度與機率混淆。"
+    why_not_b: "此選項正確，函式、分佈、參數與區間讀法都正確。"
+    why_not_c: "把變異數 9 當成 `scale` 是常見 SciPy 參數錯誤。"
+    why_not_d: "題目明確是常態分佈，不是 Poisson。"
+  keywords:
+    - "scipy.stats"
+    - "norm.cdf"
+    - "interval probability"
+  exam_trap: true
+
+- id: "L22102-Q35"
+  topic_code: "L22102"
+  item_code: "L22102-3"
+  difficulty: 5
+  question: "某電商每分鐘平均有 0.2 位用戶完成結帳，一天中要監控『某分鐘內是否出現多筆結帳』的稀有事件。若團隊希望模型簡潔、可直接用平均率建參數，哪個選擇最合理？"
+  options:
+    a: "均勻分佈（Uniform Distribution），因為時間軸是連續的"
+    b: "常態分佈（Normal Distribution），因為可以近似任何分佈"
+    c: "卜瓦松分佈（Poisson Distribution），因為是在固定時間區間內計數且事件稀少"
+    d: "二項分佈（Binomial Distribution），但一定要先知道每天總分鐘數才可計算"
+  correct: "c"
+  explanation:
+    why_correct: "題目重點是固定時間區間內的稀有事件計數，且希望直接用平均率建模，Poisson 最合適。"
+    why_not_a: "時間是連續的，不代表事件次數服從均勻分佈。"
+    why_not_b: "常態分佈不是『任何分佈都可直接取代』，尤其這裡是低率計數問題。"
+    why_not_c: "此選項正確，也呼應 Poisson 的使用條件。"
+    why_not_d: "若改成二項分佈，需要明確固定試驗次數與成功機率；本題更自然是率驅動的事件計數。"
+  keywords:
+    - "Poisson"
+    - "model selection"
+    - "rate"
+  exam_trap: false
+
+- id: "L22102-Q36"
+  topic_code: "L22102"
+  item_code: "L22102-4"
+  difficulty: 5
+  question: "客服主管想計算『平均每小時 1.2 通未接來電時，下一小時剛好 0 通未接』的機率。若要求使用最直接的 `scipy.stats` 寫法，下列何者最佳？"
+  options:
+    a: "`norm.pdf(0, loc=1.2, scale=1.2)`"
+    b: "`binom.pmf(0, n=1.2, p=0.5)`"
+    c: "`poisson.cdf(0, mu=1.2)`"
+    d: "`poisson.pmf(0, mu=1.2)`"
+  correct: "d"
+  explanation:
+    why_correct: "剛好 0 次是單點機率，Poisson 應使用 `pmf`；`mu=1.2` 表示平均每小時 1.2 通。"
+    why_not_a: "常態分佈不是此題最直接模型，而且 `pdf` 也不是離散事件單點機率。"
+    why_not_b: "`n` 不能是 1.2，且此題沒有固定試驗次數設定。"
+    why_not_c: "`cdf(0)` 算的是 `P(X<=0)`，雖在非負整數情況下數值等於 `P(X=0)`，但題目要求最直接寫法，`pmf` 更精確。"
+    why_not_d: "此選項正確，模型與函式選擇都最恰當。"
+  keywords:
+    - "poisson.pmf"
+    - "scipy.stats"
+    - "exact probability"
+  exam_trap: false
+
+- id: "L22102-Q37"
+  topic_code: "L22102"
+  item_code: "L22102-5"
+  difficulty: 5
+  question: "某校要模擬學生在 10 到 20 分鐘之間隨機進入線上測驗平台，且假設這段區間內每個到達時刻都同樣可能。若要選最符合假設的模型，下列何者最佳？"
+  options:
+    a: "均勻分佈（Uniform Distribution） `U(10,20)`"
+    b: "常態分佈（Normal Distribution） `N(15,5^2)`"
+    c: "二項分佈（Binomial Distribution） `Binomial(10,0.5)`"
+    d: "卜瓦松分佈（Poisson Distribution） `Poisson(15)`"
+  correct: "a"
+  explanation:
+    why_correct: "題目明確指出區間內每個時刻都同樣可能，這正是均勻分佈的定義。"
+    why_not_a: "此選項正確，完整符合『區間內等可能』的條件。"
+    why_not_b: "常態分佈集中於中間值，兩端機率較低，不符合等可能。"
+    why_not_c: "二項分佈描述固定次數成功次數，不是到達時刻。"
+    why_not_d: "Poisson 描述事件次數，不是事件發生的連續時間位置。"
+  keywords:
+    - "Uniform"
+    - "equal likelihood"
+    - "model selection"
+  exam_trap: false
+
+- id: "L22102-Q38"
+  topic_code: "L22102"
+  item_code: "L22102-6"
+  difficulty: 5
+  question: "某研究員發現原始資料明顯不是常態分佈，但她每次隨機抽取 200 筆樣本並計算平均值，想用常態分佈近似這些平均值的分佈。下列判斷何者最合理？"
+  options:
+    a: "不可行，因為原始資料不是常態，所以平均值分佈絕不可能近似常態"
+    b: "可行，因為中央極限定理指出在樣本數夠大時，樣本平均數分佈常可近似常態"
+    c: "不可行，除非原始資料是均勻分佈"
+    d: "只有在單筆資料的 z-score 都小於 1 時才可行"
+  correct: "b"
+  explanation:
+    why_correct: "CLT 的重點正是在母體不一定常態時，樣本平均數仍可能在大樣本下近似常態。"
+    why_not_a: "這把母體分佈與 sample mean 分佈混為一談。"
+    why_not_b: "此選項正確，200 筆通常足以支撐 CLT 的直觀應用。"
+    why_not_c: "CLT 並不限於均勻分佈。"
+    why_not_d: "z-score 門檻不是 CLT 的成立條件。"
+  keywords:
+    - "CLT"
+    - "Normal approximation"
+    - "large sample"
+  exam_trap: false
+
+- id: "L22102-Q39"
+  topic_code: "L22102"
+  item_code: "L22102-1"
+  difficulty: 5
+  question: "主管要求分析師用一句話解釋：『某 KPI 連續型指標在 80 以下的機率』應該看哪一種函數。若要避免混淆 PMF、PDF、CDF，下列哪個回答最完整？"
+  options:
+    a: "看 PMF，因為 80 是一個特定數值"
+    b: "看 PDF，因為 PDF 就是所有機率"
+    c: "看 CDF，因為它直接表示 `P(X<=80)`；若是連續型，單點機率不能用 PDF 值直接代替"
+    d: "三者都可以，結果只差單位不同"
+  correct: "c"
+  explanation:
+    why_correct: "題目問的是『80 以下』，本質是累積機率，因此應看 CDF；同時也點出連續型單點機率陷阱。"
+    why_not_a: "PMF 適用於離散型單點機率，不適合這個連續型累積機率問題。"
+    why_not_b: "PDF 不是所有機率，更不能直接回答 `P(X<=80)`。"
+    why_not_c: "此選項正確，兼顧函數選擇與概念澄清。"
+    why_not_d: "三者意義不同，不能互換。"
+  keywords:
+    - "CDF"
+    - "PMF vs PDF"
+    - "continuous"
+  exam_trap: true
+
+- id: "L22102-Q40"
+  topic_code: "L22102"
+  item_code: "L22102-2"
+  difficulty: 5
+  question: "某教師想用 `scipy.stats` 驗證常態分佈（Normal Distribution） `N(100, 15^2)` 中，成績落在 85 到 115 分之間的比例是否約為 68%。若要寫出最合理的驗證方式，下列何者最佳？"
+  options:
+    a: "使用 `norm.pdf(115, loc=100, scale=15) - norm.pdf(85, loc=100, scale=15)`，因為 PDF 差值就是區間機率"
+    b: "使用 `norm.cdf(115, loc=100, scale=225) - norm.cdf(85, loc=100, scale=225)`，因為 `scale` 要傳變異數"
+    c: "使用 `poisson.cdf(115, mu=100) - poisson.cdf(85, mu=100)`，因為分數都是整數"
+    d: "使用 `norm.cdf(115, loc=100, scale=15) - norm.cdf(85, loc=100, scale=15)`，因為區間機率應由 CDF 相減且 `scale` 是標準差"
+  correct: "d"
+  explanation:
+    why_correct: "常態分佈的區間機率要用 CDF 相減，且 SciPy 的 `scale` 是標準差 15，不是變異數 225。"
+    why_not_a: "PDF 差值不是區間機率，這是最典型的密度與機率混淆。"
+    why_not_b: "即使函式選對，`scale` 傳變異數仍是錯誤。"
+    why_not_c: "分數是否為整數不決定要用 Poisson；題目明確給的是常態分佈。"
+    why_not_d: "此選項正確，函式、參數與觀念都完整無誤。"
+  keywords:
+    - "scipy.stats"
+    - "norm.cdf"
+    - "68-95-99.7 rule"
+  exam_trap: true
