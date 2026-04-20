@@ -1,0 +1,23 @@
+# Bloat-prone dirs — keep out of open-ended explores
+node_modules/
+web/node_modules/
+web/.next/
+web/out/
+web/.vercel/
+web/.turbo/
+
+# Generated / binary content
+social/assets/
+content/**/media/
+content/**/renders/
+**/*.mp4
+**/*.mov
+**/*.png
+**/*.jpg
+**/*.jpeg
+**/*.webp
+**/*.pdf
+
+# Supabase local state
+supabase/.branches/
+supabase/.temp/
