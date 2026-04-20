@@ -1,0 +1,38 @@
+flowchart TD
+    A([開始：我想比較什麼？]) --> B{資料類型？}
+
+    B -->|連續型數值\ne.g. 身高、分數、薪資| C{幾組？}
+    B -->|類別型\ne.g. 性別、通過/失敗| G
+
+    C -->|2 組| D{樣本關係？}
+    C -->|3 組以上| F[F-test / 單因子ANOVA\nscipy.stats.f_oneway]
+
+    D -->|獨立樣本\n兩群不同人| E1[獨立樣本 t-test\nscipy.stats.ttest_ind]
+    D -->|配對樣本\n同一群人前後測| E2[配對樣本 t-test\nscipy.stats.ttest_rel]
+    D -->|與已知常數比較| E3[單樣本 t-test\nscipy.stats.ttest_1samp]
+
+    G{目的？} -->|檢定兩類別變數是否獨立| H[卡方獨立性檢定\nscipy.stats.chi2_contingency]
+    G -->|觀察次數與期望次數的吻合度| I[卡方適合度檢定\nscipy.stats.chisquare]
+
+    E1 --> J([得到 t 統計量 + p-value])
+    E2 --> J
+    E3 --> J
+    F --> K([得到 F 統計量 + p-value])
+    H --> L([得到 χ² 統計量 + p-value])
+    I --> L
+
+    J --> M{p-value < α？}
+    K --> M
+    L --> M
+
+    M -->|是| N[🔴 拒絕 H₀\n差異顯著]
+    M -->|否| O[⚪ 無法拒絕 H₀\n差異不顯著]
+
+    style N fill:#ff6b6b,color:#fff
+    style O fill:#adb5bd,color:#fff
+    style F fill:#4dabf7,color:#fff
+    style E1 fill:#4dabf7,color:#fff
+    style E2 fill:#4dabf7,color:#fff
+    style E3 fill:#4dabf7,color:#fff
+    style H fill:#51cf66,color:#fff
+    style I fill:#51cf66,color:#fff

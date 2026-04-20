@@ -44,6 +44,9 @@ Tracks open items across all lessons that need resolution before publishing.
 - **Diagram rendering:** 5 diagrams (1 Mermaid `.mmd` + 4 ASCII `.md`) under `lessons/L22102-機率分佈與資料分佈模型/diagrams/` — render Mermaid to PNG via Gemini downstream (not blocking publish).
 - **Gemini cross-review skipped** (CLI returned empty output); Claude adversarial (0 issues) + Codex auditor (6 findings resolved) — re-run Gemini pass if desired before exam assembly.
 
+### L22103 — 假設檢定與統計推論
+- **Diagram rendering:** 1 Mermaid `.mmd` (`test-selection-flowchart.mmd`) under `lessons/L22103-假設檢定與統計推論/diagrams/` — render to PNG via Gemini downstream (not blocking publish).
+
 ---
 
 ## Lesson Progress
@@ -61,7 +64,7 @@ Tracks open items across all lessons that need resolution before publishing.
 | 9 | L21302 | AI技術系統集成與部署 | L21 | required | 1 | ✅ Done | 1 |
 | 10 | L22101 | 敘述性統計與資料摘要技術 | L22 | elective_a (資料分析組) | 1 | ✅ Done | 1 |
 | 11 | L22102 | 機率分佈與資料分佈模型 | L22 | elective_a (資料分析組) | 1 | ✅ Done | 2 |
-| 12 | L22103 | 假設檢定與統計推論 | L22 | elective_a (資料分析組) | 1 | Not started | — |
+| 12 | L22103 | 假設檢定與統計推論 | L22 | elective_a (資料分析組) | 1 | ✅ Done | 1 |
 | 13 | L22201 | 數據收集與清理 | L22 | elective_a (資料分析組) | 1 | Not started | — |
 | 14 | L22202 | 數據儲存與管理 | L22 | elective_a (資料分析組) | 1 | Not started | — |
 | 15 | L22203 | 數據處理技術與工具 | L22 | elective_a (資料分析組) | 1 | Not started | — |
@@ -89,9 +92,9 @@ Tracks open items across all lessons that need resolution before publishing.
 
 ## What's Next
 
-**Next lesson:** `/course-generate-lesson L22103` — 假設檢定與統計推論
+**Next lesson:** `/course-generate-lesson L22201` — 數據收集與清理
 
-**Remaining lessons:** 23 of 34 topics left (11 for 資料分析組 SKU; 18 for 機器學習組 SKU; all L21 items now complete)
+**Remaining lessons:** 22 of 34 topics left (10 for 資料分析組 SKU; 18 for 機器學習組 SKU; all L21 items now complete)
 
 ### Priority 1 — 資料分析組 sprint (founder 2026-05-23 exam)
 
@@ -110,7 +113,7 @@ Order from `syllabus/dependencies.md` §3. Build L21 (required) first, then L22.
 | ~~9~~ | ~~L21302~~ | ~~AI技術系統集成與部署~~ | ✅ Done (40-question pool, 5 diagrams) |
 | ~~10~~ | ~~L22101~~ | ~~敘述性統計與資料摘要技術~~ | ✅ Done (40-question pool, 4 diagrams) |
 | ~~11~~ | ~~L22102~~ | ~~機率分佈與資料分佈模型~~ | ✅ Done (40-question pool, 5 diagrams) |
-| 12 | L22103 | 假設檢定與統計推論 | Deep, includes code, keywords inferred |
+| ~~12~~ | ~~L22103~~ | ~~假設檢定與統計推論~~ | ✅ Done (40-question pool, 4 diagrams) |
 | 13 | L22201 | 數據收集與清理 | Medium, includes code |
 | 14 | L22202 | 數據儲存與管理 | Medium, includes code |
 | 15 | L22203 | 數據處理技術與工具 | Medium, includes code, keywords inferred |
@@ -160,3 +163,4 @@ Order from `syllabus/dependencies.md` §4 (L21 items already covered above).
 - **L21302** — AI技術系統集成與部署 (2026-04-20). 40-question pool (D1-5 = 8/8/8/8/8, a/b/c/d = 10/10/10/10, exam_trap throughout), ~562-line study guide, 5 Mermaid diagrams (MLOps pipeline closed-loop, four deployment strategies, two-layer monitoring + drift detection, cloud MLOps comparison SageMaker/Vertex/Azure, SLI→SLO→SLA nesting). Multi-model 3-reviewer pipeline resolved 4 critical + 3 important + 3 minor fixes: answer distribution rebalanced (a:6→10/b:13→10/c:13→10/d:8→10), MLflow None stage added to §3.1.2 + Q06, Q14 Vertex AI "managed endpoint" branding corrected, terminology normalized. **L21 科目一 fully complete — all 9 required topics done.**
 - **L22101** — 敘述性統計與資料摘要技術 (2026-04-20). 40-question pool (D1-5 = 8/8/8/8/8, 10 pseudocode questions, item dist A:6/B:9/C:8/D:11/E:6), 1,218-line study guide, 4 diagrams (boxplot anatomy, skewness comparison, data-cleaning flowchart, formula reference cheatsheet). 2-reviewer pipeline (Claude + Codex; Gemini 429 rate-limited) resolved 1 critical + 4 important + 3 minor fixes: Q36 redesigned (IQR fence ambiguity at exactly 68 → Q3 changed to 55, fence=65.5, 68 unambiguously outlier), Q01/Q35 why_not_b schema gaps filled, 離群值 canonicalized over 極端值 in 3 locations. **L22 資料分析組 sprint begun — 12 topics remaining.**
 - **L22102** — 機率分佈與資料分佈模型 (2026-04-20). 40-question pool (D1-5 = 8/8/8/8/8, ≥6 code-style questions), 633-line study guide, 5 diagrams (distribution-selector Mermaid flowchart, normal-68-95-997 ASCII bell curve, pmf-vs-pdf-vs-cdf ASCII, clt-illustration ASCII, four-distributions-comparison table). 2-reviewer pipeline (Claude adversarial: 0 issues; Codex auditor: 6 findings; Gemini: CLI empty/skipped) resolved 2 critical + 3 important + 1 minor fixes: "三圈全包" mnemonic corrected to ~99.7%, Q27 Binomial→Normal approximation removed (untaught concept). **L22 sprint: 11 topics remaining.**
+- **L22103** — 假設檢定與統計推論 (2026-04-20). 40-question pool (D1-5 = 8/8/8/8/8, ≥6 code/pseudocode questions), 631-line study guide, 4 diagrams (test-selection Mermaid flowchart, Type I/II error 2×2 grid, rejection-region bell curve + pseudocode trace, three-tests comparison table). 3-reviewer pipeline (Claude adversarial: 0 critical/1 minor; Gemini: 4 PASS; Codex auditor: 7 findings) resolved 0 critical + 5 important + 3 minor fixes: t-test English name unified (5 locations), two-tailed/two-sided standardized (4 locations), ttest_rel glossary added to study guide. **L22 sprint: 10 topics remaining.**

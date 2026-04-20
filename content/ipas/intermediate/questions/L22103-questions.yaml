@@ -1,0 +1,916 @@
+- id: "L22103-Q01"
+  topic_code: "L22103"
+  item_code: "L22103-1"
+  difficulty: 1
+  question: "在假設檢定（hypothesis testing）中，哪一個敘述最符合虛無假設（null hypothesis, H0）的角色？"
+  options:
+    a: "代表目前先被假定成立、等待資料檢驗的基準敘述"
+    b: "一定是研究者真正想證明為真的敘述"
+    c: "只要設定了 H0，就不需要設定對立假設（alternative hypothesis, H1）"
+    d: "H0 一旦被提出，就不能被拒絕"
+  correct: "a"
+  explanation:
+    why_correct: "H0 是檢定時的基準假設，研究者用樣本資料判斷是否有足夠證據拒絕它。"
+    why_not_a: "此選項正確，符合 H0 作為檢定起點與比較基準的角色。"
+    why_not_b: "考生常把 H0 誤認為研究者想證明的主張；實際上研究者通常更關注 H1。"
+    why_not_c: "假設檢定需要 H0 與 H1 成對出現，才能明確定義拒絕方向。"
+    why_not_d: "若資料提供足夠證據，H0 可以被拒絕。"
+  keywords:
+    - "H0"
+    - "null hypothesis"
+    - "假設檢定"
+  exam_trap: true
+
+- id: "L22103-Q02"
+  topic_code: "L22103"
+  item_code: "L22103-2"
+  difficulty: 1
+  question: "型一錯誤（Type I error, α）是指下列哪一種情況？"
+  options:
+    a: "H0 為真時，卻未拒絕 H0"
+    b: "H0 為真時，卻錯誤地拒絕 H0"
+    c: "H0 為假時，正確地拒絕 H0"
+    d: "H0 為假時，卻未蒐集任何資料"
+  correct: "b"
+  explanation:
+    why_correct: "型一錯誤是把原本真的 H0 錯誤拒絕。"
+    why_not_a: "這比較接近正確決策，不是型一錯誤。"
+    why_not_b: "此選項正確，正是 α 的定義。"
+    why_not_c: "H0 為假且成功拒絕，是正確判斷，不是錯誤。"
+    why_not_d: "是否蒐集資料不是 α 的定義。"
+  keywords:
+    - "Type I error"
+    - "alpha"
+  exam_trap: false
+
+- id: "L22103-Q03"
+  topic_code: "L22103"
+  item_code: "L22103-3"
+  difficulty: 1
+  question: "若檢定結果得到 `p-value = 0.03`，且顯著水準（significance level） `α = 0.05`，下列哪個結論正確？"
+  options:
+    a: "因為 `p-value` 小，所以 H0 一定為真"
+    b: "因為 `0.03 > 0.05`，所以不能拒絕 H0"
+    c: "因為 `p-value < α`，所以拒絕 H0"
+    d: "因為 `p-value < α`，所以接受 H1 為絕對真理"
+  correct: "c"
+  explanation:
+    why_correct: "`p-value < α` 表示在 H0 成立下觀察到這麼極端資料的機率很低，因此拒絕 H0。"
+    why_not_a: "`p-value` 小不代表 H0 為真，反而表示資料對 H0 不利。"
+    why_not_b: "這是方向判讀錯誤，0.03 明顯小於 0.05。"
+    why_not_c: "此選項正確，符合標準決策規則。"
+    why_not_d: "拒絕 H0 不等於證明 H1 絕對為真，這是常見過度解讀。"
+  keywords:
+    - "p-value"
+    - "alpha"
+    - "reject H0"
+  exam_trap: true
+
+- id: "L22103-Q04"
+  topic_code: "L22103"
+  item_code: "L22103-4"
+  difficulty: 1
+  question: "關於 95% 信賴區間（95% confidence interval），下列哪一項敘述最正確？"
+  options:
+    a: "表示這次樣本中有 95% 的觀測值都落在區間內"
+    b: "表示母體平均數有 95% 的機率每天都會改變"
+    c: "表示 H0 一定成立"
+    d: "表示用相同方法重複抽樣，長期而言約有 95% 的區間會涵蓋真實參數"
+  correct: "d"
+  explanation:
+    why_correct: "信賴區間的 95% 是長期覆蓋率概念，不是單次抽樣下參數隨機移動的機率陳述。"
+    why_not_a: "這把信賴區間誤當成資料覆蓋率，與參數估計概念不同。"
+    why_not_b: "母體參數通常視為固定未知，不是每天變動的隨機量。"
+    why_not_c: "信賴區間可用於輔助檢定，但本身不表示 H0 必然成立。"
+    why_not_d: "此選項正確，符合信賴區間的標準詮釋。"
+  keywords:
+    - "confidence interval"
+    - "95%"
+    - "統計推論"
+  exam_trap: true
+
+- id: "L22103-Q05"
+  topic_code: "L22103"
+  item_code: "L22103-5"
+  difficulty: 1
+  question: "若要比較某班學生實際平均分數是否不同於 70 分，最典型應使用哪一種檢定？"
+  options:
+    a: "單樣本 t 檢定（one-sample t-test）"
+    b: "卡方獨立性檢定（chi-square test of independence）"
+    c: "單因子變異數分析（one-way ANOVA）"
+    d: "配對樣本 t 檢定（paired t-test）"
+  correct: "a"
+  explanation:
+    why_correct: "當問題是單一樣本平均數是否等於某個假設值時，應使用 one-sample t-test。"
+    why_not_a: "此選項正確，符合單一樣本平均數對固定參考值的情境。"
+    why_not_b: "卡方獨立性檢定處理的是類別資料關聯，不是平均數。"
+    why_not_c: "ANOVA 用於三組以上平均數整體比較。"
+    why_not_d: "paired t-test 需要同一對象前後配對資料。"
+  keywords:
+    - "one-sample t-test"
+    - "平均數"
+    - "檢定選擇"
+  exam_trap: false
+
+- id: "L22103-Q06"
+  topic_code: "L22103"
+  item_code: "L22103-6"
+  difficulty: 1
+  question: "卡方獨立性檢定（chi-square test of independence）主要用來檢查什麼？"
+  options:
+    a: "兩組平均數是否相等"
+    b: "兩個類別變數之間是否具有關聯"
+    c: "單一平均數是否等於某個基準值"
+    d: "樣本平均數之差是否大於 0"
+  correct: "b"
+  explanation:
+    why_correct: "卡方獨立性檢定針對列聯表中的類別計數，評估兩個類別變數是否獨立。"
+    why_not_a: "平均數比較通常使用 t-test 或 ANOVA。"
+    why_not_b: "此選項正確，這正是 chi-square independence test 的用途。"
+    why_not_c: "這屬於單樣本平均數檢定。"
+    why_not_d: "這是數值型平均差異問題，不是類別關聯。"
+  keywords:
+    - "chi-square"
+    - "independence"
+    - "categorical"
+  exam_trap: false
+
+- id: "L22103-Q07"
+  topic_code: "L22103"
+  item_code: "L22103-9"
+  difficulty: 1
+  question: "在 Python 的 `scipy.stats` 中，若要比較兩組獨立樣本平均數，哪個函式最直接對應獨立樣本 t 檢定（independent two-sample t-test）？"
+  options:
+    a: "`scipy.stats.f_oneway()`"
+    b: "`scipy.stats.chi2_contingency()`"
+    c: "`scipy.stats.ttest_ind()`"
+    d: "`scipy.stats.ttest_rel()`"
+  correct: "c"
+  explanation:
+    why_correct: "`ttest_ind()` 對應兩組獨立樣本平均數比較，是 independent two-sample t-test 的標準函式。"
+    why_not_a: "`f_oneway()` 是 one-way ANOVA，不是兩組獨立樣本 t-test 的首選。"
+    why_not_b: "`chi2_contingency()` 用於列聯表的卡方獨立性檢定。"
+    why_not_c: "此選項正確，名稱中的 `ind` 即 independent。"
+    why_not_d: "`ttest_rel()` 用於配對樣本，不適合獨立兩組。"
+  keywords:
+    - "scipy.stats"
+    - "ttest_ind"
+    - "independent two-sample t-test"
+  exam_trap: false
+
+- id: "L22103-Q08"
+  topic_code: "L22103"
+  item_code: "L22103-7"
+  difficulty: 1
+  question: "若要同時比較三個以上群組的平均數是否存在整體差異，最常用的統計量是下列哪一項？"
+  options:
+    a: "z 值（z statistic）"
+    b: "t 值（t statistic）"
+    c: "卡方值（chi-square statistic）"
+    d: "F 值（F statistic）"
+  correct: "d"
+  explanation:
+    why_correct: "三組以上平均數的整體比較通常使用 one-way ANOVA，其核心檢定統計量為 F 值。"
+    why_not_a: "z 值不是此情境的典型統計量。"
+    why_not_b: "t 值通常對應一組或兩組平均數比較。"
+    why_not_c: "卡方值主要用於類別計數資料。"
+    why_not_d: "此選項正確，F statistic 是 ANOVA 的標準統計量。"
+  keywords:
+    - "F statistic"
+    - "ANOVA"
+    - "平均數比較"
+  exam_trap: false
+
+- id: "L22103-Q09"
+  topic_code: "L22103"
+  item_code: "L22103-1"
+  difficulty: 2
+  question: "關於虛無假設（H0）與對立假設（H1）的設定，下列何者正確？"
+  options:
+    a: "H1 一定要寫成等號形式，例如 `μ = 50`"
+    b: "H0 常包含等號，而 H1 表示差異、效果或方向性主張"
+    c: "H0 與 H1 可以同時都寫成 `μ > 50`"
+    d: "H1 只在 p-value 小於 0.01 時才需要設定"
+  correct: "b"
+  explanation:
+    why_correct: "實務上 H0 常寫成等於或無差異，H1 才表示不同、大於或小於等方向。"
+    why_not_a: "等號通常放在 H0，這是考生常見的符號陷阱。"
+    why_not_b: "此選項正確，符合標準檢定設定。"
+    why_not_c: "H0 與 H1 必須互斥，不可完全相同。"
+    why_not_d: "在檢定開始前就要先設定 H0 與 H1，不能看完 p-value 才補寫。"
+  keywords:
+    - "H0"
+    - "H1"
+    - "假設設定"
+  exam_trap: true
+
+- id: "L22103-Q10"
+  topic_code: "L22103"
+  item_code: "L22103-2"
+  difficulty: 2
+  question: "下列哪一項最能正確描述型二錯誤（Type II error, β）？"
+  options:
+    a: "H0 為假時，卻未拒絕 H0"
+    b: "H0 為真時，卻拒絕 H0"
+    c: "H0 為假時，正確拒絕 H0"
+    d: "只要 `α = 0.05`，β 一定等於 0.95"
+  correct: "a"
+  explanation:
+    why_correct: "型二錯誤是 H0 其實錯了，但檢定沒有抓到。"
+    why_not_a: "此選項正確，正是 β 的核心意義。"
+    why_not_b: "這是型一錯誤 α。"
+    why_not_c: "這是正確判斷，不是錯誤。"
+    why_not_d: "α 與 β 相關但不互補成 1，還受效果大小與樣本數影響。"
+  keywords:
+    - "Type II error"
+    - "beta"
+  exam_trap: true
+
+- id: "L22103-Q11"
+  topic_code: "L22103"
+  item_code: "L22103-3"
+  difficulty: 2
+  question: "關於 p-value 的意義，下列何者正確？"
+  options:
+    a: "它是 H0 為真的機率"
+    b: "它是資料一定支持 H1 的比例"
+    c: "它是樣本平均數等於母體平均數的機率"
+    d: "它是在 H0 為真時，觀察到目前或更極端結果的機率"
+  correct: "d"
+  explanation:
+    why_correct: "p-value 的條件前提是 H0 為真，衡量目前資料有多極端。"
+    why_not_a: "這是最常見誤解；p-value 不是 H0 為真的後驗機率。"
+    why_not_b: "p-value 不等於對 H1 的支持比例。"
+    why_not_c: "這不是 p-value 的定義。"
+    why_not_d: "此選項正確，符合教科書與官方學習指引用法。"
+  keywords:
+    - "p-value"
+    - "extreme result"
+    - "interpretation"
+  exam_trap: true
+
+- id: "L22103-Q12"
+  topic_code: "L22103"
+  item_code: "L22103-4"
+  difficulty: 2
+  question: "若單樣本平均數的 95% 信賴區間不包含假設值 `μ0`，在雙尾檢定（two-tailed test）且 `α = 0.05` 下，通常可推論什麼？"
+  options:
+    a: "一定發生型二錯誤"
+    b: "H0 一定為真"
+    c: "可拒絕 `H0: μ = μ0`"
+    d: "代表資料不需要任何檢定"
+  correct: "c"
+  explanation:
+    why_correct: "雙尾檢定中，95% CI 若不含假設值，通常對應 `p-value < 0.05`，因此拒絕 H0。"
+    why_not_a: "型二錯誤無法僅靠這項資訊直接判斷。"
+    why_not_b: "區間不包含假設值，反而代表 H0 缺乏支持。"
+    why_not_c: "此選項正確，CI 與雙尾檢定在此常具有一致結論。"
+    why_not_d: "CI 本身是統計推論工具，但不表示檢定可被忽略。"
+  keywords:
+    - "confidence interval"
+    - "two-tailed test"
+    - "reject H0"
+  exam_trap: false
+
+- id: "L22103-Q13"
+  topic_code: "L22103"
+  item_code: "L22103-5"
+  difficulty: 2
+  question: "比較同一批員工導入 AI 工具前後的平均工時差異，最適合使用哪一種檢定？"
+  options:
+    a: "獨立樣本 t 檢定（independent two-sample t-test）"
+    b: "配對樣本 t 檢定（paired t-test）"
+    c: "卡方獨立性檢定（chi-square test of independence）"
+    d: "one-way ANOVA"
+  correct: "b"
+  explanation:
+    why_correct: "同一批員工前後比較屬於配對資料，應以 paired t-test 檢查平均差異。"
+    why_not_a: "前後觀測來自同一人，並非獨立兩組。"
+    why_not_b: "此選項正確，因為資料具有一一對應的配對關係。"
+    why_not_c: "卡方檢定處理類別計數，不是連續型工時均值。"
+    why_not_d: "只有兩個條件且是配對設計，不需用 ANOVA。"
+  keywords:
+    - "paired t-test"
+    - "before-after"
+    - "配對資料"
+  exam_trap: false
+
+- id: "L22103-Q14"
+  topic_code: "L22103"
+  item_code: "L22103-6"
+  difficulty: 2
+  question: "關於 `scipy.stats.chi2_contingency()` 的輸入資料，下列何者正確？"
+  options:
+    a: "應輸入列聯表中的原始計數（observed counts）"
+    b: "應先把每格轉成百分比，否則函式無法計算"
+    c: "只能輸入兩欄且每欄必須是平均數"
+    d: "必須先手動輸入 expected frequencies 才能跑"
+  correct: "a"
+  explanation:
+    why_correct: "`chi2_contingency()` 的標準輸入是 observed counts，expected frequencies 會由函式依邊際和計算。"
+    why_not_a: "此選項正確，這也是實務上最容易考的 API 觀念。"
+    why_not_b: "把計數改成百分比會破壞卡方檢定所需的頻數資訊。"
+    why_not_c: "列聯表大小不只限兩欄，而且不是輸入平均數。"
+    why_not_d: "expected frequencies 通常不需手動輸入。"
+  keywords:
+    - "chi2_contingency"
+    - "observed counts"
+    - "列聯表"
+  exam_trap: true
+
+- id: "L22103-Q15"
+  topic_code: "L22103"
+  item_code: "L22103-8"
+  difficulty: 2
+  question: "閱讀下列 pseudocode，輸出結果為何？\n\n```python\nalpha = 0.05\np_value = 0.20\nif p_value <= alpha:\n    print(\"Reject H0\")\nelse:\n    print(\"Fail to reject H0\")\n```"
+  options:
+    a: "程式會報錯，因為 `alpha` 不能是 0.05"
+    b: "輸出 `Reject H0`"
+    c: "輸出 `H0 is true`"
+    d: "輸出 `Fail to reject H0`"
+  correct: "d"
+  explanation:
+    why_correct: "因為 `0.20 > 0.05`，條件不成立，會走到 `else` 分支。"
+    why_not_a: "`alpha = 0.05` 是常見而且有效的設定。"
+    why_not_b: "只有在 `p_value <= alpha` 時才會輸出這行。"
+    why_not_c: "程式沒有這個輸出，而且 failing to reject 不等於 H0 為真。"
+    why_not_d: "此選項正確，完全符合 pseudocode 邏輯。"
+  keywords:
+    - "pseudocode"
+    - "p-value"
+    - "Fail to reject H0"
+  exam_trap: true
+
+- id: "L22103-Q16"
+  topic_code: "L22103"
+  item_code: "L22103-9"
+  difficulty: 2
+  question: "若要使用 `scipy.stats.f_oneway()` 比較三個班級的平均成績，下列哪個理解正確？"
+  options:
+    a: "它主要檢定三組資料的類別比例是否獨立"
+    b: "它輸入的是列聯表計數，不是數值樣本"
+    c: "它對應單因子變異數分析（one-way ANOVA）"
+    d: "它只能在兩組樣本時使用"
+  correct: "c"
+  explanation:
+    why_correct: "`f_oneway()` 是 SciPy 中 one-way ANOVA 的對應函式，用來檢查三組以上平均數是否有整體差異。"
+    why_not_a: "類別比例獨立應考慮卡方檢定。"
+    why_not_b: "ANOVA 輸入的是各組數值樣本，不是列聯表頻數。"
+    why_not_c: "此選項正確，與官方主線的 F-test / ANOVA 對應一致。"
+    why_not_d: "它就是設計來處理三組以上平均數比較。"
+  keywords:
+    - "f_oneway"
+    - "one-way ANOVA"
+    - "F-test"
+  exam_trap: false
+
+- id: "L22103-Q17"
+  topic_code: "L22103"
+  item_code: "L22103-10"
+  difficulty: 3
+  question: "某補教機構想比較甲、乙兩種教學法對兩個不同班級學生平均分數的影響，兩班學生彼此獨立。最適合的檢定是什麼？"
+  options:
+    a: "獨立樣本 t 檢定（independent two-sample t-test）"
+    b: "配對樣本 t 檢定（paired t-test）"
+    c: "卡方獨立性檢定"
+    d: "單樣本 t 檢定"
+  correct: "a"
+  explanation:
+    why_correct: "兩個不同班級、彼此獨立，且比較的是平均數，因此應用 independent two-sample t-test。"
+    why_not_a: "此選項正確，完全符合兩組獨立平均數比較情境。"
+    why_not_b: "配對 t-test 需要同一對象前後或一一配對資料。"
+    why_not_c: "卡方檢定適用類別計數，不是分數平均數。"
+    why_not_d: "單樣本 t-test 是把一組平均數拿去跟固定值比。"
+  keywords:
+    - "independent two-sample t-test"
+    - "test selection"
+    - "平均數"
+  exam_trap: false
+
+- id: "L22103-Q18"
+  topic_code: "L22103"
+  item_code: "L22103-2"
+  difficulty: 3
+  question: "某公司把顯著水準從 `α = 0.05` 降到 `α = 0.01`，其他條件不變。下列何者最可能發生？"
+  options:
+    a: "型一錯誤風險上升"
+    b: "較不容易拒絕 H0，型一錯誤風險下降"
+    c: "檢定力（power）一定上升"
+    d: "p-value 會自動變小"
+  correct: "b"
+  explanation:
+    why_correct: "降低 α 代表決策門檻更嚴格，因此較不容易拒絕 H0，型一錯誤風險通常下降。"
+    why_not_a: "方向相反，α 變小不會讓型一錯誤變大。"
+    why_not_b: "此選項正確，也反映 α、β、power 之間的實務取捨。"
+    why_not_c: "在其他條件不變下，power 通常不會因此上升，反而可能下降。"
+    why_not_d: "p-value 由資料決定，不會因你改 α 就自動改變。"
+  keywords:
+    - "alpha"
+    - "Type I error"
+    - "power"
+  exam_trap: false
+
+- id: "L22103-Q19"
+  topic_code: "L22103"
+  item_code: "L22103-3"
+  difficulty: 3
+  question: "某校分析 AI 輔助教學後的成績變化，得到 `p-value = 0.07`，並事先設定 `α = 0.05`。下列結論何者最適當？"
+  options:
+    a: "應拒絕 H0，因為 0.07 已經很接近 0.05"
+    b: "H0 已被證明為真"
+    c: "目前證據不足，無法拒絕 H0"
+    d: "必須把 α 改成 0.07 才能做結論"
+  correct: "c"
+  explanation:
+    why_correct: "既然 `p-value > α`，標準結論就是 evidence is insufficient to reject H0。"
+    why_not_a: "接近不代表小於；門檻是事前設定，不能事後模糊處理。"
+    why_not_b: "無法拒絕 H0 不等於證明 H0 為真。"
+    why_not_c: "此選項正確，也是官方偏好的嚴謹說法。"
+    why_not_d: "不能看到結果後再修改 α 來配合結論。"
+  keywords:
+    - "p-value"
+    - "fail to reject"
+    - "decision rule"
+  exam_trap: true
+
+- id: "L22103-Q20"
+  topic_code: "L22103"
+  item_code: "L22103-4"
+  difficulty: 3
+  question: "研究者檢驗 `H0: μ = 50`，得到 95% 信賴區間為 `[52, 58]`。在雙尾檢定且 `α = 0.05` 下，最合理的判斷是什麼？"
+  options:
+    a: "因為 50 在區間外，所以一定發生型一錯誤"
+    b: "因為區間有上下界，所以不能做假設檢定"
+    c: "因為區間寬度不大，所以 H0 必為真"
+    d: "因為 50 不在區間內，所以可拒絕 H0"
+  correct: "d"
+  explanation:
+    why_correct: "雙尾檢定下，95% CI 不包含假設值時，通常與 `p-value < 0.05` 對應，可拒絕 H0。"
+    why_not_a: "拒絕 H0 不代表一定犯錯，只代表在既定 α 下做出此決策。"
+    why_not_b: "CI 與假設檢定本來就能互相對照。"
+    why_not_c: "區間寬度反映估計精度，不足以證明 H0。"
+    why_not_d: "此選項正確，符合 CI 與雙尾檢定的連動關係。"
+  keywords:
+    - "confidence interval"
+    - "hypothesis testing"
+    - "two-tailed"
+  exam_trap: false
+
+- id: "L22103-Q21"
+  topic_code: "L22103"
+  item_code: "L22103-6"
+  difficulty: 3
+  question: "某電商團隊想檢查「會員等級（一般/白金）」與「是否續約（是/否）」之間是否有關聯，資料是每格人數計數。應優先選擇哪種方法？"
+  options:
+    a: "卡方獨立性檢定（chi-square test of independence）"
+    b: "獨立樣本 t 檢定"
+    c: "paired t-test"
+    d: "單樣本 t 檢定"
+  correct: "a"
+  explanation:
+    why_correct: "這是兩個類別變數的關聯問題，且資料呈現為列聯表計數，因此用 chi-square independence test。"
+    why_not_a: "此選項正確，資料型態與研究問題都吻合。"
+    why_not_b: "t-test 用於平均數比較，不適合類別計數。"
+    why_not_c: "配對 t-test 需要數值型配對資料。"
+    why_not_d: "單樣本 t-test 也不處理類別關聯。"
+  keywords:
+    - "chi-square"
+    - "categorical data"
+    - "續約分析"
+  exam_trap: false
+
+- id: "L22103-Q22"
+  topic_code: "L22103"
+  item_code: "L22103-7"
+  difficulty: 3
+  question: "一家補習班想比較實體班、直播班、錄播班三種教學模式的平均模考成績是否有差異。若先做整體檢定，最適合的方法是什麼？"
+  options:
+    a: "做三次單樣本 t 檢定"
+    b: "做一次卡方獨立性檢定"
+    c: "做一次 paired t-test"
+    d: "做一次 one-way ANOVA"
+  correct: "d"
+  explanation:
+    why_correct: "三組以上平均數的整體差異檢定應先用 one-way ANOVA。"
+    why_not_a: "單樣本 t-test 比較的是一組對固定值，不適合三組互比。"
+    why_not_b: "卡方檢定不比較平均分數。"
+    why_not_c: "三組獨立模式不是配對設計。"
+    why_not_d: "此選項正確，符合 ANOVA 的典型使用情境。"
+  keywords:
+    - "one-way ANOVA"
+    - "three groups"
+    - "F-test"
+  exam_trap: false
+
+- id: "L22103-Q23"
+  topic_code: "L22103"
+  item_code: "L22103-8"
+  difficulty: 3
+  question: "閱讀下列程式片段，最終輸出為何？\n\n```python\nalpha = 0.01\np_value = 0.008\ndecision = \"Reject H0\" if p_value <= alpha else \"Fail to reject H0\"\nprint(decision)\n```"
+  options:
+    a: "輸出 `alpha error`"
+    b: "輸出 `Reject H0`"
+    c: "輸出 `Fail to reject H0`"
+    d: "輸出 `H1 is proven`"
+  correct: "b"
+  explanation:
+    why_correct: "因為 `0.008 <= 0.01`，條件為真，所以 `decision` 會是 `Reject H0`。"
+    why_not_a: "這段程式沒有語法或型別錯誤。"
+    why_not_b: "此選項正確，符合三元運算子的判斷結果。"
+    why_not_c: "只有在 `p_value > alpha` 時才會輸出這句。"
+    why_not_d: "Reject H0 不等於證明 H1。"
+  keywords:
+    - "pseudocode"
+    - "alpha"
+    - "Reject H0"
+  exam_trap: true
+
+- id: "L22103-Q24"
+  topic_code: "L22103"
+  item_code: "L22103-9"
+  difficulty: 3
+  question: "某資料分析師有一個 2x3 的列聯表 `observed`，想用 SciPy 做類別變數獨立性檢定。下列哪個函式呼叫最合適？"
+  options:
+    a: "`stats.ttest_ind(observed)`"
+    b: "`stats.f_oneway(observed)`"
+    c: "`stats.chi2_contingency(observed)`"
+    d: "`stats.ttest_rel(observed)`"
+  correct: "c"
+  explanation:
+    why_correct: "列聯表獨立性檢定應直接使用 `chi2_contingency(observed)`。"
+    why_not_a: "`ttest_ind` 比較的是兩組數值平均數。"
+    why_not_b: "`f_oneway` 用於 ANOVA，不是列聯表。"
+    why_not_c: "此選項正確，函式名稱與資料型態都吻合。"
+    why_not_d: "`ttest_rel` 用於配對數值樣本。"
+  keywords:
+    - "chi2_contingency"
+    - "SciPy"
+    - "contingency table"
+  exam_trap: false
+
+- id: "L22103-Q25"
+  topic_code: "L22103"
+  item_code: "L22103-5"
+  difficulty: 4
+  question: "下列哪一個情境最能區分獨立樣本 t 檢定（independent two-sample t-test）與配對樣本 t 檢定（paired t-test）的核心差異？"
+  options:
+    a: "兩者都只能處理類別資料，所以差別不大"
+    b: "只要樣本數一樣，就一定用 paired t-test"
+    c: "independent two-sample t-test 檢查比例，paired t-test 檢查平均數"
+    d: "是否為同一對象前後測或可一一配對，是選擇 paired t-test 的關鍵"
+  correct: "d"
+  explanation:
+    why_correct: "paired t-test 的核心在於觀測值成對；independent two-sample t-test 則假設兩組彼此獨立。"
+    why_not_a: "兩者都主要處理數值型平均數，不是類別資料。"
+    why_not_b: "樣本數相同不代表資料有配對關係。"
+    why_not_c: "兩者都在比較平均數，不是在比較比例。"
+    why_not_d: "此選項正確，直接點出選檢定時最重要的結構差異。"
+  keywords:
+    - "paired t-test"
+    - "independent two-sample t-test"
+    - "配對結構"
+  exam_trap: true
+
+- id: "L22103-Q26"
+  topic_code: "L22103"
+  item_code: "L22103-4"
+  difficulty: 4
+  question: "某題同時提供 `p-value = 0.04` 與 95% 信賴區間 `[1.2, 3.8]`，檢驗假設值為 0。這兩項資訊在雙尾檢定下的關係應如何理解？"
+  options:
+    a: "兩者互相矛盾，因為 p-value 小但區間有上下界"
+    b: "只要有 p-value，就不能再看信賴區間"
+    c: "兩者一致，因為區間不含 0 通常對應可拒絕 H0"
+    d: "兩者一致，因為區間中點一定等於 p-value"
+  correct: "c"
+  explanation:
+    why_correct: "在雙尾檢定且信賴區間對應 `α` 時，CI 不含假設值通常與 `p-value < α` 一致。"
+    why_not_a: "這不是矛盾，反而是常見的一致訊號。"
+    why_not_b: "CI 與 p-value 可互補解讀，不需二選一。"
+    why_not_c: "此選項正確，符合官方公告題常見的整合判讀。"
+    why_not_d: "區間中點是估計值附近，不是 p-value。"
+  keywords:
+    - "p-value"
+    - "confidence interval"
+    - "整合判讀"
+  exam_trap: false
+
+- id: "L22103-Q27"
+  topic_code: "L22103"
+  item_code: "L22103-6"
+  difficulty: 4
+  question: "在卡方獨立性檢定（chi-square test of independence）中，為何通常不建議直接用百分比表取代原始頻數表進行 `chi2_contingency()`？"
+  options:
+    a: "因為卡方統計量建立在計數（counts）與期望頻數的比較上"
+    b: "因為百分比只能拿來做 t-test"
+    c: "因為 `chi2_contingency()` 只接受浮點數"
+    d: "因為百分比會自動把顯著水準固定成 0.05"
+  correct: "a"
+  explanation:
+    why_correct: "卡方檢定的 expected frequencies 來自邊際總數，若直接改成百分比會失去樣本量與頻數結構資訊。"
+    why_not_a: "此選項正確，說明了卡方檢定的數學基礎。"
+    why_not_b: "百分比不是 t-test 的專屬資料型態。"
+    why_not_c: "函式接受的是 observed counts，不是限制浮點數。"
+    why_not_d: "顯著水準由研究者設定，與百分比無直接關係。"
+  keywords:
+    - "chi-square"
+    - "counts"
+    - "expected frequencies"
+  exam_trap: true
+
+- id: "L22103-Q28"
+  topic_code: "L22103"
+  item_code: "L22103-2"
+  difficulty: 4
+  question: "在其他條件相同下，若研究者想降低型二錯誤（β）並提升檢定力（power），下列哪個做法通常最合理？"
+  options:
+    a: "完全忽略顯著水準 α"
+    b: "增加樣本數（sample size）"
+    c: "把 H0 與 H1 對調書寫"
+    d: "只報告 p-value，不報告信賴區間"
+  correct: "b"
+  explanation:
+    why_correct: "增加樣本數通常能提高估計精度與檢定力，從而降低 β。"
+    why_not_a: "α 是檢定設計的重要參數，不能忽略。"
+    why_not_b: "此選項正確，也是實務上最常見的改善方式。"
+    why_not_c: "改寫符號不會改變資料資訊量或 power。"
+    why_not_d: "報告格式不會降低 β。"
+  keywords:
+    - "power"
+    - "beta"
+    - "sample size"
+  exam_trap: false
+
+- id: "L22103-Q29"
+  topic_code: "L22103"
+  item_code: "L22103-8"
+  difficulty: 4
+  question: "觀察下列程式碼：\n\n```python\nalpha = 0.05\np_value = 0.05\nif p_value < alpha:\n    result = \"Reject H0\"\nelse:\n    result = \"Fail to reject H0\"\n```\n若依照這段程式的實際邏輯，`result` 會是什麼？"
+  options:
+    a: "`Reject H0`，因為 `p_value` 等於 `alpha`"
+    b: "程式無法比較浮點數"
+    c: "`Fail to reject H0`，因為條件寫的是 `<` 而不是 `<=`"
+    d: "`H0 is true`"
+  correct: "c"
+  explanation:
+    why_correct: "這題考的是程式追蹤，不是統計慣例；由於條件是嚴格小於 `<`，`0.05 < 0.05` 為假。"
+    why_not_a: "若是 `<=` 才會進入 reject 分支；很多考生會忽略這個符號差異。"
+    why_not_b: "Python 可以比較浮點數。"
+    why_not_c: "此選項正確，完整抓到 pseudocode trace 的關鍵。"
+    why_not_d: "程式沒有這樣的輸出，而且 fail to reject 不等於 H0 為真。"
+  keywords:
+    - "pseudocode trace"
+    - "alpha"
+    - "comparison operator"
+  exam_trap: true
+
+- id: "L22103-Q30"
+  topic_code: "L22103"
+  item_code: "L22103-7"
+  difficulty: 4
+  question: "關於 t-test 與 one-way ANOVA 的關係，下列何者最恰當？"
+  options:
+    a: "ANOVA 只能用在類別資料，t-test 只能用在連續資料"
+    b: "t-test 與 ANOVA 都不能比較平均數"
+    c: "只要超過兩組，也應該逐一重複做 t-test 就好"
+    d: "兩者都用於平均數比較，但 ANOVA 更適合三組以上的整體檢定"
+  correct: "d"
+  explanation:
+    why_correct: "t-test 常用於一組或兩組平均數；ANOVA 則針對三組以上平均數做整體差異檢定。"
+    why_not_a: "ANOVA 不是用在類別資料本身，而是用類別分組來比較數值型平均數。"
+    why_not_b: "兩者正是平均數比較的核心工具。"
+    why_not_c: "逐一多次 t-test 會增加錯誤率，官方主線更偏向先用 ANOVA。"
+    why_not_d: "此選項正確，完整點出適用情境差異。"
+  keywords:
+    - "t-test"
+    - "ANOVA"
+    - "mean comparison"
+  exam_trap: false
+
+- id: "L22103-Q31"
+  topic_code: "L22103"
+  item_code: "L22103-9"
+  difficulty: 4
+  question: "某工程師要比較同一批模型樣本在模型更新前後的錯誤率分數差異，下列哪個 SciPy 函式最貼近題意？"
+  options:
+    a: "`scipy.stats.ttest_rel(before, after)`"
+    b: "`scipy.stats.ttest_ind(before, after)`"
+    c: "`scipy.stats.f_oneway(before, after)`"
+    d: "`scipy.stats.chi2_contingency(before, after)`"
+  correct: "a"
+  explanation:
+    why_correct: "更新前後是同一批樣本，具有配對結構，因此應使用 `ttest_rel()`。"
+    why_not_a: "此選項正確，`rel` 對應 related / paired samples。"
+    why_not_b: "若資料來自同一批樣本，就不應當作 independent。"
+    why_not_c: "`f_oneway` 用於三組以上平均數的整體檢定。"
+    why_not_d: "卡方檢定不處理這種數值型前後差異。"
+  keywords:
+    - "ttest_rel"
+    - "paired samples"
+    - "SciPy"
+  exam_trap: false
+
+- id: "L22103-Q32"
+  topic_code: "L22103"
+  item_code: "L22103-10"
+  difficulty: 4
+  question: "某校務研究中心想驗證「不同科系（資工/商管/設計）」學生對 AI 課程的平均滿意度分數是否不同；滿意度分數為數值型。下列何者最適合？"
+  options:
+    a: "卡方獨立性檢定"
+    b: "one-way ANOVA"
+    c: "單樣本 t 檢定"
+    d: "paired t-test"
+  correct: "b"
+  explanation:
+    why_correct: "科系是三組以上的分類，自變數為組別，因變數是數值型滿意度分數，因此用 one-way ANOVA。"
+    why_not_a: "若分析的是類別次數關聯才用卡方。"
+    why_not_b: "此選項正確，這正是三組以上平均數整體比較。"
+    why_not_c: "單樣本 t-test 只比較一組對固定基準值。"
+    why_not_d: "不同科系學生不是配對關係。"
+  keywords:
+    - "test selection"
+    - "one-way ANOVA"
+    - "滿意度分析"
+  exam_trap: false
+
+- id: "L22103-Q33"
+  topic_code: "L22103"
+  item_code: "L22103-1"
+  difficulty: 5
+  question: "某團隊宣稱新 AI 教學平台能提升平均成績，因此設定 `H0: 新平台成績較高`、`H1: 新平台成績沒有較高`。就假設設定的嚴謹性而言，最主要的問題是什麼？"
+  options:
+    a: "只要是 AI 題材，就不應使用假設檢定"
+    b: "H0 與 H1 都不能提到平均數"
+    c: "只要有提升主張，就一定要用卡方檢定"
+    d: "把研究者想主張的效果寫進 H0，容易顛倒基準與拒絕邏輯"
+  correct: "d"
+  explanation:
+    why_correct: "標準做法通常讓 H0 承擔無差異或基準狀態，H1 才表示提升效果；否則決策邏輯容易混亂。"
+    why_not_a: "AI 情境當然可以使用假設檢定。"
+    why_not_b: "平均數是本題合理的參數焦點。"
+    why_not_c: "是否用卡方取決於資料型態，不是看題材。"
+    why_not_d: "此選項正確，點出 H0/H1 framing 的核心風險。"
+  keywords:
+    - "H0/H1 framing"
+    - "research claim"
+    - "decision logic"
+  exam_trap: true
+
+- id: "L22103-Q34"
+  topic_code: "L22103"
+  item_code: "L22103-3"
+  difficulty: 5
+  question: "某主管看到報告寫著 `p-value = 0.02`，便下結論：「這表示 H0 只有 2% 的機率為真，而且效果一定很大。」下列評估何者最恰當？"
+  options:
+    a: "完全正確，p-value 本來就是 H0 為真的機率"
+    b: "前半句錯、後半句對；p-value 不代表 H0 機率，但一定代表效果大"
+    c: "兩句都不恰當；p-value 不等於 H0 為真的機率，也不直接代表效果大小"
+    d: "只有在 α = 0.01 時這句話才正確"
+  correct: "c"
+  explanation:
+    why_correct: "p-value 只衡量資料在 H0 下的極端程度，既不是 H0 的機率，也不能單獨代表效果大小或實務重要性。"
+    why_not_a: "這是統計課最常見的誤解之一。"
+    why_not_b: "顯著不等於效果大，還要看估計值與區間。"
+    why_not_c: "此選項正確，完整指出兩個錯誤解讀。"
+    why_not_d: "錯誤不在 α 的值，而在 p-value 被誤解。"
+  keywords:
+    - "p-value interpretation"
+    - "effect size misconception"
+    - "exam trap"
+  exam_trap: true
+
+- id: "L22103-Q35"
+  topic_code: "L22103"
+  item_code: "L22103-4"
+  difficulty: 5
+  question: "某正式題同時給出 `p-value = 0.08`、`α = 0.05` 與 95% 信賴區間 `[-1.5, 0.4]`。下列哪個綜合判斷最合理？"
+  options:
+    a: "應拒絕 H0，因為信賴區間有負值"
+    b: "目前證據不足以拒絕 H0，且信賴區間包含假設值 0 與此結論一致"
+    c: "應接受 H0 為真，因為 p-value 大於 α"
+    d: "p-value 與信賴區間互相衝突，表示資料一定有錯"
+  correct: "b"
+  explanation:
+    why_correct: "`p-value = 0.08 > 0.05` 表示無法拒絕 H0，而 95% CI 包含 0 也與該結論一致。"
+    why_not_a: "重點不是區間有負值，而是是否包含假設值。"
+    why_not_b: "此選項正確，完整整合了 p-value 與 CI 的一致訊號。"
+    why_not_c: "較嚴謹說法應是 fail to reject H0，不是接受 H0 為真。"
+    why_not_d: "這兩項資訊並不衝突。"
+  keywords:
+    - "confidence interval"
+    - "p-value"
+    - "fail to reject H0"
+  exam_trap: true
+
+- id: "L22103-Q36"
+  topic_code: "L22103"
+  item_code: "L22103-10"
+  difficulty: 5
+  question: "某資料團隊有三個城市的客服等待時間資料，想先回答「三城市平均等待時間是否存在整體差異？」此時最恰當的第一步是什麼？"
+  options:
+    a: "先做 one-way ANOVA 檢查整體平均數是否不同"
+    b: "直接把三城市兩兩做多次獨立樣本 t 檢定，忽略整體檢定"
+    c: "先做卡方獨立性檢定，因為城市是類別變數"
+    d: "先做單樣本 t 檢定，把三城市合併成一組"
+  correct: "a"
+  explanation:
+    why_correct: "問題焦點是三組以上平均數的整體差異，因此 first step 應是 one-way ANOVA。"
+    why_not_a: "此選項正確，也符合官方樣題偏好的檢定選擇思路。"
+    why_not_b: "直接多次 t-test 會增加錯誤率，且忽略整體檢定架構。"
+    why_not_c: "城市是分組變數，但應變數是等待時間這個數值型平均數。"
+    why_not_d: "合併三城市會失去組別比較意義。"
+  keywords:
+    - "ANOVA"
+    - "test selection"
+    - "three groups"
+  exam_trap: false
+
+- id: "L22103-Q37"
+  topic_code: "L22103"
+  item_code: "L22103-9"
+  difficulty: 5
+  question: "下列哪段 SciPy 程式最符合「比較兩組獨立樣本平均數，且不假設變異數相等」的需求？"
+  options:
+    a: "`stats.ttest_rel(group_a, group_b)`"
+    b: "`stats.chi2_contingency([group_a, group_b])`"
+    c: "`stats.ttest_ind(group_a, group_b, equal_var=False)`"
+    d: "`stats.f_oneway(group_a, group_b, equal_var=False)`"
+  correct: "c"
+  explanation:
+    why_correct: "`ttest_ind(..., equal_var=False)` 對應不假設變異數相等的獨立樣本 t 檢定，適用兩組獨立樣本。"
+    why_not_a: "`ttest_rel` 是配對樣本，不符合獨立兩組。"
+    why_not_b: "卡方檢定不是拿來比較數值型平均數。"
+    why_not_c: "此選項正確，也反映 SciPy 文件中的重要參數 `equal_var=False`。"
+    why_not_d: "`f_oneway` 不是這個情境最直接的函式，且沒有這種標準參數用法。"
+  keywords:
+    - "ttest_ind"
+    - "equal_var=False"
+  exam_trap: false
+
+- id: "L22103-Q38"
+  topic_code: "L22103"
+  item_code: "L22103-8"
+  difficulty: 5
+  question: "閱讀下列 decision logic：\n\n```python\nif p_value <= alpha:\n    conclusion = \"Reject H0\"\nelse:\n    conclusion = \"Accept H0\"\n```\n若要讓結論文字更符合官方與統計上較嚴謹的用語，最適合如何修改？"
+  options:
+    a: "把 `Reject H0` 改成 `H0 is false forever`"
+    b: "把 `alpha` 改成 `beta` 即可"
+    c: "把 `Accept H0` 改成 `Need more GPU`"
+    d: "把 `Accept H0` 改成 `Fail to reject H0`"
+  correct: "d"
+  explanation:
+    why_correct: "在 `p-value > α` 時，較嚴謹的表述是無法拒絕 H0，而不是接受 H0。"
+    why_not_a: "Reject H0 也不代表永久證明 H0 為假。"
+    why_not_b: "β 與此結論用語問題無關。"
+    why_not_c: "這與統計結論無關。"
+    why_not_d: "此選項正確，符合官方學習指引偏好的措辭。"
+  keywords:
+    - "Fail to reject H0"
+    - "pseudocode"
+    - "official wording"
+  exam_trap: true
+
+- id: "L22103-Q39"
+  topic_code: "L22103"
+  item_code: "L22103-6"
+  difficulty: 5
+  question: "某分析師想檢驗「推薦演算法版本（A/B）」與「是否點擊（有/無）」是否相關，卻打算把每組點擊率當成平均數去做 t-test。從檢定選擇角度看，哪個評估最恰當？"
+  options:
+    a: "完全正確，因為任何兩組比較都用 t-test"
+    b: "較合適的是卡方獨立性檢定，因為兩變數皆為類別型"
+    c: "較合適的是 one-way ANOVA，因為有兩個欄位"
+    d: "較合適的是單樣本 t 檢定，因為點擊率只有一個比例"
+  correct: "b"
+  explanation:
+    why_correct: "版本與點擊結果都是類別變數，重點是關聯性而非平均數，因此應優先考慮 chi-square independence test。"
+    why_not_a: "不是所有兩組比較都用 t-test，資料型態是關鍵。"
+    why_not_b: "此選項正確，直接抓到 categorical vs numerical 的分界。"
+    why_not_c: "ANOVA 比較的是數值型平均數，不是類別關聯。"
+    why_not_d: "單樣本 t-test 不處理這種列聯表關聯問題。"
+  keywords:
+    - "chi-square"
+    - "test selection"
+    - "categorical variables"
+  exam_trap: true
+
+- id: "L22103-Q40"
+  topic_code: "L22103"
+  item_code: "L22103-2"
+  difficulty: 5
+  question: "某醫療 AI 團隊在早期篩檢模型評估中，認為漏掉真正異常個案的代價很高。若只從假設檢定錯誤型態的觀點思考，團隊最可能特別關注哪一項？"
+  options:
+    a: "型二錯誤（Type II error, β），因為未偵測到真實效果或差異的代價高"
+    b: "型一錯誤（Type I error, α），因為它永遠比 β 更重要"
+    c: "只要看 p-value，不需要考慮 α 與 β"
+    d: "只要信賴區間夠窄，就不會有任何錯誤"
+  correct: "a"
+  explanation:
+    why_correct: "若漏判成本高，團隊通常會更關注型二錯誤 β 與檢定力。"
+    why_not_a: "此選項正確，符合高漏失成本情境下的風險考量。"
+    why_not_b: "哪種錯誤更重要取決於情境，不能一概而論。"
+    why_not_c: "p-value 不是唯一決策元素，錯誤成本與 α/β 取捨也很重要。"
+    why_not_d: "區間窄只代表估計較精確，不代表完全沒有錯誤。"
+  keywords:
+    - "Type II error"
+    - "beta"
+    - "power"
+  exam_trap: false
