@@ -1,0 +1,899 @@
+- id: "L21301-Q01"
+  topic_code: "L21301"
+  item_code: "DATA_COLLECTION"
+  difficulty: 1
+  question: "在數據收集（Data Collection）階段，若企業希望降低後續分析偏差，最優先應確認哪一項？"
+  options:
+    a: "資料來源是否與業務目標與母體一致"
+    b: "資料表欄位名稱是否全部使用英文"
+    c: "是否先選定最複雜的模型"
+    d: "是否先把所有欄位做標準化（Standardization）"
+  correct: "a"
+  explanation:
+    why_correct: "資料若一開始就不代表實際目標母體，再精細的清洗與建模都難以補救，因此來源與蒐集對象是否符合業務問題是首要確認點。"
+    why_not_a: "正確答案。"
+    why_not_c: "先選複雜模型是常見誤區。模型能力無法彌補樣本代表性不足，反而可能掩蓋資料問題。"
+    why_not_d: "標準化屬於後續預處理工作，而且只有部分模型特別依賴尺度處理，不是收集階段的優先事項。"
+  keywords:
+    - "數據收集"
+    - "data-collection"
+    - "代表性"
+  exam_trap: false
+
+- id: "L21301-Q02"
+  topic_code: "L21301"
+  item_code: "MISSING_VALUE"
+  difficulty: 1
+  question: "缺失值處理（Missing Value Handling）中，「插補（Imputation）」的主要概念是什麼？"
+  options:
+    a: "把整個資料集直接刪除後重收"
+    b: "以合理方式補上缺漏值，保留更多資料"
+    c: "只保留有缺值的欄位"
+    d: "把缺失值全部視為異常值（Outlier）"
+  correct: "b"
+  explanation:
+    why_correct: "插補是用平均數、中位數、眾數或其他合理方法填補缺漏值，目的在降低資料流失並維持分析可用性。"
+    why_not_a: "全部重收資料成本極高，也不是缺失值處理的定義。考生常把資料品質問題誤認為一定要從頭蒐集。"
+    why_not_c: "只保留有缺值欄位沒有處理問題本身，反而會讓資訊更少。"
+    why_not_d: "缺失值與異常值是不同概念。缺失值是未觀測到，異常值是觀測到但偏離常態。"
+  keywords:
+    - "缺失值"
+    - "imputation"
+    - "資料清洗"
+  exam_trap: false
+
+- id: "L21301-Q03"
+  topic_code: "L21301"
+  item_code: "OUTLIER_HANDLING"
+  difficulty: 1
+  question: "下列何者最符合異常值（Outlier）的定義？"
+  options:
+    a: "所有文字型欄位"
+    b: "所有空白或 null 值"
+    c: "與大多數觀測值差異顯著的資料點"
+    d: "經過標準化（Standardization）後的數值"
+  correct: "c"
+  explanation:
+    why_correct: "異常值是相對於整體資料分布顯著偏離的觀測值，可能來自錯誤、罕見事件或真實極端情況。"
+    why_not_a: "資料型態是文字不代表它是異常值，這是把欄位型態與數值分布概念混淆。"
+    why_not_b: "空值屬於缺失值，不是異常值。這是考場常見混淆。"
+    why_not_d: "標準化只是轉換尺度，不會讓資料自然成為異常值。"
+  keywords:
+    - "異常值"
+    - "outlier"
+    - "資料分布"
+  exam_trap: true
+
+- id: "L21301-Q04"
+  topic_code: "L21301"
+  item_code: "FEATURE_SCALING"
+  difficulty: 1
+  question: "當特徵縮放（Feature Scaling）題目提到「標準化（Standardization）」時，通常是在做什麼？"
+  options:
+    a: "把所有欄位改成 0 或 1"
+    b: "只保留最大值與最小值"
+    c: "把類別欄位轉成編碼"
+    d: "讓特徵落在可比較的尺度，常以平均數與標準差為基準"
+  correct: "d"
+  explanation:
+    why_correct: "標準化的核心是把不同量綱的特徵轉為可比較尺度，常見做法會參考平均數與標準差。"
+    why_not_a: "0/1 通常與二元化或 one-hot encoding 有關，不是標準化的定義。"
+    why_not_b: "只看極值比較像正規化（Normalization）中的區間壓縮概念，也不是完整描述。"
+    why_not_c: "類別編碼屬於 categorical encoding，不是 feature scaling。"
+  keywords:
+    - "特徵縮放"
+    - "standardization"
+    - "尺度敏感"
+  exam_trap: true
+
+- id: "L21301-Q05"
+  topic_code: "L21301"
+  item_code: "CATEGORICAL_ENCODING"
+  difficulty: 1
+  question: "類別特徵編碼（Categorical Encoding）中，one-hot encoding 最適合用來表達什麼？"
+  options:
+    a: "無大小順序的離散類別"
+    b: "只適用連續數值"
+    c: "時間序列的季節性"
+    d: "缺失值插補結果"
+  correct: "a"
+  explanation:
+    why_correct: "one-hot encoding 會為每個類別建立獨立欄位，特別適合無自然順序的名目型類別。"
+    why_not_a: "正確答案。"
+    why_not_c: "季節性可以被編碼，但題目問的是 one-hot 最典型適用情境，不是時間序列本身。"
+    why_not_d: "插補是填補缺值，不是類別編碼方法。"
+  keywords:
+    - "類別編碼"
+    - "one-hot-encoding"
+    - "名目型資料"
+  exam_trap: false
+
+- id: "L21301-Q06"
+  topic_code: "L21301"
+  item_code: "DATA_SPLIT_LEAKAGE"
+  difficulty: 1
+  question: "在資料切分（Data Split）中，測試集（Test Set）的主要用途是什麼？"
+  options:
+    a: "用來反覆調整模型超參數"
+    b: "用來做最終泛化能力（Generalization）驗證"
+    c: "用來補齊缺失值"
+    d: "用來決定要不要收集資料"
+  correct: "b"
+  explanation:
+    why_correct: "測試集應保留到最後，用於評估模型對未見資料的泛化能力，避免調參造成評估偏樂觀。"
+    why_not_a: "這是典型考點。反覆用測試集調參會造成 data leakage 與高估表現。"
+    why_not_c: "缺失值處理應在資料準備流程中完成，且要避免把測試集資訊帶回訓練。"
+    why_not_d: "資料收集決策來自業務需求與資料盤點，不是測試集的角色。"
+  keywords:
+    - "test-set"
+    - "generalization"
+    - "data-leakage"
+  exam_trap: true
+
+- id: "L21301-Q07"
+  topic_code: "L21301"
+  item_code: "CLASS_IMBALANCE"
+  difficulty: 1
+  question: "類別不平衡（Class Imbalance）是指什麼情況？"
+  options:
+    a: "所有欄位都做過標準化"
+    b: "資料集只有數值欄位"
+    c: "不同類別的樣本數差異很大"
+    d: "訓練集、驗證集、測試集大小完全相同"
+  correct: "c"
+  explanation:
+    why_correct: "類別不平衡表示某些類別樣本遠多於其他類別，可能使模型偏向多數類別。"
+    why_not_a: "標準化與類別比例無關。"
+    why_not_b: "欄位型態與類別分布是不同概念。"
+    why_not_d: "資料切分比例與類別不平衡沒有直接對應。"
+  keywords:
+    - "類別不平衡"
+    - "class-imbalance"
+    - "樣本比例"
+  exam_trap: false
+
+- id: "L21301-Q08"
+  topic_code: "L21301"
+  item_code: "FEATURE_ENGINEERING"
+  difficulty: 1
+  question: "特徵工程（Feature Engineering）的主要目的為何？"
+  options:
+    a: "讓所有模型都變成黑箱（Black Box）"
+    b: "只增加欄位數量，不考慮品質"
+    c: "完全取代模型選擇"
+    d: "把原始資料轉成更有助於模型學習的表徵"
+  correct: "d"
+  explanation:
+    why_correct: "特徵工程的重點是提升資料對任務的表達力，讓模型更容易學到有效模式。"
+    why_not_a: "特徵工程不等於讓模型更難解釋，很多情況反而能提升可解釋性。"
+    why_not_b: "只堆疊欄位是常見誤區，無關特徵過多可能增加雜訊。"
+    why_not_c: "模型選擇與特徵工程互補，並非彼此取代。"
+  keywords:
+    - "特徵工程"
+    - "feature-engineering"
+    - "資料表徵"
+  exam_trap: false
+
+- id: "L21301-Q09"
+  topic_code: "L21301"
+  item_code: "MODEL_TRADEOFFS"
+  difficulty: 2
+  question: "關於模型選擇權衡（Model Selection Tradeoff），下列敘述何者正確？"
+  options:
+    a: "可解釋性高的模型一定比複雜模型準確"
+    b: "模型表現只由演算法決定，與資料品質無關"
+    c: "可解釋性、表現、成本常需同時權衡"
+    d: "只要資料量大，就不需要考慮模型特性"
+  correct: "c"
+  explanation:
+    why_correct: "實務上必須在可解釋性、預測表現、部署成本、資料量需求之間做取捨，沒有單一模型在所有條件下都最好。"
+    why_not_a: "可解釋性高不代表一定最準，這是把單一評估面向絕對化。"
+    why_not_b: "資料品質、標註品質與前處理都會深刻影響模型表現。"
+    why_not_d: "即使資料量大，仍需考慮可解釋性、延遲、尺度敏感度與維運成本。"
+  keywords:
+    - "模型選擇"
+    - "tradeoff"
+    - "可解釋性"
+  exam_trap: false
+
+- id: "L21301-Q10"
+  topic_code: "L21301"
+  item_code: "MODEL_COMPARISON"
+  difficulty: 2
+  question: "關於決策樹（Decision Tree）與隨機森林（Random Forest）的比較，下列何者正確？"
+  options:
+    a: "決策樹通常比隨機森林更穩健且較不易過擬合"
+    b: "隨機森林通常比單一決策樹更穩健，但可解釋性較低"
+    c: "兩者都完全不受資料品質影響"
+    d: "兩者都必須先做 one-hot encoding 才能使用"
+  correct: "b"
+  explanation:
+    why_correct: "隨機森林透過多棵樹集成，通常能降低單一樹的高變異問題，但整體結構較不直觀。"
+    why_not_a: "單一決策樹容易過擬合，是教材中常見比較點。"
+    why_not_b: "正確答案。"
+    why_not_c: "再穩健的模型也會受缺值、標註錯誤與偏差資料影響。"
+    why_not_d: "樹模型不一定必須做 one-hot encoding；是否需要仍取決於資料表示方式與工具環境。"
+  keywords:
+    - "decision-tree"
+    - "random-forest"
+    - "模型比較"
+  exam_trap: true
+
+- id: "L21301-Q11"
+  topic_code: "L21301"
+  item_code: "DATA_COLLECTION"
+  difficulty: 2
+  question: "若公司蒐集顧客回饋數據（Customer Feedback Data）只來自高價會員，對整體市場預測可能造成什麼問題？"
+  options:
+    a: "資料會自動完成標準化（Standardization）"
+    b: "模型一定比較容易訓練"
+    c: "樣本代表性不足，可能產生抽樣偏差（Sampling Bias）"
+    d: "可直接避免類別不平衡（Class Imbalance）"
+  correct: "c"
+  explanation:
+    why_correct: "若資料只來自特定族群，模型學到的是偏向該族群的模式，無法代表整體市場。"
+    why_not_a: "抽樣來源與數值尺度處理無關。"
+    why_not_b: "資料量集中於單一族群不代表訓練更有效，反而可能犧牲泛化能力。"
+    why_not_d: "抽樣偏差不會自然解決類別不平衡，兩者是不同資料問題。"
+  keywords:
+    - "sampling-bias"
+    - "數據收集"
+    - "代表性"
+  exam_trap: false
+
+- id: "L21301-Q12"
+  topic_code: "L21301"
+  item_code: "MISSING_VALUE"
+  difficulty: 2
+  question: "下列何者最能正確描述刪除缺失資料列（Deletion）與插補（Imputation）的差異？"
+  options:
+    a: "刪除一定比插補更準確"
+    b: "插補一定不會引入偏差"
+    c: "只要有缺值，就必須刪除整欄"
+    d: "刪除會減少資料量；插補則是在保留資料量與引入假設之間取捨"
+  correct: "d"
+  explanation:
+    why_correct: "刪除法較直接，但可能損失大量資訊；插補保留資料量，但會加入對資料分布的假設，因此需要權衡。"
+    why_not_a: "刪除是否較好取決於缺失比例與缺失機制，不是固定答案。"
+    why_not_b: "插補仍可能帶來偏差，尤其缺失機制不隨機時。"
+    why_not_c: "整欄刪除是極端作法，除非該欄重要性低且缺失嚴重，否則不一定合理。"
+  keywords:
+    - "deletion"
+    - "imputation"
+    - "缺失值"
+  exam_trap: true
+
+- id: "L21301-Q13"
+  topic_code: "L21301"
+  item_code: "FEATURE_SCALING"
+  difficulty: 2
+  question: "關於特徵縮放（Feature Scaling），下列敘述何者正確？"
+  options:
+    a: "k-NN 與 SVM 通常比樹模型更受特徵尺度影響"
+    b: "決策樹一定必須做標準化（Standardization）才可訓練"
+    c: "做了縮放後就不需要資料切分"
+    d: "縮放只能用在影像資料，不能用在表格資料"
+  correct: "a"
+  explanation:
+    why_correct: "k-NN 與 SVM 依賴距離或邊界尺度，特徵量綱差異大時影響較明顯；樹模型通常相對不敏感。"
+    why_not_a: "正確答案。"
+    why_not_c: "縮放無法取代資料切分，這是把預處理與評估設計混為一談。"
+    why_not_d: "表格資料正是縮放題最常見的出題情境。"
+  keywords:
+    - "feature-scaling"
+    - "svm"
+    - "k-nn"
+  exam_trap: true
+
+- id: "L21301-Q14"
+  topic_code: "L21301"
+  item_code: "CATEGORICAL_ENCODING"
+  difficulty: 2
+  question: "關於目標編碼（Target Encoding），下列哪一項敘述最合理？"
+  options:
+    a: "它只適用於影像辨識"
+    b: "它在高基數（High Cardinality）類別下可能比 one-hot encoding 更精簡，但要小心 target leakage"
+    c: "它與 label encoding 完全相同"
+    d: "它不會受到資料切分順序影響"
+  correct: "b"
+  explanation:
+    why_correct: "target encoding 常用於高基數類別以避免欄位爆炸，但若在切分前就利用目標值編碼，容易洩漏答案資訊。"
+    why_not_a: "這是表格資料常見技術，不是影像專用。"
+    why_not_b: "正確答案。"
+    why_not_c: "label encoding 只是指定代號，target encoding 則用目標統計資訊。"
+    why_not_d: "切分順序非常關鍵，正是此方法的風險來源。"
+  keywords:
+    - "target-encoding"
+    - "high-cardinality"
+    - "data-leakage"
+  exam_trap: true
+
+- id: "L21301-Q15"
+  topic_code: "L21301"
+  item_code: "DATA_SPLIT_LEAKAGE"
+  difficulty: 2
+  question: "關於交叉驗證（Cross-Validation）的用途，下列何者正確？"
+  options:
+    a: "用來永久取代測試集（Test Set）"
+    b: "用來把所有資料都變成訓練資料，不需驗證"
+    c: "用來更公平地估計模型在不同資料切分下的表現"
+    d: "用來把類別不平衡（Class Imbalance）自動消除"
+  correct: "c"
+  explanation:
+    why_correct: "交叉驗證透過多次切分與評估，能減少單一次切分造成的偶然性，更公平比較模型泛化能力。"
+    why_not_a: "交叉驗證常用於模型選擇，但最終仍應保留獨立測試集做最後驗證。"
+    why_not_b: "交叉驗證本質上仍包含訓練與驗證角色，只是輪流切分。"
+    why_not_d: "交叉驗證不會自動修正類別比例問題。"
+  keywords:
+    - "cross-validation"
+    - "資料切分"
+    - "模型比較"
+  exam_trap: true
+
+- id: "L21301-Q16"
+  topic_code: "L21301"
+  item_code: "CLASS_IMBALANCE"
+  difficulty: 2
+  question: "在高度類別不平衡（Class Imbalance）的二元分類中，只看準確率（Accuracy）最大的風險是什麼？"
+  options:
+    a: "可能掩蓋模型對少數類別的低辨識能力"
+    b: "會讓資料自動產生異常值（Outlier）"
+    c: "會讓訓練集與測試集大小不同"
+    d: "會導致所有模型都無法訓練"
+  correct: "a"
+  explanation:
+    why_correct: "若多數類別占比極高，只要一直猜多數類別就可能得到高 accuracy，但對真正重要的少數類別沒有辨識力。"
+    why_not_a: "正確答案。"
+    why_not_c: "評估指標不會改變資料切分大小。"
+    why_not_d: "模型仍可訓練，只是評估方式若不當，會誤判效果。"
+  keywords:
+    - "accuracy"
+    - "class-imbalance"
+    - "evaluation-metric"
+  exam_trap: true
+
+- id: "L21301-Q17"
+  topic_code: "L21301"
+  item_code: "OUTLIER_HANDLING"
+  difficulty: 3
+  question: "某保險公司在理賠金額資料中發現少數極高數值。業務主管說這些可能是重大事故，而不是輸入錯誤。此時對異常值（Outlier）最合理的處理原則是什麼？"
+  options:
+    a: "先確認異常值是否具有業務意義，再決定保留、轉換或另行處理"
+    b: "只要偏離平均數就全部刪除"
+    c: "把所有高額理賠都改成平均值"
+    d: "直接改用神經網路（Neural Network）就不用處理"
+  correct: "a"
+  explanation:
+    why_correct: "異常值不一定是錯誤資料，可能代表重要事件。應先判斷其業務含義，再選擇保留、截尾或轉換。"
+    why_not_a: "正確答案。"
+    why_not_c: "全部改平均值會抹除真實重大事故訊號，是常見但危險的過度清洗。"
+    why_not_d: "換模型不能替代資料理解，且高額事件是否保留是業務與資料判斷問題。"
+  keywords:
+    - "outlier-handling"
+    - "業務情境"
+    - "資料清洗"
+  exam_trap: true
+
+- id: "L21301-Q18"
+  topic_code: "L21301"
+  item_code: "FEATURE_SCALING"
+  difficulty: 3
+  question: "某團隊建立客戶分群模型，欄位包含年收入（數十萬）與網站停留秒數（數十秒）。若考慮 k-NN（k-Nearest Neighbors），最適合的前處理是什麼？"
+  options:
+    a: "忽略尺度差異，因為 k-NN 會自動調整"
+    b: "先做特徵縮放（Feature Scaling），避免大數值欄位主導距離"
+    c: "只刪除停留秒數欄位"
+    d: "先把資料全部 one-hot encoding"
+  correct: "b"
+  explanation:
+    why_correct: "k-NN 依賴距離計算，不同尺度會讓大數值欄位主導鄰近關係，因此應先縮放。"
+    why_not_a: "這是經典誤區。k-NN 對尺度非常敏感，不能假設會自動修正。"
+    why_not_b: "正確答案。"
+    why_not_c: "刪除欄位會失去資訊，除非該欄無用；這不是核心問題。"
+    why_not_d: "one-hot encoding 是處理類別欄位，不是解決數值尺度差異。"
+  keywords:
+    - "k-nn"
+    - "feature-scaling"
+    - "距離模型"
+  exam_trap: true
+
+- id: "L21301-Q19"
+  topic_code: "L21301"
+  item_code: "CATEGORICAL_ENCODING"
+  difficulty: 3
+  question: "一家電商要用商品 ID 與品牌代碼建立轉單預測模型，其中商品 ID 的種類非常多。若直接對商品 ID 做 one-hot encoding，最可能的問題是什麼？"
+  options:
+    a: "模型一定變得更可解釋"
+    b: "會自動避免 data leakage"
+    c: "可能造成維度爆炸（Dimensionality Explosion），增加資料稀疏性"
+    d: "可以直接取代資料切分（Data Split）"
+  correct: "c"
+  explanation:
+    why_correct: "高基數類別做 one-hot encoding 時會產生大量稀疏欄位，增加儲存與建模負擔。"
+    why_not_a: "欄位暴增通常不會讓模型更易解釋，反而增加閱讀負擔。"
+    why_not_b: "編碼方式與 leakage 風險是兩件事，不能混為一談。"
+    why_not_c: "正確答案。"
+    why_not_d: "類別編碼不能取代資料切分。"
+  keywords:
+    - "one-hot-encoding"
+    - "high-cardinality"
+    - "稀疏資料"
+  exam_trap: false
+
+- id: "L21301-Q20"
+  topic_code: "L21301"
+  item_code: "DATA_SPLIT_LEAKAGE"
+  difficulty: 3
+  question: "某分析師先用全資料集計算平均值做缺失值插補（Imputation），再切分訓練集與測試集。這樣最大的風險是什麼？"
+  options:
+    a: "會讓模型一定變成線性模型（Linear Model）"
+    b: "會讓類別欄位自動消失"
+    c: "會讓訓練集太小"
+    d: "可能把測試集資訊帶入訓練流程，形成 data leakage"
+  correct: "d"
+  explanation:
+    why_correct: "若先用全資料統計量做插補，再切分資料，測試集資訊已經滲入訓練前處理，導致評估偏樂觀。"
+    why_not_a: "插補不會決定模型是否線性。"
+    why_not_b: "插補處理不會讓類別欄位消失。"
+    why_not_c: "切分比例才會影響訓練集大小。"
+    why_not_d: "正確答案。"
+  keywords:
+    - "data-leakage"
+    - "imputation"
+    - "資料切分"
+  exam_trap: true
+
+- id: "L21301-Q21"
+  topic_code: "L21301"
+  item_code: "CLASS_IMBALANCE"
+  difficulty: 3
+  question: "某詐欺偵測（Fraud Detection）專案中，詐欺交易只占 1%。若團隊希望模型更重視少數類別，較合理的做法是什麼？"
+  options:
+    a: "只看整體準確率（Accuracy）即可"
+    b: "考慮重抽樣（Resampling）或類別權重（Class Weights）等方法"
+    c: "先把所有少數類別刪除，讓資料平衡"
+    d: "改用最難解釋的模型就會改善"
+  correct: "b"
+  explanation:
+    why_correct: "在少數類別很重要的情境下，可考慮 resampling 或 class weights，讓模型學習時更重視少數類別。"
+    why_not_a: "高 accuracy 可能只是一直猜多數類別。"
+    why_not_b: "正確答案。"
+    why_not_c: "刪除少數類別等於放棄問題本身，違反業務目標。"
+    why_not_d: "模型是否複雜與是否重視少數類別不是同一件事。"
+  keywords:
+    - "fraud-detection"
+    - "class-weights"
+    - "resampling"
+  exam_trap: true
+
+- id: "L21301-Q22"
+  topic_code: "L21301"
+  item_code: "FEATURE_ENGINEERING"
+  difficulty: 3
+  question: "某零售團隊要預測下月流失，已知原始欄位有最近一次購買日與今日日期。哪一種特徵工程（Feature Engineering）最合理？"
+  options:
+    a: "建立『距離上次購買天數』這類衍生特徵"
+    b: "把日期欄位全部刪除，避免模型複雜"
+    c: "只保留原始文字格式日期，不做轉換"
+    d: "把日期直接當缺失值處理"
+  correct: "a"
+  explanation:
+    why_correct: "將日期轉成業務上有意義的 recency 特徵，通常比保留原始日期字串更有助於模型學習。"
+    why_not_a: "正確答案。"
+    why_not_b: "日期常含有重要行為訊號，直接刪除過於粗糙。"
+    why_not_c: "原始文字日期往往不利模型直接理解時間差距。"
+    why_not_d: "日期不是缺失值問題。"
+  keywords:
+    - "feature-engineering"
+    - "recency"
+    - "衍生特徵"
+  exam_trap: false
+
+- id: "L21301-Q23"
+  topic_code: "L21301"
+  item_code: "MODEL_COMPARISON"
+  difficulty: 3
+  question: "一家中型企業只有數千筆已標註資料，且需要向主管解釋判斷邏輯。下列哪種模型選擇最符合這種需求？"
+  options:
+    a: "大型神經網路（Neural Network），因為一定最準"
+    b: "決策樹（Decision Tree），因為規則路徑較容易解釋"
+    c: "k-NN（k-Nearest Neighbors），因為一定比樹更易說明"
+    d: "隨機森林（Random Forest），因為一定完全可解釋"
+  correct: "b"
+  explanation:
+    why_correct: "在資料量中小且需要解釋判斷邏輯時，決策樹通常是較平衡的選擇，能直接呈現規則路徑。"
+    why_not_a: "神經網路可能有表現潛力，但資料與解釋需求未必適合。"
+    why_not_b: "正確答案。"
+    why_not_c: "k-NN 的個案式鄰近解釋未必比規則樹清楚，且推論成本較高。"
+    why_not_d: "隨機森林較穩健，但整體可解釋性通常低於單一樹。"
+  keywords:
+    - "decision-tree"
+    - "interpretability"
+    - "model-selection"
+  exam_trap: false
+
+- id: "L21301-Q24"
+  topic_code: "L21301"
+  item_code: "DATA_COLLECTION"
+  difficulty: 3
+  question: "某製造公司想建立設備故障預測，但歷史資料多來自正常運作時段，夜班故障紀錄很少。為了改善數據收集（Data Collection）品質，最合理的下一步是什麼？"
+  options:
+    a: "直接把夜班資料刪掉，讓資料更一致"
+    b: "只改用更複雜模型，不必補資料"
+    c: "補充蒐集夜班與故障情境資料，提升情境覆蓋度"
+    d: "先把所有欄位 one-hot encoding"
+  correct: "c"
+  explanation:
+    why_correct: "若目標情境在資料中覆蓋不足，優先補足代表性資料比急著換模型更有效。"
+    why_not_a: "刪掉夜班資料會讓偏差更嚴重。"
+    why_not_b: "模型無法補足未被觀測的情境。"
+    why_not_c: "正確答案。"
+    why_not_d: "編碼不是當前問題核心。"
+  keywords:
+    - "data-collection"
+    - "coverage"
+    - "sampling"
+  exam_trap: false
+
+- id: "L21301-Q25"
+  topic_code: "L21301"
+  item_code: "MISSING_VALUE"
+  difficulty: 4
+  question: "某醫療行政資料中，年齡欄位缺失率只有 2%，但病史欄位缺失率高達 45%，且病史對預測很重要。若希望兼顧資料量與資訊價值，下列判斷何者最合理？"
+  options:
+    a: "年齡可考慮簡單插補；病史欄位需評估缺失原因與業務意義，再決定是否插補、另設缺失指標或重蒐資料"
+    b: "所有缺失欄位都應直接刪除，才最公平"
+    c: "所有缺失欄位都用同一個固定值處理，避免複雜"
+    d: "缺失率高的欄位一定更重要，所以完全不能處理"
+  correct: "a"
+  explanation:
+    why_correct: "缺失值處理應看欄位重要性、缺失比例與缺失機制。低缺失且重要度一般的欄位可簡單插補；高缺失且高重要性的欄位需更審慎判斷。"
+    why_not_a: "正確答案。"
+    why_not_c: "同一固定值套用所有欄位常忽略資料型態與業務語意，容易引入偏差。"
+    why_not_d: "缺失率高不代表不能處理，而是要更重視原因分析與方案選擇。"
+  keywords:
+    - "missing-value-handling"
+    - "缺失機制"
+    - "資料品質"
+  exam_trap: false
+
+- id: "L21301-Q26"
+  topic_code: "L21301"
+  item_code: "FEATURE_SCALING"
+  difficulty: 4
+  question: "同一份客戶資料要比較 SVM（Support Vector Machine）與決策樹（Decision Tree）的泛化能力。為了讓比較公平，下列做法何者最合理？"
+  options:
+    a: "兩個模型都不做任何前處理，才最客觀"
+    b: "只對決策樹做標準化（Standardization），因為樹模型最需要"
+    c: "在各自合理的前處理流程下比較，例如對 SVM 做縮放、對決策樹重視缺值與欄位品質控制"
+    d: "先用測試集決定誰要不要縮放，再回頭訓練"
+  correct: "c"
+  explanation:
+    why_correct: "公平比較不是讓所有模型做完全相同處理，而是讓每個模型在合理、無 leakage 的最佳實務下接受比較。"
+    why_not_a: "忽略模型特性反而不公平，會低估尺度敏感模型。"
+    why_not_b: "樹模型通常不是最依賴縮放的類型。"
+    why_not_c: "正確答案。"
+    why_not_d: "用測試集決定前處理會污染最終評估。"
+  keywords:
+    - "svm"
+    - "decision-tree"
+    - "fair-comparison"
+  exam_trap: true
+
+- id: "L21301-Q27"
+  topic_code: "L21301"
+  item_code: "CATEGORICAL_ENCODING"
+  difficulty: 4
+  question: "某信用評分專案同時有『婚姻狀態』與『郵遞區號』兩個類別欄位。前者類別少且無順序，後者種類多且可能與風險相關。若要避免不必要的維度膨脹並控制 leakage 風險，最合理的判斷是什麼？"
+  options:
+    a: "兩者都固定用 label encoding，最省事"
+    b: "婚姻狀態可考慮 one-hot encoding；郵遞區號需評估高基數特性，若採 target encoding 應在正確切分流程內處理"
+    c: "兩者都直接 target encoding，且先在全資料上算完再切分"
+    d: "兩者都不能做任何編碼，只能刪除"
+  correct: "b"
+  explanation:
+    why_correct: "低基數無序類別適合 one-hot；高基數欄位要考慮欄位爆炸與 leakage 風險，需在切分後、正確流程內處理 target encoding。"
+    why_not_a: "label encoding 可能暗示不存在的大小順序，尤其對無序類別是常見誤用。"
+    why_not_b: "正確答案。"
+    why_not_c: "先在全資料做 target encoding 正是典型 leakage。"
+    why_not_d: "刪除所有類別欄位會放棄可能重要訊號。"
+  keywords:
+    - "categorical-encoding"
+    - "target-encoding"
+    - "high-cardinality"
+  exam_trap: true
+
+- id: "L21301-Q28"
+  topic_code: "L21301"
+  item_code: "DATA_SPLIT_LEAKAGE"
+  difficulty: 4
+  question: "某團隊先以全資料做特徵選擇（Feature Selection），再進行交叉驗證（Cross-Validation）比較模型。這個流程最大的問題是什麼？"
+  options:
+    a: "會讓交叉驗證的每折資料量不同"
+    b: "會讓決策樹（Decision Tree）無法訓練"
+    c: "會自動造成類別不平衡（Class Imbalance）"
+    d: "特徵選擇已看過全資料訊息，可能讓驗證結果過度樂觀"
+  correct: "d"
+  explanation:
+    why_correct: "若特徵選擇先看完整資料，再做交叉驗證，驗證折已被前處理步驟間接使用，導致 leakage。"
+    why_not_a: "折數設計才會影響每折大小，非題目核心。"
+    why_not_b: "決策樹仍可訓練，問題在評估污染。"
+    why_not_c: "特徵選擇不會自動改變類別比例。"
+  keywords:
+    - "feature-selection"
+    - "cross-validation"
+    - "data-leakage"
+  exam_trap: true
+
+- id: "L21301-Q29"
+  topic_code: "L21301"
+  item_code: "CLASS_IMBALANCE"
+  difficulty: 4
+  question: "某客服團隊建立申訴升級預測模型，升級案件僅占 3%，且漏判成本高。若要比較兩個模型，下列哪一種評估思路最合理？"
+  options:
+    a: "優先看是否對少數類別有足夠辨識能力，而不是只看整體準確率（Accuracy）"
+    b: "只看哪個模型訓練速度快"
+    c: "只要資料切成 8:2，就不會有不平衡問題"
+    d: "把少數類別刪掉後比較，結果最穩定"
+  correct: "a"
+  explanation:
+    why_correct: "當少數類別具高業務成本時，應重視模型是否能辨識該類別，而非只看整體 accuracy。"
+    why_not_a: "正確答案。"
+    why_not_c: "切分比例不會消除類別不平衡。"
+    why_not_d: "刪除少數類別會讓模型失去關鍵任務目標。"
+  keywords:
+    - "class-imbalance"
+    - "業務成本"
+    - "model-evaluation"
+  exam_trap: true
+
+- id: "L21301-Q30"
+  topic_code: "L21301"
+  item_code: "MODEL_TRADEOFFS"
+  difficulty: 4
+  question: "在同一個預測任務中，線性回歸（Linear Regression）與神經網路（Neural Network）常被一起評估。下列比較何者最合理？"
+  options:
+    a: "神經網路一定比線性回歸更可解釋"
+    b: "線性回歸通常較易解釋；神經網路可能表現更強，但往往更依賴資料量與算力"
+    c: "只要是數值預測，兩者表現與成本一定相同"
+    d: "線性回歸只要做標準化（Standardization）後，就能處理任何複雜非線性"
+  correct: "b"
+  explanation:
+    why_correct: "這是典型 tradeoff：線性回歸簡單、可解釋；神經網路有較高表現潛力，但資料與算力需求通常更高。"
+    why_not_a: "神經網路一般不是較易解釋的選擇。"
+    why_not_b: "正確答案。"
+    why_not_c: "模型能力、成本與可解釋性並不相同。"
+    why_not_d: "標準化不能讓線性模型自動捕捉所有複雜非線性。"
+  keywords:
+    - "linear-regression"
+    - "neural-network"
+    - "tradeoff"
+  exam_trap: false
+
+- id: "L21301-Q31"
+  topic_code: "L21301"
+  item_code: "MODEL_COMPARISON"
+  difficulty: 4
+  question: "若資料量中等、特徵尺度差異大、需要較穩健的非線性模型，但主管不要求逐筆規則說明，下列哪一種模型通常比單一決策樹（Decision Tree）更符合需求？"
+  options:
+    a: "隨機森林（Random Forest）"
+    b: "k-NN（k-Nearest Neighbors），且完全不做縮放"
+    c: "線性回歸（Linear Regression）"
+    d: "只因資料量中等就固定選神經網路（Neural Network）"
+  correct: "a"
+  explanation:
+    why_correct: "在不特別要求高可解釋性的情況下，隨機森林常比單一決策樹更穩健，能較好處理非線性關係。"
+    why_not_a: "正確答案。"
+    why_not_b: "k-NN 對尺度敏感，題目還特別指出尺度差異大。"
+    why_not_c: "線性回歸較不擅長處理複雜非線性。"
+    why_not_d: "資料量中等不代表神經網路一定最適合，還要看成本與需求。"
+  keywords:
+    - "random-forest"
+    - "nonlinear"
+    - "model-comparison"
+  exam_trap: false
+
+- id: "L21301-Q32"
+  topic_code: "L21301"
+  item_code: "FEATURE_ENGINEERING"
+  difficulty: 4
+  question: "某團隊有 300 個欄位，但只有少數真正與目標有關。若直接把所有欄位都送進模型，最值得擔心的問題是什麼？"
+  options:
+    a: "一定會完全避免過擬合（Overfitting）"
+    b: "一定會提升可解釋性"
+    c: "無關特徵可能增加雜訊，讓模型比較與泛化能力判斷變得困難"
+    d: "會讓測試集自動變成驗證集（Validation Set）"
+  correct: "c"
+  explanation:
+    why_correct: "過多無關特徵可能讓模型學到雜訊，增加比較難度，也可能損害泛化能力，因此特徵選擇很重要。"
+    why_not_a: "相反地，無關特徵可能提高過擬合風險。"
+    why_not_b: "欄位愈多通常不會更易解釋。"
+    why_not_c: "正確答案。"
+    why_not_d: "特徵數量不會改變資料集角色。"
+  keywords:
+    - "feature-selection"
+    - "overfitting"
+    - "泛化能力"
+  exam_trap: false
+
+- id: "L21301-Q33"
+  topic_code: "L21301"
+  item_code: "DATA_COLLECTION"
+  difficulty: 5
+  question: "某連鎖零售商要建立新品需求預測，限制條件是：1. 新品歷史資料少；2. 門市型態差異大；3. 短期內不能重建整套系統。若要先做一版可用方案，哪個策略最合理？"
+  options:
+    a: "先補蒐集不同門市型態的代表性資料，結合可取得的相似商品歷史特徵，再選擇可解釋且能快速上線的模型"
+    b: "直接等待所有新品累積大量資料後再開始"
+    c: "只選最複雜模型，忽略資料來源差異"
+    d: "只用單一門市資料建模，因為資料越單純越好"
+  correct: "a"
+  explanation:
+    why_correct: "此題要求同時兼顧資料不足、場域差異與導入成本。先補代表性資料、借用相似商品訊號，再選可快速落地的模型，是較完整的折衷方案。"
+    why_not_a: "正確答案。"
+    why_not_c: "忽略資料來源差異會讓模型偏向特定場域。"
+    why_not_d: "只用單一門市雖簡單，但泛化到其他門市的風險很高。"
+  keywords:
+    - "data-collection"
+    - "tradeoff"
+    - "deployment"
+  exam_trap: false
+
+- id: "L21301-Q34"
+  topic_code: "L21301"
+  item_code: "MISSING_VALUE"
+  difficulty: 5
+  question: "某金融資料專案中，收入欄位缺失多集中在高資產客群，且該欄位對授信判斷重要。若目標是做穩健模型比較，哪個做法最好？"
+  options:
+    a: "直接刪除所有缺失列，因為最乾淨"
+    b: "先分析缺失是否具系統性，再設計合適插補策略或缺失指標，並在訓練流程內完成以避免 leakage"
+    c: "在全資料集用平均數補完後再切分"
+    d: "將缺失都當作 0，因為收入越低風險越高"
+  correct: "b"
+  explanation:
+    why_correct: "題目同時涉及缺失機制、欄位重要性與 leakage。最佳做法是先判斷缺失是否系統性，再在正確切分流程中處理。"
+    why_not_a: "若缺失集中在特定客群，直接刪除可能使樣本偏差更嚴重。"
+    why_not_b: "正確答案。"
+    why_not_c: "先全資料插補會把測試資訊帶入流程。"
+    why_not_d: "把缺失直接當 0 是把未知值誤當真實值，風險很高。"
+  keywords:
+    - "missingness"
+    - "data-leakage"
+    - "授信模型"
+  exam_trap: true
+
+- id: "L21301-Q35"
+  topic_code: "L21301"
+  item_code: "OUTLIER_HANDLING"
+  difficulty: 5
+  question: "某物流公司以配送時間預測延遲風險，資料中有少量極端長延遲紀錄。這些紀錄部分是系統輸入錯誤，部分是真實天災事件。若要建立可用於日常營運的模型，下列哪個方案最好？"
+  options:
+    a: "全部保留，不做任何檢查，避免人為介入"
+    b: "全部刪除，因為極端值都會傷害模型"
+    c: "區分錯誤資料與真實罕見事件；修正或排除明顯錯誤，並依應用目標決定是否保留真實極端事件"
+    d: "把所有極端值改成中位數，最穩定"
+  correct: "c"
+  explanation:
+    why_correct: "最佳方案要同時考慮資料品質與業務目的。輸入錯誤應處理；真實極端事件是否保留，要看模型是否服務日常營運或極端風險管理。"
+    why_not_a: "完全不檢查會讓錯誤資料污染模型。"
+    why_not_b: "把真實罕見事件全部刪除，可能喪失重要風險訊號。"
+    why_not_c: "正確答案。"
+    why_not_d: "全部改中位數雖簡單，但會混淆錯誤與真實事件。"
+  keywords:
+    - "outlier-handling"
+    - "資料品質"
+    - "業務目標"
+  exam_trap: false
+
+- id: "L21301-Q36"
+  topic_code: "L21301"
+  item_code: "CLASS_IMBALANCE"
+  difficulty: 5
+  question: "某醫療篩檢模型中，陽性率只有 2%，且漏判陽性成本遠高於誤判陰性。若要在模型比較與部署決策間取得平衡，下列何者最佳？"
+  options:
+    a: "只比較整體準確率（Accuracy），最高者上線"
+    b: "只選最容易解釋的模型，不看少數類別表現"
+    c: "把資料隨機切分即可，不需其他處理"
+    d: "在處理類別不平衡的同時，優先評估模型對陽性類別的辨識能力，並結合業務成本決定方案"
+  correct: "d"
+  explanation:
+    why_correct: "題目要求同時考量不平衡資料、業務成本與部署決策，因此不能只看單一指標；要重視陽性辨識能力與實際成本。"
+    why_not_a: "accuracy 在 2% 陽性率下容易誤導。"
+    why_not_b: "可解釋性重要，但若忽略陽性辨識能力，可能無法滿足醫療場景需求。"
+    why_not_c: "單純切分不能解決不平衡與成本敏感問題。"
+  keywords:
+    - "class-imbalance"
+    - "cost-sensitive"
+    - "deployment-decision"
+  exam_trap: true
+
+- id: "L21301-Q37"
+  topic_code: "L21301"
+  item_code: "FEATURE_ENGINEERING"
+  difficulty: 5
+  question: "某 B2B 銷售預測專案中，團隊有大量原始欄位，但可用樣本有限，且管理層希望模型結果可被說明。哪個策略最符合這三個限制？"
+  options:
+    a: "盡量保留所有欄位，讓模型自己挑選"
+    b: "優先建立具商業意義的衍生特徵與精簡特徵集合，再比較較可解釋的模型"
+    c: "只要樣本有限，就一定不能做特徵工程"
+    d: "直接用最高複雜度模型，因為特徵工程會浪費時間"
+  correct: "b"
+  explanation:
+    why_correct: "樣本有限且需要解釋時，具業務語意的特徵工程與適度特徵精簡，通常比盲目堆疊特徵更有利於泛化與溝通。"
+    why_not_a: "有限樣本下保留過多欄位可能增加雜訊與過擬合風險。"
+    why_not_b: "正確答案。"
+    why_not_c: "樣本有限時更需要精準特徵工程，而不是完全放棄。"
+    why_not_d: "複雜模型未必符合可解釋與樣本限制。"
+  keywords:
+    - "feature-engineering"
+    - "interpretability"
+    - "sample-size"
+  exam_trap: false
+
+- id: "L21301-Q38"
+  topic_code: "L21301"
+  item_code: "MODEL_TRADEOFFS"
+  difficulty: 5
+  question: "某企業要做客戶流失預測，要求：1. 必須向法遵說明主要判斷依據；2. 資料量中等；3. 預算有限；4. 希望比單一規則更準。下列哪種方案最合適？"
+  options:
+    a: "大型神經網路（Neural Network），因為表現潛力最高"
+    b: "只用人工規則，不建立模型"
+    c: "以決策樹（Decision Tree）或其他較可解釋模型為優先，再依驗證結果評估是否需要更穩健但較難解釋的方案"
+    d: "固定使用 k-NN（k-Nearest Neighbors），因為最便宜"
+  correct: "c"
+  explanation:
+    why_correct: "題目核心是可解釋性、預算與中等資料量的折衷。先以較可解釋模型為主，再依效果評估是否接受可解釋性下降的方案，最符合實務。"
+    why_not_a: "神經網路可能過度超出成本與解釋要求。"
+    why_not_b: "純規則雖可解釋，但題目希望比單一規則更準，應至少比較模型方案。"
+    why_not_c: "正確答案。"
+    why_not_d: "k-NN 不一定最便宜，推論成本也可能偏高，且未必最適合此情境。"
+  keywords:
+    - "model-tradeoff"
+    - "compliance"
+    - "interpretability"
+  exam_trap: false
+
+- id: "L21301-Q39"
+  topic_code: "L21301"
+  item_code: "MODEL_COMPARISON"
+  difficulty: 5
+  question: "某團隊要在 SVM（Support Vector Machine）、隨機森林（Random Forest）與神經網路（Neural Network）之間做選擇，條件是：資料量中等、數值尺度差異大、需要穩定表現、可接受中等可解釋性。哪個判斷最合理？"
+  options:
+    a: "SVM 一定最佳，因為資料量中等"
+    b: "神經網路一定最佳，因為所有問題都可用深度學習解決"
+    c: "隨機森林常是務實選項；SVM 可比較但需重視縮放，神經網路則要再評估資料量與成本是否值得"
+    d: "三者完全等價，只要看誰名字比較新"
+  correct: "c"
+  explanation:
+    why_correct: "題目要求綜合尺度敏感度、資料量、穩定性與成本。隨機森林常是中等資料量下的穩健基準；SVM 可行但需縮放；神經網路未必划算。"
+    why_not_a: "SVM 不是一定最佳，還要看尺度處理、特徵性質與實際驗證結果。"
+    why_not_b: "這是常見迷思，深度學習不是所有表格問題的預設答案。"
+    why_not_c: "正確答案。"
+    why_not_d: "模型選擇應基於條件與驗證，不是名氣。"
+  keywords:
+    - "svm"
+    - "random-forest"
+    - "neural-network"
+  exam_trap: true
+
+- id: "L21301-Q40"
+  topic_code: "L21301"
+  item_code: "DATA_SPLIT_LEAKAGE"
+  difficulty: 5
+  question: "某專案要比較多種模型，資料包含高基數類別欄位、缺失值與類別不平衡問題。若目標是得到最可信的最終比較結果，下列流程何者最佳？"
+  options:
+    a: "先在全資料完成編碼、插補、特徵選擇，再切分資料以節省時間"
+    b: "先切分訓練/驗證/測試，再在訓練流程內處理插補、編碼與不平衡，最後保留測試集做一次性驗證"
+    c: "直接在測試集上反覆調整前處理與模型，找到最高分方案"
+    d: "只要用交叉驗證（Cross-Validation），就不必擔心任何 leakage"
+  correct: "b"
+  explanation:
+    why_correct: "可信比較的關鍵是先切分資料，並讓所有會學到資料統計或目標資訊的處理都只在訓練流程內完成，最後用獨立測試集驗證。"
+    why_not_a: "先全資料前處理是最典型的 leakage 來源之一。"
+    why_not_b: "正確答案。"
+    why_not_c: "測試集不應被反覆用來調參，否則失去最終驗證意義。"
+    why_not_d: "交叉驗證能改善估計穩定性，但若流程設計錯誤，仍然會 leakage。"
+  keywords:
+    - "data-split"
+    - "data-leakage"
+    - "model-comparison"
+  exam_trap: true
