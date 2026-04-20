@@ -1,59 +1,52 @@
-# Session Handoff — 2026-04-19 (docs/ reorganization)
+# Session Handoff — 2026-04-20 (L21301 lesson complete)
 
 ## Session Summary
 
-Reorganized `docs/` from a messy mix of folder names (with spaces, inconsistent prefixes, planning/ grab-bag) into a flat, category-prefixed structure using the convention `<category>-<topicCamelCase>` with a single hyphen. Delegated execution to a Haiku sub-agent for all bulk `git mv` + cross-reference updates, which is the pattern the user wants applied going forward.
+Generated the complete L21301 (數據準備與模型選擇) lesson for IPAS 中級 using the codex-mode pipeline. Full 3-reviewer multi-model review (Claude adversarial + Gemini adversarial + Codex auditor) surfaced 28 findings; 5 critical fixes applied including Q18 algorithm mismatch, SMOTE leakage warning, and split-ratio range corrections.
 
 ## What was done
 
-1. **Folder reorg** — 13 folders in `docs/`, all category-prefixed, flat:
-   - `_template/`, `_todo/` (meta, underscore-prefixed, sort first)
-   - `business-brand/`, `business-competitors/`, `business-entrepreneurship/`, `business-strategy/`
-   - `marketing-contentStrategy/`
-   - `product-development/`, `product-futureCourses/`, `product-mockups/`, `product-workflows/`
-   - `webDev-architecture/`, `webDev-claude/`
+1. **L21301 — 數據準備與模型選擇** (IPAS 中級, L21 required, Deep depth)
+   - `study-guide.md` — 809 lines covering 數據收集, 數據清洗與預處理, 特徵工程, 模型優缺點
+   - `L21301-questions.yaml` — 40 questions, D1-5 = 8/8/8/8/8
+   - `research-notes.md` — 57 lines
+   - `supplement-常見模型取捨.md` — model tradeoffs reference
+   - 5 Mermaid diagrams:
+     1. Algorithm-choice flowchart (task × data size → model family)
+     2. Dataset-size heuristics quadrant
+     3. Train/val/test split with SMOTE leakage guard
+     4. Feature encoding decision tree
+     5. Class-imbalance strategy matrix
 
-2. **Splits and merges:**
-   - `launch/` → `_todo/` (daily operating folder — TODO, ROADMAP, START-HERE, calendars, outreach, founder compass)
-   - `claude/` + `web-dev/` → `webDev-claude/` (merged; both are Claude Code tooling)
-   - `planning/` split three ways: ARCHITECTURE + VERCEL + WEBSITE-BUILD-PLAN + claude-tools → `webDev-architecture/`; 5× WORKFLOW-*.md + dotLLM-workflow → `product-workflows/`; RPG-LITE-SCOPE → `product-development/`
-   - Deleted empty root `market-analysis.md` (real one already in `business-strategy/`)
+2. **Multi-model review resolved:**
+   - Q18: k-NN in clustering scenario → corrected to K-Means
+   - Split ratios upper-bound sum >100% → replaced with concrete 70/15/15 + 80/10/10
+   - SMOTE leakage warning added to §3 and exam-trap section
+   - Terminology normalization (10 inconsistencies across guide + questions)
+   - 3 paragraph flow improvements
 
-3. **Cross-references updated** in 19 files (CLAUDE.md, HANDOFF.md, milestones, skills, design-system, TODO, outreach, web-dev prompts, architecture docs). Haiku sub-agent executed this bulk via Grep + Edit.
+3. **TODO.md updated** — L21301 set to Done (1 open item: diagram rendering), next lesson updated to L21302
 
-4. **CLAUDE.md upgrades:**
-   - Repository Structure tree rewritten to reflect new scheme + one-line naming rule
-   - New "Working style — sub-agent delegation & model routing" section codifying when to delegate and how to pick Haiku / Sonnet / Opus
+## Commits this session
 
-5. **Memory saved:** `feedback_subagent_delegation.md` — captures the delegation pattern so it persists across sessions.
+- `51ee4b5 feat(content): complete L21301 lesson, 40-question practice pool`
 
-Commits this session:
-- `ec30820 docs: reorganize into flat category-topicCamelCase folders`
-- `949e741 docs: update cross-references after reorg + add naming rule`
+**Status:** 2 commits ahead of origin/main — not yet pushed.
 
-## What's next (Apr 19–25 — unchanged from prior handoff)
+## What's next
 
-1. **Fix landing-page fake-claims** — remove 92% 通過率 badge + `sampleTestimonials` from `web/app/(marketing)/page.tsx`.
-2. **Replace hero** with 初級 115-01-Z01 founder-story block (avg 73, 66 on one subject — 壓線通過). Copy drafted in `docs/_todo/landing-page-copy.md` lines 150–158.
-3. **Open LINE pre-sell group** — target 5 founding seats at NT$1,980 by Apr 21.
-4. **Post on Threads daily** about building LevelCert. Calendar: `docs/_todo/build-in-public-calendar.md`.
+1. **L21302 — AI技術系統集成與部署** — Medium depth, the L21 capstone topic (train → registry → serve → monitor → retrain). Run: `/course-generate-lesson L21302`
+2. After L21302: L22 sprint begins (14 remaining lessons for 資料分析組 SKU)
+3. **Landing page fake-claims** still open — `web/app/(marketing)/page.tsx` has 92% 通過率 badge + sampleTestimonials to remove before sending traffic
+4. **LINE pre-sell group** — founder asked to open, 5 seats at NT$1,980
 
-## Naming convention (now locked in CLAUDE.md)
+## Open items carried forward
 
-`<category>-<topicCamelCase>`, flat, single hyphen. Categories: `business-*`, `marketing-*`, `product-*`, `webDev-*`. Meta folders use `_` prefix (`_template`, `_todo`). Do not nest. Do not invent new categories without user review.
+- All Mermaid diagrams across 8 completed lessons need PNG rendering via Gemini (not blocking publish)
+- L21102 coverage gaps: image-matching and Precision/Recall/F1 each have only 1 question
 
-## Sub-agent pattern (now locked in CLAUDE.md + memory)
+## Key paths touched
 
-Delegate bulk / mechanical / parallelizable work to sub-agents. Route by cost:
-- **Haiku** — deterministic: `git mv` batches, sed/grep-and-replace, link updates, simple lint.
-- **Sonnet** — bounded judgment: small refactors, single lesson section, diff review.
-- **Opus** — main conversation: architecture, multi-file design, synthesis after sub-agents report.
-- Parallel dispatch (one message, multiple `Agent` calls) when tasks don't share state.
-
-## Key paths touched this session
-
-- `docs/` — full reorg
-- `CLAUDE.md` — Repository Structure tree, naming rule, new Working style section
-- 19 files — cross-reference path updates
-- `.claude/projects/.../memory/feedback_subagent_delegation.md` — new memory
-- `.claude/projects/.../memory/MEMORY.md` — index updated
+- `content/ipas/intermediate/lessons/L21301-數據準備與模型選擇/` — new (all files)
+- `content/ipas/intermediate/questions/L21301-questions.yaml` — new
+- `content/ipas/intermediate/TODO.md` — L21301 marked Done, next updated to L21302
