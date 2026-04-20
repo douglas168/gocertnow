@@ -1,0 +1,879 @@
+- id: "L21302-Q01"
+  topic_code: "L21302"
+  item_code: "L21302-架構設計"
+  difficulty: 1
+  question: "在標準 MLOps 流程中，哪一個順序最符合模型生命週期：訓練（Train）→ 模型登錄（Registry）→ 服務提供（Serving）→ 監控（Monitor）→ 再訓練（Retrain）？"
+  options:
+    a: "Train → Registry → Serving → Monitor → Retrain"
+    b: "Registry → Train → Serving → Retrain → Monitor"
+    c: "Train → Serving → Registry → Monitor → Retrain"
+    d: "Train → Monitor → Registry → Serving → Retrain"
+  correct: "a"
+  explanation:
+    why_correct: "這是最典型的 MLOps pipeline。模型先訓練，再進入 registry 進行版本管理與核准，之後進入服務提供（Serving）階段，透過監控觀察效能與漂移，最後再觸發 retrain。"
+    why_not_b: "很多考生把 registry 當成資料儲存區，但 registry 管的是已產出的模型版本，不會在訓練前先出現。"
+    why_not_c: "先進入 Serving 再 registry 會失去正式版控與可追溯性，這正是考題常用來測試流程觀念的陷阱。"
+    why_not_d: "monitor 必須建立在模型已上線服務後，否則無法蒐集實際推論表現與線上資料分布。"
+  keywords:
+    - "MLOps"
+    - "model-registry"
+    - "lifecycle"
+  exam_trap: true
+
+- id: "L21302-Q02"
+  topic_code: "L21302"
+  item_code: "L21302-部署技術"
+  difficulty: 1
+  question: "下列哪一種情境最適合採用批次推論（Batch Inference）而非即時推論（Real-time Inference）？"
+  options:
+    a: "客服聊天機器人需在 1 秒內回應客戶"
+    b: "每天凌晨對 300 萬筆交易資料進行詐欺風險評分"
+    c: "電商首頁需即時計算個人化推薦"
+    d: "工廠設備異常需在事件發生後立即告警"
+  correct: "b"
+  explanation:
+    why_correct: "大量資料、可排程、非同步且不要求即時回應，是 batch inference 的典型情境。"
+    why_not_a: "聊天機器人屬低延遲互動場景，考點在於 real-time endpoint 而非批次作業。"
+    why_not_c: "個人化推薦若直接影響使用者當下畫面，通常需要線上 API serving，而不是等批次結果。"
+    why_not_d: "異常告警強調即時性，若用 batch 會錯過應變時機，這是常見的選型誤判。"
+  keywords:
+    - "batch-inference"
+    - "real-time-inference"
+    - "deployment"
+  exam_trap: true
+
+- id: "L21302-Q03"
+  topic_code: "L21302"
+  item_code: "L21302-效能監控"
+  difficulty: 1
+  question: "若線上輸入資料的分布與訓練資料明顯不同，但目標標籤（Label）定義本身沒有改變，這最接近哪一種漂移：資料漂移（Data Drift）或概念漂移（Concept Drift）？"
+  options:
+    a: "資料漂移（Data Drift）"
+    b: "標註比例偏移"
+    c: "概念漂移（Concept Drift）"
+    d: "模型洩漏（Model Leakage）"
+  correct: "a"
+  explanation:
+    why_correct: "Data drift 指輸入特徵的統計分布改變，未必代表輸入與標籤的關係已經改變。"
+    why_not_b: "標註比例偏移著重標籤占比改變；題幹強調的是輸入資料分布，而非標籤比例。"
+    why_not_c: "很多人一看到模型表現下降就選 concept drift，但題幹明說標籤定義與關係沒有改變，重點在輸入分布變化。"
+    why_not_d: "Model leakage 發生在訓練資料洩漏未來資訊，不是線上資料分布改變。"
+  keywords:
+    - "data-drift"
+    - "concept-drift"
+    - "monitoring"
+  exam_trap: true
+
+- id: "L21302-Q04"
+  topic_code: "L21302"
+  item_code: "L21302-更新管理"
+  difficulty: 1
+  question: "下列哪一種部署策略最符合影子部署（Shadow Deployment）？"
+  options:
+    a: "新版本直接取代舊版本，若失敗再手動回滾"
+    b: "將 10% 正式流量導向新版本並逐步增加"
+    c: "依使用者群組把流量平均分給兩個版本比較轉換率"
+    d: "正式回應仍由舊版本提供，同步複製流量給新版本做旁路比對"
+  correct: "d"
+  explanation:
+    why_correct: "Shadow deployment 的核心是新版本接收真實流量副本，但不影響正式輸出，可安全比較預測結果與系統行為。"
+    why_not_a: "這比較接近直接切換加 rollback，不是 shadow。"
+    why_not_b: "10% 小流量逐步放量是 canary deployment，常與 shadow 混淆。"
+    why_not_c: "依群組比較成效是 A/B testing，目的是實驗效果，不是旁路安全驗證。"
+  keywords:
+    - "shadow-deployment"
+    - "canary"
+    - "ab-testing"
+  exam_trap: true
+
+- id: "L21302-Q05"
+  topic_code: "L21302"
+  item_code: "L21302-穩定性可用性"
+  difficulty: 1
+  question: "服務等級協議（SLA）與服務等級目標（SLO）的關係，下列何者最正確？"
+  options:
+    a: "SLA 是內部營運目標，SLO 是對客戶的罰則承諾"
+    b: "SLA 與 SLO 完全相同，只是不同公司用詞"
+    c: "SLA 通常是對外承諾，SLO 是內部可量測的服務目標"
+    d: "SLO 只能描述模型準確率，不能描述延遲（Latency）"
+  correct: "c"
+  explanation:
+    why_correct: "SLO 是團隊管理服務品質的內部目標，SLA 則常是對客戶或合約的外部承諾。"
+    why_not_a: "這是最常見的顛倒型錯誤，考題很常拿來測基本 SRE 名詞。"
+    why_not_b: "兩者密切相關，但層級不同；SLA 通常建立在 SLO 之上。"
+    why_not_d: "SLO 很常用於 latency、availability、error rate 等系統指標，不只準確率。"
+  keywords:
+    - "SLA"
+    - "SLO"
+    - "SRE"
+  exam_trap: true
+
+- id: "L21302-Q06"
+  topic_code: "L21302"
+  item_code: "L21302-雲端環境"
+  difficulty: 1
+  question: "在 MLflow 模型登錄（Model Registry）的傳統名詞中，哪一個不是常見的 stage？"
+  options:
+    a: "Staging"
+    b: "Production"
+    c: "Archived"
+    d: "Training"
+  correct: "d"
+  explanation:
+    why_correct: "MLflow 傳統 registry stages 共有四個：None（新版本預設初始狀態）、Staging、Production、Archived；Training 不在其中，故為正確答案。"
+    why_not_a: "Staging 是典型預備上線階段，屬於傳統 stage 名詞之一。"
+    why_not_b: "Production 是正式服務階段，和版本核准、部署流程高度相關。"
+    why_not_c: "Archived 用來表示已退役或不再使用的版本，仍是傳統 stage 名詞之一。"
+  keywords:
+    - "MLflow"
+    - "model-registry"
+    - "stages"
+  exam_trap: false
+
+- id: "L21302-Q07"
+  topic_code: "L21302"
+  item_code: "L21302-測試驗證"
+  difficulty: 1
+  question: "下列哪一種測試最主要用來驗證模型服務在高併發請求下的延遲（Latency）與吞吐量（Throughput）表現？"
+  options:
+    a: "單元測試（Unit Test）"
+    b: "整合測試（Integration Test）"
+    c: "負載測試（Load Test）"
+    d: "影子測試（Shadow Testing）"
+  correct: "c"
+  explanation:
+    why_correct: "Load test 會模擬高流量與併發情境，直接觀察 latency、throughput、error rate 等服務指標。"
+    why_not_a: "單元測試聚焦單一函式或模組邏輯，無法代表系統容量。"
+    why_not_b: "整合測試檢查模組協作是否正常，但不一定覆蓋壓力與容量邊界。"
+    why_not_d: "影子測試重點是真流量旁路比對新舊輸出，不是用來量測高併發下的容量邊界。"
+  keywords:
+    - "load-test"
+    - "latency"
+    - "throughput"
+  exam_trap: false
+
+- id: "L21302-Q08"
+  topic_code: "L21302"
+  item_code: "L21302-部署技術"
+  difficulty: 1
+  question: "在模型部署中，容器化（Containerisation）最直接的主要好處是什麼？"
+  options:
+    a: "自動保證模型準確率提升"
+    b: "把訓練資料自動轉為標註資料"
+    c: "讓模型不需要 API 也能對外服務"
+    d: "提供一致的執行環境，降低開發與正式環境差異"
+  correct: "d"
+  explanation:
+    why_correct: "Container 封裝執行相依套件與環境設定，能提升部署一致性與可移植性。"
+    why_not_a: "容器化處理的是交付與執行環境，不會直接改善模型效果。"
+    why_not_b: "資料標註屬資料工程或人工流程，與 containerisation 無直接對應。"
+    why_not_c: "容器化常搭配 API serving，但不代表不需要對外介面設計。"
+  keywords:
+    - "containerisation"
+    - "Docker"
+    - "deployment"
+  exam_trap: false
+
+- id: "L21302-Q09"
+  topic_code: "L21302"
+  item_code: "L21302-架構設計"
+  difficulty: 2
+  question: "關於模型登錄（Model Registry）的描述，下列何者正確？"
+  options:
+    a: "主要用途是管理模型版本、狀態與部署前核准流程"
+    b: "主要用途是儲存原始訓練資料與標註規則"
+    c: "主要用途是取代線上監控系統"
+    d: "主要用途是自動產生所有 A/B 測試報表"
+  correct: "a"
+  explanation:
+    why_correct: "Model registry 的核心角色是版本控管、metadata 管理、審核與部署銜接，不是資料湖或監控工具。"
+    why_not_b: "很多人把 registry 和 feature store 或 data lake 混在一起，但題目問的是 model registry。"
+    why_not_c: "監控系統與 registry 在 MLOps 中分工不同，registry 不負責線上 drift 或 latency 監測。"
+    why_not_d: "A/B 報表通常來自實驗平台或分析系統，registry 最多提供版本識別資訊。"
+  keywords:
+    - "model-registry"
+    - "versioning"
+    - "approval"
+  exam_trap: false
+
+- id: "L21302-Q10"
+  topic_code: "L21302"
+  item_code: "L21302-部署技術"
+  difficulty: 2
+  question: "關於即時推論（Real-time Inference）與批次推論（Batch Inference）的敘述，下列何者正確？"
+  options:
+    a: "Batch inference 一定比 real-time inference 更適合需要低延遲回應的 API"
+    b: "Real-time inference 通常以 API endpoint 提供低延遲回應，batch inference 則偏向非同步大量處理"
+    c: "兩者唯一差異只有使用的雲平台不同"
+    d: "Real-time inference 不需要監控 latency，只需監控準確率"
+  correct: "b"
+  explanation:
+    why_correct: "Real-time inference 強調低延遲互動，batch inference 強調大規模非同步處理，這是最核心的選型差異。"
+    why_not_a: "低延遲 API 恰好是 real-time inference 的主場，而不是 batch。"
+    why_not_c: "差異來自工作負載與服務模式，不是平台品牌名稱。"
+    why_not_d: "Latency 是 real-time inference 最重要的 KPI 之一，忽略它會直接違反服務目標。"
+  keywords:
+    - "real-time-inference"
+    - "batch-inference"
+    - "endpoint"
+  exam_trap: true
+
+- id: "L21302-Q11"
+  topic_code: "L21302"
+  item_code: "L21302-效能監控"
+  difficulty: 2
+  question: "下列哪一個指標最適合用來監測資料漂移（Data Drift）而非系統資源使用率？"
+  options:
+    a: "CPU 使用率"
+    b: "記憶體使用率"
+    c: "容器重啟次數"
+    d: "PSI（Population Stability Index）"
+  correct: "d"
+  explanation:
+    why_correct: "PSI 常用於比較線上資料與基準資料分布差異，是 data drift 偵測的重要量化指標。"
+    why_not_a: "CPU 反映系統負載，不直接代表輸入資料分布是否偏移。"
+    why_not_b: "記憶體高可能代表流量變大或實作問題，但不等於特徵分布改變。"
+    why_not_c: "容器重啟次數是平台穩定性訊號，不是模型資料健康指標。"
+  keywords:
+    - "PSI"
+    - "data-drift"
+    - "monitoring"
+  exam_trap: true
+
+- id: "L21302-Q12"
+  topic_code: "L21302"
+  item_code: "L21302-更新管理"
+  difficulty: 2
+  question: "關於金絲雀部署（Canary Deployment）與 A/B 測試（A/B Testing）的差異，下列何者最正確？"
+  options:
+    a: "Canary 著重逐步降低發版風險，A/B 著重比較不同方案的效果差異"
+    b: "Canary 一定不需流量控制，A/B 一定需要"
+    c: "A/B testing 只能用在前端頁面，不能用在模型版本"
+    d: "兩者都表示新版本只接收旁路影子流量，不影響正式結果"
+  correct: "a"
+  explanation:
+    why_correct: "Canary 的主要目的是安全發布，A/B 的主要目的是評估效果，雖然兩者都可能使用 traffic split，但目標不同。"
+    why_not_b: "兩者都常依賴流量切分機制，差異不在是否控制流量，而在發布目的。"
+    why_not_c: "模型版本同樣可做 A/B testing，例如比較轉換率、CTR 或人工覆核通過率。"
+    why_not_d: "只收旁路副本而不影響正式結果是 shadow deployment，不是 canary 或典型 A/B。"
+  keywords:
+    - "canary-deployment"
+    - "ab-testing"
+    - "traffic-split"
+  exam_trap: true
+
+- id: "L21302-Q13"
+  topic_code: "L21302"
+  item_code: "L21302-穩定性可用性"
+  difficulty: 2
+  question: "關於自動擴縮（Autoscaling）的敘述，下列何者正確？"
+  options:
+    a: "Autoscaling 的唯一依據只能是 CPU 使用率"
+    b: "Autoscaling 只能用在 batch inference，不能用在線上端點"
+    c: "Autoscaling 可依請求量或資源使用狀態調整實例數，以維持 SLO"
+    d: "只要有 autoscaling，就不需要容錯（Fault Tolerance）設計"
+  correct: "c"
+  explanation:
+    why_correct: "Autoscaling 的核心是依負載或觀測指標調整容量，目標通常是維持 latency、availability 等 SLO。"
+    why_not_a: "實務上可依 requests、concurrency、CPU 等多種訊號，不限於 CPU。"
+    why_not_b: "許多雲平台的 online endpoint 都支援 autoscaling，這是常考重點。"
+    why_not_d: "Autoscaling 解決容量，不等於解決單點故障、區域故障等容錯議題。"
+  keywords:
+    - "autoscaling"
+    - "SLO"
+    - "fault-tolerance"
+  exam_trap: false
+
+- id: "L21302-Q14"
+  topic_code: "L21302"
+  item_code: "L21302-雲端環境"
+  difficulty: 2
+  question: "下列哪一項最符合 Google Cloud Vertex AI 的常見特徵？"
+  options:
+    a: "以 S3 儲存桶作為主要品牌識別，並將模型部署到 endpoint"
+    b: "以 Endpoint 提供 online prediction，並可設定 traffic split"
+    c: "以 Lambda 為主要模型 registry 介面"
+    d: "不支援 batch prediction，只支援 online prediction"
+  correct: "b"
+  explanation:
+    why_correct: "Vertex AI 的代表性能力包括 deploy 到 Endpoint、支援 online prediction，並可用 traffic split 管理不同部署版本的流量。"
+    why_not_a: "S3 是 AWS 名稱，不是 Vertex AI 的平台辨識特徵。"
+    why_not_c: "Lambda 是 AWS 服務，不是 Vertex AI 的 model registry 介面。"
+    why_not_d: "Vertex AI 同時支援 online prediction 與 batch prediction。"
+  keywords:
+    - "Vertex-AI"
+    - "endpoint"
+    - "traffic-split"
+  exam_trap: false
+
+- id: "L21302-Q15"
+  topic_code: "L21302"
+  item_code: "L21302-測試驗證"
+  difficulty: 2
+  question: "關於影子測試（Shadow Testing）的描述，下列何者正確？"
+  options:
+    a: "真實使用者會直接看到新模型輸出的結果"
+    b: "主要目的是檢查程式碼格式是否符合規範"
+    c: "只適用於訓練階段，不能用於部署驗證"
+    d: "新模型接收實際流量副本，但正式對外結果仍由既有系統提供"
+  correct: "d"
+  explanation:
+    why_correct: "Shadow testing 的價值在於低風險地用真實流量驗證新版本，卻不直接影響正式服務。"
+    why_not_a: "若使用者直接看到新模型結果，就不是 shadow，而比較像 canary 或直接切換。"
+    why_not_b: "程式碼格式檢查屬 linting 或 CI 品質門檻，不是 shadow 測試。"
+    why_not_c: "Shadow testing 正是部署前後常用的上線風險控制方法。"
+  keywords:
+    - "shadow-testing"
+    - "deployment-validation"
+    - "traffic-mirroring"
+  exam_trap: false
+
+- id: "L21302-Q16"
+  topic_code: "L21302"
+  item_code: "L21302-效能監控"
+  difficulty: 2
+  question: "下列哪一項最屬於模型監控（Model Monitoring），而不是系統監控（System Monitoring）？"
+  options:
+    a: "輸入特徵分布與基準資料的差異"
+    b: "節點磁碟使用率"
+    c: "API 的 p95 延遲（p95 Latency）"
+    d: "Pod 重啟次數"
+  correct: "a"
+  explanation:
+    why_correct: "輸入特徵分布差異屬模型健康與資料品質監控，直接對應 drift 偵測。"
+    why_not_b: "磁碟使用率是基礎設施層指標，不代表模型本身是否退化。"
+    why_not_c: "p95 latency 是服務穩定性與效能指標，屬系統監控範疇。"
+    why_not_d: "Pod 重啟次數反映平台穩定性，並非模型品質變化。"
+  keywords:
+    - "model-monitoring"
+    - "system-monitoring"
+    - "drift"
+  exam_trap: true
+
+- id: "L21302-Q17"
+  topic_code: "L21302"
+  item_code: "L21302-部署技術"
+  difficulty: 3
+  question: "某台灣電商要在結帳頁即時計算詐欺風險分數，要求 300 毫秒內回應，且尖峰時段流量波動大。此時最合適的部署方式為何？"
+  options:
+    a: "使用即時推論（Real-time Inference）API endpoint，並搭配 autoscaling"
+    b: "每天凌晨執行一次 batch inference，將結果預先寫入資料庫"
+    c: "只輸出離線報表給風控人員人工判讀"
+    d: "先做 shadow deployment，不需要正式線上服務"
+  correct: "a"
+  explanation:
+    why_correct: "題幹同時要求低延遲與應對流量波動，最直接的方案是 real-time endpoint 加 autoscaling。"
+    why_not_b: "批次結果無法反映結帳當下交易特徵，會錯過即時攔截需求。"
+    why_not_c: "人工離線判讀不符合 300 毫秒內回應的服務條件。"
+    why_not_d: "Shadow 可作驗證輔助，但不能取代正式服務能力。"
+  keywords:
+    - "real-time-inference"
+    - "autoscaling"
+    - "fraud-detection"
+  exam_trap: false
+
+- id: "L21302-Q18"
+  topic_code: "L21302"
+  item_code: "L21302-效能監控"
+  difficulty: 3
+  question: "某信用評分模型最近 AUC 明顯下降，但線上特徵分布幾乎未變，原因是客戶違約行為模式改變，導致相同特徵對標籤的意義不同。此時最可能發生的是什麼？"
+  options:
+    a: "只是 CPU 使用率過高"
+    b: "概念漂移（Concept Drift）"
+    c: "容器映像檔（Container Image）版本過舊"
+    d: "批次排程延遲"
+  correct: "b"
+  explanation:
+    why_correct: "Concept drift 指輸入與目標之間的關係改變，即使輸入分布近似，模型效果仍可能明顯下降。"
+    why_not_a: "CPU 過高會造成延遲問題，但不會直接解釋題幹描述的關係改變。"
+    why_not_c: "映像檔版本可能影響部署穩定性，但不會造成同特徵對標籤意義改變。"
+    why_not_d: "排程延遲是作業時間問題，不是模型決策關係退化。"
+  keywords:
+    - "concept-drift"
+    - "AUC"
+    - "model-monitoring"
+  exam_trap: false
+
+- id: "L21302-Q19"
+  topic_code: "L21302"
+  item_code: "L21302-更新管理"
+  difficulty: 3
+  question: "你的團隊要上線新模型，但擔心特徵處理邏輯在真實流量下有未預期差異。希望先用正式流量驗證輸出與延遲，且不能影響使用者結果。最合適的策略是什麼？"
+  options:
+    a: "A/B testing，直接讓 50% 使用者看到新模型結果"
+    b: "Blue-green deployment，直接整批切換到綠環境"
+    c: "Shadow deployment，複製流量給新模型但不回傳給使用者"
+    d: "Canary deployment，先讓 10% 使用者直接使用新模型"
+  correct: "c"
+  explanation:
+    why_correct: "題幹同時要求真實流量驗證與不影響正式回應，這正是 shadow deployment 的設計目的。"
+    why_not_a: "A/B 會讓部分使用者直接接觸新結果，不符合不能影響正式回應的要求。"
+    why_not_b: "Blue-green 著重切換與快速回滾，但一旦切換就會影響正式使用者。"
+    why_not_d: "Canary 雖只影響小部分流量，但仍會讓部分真實使用者收到新模型輸出。"
+  keywords:
+    - "shadow-deployment"
+    - "traffic-mirroring"
+    - "risk-control"
+  exam_trap: false
+
+- id: "L21302-Q20"
+  topic_code: "L21302"
+  item_code: "L21302-架構設計"
+  difficulty: 3
+  question: "某團隊已訓練完成模型，接下來希望讓 QA 與法遵能追蹤版本、簽核部署、保留回滾依據。下一步最適合先把模型放到哪裡？"
+  options:
+    a: "直接部署到正式服務（Production Endpoint）"
+    b: "負載平衡器（Load Balancer）"
+    c: "監控儀表板（Monitoring Dashboard）"
+    d: "模型登錄（Model Registry）"
+  correct: "d"
+  explanation:
+    why_correct: "Model registry 能提供版本控管、metadata、核准流程與後續部署依據，是 train 後的合理下一站。"
+    why_not_a: "直接上正式環境會跳過版本審核與可追溯管理，風險過高。"
+    why_not_b: "Load balancer 處理流量分配，不管理模型版本生命週期。"
+    why_not_c: "監控儀表板用於觀察已上線服務，不是訓練完成後的版本管理中樞。"
+  keywords:
+    - "model-registry"
+    - "governance"
+    - "rollback"
+  exam_trap: false
+
+- id: "L21302-Q21"
+  topic_code: "L21302"
+  item_code: "L21302-穩定性可用性"
+  difficulty: 3
+  question: "某影像辨識 API 的 SLO 是 99% 請求需在 500 毫秒內完成。最近尖峰流量導致 p99 latency 失控，但模型準確率沒有變差。團隊優先應採取哪個措施？"
+  options:
+    a: "重新標註資料並重訓模型"
+    b: "新增 autoscaling 與容量規劃，優先處理 serving 層延遲"
+    c: "只檢查 PSI 是否超標"
+    d: "把所有流量改成每日 batch inference"
+  correct: "b"
+  explanation:
+    why_correct: "題幹問題在 serving 容量與 latency，不在模型品質；優先處理 autoscaling、資源配置與服務瓶頸才對。"
+    why_not_a: "模型準確率未變差，立即重訓無法直接解決 p99 latency 問題。"
+    why_not_c: "PSI 用於資料分布監控，與當前延遲違反 SLO 的主因不同。"
+    why_not_d: "把互動式 API 改成 batch 會破壞原本即時服務需求。"
+  keywords:
+    - "SLO"
+    - "latency"
+    - "autoscaling"
+  exam_trap: true
+
+- id: "L21302-Q22"
+  topic_code: "L21302"
+  item_code: "L21302-雲端環境"
+  difficulty: 3
+  question: "團隊想在 Google Cloud 上將兩個模型版本部署到同一個 endpoint，並用 traffic split 逐步觀察效果。最符合此需求的服務是什麼？"
+  options:
+    a: "Amazon SageMaker AI Batch Transform"
+    b: "Azure ML Batch Endpoint"
+    c: "Vertex AI online endpoint deployment"
+    d: "單純使用 MLflow Tracking Server"
+  correct: "c"
+  explanation:
+    why_correct: "Vertex AI 的 endpoint deployment 支援將模型部署到線上端點，並以 traffic split 管理不同版本流量。"
+    why_not_a: "SageMaker Batch Transform 是 AWS 的批次推論服務，且不符合同一 endpoint 線上分流需求。"
+    why_not_b: "Azure Batch Endpoint 偏向非同步批次作業，不是題幹要的線上分流。"
+    why_not_d: "MLflow Tracking Server 著重實驗追蹤，不負責線上 traffic split serving。"
+  keywords:
+    - "Vertex-AI"
+    - "traffic-split"
+    - "online-endpoint"
+  exam_trap: false
+
+- id: "L21302-Q23"
+  topic_code: "L21302"
+  item_code: "L21302-測試驗證"
+  difficulty: 3
+  question: "你要驗證模型 API 在正式資料庫、快取與驗證服務串接下是否仍能正確回應。此時最合適的測試類型是什麼？"
+  options:
+    a: "整合測試（Integration Test）"
+    b: "單元測試（Unit Test）"
+    c: "手動驗收，不需自動化"
+    d: "只做離線準確率評估"
+  correct: "a"
+  explanation:
+    why_correct: "Integration test 用來驗證多個模組或外部服務串接後是否能正確運作，最符合題幹情境。"
+    why_not_b: "單元測試只能驗證局部邏輯，無法覆蓋多系統整合風險。"
+    why_not_c: "手動驗收可補充，但無法穩定覆蓋反覆部署的整合風險。"
+    why_not_d: "離線準確率只評估模型效果，不驗證 API 與相依服務的整體互通。"
+  keywords:
+    - "integration-test"
+    - "API-serving"
+    - "system-validation"
+  exam_trap: false
+
+- id: "L21302-Q24"
+  topic_code: "L21302"
+  item_code: "L21302-雲端環境"
+  difficulty: 3
+  question: "你的團隊仍沿用 MLflow 的傳統 stage 觀念管理模型，但也想符合現行實務。下列哪種做法最合理？"
+  options:
+    a: "完全不要做版本管理，只保留最新模型"
+    b: "只靠檔名判斷是否為正式版，不需 registry metadata"
+    c: "保留對 None、Staging、Production、Archived 的理解，同時逐步改用 aliases 或 tags 管理"
+    d: "把所有模型都標成 Production，以免部署流程複雜"
+  correct: "c"
+  explanation:
+    why_correct: "考試常見傳統 stages，但 MLflow 新版已傾向 aliases/tags；同時理解兩者最符合教材與實務銜接。"
+    why_not_a: "沒有版本管理就失去追溯、回滾與審核能力。"
+    why_not_b: "只靠檔名無法支撐正式的 lifecycle 管理與 metadata 查詢。"
+    why_not_d: "全部標成 Production 會失去階段區分，等於取消治理流程。"
+  keywords:
+    - "MLflow"
+    - "aliases"
+    - "versioning"
+  exam_trap: true
+
+- id: "L21302-Q25"
+  topic_code: "L21302"
+  item_code: "L21302-架構設計"
+  difficulty: 4
+  question: "某製造業團隊將模型訓練完成後直接推上 Kubernetes 服務，結果事後無法釐清是哪個版本造成誤判，也很難回滾。從 MLOps 角度看，最關鍵的架構缺口是什麼？"
+  options:
+    a: "缺少模型登錄（Model Registry）與版本治理"
+    b: "缺少 GPU 訓練叢集"
+    c: "缺少資料視覺化報表"
+    d: "缺少前端頁面設計"
+  correct: "a"
+  explanation:
+    why_correct: "沒有 registry 與版本治理，就很難追蹤部署版本、簽核狀態與回滾依據，這正是題幹失敗的主因。"
+    why_not_b: "題幹問題不是訓練算力，而是部署後的可追溯性與治理。"
+    why_not_c: "資料報表可輔助分析，但不能取代模型版本管控。"
+    why_not_d: "前端不是此 MLOps 問題的核心。"
+  keywords:
+    - "MLOps"
+    - "model-registry"
+    - "rollback"
+  exam_trap: false
+
+- id: "L21302-Q26"
+  topic_code: "L21302"
+  item_code: "L21302-更新管理"
+  difficulty: 4
+  question: "比較藍綠部署（Blue-Green Deployment）與金絲雀部署（Canary Deployment）時，下列哪個判斷最合理？"
+  options:
+    a: "Blue-green 主要靠旁路流量比對，不會讓使用者接觸新版本"
+    b: "Canary 適合逐步放量觀察風險；blue-green 適合快速整體切換並保留明確回切路徑"
+    c: "兩者都只能用在 batch inference"
+    d: "Canary 的主要目標是比較兩個版本的商業轉換率，不是發布風險"
+  correct: "b"
+  explanation:
+    why_correct: "Canary 強調漸進式放量與風險控制，blue-green 強調兩套環境切換與快速回退，兩者定位不同。"
+    why_not_a: "旁路不影響正式結果是 shadow deployment 的概念。"
+    why_not_c: "兩者都可用於線上服務部署，並非只限 batch。"
+    why_not_d: "比較商業效果更接近 A/B testing；canary 的核心仍是安全發布。"
+  keywords:
+    - "blue-green"
+    - "canary-deployment"
+    - "rollback"
+  exam_trap: true
+
+- id: "L21302-Q27"
+  topic_code: "L21302"
+  item_code: "L21302-效能監控"
+  difficulty: 4
+  question: "某模型服務 CPU、RAM 與網路流量都很穩定，但最近預測信心分布、PSI 與實際通過率逐步異常。下列哪個分析最合理？"
+  options:
+    a: "系統監控正常，因此模型一定沒有問題"
+    b: "只要容器沒有重啟，就不需要檢查模型"
+    c: "這較像模型監控異常，需檢查 drift 與資料品質，而不只是基礎設施"
+    d: "代表一定要立刻升級 Kubernetes 版本"
+  correct: "c"
+  explanation:
+    why_correct: "題幹已給出典型模型健康訊號異常，但系統資源平穩，重點應放在 drift、資料品質與模型表現退化。"
+    why_not_a: "這正是考題常見陷阱：system metrics 正常，不代表 model metrics 正常。"
+    why_not_b: "容器不重啟只能說明服務未崩潰，不代表預測品質未退化。"
+    why_not_d: "平台版本升級可能是維運議題，但與題幹的模型異常訊號沒有直接因果。"
+  keywords:
+    - "model-monitoring"
+    - "PSI"
+    - "system-vs-model"
+  exam_trap: true
+
+- id: "L21302-Q28"
+  topic_code: "L21302"
+  item_code: "L21302-穩定性可用性"
+  difficulty: 4
+  question: "某語音辨識服務承諾客戶月可用率 99.9%，團隊內部則以 p95 latency 與 error rate 設定日常營運門檻。下列哪一項最能正確區分兩者？"
+  options:
+    a: "兩者都是 SLA，只是量測方式不同"
+    b: "前者較像 SLO，後者較像 SLA"
+    c: "前者與後者都屬模型準確率管理，和服務管理無關"
+    d: "對客戶的 99.9% 承諾較像 SLA，內部 latency/error 目標較像 SLO"
+  correct: "d"
+  explanation:
+    why_correct: "對外承諾通常屬 SLA，內部操作性目標如 latency/error rate 門檻屬 SLO。"
+    why_not_a: "SLA 與 SLO 不能簡單視為同義詞，考題常用這種說法當陷阱。"
+    why_not_b: "這把 SLA 與 SLO 角色顛倒了。"
+    why_not_c: "Latency、error rate、availability 都是服務管理核心，不是只看模型準確率。"
+  keywords:
+    - "SLA"
+    - "SLO"
+    - "availability"
+  exam_trap: true
+
+- id: "L21302-Q29"
+  topic_code: "L21302"
+  item_code: "L21302-雲端環境"
+  difficulty: 4
+  question: "若需求是「在 AWS 上管理模型版本、核准後部署到低延遲線上端點，並支援 autoscaling」，下列哪個組合最合理？"
+  options:
+    a: "Amazon SageMaker AI Model Registry 搭配 real-time inference endpoint"
+    b: "Vertex AI batch prediction 搭配 BigQuery"
+    c: "Azure ML batch endpoint 搭配手動 FTP 上傳模型"
+    d: "只使用 MLflow Tracking，不部署線上服務"
+  correct: "a"
+  explanation:
+    why_correct: "題幹要求 AWS、版本管理、核准部署、低延遲端點與 autoscaling，SageMaker registry + real-time endpoint 最吻合。"
+    why_not_b: "這是 GCP 的批次方案，不符合 AWS 與低延遲端點需求。"
+    why_not_c: "Azure batch endpoint 偏非同步批次，且 FTP 上傳不是題幹要點。"
+    why_not_d: "只做 tracking 無法滿足正式 serving 與 autoscaling。"
+  keywords:
+    - "SageMaker"
+    - "model-registry"
+    - "real-time-endpoint"
+  exam_trap: false
+
+- id: "L21302-Q30"
+  topic_code: "L21302"
+  item_code: "L21302-測試驗證"
+  difficulty: 4
+  question: "某團隊已完成 unit test 與 integration test，準備讓新模型接收真實生產流量副本，比對輸出差異與 latency，但不讓任何客戶看到新結果。這種做法最應被視為哪一種驗證？"
+  options:
+    a: "負載測試（Load Test）"
+    b: "A/B testing"
+    c: "影子測試（Shadow Testing）"
+    d: "只屬於資料標註驗收"
+  correct: "c"
+  explanation:
+    why_correct: "Shadow testing 正是把真實流量鏡像給新系統，觀察差異但不影響正式輸出。"
+    why_not_a: "Load test 主要壓容量，不一定使用真實生產流量副本，也不以旁路比對為主。"
+    why_not_b: "A/B 會讓部分使用者看到不同版本的正式結果，與題幹不符。"
+    why_not_d: "這與資料標註驗收無關，而是部署驗證策略。"
+  keywords:
+    - "shadow-testing"
+    - "production-traffic"
+    - "validation"
+  exam_trap: false
+
+- id: "L21302-Q31"
+  topic_code: "L21302"
+  item_code: "L21302-部署技術"
+  difficulty: 4
+  question: "下列哪個比較最能正確區分批次推論（Batch Inference）與即時推論（Real-time Inference）在系統設計上的重點？"
+  options:
+    a: "Batch 著重低延遲 API；real-time 著重夜間排程吞吐量"
+    b: "Batch 著重非同步大量處理；real-time 著重低延遲、穩定端點與流量擴展"
+    c: "兩者設計重點相同，只差模型演算法"
+    d: "Real-time inference 不應使用容器或 Kubernetes"
+  correct: "b"
+  explanation:
+    why_correct: "Batch 與 real-time 的核心差異在工作負載型態與服務目標：前者吞吐與排程，後者低延遲與高可用服務。"
+    why_not_a: "這把兩者重點完全對調，是最典型的混淆型錯誤。"
+    why_not_c: "就算模型相同，部署型態、監控指標與容量設計仍大不相同。"
+    why_not_d: "Real-time serving 很常搭配容器與 Kubernetes，這是常見架構。"
+  keywords:
+    - "batch-inference"
+    - "real-time-inference"
+    - "Kubernetes"
+  exam_trap: true
+
+- id: "L21302-Q32"
+  topic_code: "L21302"
+  item_code: "L21302-架構設計"
+  difficulty: 4
+  question: "某團隊已建立 train → registry → Serving 流程，但實際上線後只監控 CPU 與記憶體，沒有追蹤 drift、預測分布與業務結果。從 MLOps 完整性來看，最主要缺口在哪一段？"
+  options:
+    a: "Train"
+    b: "Registry"
+    c: "Serving"
+    d: "Monitor"
+  correct: "d"
+  explanation:
+    why_correct: "題幹缺的是線上模型健康與表現監控，因此缺口在 monitor，而不是前面幾段。"
+    why_not_a: "訓練是否完整無法從題幹直接推得；問題集中在線上監控不足。"
+    why_not_b: "題幹已表明有 registry，版本管理不是當前主要缺口。"
+    why_not_c: "模型已經進入 Serving 階段，但沒有足夠監控閉環，這才是問題。"
+  keywords:
+    - "MLOps-pipeline"
+    - "monitor"
+    - "model-health"
+  exam_trap: false
+
+- id: "L21302-Q33"
+  topic_code: "L21302"
+  item_code: "L21302-更新管理"
+  difficulty: 5
+  question: "某金融機構要上線新授信模型，限制條件為：1. 不可一次影響全部客戶；2. 必須能快速回滾；3. 需要逐步觀察延遲與核准率是否異常。哪種部署策略最符合這三個條件？"
+  options:
+    a: "Canary deployment，先以小比例正式流量驗證後逐步放量"
+    b: "一次性全量切換，失敗再重訓"
+    c: "只做離線回測，不上線觀察"
+    d: "固定採 batch inference 取代線上服務"
+  correct: "a"
+  explanation:
+    why_correct: "Canary 能以小流量正式驗證新版本，觀察 latency 與業務指標，並在異常時快速停止放量或回退。"
+    why_not_b: "全量切換與題幹第一個限制直接衝突，也提高事故衝擊面。"
+    why_not_c: "離線回測無法觀察真實線上延遲與實際客戶互動結果。"
+    why_not_d: "改成 batch inference 不能滿足金融授信線上決策場景。"
+  keywords:
+    - "canary-deployment"
+    - "rollback"
+    - "risk-control"
+  exam_trap: false
+
+- id: "L21302-Q34"
+  topic_code: "L21302"
+  item_code: "L21302-效能監控"
+  difficulty: 5
+  question: "某推薦系統的 p95 latency、CPU 與 error rate 都維持在 SLO 內，但轉換率連續兩週下降，且 PSI 顯示部分關鍵特徵分布偏移。下列哪一個處置最合理？"
+  options:
+    a: "判定系統健康，因此不需處理"
+    b: "啟動模型監控調查與再訓練（Retrain）評估，而不只看基礎設施指標"
+    c: "直接關閉所有監控告警，以免誤報"
+    d: "先把 autoscaling 上限提高即可"
+  correct: "b"
+  explanation:
+    why_correct: "系統層指標正常，但業務成效與 drift 指標異常，表示需要從模型與資料層面調查，必要時進行 retrain。"
+    why_not_a: "這忽略了 model monitoring 與 business KPI，正是實務上常見盲點。"
+    why_not_c: "關閉告警會掩蓋問題，而不是解決問題。"
+    why_not_d: "擴容只能改善容量問題，無法處理資料分布改變造成的效果下降。"
+  keywords:
+    - "PSI"
+    - "retrain"
+    - "business-KPI"
+  exam_trap: true
+
+- id: "L21302-Q35"
+  topic_code: "L21302"
+  item_code: "L21302-雲端環境"
+  difficulty: 5
+  question: "某企業要建立跨雲 MLOps 治理，需求包括：統一追蹤模型版本、保留部署前後狀態資訊、支援回滾；同時教材仍會考傳統 stage 名詞。哪種做法最能同時兼顧考試與現行實務？"
+  options:
+    a: "完全依賴雲端 VM 檔名命名規則，不使用 registry"
+    b: "只選單一雲平台自有命名，不保留版本 metadata"
+    c: "以 MLflow Model Registry 管理版本，理解 None、Staging、Production、Archived 概念，並補充 aliases/tags 的現行做法"
+    d: "把所有模型輸出成 PDF 報告留存即可"
+  correct: "c"
+  explanation:
+    why_correct: "MLflow 有跨平台特性，且題幹明示需兼顧傳統 stage 與現行 aliases/tags，這是最完整的治理方案。"
+    why_not_a: "只靠檔名無法提供正式的版控、狀態與回滾治理。"
+    why_not_b: "沒有 metadata 與版本資訊，很難支撐稽核與部署追溯。"
+    why_not_d: "PDF 可作文件，但不能取代可操作的 registry。"
+  keywords:
+    - "MLflow"
+    - "aliases"
+    - "cross-cloud"
+  exam_trap: false
+
+- id: "L21302-Q36"
+  topic_code: "L21302"
+  item_code: "L21302-穩定性可用性"
+  difficulty: 5
+  question: "某客服語音模型必須滿足 24x7 服務、尖峰時自動擴容、單一節點故障不影響對外 API，且需用可量測目標管理。哪一組設計最完整？"
+  options:
+    a: "只提升模型準確率，不處理服務層"
+    b: "只設定 SLA 文件，不設 SLO、冗餘或 autoscaling"
+    c: "將推論改為每晚 batch job，避免即時故障"
+    d: "設定 SLO，部署冗餘實例與 fault tolerance，並以 autoscaling 維持 latency/availability"
+  correct: "d"
+  explanation:
+    why_correct: "題幹同時涉及可量測目標、容量伸縮與容錯，必須把 SLO、冗餘、fault tolerance 與 autoscaling 一起設計。"
+    why_not_a: "高準確率無法取代高可用服務架構。"
+    why_not_b: "只有 SLA 文件沒有內部操作目標與技術措施，落地性不足。"
+    why_not_c: "batch job 無法滿足 24x7 即時客服服務。"
+  keywords:
+    - "SLO"
+    - "fault-tolerance"
+    - "autoscaling"
+  exam_trap: false
+
+- id: "L21302-Q37"
+  topic_code: "L21302"
+  item_code: "L21302-部署技術"
+  difficulty: 5
+  question: "某團隊要同時達成三個目標：1. 線上交易需低延遲推論；2. 每晚還要重算全站會員分群；3. 部署環境需可移植到 Docker/Kubernetes。哪個方案最合理？"
+  options:
+    a: "全部改成單一 batch job，避免架構複雜"
+    b: "全部改成單一 real-time API，連夜間重算也走同步請求"
+    c: "以容器化（Containerisation）封裝模型，線上場景用 real-time serving，夜間重算用 batch inference"
+    d: "只保留模型訓練腳本，不做正式部署"
+  correct: "c"
+  explanation:
+    why_correct: "題幹同時有即時與大批量需求，最佳作法是同一模型工件以容器化交付，分別服務 real-time 與 batch 場景。"
+    why_not_a: "全批次化會犧牲交易場景所需的即時性。"
+    why_not_b: "把夜間大量重算全部塞進同步 API 會造成成本與服務壓力不合理。"
+    why_not_d: "沒有正式部署就無法滿足線上與夜間作業需求。"
+  keywords:
+    - "containerisation"
+    - "batch-inference"
+    - "real-time-serving"
+  exam_trap: false
+
+- id: "L21302-Q38"
+  topic_code: "L21302"
+  item_code: "L21302-測試驗證"
+  difficulty: 5
+  question: "某公司準備把新模型從 Staging 推到正式環境。需求是：先確認程式模組正確、再驗證與資料庫/認證服務整合、最後在不影響客戶的情況下比對真實流量結果。哪個測試流程最合理？"
+  options:
+    a: "只做 load test 即可"
+    b: "Unit test → Integration test → Shadow testing"
+    c: "A/B testing → Unit test → Batch replay"
+    d: "先全量上線，再依監控結果決定是否補測"
+  correct: "b"
+  explanation:
+    why_correct: "先單元測試確保模組邏輯，再做整合測試確認串接，最後以 shadow testing 驗證真實流量而不影響使用者，流程完整且風險最低。"
+    why_not_a: "Load test 很重要，但不足以取代功能正確性與真實流量旁路驗證。"
+    why_not_c: "A/B 會直接影響部分使用者，不適合作為題幹要求的最後驗證步驟。"
+    why_not_d: "先全量上線再補測，與穩健發布原則相反。"
+  keywords:
+    - "unit-test"
+    - "integration-test"
+    - "shadow-testing"
+  exam_trap: false
+
+- id: "L21302-Q39"
+  topic_code: "L21302"
+  item_code: "L21302-架構設計"
+  difficulty: 5
+  question: "某企業要設計完整 MLOps 閉環，要求能追蹤版本、觀察線上 drift、在效果下降時自動觸發再訓練（Retrain），並能安全重新部署。哪個設計最符合這些要求？"
+  options:
+    a: "只保留訓練筆記，人工記錄版本"
+    b: "Train → Registry → Serving → Monitor → Retrain，並結合版本控管與部署策略"
+    c: "Train → Serving，等出問題再手動處理"
+    d: "Monitor → Train → Registry，部署流程可省略"
+  correct: "b"
+  explanation:
+    why_correct: "題幹要求完整閉環，必須包含訓練、版本管理、部署、監控與 retrain，且各段需要相互串接。"
+    why_not_a: "人工筆記無法支撐正式版控、監控觸發與安全部署。"
+    why_not_c: "少了 registry、monitor 與 retrain 治理，無法形成閉環。"
+    why_not_d: "先 monitor 再訓練不符合生命週期，也缺少 serving 的正式落地。"
+  keywords:
+    - "MLOps-pipeline"
+    - "retrain"
+    - "deployment-strategy"
+  exam_trap: false
+
+- id: "L21302-Q40"
+  topic_code: "L21302"
+  item_code: "L21302-雲端環境"
+  difficulty: 5
+  question: "若你要替客戶比較 Amazon SageMaker AI、Google Cloud Vertex AI 與 Azure Machine Learning，需求是：需同時支援線上端點（Online Endpoint）、批次推論（Batch Inference）、版本治理，以及雲端原生部署管理。下列哪個判斷最合理？"
+  options:
+    a: "只有 SageMaker AI 支援模型部署，另外兩者不支援"
+    b: "只有 Vertex AI 支援 batch inference，另外兩者不支援"
+    c: "只有 Azure ML 支援 online endpoint，另外兩者不支援"
+    d: "三者都提供線上/批次推論與部署管理能力，但介面與特色實作不同"
+  correct: "d"
+  explanation:
+    why_correct: "三大平台都具備線上與批次推論、模型部署與管理能力，差異主要在產品介面、名詞與平台生態。"
+    why_not_a: "SageMaker 不是唯一支援部署的平台，這是過度簡化。"
+    why_not_b: "Vertex AI 當然支援 batch，但 SageMaker 與 Azure ML 也支援。"
+    why_not_c: "Azure ML 支援 online endpoint，但其他兩者同樣支援。"
+  keywords:
+    - "SageMaker"
+    - "Vertex-AI"
+    - "Azure-ML"
+  exam_trap: false
