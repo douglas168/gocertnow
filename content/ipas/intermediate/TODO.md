@@ -36,6 +36,10 @@ Tracks open items across all lessons that need resolution before publishing.
 ### L21302 — AI技術系統集成與部署
 - **Diagram rendering:** 5 Mermaid diagrams exist as `.md` source under `lessons/L21302-AI技術系統集成與部署/diagrams/` — render to PNG via Gemini downstream (not blocking publish).
 
+### L22101 — 敘述性統計與資料摘要技術
+- **Diagram rendering:** 4 Mermaid diagrams exist as `.md` source under `lessons/L22101-敘述性統計與資料摘要技術/diagrams/` — render to PNG via Gemini downstream (not blocking publish).
+- **Gemini cross-review skipped** (HTTP 429 rate limit during build); Claude + Codex reviews both clean — re-run Gemini pass if desired before exam assembly.
+
 ---
 
 ## Lesson Progress
@@ -51,7 +55,7 @@ Tracks open items across all lessons that need resolution before publishing.
 | 7 | L21203 | AI風險管理 | L21 | required | 1 | ✅ Done | 1 |
 | 8 | L21301 | 數據準備與模型選擇 | L21 | required | 1 | ✅ Done | 1 |
 | 9 | L21302 | AI技術系統集成與部署 | L21 | required | 1 | ✅ Done | 1 |
-| 10 | L22101 | 敘述性統計與資料摘要技術 | L22 | elective_a (資料分析組) | 1 | Not started | — |
+| 10 | L22101 | 敘述性統計與資料摘要技術 | L22 | elective_a (資料分析組) | 1 | ✅ Done | 1 |
 | 11 | L22102 | 機率分佈與資料分佈模型 | L22 | elective_a (資料分析組) | 1 | Not started | — |
 | 12 | L22103 | 假設檢定與統計推論 | L22 | elective_a (資料分析組) | 1 | Not started | — |
 | 13 | L22201 | 數據收集與清理 | L22 | elective_a (資料分析組) | 1 | Not started | — |
@@ -81,9 +85,9 @@ Tracks open items across all lessons that need resolution before publishing.
 
 ## What's Next
 
-**Next lesson:** `/course-generate-lesson L22101` — 敘述性統計與資料摘要技術
+**Next lesson:** `/course-generate-lesson L22102` — 機率分佈與資料分佈模型
 
-**Remaining lessons:** 25 of 34 topics left (13 for 資料分析組 SKU; 18 for 機器學習組 SKU; all L21 items now complete)
+**Remaining lessons:** 24 of 34 topics left (12 for 資料分析組 SKU; 18 for 機器學習組 SKU; all L21 items now complete)
 
 ### Priority 1 — 資料分析組 sprint (founder 2026-05-23 exam)
 
@@ -100,7 +104,7 @@ Order from `syllabus/dependencies.md` §3. Build L21 (required) first, then L22.
 | ~~7~~ | ~~L21203~~ | ~~AI風險管理~~ | ✅ Done (40-question pool, 5 diagrams) |
 | ~~8~~ | ~~L21301~~ | ~~數據準備與模型選擇~~ | ✅ Done (40-question pool, 5 diagrams) |
 | ~~9~~ | ~~L21302~~ | ~~AI技術系統集成與部署~~ | ✅ Done (40-question pool, 5 diagrams) |
-| 10 | L22101 | 敘述性統計與資料摘要技術 | Deep, includes code |
+| ~~10~~ | ~~L22101~~ | ~~敘述性統計與資料摘要技術~~ | ✅ Done (40-question pool, 4 diagrams) |
 | 11 | L22102 | 機率分佈與資料分佈模型 | Deep, includes code |
 | 12 | L22103 | 假設檢定與統計推論 | Deep, includes code, keywords inferred |
 | 13 | L22201 | 數據收集與清理 | Medium, includes code |
@@ -150,3 +154,4 @@ Order from `syllabus/dependencies.md` §4 (L21 items already covered above).
 - **L21203** — AI風險管理 (2026-04-18). 40-question pool (D1-5 = 8/8/8/8/8, a/b/c/d = 10/10/10/10, 25 exam_trap), 919-line study guide, 5 Mermaid diagrams (EU AI Act 4-tier pyramid, NIST AI RMF Govern-cross-cutting cycle, 定列量控治追 risk loop, Responsible-AI 5-pillar mindmap with issuer matching, cross-jurisdiction comparison EU/TW/FSC/NIST/ISO). Multi-model 3-reviewer pipeline (Claude + Gemini adversarial + Codex auditor) resolved cascading 臺灣 AI 基本法 status fix (research-notes 待公布→ 2026-01-14 公布並施行 per 總統令 華總一義字第11500001671號, Q02/Q37/Q38 rewritten), Annex III 生物辨識 vs Art.5 prohibited carve-out, FSC 公平性與以人為本 canonicalization, 5x5 可能性衝擊矩陣 standardization across guide+questions, AIIA formal definition added, NIST CSF contrast sentence, Section 1 forward-pointer, FRIA scope guard, issuer-matching warning moved earlier.
 - **L21301** — 數據準備與模型選擇 (2026-04-20). 40-question pool (D1-5 = 8/8/8/8/8), 809-line study guide, 5 Mermaid diagrams (algorithm-choice flowchart, dataset-size heuristics quadrant, train/val/test split with leakage guard, feature encoding decision tree, class-imbalance strategy matrix). Multi-model 3-reviewer pipeline resolved 5 critical + 10 important + 13 minor fixes: Q18 k-NN→K-Means correction in clustering scenario, split ratio ranges capped at concrete 70/15/15 + 80/10/10, SMOTE leakage warning added to §3 + exam-trap section, terminology normalization across guide + questions.
 - **L21302** — AI技術系統集成與部署 (2026-04-20). 40-question pool (D1-5 = 8/8/8/8/8, a/b/c/d = 10/10/10/10, exam_trap throughout), ~562-line study guide, 5 Mermaid diagrams (MLOps pipeline closed-loop, four deployment strategies, two-layer monitoring + drift detection, cloud MLOps comparison SageMaker/Vertex/Azure, SLI→SLO→SLA nesting). Multi-model 3-reviewer pipeline resolved 4 critical + 3 important + 3 minor fixes: answer distribution rebalanced (a:6→10/b:13→10/c:13→10/d:8→10), MLflow None stage added to §3.1.2 + Q06, Q14 Vertex AI "managed endpoint" branding corrected, terminology normalized. **L21 科目一 fully complete — all 9 required topics done.**
+- **L22101** — 敘述性統計與資料摘要技術 (2026-04-20). 40-question pool (D1-5 = 8/8/8/8/8, 10 pseudocode questions, item dist A:6/B:9/C:8/D:11/E:6), 1,218-line study guide, 4 diagrams (boxplot anatomy, skewness comparison, data-cleaning flowchart, formula reference cheatsheet). 2-reviewer pipeline (Claude + Codex; Gemini 429 rate-limited) resolved 1 critical + 4 important + 3 minor fixes: Q36 redesigned (IQR fence ambiguity at exactly 68 → Q3 changed to 55, fence=65.5, 68 unambiguously outlier), Q01/Q35 why_not_b schema gaps filled, 離群值 canonicalized over 極端值 in 3 locations. **L22 資料分析組 sprint begun — 12 topics remaining.**

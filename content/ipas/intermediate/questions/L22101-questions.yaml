@@ -1,0 +1,883 @@
+- id: "L22101-Q01"
+  topic_code: "L22101"
+  item_code: "L22101-A"
+  difficulty: 1
+  question: "在集中趨勢（central tendency）中，最能代表一組數值平均水準的指標通常是下列何者？"
+  options:
+    a: "平均數（mean）"
+    b: "四分位距（IQR）"
+    c: "全距（range）"
+    d: "峰度（kurtosis）"
+  correct: "a"
+  explanation:
+    why_correct: "平均數是把所有觀測值加總後除以筆數，用來描述整體平均水準，是最典型的集中趨勢指標。"
+    why_not_a: "正確答案。平均數是最典型的集中趨勢指標。"
+    why_not_b: "四分位距（IQR）衡量的是中間 50% 資料的分散範圍，屬於離散程度指標，不是集中趨勢；這是常見陷阱，IQR 是一種「距離」而不是「位置」。"
+    why_not_c: "全距衡量的是最大值與最小值差距，屬於離散程度，不是集中趨勢。"
+    why_not_d: "峰度描述分布尾部厚薄或尖峭程度，屬於分布型態，不是平均位置。"
+  keywords:
+    - "平均數"
+    - "mean"
+    - "集中趨勢"
+  exam_trap: false
+
+- id: "L22101-Q02"
+  topic_code: "L22101"
+  item_code: "L22101-A"
+  difficulty: 1
+  question: "當資料含有離群值（outlier）時，若要描述典型中心位置，通常較適合優先參考哪一個指標？"
+  options:
+    a: "平均數（mean）"
+    b: "中位數（median）"
+    c: "變異數（variance）"
+    d: "全距（range）"
+  correct: "b"
+  explanation:
+    why_correct: "中位數只看排序後的中間位置，較不容易被極端值拉動，因此在有 outlier 時通常比平均數穩健。"
+    why_not_a: "平均數會把所有值都納入計算，遇到極端值時容易被大幅拉高或拉低，這是常見考試陷阱。"
+    why_not_c: "變異數描述分散程度，不是中心位置。"
+    why_not_d: "全距只反映極值差距，反而更容易受極端值影響。"
+  keywords:
+    - "中位數"
+    - "median"
+    - "outlier"
+  exam_trap: true
+
+- id: "L22101-Q03"
+  topic_code: "L22101"
+  item_code: "L22101-B"
+  difficulty: 1
+  question: "下列哪一個公式正確表示四分位距（interquartile range, IQR）？"
+  options:
+    a: "Q3 − Q2"
+    b: "Q2 − Q1"
+    c: "Q3 − Q1"
+    d: "max − min"
+  correct: "c"
+  explanation:
+    why_correct: "IQR 定義為第三四分位數 Q3 減去第一四分位數 Q1，用來衡量中間 50% 資料的分散程度。"
+    why_not_a: "Q3 − Q2 只反映上半部一段距離，很多考生會把 Q2 當成下界，這是常見誤解。"
+    why_not_c: "正確答案。"
+    why_not_d: "max − min 是全距（range），不是 IQR。"
+  keywords:
+    - "IQR"
+    - "Q3-Q1"
+    - "四分位距"
+  exam_trap: true
+
+- id: "L22101-Q04"
+  topic_code: "L22101"
+  item_code: "L22101-B"
+  difficulty: 1
+  question: "關於母體變異數（population variance）與樣本變異數（sample variance）的分母，下列何者正確？"
+  options:
+    a: "兩者都除以 N−1"
+    b: "兩者都除以 N"
+    c: "母體除以 N−1，樣本除以 N"
+    d: "母體除以 N，樣本除以 N−1"
+  correct: "d"
+  explanation:
+    why_correct: "母體變異數使用全部母體資料，分母為 N；樣本變異數為校正估計偏差，常用分母 N−1。"
+    why_not_a: "若兩者都除以 N−1，就混淆了母體與樣本的定義。"
+    why_not_c: "這把兩者的分母對調，是最常見的記憶錯誤。"
+    why_not_d: "正確答案。"
+  keywords:
+    - "母體變異數"
+    - "sample-variance"
+    - "ddof"
+  exam_trap: true
+
+- id: "L22101-Q05"
+  topic_code: "L22101"
+  item_code: "L22101-B"
+  difficulty: 1
+  question: "若某資料的 Q1=10、Q3=22，則依 IQR fence 規則計算出的上界（upper fence）為何？"
+  options:
+    a: "40"
+    b: "34"
+    c: "28"
+    d: "52"
+  correct: "a"
+  explanation:
+    why_correct: "IQR = 22 − 10 = 12，上界 = Q3 + 1.5×IQR = 22 + 18 = 40。"
+    why_not_a: "正確答案。"
+    why_not_c: "28 是把 1.5×IQR 算錯或把 Q1、Q3 用錯位置後常得到的干擾值。"
+    why_not_d: "52 常見於把 IQR 誤算成 20，或誤把 fence 當成用全距推算。"
+  keywords:
+    - "IQR-fence"
+    - "upper-fence"
+    - "離群值"
+  exam_trap: true
+
+- id: "L22101-Q06"
+  topic_code: "L22101"
+  item_code: "L22101-C"
+  difficulty: 1
+  question: "關於正偏態（positive skewness）分布，下列敘述何者正確？"
+  options:
+    a: "左尾較長，且 mean < median"
+    b: "右尾較長，且 mean > median"
+    c: "左右完全對稱，且 mean = median = mode"
+    d: "一定沒有離群值"
+  correct: "b"
+  explanation:
+    why_correct: "正偏態代表右尾較長，較大的值會把平均數往右拉，因此常見關係是 mean > median > mode。"
+    why_not_a: "左尾較長對應的是負偏態（negative skewness），方向常被考生記反。"
+    why_not_c: "完全對稱才可能出現 mean、median、mode 接近，不是正偏態。"
+    why_not_d: "偏態與是否一定存在離群值不是同一件事。"
+  keywords:
+    - "positive-skewness"
+    - "右尾"
+    - "mean>median"
+  exam_trap: true
+
+- id: "L22101-Q07"
+  topic_code: "L22101"
+  item_code: "L22101-C"
+  difficulty: 1
+  question: "在 `scipy.stats.kurtosis()` 中，若使用預設 Fisher 定義（fisher=True），常態分布（normal distribution）的峰度值應為何？"
+  options:
+    a: "−3"
+    b: "1"
+    c: "0"
+    d: "3"
+  correct: "c"
+  explanation:
+    why_correct: "SciPy 預設使用 Fisher's excess kurtosis，常態分布的 excess kurtosis 定義為 0。"
+    why_not_a: "−3 是把 Pearson 3 再額外錯減一次的常見誤算。"
+    why_not_c: "正確答案。"
+    why_not_d: "3 對應的是 Pearson 定義，不是 SciPy 預設的 Fisher 定義。"
+  keywords:
+    - "kurtosis"
+    - "Fisher"
+    - "excess-kurtosis"
+  exam_trap: true
+
+- id: "L22101-Q08"
+  topic_code: "L22101"
+  item_code: "L22101-E"
+  difficulty: 1
+  question: "在 `pandas.DataFrame.describe()` 的數值摘要中，哪一列代表中位數（median）？"
+  options:
+    a: "`25%`"
+    b: "`75%`"
+    c: "`std`"
+    d: "`50%`"
+  correct: "d"
+  explanation:
+    why_correct: "`describe()` 中 `50%` 就是第 50 百分位，也就是中位數。"
+    why_not_a: "`25%` 是第一四分位數 Q1，不是 median。"
+    why_not_c: "`std` 是標準差，描述離散程度。"
+    why_not_d: "正確答案。"
+  keywords:
+    - "pandas.describe"
+    - "median"
+    - "50%"
+  exam_trap: true
+
+- id: "L22101-Q09"
+  topic_code: "L22101"
+  item_code: "L22101-D"
+  difficulty: 2
+  question: "若數值欄位存在缺失值（missing values），且該欄位有明顯離群值（outliers），使用 `fillna()` 時通常較穩健的補值方式為何？"
+  options:
+    a: "以中位數（median）補值"
+    b: "以最大值（max）補值"
+    c: "以平均數（mean）補值"
+    d: "以標準差（std）補值"
+  correct: "a"
+  explanation:
+    why_correct: "中位數對極端值較不敏感，因此在分布偏斜或含 outlier 時，常比平均數更穩健。"
+    why_not_a: "正確答案。"
+    why_not_c: "平均數容易被極端值拉動，考生常因它最常見就直接選，但在此情境並非最佳。"
+    why_not_d: "標準差是離散程度指標，不適合作為單一代表值來補缺失。"
+  keywords:
+    - "fillna"
+    - "median-imputation"
+    - "robust"
+  exam_trap: true
+
+- id: "L22101-Q10"
+  topic_code: "L22101"
+  item_code: "L22101-A"
+  difficulty: 2
+  question: "某班考試成績大多落在 60 到 80 分，但有一位學生 0 分。若想描述班上典型表現（typical performance），下列何者最合理？"
+  options:
+    a: "優先看平均數（mean），因為一定最公平"
+    b: "優先看中位數（median），因為較不受 0 分影響"
+    c: "優先看全距（range），因為能反映所有差異"
+    d: "只看變異數（variance），因為能表示集中位置"
+  correct: "b"
+  explanation:
+    why_correct: "單一 0 分屬於極端值，會顯著拉低平均數；中位數較能保留多數學生的典型成績。"
+    why_not_a: "平均數並非任何情境都最適合，遇到偏態或極端值時常不是最好代表。"
+    why_not_c: "全距只看最大與最小值，無法代表班級的中心位置。"
+    why_not_d: "變異數描述離散程度，不是典型成績。"
+  keywords:
+    - "mean-vs-median"
+    - "outlier"
+    - "集中趨勢"
+  exam_trap: true
+
+- id: "L22101-Q11"
+  topic_code: "L22101"
+  item_code: "L22101-B"
+  difficulty: 2
+  question: "某資料的 Q1=18、Q2=25、Q3=31，則 IQR 為何？"
+  options:
+    a: "7"
+    b: "6"
+    c: "13"
+    d: "25"
+  correct: "c"
+  explanation:
+    why_correct: "IQR = Q3 − Q1 = 31 − 18 = 13。"
+    why_not_a: "7 是把 Q3 − Q2 當成 IQR 的常見誤選。"
+    why_not_c: "正確答案。"
+    why_not_d: "25 是 Q2 本身，不是四分位距。"
+  keywords:
+    - "IQR"
+    - "Q1-Q3"
+    - "四分位數"
+  exam_trap: true
+
+- id: "L22101-Q12"
+  topic_code: "L22101"
+  item_code: "L22101-B"
+  difficulty: 2
+  question: "關於 `pandas.Series.describe()` 的 `std` 列，下列何者正確？"
+  options:
+    a: "使用母體標準差，等同 `np.std(ddof=0)`"
+    b: "輸出的是變異數（variance）"
+    c: "只在整數欄位才會出現"
+    d: "使用樣本標準差，概念上等同 `ddof=1`"
+  correct: "d"
+  explanation:
+    why_correct: "pandas `describe()` 的 `std` 預設採樣本標準差，也就是以 `N−1` 為分母的 `ddof=1` 概念。"
+    why_not_a: "很多考生會把 pandas 和 NumPy 預設混為一談，但 `np.std()` 預設是 `ddof=0`。"
+    why_not_c: "只要是數值欄位，一般都會有 `std` 摘要，不限整數。"
+    why_not_d: "正確答案。"
+  keywords:
+    - "pandas.describe"
+    - "std"
+    - "ddof=1"
+  exam_trap: true
+
+- id: "L22101-Q13"
+  topic_code: "L22101"
+  item_code: "L22101-D"
+  difficulty: 2
+  question: "當資料分布明顯偏斜（skewed）且可能含離群值時，偵測 outlier 通常較適合先採用哪一種方法？"
+  options:
+    a: "IQR method"
+    b: "只看平均數（mean）"
+    c: "只看眾數（mode）"
+    d: "直接固定以 1 個標準差判定"
+  correct: "a"
+  explanation:
+    why_correct: "IQR method 依賴四分位數，對偏態與極端值較穩健，常比 z-score 更適合非近似常態資料。"
+    why_not_a: "正確答案。"
+    why_not_c: "眾數可描述最常見值，但不能單獨拿來判定 outlier。"
+    why_not_d: "1 個標準差太寬鬆且非通用規則，常見 z-score 也多以 ±3σ 作為參考。"
+  keywords:
+    - "IQR-method"
+    - "outlier-detection"
+    - "skewed-data"
+  exam_trap: true
+
+- id: "L22101-Q14"
+  topic_code: "L22101"
+  item_code: "L22101-C"
+  difficulty: 2
+  question: "若一組資料呈負偏態（negative skewness），下列敘述何者最合理？"
+  options:
+    a: "右尾較長，通常 mean > median"
+    b: "左尾較長，通常 mean < median"
+    c: "一定對稱，且 mean = median"
+    d: "一定無法計算平均數"
+  correct: "b"
+  explanation:
+    why_correct: "負偏態表示左尾較長，較小的值會把平均數向左拉，因此通常 mean < median。"
+    why_not_a: "這描述的是正偏態，方向正好相反。"
+    why_not_c: "對稱分布才可能 mean 與 median 接近，不是負偏態。"
+    why_not_d: "偏態資料當然仍可計算平均數，只是解讀要更小心。"
+  keywords:
+    - "negative-skewness"
+    - "左尾"
+    - "mean<median"
+  exam_trap: true
+
+- id: "L22101-Q15"
+  topic_code: "L22101"
+  item_code: "L22101-C"
+  difficulty: 2
+  question: "若呼叫 `scipy.stats.kurtosis(x, fisher=False)`，則常態分布（normal distribution）的理論峰度應為何？"
+  options:
+    a: "0"
+    b: "1"
+    c: "3"
+    d: "4"
+  correct: "c"
+  explanation:
+    why_correct: "當 `fisher=False` 時採 Pearson 定義，常態分布的 kurtosis 為 3。"
+    why_not_a: "0 是 Fisher excess kurtosis 的常態值，不是 Pearson 定義。"
+    why_not_c: "正確答案。"
+    why_not_d: "4 並非常態分布在常見峰度定義中的基準值。"
+  keywords:
+    - "kurtosis"
+    - "Pearson"
+    - "fisher=False"
+  exam_trap: true
+
+- id: "L22101-Q16"
+  topic_code: "L22101"
+  item_code: "L22101-E"
+  difficulty: 2
+  question: "在 `pandas.describe()` 的輸出中，哪一列對應第一四分位數（Q1）？"
+  options:
+    a: "`50%`"
+    b: "`mean`"
+    c: "`75%`"
+    d: "`25%`"
+  correct: "d"
+  explanation:
+    why_correct: "`25%` 代表第 25 百分位，也就是第一四分位數 Q1。"
+    why_not_a: "`50%` 是中位數，不是 Q1。"
+    why_not_c: "`75%` 是第三四分位數 Q3。"
+    why_not_d: "正確答案。"
+  keywords:
+    - "Q1"
+    - "25%"
+    - "describe"
+  exam_trap: true
+
+- id: "L22101-Q17"
+  topic_code: "L22101"
+  item_code: "L22101-A"
+  difficulty: 3
+  question: "台北某補習班統計 5 位學員模擬考分數為 68、70、72、74、98。若要在招生簡報中呈現大多數學員的典型成績（typical score），哪一個指標最適合？"
+  options:
+    a: "中位數（median）72"
+    b: "平均數（mean）76.4"
+    c: "全距（range）30"
+    d: "眾數（mode）不存在，因此不可摘要"
+  correct: "a"
+  explanation:
+    why_correct: "98 明顯偏高，會把平均數往上拉；中位數 72 更能代表多數學員的中心位置。"
+    why_not_a: "正確答案。"
+    why_not_c: "全距只描述最高與最低的差距，無法當作典型成績。"
+    why_not_d: "即使沒有眾數，也仍可用平均數或中位數進行摘要。"
+  keywords:
+    - "median"
+    - "outlier"
+    - "台灣情境"
+  exam_trap: true
+
+- id: "L22101-Q18"
+  topic_code: "L22101"
+  item_code: "L22101-B"
+  difficulty: 3
+  question: "某資料分析師執行 Python 程式 `arr = np.array([2, 4, 6, 8])` 與 `np.std(arr)`。若 NumPy 使用預設參數，輸出最接近下列何者？"
+  options:
+    a: "約 2.58，因為預設是 `ddof=1`"
+    b: "約 2.24，因為預設是 `ddof=0`"
+    c: "5.00，因為回傳的是變異數"
+    d: "10.00，因為回傳的是總和"
+  correct: "b"
+  explanation:
+    why_correct: "平均數為 5，平方離差和為 20；NumPy `np.std()` 預設 `ddof=0`，所以標準差為 sqrt(20/4) = sqrt(5) ≈ 2.24。"
+    why_not_a: "2.58 是使用樣本標準差 `ddof=1` 才會出現的結果，這正是考試常設的陷阱。"
+    why_not_c: "變異數會是 5，不是標準差，而且函式是 `std` 不是 `var`。"
+    why_not_d: "NumPy 不會把 `std` 當作總和運算。"
+  keywords:
+    - "np.std"
+    - "ddof=0"
+    - "pseudocode"
+  exam_trap: true
+
+- id: "L22101-Q19"
+  topic_code: "L22101"
+  item_code: "L22101-D"
+  difficulty: 3
+  question: "新竹某製造廠量測 7 批產品良率，排序後為 72、74、75、76、78、80、95。已知 Q1=74、Q3=80，依 IQR fence 判斷，下列何者為離群值（outlier）？"
+  options:
+    a: "72"
+    b: "80"
+    c: "95"
+    d: "76"
+  correct: "c"
+  explanation:
+    why_correct: "IQR = 80 − 74 = 6，上界 = 80 + 1.5×6 = 89，下界 = 74 − 9 = 65，只有 95 超過上界，因此為 outlier。"
+    why_not_a: "72 仍高於下界 65，不屬於離群值。"
+    why_not_c: "正確答案。"
+    why_not_d: "76 位於中央區域內，更不是離群值。"
+  keywords:
+    - "IQR-fence"
+    - "outlier"
+    - "製造業情境"
+  exam_trap: false
+
+- id: "L22101-Q20"
+  topic_code: "L22101"
+  item_code: "L22101-D"
+  difficulty: 3
+  question: "某校務系統的社團欄位為 `['AI社', 'AI社', None, '機器人社', None]`，資訊組想保留類別型欄位的常見值，執行 `s.fillna(s.mode()[0])` 後，最可能的補值內容為何？"
+  options:
+    a: "全部補成 `None`"
+    b: "全部補成 `機器人社`"
+    c: "全部補成空字串 `''`"
+    d: "全部補成 `AI社`"
+  correct: "d"
+  explanation:
+    why_correct: "`mode()[0]` 會取出出現次數最多的值；此例中 `AI社` 出現 2 次，為眾數，因此缺失值會補成 `AI社`。"
+    why_not_a: "`fillna()` 的目的正是填補缺失，不會再補成缺失值本身。"
+    why_not_c: "除非明確指定空字串，否則 `mode()[0]` 不會回傳 `''`。"
+    why_not_d: "正確答案。"
+  keywords:
+    - "fillna"
+    - "mode"
+    - "pseudocode"
+  exam_trap: false
+
+- id: "L22101-Q21"
+  topic_code: "L22101"
+  item_code: "L22101-C"
+  difficulty: 3
+  question: "某電商平台多數訂單金額集中在 300 到 800 元，但少數高價訂單超過 10000 元。此分布最可能呈現哪一種偏態（skewness）？"
+  options:
+    a: "正偏態（positive skewness）"
+    b: "負偏態（negative skewness）"
+    c: "完全對稱（symmetric）"
+    d: "無法判斷，因為沒有標準差"
+  correct: "a"
+  explanation:
+    why_correct: "少數極高金額會拉出右尾，因此整體分布通常為正偏態。"
+    why_not_a: "正確答案。"
+    why_not_c: "完全對稱表示兩側尾部近似平衡，與題目敘述不符。"
+    why_not_d: "判斷偏態不一定需要先知道標準差，情境本身已提供足夠方向。"
+  keywords:
+    - "positive-skewness"
+    - "電商"
+    - "右尾"
+  exam_trap: true
+
+- id: "L22101-Q22"
+  topic_code: "L22101"
+  item_code: "L22101-C"
+  difficulty: 3
+  question: "某工程師執行 `from scipy.stats import kurtosis` 與 `kurtosis(x)`，得到結果 `0.8`。在 SciPy 預設下，下列解讀何者最合理？"
+  options:
+    a: "這表示 Pearson kurtosis 為 0.8，低於常態 0"
+    b: "這表示 Fisher excess kurtosis 為 0.8，尾部或尖峭程度高於常態"
+    c: "這表示資料一定是負偏態"
+    d: "這表示標準差等於 0.8"
+  correct: "b"
+  explanation:
+    why_correct: "SciPy 預設 `fisher=True`，因此 0.8 代表 excess kurtosis 高於常態分布的 0，通常表示尾部較厚或較尖峭。"
+    why_not_a: "Pearson 定義下常態基準是 3，不是 0，且預設也不是 Pearson。"
+    why_not_c: "峰度與偏度是不同概念，不能直接從 kurtosis 判定正負偏。"
+    why_not_d: "峰度與標準差衡量的性質不同。"
+  keywords:
+    - "scipy.stats.kurtosis"
+    - "Fisher"
+    - "pseudocode"
+  exam_trap: true
+
+- id: "L22101-Q23"
+  topic_code: "L22101"
+  item_code: "L22101-E"
+  difficulty: 3
+  question: "某資料科學課程示範 `s = pd.Series([3, 5, 7, 9])`，接著執行 `s.describe()`。下列哪一項最可能出現在輸出中？"
+  options:
+    a: "`mode`"
+    b: "`dtype`"
+    c: "`25%`"
+    d: "`nunique`"
+  correct: "c"
+  explanation:
+    why_correct: "對數值型 Series 執行 `describe()`，典型輸出會包含 `count, mean, std, min, 25%, 50%, 75%, max`。"
+    why_not_a: "`describe()` 預設不會列出 `mode` 這一列。"
+    why_not_c: "正確答案。"
+    why_not_d: "`nunique` 是另一個獨立函式，不是 `describe()` 的輸出列名。"
+  keywords:
+    - "pandas.describe"
+    - "25%"
+    - "pseudocode"
+  exam_trap: false
+
+- id: "L22101-Q24"
+  topic_code: "L22101"
+  item_code: "L22101-B"
+  difficulty: 3
+  question: "某研究助理整理問卷分數，得到 Q1=40、Q2=55、Q3=70。若主管要求計算中間 50% 的分散程度，應回報下列何者？"
+  options:
+    a: "Q3 − Q2 = 15"
+    b: "Q2 − Q1 = 15"
+    c: "Q3 − Q2 + Q2 − Q1 = 30"
+    d: "IQR = Q3 − Q1 = 30"
+  correct: "d"
+  explanation:
+    why_correct: "中間 50% 的分散程度對應 IQR，計算方式為 Q3 − Q1 = 70 − 40 = 30。"
+    why_not_a: "Q3 − Q2 只表示上半段的部分距離，不是完整 IQR。"
+    why_not_c: "雖然數值碰巧也等於 30，但定義上 IQR 不是拆成兩段後相加來記憶。"
+    why_not_d: "正確答案。"
+  keywords:
+    - "IQR"
+    - "中間50%"
+    - "四分位距"
+  exam_trap: true
+
+- id: "L22101-Q25"
+  topic_code: "L22101"
+  item_code: "L22101-A"
+  difficulty: 4
+  question: "台中某醫療院所比較兩種候診時間摘要方式。資料大多在 8 到 15 分鐘，但少數尖峰時段超過 90 分鐘。若院方要對外公告較能代表一般病患經驗的單一指標，應優先選擇何者？"
+  options:
+    a: "中位數（median），因為較能抵抗極端候診時間"
+    b: "平均數（mean），因為一定最能代表服務品質"
+    c: "全距（range），因為能呈現最完整資訊"
+    d: "變異數（variance），因為能直接表示典型候診時間"
+  correct: "a"
+  explanation:
+    why_correct: "資料明顯右偏且含極端長候診時間，中位數較能反映一般病患的典型等待經驗。"
+    why_not_a: "正確答案。"
+    why_not_c: "全距只凸顯極端差距，無法回答一般病患通常等多久。"
+    why_not_d: "變異數是分散程度，不是對外公告的典型值。"
+  keywords:
+    - "median"
+    - "醫療情境"
+    - "outlier"
+  exam_trap: true
+
+- id: "L22101-Q26"
+  topic_code: "L22101"
+  item_code: "L22101-B"
+  difficulty: 4
+  question: "某分析師比較下列三段 Python 寫法，其中哪一段最可能得到樣本標準差（sample standard deviation）？"
+  options:
+    a: "`np.var(arr, ddof=1)`"
+    b: "`np.std(arr, ddof=1)`"
+    c: "`np.std(arr)`，因為預設即為 `ddof=1`"
+    d: "`pd.Series(arr).describe()['mean']`"
+  correct: "b"
+  explanation:
+    why_correct: "`np.std(arr, ddof=1)` 才是明確計算樣本標準差；`ddof=1` 對應分母 N−1。"
+    why_not_a: "`np.var()` 計算的是變異數，不是標準差。"
+    why_not_c: "NumPy 預設 `ddof=0`，這是與 pandas 常被混淆的重點。"
+    why_not_d: "`describe()['mean']` 取出的是平均數。"
+  keywords:
+    - "np.std"
+    - "ddof=1"
+    - "pseudocode"
+  exam_trap: true
+
+- id: "L22101-Q27"
+  topic_code: "L22101"
+  item_code: "L22101-D"
+  difficulty: 4
+  question: "某校研究室觀察實驗完成時間，已知 Q1=12、Q3=20，排序資料中最大值依序為 24、25、34。依箱型圖（boxplot）規則，右側鬚（upper whisker）應延伸到哪一個值？"
+  options:
+    a: "20"
+    b: "32"
+    c: "25"
+    d: "34"
+  correct: "c"
+  explanation:
+    why_correct: "IQR = 8，上界 fence = 20 + 1.5×8 = 32。箱型圖鬚不是畫到 32，而是延伸到 fence 內最後一個資料點，因此是 25。"
+    why_not_a: "20 是 Q3 本身，不是右鬚終點。"
+    why_not_c: "正確答案。"
+    why_not_d: "34 已超過 fence 32，應標示為離群值，而非鬚的終點。"
+  keywords:
+    - "boxplot"
+    - "whisker"
+    - "IQR-fence"
+  exam_trap: true
+
+- id: "L22101-Q28"
+  topic_code: "L22101"
+  item_code: "L22101-D"
+  difficulty: 4
+  question: "某金融科技公司分析客單價，資料強烈右偏且有少數超大額交易。若目標是穩健地標記可疑離群值（outliers），下列做法何者較合理？"
+  options:
+    a: "優先使用 z-score ±3σ，因為任何分布都最穩健"
+    b: "只看平均數是否大於中位數"
+    c: "先做 `dropna()`，其餘不必檢查"
+    d: "優先使用 IQR method，再視需要輔以情境判斷"
+  correct: "d"
+  explanation:
+    why_correct: "右偏且含極端值時，IQR 對分布形狀較不敏感，通常比 z-score 更穩健；實務上仍需結合業務脈絡判斷。"
+    why_not_a: "z-score 假設資料大致可由平均數與標準差合理描述，對強偏態資料未必理想。"
+    why_not_c: "缺失值處理不等於完成離群值偵測。"
+    why_not_d: "正確答案。"
+  keywords:
+    - "IQR-method"
+    - "z-score"
+    - "金融情境"
+  exam_trap: true
+
+- id: "L22101-Q29"
+  topic_code: "L22101"
+  item_code: "L22101-D"
+  difficulty: 4
+  question: "某零售業資料欄位 `sales = pd.Series([120, 130, 125, None, 5000])`，其中 5000 為極端高值。若要用單一數值補上缺失，哪一段程式最合理？"
+  options:
+    a: "`sales.fillna(sales.median())`"
+    b: "`sales.fillna(sales.max())`"
+    c: "`sales.fillna(sales.mean())`"
+    d: "`sales.fillna(sales.std())`"
+  correct: "a"
+  explanation:
+    why_correct: "5000 會大幅拉高平均數，因此用 `median()` 補值較能反映多數銷售紀錄。"
+    why_not_a: "正確答案。"
+    why_not_c: "`mean()` 在有極端值時不夠穩健，是此題的核心陷阱。"
+    why_not_d: "`std()` 代表分散程度，不適合作為典型銷售金額。"
+  keywords:
+    - "fillna"
+    - "median"
+    - "pseudocode"
+  exam_trap: true
+
+- id: "L22101-Q30"
+  topic_code: "L22101"
+  item_code: "L22101-C"
+  difficulty: 4
+  question: "某資料顧問檢視薪資分布，發現右尾很長，且平均數明顯大於中位數。此現象最支持哪一項判斷？"
+  options:
+    a: "資料為負偏態（negative skewness）"
+    b: "資料為正偏態（positive skewness）"
+    c: "資料一定服從常態分布"
+    d: "資料一定沒有離群值"
+  correct: "b"
+  explanation:
+    why_correct: "右尾長且 mean > median 是正偏態的典型特徵。"
+    why_not_a: "負偏態應是左尾長，且平均數常小於中位數。"
+    why_not_c: "常態分布應大致對稱，不會呈現明顯右尾長。"
+    why_not_d: "正偏態常伴隨高端極值，但不能從此反推出一定沒有離群值。"
+  keywords:
+    - "positive-skewness"
+    - "salary"
+    - "mean-median"
+  exam_trap: true
+
+- id: "L22101-Q31"
+  topic_code: "L22101"
+  item_code: "L22101-C"
+  difficulty: 4
+  question: "某同學執行 `kurtosis(x, fisher=False)` 得到 `4.2`。若以常態分布作比較，下列敘述何者最合理？"
+  options:
+    a: "資料的 Fisher excess kurtosis 一定是 4.2"
+    b: "資料一定呈負偏態"
+    c: "資料的 Pearson kurtosis 高於常態的 3"
+    d: "資料一定沒有厚尾（heavy tails）現象"
+  correct: "c"
+  explanation:
+    why_correct: "`fisher=False` 表示採 Pearson 定義，常態分布基準為 3；4.2 高於 3，表示相對常態更厚尾或更尖峭。"
+    why_not_a: "若要轉成 Fisher excess kurtosis，應再減 3，不能直接視為 4.2。"
+    why_not_c: "正確答案。"
+    why_not_d: "較高的 kurtosis 通常與較厚尾或更多極端值風險有關。"
+  keywords:
+    - "Pearson-kurtosis"
+    - "heavy-tails"
+    - "pseudocode"
+  exam_trap: true
+
+- id: "L22101-Q32"
+  topic_code: "L22101"
+  item_code: "L22101-E"
+  difficulty: 4
+  question: "某分析人員執行 `df['score'].describe()`，看到輸出包含 `count 100, mean 72, std 8, min 40, 25% 66, 50% 71, 75% 78, max 95`。下列解讀何者正確？"
+  options:
+    a: "Q1 為 50，Q3 為 75"
+    b: "中位數為 78"
+    c: "標準差為 72"
+    d: "Q1 為 66，Q3 為 78"
+  correct: "d"
+  explanation:
+    why_correct: "`25%` 即 Q1 = 66，`75%` 即 Q3 = 78，這是 `describe()` 表格判讀的基本功。"
+    why_not_a: "50 與 75 是百分位標籤，不是資料值本身。"
+    why_not_c: "`std` 才是 8，72 是平均數。"
+    why_not_d: "正確答案。"
+  keywords:
+    - "describe"
+    - "Q1"
+    - "Q3"
+  exam_trap: true
+
+- id: "L22101-Q33"
+  topic_code: "L22101"
+  item_code: "L22101-B"
+  difficulty: 5
+  question: "某研究團隊討論 IQR 的定義，四位成員提出意見。若要避免箱型圖與離群值判定出錯，哪一位成員的說法正確？"
+  options:
+    a: "甲：IQR 應定義為 Q3 − Q1，因為它描述中間 50% 的跨度"
+    b: "乙：IQR 應定義為 Q3 − Q2，因為上半部比較容易出現離群值"
+    c: "丙：IQR 應定義為 Q2 − Q1，因為中位數最穩健"
+    d: "丁：IQR 應定義為 max − min，因為能涵蓋全部資料"
+  correct: "a"
+  explanation:
+    why_correct: "IQR 的正式定義就是 Q3 − Q1，若把 Q2 代入，後續 fence 與箱型圖都會判錯。"
+    why_not_a: "正確答案。"
+    why_not_c: "Q2 − Q1 只是一半區間，不能代表中間 50% 全部跨度。"
+    why_not_d: "max − min 是全距，極易受離群值影響。"
+  keywords:
+    - "IQR"
+    - "Q3-Q1"
+    - "箱型圖"
+  exam_trap: true
+
+- id: "L22101-Q34"
+  topic_code: "L22101"
+  item_code: "L22101-A"
+  difficulty: 5
+  question: "某大學比較兩班作業完成時間。甲班大多落在 25 到 35 分鐘，但有 3 位學生超過 120 分鐘；乙班所有學生都在 40 到 50 分鐘之間。若主任只允許每班用一個數字呈現典型完成時間，甲班應優先用哪個、乙班應優先用哪個？"
+  options:
+    a: "甲班平均數，乙班平均數"
+    b: "甲班中位數，乙班平均數"
+    c: "甲班全距，乙班中位數"
+    d: "甲班變異數，乙班平均數"
+  correct: "b"
+  explanation:
+    why_correct: "甲班有明顯極端值，應以中位數降低 outlier 影響；乙班分布集中且近似對稱時，平均數可有效摘要。"
+    why_not_a: "甲班若用平均數會被少數超長時間拉偏。"
+    why_not_c: "全距無法作為典型時間，且過度受極值影響。"
+    why_not_d: "變異數不是中心位置指標。"
+  keywords:
+    - "mean-vs-median"
+    - "tradeoff"
+    - "typical-value"
+  exam_trap: true
+
+- id: "L22101-Q35"
+  topic_code: "L22101"
+  item_code: "L22101-E"
+  difficulty: 5
+  question: "某企業內訓提供三種做法來取得同一陣列的標準差摘要。若需求是與 `pandas.Series(arr).describe()['std']` 對齊，應選哪一段程式？"
+  options:
+    a: "`np.std(arr)`"
+    b: "`np.var(arr, ddof=1) ** 0`"
+    c: "`np.std(arr, ddof=1)`"
+    d: "`arr.mean()`"
+  correct: "c"
+  explanation:
+    why_correct: "`describe()['std']` 使用樣本標準差語意，因此要與其一致，應使用 `np.std(arr, ddof=1)`。"
+    why_not_a: "`np.std(arr)` 預設 `ddof=0`，會與 pandas 的 `std` 不同。"
+    why_not_b: "`np.var(arr, ddof=1) ** 0` 是把樣本變異數做 0 次方，任何非零數的 0 次方都等於 1，不是標準差。注意 `** 0` 不是 `** 0.5`（0.5 次方才是開根號）；這是此選項的命題陷阱。"
+    why_not_c: "正確答案。"
+    why_not_d: "`mean()` 取的是平均數，與標準差不同。"
+  keywords:
+    - "pandas.describe"
+    - "np.std"
+    - "ddof=1"
+  exam_trap: true
+
+- id: "L22101-Q36"
+  topic_code: "L22101"
+  item_code: "L22101-D"
+  difficulty: 5
+  question: "某半導體廠站在品質會議上檢視量測值，已知 Q1=48、Q3=55，排序資料最大幾筆為 60、65、68。若依箱型圖與 IQR fence 的標準畫法，下列哪一項最合理？"
+  options:
+    a: "右鬚畫到 68，因為它是最大值"
+    b: "右鬚畫到 55，因為不能超過 Q3"
+    c: "右鬚畫到 65，且 68 應標為離群值"
+    d: "右鬚畫到 60，因為超過一半資料在此以下"
+  correct: "c"
+  explanation:
+    why_correct: "IQR = 55 − 48 = 7，上界 fence = 55 + 1.5×7 = 65.5。箱型圖右鬚延伸到 fence 內的最後一個資料點，即 65（65 ≤ 65.5）。68 > 65.5，明確超出 fence，應標為離群值（outlier）。"
+    why_not_a: "箱型圖右鬚並非無條件畫到最大值；超出 fence 的資料點應標為離群值，不納入鬚中。"
+    why_not_b: "鬚可以延伸超過 Q3，上限是 fence（Q3 + 1.5×IQR），而非 Q3 本身。"
+    why_not_c: "正確答案。"
+    why_not_d: "60 在 fence 65.5 以內，並非最後一個非離群資料點；65 才是 fence 內最大值。"
+  keywords:
+    - "boxplot"
+    - "IQR-fence"
+    - "whisker"
+    - "outlier"
+  exam_trap: true
+
+- id: "L22101-Q37"
+  topic_code: "L22101"
+  item_code: "L22101-D"
+  difficulty: 5
+  question: "某地方政府清理交通感測資料，資料近似常態且筆數很大。若目標是快速標記明顯異常的感測值，哪一種方法通常較合適？"
+  options:
+    a: "z-score，並以 ±3σ 作為常見參考界線"
+    b: "只看中位數是否變動"
+    c: "只用 `drop_duplicates()`"
+    d: "只比較 Q1 與 Q3 的大小"
+  correct: "a"
+  explanation:
+    why_correct: "當資料近似常態且規模大時，z-score 與 ±3σ 是常見且有效率的異常值篩選方式。"
+    why_not_a: "正確答案。"
+    why_not_c: "去重複只能處理重覆紀錄，不是異常值偵測方法。"
+    why_not_d: "Q1 與 Q3 本身不足以直接完成異常值篩選。"
+  keywords:
+    - "z-score"
+    - "3sigma"
+    - "outlier-detection"
+  exam_trap: false
+
+- id: "L22101-Q38"
+  topic_code: "L22101"
+  item_code: "L22101-D"
+  difficulty: 5
+  question: "某客服中心有一欄 `channel = ['電話', '電話', None, 'Email', '電話', None]`。若要保留最常見聯絡管道的分布特性，同時補齊缺失值，哪一段做法最合理？"
+  options:
+    a: "`fillna(channel.mean())`"
+    b: "`fillna(channel.mode()[0])`"
+    c: "`fillna(0)`"
+    d: "`dropna()`，因為類別型欄位不適合補值"
+  correct: "b"
+  explanation:
+    why_correct: "類別型欄位要保留最常見類別時，使用眾數 `mode()[0]` 最合理；此例會補成 `電話`。"
+    why_not_a: "文字類別欄位沒有平均數可言，這是把數值與類別欄位混淆。"
+    why_not_c: "補成 0 會產生不合理的新類別。"
+    why_not_d: "直接刪除會流失資料，且題目明確要求保留分布特性並補值。"
+  keywords:
+    - "mode-imputation"
+    - "categorical"
+    - "pseudocode"
+  exam_trap: false
+
+- id: "L22101-Q39"
+  topic_code: "L22101"
+  item_code: "L22101-D"
+  difficulty: 5
+  question: "某團隊討論偏態資料的離群值流程。甲主張先用平均數與標準差做 z-score；乙主張先用 IQR method，再確認是否為真實商業事件。若資料明顯右偏且含少數高額訂單，哪一項判斷較佳？"
+  options:
+    a: "甲較佳，因為任何分布都應先用 z-score"
+    b: "兩者都不佳，因為偏態資料不能做摘要"
+    c: "乙較佳，因為 IQR 對偏態與極端值通常較穩健"
+    d: "兩者效果一定完全相同"
+  correct: "c"
+  explanation:
+    why_correct: "偏態且含極端值時，IQR method 較不受平均數與標準差失真的影響，再結合業務情境確認最實務。"
+    why_not_a: "z-score 並非所有分布都優先適用，這種一體適用的想法是常見陷阱。"
+    why_not_c: "正確答案。"
+    why_not_d: "兩種方法的基礎假設與敏感度不同，結果常不相同。"
+  keywords:
+    - "IQR-vs-zscore"
+    - "偏態資料"
+    - "tradeoff"
+  exam_trap: true
+
+- id: "L22101-Q40"
+  topic_code: "L22101"
+  item_code: "L22101-E"
+  difficulty: 5
+  question: "某考生看到以下程式：`s = pd.Series([1, 1, 2, 3, None])`；`s.value_counts()`。若不額外設定參數，下列何者最可能是正確解讀？"
+  options:
+    a: "輸出會把 `None` 視為出現次數最高的值"
+    b: "輸出會自動回傳平均數與標準差"
+    c: "輸出只會顯示唯一值個數，不顯示次數"
+    d: "輸出會列出各值次數，且預設不把 `None` 納入計數"
+  correct: "d"
+  explanation:
+    why_correct: "`value_counts()` 會計算各唯一值的次數，且預設 `dropna=True`，因此不會把 `None` 或 NaN 納入計數。"
+    why_not_a: "缺失值預設不會被算進去，很多考生會把 `value_counts()` 與 `fillna()` 混淆。"
+    why_not_c: "只顯示唯一值個數是 `nunique()` 的概念，不是 `value_counts()`。"
+    why_not_d: "正確答案。"
+  keywords:
+    - "value_counts"
+    - "dropna"
+    - "pseudocode"
+  exam_trap: true
