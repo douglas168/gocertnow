@@ -1,0 +1,879 @@
+- id: "L22302-Q01"
+  topic_code: "L22302"
+  item_code: "數據分析演算法"
+  difficulty: 1
+  question: "在 K-means 分群（Clustering）中，演算法主要試圖最小化哪一個量？"
+  options:
+    a: "群內平方和（within-cluster sum of squares, SSE / inertia）"
+    b: "測試集上的分類錯誤率"
+    c: "各群之間的平均相關係數"
+    d: "特徵之間的共變異數總和"
+  correct: "a"
+  explanation:
+    why_correct: "K-means 的核心目標是讓每個樣本到其所屬群中心的距離平方和最小，也就是 SSE（在 scikit-learn 中常以 inertia 表示）。"
+    why_not_b: "這是監督式分類模型常看的指標。K-means 沒有標籤，並不是用來最小化分類錯誤率。"
+    why_not_c: "群間關聯可能是分析結果之一，但不是 K-means 的最佳化目標。考生常把『群要彼此不同』誤認成演算法直接最小化的量。"
+    why_not_d: "共變異數描述特徵間變異關係，較接近統計描述，不是 K-means 計算更新中心點時的目標函數。"
+  keywords:
+    - "K-means"
+    - "inertia"
+    - "SSE"
+  exam_trap: false
+
+- id: "L22302-Q02"
+  topic_code: "L22302"
+  item_code: "數據分析演算法"
+  difficulty: 1
+  question: "關於 K-means 分群（Clustering）的用途，下列何者正確？"
+  options:
+    a: "可直接用來預測房價等連續數值"
+    b: "屬於非監督式學習（Unsupervised Learning），主要用來找自然群組"
+    c: "一定需要已標註的類別標籤才能訓練"
+    d: "本質上是決策樹（Decision Tree）的一種變形"
+  correct: "b"
+  explanation:
+    why_correct: "K-means 是典型的非監督式學習方法，目的是把資料依相似性分成多群，而不是依標籤學習。"
+    why_not_a: "預測連續數值屬於迴歸（Regression）任務。常見誤解是以為任何輸出數字的模型都能做預測，但 K-means 輸出的是群組指派。"
+    why_not_c: "需要標籤的是監督式方法。K-means 的價值就在於資料尚未標註時仍可探索結構。"
+    why_not_d: "決策樹是監督式規則模型；K-means 是以距離與中心點為核心的分群方法，兩者原理不同。"
+  keywords:
+    - "unsupervised-learning"
+    - "clustering"
+    - "K-means"
+  exam_trap: true
+
+- id: "L22302-Q03"
+  topic_code: "L22302"
+  item_code: "數據分析演算法"
+  difficulty: 1
+  question: "在決策樹（Decision Tree）分類中，常用來評估節點分裂品質的指標包含下列何者？"
+  options:
+    a: "RMSE"
+    b: "R-squared"
+    c: "Gini impurity 與 entropy"
+    d: "Silhouette score"
+  correct: "c"
+  explanation:
+    why_correct: "分類型決策樹常以 Gini impurity 或 entropy / information gain 來衡量分裂後的純度提升。"
+    why_not_a: "RMSE 常用於迴歸。考生容易把所有模型都套用同一組指標，但決策樹分類節點分裂不是靠 RMSE。"
+    why_not_b: "R-squared 是迴歸解釋力指標，不是分類樹節點分裂標準。"
+    why_not_d: "Silhouette score 常用於分群品質評估，與決策樹的節點純度無關。"
+  keywords:
+    - "decision-tree"
+    - "gini"
+    - "entropy"
+  exam_trap: false
+
+- id: "L22302-Q04"
+  topic_code: "L22302"
+  item_code: "資料不平衡處理策略"
+  difficulty: 1
+  question: "關於 SMOTE（Synthetic Minority Oversampling Technique），下列何者正確？"
+  options:
+    a: "它只會隨機複製少數類樣本，不會產生新點"
+    b: "它只會刪除多數類樣本以平衡資料"
+    c: "它必須先知道決策樹的分裂規則才能運作"
+    d: "它會在少數類鄰近樣本之間做插值，產生合成樣本"
+  correct: "d"
+  explanation:
+    why_correct: "SMOTE 的重點是利用少數類近鄰做線性插值，產生新的少數類樣本，而不是單純複製。"
+    why_not_a: "這是最常見誤解。隨機複製較接近 naive oversampling，SMOTE 的核心差異正是『合成』新樣本。"
+    why_not_b: "刪除多數類是 undersampling，例如 RandomUnderSampler，不是 SMOTE。"
+    why_not_c: "SMOTE 是資料層級的 resampling 方法，不依賴特定分類器的規則或樹結構。"
+  keywords:
+    - "SMOTE"
+    - "oversampling"
+    - "interpolation"
+  exam_trap: true
+
+- id: "L22302-Q05"
+  topic_code: "L22302"
+  item_code: "數據分析演算法"
+  difficulty: 1
+  question: "關於 K-means 分群（Clustering）的收斂特性，下列何者正確？"
+  options:
+    a: "一定能找到全域最佳解（global optimum）"
+    b: "不保證收斂，可能永遠迭代下去"
+    c: "會收斂，但可能停在局部最佳解（local minimum）"
+    d: "只有在資料已標註時才會收斂"
+  correct: "c"
+  explanation:
+    why_correct: "K-means 會反覆指派樣本與更新中心點，使目標函數單調不增，因此會收斂；但初始中心不同可能落在局部最佳解。"
+    why_not_a: "很多考生把『會收斂』誤認成『一定全域最佳』。K-means 的困難就在於初始化不同會有不同結果。"
+    why_not_b: "在有限資料與標準更新規則下，K-means 不會無限改善而不停止。"
+    why_not_d: "是否收斂與有無標籤無關，因為它本來就是非監督式方法。"
+  keywords:
+    - "local-minimum"
+    - "convergence"
+    - "K-means"
+  exam_trap: true
+
+- id: "L22302-Q06"
+  topic_code: "L22302"
+  item_code: "數據分析演算法"
+  difficulty: 1
+  question: "在決策樹（Decision Tree）中，使用 pruning（剪枝）最主要的目的為何？"
+  options:
+    a: "讓樹一定變成無監督式模型"
+    b: "增加特徵數量以提升擬合能力"
+    c: "把 entropy 轉換成 Gini impurity"
+    d: "抑制過度擬合（overfitting），提升泛化能力"
+  correct: "d"
+  explanation:
+    why_correct: "剪枝會限制樹的複雜度，避免模型過度記住訓練資料中的雜訊，常見於後剪枝的 ccp_alpha 或前剪枝的 max_depth。"
+    why_not_a: "剪枝只改變模型複雜度，不會改變決策樹屬於監督式學習的本質。"
+    why_not_b: "增加特徵數量反而可能提高複雜度，與剪枝目的相反。"
+    why_not_c: "Gini 與 entropy 是分裂準則選項，不是透過剪枝互相轉換。"
+  keywords:
+    - "decision-tree"
+    - "pruning"
+    - "overfitting"
+  exam_trap: false
+
+- id: "L22302-Q07"
+  topic_code: "L22302"
+  item_code: "資料不平衡處理策略"
+  difficulty: 1
+  question: "當資料高度不平衡（Imbalanced Data）時，只看 accuracy 為何可能有風險？"
+  options:
+    a: "accuracy 會自動等於 recall"
+    b: "accuracy 在多數類占比很高時，可能掩蓋少數類預測失敗"
+    c: "accuracy 只能用於非監督式學習"
+    d: "accuracy 必須先經過 SMOTE 才能計算"
+  correct: "b"
+  explanation:
+    why_correct: "若 95% 都是多數類，模型即使全部猜多數類也可能有很高 accuracy，但對少數類毫無辨識能力，因此需搭配 precision、recall、F1、ROC AUC 等指標。"
+    why_not_a: "accuracy 與 recall 定義不同。考生常把『整體正確率』與『找回少數類能力』混為一談。"
+    why_not_c: "accuracy 可用於監督式分類，不是非監督式專用。"
+    why_not_d: "是否 resampling 與能否計算 accuracy 無關，問題在於該指標是否足夠反映任務風險。"
+  keywords:
+    - "imbalanced-data"
+    - "accuracy"
+    - "recall"
+  exam_trap: true
+
+- id: "L22302-Q08"
+  topic_code: "L22302"
+  item_code: "資料不平衡處理策略"
+  difficulty: 1
+  question: "RandomUnderSampler 的主要作法為何？"
+  options:
+    a: "對少數類做鄰近插值"
+    b: "對少數類增加 class_weight"
+    c: "把多數類轉換成連續數值"
+    d: "隨機刪除部分多數類樣本"
+  correct: "d"
+  explanation:
+    why_correct: "RandomUnderSampler 透過減少多數類樣本數，使資料分布較平衡，做法是直接刪除部分多數類資料。"
+    why_not_a: "鄰近插值是 SMOTE 的概念。考生常把 oversampling 與 undersampling 混在一起。"
+    why_not_b: "class_weight 是模型層級調權，不是資料層級刪樣本。"
+    why_not_c: "欠採樣與資料型態轉換無關。"
+  keywords:
+    - "RandomUnderSampler"
+    - "undersampling"
+    - "majority-class"
+  exam_trap: false
+
+- id: "L22302-Q09"
+  topic_code: "L22302"
+  item_code: "數據分析演算法"
+  difficulty: 2
+  question: "關於用 elbow method 選擇 K-means 分群（Clustering）中的群數 k，下列敘述何者正確？"
+  options:
+    a: "它是經驗法則（heuristic），觀察 SSE 下降趨勢的折點，不保證唯一正解"
+    b: "它能嚴格證明最佳 k 的統計顯著性"
+    c: "只要 k 越大，inertia 越大，所以找上升最快處"
+    d: "它只能用在已標註資料"
+  correct: "a"
+  explanation:
+    why_correct: "Elbow method 是視覺化與經驗判斷工具，幫助在模型複雜度與 SSE 改善幅度間取平衡，不是保證唯一最佳解的數學定理。"
+    why_not_b: "這是常見高估。elbow method 提供判讀線索，不等於正式檢定。"
+    why_not_c: "k 增加時 inertia 一般是下降或不變，不會上升；折點看的是『改善開始趨緩』。"
+    why_not_d: "elbow method 用於非監督式 K-means，不需要標籤。"
+  keywords:
+    - "elbow-method"
+    - "k-selection"
+    - "inertia"
+  exam_trap: true
+
+- id: "L22302-Q10"
+  topic_code: "L22302"
+  item_code: "模式識別"
+  difficulty: 2
+  question: "下列哪一組對應最能說明模式識別（Pattern Recognition）中的分群式與規則式差異？"
+  options:
+    a: "分群式：決策樹（Decision Tree）；規則式：K-means"
+    b: "分群式：K-means；規則式：決策樹可轉成 if-then rules"
+    c: "分群式：ROC curve；規則式：AUC"
+    d: "分群式：SMOTE；規則式：RandomUnderSampler"
+  correct: "b"
+  explanation:
+    why_correct: "K-means 透過資料相似度找自然群組，屬分群式模式識別；決策樹可轉為 if-then 規則，屬規則式模式識別。"
+    why_not_a: "這是把兩者顛倒。決策樹常被視為規則式，K-means 才是分群式。"
+    why_not_c: "ROC 與 AUC 是評估工具，不是模式識別方法。"
+    why_not_d: "SMOTE 與 RandomUnderSampler 是資料不平衡處理策略，不是模式識別類型。"
+  keywords:
+    - "pattern-recognition"
+    - "cluster-based"
+    - "rule-based"
+  exam_trap: false
+
+- id: "L22302-Q11"
+  topic_code: "L22302"
+  item_code: "數據分析演算法"
+  difficulty: 2
+  question: "K-means++ 初始化（Initialization）相較於完全隨機初始化，最合理的描述為何？"
+  options:
+    a: "保證一次就找到全域最佳解"
+    b: "會把每個群的資料量強制設成一樣"
+    c: "以較分散的方式挑選初始中心，常有助於加速收斂並改善結果穩定性"
+    d: "只能搭配監督式分類使用"
+  correct: "c"
+  explanation:
+    why_correct: "K-means++ 會優先選擇彼此較遠的初始中心，通常能降低差的初始化機率，讓收斂更快、結果更穩。"
+    why_not_a: "這是過度解讀。K-means++ 改善初始化，但仍不保證全域最佳。"
+    why_not_b: "初始中心選法不會強制群大小相同，資料本身分布可能很不均。"
+    why_not_d: "K-means++ 是 K-means 的初始化方法，仍屬非監督式分群。"
+  keywords:
+    - "k-means++"
+    - "initialization"
+    - "convergence"
+  exam_trap: false
+
+- id: "L22302-Q12"
+  topic_code: "L22302"
+  item_code: "資料不平衡處理策略"
+  difficulty: 2
+  question: "關於 SMOTE 與 train/test split 的先後順序，下列何者正確？"
+  options:
+    a: "先對整份資料做 SMOTE，再切分 train/test，評估較穩定"
+    b: "先切分資料，再只對 training split 做 SMOTE，可避免 data leakage"
+    c: "只要 test set 很大，先做 SMOTE 也不會 leakage"
+    d: "SMOTE 應優先對 test set 做，讓指標比較漂亮"
+  correct: "b"
+  explanation:
+    why_correct: "正確流程是先切分，再只在訓練資料上 resampling。若先對整體資料做 SMOTE，合成點可能帶入測試資訊，造成 data leakage。"
+    why_not_a: "這是考場高頻陷阱。看似讓資料更平衡，但其實讓訓練過程間接接觸到測試集資訊。"
+    why_not_c: "資料量大不能消除 leakage，本質問題是資訊邊界被破壞。"
+    why_not_d: "test set 應保留真實分布，不能為了讓分數好看而先加工。"
+  keywords:
+    - "SMOTE"
+    - "data-leakage"
+    - "train-test-split"
+  exam_trap: true
+
+- id: "L22302-Q13"
+  topic_code: "L22302"
+  item_code: "數據分析演算法"
+  difficulty: 2
+  question: "關於決策樹（Decision Tree）的分裂策略，下列敘述何者正確？"
+  options:
+    a: "每次分裂都會同時搜尋整棵樹的全域最佳結構"
+    b: "只有在資料平衡時才採用 greedy 策略"
+    c: "通常採 greedy 方式，在當前節點挑選最能改善 criterion 的特徵與閾值"
+    d: "先固定所有葉節點，再回推根節點"
+  correct: "c"
+  explanation:
+    why_correct: "決策樹常採 greedy 分裂，在每個節點局部選擇當下最好的特徵與切點，而不是一次解出全域最佳樹。"
+    why_not_a: "考生常把局部最佳誤以為全域最佳。全域最佳樹搜尋代價極高，實務與考試都以 greedy 為主。"
+    why_not_b: "資料是否平衡不影響 greedy 作為基本分裂策略。"
+    why_not_d: "決策樹是自上而下分裂，不是先決定葉節點再回推。"
+  keywords:
+    - "decision-tree"
+    - "greedy"
+    - "split-criterion"
+  exam_trap: true
+
+- id: "L22302-Q14"
+  topic_code: "L22302"
+  item_code: "資料不平衡處理策略"
+  difficulty: 2
+  question: "在 scikit-learn 的決策樹（Decision Tree）中，設定 `class_weight='balanced'` 的主要效果為何？"
+  options:
+    a: "自動對少數類產生合成樣本"
+    b: "依類別頻率反比調整損失權重，使少數類錯分代價較高"
+    c: "直接把資料轉成無監督式分群問題"
+    d: "刪除所有多數類中靠近邊界的樣本"
+  correct: "b"
+  explanation:
+    why_correct: "`class_weight='balanced'` 屬模型層級調整，會讓較少見的類別在訓練時獲得較高權重，不需新增資料。"
+    why_not_a: "這是把 class_weight 與 SMOTE 混淆。前者不改資料列數，後者會新增樣本。"
+    why_not_c: "類別權重不會改變學習任務型態，決策樹仍是監督式分類。"
+    why_not_d: "刪除樣本屬欠採樣思維，不是 class_weight 的機制。"
+  keywords:
+    - "class_weight"
+    - "balanced"
+    - "decision-tree"
+  exam_trap: false
+
+- id: "L22302-Q15"
+  topic_code: "L22302"
+  item_code: "數據分析演算法"
+  difficulty: 2
+  question: "閱讀下列程式片段，若要取得 K-means 分群（Clustering）的 SSE，應查看哪個屬性？\n\n```python\nfrom sklearn.cluster import KMeans\nkm = KMeans(n_clusters=3, random_state=0)\nkm.fit(X)\n```"
+  options:
+    a: "`km.inertia_`"
+    b: "`km.feature_importances_`"
+    c: "`km.class_weight_`"
+    d: "`km.ccp_alpha_`"
+  correct: "a"
+  explanation:
+    why_correct: "`inertia_` 是 scikit-learn KMeans 提供的群內平方和（SSE）指標。"
+    why_not_b: "`feature_importances_` 常見於樹模型，考生容易把不同模型 API 混用。K-means 沒有這個屬性。"
+    why_not_c: "`class_weight_` 不是 KMeans 的屬性，且分群沒有類別權重概念。"
+    why_not_d: "`ccp_alpha` 是決策樹剪枝參數，與 KMeans 無關。"
+  keywords:
+    - "KMeans"
+    - "inertia_"
+    - "API"
+  exam_trap: false
+
+- id: "L22302-Q16"
+  topic_code: "L22302"
+  item_code: "資料不平衡處理策略"
+  difficulty: 2
+  question: "在 imbalanced-learn 中，SMOTE 最標準的使用方式為何？"
+  options:
+    a: "`SMOTE().fit(X_train, y_train)` 之後自動回傳平衡資料"
+    b: "`SMOTE().predict_resample(X_train, y_train)`"
+    c: "`SMOTE().fit_sample(X_train, y_train)` 是目前建議新寫法"
+    d: "`SMOTE().fit_resample(X_train, y_train)`"
+  correct: "d"
+  explanation:
+    why_correct: "`fit_resample(X, y)` 是 imbalanced-learn 現行標準 API，用於學習 resampling 規則並回傳重採樣後資料。"
+    why_not_a: "`fit` 通常只做擬合，不會直接回傳平衡後資料。這是把 estimator 與 sampler 的介面混在一起。"
+    why_not_b: "不存在 `predict_resample` 這種常規 API，因為 SMOTE 不是分類器。"
+    why_not_c: "`fit_sample` 是舊版寫法，現已棄用；考試常拿來測 API 更新。"
+  keywords:
+    - "SMOTE"
+    - "fit_resample"
+    - "imbalanced-learn"
+  exam_trap: true
+
+- id: "L22302-Q17"
+  topic_code: "L22302"
+  item_code: "數據分析演算法"
+  difficulty: 3
+  question: "某零售業者想先把會員依消費行為自動分成幾群，再交由行銷團隊命名群別，手上沒有既有標籤。此時最適合的起始方法是下列何者？"
+  options:
+    a: "線性迴歸（Linear Regression），因為可輸出連續值"
+    b: "K-means 分群（Clustering），因為可在無標籤情境下找自然群組"
+    c: "決策樹分類（Decision Tree Classification），因為樹一定比分群更可解釋"
+    d: "SMOTE，因為可直接建立群別"
+  correct: "b"
+  explanation:
+    why_correct: "題目重點是『沒有標籤、先找群組』，符合 K-means 這類非監督式分群的使用時機。"
+    why_not_a: "迴歸用於預測連續目標值，不是拿來自動形成客群。考生常把『輸出數字』誤當成可代表群別。"
+    why_not_c: "決策樹分類需要已知標籤，題目明確指出目前沒有群別標註。"
+    why_not_d: "SMOTE 是不平衡處理，不會替資料自動定義群組。"
+  keywords:
+    - "clustering"
+    - "unsupervised-learning"
+    - "customer-segmentation"
+  exam_trap: true
+
+- id: "L22302-Q18"
+  topic_code: "L22302"
+  item_code: "模式識別"
+  difficulty: 3
+  question: "某學校要建立『是否需補救教學』判斷流程，要求最後能輸出清楚的 if-then 規則給導師人工覆核。下列哪一種模式識別（Pattern Recognition）方法最合適？"
+  options:
+    a: "K-means 分群（Clustering），因為可直接得到自然群組中心"
+    b: "決策樹（Decision Tree），因為可轉成規則式（rule-based）判斷"
+    c: "RandomUnderSampler，因為可減少錯誤規則"
+    d: "Elbow method，因為可找出最佳門檻"
+  correct: "b"
+  explanation:
+    why_correct: "決策樹的路徑可直接翻成 if-then 規則，適合需要可解釋與可審核的規則式模式識別。"
+    why_not_a: "K-means 的輸出是群中心與群標籤，不會自然形成清楚的人可讀規則。"
+    why_not_c: "RandomUnderSampler 只處理類別分布，並不產生判斷規則。"
+    why_not_d: "Elbow method 是選 k 的輔助方法，不是建模方法。"
+  keywords:
+    - "pattern-recognition"
+    - "decision-tree"
+    - "rule-based"
+  exam_trap: false
+
+- id: "L22302-Q19"
+  topic_code: "L22302"
+  item_code: "資料不平衡處理策略"
+  difficulty: 3
+  question: "某醫療預警任務中，陽性個案只占 3%。若專案最在意『漏掉真正陽性個案』的風險，模型評估時應優先關注哪一類指標？"
+  options:
+    a: "只看 accuracy"
+    b: "只看 SSE"
+    c: "優先看 recall，並搭配 precision / F1"
+    d: "只看群中心移動距離"
+  correct: "c"
+  explanation:
+    why_correct: "在少數類很重要且漏判代價高時，recall 直接反映找回陽性的能力；precision、F1 可一起評估誤報與整體平衡。"
+    why_not_a: "accuracy 在極度不平衡時容易虛高，常讓團隊誤以為模型很好。"
+    why_not_b: "SSE 是分群目標，與分類預警任務不相符。"
+    why_not_d: "群中心移動只與 K-means 收斂有關，不是分類性能指標。"
+  keywords:
+    - "recall"
+    - "F1"
+    - "imbalanced-data"
+  exam_trap: true
+
+- id: "L22302-Q20"
+  topic_code: "L22302"
+  item_code: "資料不平衡處理策略"
+  difficulty: 3
+  question: "你用決策樹（Decision Tree）做客訴升級預測，正負樣本比約 1:20。若目前不想改動資料筆數，也希望先保留原始資料分布，最適合先試哪個做法？"
+  options:
+    a: "先對整份資料做 SMOTE，再切 train/test"
+    b: "在模型中設定 `class_weight='balanced'`"
+    c: "把目標變成 K-means 分群"
+    d: "只增加 `n_clusters`"
+  correct: "b"
+  explanation:
+    why_correct: "題目要求不改資料筆數且保留原始分布，最符合模型層級調權的 `class_weight='balanced'`。"
+    why_not_a: "先對整份資料 SMOTE 會造成 data leakage，且也違反『不想改動資料筆數』。"
+    why_not_c: "把監督式預測問題改成分群，會失去原本的類別標籤目標。"
+    why_not_d: "`n_clusters` 是 K-means 參數，與決策樹分類無關。"
+  keywords:
+    - "class_weight"
+    - "decision-tree"
+    - "imbalanced-data"
+  exam_trap: true
+
+- id: "L22302-Q21"
+  topic_code: "L22302"
+  item_code: "數據分析演算法"
+  difficulty: 3
+  question: "某分析師畫出 K-means 分群（Clustering）的 SSE 對 k 曲線後，發現從 k=3 到 k=4 還有明顯下降，但之後改善幅度轉小。較合理的解讀是什麼？"
+  options:
+    a: "k=4 可能是值得優先檢查的候選值，但仍應結合業務與其他證據判斷"
+    b: "必定證明 k=4 是唯一正確答案"
+    c: "代表資料不能做分群"
+    d: "表示應改用 RMSE 選 k"
+  correct: "a"
+  explanation:
+    why_correct: "Elbow method 提供候選折點；若 k=4 後改善趨緩，可先評估 k=4，但仍需看可解釋性與業務需求。"
+    why_not_b: "折點不是數學保證。題目在測『heuristic 不等於定理』。"
+    why_not_c: "曲線有折點通常反而表示分群仍可能有結構可用。"
+    why_not_d: "RMSE 用於迴歸較常見，不是 K-means 選 k 的典型指標。"
+  keywords:
+    - "elbow-method"
+    - "k-selection"
+    - "heuristic"
+  exam_trap: false
+
+- id: "L22302-Q22"
+  topic_code: "L22302"
+  item_code: "數據分析演算法"
+  difficulty: 3
+  question: "同一份資料多次執行 K-means 分群（Clustering），結果偶爾不同。若你懷疑是初始化造成落入不同 local minimum，哪個做法最能直接改善這個問題？"
+  options:
+    a: "把 K 固定成 1"
+    b: "改用 k-means++ 並增加不同初始化嘗試次數"
+    c: "把它當成決策樹來剪枝"
+    d: "先對 test set 做 SMOTE"
+  correct: "b"
+  explanation:
+    why_correct: "local minimum 常與初始中心有關，改用 k-means++ 並嘗試多次初始化，是實務上常見且直接的改善方法。"
+    why_not_a: "k=1 只是把所有資料硬塞成一群，雖然結果穩定，但失去分群價值。"
+    why_not_c: "剪枝是決策樹議題，無法解決 K-means 初始化問題。"
+    why_not_d: "SMOTE 是分類資料平衡策略，與 K-means local minimum 無關。"
+  keywords:
+    - "k-means++"
+    - "local-minimum"
+    - "initialization"
+  exam_trap: false
+
+- id: "L22302-Q23"
+  topic_code: "L22302"
+  item_code: "數據分析演算法"
+  difficulty: 3
+  question: "某團隊抱怨決策樹（Decision Tree）在根節點沒有選到『整棵樹最終看起來最好』的特徵。這最可能反映了哪個事實？"
+  options:
+    a: "決策樹其實是用 elbow method 來分裂"
+    b: "Gini impurity 只能用在回歸"
+    c: "只要改成 entropy 就一定得到全域最佳樹"
+    d: "決策樹通常採 greedy 分裂，只保證當前節點局部最優，不保證全域最優"
+  correct: "d"
+  explanation:
+    why_correct: "決策樹在每一層只根據當前節點的 criterion 改善做選擇，因此可能與全局角度的最佳結構不同。"
+    why_not_a: "elbow method 是 K-means 選 k 的方法，不是決策樹分裂策略。"
+    why_not_b: "Gini impurity 用於分類樹，不是回歸專用。"
+    why_not_c: "entropy 與 Gini 都是局部分裂準則，切換準則不等於保證全域最佳。"
+  keywords:
+    - "decision-tree"
+    - "greedy"
+    - "global-optimum"
+  exam_trap: true
+
+- id: "L22302-Q24"
+  topic_code: "L22302"
+  item_code: "資料不平衡處理策略"
+  difficulty: 3
+  question: "某資料集少數類樣本太少且多數類非常龐大。若團隊希望『不要只重複少數類樣本』，但也能快速降低類別失衡，下列哪個組合的理解最合理？"
+  options:
+    a: "SMOTE 與 RandomUnderSampler 都只是複製少數類"
+    b: "SMOTE 會刪除多數類；RandomUnderSampler 會合成新少數類"
+    c: "兩者都只能透過 class_weight 運作"
+    d: "SMOTE 可用插值增加少數類；RandomUnderSampler 可刪除部分多數類"
+  correct: "d"
+  explanation:
+    why_correct: "SMOTE 與 RandomUnderSampler 分別代表 oversampling 與 undersampling 的典型作法，一個合成少數類，一個刪除多數類。"
+    why_not_a: "這把 SMOTE 誤解成單純複製，也完全誤解欠採樣。"
+    why_not_b: "這是把兩種方法對調，屬常見混淆。"
+    why_not_c: "class_weight 是模型層級調權，不是這兩種 sampler 的運作方式。"
+  keywords:
+    - "SMOTE"
+    - "RandomUnderSampler"
+    - "imbalance-strategy"
+  exam_trap: true
+
+- id: "L22302-Q25"
+  topic_code: "L22302"
+  item_code: "資料不平衡處理策略"
+  difficulty: 4
+  question: "你要用交叉驗證（Cross-Validation）比較『決策樹（Decision Tree）+ SMOTE』與『決策樹 + class_weight』兩條流程。若想避免 data leakage，哪個設計最合理？"
+  options:
+    a: "把 SMOTE 放進 imblearn.pipeline.Pipeline，讓每個 training fold 在 fit 時才 resample"
+    b: "先對全資料做一次 SMOTE，再進行交叉驗證，確保各 fold 平衡"
+    c: "先用 test fold 做 SMOTE，讓模型學到更多邊界資訊"
+    d: "把樹剪深一點，避免 leakage"
+  correct: "a"
+  explanation:
+    why_correct: "把 resampling 放進 Pipeline，才能保證每個 fold 的驗證資料不被訓練階段的合成樣本污染，是避免 leakage 的標準做法。"
+    why_not_b: "先整體 SMOTE 再切 fold 是典型 leakage。考生常因為『每折都平衡』看起來合理而中招。"
+    why_not_c: "驗證或測試 fold 不應參與 resampling，否則評估失真。"
+    why_not_d: "剪枝可處理 overfitting，但不能修正資料切分流程錯誤。"
+  keywords:
+    - "Pipeline"
+    - "data-leakage"
+    - "cross-validation"
+  exam_trap: true
+
+- id: "L22302-Q26"
+  topic_code: "L22302"
+  item_code: "模式識別"
+  difficulty: 4
+  question: "某公司同時有兩個需求：一是先從未標註的感測資料中找異常群組；二是把已定義的人工規則自動化成可審查流程。就模式識別（Pattern Recognition）觀點，下列配對何者最合理？"
+  options:
+    a: "兩者都用 K-means，因為群中心可視為規則"
+    b: "前者適合分群式方法如 K-means；後者適合規則式方法如決策樹"
+    c: "前者用 RandomUnderSampler；後者用 SMOTE"
+    d: "前者用 entropy；後者用 inertia"
+  correct: "b"
+  explanation:
+    why_correct: "未標註異常群組屬分群式探索；人工規則自動化則適合能輸出 if-then 規則的決策樹等規則式方法。"
+    why_not_a: "群中心不是人可讀規則。把群組結果直接當規則，會忽略解釋與審查需求。"
+    why_not_c: "這兩者都是資料不平衡處理，不是模式識別方法本體。"
+    why_not_d: "entropy 與 inertia 是不同模型中的指標，不能直接對應兩個需求。"
+  keywords:
+    - "pattern-recognition"
+    - "cluster-based"
+    - "rule-based"
+  exam_trap: false
+
+- id: "L22302-Q27"
+  topic_code: "L22302"
+  item_code: "數據分析演算法"
+  difficulty: 4
+  question: "某決策樹（Decision Tree）在訓練集準確率極高、驗證集明顯下滑。若你只能優先選一項最直接的結構控制措施，下列何者最合理？"
+  options:
+    a: "增加 k-means 的群數"
+    b: "把 `class_weight='balanced'` 關掉"
+    c: "使用 `ccp_alpha` 或限制 `max_depth` 來降低樹的複雜度"
+    d: "先對 test set 做 undersampling"
+  correct: "c"
+  explanation:
+    why_correct: "題目是典型 overfitting，最直接做法是透過後剪枝 `ccp_alpha` 或前剪枝 `max_depth` 控制樹複雜度。"
+    why_not_a: "K-means 參數與決策樹泛化問題無關。"
+    why_not_b: "關掉 class_weight 不會直接處理模型過深的問題，且可能犧牲少數類表現。"
+    why_not_d: "test set 不應被用來調整資料分布，這還會引入評估偏差。"
+  keywords:
+    - "pruning"
+    - "ccp_alpha"
+    - "max_depth"
+  exam_trap: false
+
+- id: "L22302-Q28"
+  topic_code: "L22302"
+  item_code: "資料不平衡處理策略"
+  difficulty: 4
+  question: "下列何者最能正確區分 `class_weight='balanced'` 與 SMOTE？"
+  options:
+    a: "前者會生成新樣本，後者只改損失權重"
+    b: "前者與後者都只適用於 K-means 分群"
+    c: "前者會刪除多數類，後者會限制樹深"
+    d: "前者是在模型訓練時調整類別權重；後者是在資料層級合成少數類樣本"
+  correct: "d"
+  explanation:
+    why_correct: "這題在分辨『模型層』與『資料層』。`class_weight` 不改資料列數；SMOTE 會改變訓練資料組成。"
+    why_not_a: "這把兩者作用方向完全顛倒，是常見混淆。"
+    why_not_b: "K-means 是非監督式分群，與這兩種分類不平衡策略的典型應用不同。"
+    why_not_c: "刪除多數類較接近 undersampling，限制樹深則是剪枝，兩者都不是題目要比較的機制。"
+  keywords:
+    - "class_weight"
+    - "SMOTE"
+    - "model-vs-data-level"
+  exam_trap: true
+
+- id: "L22302-Q29"
+  topic_code: "L22302"
+  item_code: "資料不平衡處理策略"
+  difficulty: 4
+  question: "某詐欺偵測專案正負樣本比為 1:200，團隊提議只用 accuracy 評估。從風險管理角度看，較完整的回應應是哪一項？"
+  options:
+    a: "可以，只要 accuracy 高就代表少數類也抓得好"
+    b: "不夠，應至少加入 precision、recall、F1、ROC AUC；若極度不平衡，Precision-Recall curve 更有參考價值"
+    c: "只要先做 K-means，就不需要分類指標"
+    d: "改看 inertia 即可"
+  correct: "b"
+  explanation:
+    why_correct: "極度不平衡時，accuracy 可能失真；Precision-Recall curve 對少數類表現更敏感，能更貼近詐欺偵測的實際風險。"
+    why_not_a: "這正是題目要檢驗的誤區。高 accuracy 不代表真正抓到稀有詐欺樣本。"
+    why_not_c: "詐欺偵測是監督式分類情境，不能用分群取代評估。"
+    why_not_d: "inertia 是 K-means 目標，與詐欺分類績效不對應。"
+  keywords:
+    - "precision-recall-curve"
+    - "ROC-AUC"
+    - "accuracy-trap"
+  exam_trap: true
+
+- id: "L22302-Q30"
+  topic_code: "L22302"
+  item_code: "數據分析演算法"
+  difficulty: 4
+  question: "你要為未標註的門市交易資料做 K-means 分群（Clustering），並盡量降低差的初始化影響。下列哪個流程最合理？"
+  options:
+    a: "以 k-means++ 初始化，觀察不同 k 的 inertia 變化，再結合業務語意挑選候選 k"
+    b: "先把標籤欄位刪掉，再用 accuracy 選 k"
+    c: "固定隨機初始化一次即可，因為 K-means 一定是全域最佳"
+    d: "改用決策樹的 entropy 當作群數選擇標準"
+  correct: "a"
+  explanation:
+    why_correct: "題目同時考初始化與選 k。k-means++ 可降低差初始化風險，inertia / elbow 可作為候選依據，再搭配業務解釋選擇 k。"
+    why_not_b: "沒有標籤時無法用 accuracy；而且 K-means 不是監督式分類。"
+    why_not_c: "K-means 不保證全域最佳，只跑一次隨機初始化風險較高。"
+    why_not_d: "entropy 是決策樹節點分裂準則，不是 K-means 選 k 標準。"
+  keywords:
+    - "k-means++"
+    - "elbow-method"
+    - "inertia"
+  exam_trap: true
+
+- id: "L22302-Q31"
+  topic_code: "L22302"
+  item_code: "數據分析演算法"
+  difficulty: 4
+  question: "某客服分類資料高度不平衡，團隊想用決策樹（Decision Tree）並維持可解釋性。若目前模型過深且少數類召回率偏低，下列哪個組合最能同時對應兩個問題？"
+  options:
+    a: "把 `n_clusters` 調高並增加 inertia"
+    b: "使用 `class_weight='balanced'` 並配合 `max_depth` 或 `ccp_alpha` 控制樹複雜度"
+    c: "先對全資料做 SMOTE，再取消驗證集"
+    d: "只改成 entropy，就能同時解決不平衡與過擬合"
+  correct: "b"
+  explanation:
+    why_correct: "少數類召回偏低可先用 class_weight 調整，樹太深則靠 max_depth 或 ccp_alpha 抑制 overfitting；兩者組合仍保有規則可解釋性。"
+    why_not_a: "`n_clusters` 與 inertia 屬 K-means 議題，不解決決策樹問題。"
+    why_not_c: "先全資料 SMOTE 會 leakage，取消驗證更無法確認泛化能力。"
+    why_not_d: "切換分裂準則可能影響結果，但不能保證同時處理不平衡與過擬合。"
+  keywords:
+    - "decision-tree"
+    - "class_weight"
+    - "pruning"
+  exam_trap: false
+
+- id: "L22302-Q32"
+  topic_code: "L22302"
+  item_code: "資料不平衡處理策略"
+  difficulty: 4
+  question: "在極度不平衡（例如 1:500）的二元分類中，若管理者要求『更敏感地觀察少數類表現』，下列哪個評估觀點最合適？"
+  options:
+    a: "只看訓練集 accuracy"
+    b: "只看 K-means 的 SSE"
+    c: "只看決策樹深度"
+    d: "除 ROC AUC 外，也應重視 Precision-Recall curve，因其更聚焦少數類預測品質"
+  correct: "d"
+  explanation:
+    why_correct: "在極度不平衡下，Precision-Recall curve 往往比 ROC AUC 更直接反映少數類被抓到與誤報之間的取捨。"
+    why_not_a: "訓練集 accuracy 容易虛高，還忽略泛化與少數類風險。"
+    why_not_b: "SSE 是分群指標，不是分類評估。"
+    why_not_c: "樹深是模型複雜度描述，不是分類效能指標。"
+  keywords:
+    - "precision-recall-curve"
+    - "ROC-AUC"
+    - "imbalanced-data"
+  exam_trap: true
+
+- id: "L22302-Q33"
+  topic_code: "L22302"
+  item_code: "資料不平衡處理策略"
+  difficulty: 5
+  question: "某團隊準備提交正式實驗流程，候選方案如下。若目標是『避免 data leakage、使用現行 API、且能在交叉驗證中公平比較模型』，哪個方案最好？"
+  options:
+    a: "用 imblearn.pipeline.Pipeline 包住 `SMOTE()` 與分類器，並在 pipeline 內使用 `fit_resample` 的現行流程"
+    b: "先對整體資料 `fit_sample`，再做交叉驗證"
+    c: "先切出 test set，但在 train+test 合併後再做一次 SMOTE 讓分布更平均"
+    d: "放棄 resampling，直接把 accuracy 當唯一比較依據"
+  correct: "a"
+  explanation:
+    why_correct: "這個方案同時滿足三個條件：避免 leakage、遵循現行 `fit_resample` API、並讓 resampling 僅在各 training fold 內執行。"
+    why_not_b: "`fit_sample` 已棄用，且先整體 resample 再 CV 會造成 leakage。這個選項故意結合兩個常見錯誤。"
+    why_not_c: "即使先切 test，再把它合回去 resample，仍然破壞測試獨立性。"
+    why_not_d: "accuracy 不能作為不平衡問題的唯一判斷依據，也沒有回答 leakage 與 API 的要求。"
+  keywords:
+    - "Pipeline"
+    - "fit_resample"
+    - "data-leakage"
+  exam_trap: true
+
+- id: "L22302-Q34"
+  topic_code: "L22302"
+  item_code: "資料不平衡處理策略"
+  difficulty: 5
+  question: "你要為法遵部門設計一個可解釋、資料筆數不能改動、且正負樣本約 1:30 的預警模型。下列哪個決策最符合這三項限制？"
+  options:
+    a: "使用 K-means 分群，因為無須標籤且可預測違規機率"
+    b: "使用決策樹（Decision Tree）並設定 `class_weight='balanced'`"
+    c: "先用 SMOTE 生成大量新樣本，再用黑箱模型"
+    d: "只用 elbow method 決定規則數量"
+  correct: "b"
+  explanation:
+    why_correct: "決策樹可提供可解釋規則，`class_weight='balanced'` 又能處理不平衡且不改變資料筆數，完整符合題目限制。"
+    why_not_a: "K-means 是非監督式分群，不能直接當成有標籤的違規預測模型。"
+    why_not_c: "SMOTE 會改動訓練資料筆數，且黑箱模型不符合法遵部門對可解釋性的要求。"
+    why_not_d: "elbow method 是 K-means 選 k 的輔助工具，無法直接形成法遵判斷規則。"
+  keywords:
+    - "decision-tree"
+    - "class_weight"
+    - "explainability"
+  exam_trap: true
+
+- id: "L22302-Q35"
+  topic_code: "L22302"
+  item_code: "數據分析演算法"
+  difficulty: 5
+  question: "閱讀下列 K-means 分群（Clustering）偽碼，若要讓流程符合標準演算法，下列哪個敘述最合理？\n\n```text\n1. 隨機選 k 個中心\n2. 將每個點指定到最近中心\n3. 重新計算各群中心\n4. 若中心移動量小於 tol 則停止，否則回到步驟 2\n```\n\n團隊主管主張：『既然有 tol 停止條件，代表結果就是全域最佳。』你會如何回應？"
+  options:
+    a: "同意，因為 tol 代表已證明全域最優"
+    b: "不同意；tol 只表示收斂判斷，K-means 仍可能停在 local minimum"
+    c: "同意，因為每次重算中心都等同於 pruning"
+    d: "不同意；只要有 tol 就代表其實是監督式分類"
+  correct: "b"
+  explanation:
+    why_correct: "tol 只是停止迭代的條件，代表中心幾乎不再移動，不代表已跳脫初始化帶來的局部最佳限制。"
+    why_not_a: "這是把『收斂』誤解成『全域最佳』，是 K-means 的經典考點。"
+    why_not_c: "pruning 是決策樹控制複雜度的方法，與 K-means 的中心更新無關。"
+    why_not_d: "tol 與學習型態無關，K-means 仍是非監督式分群。"
+  keywords:
+    - "K-means"
+    - "tol"
+    - "local-minimum"
+  exam_trap: true
+
+- id: "L22302-Q36"
+  topic_code: "L22302"
+  item_code: "模式識別"
+  difficulty: 5
+  question: "某製造業專案有兩段需求：第一段先以無標註感測資料找出設備運作型態；第二段再把工程師已確認的判斷邏輯落地成可審核規則。哪個整體方案最能同時滿足兩段需求？"
+  options:
+    a: "兩段都用 SMOTE，因為可以同時找型態與產生規則"
+    b: "第一段用決策樹；第二段用 elbow method"
+    c: "第一段用 K-means 做 cluster-based pattern recognition；第二段用決策樹做 rule-based pattern recognition"
+    d: "兩段都只看 ROC AUC"
+  correct: "c"
+  explanation:
+    why_correct: "這是典型分群式與規則式模式識別的組合應用：先探索型態，再把可解釋規則固化。"
+    why_not_a: "SMOTE 是資料平衡策略，不負責型態探索或規則萃取。"
+    why_not_b: "決策樹需要標籤；elbow method 也只是 K-means 選 k 輔助，不會輸出審核規則。"
+    why_not_d: "ROC AUC 是評估指標，不是滿足兩段需求的建模方案。"
+  keywords:
+    - "pattern-recognition"
+    - "K-means"
+    - "decision-tree"
+  exam_trap: false
+
+- id: "L22302-Q37"
+  topic_code: "L22302"
+  item_code: "資料不平衡處理策略"
+  difficulty: 5
+  question: "你接手一份程式碼：\n\n```python\nX_sm, y_sm = SMOTE().fit_resample(X, y)\nX_train, X_test, y_train, y_test = train_test_split(X_sm, y_sm, test_size=0.2, random_state=42)\n```\n\n作者宣稱：『我已經用了現行 API，所以流程沒有問題。』若你要給出最關鍵的審查意見，哪一項最到位？"
+  options:
+    a: "程式的主要問題不是 API，而是先 resample 全資料後才切分，造成 data leakage"
+    b: "主要問題是沒有使用 inertia_"
+    c: "主要問題是沒有把 criterion 設成 entropy"
+    d: "主要問題是沒有改成 RandomUnderSampler，所以一定失敗"
+  correct: "a"
+  explanation:
+    why_correct: "即使 API 正確，流程仍錯。先對整份資料 SMOTE 再切 train/test，會把測試資訊滲入訓練過程，是更嚴重的問題。"
+    why_not_b: "`inertia_` 是 KMeans 屬性，與這段不平衡分類流程無關。"
+    why_not_c: "entropy 是決策樹分裂準則，不是這段程式的核心缺陷。"
+    why_not_d: "RandomUnderSampler 可能是替代方案，但不是此段程式最本質的錯誤。"
+  keywords:
+    - "SMOTE"
+    - "data-leakage"
+    - "code-review"
+  exam_trap: true
+
+- id: "L22302-Q38"
+  topic_code: "L22302"
+  item_code: "資料不平衡處理策略"
+  difficulty: 5
+  question: "某專案先用 RandomUnderSampler 大幅刪除多數類後，accuracy 上升，但 recall 與 Precision-Recall curve 表現變差。若你要做專業判斷，下列何者最合理？"
+  options:
+    a: "應以 accuracy 為唯一準則，因為它最直觀"
+    b: "既然做了 undersampling，其他指標都不再重要"
+    c: "因為 RandomUnderSampler 不是決策樹，所以結果無法解讀"
+    d: "不能只看 accuracy；在不平衡任務中，若少數類指標惡化，代表此做法未必符合任務目標"
+  correct: "d"
+  explanation:
+    why_correct: "資料重採樣可能改變整體正確率，但任務若重視少數類偵測，應回到 recall、precision、PR curve 等指標判斷是否真的改善。"
+    why_not_a: "accuracy 在不平衡情境下最容易誤導，尤其當任務風險集中在少數類時。"
+    why_not_b: "resampling 只是手段，不代表可以忽略任務真正關心的評估指標。"
+    why_not_c: "方法是否為決策樹與結果是否可解讀無直接關係；這是在轉移問題焦點。"
+  keywords:
+    - "RandomUnderSampler"
+    - "accuracy"
+    - "precision-recall-curve"
+  exam_trap: true
+
+- id: "L22302-Q39"
+  topic_code: "L22302"
+  item_code: "數據分析演算法"
+  difficulty: 5
+  question: "某產品團隊同時提出三個說法：\n1.『K-means 分群（Clustering）可直接拿來預測明年營收。』\n2.『決策樹（Decision Tree）只要改用 entropy 就是全域最佳。』\n3.『不平衡資料最好先整體 SMOTE，再交叉驗證。』\n\n若你只能選一個回覆去一次指出三者的共通錯誤，哪個最精準？"
+  options:
+    a: "三者都對，只是實作細節不同"
+    b: "三者都錯，因為它們都把啟發式或局部方法誤當成可直接保證正確結論的萬靈丹"
+    c: "只有第 1 點錯，其他都對"
+    d: "只有第 3 點錯，因為前兩點屬於監督式就一定沒問題"
+  correct: "b"
+  explanation:
+    why_correct: "第 1 點把分群誤當迴歸；第 2 點把局部分裂準則誤當全域保證；第 3 點忽略資料切分邊界。共通點都是把方法能力誇大。"
+    why_not_a: "這會同時接受三個錯誤觀念。"
+    why_not_c: "第 2、3 點也錯，而且錯在實務與考試都很常見。"
+    why_not_d: "前兩點並非因為『監督式』就自動成立，第 1 點甚至不是監督式預測方法。"
+  keywords:
+    - "K-means"
+    - "decision-tree"
+    - "data-leakage"
+  exam_trap: true
+
+- id: "L22302-Q40"
+  topic_code: "L22302"
+  item_code: "數據分析演算法"
+  difficulty: 5
+  question: "你要為一門 AI 應用課規劃實作考題，限制如下：題目必須同時檢驗『K-means 分群（Clustering）不是迴歸』、『能解釋決策樹（Decision Tree）剪枝用途』、以及『知道不平衡資料不能只看 accuracy』。下列哪個題目設計最符合這三個目標？"
+  options:
+    a: "只問學生 `SMOTE` 全名是什麼"
+    b: "只讓學生背出 `criterion='gini'`"
+    c: "只讓學生畫 elbow curve"
+    d: "給一個含不平衡標籤的業務案例，要求學生判斷何時用 K-means、何時用決策樹剪枝，並說明為何不能只以 accuracy 評估"
+  correct: "d"
+  explanation:
+    why_correct: "這個設計同時要求方法選型、過擬合控制與評估判斷，符合 difficulty 5 的整合與評估層次。"
+    why_not_a: "只考名詞記憶，無法檢驗題目要求的三個概念。"
+    why_not_b: "只背 API 片段太片面，無法看出學生是否理解剪枝與模型選型。"
+    why_not_c: "elbow curve 只碰到 K-means 選 k，無法涵蓋決策樹與不平衡評估。"
+  keywords:
+    - "K-means"
+    - "pruning"
+    - "accuracy"
+  exam_trap: false
