@@ -1,0 +1,28 @@
+---
+title: Spark 架構與 DAG 執行流程
+---
+flowchart TD
+    subgraph CLIENT["👨‍💻 Client / Driver Program"]
+        D1["SparkContext\n建立應用程式入口"]
+        D2["🧠 DAG Scheduler\n建立邏輯執行計畫"]
+        D3["⚡ Task Scheduler\n分配 Task 到 Executor"]
+        D1 --> D2 --> D3
+    end
+
+    subgraph CM["🎛️ Cluster Manager\n(YARN / Standalone / K8s)"]
+        CM1["資源分配\n管理 Executor 生命週期"]
+    end
+
+    subgraph EXEC["⚙️ Executor (Worker Nodes)"]
+        E1["Task 1\n.filter()"] --> E2["Task 2\n.groupBy()"] --> E3["Task 3\n.agg()"]
+        E4["📀 Cache / Persist\n(記憶體 or 磁碟)"]
+    end
+
+    D3 -->|"Task 分配"| CM
+    CM -->|"啟動 Executor"| EXEC
+
+    subgraph LAZY["🔑 Lazy Evaluation 重點"]
+        L1["Transformation 只建 DAG\n❌ 不立即執行"]
+        L2["Action 觸發 DAG 執行\n✅ .collect() / .count() / .write()"]
+        L1 --> L2
+    end

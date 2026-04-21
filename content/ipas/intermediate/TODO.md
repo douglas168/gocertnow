@@ -54,6 +54,10 @@ Tracks open items across all lessons that need resolution before publishing.
 - **Diagram rendering:** 5 Mermaid diagrams (`.mmd`) under `lessons/L22202-數據儲存與管理/diagrams/` — render to PNG via Gemini downstream (not blocking publish).
 - **Gemini cross-review skipped** (API 429 capacity exhaustion); Claude adversarial + Codex auditor both applied — re-run Gemini pass if desired before exam assembly.
 
+### L22203 — 數據處理技術與工具
+- **Diagram rendering:** 5 Mermaid diagrams (`.mmd`) under `lessons/L22203-數據處理技術與工具/diagrams/` — render to PNG via Gemini downstream (not blocking publish).
+- **Gemini cross-review brief** (12-line output); Claude adversarial (4 findings) + Codex auditor (11 findings) both applied — re-run full Gemini pass if desired before exam assembly.
+
 ---
 
 ## Lesson Progress
@@ -74,7 +78,7 @@ Tracks open items across all lessons that need resolution before publishing.
 | 12 | L22103 | 假設檢定與統計推論 | L22 | elective_a (資料分析組) | 1 | ✅ Done | 1 |
 | 13 | L22201 | 數據收集與清理 | L22 | elective_a (資料分析組) | 1 | ✅ Done | 1 |
 | 14 | L22202 | 數據儲存與管理 | L22 | elective_a (資料分析組) | 1 | ✅ Done | 1 |
-| 15 | L22203 | 數據處理技術與工具 | L22 | elective_a (資料分析組) | 1 | Not started | — |
+| 15 | L22203 | 數據處理技術與工具 | L22 | elective_a (資料分析組) | 1 | ✅ Done | 2 |
 | 16 | L22301 | 統計學在大數據中的應用 | L22 | elective_a (資料分析組) | 1 | Not started | — |
 | 17 | L22302 | 常見的大數據分析方法 | L22 | elective_a (資料分析組) | 1 | Not started | — |
 | 18 | L22303 | 數據可視化工具 | L22 | elective_a (資料分析組) | 1 | Not started | — |
@@ -99,9 +103,9 @@ Tracks open items across all lessons that need resolution before publishing.
 
 ## What's Next
 
-**Next lesson:** `/course-generate-lesson L22203` — 數據處理技術與工具
+**Next lesson:** `/course-generate-lesson L22301` — 統計學在大數據中的應用
 
-**Remaining lessons:** 20 of 34 topics left (8 for 資料分析組 SKU; 18 for 機器學習組 SKU; all L21 items now complete)
+**Remaining lessons:** 19 of 34 topics left (7 for 資料分析組 SKU; 18 for 機器學習組 SKU; all L21 items now complete)
 
 ### Priority 1 — 資料分析組 sprint (founder 2026-05-23 exam)
 
@@ -123,7 +127,7 @@ Order from `syllabus/dependencies.md` §3. Build L21 (required) first, then L22.
 | ~~12~~ | ~~L22103~~ | ~~假設檢定與統計推論~~ | ✅ Done (40-question pool, 4 diagrams) |
 | ~~13~~ | ~~L22201~~ | ~~數據收集與清理~~ | ✅ Done (35-question pool, 5 diagrams) |
 | ~~14~~ | ~~L22202~~ | ~~數據儲存與管理~~ | ✅ Done (35-question pool, 5 diagrams) |
-| 15 | L22203 | 數據處理技術與工具 | Medium, includes code, keywords inferred |
+| ~~15~~ | ~~L22203~~ | ~~數據處理技術與工具~~ | ✅ Done (35-question pool, 5 diagrams) |
 | 16 | L22301 | 統計學在大數據中的應用 | Medium, includes code |
 | 17 | L22302 | 常見的大數據分析方法 | Deep, includes code |
 | 18 | L22303 | 數據可視化工具 | Medium, includes code |
@@ -173,3 +177,4 @@ Order from `syllabus/dependencies.md` §4 (L21 items already covered above).
 - **L22103** — 假設檢定與統計推論 (2026-04-20). 40-question pool (D1-5 = 8/8/8/8/8, ≥6 code/pseudocode questions), 631-line study guide, 4 diagrams (test-selection Mermaid flowchart, Type I/II error 2×2 grid, rejection-region bell curve + pseudocode trace, three-tests comparison table). 3-reviewer pipeline (Claude adversarial: 0 critical/1 minor; Gemini: 4 PASS; Codex auditor: 7 findings) resolved 0 critical + 5 important + 3 minor fixes: t-test English name unified (5 locations), two-tailed/two-sided standardized (4 locations), ttest_rel glossary added to study guide. **L22 sprint: 10 topics remaining.**
 - **L22201** — 數據收集與清理 (2026-04-21). 35-question pool (D1-5 = 7/7/7/7/7, a/b/c/d = 9/9/9/8, 7 exam_trap, 8 pseudocode questions), 665-line study guide, 5 Mermaid diagrams (Bronze→Silver→Gold pipeline, missing-value decision tree, Spark streaming dedup watermark sequence, data-quality 6-dimension mindmap, schema-drift 4-type handling flowchart). 3-reviewer pipeline (Claude adversarial: 1 critical/1 minor; Gemini: 1 critical [CROSS]; Codex auditor fallback: 3+2+1+3 findings) resolved 9 total (1 critical + 4 important + 4 minor): Q04 correct answer flipped "d"→"a" (IQR Q3−Q2 wrong → Q3−Q1 correct, flagged by all 3 reviewers [CROSS]), Q19 str.replace() regex default corrected, Webhook row added to §3-1 collection table, schema drift forward-pointer sentence added, window() call commented, mnemonic dedup note added. **L22 sprint: 9 topics remaining.**
 - **L22202** — 數據儲存與管理 (2026-04-21). 35-question pool, 1,440-line study guide, 5 Mermaid diagrams (storage-decision-tree, oltp-vs-olap, lake-warehouse-lakehouse, nosql-four-types, row-vs-column-store). 2-reviewer pipeline (Claude adversarial: 2 findings; Codex auditor: 10 findings; Gemini: API 429 skipped) resolved 10 total (1 critical [CROSS] + 6 important + 3 minor): Q07 ACID vs BASE — BASE contrast added to §3.2.3 (Claude + Codex [CROSS]). **L22 sprint: 8 topics remaining.**
+- **L22203** — 數據處理技術與工具 (2026-04-21). 35-question pool (D1-5 = 7/7/7/7/7, a/b/c/d = 9/9/9/8, ≥6 pseudocode questions), ~879-line study guide, 5 Mermaid diagrams (batch-vs-stream, spark-architecture DAG flow, etl-vs-elt pipeline, sql-window-functions anatomy, mapreduce-flow). 3-reviewer pipeline (Claude adversarial: 4 findings; Gemini cross-check: brief/12 lines; Codex auditor: 11 findings) resolved 10 total (2 critical + 3 important + 5 minor): C1 [CROSS] Dataset vs DataFrame abstraction hierarchy corrected, C2 ROW_NUMBER() "no ties" oversimplification fixed across 4 sections + Q33. **L22 sprint: 7 topics remaining.**

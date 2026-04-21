@@ -1,0 +1,29 @@
+---
+title: ETL vs ELT 管線流程比較
+---
+flowchart LR
+    subgraph SRC["📂 來源系統\n(Source Systems)"]
+        S1["資料庫"]
+        S2["API / 日誌"]
+        S3["檔案"]
+    end
+
+    subgraph ETL_FLOW["🔵 ETL 流程"]
+        direction LR
+        E1["📥 Extract\n抽取原始資料"] --> E2["⚙️ Transform\n清洗、轉換\n(Staging Area)"] --> E3["📤 Load\n載入目標\n資料倉儲"]
+    end
+
+    subgraph ELT_FLOW["🟢 ELT 流程"]
+        direction LR
+        EL1["📥 Extract\n抽取原始資料"] --> EL2["📤 Load\n直接載入\n資料湖/雲端倉儲"] --> EL3["⚙️ Transform\n在目標端轉換\n(dbt / SQL)"]
+    end
+
+    subgraph WHEN["🎯 選擇指南"]
+        W1["ETL ✅\n傳統資料倉儲\n(Redshift, SQL Server)\n需先清洗才能入庫"]
+        W2["ELT ✅\n雲端資料湖/現代倉儲\n(BigQuery, Snowflake, Delta Lake)\n儲存便宜，先存再轉"]
+    end
+
+    SRC --> ETL_FLOW
+    SRC --> ELT_FLOW
+    ETL_FLOW --> WHEN
+    ELT_FLOW --> WHEN

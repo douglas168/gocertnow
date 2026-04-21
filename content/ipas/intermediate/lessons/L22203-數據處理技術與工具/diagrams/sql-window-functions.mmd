@@ -1,0 +1,33 @@
+---
+title: SQL 視窗函數 (Window Functions) 解剖圖
+---
+flowchart TD
+    subgraph SYNTAX["📝 語法結構"]
+        SY["函數名稱(參數)\nOVER (\n  PARTITION BY 分組欄位\n  ORDER BY 排序欄位\n  ROWS/RANGE frame_clause\n)"]
+    end
+
+    subgraph FUNCS["📊 三大類視窗函數"]
+        direction LR
+
+        subgraph RANK_GRP["🏆 排名函數"]
+            R1["ROW_NUMBER()\n唯一序號，並列各自不同\n1, 2, 3, 4 (no ties)"]
+            R2["RANK()\n並列後跳號\n1, 2, 2, 4 ⚠️"]
+            R3["DENSE_RANK()\n並列後不跳號\n1, 2, 2, 3 ✅"]
+        end
+
+        subgraph OFFSET_GRP["↕️ 偏移函數"]
+            O1["LAG(col, n)\n取前 n 列的值"]
+            O2["LEAD(col, n)\n取後 n 列的值"]
+        end
+
+        subgraph AGG_GRP["➕ 聚合視窗函數"]
+            A1["SUM() OVER(...)\nAVG() OVER(...)\nCOUNT() OVER(...)\n保留原始行數！"]
+        end
+    end
+
+    subgraph KEY_DIFF["🔑 vs GROUP BY"]
+        KD["GROUP BY：多列 → 一列（聚合）\nWindow Function：多列 → 多列（保留原始）\n🔥🔥 考試高頻陷阱"]
+    end
+
+    SYNTAX --> FUNCS
+    FUNCS --> KEY_DIFF

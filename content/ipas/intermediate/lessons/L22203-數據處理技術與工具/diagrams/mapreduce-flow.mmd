@@ -1,0 +1,39 @@
+---
+title: MapReduce 三階段執行流程
+---
+flowchart LR
+    subgraph INPUT["📂 輸入資料\n(HDFS 分散儲存)"]
+        I1["Block 1\n128 MB"]
+        I2["Block 2\n128 MB"]
+        I3["Block 3\n128 MB"]
+    end
+
+    subgraph MAP["🗺️ Map 階段\n(平行處理)"]
+        M1["Mapper 1\n產生 key-value pairs\n(word, 1)"]
+        M2["Mapper 2\n產生 key-value pairs\n(word, 1)"]
+        M3["Mapper 3\n產生 key-value pairs\n(word, 1)"]
+    end
+
+    subgraph SHUFFLE["🔀 Shuffle & Sort 階段\n(框架自動執行)"]
+        SS["相同 key 的資料\n彙整到同一 Reducer\n(apple: [1,1,1], banana: [1,1])"]
+    end
+
+    subgraph REDUCE["➕ Reduce 階段\n(聚合計算)"]
+        R1["Reducer 1\napple → 3"]
+        R2["Reducer 2\nbanana → 2"]
+    end
+
+    subgraph OUTPUT["📊 輸出結果\n(寫回 HDFS)"]
+        O1["apple: 3\nbanana: 2\n..."]
+    end
+
+    I1 --> M1
+    I2 --> M2
+    I3 --> M3
+    M1 & M2 & M3 --> SHUFFLE
+    SHUFFLE --> R1 & R2
+    R1 & R2 --> OUTPUT
+
+    subgraph NOTE["⚠️ 考試陷阱"]
+        N1["Shuffle 在 Map 之後、Reduce 之前\n不是 Map 和 Reduce 的一部分\n三階段：Map → Shuffle&Sort → Reduce"]
+    end

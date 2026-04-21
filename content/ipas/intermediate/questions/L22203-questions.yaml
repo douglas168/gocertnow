@@ -1,0 +1,804 @@
+- id: "L22203-Q01"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 1
+  question: "在 Hadoop Distributed File System（HDFS）中，常見的預設 block size 與 replication factor 分別為何？"
+  options:
+    a: "128 MB 與 3"
+    b: "64 MB 與 2"
+    c: "256 MB 與 1"
+    d: "512 MB 與 5"
+  correct: "a"
+  explanation:
+    why_correct: "HDFS 在 Hadoop 3.x 常見教學與官方文件脈絡下，預設 block size 為 128 MB，replication factor 常見預設為 3。這是中級考試最常見的數字題。"
+    why_not_a: "此選項正確。"
+    why_not_b: "64 MB 是較舊 Hadoop 時代常見記憶數字，容易被沿用；replication factor 2 也不符合常見預設值。"
+    why_not_c: "256 MB 可能出現在調校後環境，但不是本題常見預設；replication factor 1 會降低容錯性。"
+    why_not_d: "512 MB 與 5 都屬於較激進或特定情境設定，不是中級考試應記住的基準值。"
+  keywords:
+    - "HDFS"
+    - "block size"
+    - "replication factor"
+  exam_trap: true
+
+- id: "L22203-Q02"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 1
+  question: "在 Hadoop MapReduce 中，標準處理流程（MapReduce pipeline）的正確順序為何？"
+  options:
+    a: "Shuffle → Map → Reduce"
+    b: "Map → Shuffle → Reduce"
+    c: "Reduce → Map → Shuffle"
+    d: "Map → Reduce → Shuffle"
+  correct: "b"
+  explanation:
+    why_correct: "MapReduce 的核心流程是先由 Map 產生中介鍵值，再經過 Shuffle and Sort 將相同 key 聚集並排序，最後由 Reduce 彙總輸出。"
+    why_not_a: "Shuffle 必須在 Map 之後才有中介資料可重新分派，因此不能排在最前面。"
+    why_not_b: "此選項正確。"
+    why_not_c: "Reduce 依賴 Shuffle 後的 key 分組結果，不可能先執行。"
+    why_not_d: "很多考生把 Reduce 誤認為緊接在 Map 後面，但實際上中間一定有 Shuffle/Sort 階段。"
+  keywords:
+    - "MapReduce"
+    - "Shuffle"
+    - "Reduce"
+  exam_trap: true
+
+- id: "L22203-Q03"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 1
+  question: "在 Apache Spark 中，哪一個抽象層（abstraction）具有 schema，且可由 Catalyst optimizer 進行額外最佳化？"
+  options:
+    a: "RDD"
+    b: "DStream"
+    c: "DataFrame"
+    d: "Broadcast variable"
+  correct: "c"
+  explanation:
+    why_correct: "DataFrame 是具名欄位與 schema 的分散式資料集，Spark SQL engine 可利用結構資訊與 Catalyst optimizer 進行查詢最佳化。"
+    why_not_a: "RDD 是較底層的分散式資料抽象，但沒有像 DataFrame 那樣的結構化 schema 最佳化優勢。"
+    why_not_b: "DStream 屬於較舊的 Spark Streaming API，不是本題問的 Spark SQL 結構化抽象。"
+    why_not_c: "此選項正確。"
+    why_not_d: "Broadcast variable 是共享唯讀變數機制，不是資料表抽象。"
+  keywords:
+    - "Spark"
+    - "DataFrame"
+    - "Catalyst optimizer"
+  exam_trap: false
+
+- id: "L22203-Q04"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 1
+  question: "在 Spark 的延遲求值（Lazy Evaluation）中，哪一類操作通常會真正觸發執行（execution）？"
+  options:
+    a: "transformation，例如 filter()"
+    b: "transformation，例如 select()"
+    c: "transformation，例如 withColumn()"
+    d: "action，例如 count()"
+  correct: "d"
+  explanation:
+    why_correct: "Spark 會先記錄轉換（transformation）形成執行計畫，直到遇到 action，如 count()、collect()、show()，才真正觸發計算。"
+    why_not_a: "filter() 只是 transformation，常見誤解是看到條件運算就以為已經執行。"
+    why_not_b: "select() 只是在邏輯計畫中挑選欄位，不會單獨觸發工作。"
+    why_not_c: "withColumn() 也是 transformation，只有在後續 action 出現時才會被執行。"
+    why_not_d: "此選項正確。"
+  keywords:
+    - "Spark"
+    - "延遲求值"
+    - "action"
+  exam_trap: true
+
+- id: "L22203-Q05"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 1
+  question: "關於 ETL（Extract, Transform, Load）與 ELT（Extract, Load, Transform），哪一項敘述正確描述兩者的流程方向？"
+  options:
+    a: "ETL 先轉換後載入；ELT 先載入後轉換"
+    b: "ETL 與 ELT 都是先載入後轉換，只是工具不同"
+    c: "ETL 與 ELT 都是先轉換後載入，只是儲存位置不同"
+    d: "ELT 一定不做轉換，只做載入"
+  correct: "a"
+  explanation:
+    why_correct: "ETL 的關鍵在於先做轉換（Transform）再載入；ELT 則是先 load 到 warehouse 或 lakehouse，再在目標端做轉換。"
+    why_not_a: "此選項正確。"
+    why_not_b: "這把 ETL 與 ELT 混成同一流程，是最常見的基本概念錯誤。"
+    why_not_c: "若都先轉換後載入，就不再是 ELT。"
+    why_not_d: "ELT 仍然會轉換，只是轉換發生在載入之後。"
+  keywords:
+    - "ETL"
+    - "ELT"
+    - "dbt"
+  exam_trap: true
+
+- id: "L22203-Q06"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 1
+  question: "相較於 SQL 的 GROUP BY，視窗函數（Window Function）最典型的特性是什麼？"
+  options:
+    a: "一定比 GROUP BY 快"
+    b: "會保留原始資料列，再附加計算結果"
+    c: "只能用在排序，不能做聚合"
+    d: "會把每個 partition 壓縮成一列"
+  correct: "b"
+  explanation:
+    why_correct: "視窗函數會在不折疊原始資料列的前提下，對資料列附加排名、前後列值或聚合結果。"
+    why_not_a: "效能取決於資料與執行計畫，不能直接說視窗函數一定較快。"
+    why_not_b: "此選項正確。"
+    why_not_c: "聚合視窗函數如 SUM() OVER(...) 就能做聚合，只是不折疊列。"
+    why_not_d: "把資料壓縮成較少列是 GROUP BY 的典型效果，不是視窗函數。"
+  keywords:
+    - "SQL"
+    - "視窗函數"
+    - "GROUP BY"
+  exam_trap: true
+
+- id: "L22203-Q07"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 1
+  question: "若排名資料有同分（tie），哪一個 SQL 視窗函數（Window Function）會在並列後保留名次空缺？"
+  options:
+    a: "ROW_NUMBER()"
+    b: "DENSE_RANK()"
+    c: "LAG()"
+    d: "RANK()"
+  correct: "d"
+  explanation:
+    why_correct: "RANK() 在並列時會給相同名次，後續名次會跳號，例如 1, 2, 2, 4。"
+    why_not_a: "ROW_NUMBER() 遇到同分時仍會強制給每列不同序號，而不是像 RANK() / DENSE_RANK() 那樣保留相同排名。"
+    why_not_b: "DENSE_RANK() 同樣處理並列，但不會跳號，因此常和 RANK() 混淆。"
+    why_not_c: "LAG() 用來取前一列值，不是排名函數。"
+    why_not_d: "此選項正確。"
+  keywords:
+    - "RANK"
+    - "DENSE_RANK"
+    - "ROW_NUMBER"
+  exam_trap: true
+
+- id: "L22203-Q08"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 2
+  question: "關於 Hadoop Distributed File System（HDFS）的敘述，哪一項正確？"
+  options:
+    a: "NameNode 主要負責儲存每個 block 的實際資料內容"
+    b: "DataNode 主要負責維護檔案系統 metadata 與 namespace"
+    c: "HDFS 的 block 預設一定小於一般檔案系統 block，目的是減少網路傳輸"
+    d: "Client 寫入檔案時，block 可依 replication factor 複製到多個 DataNode"
+  correct: "d"
+  explanation:
+    why_correct: "Client 寫入 HDFS 檔案時，資料會依 replication factor 寫入多個 DataNode；這是 HDFS 容錯設計的核心概念。"
+    why_not_a: "這是常見誤解：NameNode 管理 metadata，不負責存放 block 內容。"
+    why_not_b: "DataNode 儲存資料 block，不維護 HDFS namespace；那是 NameNode 的工作。"
+    why_not_c: "HDFS block 通常比一般檔案系統 block 大很多，目的是降低 metadata 負擔與提升大檔處理效率。"
+    why_not_d: "此選項正確。Client 寫入時會依 replication factor 透過 DataNode pipeline 完成複本寫入。"
+  keywords:
+    - "HDFS"
+    - "NameNode"
+    - "DataNode"
+  exam_trap: true
+
+- id: "L22203-Q09"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 2
+  question: "關於 MapReduce 中的 Shuffle 階段（Shuffle phase），哪一項理解最正確？"
+  options:
+    a: "Shuffle 會把 Mapper 輸出的相同 key 重新分組並送往對應 Reducer"
+    b: "Shuffle 只在 Reduce 完成後才發生，用來整理最終輸出"
+    c: "Shuffle 是 YARN 的資源分配流程，不屬於 MapReduce 本身"
+    d: "Shuffle 的功能等同 HDFS replication"
+  correct: "a"
+  explanation:
+    why_correct: "Shuffle 的核心是中介資料的重新分派、分組與排序，讓相同 key 的資料進入同一個 Reducer。"
+    why_not_a: "此選項正確。"
+    why_not_b: "很多人把 Shuffle 誤認為最後整理結果的步驟，但它發生在 Map 與 Reduce 之間。"
+    why_not_c: "YARN 管資源，Shuffle 是 MapReduce 資料流的一部分，兩者角色不同。"
+    why_not_d: "HDFS replication 是儲存層容錯機制，Shuffle 是計算層資料重分配。"
+  keywords:
+    - "MapReduce"
+    - "Shuffle"
+    - "Reducer"
+  exam_trap: true
+
+- id: "L22203-Q10"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 2
+  question: "關於 Spark RDD 與 DataFrame 的比較，哪一項敘述正確？"
+  options:
+    a: "RDD 一定比 DataFrame 更容易被 Catalyst optimizer 最佳化"
+    b: "DataFrame 因具有 schema，可讓 Spark SQL engine 做額外最佳化"
+    c: "DataFrame 不支援欄位操作，只能逐筆處理"
+    d: "RDD 是專為 SQL 視窗函數設計的高階 API"
+  correct: "b"
+  explanation:
+    why_correct: "DataFrame 暴露結構資訊給 Spark SQL engine，因此可套用 Catalyst optimizer 與相關執行最佳化。"
+    why_not_a: "Catalyst 主要服務於 Spark SQL/DataFrame/Dataset 這類結構化查詢，不是 RDD 的強項。"
+    why_not_b: "此選項正確。"
+    why_not_c: "DataFrame 的強項正是欄位式 API，如 select、filter、groupBy。"
+    why_not_d: "RDD 是較底層抽象，不是專為 SQL 視窗語意設計。"
+  keywords:
+    - "RDD"
+    - "DataFrame"
+    - "Spark SQL"
+  exam_trap: false
+
+- id: "L22203-Q11"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 2
+  question: "關於 Spark 的 transformation 與 action，哪一項敘述正確？"
+  options:
+    a: "show() 屬於 transformation，因為只顯示結果"
+    b: "groupBy() 屬於 action，因為會分群"
+    c: "filter() 與 select() 都屬於 transformation，通常不會單獨觸發計算"
+    d: "count() 屬於 transformation，因為它會產生新數值"
+  correct: "c"
+  explanation:
+    why_correct: "filter()、select()、groupBy() 這些會建立邏輯計畫，屬於轉換（transformation）；真正執行通常由後續 action 觸發。"
+    why_not_a: "show() 會要求 Spark 取出結果顯示，因此是 action，而非 transformation。"
+    why_not_b: "groupBy() 只是定義分群邏輯，仍需後續 agg() 與 action 觸發。"
+    why_not_c: "此選項正確。"
+    why_not_d: "count() 會回傳列數並觸發執行，是典型 action。"
+  keywords:
+    - "transformation"
+    - "action"
+    - "延遲求值"
+  exam_trap: true
+
+- id: "L22203-Q12"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 2
+  question: "關於 ETL / ELT 與 dbt（data build tool）的關係，哪一項敘述最恰當？"
+  options:
+    a: "dbt 主要代表先在來源系統完成轉換，因此屬於典型 ETL"
+    b: "dbt 完全不涉及轉換，只負責資料匯入"
+    c: "dbt 只能搭配 Hadoop HDFS，不能用於雲端資料倉儲"
+    d: "dbt 常被用於 ELT 流程中的 transform layer，在資料載入倉儲後再建模"
+  correct: "d"
+  explanation:
+    why_correct: "dbt 常見定位是在資料已載入倉儲後，再以 SQL 模型完成轉換與建模，因此非常符合 ELT 的 transform layer。"
+    why_not_a: "dbt 常見定位是 warehouse 內轉換，不是傳統先轉後載的 ETL。"
+    why_not_b: "dbt 的核心就是 SQL-based transformation 與模型建構。"
+    why_not_c: "這是錯誤限制。dbt 主要就是服務現代雲端資料倉儲與 lakehouse 生態。"
+    why_not_d: "此選項正確。dbt 很典型地落在現代 ELT 的轉換層。"
+  keywords:
+    - "ETL"
+    - "ELT"
+    - "dbt"
+  exam_trap: false
+
+- id: "L22203-Q13"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 2
+  question: "閱讀下列 SQL：`SELECT dept, emp, salary, AVG(salary) OVER (PARTITION BY dept) AS dept_avg FROM t;` 關於結果的敘述何者正確？"
+  options:
+    a: "結果會每個部門只剩一列，因為 AVG 會自動做 GROUP BY"
+    b: "必須加上 GROUP BY dept, emp, salary 才能執行"
+    c: "每一列員工資料會被保留，並附加所屬部門平均薪資"
+    d: "這其實等同 LAG(salary)"
+  correct: "c"
+  explanation:
+    why_correct: "AVG(...) OVER (PARTITION BY dept) 是聚合視窗函數，會保留原始列，並對每列附加該部門的平均值。"
+    why_not_a: "這把視窗函數誤認為 GROUP BY；視窗函數不會折疊成每組一列。"
+    why_not_b: "使用視窗函數不必像一般聚合查詢那樣強制加 GROUP BY。"
+    why_not_c: "此選項正確。"
+    why_not_d: "LAG 是取前一列值，與部門平均薪資完全不同。"
+  keywords:
+    - "視窗函數"
+    - "PARTITION BY"
+    - "AVG OVER"
+  exam_trap: true
+
+- id: "L22203-Q14"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 2
+  question: "若某部門依績效分數排序後結果為 95、92、92、88，對這四列套用 `DENSE_RANK()`，其名次最可能為何？"
+  options:
+    a: "1、2、2、4"
+    b: "1、2、3、4"
+    c: "1、1、1、1"
+    d: "1、2、2、3"
+  correct: "d"
+  explanation:
+    why_correct: "DENSE_RANK() 在並列時給相同名次，但後續不跳號，因此為 1、2、2、3。"
+    why_not_a: "1、2、2、4 是 RANK() 的典型結果，容易與 DENSE_RANK() 混淆。"
+    why_not_b: "1、2、3、4 比較像沒有並列概念時的直覺排序。"
+    why_not_c: "只有全員完全同分才會全部同名次。"
+    why_not_d: "此選項正確。"
+  keywords:
+    - "DENSE_RANK"
+    - "RANK"
+    - "視窗函數"
+  exam_trap: true
+
+- id: "L22203-Q15"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 3
+  question: "你要在 SQL 報表中顯示每筆訂單與『同一客戶上一筆訂單金額』，最適合使用哪個視窗函數（Window Function）？"
+  options:
+    a: "LAG(amount)"
+    b: "LEAD(amount)"
+    c: "ROW_NUMBER()"
+    d: "COUNT(*)"
+  correct: "a"
+  explanation:
+    why_correct: "LAG() 用來存取前一列值；若依客戶分組並按時間排序，就能取得上一筆訂單金額。"
+    why_not_a: "此選項正確。"
+    why_not_b: "LEAD() 取的是下一列值，常被誤選，尤其在『前後列』題型中。"
+    why_not_c: "ROW_NUMBER() 只能產生序號，無法直接回傳上一筆的 amount。"
+    why_not_d: "COUNT(*) 是聚合計數，不會回傳前一列數值。"
+  keywords:
+    - "LAG"
+    - "視窗函數"
+    - "previous row"
+  exam_trap: true
+
+- id: "L22203-Q16"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 3
+  question: "閱讀下列 PySpark DataFrame 鏈式操作（chained operations）：`df.filter(col(\"score\") >= 60).groupBy(\"dept\").agg(avg(\"score\").alias(\"avg_score\"))`。若輸入資料有 100 列、3 個部門，且只有 80 列分數達 60，結果最可能有幾列？"
+  options:
+    a: "100 列"
+    b: "80 列"
+    c: "3 列"
+    d: "1 列"
+  correct: "c"
+  explanation:
+    why_correct: "先 filter 後只保留及格資料，再按 dept 分組聚合，所以輸出列數由部門數決定，最可能是 3 列。"
+    why_not_a: "保留 100 列表示沒有理解 groupBy().agg() 會把資料彙總。"
+    why_not_b: "80 是 filter 後的中間列數，但經過 groupBy().agg() 後不再逐列保留。"
+    why_not_c: "此選項正確。"
+    why_not_d: "只有未分組或所有資料屬同一組時才可能只剩 1 列。"
+  keywords:
+    - "PySpark"
+    - "groupBy"
+    - "agg"
+  exam_trap: false
+
+- id: "L22203-Q17"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 3
+  question: "某工程師建立了 Spark DataFrame：`df2 = df.filter(...).select(...)`，之後程式結束前完全沒有呼叫 `show()`、`count()`、`write()`。最合理的判斷是什麼？"
+  options:
+    a: "Spark 仍會立刻完成所有轉換，因為 DataFrame 是 eager execution"
+    b: "Spark 多半只建立邏輯計畫，未必真正執行計算"
+    c: "Spark 只會執行 filter，不會執行 select"
+    d: "Spark 會自動轉成 Structured Streaming 作業"
+  correct: "b"
+  explanation:
+    why_correct: "在延遲求值（Lazy Evaluation）下，若沒有 action，Spark 通常只建立轉換記錄鏈（Spark 稱為 lineage）與 logical plan，不會真正啟動 job 執行。"
+    why_not_a: "這是把 Spark 當成 pandas 類 eager 模式，是常見誤區。"
+    why_not_b: "此選項正確。"
+    why_not_c: "Spark 不會只執行一半 transformation；整體計畫會等 action 時一起評估。"
+    why_not_d: "是否為串流取決於讀取與 API 使用，不會因為沒 action 就自動變成 Structured Streaming。"
+  keywords:
+    - "Spark"
+    - "延遲求值"
+    - "logical plan"
+  exam_trap: true
+
+- id: "L22203-Q18"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 3
+  question: "公司每 30 秒彙整一次網站事件，並接受秒級延遲即可。若希望沿用 Spark SQL / DataFrame 心智模型，最適合採用哪種方式？"
+  options:
+    a: "純 HDFS 離線批次，不需串流"
+    b: "傳統 MapReduce 即時查詢"
+    c: "Spark RDD 手動輪詢檔案"
+    d: "Spark Structured Streaming 的 micro-batch"
+  correct: "d"
+  explanation:
+    why_correct: "Structured Streaming 建立在 Spark SQL/DataFrame engine 上，預設採 micro-batch，適合秒級到分鐘級延遲需求。"
+    why_not_a: "若要每 30 秒更新結果，純離線批次通常不夠及時。"
+    why_not_b: "MapReduce 不適合這種持續低延遲事件處理情境。"
+    why_not_c: "可手動實作但不符合題目要求的標準與一致 API。"
+    why_not_d: "此選項正確。"
+  keywords:
+    - "Structured Streaming"
+    - "micro-batch"
+    - "batch vs stream"
+  exam_trap: false
+
+- id: "L22203-Q19"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 3
+  question: "企業已將大量原始資料先載入雲端資料倉儲（cloud data warehouse），再用 dbt 建立轉換模型。這種資料管線最接近哪一種模式？"
+  options:
+    a: "ETL，因為轉換發生在載入之前"
+    b: "ELT，因為先 load 再在目標端 transform"
+    c: "MapReduce，因為有分散式處理"
+    d: "RDD pipeline，因為有 lineage"
+  correct: "b"
+  explanation:
+    why_correct: "先載入資料倉儲，再由 dbt 在倉儲內進行轉換，是 ELT 的典型場景。"
+    why_not_a: "若真是 ETL，轉換應發生在資料進倉儲前。"
+    why_not_b: "此選項正確。"
+    why_not_c: "MapReduce 是分散式計算模型，不是此題的資料管線方向概念。"
+    why_not_d: "RDD pipeline 是 Spark 的資料抽象，不用來描述 ETL/ELT 管線類型。"
+  keywords:
+    - "ELT"
+    - "dbt"
+    - "data warehouse"
+  exam_trap: false
+
+- id: "L22203-Q20"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 3
+  question: "閱讀 SQL：`RANK() OVER (PARTITION BY dept ORDER BY sales DESC)`。若同部門銷售額排序為 100、90、90、80，最後一筆 80 的名次為何？"
+  options:
+    a: "3"
+    b: "2"
+    c: "4"
+    d: "1"
+  correct: "c"
+  explanation:
+    why_correct: "RANK() 對 100、90、90、80 的名次為 1、2、2、4，因此 80 的名次是 4。"
+    why_not_a: "3 比較像誤把 RANK() 當成 DENSE_RANK()。"
+    why_not_b: "2 是並列的中間兩筆，不是最後一筆。"
+    why_not_c: "此選項正確。"
+    why_not_d: "1 只有最高分那筆才會得到。"
+  keywords:
+    - "RANK"
+    - "PARTITION BY"
+    - "ORDER BY"
+  exam_trap: true
+
+- id: "L22203-Q21"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 3
+  question: "有一個 PySpark DataFrame `orders(customer, amount)`。若要得到『每位 customer 的總金額』，下列哪段程式最合適？"
+  options:
+    a: "orders.select(\"customer\", sum(\"amount\"))"
+    b: "orders.groupBy(\"customer\").agg(sum(\"amount\").alias(\"total_amount\"))"
+    c: "orders.filter(sum(\"amount\") > 0)"
+    d: "orders.withColumn(\"total_amount\", sum(\"amount\"))"
+  correct: "b"
+  explanation:
+    why_correct: "每位 customer 的總金額屬於依客戶分組後的聚合結果，應使用 groupBy().agg()。"
+    why_not_a: "在 PySpark 中，直接 select 非聚合欄位與聚合函數而不加 groupBy，通常會拋出 AnalysisException；即使語法允許，也無法得到每位 customer 各自的總金額。"
+    why_not_b: "此選項正確。"
+    why_not_c: "filter() 用於列篩選，不負責依群組彙總。"
+    why_not_d: "withColumn() 加的是逐列新欄位，這樣寫也缺少 window 或 groupBy 語意。"
+  keywords:
+    - "PySpark"
+    - "groupBy"
+    - "sum"
+  exam_trap: false
+
+- id: "L22203-Q22"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 4
+  question: "一家平台要同時處理『每日完整報表』與『近 1 分鐘事件監看』。若希望盡量沿用同一 Spark API 心智模型，哪一項判斷最合理？"
+  options:
+    a: "批次可用 DataFrame；近即時部分可用 Structured Streaming，兩者都基於 Spark SQL / DataFrame 模型"
+    b: "兩者都必須改用 Hadoop MapReduce，因為 Spark 只能做批次"
+    c: "近即時部分只能用 RDD，DataFrame 不適合串流"
+    d: "每日報表應改用 HDFS replication factor 調整來取代批次處理"
+  correct: "a"
+  explanation:
+    why_correct: "Spark 的優勢之一就是批次與 Structured Streaming 可共享相近的 DataFrame / SQL 心智模型，降低團隊切換成本。"
+    why_not_a: "此選項正確。"
+    why_not_b: "Spark 不只支援批次，也支援 Structured Streaming。"
+    why_not_c: "Structured Streaming 正是以 DataFrame / Dataset API 為核心。"
+    why_not_d: "replication factor 是儲存容錯設定，不是批次或串流處理策略。"
+  keywords:
+    - "Structured Streaming"
+    - "DataFrame"
+    - "batch vs stream"
+  exam_trap: false
+
+- id: "L22203-Q23"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 4
+  question: "某團隊把 HDFS replication factor 從 3 改成 1，並聲稱這會直接讓 MapReduce Shuffle 更快。哪個分析最合理？"
+  options:
+    a: "正確，因為 replication factor 越低，Reducer 越少"
+    b: "正確，因為 block size 會同步從 128 MB 變成 64 MB"
+    c: "不正確，因為 replication factor 只能由 YARN 決定"
+    d: "不正確，replication factor 主要影響資料容錯與儲存副本，不等於直接改變 Shuffle 的邏輯"
+  correct: "d"
+  explanation:
+    why_correct: "replication factor 屬於 HDFS 儲存層設定，重點在容錯與資料副本數；Shuffle 是 MapReduce 計算中的資料重分配流程，兩者不能直接畫上等號。"
+    why_not_a: "Reducer 數量與作業邏輯、設定相關，不會因 replication factor 自動減少。"
+    why_not_b: "block size 與 replication factor 是不同設定，不會這樣連動。"
+    why_not_c: "replication factor 是 HDFS 層概念，不是只能由 YARN 決定。"
+    why_not_d: "此選項正確。"
+  keywords:
+    - "HDFS"
+    - "replication factor"
+    - "Shuffle"
+  exam_trap: true
+
+- id: "L22203-Q24"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 4
+  question: "關於 Hadoop 中 YARN 與 MapReduce 的關係，哪一項分析最正確？"
+  options:
+    a: "YARN 等同 Reduce 階段，只負責輸出彙總"
+    b: "MapReduce 負責叢集所有儲存副本同步，YARN 只負責 HDFS metadata"
+    c: "YARN 負責 resource management 與 job scheduling/monitoring；MapReduce 是其中一種運算框架"
+    d: "YARN 是 Spark Catalyst optimizer 的一部分"
+  correct: "c"
+  explanation:
+    why_correct: "YARN 是 Hadoop 的資源管理與作業協調層；MapReduce 是可在其上執行的一種分散式計算模型。"
+    why_not_a: "YARN 不是 Reduce 的別名，兩者層次完全不同。"
+    why_not_b: "HDFS metadata 由 NameNode 維護，不是 YARN；MapReduce 也不負責副本同步。"
+    why_not_c: "此選項正確。"
+    why_not_d: "Catalyst optimizer 屬於 Spark SQL，不屬於 YARN。"
+  keywords:
+    - "YARN"
+    - "MapReduce"
+    - "ResourceManager"
+  exam_trap: false
+
+- id: "L22203-Q25"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 4
+  question: "若工作內容是大量結構化欄位過濾、聚合與 SQL 式查詢，希望讓引擎盡量自動最佳化；但偶爾才需要底層函式式轉換。哪種選擇最合理？"
+  options:
+    a: "優先用 DataFrame，必要時再落到 RDD"
+    b: "全面只用 RDD，因為一定比 DataFrame 更適合 SQL"
+    c: "全面只用 HDFS block API"
+    d: "直接改用 MapReduce，因為 Catalyst 只支援串流"
+  correct: "a"
+  explanation:
+    why_correct: "題目強調結構化查詢與引擎最佳化，DataFrame 明顯更合適；只有特殊底層需求時再考慮 RDD。"
+    why_not_a: "此選項正確。"
+    why_not_b: "RDD 較彈性但少了 schema-based optimization，不是本情境首選。"
+    why_not_c: "HDFS block API 不是一般分析工作會直接面對的開發抽象。"
+    why_not_d: "Catalyst 服務的是 Spark SQL/DataFrame，不是只支援串流。"
+  keywords:
+    - "RDD"
+    - "DataFrame"
+    - "Catalyst optimizer"
+  exam_trap: false
+
+- id: "L22203-Q26"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 4
+  question: "閱讀查詢需求：『列出每位員工資料，同時顯示其部門平均薪資；不能失去原始列。』下列哪種寫法方向最符合需求？"
+  options:
+    a: "只用 `GROUP BY dept`，因為平均薪資本來就要分組"
+    b: "用 `AVG(salary) OVER (PARTITION BY dept)`，因為可保留原始列"
+    c: "用 `COUNT(*) OVER (...)`，因為平均值可由筆數推得"
+    d: "用 `RANK() OVER (...)`，因為排名可取代平均"
+  correct: "b"
+  explanation:
+    why_correct: "需求明確要求保留員工原始列，這是視窗函數聚合的典型使用場景。"
+    why_not_a: "GROUP BY 會把資料折疊成每部門一列，失去員工明細。"
+    why_not_b: "此選項正確。"
+    why_not_c: "COUNT 只能得到筆數，無法直接替代平均薪資。"
+    why_not_d: "排名與平均值是不同分析目標。"
+  keywords:
+    - "GROUP BY"
+    - "AVG OVER"
+    - "視窗函數"
+  exam_trap: true
+
+- id: "L22203-Q27"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 4
+  question: "閱讀 SQL：`LEAD(price) OVER (PARTITION BY product ORDER BY dt)`。若題目要比較『今天價格與下一次紀錄價格』的差異，哪個判斷正確？"
+  options:
+    a: "應改用 GROUP BY，因為比較跨列值一定要先彙總"
+    b: "應改用 LAG，因為 LEAD 只能看前一列"
+    c: "此寫法合理，LEAD 可取得同產品下一筆價格，再與目前列比較"
+    d: "此寫法會自動把每個 product 壓縮成一列"
+  correct: "c"
+  explanation:
+    why_correct: "LEAD() 用來看後一列值；加上 PARTITION BY product 與 ORDER BY dt，正好可做同產品時間序列的前後比較。"
+    why_not_a: "跨列比較不一定要彙總；視窗函數正是保留列又比較鄰近列的工具。"
+    why_not_b: "LAG 看的是前一列，不是下一筆價格。"
+    why_not_c: "此選項正確。"
+    why_not_d: "視窗函數不會自動把每組壓成一列。"
+  keywords:
+    - "LEAD"
+    - "PARTITION BY"
+    - "ORDER BY"
+  exam_trap: false
+
+- id: "L22203-Q28"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 4
+  question: "閱讀 PySpark 程式：`df.filter(col(\"status\") == \"ok\").groupBy(\"city\").agg(count(\"*\").alias(\"n\")).filter(col(\"n\") >= 10)`。下列何者最能描述第二個 `filter()` 的作用？"
+  options:
+    a: "它在原始逐筆資料上篩掉 city 欄位為空值的列"
+    b: "它把 `count(*)` 轉成視窗函數，因此保留原始列數"
+    c: "它會先於 groupBy 執行，因為 Spark 會把兩個 filter 合併成一個"
+    d: "它在分組聚合之後，保留計數 `n` 至少為 10 的城市"
+  correct: "d"
+  explanation:
+    why_correct: "第二個 filter 是針對聚合後欄位 `n` 做條件篩選，因此語意上是在群組結果中保留計數至少 10 的城市。"
+    why_not_a: "第二個 filter 用的是聚合後欄位 n，不是在原始資料列上針對 city 做篩選。"
+    why_not_b: "count().alias(\"n\") 在這裡是 groupBy 聚合，不是視窗函數。"
+    why_not_c: "Catalyst 可能重寫計畫，但語意上第二個 filter 是針對聚合結果，不可簡化成原始列過濾。"
+    why_not_d: "此選項正確。邏輯上是先做城市彙總，再保留總數至少 10 的群組。"
+  keywords:
+    - "PySpark"
+    - "filter"
+    - "groupBy"
+  exam_trap: true
+
+- id: "L22203-Q29"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 5
+  question: "某團隊要建立即時儀表板，要求 1 分鐘內更新；同時希望沿用 DataFrame API、讓引擎自動最佳化，且避免自己管理每筆事件的低階流程。哪種方案最符合三項要求？"
+  options:
+    a: "Spark Structured Streaming 搭配 DataFrame API，由引擎以 micro-batch 處理"
+    b: "Spark RDD 搭配手寫迴圈輪詢，因為 RDD 最底層"
+    c: "純 Hadoop MapReduce，每小時跑一次批次"
+    d: "只把 HDFS replication factor 調高到 5"
+  correct: "a"
+  explanation:
+    why_correct: "題目同時要求近即時、DataFrame API、自動最佳化與較少低階管理，Structured Streaming 最符合，且底層沿用 Spark SQL engine。"
+    why_not_a: "此選項正確。"
+    why_not_b: "RDD 雖可做客製流程，但不符合『沿用 DataFrame API』與『減少低階管理』。"
+    why_not_c: "每小時批次無法滿足 1 分鐘更新需求。"
+    why_not_d: "replication factor 與即時分析架構選型無直接對應。"
+  keywords:
+    - "Structured Streaming"
+    - "DataFrame API"
+    - "micro-batch"
+  exam_trap: false
+
+- id: "L22203-Q30"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 5
+  question: "你要帶領新團隊建立 Spark 分析流程。需求是：多數工作為欄位式查詢與聚合、希望用 Catalyst optimizer、但保留少量特殊情況可做低階控制。哪種技術策略最合理？"
+  options:
+    a: "全面改用 HDFS block 操作，避免任何 API 抽象"
+    b: "全面只用 RDD，因為 RDD 也能自動享受完整 SQL 最佳化"
+    c: "以 DataFrame 為主、必要時針對特殊邏輯局部使用 RDD"
+    d: "全面只用 MapReduce，因為 Spark 不支援 DAG"
+  correct: "c"
+  explanation:
+    why_correct: "這是典型的權衡題：主流程需要 schema-based optimization，因此以 DataFrame 為主；只有少數特殊需求時再退到 RDD。"
+    why_not_a: "直接操作 HDFS block 不符合團隊生產力與分析需求。"
+    why_not_b: "RDD 沒有 DataFrame 那樣完整的結構化查詢最佳化能力。"
+    why_not_c: "此選項正確。"
+    why_not_d: "Spark 本來就是 DAG-based execution engine，此說法錯誤。"
+  keywords:
+    - "DataFrame"
+    - "RDD"
+    - "Catalyst optimizer"
+  exam_trap: false
+
+- id: "L22203-Q31"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 5
+  question: "資料平台同時有兩種來源：一種是需先遮罩敏感欄位後才能進庫的資料；另一種是大量原始事件，想先載入倉儲再用 dbt 建模。若要兼顧治理與彈性，哪種判斷最合理？"
+  options:
+    a: "前者偏 ETL，後者偏 ELT"
+    b: "兩者都必須純 ETL，因為 dbt 不屬於正式資料工程工具"
+    c: "兩者都必須純 ELT，因為 ETL 已完全淘汰"
+    d: "前者應改用 RANK()，後者應改用 LAG()"
+  correct: "a"
+  explanation:
+    why_correct: "需要先遮罩再入庫，符合 ETL 的『先轉換（Transform）再載入』；大量原始事件先入倉再用 dbt 建模，則是 ELT。"
+    why_not_a: "此選項正確。"
+    why_not_b: "dbt 是現代資料工程常見工具，且題目兩種情境本來就不必強制同一模式。"
+    why_not_c: "ELT 常見但不能說 ETL 已完全淘汰；治理需求仍常需要 ETL。"
+    why_not_d: "RANK 與 LAG 是 SQL 視窗函數，與資料管線方向無關。"
+  keywords:
+    - "ETL"
+    - "ELT"
+    - "dbt"
+  exam_trap: true
+
+- id: "L22203-Q32"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 5
+  question: "你要設計一個 SQL 查詢，同時滿足三件事：保留每筆交易列、顯示每位客戶累計消費（running total）、並依客戶內交易時間排序。哪種寫法最符合需求？"
+  options:
+    a: "只用 `GROUP BY customer_id`，因為累計屬於聚合"
+    b: "用 `SUM(amount) OVER (PARTITION BY customer_id ORDER BY tx_time)`"
+    c: "用 `COUNT(*) OVER ()`，因為任何視窗函數都能當 running total"
+    d: "用 `ROW_NUMBER() OVER (PARTITION BY customer_id)`，因為序號可代表累計金額"
+  correct: "b"
+  explanation:
+    why_correct: "running total 需要依客戶分區、依時間排序，且保留原始列，最典型就是 SUM(...) OVER (PARTITION BY ... ORDER BY ...)。"
+    why_not_a: "GROUP BY 會失去每筆交易列，無法呈現逐筆累計。"
+    why_not_b: "此選項正確。"
+    why_not_c: "COUNT 可以做累計筆數，但不是累計消費金額。"
+    why_not_d: "ROW_NUMBER 只是序號，不等於金額累積。"
+  keywords:
+    - "running total"
+    - "SUM OVER"
+    - "視窗函數"
+  exam_trap: false
+
+- id: "L22203-Q33"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 5
+  question: "業務部門要做『競賽排名』，要求同分者並列，但下一名次必須跳號；同時還要保留原始列方便後續 join。哪種函數最符合需求？"
+  options:
+    a: "RANK() OVER (...)"
+    b: "DENSE_RANK() OVER (...)"
+    c: "ROW_NUMBER() OVER (...)"
+    d: "GROUP BY score"
+  correct: "a"
+  explanation:
+    why_correct: "RANK() 會對同分給同名次，且後續名次跳號，同時作為視窗函數仍可保留原始列。"
+    why_not_a: "此選項正確。"
+    why_not_b: "DENSE_RANK() 不會跳號，不符合『競賽排名』要求。"
+    why_not_c: "ROW_NUMBER() 會對同分資料強制給出不同序號，而非像 RANK() / DENSE_RANK() 保留相同排名，因此無法反映並列關係。"
+    why_not_d: "GROUP BY 會折疊列，不利後續以原始列 join。"
+  keywords:
+    - "RANK"
+    - "DENSE_RANK"
+    - "視窗函數"
+  exam_trap: true
+
+- id: "L22203-Q34"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 5
+  question: "某分析需求要找出『每位客戶本次購買金額與下一次購買金額的差異』，並保留所有交易列以便後續再做篩選。哪種方案最符合需求？"
+  options:
+    a: "使用 GROUP BY customer_id 搭配 MAX(amount)"
+    b: "使用 LEAD(amount) OVER (PARTITION BY customer_id ORDER BY purchase_time)"
+    c: "使用 DISTINCT customer_id, amount"
+    d: "使用 Hadoop replication factor = 3"
+  correct: "b"
+  explanation:
+    why_correct: "LEAD() 能取同一客戶排序後的下一筆金額，又因為是視窗函數，所以可保留每筆交易列。"
+    why_not_a: "MAX(amount) 只會得到每組最大值，不會提供下一筆交易金額。"
+    why_not_b: "此選項正確。"
+    why_not_c: "DISTINCT 只是去重，不會產生前後列比較資訊。"
+    why_not_d: "replication factor 是 HDFS 容錯設定，與此分析需求無關。"
+  keywords:
+    - "LEAD"
+    - "視窗函數"
+    - "customer analytics"
+  exam_trap: false
+
+- id: "L22203-Q35"
+  topic_code: "L22203"
+  item_code: "L22203"
+  difficulty: 5
+  question: "閱讀需求與程式片段：`events.filter(col(\"type\") == \"click\").groupBy(window(col(\"ts\"), \"1 minute\"), col(\"user_id\")).count()`。若目標是建立 1 分鐘滾動觀測的點擊監測，並沿用 Spark DataFrame/SQL 語意，哪個評估最合理？"
+  options:
+    a: "不適合，因為 groupBy 後就不能做串流"
+    b: "不適合，因為 DataFrame API 只能做批次不能做 micro-batch"
+    c: "適合，這是 Structured Streaming 常見的視窗聚合模式，可用於近即時統計"
+    d: "不適合，因為 count() 不會在 Spark 觸發執行"
+  correct: "c"
+  explanation:
+    why_correct: "這是典型 Structured Streaming 的時間窗聚合寫法：先過濾 click，再依時間窗與 user_id 聚合計數，符合近即時監測需求；此處的 window() 指的是串流時間窗，與 SQL 的 ROW_NUMBER() 等視窗函數不是同一語境，且需搭配 writeStream 啟動計算。"
+    why_not_a: "串流同樣可以做 groupBy 與時間窗聚合。"
+    why_not_b: "Structured Streaming 就是以 DataFrame / SQL 語意建構，且常以 micro-batch 執行。"
+    why_not_c: "此選項正確。"
+    why_not_d: "在查詢執行層面，聚合與輸出動作仍會驅動實際計算，不是因為用了 count 就不會執行。"
+  keywords:
+    - "Structured Streaming"
+    - "時間窗聚合"
+    - "PySpark"
+  exam_trap: false

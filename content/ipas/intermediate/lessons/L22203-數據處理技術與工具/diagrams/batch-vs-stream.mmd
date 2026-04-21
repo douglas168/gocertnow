@@ -1,0 +1,24 @@
+---
+title: 批次處理 vs 串流處理 (Batch vs Stream Processing)
+---
+flowchart LR
+    subgraph BATCH["🗂️ 批次處理 (Batch Processing)"]
+        direction TB
+        B1["📦 累積資料\n(小時/天)"] --> B2["⚙️ Hadoop MapReduce\n或 Spark batch"]
+        B2 --> B3["📊 輸出結果\n(高延遲，高吞吐)"]
+    end
+
+    subgraph STREAM["⚡ 串流處理 (Stream Processing)"]
+        direction TB
+        S1["📡 即時事件流\n(毫秒~秒)"] --> S2["🔄 Spark Structured\nStreaming (micro-batch)"]
+        S2 --> S3["📊 即時輸出\n(低延遲，持續更新)"]
+    end
+
+    subgraph COMPARE["📋 核心差異"]
+        direction TB
+        C1["批次：高延遲 / 高吞吐\n✅ 適合：報表、ETL管線"]
+        C2["串流：低延遲 / 即時\n✅ 適合：詐欺偵測、即時儀表板"]
+    end
+
+    BATCH --> COMPARE
+    STREAM --> COMPARE
