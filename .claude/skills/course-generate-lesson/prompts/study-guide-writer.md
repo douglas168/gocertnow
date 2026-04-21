@@ -18,7 +18,7 @@ You are a subject matter expert in [CERTIFICATION_NAME] writing a study guide fo
 
 ## Study Guide Structure
 
-Produce the study guide with ALL 7 sections in this exact order. The flow is: **Orient → Learn → Compare → Memorize → Avoid traps → Exam strategy**.
+Produce the study guide with ALL 8 sections in this exact order. The flow is: **Orient → Learn → Compare → Memorize → Avoid traps → Exam strategy → Self-check**.
 
 ### Section 1: Exam Item Mapping
 Map the lesson to specific syllabus codes:
@@ -101,6 +101,28 @@ Keyword-to-answer lookup tables for rapid exam-day decisions:
 - [keyword/scenario] → [answer/concept]
 ```
 
+### Section 8: 結尾：快速自我檢查 ✅
+A closing self-assessment checklist — one item per major concept group. Each item must be answerable in 30 seconds.
+
+Format:
+```
+## 結尾：快速自我檢查 ✅
+
+用下面這張清單自我盤點，每項要能在 30 秒內口頭回答出來。全部勾完 → 直接上考場。任一題卡住 → 回對應小節重讀。
+
+- [ ] 我能在 30 秒內解釋 **[concept A]** ...
+- [ ] 我能說出 **[concept B]** 的差異 ...
+- [ ] 我能看到「[keyword]」時立刻判斷 **[answer]** ...
+
+> 📌 [1–2 sentences listing what is explicitly out of scope for this exam level — e.g., implementation details, code, advanced math — so students know what NOT to memorize.]
+```
+
+Rules for this section:
+- 6–10 checkbox items, one per major concept group in the lesson
+- Each item is a concrete "I can do X in 30 seconds" statement, not a topic label
+- The final `📌` note names what's out of scope for this level — helps students stop over-studying
+- No duplicate coverage of Section 6 traps — this is forward-looking ("can I do it?") not backward-looking ("don't fall for this")
+
 ## Deep-Dive Supplement Files
 
 If any subtopic would exceed ~500 words inline and break the reading flow, create a separate `supplement-[topic-name-zh].md` file. Link from the study guide:
@@ -124,13 +146,14 @@ Write the study guide to: `content/[CERT_SLUG]/[LEVEL_SLUG]/lessons/[TOPIC_CODE]
 
 Before writing the final file, mentally verify ALL of these. Fix any issues before outputting — do NOT write a draft and then edit it.
 
-- [ ] All 7 sections present in order: exam mapping → knowledge tree → core concepts → comparison tables → mnemonics → exam traps → scenario quick-judge
+- [ ] All 8 sections present in order: exam mapping → knowledge tree → core concepts → comparison tables → mnemonics → exam traps → scenario quick-judge → self-check
 - [ ] Section 1 references correct syllabus codes
 - [ ] Section 3 has bilingual terminology, 白話說明 (🗣️), ASCII diagrams, 🔥 markers
 - [ ] Section 4 covers confused concept pairs
 - [ ] Section 5 has at least one mnemonic per major concept group
 - [ ] Section 6 uses ❌→✅ format
 - [ ] Section 7 has keyword→answer lookups
+- [ ] Section 8 has 6–10 "I can do X in 30 seconds" checkboxes (one per major concept group) + a 📌 out-of-scope note
 - [ ] Every syllabus item is covered, boundary rule respected, no placeholder text
 - [ ] If supplements exist, they're linked with 📖 延伸閱讀 format
 
