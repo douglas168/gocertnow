@@ -1,0 +1,33 @@
+---
+title: 圖表類型選擇決策樹 (Chart-Chooser Decision Tree)
+---
+flowchart TD
+    A["資料關係是什麼？\nWhat is the data relationship?"] --> B{比較\nComparison}
+    A --> C{分佈\nDistribution}
+    A --> D{組成\nComposition}
+    A --> E{關係\nRelationship}
+    A --> F{趨勢\nTrend over Time}
+
+    B --> B1{"類別型\nCategorical?"}
+    B1 -->|"≤6 類"| B2["長條圖\nBar Chart 🔥🔥"]
+    B1 -->|"多類別\n分組比較"| B3["分組/堆疊長條圖\nGrouped/Stacked Bar"]
+
+    C --> C1{"連續型數值?"}
+    C1 -->|"Yes"| C2["直方圖\nHistogram 🔥🔥"]
+    C1 -->|"需要離群值\n+分佈形狀"| C3["箱線圖\nBox Plot"]
+    C1 -->|"完整分佈密度"| C4["提琴圖\nViolin Plot"]
+
+    D --> D1{"部分佔整體?"}
+    D1 -->|"≤5 類"| D2["圓餅/環圖\nPie/Donut Chart ⚠️"]
+    D1 -->|"時間維度"| D3["堆疊長條圖\nStacked Bar"]
+
+    E --> E1{"兩個連續變數?"}
+    E1 -->|"Yes"| E2["散布圖\nScatter Plot 🔥"]
+    E1 -->|"兩個類別維度\n+數值強度"| E3["熱圖\nHeatmap 🔥"]
+
+    F --> F1["折線圖\nLine Chart 🔥🔥"]
+
+    style B2 fill:#d4edda,stroke:#28a745
+    style C2 fill:#d4edda,stroke:#28a745
+    style F1 fill:#d4edda,stroke:#28a745
+    style D2 fill:#fff3cd,stroke:#ffc107

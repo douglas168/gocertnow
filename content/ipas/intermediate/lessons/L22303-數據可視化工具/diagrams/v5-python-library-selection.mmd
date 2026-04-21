@@ -1,0 +1,27 @@
+---
+title: Python 視覺化函式庫選擇流程 (matplotlib / seaborn / plotly)
+---
+flowchart TD
+    START["需要哪種 Python 視覺化？"] --> Q1{"需要互動性\n(hover/zoom/filter)?"}
+
+    Q1 -->|"是"| PLOTLY["🔵 Plotly\npx.scatter() / go.Figure()\n網頁嵌入 / Dashboard"]
+    Q1 -->|"否"| Q2{"需要統計圖\n(分佈/相關/回歸線)?"}
+
+    Q2 -->|"是"| SEABORN["🟠 seaborn\nsns.boxplot()\nsns.heatmap()\nsns.scatterplot()\n建構在 matplotlib 之上 🔥"]
+    Q2 -->|"否"| Q3{"需要高度客製化\n(論文/出版品質)?"}
+
+    Q3 -->|"是"| MPL_CUSTOM["🔴 matplotlib\nplt.subplots()\nfig, ax = ...\n完全控制每個元素"]
+    Q3 -->|"否"| MPL_SIMPLE["🔴 matplotlib\nplt.plot() / plt.bar()\n快速靜態圖"]
+
+    subgraph note["重要提醒 🔥"]
+        N1["seaborn 是 matplotlib 的\n高階封裝（wrapper）\n不是獨立函式庫！"]
+        N2["可以混用：seaborn 畫圖\n→ plt.savefig() 存檔"]
+    end
+
+    SEABORN -.-> note
+    MPL_SIMPLE -.-> note
+
+    style PLOTLY fill:#cce5ff,stroke:#004085
+    style SEABORN fill:#fff3cd,stroke:#856404
+    style MPL_CUSTOM fill:#f8d7da,stroke:#721c24
+    style MPL_SIMPLE fill:#f8d7da,stroke:#721c24

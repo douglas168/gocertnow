@@ -1,0 +1,37 @@
+---
+title: Data-Ink Ratio 概念圖 (Tufte)
+---
+flowchart LR
+    subgraph total["圖表總墨水量 (Total Ink)"]
+        direction TB
+        di["📊 資料墨水\nData Ink\n(保留)"]
+        ni["🗑️ 非資料墨水\nNon-Data Ink\n(移除)"]
+    end
+
+    subgraph formula["公式"]
+        f["Data-Ink Ratio\n= Data Ink ÷ Total Ink\n\n🎯 目標：最大化 (趨近 1.0)"]
+    end
+
+    subgraph remove["Chart Junk 範例（應移除）"]
+        r1["❌ 3D 效果"]
+        r2["❌ 格線過多"]
+        r3["❌ 裝飾性圖案"]
+        r4["❌ 多餘的邊框"]
+        r5["❌ 無意義的顏色"]
+    end
+
+    subgraph keep["應保留的墨水"]
+        k1["✅ 資料點/長條"]
+        k2["✅ 軸標籤"]
+        k3["✅ 圖表標題"]
+        k4["✅ 必要格線（淡色）"]
+    end
+
+    di --> formula
+    ni --> formula
+    remove -.->|"減少"| ni
+    keep -.->|"構成"| di
+
+    style di fill:#d4edda,stroke:#28a745
+    style ni fill:#f8d7da,stroke:#dc3545
+    style f fill:#cce5ff,stroke:#004085

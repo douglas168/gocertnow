@@ -1,0 +1,811 @@
+- id: "L22303-Q01"
+  topic_code: "L22303"
+  item_code: "L22303-資訊呈現原則"
+  difficulty: 1
+  question: "依據 Edward Tufte 的觀點，data-ink ratio 指的是什麼？"
+  options:
+    a: "圖表中用來呈現資料的墨水比例，比例越高通常越能避免不必要裝飾"
+    b: "圖表中顏色種類占全部視覺元素的比例"
+    c: "資料筆數占座標軸標籤數量的比例"
+    d: "互動式圖表中提示框 hover 資訊占畫面比例"
+  correct: "a"
+  explanation:
+    why_correct: "data-ink ratio 強調圖中真正用來表達資料的視覺元素比例，核心精神是減少不必要裝飾，讓資訊更清楚。"
+    why_not_a: "正確答案。"
+    why_not_c: "資料筆數與標籤數量沒有形成 Tufte 定義中的核心比例，這是學生把『資訊量』誤當成 data-ink ratio。"
+    why_not_d: "hover 是互動設計概念，不是 Tufte 在靜態資訊設計中提出的 data-ink ratio 定義。"
+  keywords:
+    - "data-ink ratio"
+    - "Tufte"
+    - "chart junk"
+  exam_trap: true
+
+- id: "L22303-Q02"
+  topic_code: "L22303"
+  item_code: "L22303-資訊呈現原則"
+  difficulty: 1
+  question: "下列何者屬於 pre-attentive attribute（前注意屬性），能讓讀者在極短時間內先注意到差異？"
+  options:
+    a: "長段註解文字（annotation text）"
+    b: "顏色 hue 與位置 position"
+    c: "圖表標題字數"
+    d: "資料來源附註的格式"
+  correct: "b"
+  explanation:
+    why_correct: "顏色與位置都是典型的 pre-attentive attributes，人眼可以快速察覺差異，適合突出重點。"
+    why_not_a: "註解文字需要閱讀，不屬於前注意處理；學生常把『能提供資訊』誤認成『能瞬間感知』。"
+    why_not_c: "標題字數不屬於視覺編碼通道，無法快速表現資料差異。"
+    why_not_d: "資料來源附註偏文件完整性，不是資料點的視覺屬性。"
+  keywords:
+    - "pre-attentive attributes"
+    - "color"
+    - "position"
+  exam_trap: false
+
+- id: "L22303-Q03"
+  topic_code: "L22303"
+  item_code: "L22303-圖表類型選擇"
+  difficulty: 1
+  question: "bar chart（長條圖）與 histogram（直方圖）最核心的差異為何？"
+  options:
+    a: "長條圖只能顯示百分比，直方圖只能顯示次數"
+    b: "長條圖一定水平排列，直方圖一定垂直排列"
+    c: "長條圖通常比較類別資料，直方圖通常呈現連續數值分布"
+    d: "長條圖只能用於 Excel，直方圖只能用於 Python"
+  correct: "c"
+  explanation:
+    why_correct: "長條圖用於比較類別間的數值，直方圖則把連續數值分箱（bin）後看分布，是考試最常見的陷阱。"
+    why_not_a: "兩者都可呈現次數、比例或其他聚合值，差異不在於只能顯示哪一種數值。"
+    why_not_d: "這是把工具與圖表概念混為一談，任何主流視覺化工具都可畫這兩種圖。"
+  keywords:
+    - "bar chart"
+    - "histogram"
+    - "distribution"
+  exam_trap: true
+
+- id: "L22303-Q04"
+  topic_code: "L22303"
+  item_code: "L22303-圖表類型選擇"
+  difficulty: 1
+  question: "若想觀察兩個連續變數之間的關係（relationship），最適合優先使用哪一種圖表？"
+  options:
+    a: "Pie chart（圓餅圖）"
+    b: "Heatmap（熱圖）"
+    c: "Line chart（折線圖）"
+    d: "Scatter plot（散布圖）"
+  correct: "d"
+  explanation:
+    why_correct: "散布圖最適合檢查兩個連續變數之間是否有正相關、負相關、群聚或離群值。"
+    why_not_a: "圓餅圖用於部分占整體，不適合分析兩個連續變數的關係。"
+    why_not_b: "熱圖適合矩陣式類別 × 類別或數值聚合，不是直接觀察兩個連續變數相關性的首選。"
+    why_not_c: "折線圖強調順序或時間變化，若沒有明確序列軸，容易造成錯誤解讀。"
+  keywords:
+    - "scatter plot"
+    - "relationship"
+    - "continuous variable"
+  exam_trap: false
+
+- id: "L22303-Q05"
+  topic_code: "L22303"
+  item_code: "L22303-工具比較"
+  difficulty: 1
+  question: "在 matplotlib、seaborn、plotly 三者中，哪一個最常被定位為偏互動式（interactive）探索與網頁嵌入的視覺化套件？"
+  options:
+    a: "Plotly"
+    b: "NumPy"
+    c: "Seaborn"
+    d: "Matplotlib"
+  correct: "a"
+  explanation:
+    why_correct: "Plotly 主打互動式圖表，例如 hover、zoom、切換圖層，常用於瀏覽器與 dashboard 情境。"
+    why_not_a: "正確答案。"
+    why_not_c: "Seaborn 偏高階統計視覺化，雖可搭配互動環境使用，但核心定位不是原生互動式網頁圖表。"
+    why_not_d: "Matplotlib 偏靜態、可細緻控制的基礎繪圖庫，不是互動式能力最強的首選。"
+  keywords:
+    - "plotly"
+    - "interactive"
+    - "library-choice"
+  exam_trap: false
+
+- id: "L22303-Q06"
+  topic_code: "L22303"
+  item_code: "L22303-工具比較"
+  difficulty: 1
+  question: "下列對 seaborn 的描述，何者最正確？"
+  options:
+    a: "Seaborn 完全不依賴 matplotlib"
+    b: "Seaborn 是建立在 matplotlib 之上的高階 statistical visualization 函式庫"
+    c: "Seaborn 只能畫 heatmap，不能畫 scatter plot"
+    d: "Seaborn 主要用來做資料庫連線與 dashboard 發布"
+  correct: "b"
+  explanation:
+    why_correct: "Seaborn 的核心定位是在 matplotlib 之上提供更高階、更具統計語意的 API。"
+    why_not_a: "這是常見誤解。Seaborn 並不是完全獨立的繪圖引擎，而是建立在 matplotlib 上。"
+    why_not_c: "Seaborn 能畫多種圖表，包括 scatter、line、hist、box、violin、heatmap 等。"
+    why_not_d: "資料庫連線與發布 dashboard 不是 seaborn 的主要功能。"
+  keywords:
+    - "seaborn"
+    - "matplotlib"
+    - "statistical visualization"
+  exam_trap: true
+
+- id: "L22303-Q07"
+  topic_code: "L22303"
+  item_code: "L22303-工具比較"
+  difficulty: 1
+  question: "在 BI 工具比較中，哪一項最符合 Tableau 與 Power BI 的共通點？"
+  options:
+    a: "兩者都只能處理本機 CSV，不能連接雲端資料"
+    b: "兩者都不能分享儀表板（dashboard）給其他使用者"
+    c: "兩者都完全不支援互動式視覺化"
+    d: "兩者都可用於建立互動式報表（interactive reports）與儀表板"
+  correct: "d"
+  explanation:
+    why_correct: "Tableau 與 Power BI 都能建立互動式報表與儀表板，這是兩者的核心共通能力。"
+    why_not_a: "兩者都支援多種資料來源，包含雲端服務與資料庫，不只限於本機檔案。"
+    why_not_b: "分享與協作正是兩者的重要功能之一。"
+    why_not_d: "正確答案。"
+  keywords:
+    - "Tableau"
+    - "Power BI"
+    - "dashboard"
+  exam_trap: false
+
+- id: "L22303-Q08"
+  topic_code: "L22303"
+  item_code: "L22303-資訊呈現原則"
+  difficulty: 2
+  question: "某張圖加入大量陰影、立體效果與裝飾圖示，但資料本身沒有增加。依資訊呈現原則（information presentation principles），這最可能帶來什麼問題？"
+  options:
+    a: "提升資料密度（data density），使趨勢更容易判讀"
+    b: "增加 chart junk，讓讀者把注意力放在裝飾而非資料"
+    c: "讓類別比較自動變成時間序列分析"
+    d: "保證圖表對色弱使用者更友善"
+  correct: "b"
+  explanation:
+    why_correct: "過多裝飾會形成 chart junk，降低 data-ink ratio，讓視覺焦點偏離真正的資料訊息。"
+    why_not_a: "裝飾增加的是視覺噪音，不是有效資料密度；學生常把『看起來豐富』誤認成『資訊更多』。"
+    why_not_c: "圖表裝飾不會改變資料型態與分析方法。"
+    why_not_d: "立體效果與陰影通常反而降低可讀性，並不會自動改善無障礙。"
+  keywords:
+    - "chart junk"
+    - "data density"
+    - "data-ink ratio"
+  exam_trap: true
+
+- id: "L22303-Q09"
+  topic_code: "L22303"
+  item_code: "L22303-資訊呈現原則"
+  difficulty: 2
+  question: "在強調單一異常值（outlier）時，哪一種 pre-attentive attribute 的使用最能讓讀者先注意到該資料點？"
+  options:
+    a: "把所有資料點改成相同灰色"
+    b: "把異常值改成高對比顏色，其他點維持低彩度"
+    c: "把圖表標題改成粗體"
+    d: "在頁尾增加資料來源說明"
+  correct: "b"
+  explanation:
+    why_correct: "高對比顏色能利用 pre-attentive processing 快速把異常值從其他點中分離出來。"
+    why_not_a: "所有點同色會降低辨識差異，這是忽略『相對差異』的重要陷阱。"
+    why_not_c: "標題格式不屬於資料點的視覺編碼。"
+    why_not_d: "頁尾說明對資料點辨識幾乎沒有即時幫助。"
+  keywords:
+    - "pre-attentive attributes"
+    - "outlier"
+    - "color contrast"
+  exam_trap: false
+
+- id: "L22303-Q10"
+  topic_code: "L22303"
+  item_code: "L22303-圖表類型選擇"
+  difficulty: 2
+  question: "某教師要呈現全班考試分數的分布（distribution），並觀察是否偏態（skewness）。相較於 bar chart，為何 histogram 更合適？"
+  options:
+    a: "因為 histogram 專門比較不同班級這類類別資料"
+    b: "因為 histogram 將連續分數分箱（binning），可看出集中、離散與偏態"
+    c: "因為 histogram 一定比任何其他圖更節省空間"
+    d: "因為 histogram 只能顯示平均數，不受極端值影響"
+  correct: "b"
+  explanation:
+    why_correct: "分數是連續數值，histogram 透過 bins 呈現分布形狀，能看集中區、尾部與偏態。"
+    why_not_a: "班級這種離散類別比較才較像 bar chart 情境。"
+    why_not_c: "空間效率不是主要判準，重點是資料型態與分析目的。"
+    why_not_d: "histogram 不是平均數圖，而且仍可能反映極端值影響。"
+  keywords:
+    - "histogram"
+    - "distribution"
+    - "binning"
+  exam_trap: true
+
+- id: "L22303-Q11"
+  topic_code: "L22303"
+  item_code: "L22303-圖表類型選擇"
+  difficulty: 2
+  question: "若要比較一天 24 小時的網站流量變化趨勢（trend over time），通常比 bar chart 更適合使用哪一種圖表？"
+  options:
+    a: "Pie chart（圓餅圖）"
+    b: "Boxplot（箱線圖）"
+    c: "Line chart（折線圖）"
+    d: "Violin plot（提琴圖）"
+  correct: "c"
+  explanation:
+    why_correct: "折線圖能自然表現時間序列上的連續變化，較容易觀察尖峰、谷底與趨勢轉折。"
+    why_not_a: "圓餅圖呈現部分占整體，不適合表達時間上的變化。"
+    why_not_c: "正確答案。"
+    why_not_d: "提琴圖用於呈現分布形狀，不是主要的時間趨勢圖。"
+  keywords:
+    - "line chart"
+    - "time series"
+    - "trend"
+  exam_trap: false
+
+- id: "L22303-Q12"
+  topic_code: "L22303"
+  item_code: "L22303-工具比較"
+  difficulty: 2
+  question: "在 library-choice 情境中，若分析師希望快速畫出帶有預設美觀樣式的統計探索圖（statistical exploratory plots），通常較偏向選擇哪個套件？"
+  options:
+    a: "SQLite"
+    b: "Seaborn"
+    c: "BeautifulSoup"
+    d: "Plotly Dash"
+  correct: "b"
+  explanation:
+    why_correct: "Seaborn 提供較高階、語意化的統計圖 API，常用於快速探索資料並維持一致風格。"
+    why_not_a: "SQLite 是資料庫，不是統計視覺化圖庫。"
+    why_not_c: "BeautifulSoup 用於網頁解析，不是繪圖工具。"
+    why_not_d: "Dash 偏應用框架，題目強調的是快速畫統計探索圖，不是先做互動式 app。"
+  keywords:
+    - "seaborn"
+    - "exploratory plots"
+    - "library-choice"
+  exam_trap: false
+
+- id: "L22303-Q13"
+  topic_code: "L22303"
+  item_code: "L22303-工具比較"
+  difficulty: 2
+  question: "關於 Tableau 與 Power BI 的比較，下列理解何者較合理？"
+  options:
+    a: "兩者都完全不考慮資料來源連線，只能匯入靜態圖片"
+    b: "Tableau 與 Power BI 都能連接多種資料來源，但實際 connector、生態與授權模式有所差異"
+    c: "只有 Tableau 能做互動式 dashboard，Power BI 不能"
+    d: "只有 Power BI 能分享報表連結，Tableau 完全不能"
+  correct: "b"
+  explanation:
+    why_correct: "官方文件都顯示兩者可連接多種資料來源並支援分享與互動；差異多在生態、授權與整合習慣。"
+    why_not_a: "這是把 BI 工具誤解成靜態簡報工具。"
+    why_not_c: "Power BI 的核心就是互動式報表與 dashboard。"
+    why_not_d: "Tableau 同樣支援分享與嵌入。"
+  keywords:
+    - "Tableau"
+    - "Power BI"
+    - "connector"
+  exam_trap: false
+
+- id: "L22303-Q14"
+  topic_code: "L22303"
+  item_code: "L22303-視覺化效能"
+  difficulty: 2
+  question: "在 dashboard design（儀表板設計）中，為什麼不建議把太多圖表與指標塞在同一畫面？"
+  options:
+    a: "因為畫面資訊過載，會降低 clarity 並增加使用者找到重點的成本"
+    b: "因為圖表越多，data-ink ratio 一定越高"
+    c: "因為只要圖表夠多，就不需要篩選器"
+    d: "因為儀表板不能包含 KPI 指標卡"
+  correct: "a"
+  explanation:
+    why_correct: "儀表板應服務快速決策。元件過多會稀釋焦點、增加掃視成本，降低 clarity 與閱讀、決策效率。"
+    why_not_a: "正確答案。"
+    why_not_c: "圖多不會取代篩選器，反而常使互動需求更高。"
+    why_not_d: "KPI 卡片常用於摘要關鍵指標，並非禁止元素。"
+  keywords:
+    - "dashboard"
+    - "clarity"
+    - "資訊過載"
+  exam_trap: false
+
+- id: "L22303-Q15"
+  topic_code: "L22303"
+  item_code: "L22303-圖表類型選擇"
+  difficulty: 3
+  question: "某零售團隊想比較四個產品類別在北、中、南、東四個地區的銷售額，同時希望每個地區內各類別可以直接並排比較。最適合的圖表是什麼？"
+  options:
+    a: "Stacked bar chart（堆疊長條圖）"
+    b: "Histogram（直方圖）"
+    c: "Grouped bar chart（分組長條圖）"
+    d: "Pie chart（圓餅圖）"
+  correct: "c"
+  explanation:
+    why_correct: "要在每個地區內直接比較多個類別，分組長條圖能保留共同基準線，較容易橫向比較。"
+    why_not_a: "堆疊長條圖適合看總量與組成，但除了第一段外，其餘段落不易跨群組精準比較。"
+    why_not_b: "直方圖用於連續數值分布，不適合類別交叉比較。"
+    why_not_d: "圓餅圖不適合同時比較多地區多類別。"
+  keywords:
+    - "grouped bar"
+    - "stacked bar"
+    - "category comparison"
+  exam_trap: true
+
+- id: "L22303-Q16"
+  topic_code: "L22303"
+  item_code: "L22303-圖表類型選擇"
+  difficulty: 3
+  question: |-
+    下列 Python 程式碼會產生哪種圖表？
+
+    ```python
+    import matplotlib.pyplot as plt
+    sales = [12, 18, 25, 22, 19, 15, 10]
+    plt.plot(sales, marker='o')
+    plt.xlabel('Day')
+    plt.ylabel('Sales')
+    plt.show()
+    ```
+  options:
+    a: "Scatter plot（散布圖）"
+    b: "Line chart（折線圖）"
+    c: "Histogram（直方圖）"
+    d: "Boxplot（箱線圖）"
+  correct: "b"
+  explanation:
+    why_correct: "`plt.plot()` 搭配序列資料最直接就是折線圖，用於顯示隨順序或時間變動的趨勢。"
+    why_not_a: "散布圖需要以離散點呈現，常見函式為 `plt.scatter()`。"
+    why_not_c: "直方圖是分布圖，通常需要 bins。"
+    why_not_d: "箱線圖用於顯示分布摘要，如中位數與四分位距。"
+  keywords:
+    - "code interpretation"
+    - "matplotlib"
+    - "line chart"
+  exam_trap: false
+
+- id: "L22303-Q17"
+  topic_code: "L22303"
+  item_code: "L22303-工具比較"
+  difficulty: 3
+  question: "你要為主管做一次性 PDF 報告，需要精細控制字型、座標軸、註記位置與輸出解析度。此時較適合優先選擇哪個工具？"
+  options:
+    a: "Plotly，因為互動式功能越多，PDF 就越精準"
+    b: "Tableau，因為它一定比程式碼圖庫更適合微調所有細節"
+    c: "Matplotlib，因為它偏底層且對靜態輸出控制細"
+    d: "Seaborn，因為它完全取代 matplotlib 的所有細節控制"
+  correct: "c"
+  explanation:
+    why_correct: "Matplotlib 以細緻控制靜態圖聞名，適合需要出版級或報告級輸出的場景。"
+    why_not_a: "互動功能強不代表靜態輸出細節控制最好，這是把產品定位混淆。"
+    why_not_b: "Tableau 很適合 BI 視覺化，但不是所有版面微調都優於程式碼圖庫。"
+    why_not_d: "Seaborn 雖方便，但底層控制仍多仰賴 matplotlib。"
+  keywords:
+    - "matplotlib"
+    - "static output"
+    - "library-choice"
+  exam_trap: false
+
+- id: "L22303-Q18"
+  topic_code: "L22303"
+  item_code: "L22303-資訊呈現原則"
+  difficulty: 3
+  question: "某校務系統儀表板要讓管理者一眼看出『本月缺曠課率最高的班級』。下列哪個設計最符合 pre-attentive attribute 與 clarity 原則？"
+  options:
+    a: "所有班級用不同高彩度顏色，並加上立體陰影"
+    b: "所有班級改成圓餅圖切片，最高者外拉"
+    c: "用排序後的 bar chart，僅將最高班級以強調色標示，其餘用中性色"
+    d: "把最高班級的說明放到頁尾文字備註中"
+  correct: "c"
+  explanation:
+    why_correct: "排序後的長條圖加單一強調色，是兼顧比較效率與視覺焦點的常見做法。"
+    why_not_a: "多色與陰影會製造噪音，不利於快速定位最高值。"
+    why_not_b: "圓餅圖較適合部分占整體，不適合比較多個班級。"
+    why_not_d: "頁尾備註不是前注意設計，無法做到一眼辨識。"
+  keywords:
+    - "pre-attentive attributes"
+    - "bar chart"
+    - "clarity"
+  exam_trap: false
+
+- id: "L22303-Q19"
+  topic_code: "L22303"
+  item_code: "L22303-資訊呈現原則"
+  difficulty: 3
+  question: "某研究助理要用顏色呈現溫度高低，資料從低到高具有自然順序。此時最適合選擇哪一類配色（color scale）？"
+  options:
+    a: "類別色階（categorical color scale）"
+    b: "連續色階（sequential color scale）"
+    c: "Random mixed colors（隨機混色）"
+    d: "只用紅、綠兩色且不考慮色弱"
+  correct: "b"
+  explanation:
+    why_correct: "溫度高低屬於有序連續數值，使用連續色階（sequential color scale）能清楚表達漸變方向。"
+    why_not_a: "類別色階適合名目型類別，不表達數值順序。"
+    why_not_c: "隨機混色沒有一致映射規則，容易誤讀。"
+    why_not_d: "紅綠配色常有無障礙風險，且不一定能表達完整梯度。"
+  keywords:
+    - "color design"
+    - "連續色階"
+    - "accessibility"
+  exam_trap: false
+
+- id: "L22303-Q20"
+  topic_code: "L22303"
+  item_code: "L22303-工具比較"
+  difficulty: 3
+  question: |-
+    下列 Python 程式碼會產生哪種圖表？
+
+    ```python
+    import seaborn as sns
+    import matplotlib.pyplot as plt
+    tips = sns.load_dataset("tips")
+    sns.boxplot(x="day", y="total_bill", data=tips)
+    plt.show()
+    ```
+  options:
+    a: "Heatmap（熱圖）"
+    b: "Violin plot（提琴圖）"
+    c: "Boxplot（箱線圖）"
+    d: "Histogram（直方圖）"
+  correct: "c"
+  explanation:
+    why_correct: "`sns.boxplot()` 明確表示要畫箱線圖，可用來比較不同類別的分布摘要。"
+    why_not_a: "熱圖通常用於矩陣資料或二維強度分布，不會用 `boxplot()`。"
+    why_not_b: "提琴圖通常使用 `sns.violinplot()`。"
+    why_not_d: "直方圖通常使用 `sns.histplot()` 或 `plt.hist()`。"
+  keywords:
+    - "code interpretation"
+    - "seaborn"
+    - "boxplot"
+  exam_trap: false
+
+- id: "L22303-Q21"
+  topic_code: "L22303"
+  item_code: "L22303-視覺化效能"
+  difficulty: 3
+  question: "產品團隊要做手機版 dashboard（mobile dashboard）。依 dashboard best practices，下列哪一個做法最合理？"
+  options:
+    a: "先依手機顯示尺寸重新安排版面，保留最重要 KPI 與必要互動"
+    b: "直接把桌機版完整縮小到手機畫面，內容越多越好"
+    c: "把字體縮到最小，以便塞進更多圖表"
+    d: "所有圖表固定使用 3D 效果，提高辨識度"
+  correct: "a"
+  explanation:
+    why_correct: "行動版應根據顯示尺寸重設版面與優先順序，聚焦核心 KPI，避免內容過載。"
+    why_not_a: "正確答案。"
+    why_not_c: "為了塞內容而犧牲可讀性，是常見但錯誤的做法。"
+    why_not_d: "3D 效果不會提高決策效率，反而常扭曲判讀。"
+  keywords:
+    - "dashboard"
+    - "mobile layout"
+    - "visual effectiveness"
+  exam_trap: false
+
+- id: "L22303-Q22"
+  topic_code: "L22303"
+  item_code: "L22303-圖表類型選擇"
+  difficulty: 4
+  question: "某分析師要比較 12 個部門在 4 個季度的總營收，同時也想讓主管快速看出各季度總量占比。若只能先選一種主要圖表，哪個選項最符合『主要任務優先』的原則？"
+  options:
+    a: "Pie chart（圓餅圖），因為最能同時比較所有部門與季度"
+    b: "Stacked bar chart（堆疊長條圖），若主管更在意季度總量與組成"
+    c: "Histogram（直方圖），因為營收屬於連續數值"
+    d: "Scatter plot（散布圖），因為能同時比較所有類別組成"
+  correct: "b"
+  explanation:
+    why_correct: "若主要任務是看季度總量與部門組成，stacked bar 比 grouped bar 更能先傳達總量與結構；題目強調『主要任務優先』。"
+    why_not_a: "圓餅圖面對多季度多部門時會失去可比性。"
+    why_not_c: "營收雖為數值，但此處任務不是看分布，而是看多類別組成與總量。"
+    why_not_d: "散布圖不適合顯示這種類別組成與總量比較。"
+  keywords:
+    - "stacked bar"
+    - "task-oriented chart selection"
+    - "comparison"
+  exam_trap: false
+
+- id: "L22303-Q23"
+  topic_code: "L22303"
+  item_code: "L22303-圖表類型選擇"
+  difficulty: 4
+  question: "同事把每月客訴件數畫成 histogram（直方圖），x 軸是 1 月到 12 月。你評估後認為哪個判斷最合理？"
+  options:
+    a: "合理，因為月份是連續變數，所以 histogram 最佳"
+    b: "不合理，因為月份在這裡是有序類別或時間索引，應優先考慮 line chart 或 bar chart"
+    c: "合理，因為 histogram 專門比較每個月份的個別數值"
+    d: "不合理，因為 histogram 只能用在 seaborn，不能用在其他工具"
+  correct: "b"
+  explanation:
+    why_correct: "若 x 軸是 1 月到 12 月，重點是各月份的變化而非資料分布，因此 line chart 或 bar chart 更合適。"
+    why_not_a: "把月份誤當作分布變數，是 bar vs histogram 的典型陷阱。"
+    why_not_c: "直方圖比較的是 bins 內頻數，不是各月份的獨立指標。"
+    why_not_d: "工具限制與圖表概念無關。"
+  keywords:
+    - "bar vs histogram"
+    - "time series"
+    - "exam trap"
+  exam_trap: true
+
+- id: "L22303-Q24"
+  topic_code: "L22303"
+  item_code: "L22303-工具比較"
+  difficulty: 4
+  question: |-
+    下列 Python 程式碼會產生哪種圖表，且最可能用來回答什麼問題？
+
+    ```python
+    import matplotlib.pyplot as plt
+    scores = [62, 65, 67, 70, 72, 75, 78, 80, 84, 90, 95]
+    plt.hist(scores, bins=4)
+    plt.xlabel("Score")
+    plt.ylabel("Count")
+    plt.show()
+    ```
+  options:
+    a: "Bar chart；比較不同學生個別成績高低"
+    b: "Line chart；觀察成績隨時間的趨勢"
+    c: "Histogram；觀察分數分布是否集中在某些區間"
+    d: "Scatter plot；觀察兩個連續變數相關性"
+  correct: "c"
+  explanation:
+    why_correct: "`plt.hist(..., bins=4)` 明確是直方圖，主要回答的是分布與集中區間，而不是個別學生比較。"
+    why_not_a: "學生常把一排長條都看成 bar chart，但 histogram 的條是數值區間 bins。"
+    why_not_b: "題目沒有時間軸，無法討論趨勢。"
+    why_not_d: "只有一組連續數值，沒有兩變數關係可看。"
+  keywords:
+    - "code interpretation"
+    - "histogram"
+    - "distribution"
+  exam_trap: true
+
+- id: "L22303-Q25"
+  topic_code: "L22303"
+  item_code: "L22303-資訊呈現原則"
+  difficulty: 4
+  question: "某醫院儀表板以紅綠雙色區分病患風險等級，但使用者包含色弱族群。若要兼顧 color design 與 accessibility，哪個調整最合理？"
+  options:
+    a: "改用 colorblind-safe palette，並搭配形狀或標籤，不只依賴顏色"
+    b: "維持紅綠配色，但把圖表做成 3D"
+    c: "把所有顏色都改成高飽和螢光色"
+    d: "完全移除所有視覺標記，只留原始表格"
+  correct: "a"
+  explanation:
+    why_correct: "色弱友善設計的核心是避免只靠顏色傳遞資訊，並選用更安全的配色與輔助編碼。"
+    why_not_c: "高飽和顏色不等於更可讀，反而可能增加視覺負擔。"
+    why_not_d: "表格有時有用，但完全移除視覺化不是最佳折衷。"
+  keywords:
+    - "colorblind-safe"
+    - "accessibility"
+    - "color design"
+  exam_trap: false
+
+- id: "L22303-Q26"
+  topic_code: "L22303"
+  item_code: "L22303-工具比較"
+  difficulty: 4
+  question: "團隊要做可內嵌於網頁、讓使用者 hover 查看細節並縮放的銷售圖表。若同時考量互動性與開發效率，哪個選擇最合理？"
+  options:
+    a: "只用純文字表格，因為表格最容易嵌入網頁"
+    b: "優先選 Plotly，因為它原生支援互動式圖表情境"
+    c: "只用 matplotlib 輸出 PNG，因為互動式圖表一定不利於分析"
+    d: "只用 seaborn，因為它原生就以網頁互動為主要定位"
+  correct: "b"
+  explanation:
+    why_correct: "題目明確需要 hover、縮放與網頁嵌入，這正是 Plotly 的典型優勢情境。"
+    why_not_a: "表格可嵌入，但不符合題目想要的互動圖表需求。"
+    why_not_c: "靜態 PNG 不滿足 hover 與 zoom。"
+    why_not_d: "Seaborn 主要定位不是原生互動式網頁圖表。"
+  keywords:
+    - "plotly"
+    - "interactive"
+    - "web embedding"
+  exam_trap: false
+
+- id: "L22303-Q27"
+  topic_code: "L22303"
+  item_code: "L22303-工具比較"
+  difficulty: 4
+  question: "若企業已大量採用 Microsoft 生態系，並希望報表分享、協作與既有服務整合成本較低，何者通常是較合理的初步判斷？"
+  options:
+    a: "Tableau 一定完全不適用，無須評估"
+    b: "兩者都不能與企業環境整合，所以應改用 Photoshop"
+    c: "Power BI 往往較值得優先評估，因為其產品生態與 Microsoft 服務整合常較直接"
+    d: "只能選 Excel，不可能用 BI 工具"
+  correct: "c"
+  explanation:
+    why_correct: "Power BI 常因與 Microsoft 產品鏈整合而成為企業環境中的優先選項，但仍應視實際需求評估。"
+    why_not_a: "Tableau 不會因為 Microsoft 生態就完全失去價值。"
+    why_not_b: "兩者都能與企業資料與分享流程整合。"
+    why_not_d: "BI 報表需求通常超出 Excel 單檔分析範圍。"
+  keywords:
+    - "Power BI"
+    - "Microsoft ecosystem"
+    - "tool comparison"
+  exam_trap: false
+
+- id: "L22303-Q28"
+  topic_code: "L22303"
+  item_code: "L22303-視覺化效能"
+  difficulty: 4
+  question: "某營運 dashboard 同時放入 10 張小圖、8 個 KPI 卡、4 個色彩濃烈的警示區塊。若以 visual effectiveness（視覺化效能）評估，最可能的主要問題是什麼？"
+  options:
+    a: "重點層次不明，造成注意力分散與任務完成效率下降"
+    b: "因為元素很多，所以資料一定更完整且更好理解"
+    c: "KPI 卡越多越不需要排序與分群"
+    d: "只要顏色夠多，就能自動解決儀表板資訊過載"
+  correct: "a"
+  explanation:
+    why_correct: "視覺化效能不只看內容量，也看使用者能否快速找到重點。元素過多常導致重點層次混亂。"
+    why_not_a: "正確答案。"
+    why_not_c: "排序與分群在複雜儀表板中更重要。"
+    why_not_d: "過多顏色往往是噪音來源。"
+  keywords:
+    - "重點層次"
+    - "儀表板資訊過載"
+    - "visual effectiveness"
+  exam_trap: false
+
+- id: "L22303-Q29"
+  topic_code: "L22303"
+  item_code: "L22303-資訊呈現原則"
+  difficulty: 5
+  question: "某資料團隊將地區業績做成 3D pie chart（3D 圓餅圖），還使用彩虹色盤（rainbow palette）與陰影效果。若目標是支援高階主管快速比較各區差異，下列評估何者最周延？"
+  options:
+    a: "設計不佳，因為 3D、rainbow palette 與過多裝飾會同時降低比較精度、data-ink ratio 與可讀性"
+    b: "設計良好，因為視覺效果越華麗，決策品質越高"
+    c: "只要有圖例，3D 與彩虹色盤不會影響判讀"
+    d: "主要問題只有字體大小，其他都不影響"
+  correct: "a"
+  explanation:
+    why_correct: "這題結合 Tufte、chart junk、色彩設計與比較精度。3D 圓餅圖本就不利比較，再加上彩虹色盤與陰影，只會讓判讀更差。"
+    why_not_a: "正確答案。"
+    why_not_c: "圖例不能彌補 3D 透視與不連續色盤帶來的比較困難。"
+    why_not_d: "字體可能是次要問題，但不是整體設計失敗的主因。"
+  keywords:
+    - "3D pie chart"
+    - "rainbow palette"
+    - "data-ink ratio"
+  exam_trap: true
+
+- id: "L22303-Q30"
+  topic_code: "L22303"
+  item_code: "L22303-圖表類型選擇"
+  difficulty: 5
+  question: "你同時要回答兩個問題：(1) 各門市營收誰高誰低；(2) 各門市單筆交易金額分布是否差異很大。若只能用兩張圖且要最高資訊效率，哪組搭配最合理？"
+  options:
+    a: "Histogram + Pie chart"
+    b: "Bar chart + Boxplot"
+    c: "Line chart + Heatmap"
+    d: "Pie chart + Violin plot"
+  correct: "b"
+  explanation:
+    why_correct: "bar chart 適合比較各門市營收高低，boxplot 則適合比較各門市單筆交易金額分布、中位數與離散程度。"
+    why_not_a: "histogram 不適合直接比較多門市總營收高低，pie chart 也不適合分布比較。"
+    why_not_c: "line chart 需要序列意義，heatmap 不是此題最高效率的分布摘要工具。"
+    why_not_d: "pie chart 不適合多門市精準比較，violin plot 雖可看分布，但搭配 pie chart 效率仍低。"
+  keywords:
+    - "bar chart"
+    - "boxplot"
+    - "chart selection"
+  exam_trap: false
+
+- id: "L22303-Q31"
+  topic_code: "L22303"
+  item_code: "L22303-工具比較"
+  difficulty: 5
+  question: |-
+    某資料科學課程要求學生快速完成下列任務：
+    1. 先做資料探索，查看數值分布與類別差異
+    2. 再做一個可讓使用者 hover 檢視明細的網頁圖表
+    3. 最後輸出一張可精細微調的靜態報告圖
+
+    下列工具組合何者最合理？
+  options:
+    a: "只用 PowerPoint 處理全部任務"
+    b: "Seaborn 做探索、Plotly 做互動圖、Matplotlib 做精細靜態輸出"
+    c: "只用 Histogram，不需要工具分工"
+    d: "只用 Tableau，且不需考慮任務差異"
+  correct: "b"
+  explanation:
+    why_correct: "Seaborn 適合快速探索，Plotly 適合互動式網頁圖，Matplotlib 則適合精細控制靜態輸出，分工清楚。"
+    why_not_a: "PowerPoint 缺乏這類分析與程式化視覺化能力。"
+    why_not_c: "把圖表類型與工具選型混為一談，是常見錯誤。"
+    why_not_d: "單一 BI 工具不一定是這三種任務的最佳整體解。"
+  keywords:
+    - "seaborn"
+    - "plotly"
+    - "matplotlib"
+  exam_trap: true
+
+- id: "L22303-Q32"
+  topic_code: "L22303"
+  item_code: "L22303-工具比較"
+  difficulty: 5
+  question: "公司在評估 Tableau 與 Power BI。若需求包含：多資料來源連線、互動式 dashboard、可分享給組織成員，以及考量既有企業生態整合。哪個結論最合理？"
+  options:
+    a: "兩者都不適合，因為 BI 工具不支援分享"
+    b: "只要能畫 pie chart 就代表工具比較完整"
+    c: "兩者都可納入評估，但應依資料連線、生態整合、授權與使用情境做選擇"
+    d: "一定只能選 Tableau，因為 Power BI 不支援互動式 dashboard"
+  correct: "c"
+  explanation:
+    why_correct: "這是典型的工具評估題。正確作法不是絕對化，而是依連線能力、生態整合、授權與使用情境綜合判斷。"
+    why_not_a: "BI 工具的核心價值之一就是分享與協作。"
+    why_not_b: "單一圖表能力不足以代表整體適配度。"
+    why_not_d: "否定 Power BI 的互動式能力與事實不符。"
+  keywords:
+    - "Tableau"
+    - "Power BI"
+    - "evaluation"
+  exam_trap: false
+
+- id: "L22303-Q33"
+  topic_code: "L22303"
+  item_code: "L22303-圖表類型選擇"
+  difficulty: 5
+  question: "某電商資料包含：商品類別、價格、折扣率、顧客評分、月份。分析師想同時判斷『價格與評分是否相關』以及『不同月份的評分分布是否改變』。若分兩步做視覺化，哪組最合理？"
+  options:
+    a: "Scatter plot 檢查價格與評分；Boxplot 檢查各月份評分分布"
+    b: "Pie chart 檢查價格與評分；Histogram 檢查月份"
+    c: "Stacked bar 檢查價格與評分；Line chart 檢查分布"
+    d: "Heatmap 檢查價格與評分；Pie chart 檢查月份分布"
+  correct: "a"
+  explanation:
+    why_correct: "scatter plot 適合看兩個連續變數關係；boxplot 適合比較不同月份評分的分布、中位數與離散程度。"
+    why_not_c: "stacked bar 與 line chart 都不是這兩個任務的最佳首選。"
+    why_not_d: "heatmap 有時可補充，但 pie chart 不適合月份分布比較。"
+  keywords:
+    - "scatter plot"
+    - "boxplot"
+    - "distribution"
+  exam_trap: false
+
+- id: "L22303-Q34"
+  topic_code: "L22303"
+  item_code: "L22303-資訊呈現原則"
+  difficulty: 5
+  question: "某政府公開資料網站的視覺化規範要求：高可讀性、色弱友善、避免誤導、讓使用者能快速找到異常值。下列哪個設計方案最符合整體原則？"
+  options:
+    a: "使用 3D bar chart、紅綠雙色、高密度裝飾背景"
+    b: "使用排序後的 2D bar chart、colorblind-safe palette、必要時以形狀或標籤輔助，移除多餘裝飾"
+    c: "使用彩虹色盤與大量陰影，讓資料看起來更豐富"
+    d: "把所有重要資訊放在滑鼠 hover，靜態畫面不提供任何提示"
+  correct: "b"
+  explanation:
+    why_correct: "此方案同時兼顧 data-ink ratio、accessibility、pre-attentive highlighting 與避免 chart junk，是最完整的設計。"
+    why_not_a: "3D、紅綠配色與裝飾背景都可能降低可讀性並造成誤導。"
+    why_not_c: "彩虹色盤與陰影常增加判讀負擔，並非『更豐富』就更好。"
+    why_not_d: "若只靠 hover，靜態閱讀與無障礙都會受影響。"
+  keywords:
+    - "colorblind-safe"
+    - "data-ink ratio"
+    - "accessibility"
+  exam_trap: true
+
+- id: "L22303-Q35"
+  topic_code: "L22303"
+  item_code: "L22303-工具比較"
+  difficulty: 5
+  question: |-
+    閱讀下列程式碼後，判斷圖表類型與最可能的分析目的：
+
+    ```python
+    import plotly.express as px
+    df = px.data.iris()
+    fig = px.scatter(df, x="sepal_width", y="sepal_length", color="species")
+    fig.show()
+    ```
+
+    何者最合理？
+  options:
+    a: "Histogram；觀察單一變數分布"
+    b: "Line chart；觀察時間趨勢"
+    c: "Scatter plot；觀察兩個連續變數關係，並用顏色區分類別"
+    d: "Heatmap；觀察矩陣強度"
+  correct: "c"
+  explanation:
+    why_correct: "`px.scatter()` 明確是散布圖，x 與 y 為兩個連續變數，`color=\"species\"` 則進一步標示類別群組。"
+    why_not_a: "直方圖只看單變數分布，與題目兩軸設定不符。"
+    why_not_b: "題目沒有時間軸，無法判讀為趨勢圖。"
+    why_not_d: "heatmap 通常需要矩陣或格點強度資料，不符合此程式碼。"
+  keywords:
+    - "code interpretation"
+    - "plotly"
+    - "scatter plot"
+  exam_trap: false
