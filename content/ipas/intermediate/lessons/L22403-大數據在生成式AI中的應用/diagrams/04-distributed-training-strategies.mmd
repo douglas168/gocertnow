@@ -1,0 +1,35 @@
+---
+title: 分散式訓練三大策略比較 (L22403)
+---
+graph LR
+    subgraph DP["📦 資料平行 Data Parallelism (DDP)"]
+        direction TB
+        M1["模型副本 GPU 0\n↓ mini-batch A"]
+        M2["模型副本 GPU 1\n↓ mini-batch B"]
+        M3["模型副本 GPU 2\n↓ mini-batch C"]
+        AG["AllReduce\n梯度平均同步"]
+        M1 & M2 & M3 --> AG
+    end
+
+    subgraph TP["🔪 張量平行 Tensor Parallelism"]
+        direction TB
+        L1["Layer 權重矩陣\n切分成 N 份"]
+        G1["GPU 0 → 行 0..k"]
+        G2["GPU 1 → 行 k..2k"]
+        L1 --> G1 & G2
+        NOTE1["工具: Megatron-LM\n用於超大單層 (FFN/Attn)"]
+    end
+
+    subgraph PP["🚂 流水線平行 Pipeline Parallelism"]
+        direction TB
+        S1["Stage 1: Layer 0–11\nGPU 0"]
+        S2["Stage 2: Layer 12–23\nGPU 1"]
+        S3["Stage 3: Layer 24–35\nGPU 2"]
+        BUB["⚠️ Bubble 開銷\n(GPU 等待空閒)"]
+        S1 --> S2 --> S3
+        S3 -.-> BUB
+    end
+
+    style DP fill:#e8f5e9,stroke:#388E3C,color:#000
+    style TP fill:#fff3e0,stroke:#F57C00,color:#000
+    style PP fill:#e3f2fd,stroke:#1565C0,color:#000

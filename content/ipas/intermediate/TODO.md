@@ -69,6 +69,10 @@ Tracks open items across all lessons that need resolution before publishing.
 - **Diagram rendering:** 5 Mermaid diagrams under `lessons/L22401-大數據與機器學習/diagrams/` — render to PNG via Gemini downstream (not blocking publish).
 - **Gemini cross-review skipped** (CLI returned empty output); Claude adversarial (0 critical, 3 important resolved) + Codex auditor (3 critical resolved) — re-run Gemini pass if desired before exam assembly.
 
+### L22403 — 大數據在生成式AI中的應用
+- **Diagram rendering:** 5 Mermaid diagrams (`.mmd`) under `lessons/L22403-大數據在生成式AI中的應用/diagrams/` — render to PNG via Gemini downstream (not blocking publish).
+- **Gemini cross-review skipped** (CLI returned empty output); Claude adversarial (0 critical, 3 important resolved) + Codex auditor (11 findings resolved) — re-run Gemini pass if desired before exam assembly.
+
 ---
 
 ## Lesson Progress
@@ -95,7 +99,7 @@ Tracks open items across all lessons that need resolution before publishing.
 | 18 | L22303 | 數據可視化工具 | L22 | elective_a (資料分析組) | 1 | ✅ Done | 1 |
 | ~~19~~ | ~~L22401~~ | ~~大數據與機器學習~~ | L22 | elective_a (資料分析組) | 1 | ✅ Done | 2 |
 | ~~20~~ | ~~L22402~~ | ~~大數據應用於鑑別式AI中的應用~~ | L22 | elective_a (資料分析組) | 1 | ✅ Done | 2 |
-| 21 | L22403 | 大數據在生成式AI中的應用 | L22 | elective_a (資料分析組) | 1 | Not started | — |
+| ~~21~~ | ~~L22403~~ | ~~大數據在生成式AI中的應用~~ | L22 | elective_a (資料分析組) | 1 | ✅ Done | 1 |
 | 22 | L22404 | 大數據隱私保護、安全與合規 | L22 | elective_a (資料分析組) | 1 | Not started | — |
 | 23 | L23101 | 機率/統計之機器學習基礎應用 | L23 | elective_b (機器學習組) | 2 | Not started | — |
 | 24 | L23102 | 線性代數之機器學習基礎應用 | L23 | elective_b (機器學習組) | 2 | Not started | — |
@@ -114,9 +118,9 @@ Tracks open items across all lessons that need resolution before publishing.
 
 ## What's Next
 
-**Next lesson:** `/course-generate-lesson L22403` — 大數據在生成式AI中的應用
+**Next lesson:** `/course-generate-lesson L22404` — 大數據隱私保護、安全與合規
 
-**Remaining lessons:** 14 of 34 topics left (2 for 資料分析組 SKU; 12 for 機器學習組 SKU; all L21 items now complete)
+**Remaining lessons:** 13 of 34 topics left (1 for 資料分析組 SKU; 12 for 機器學習組 SKU; all L21 items now complete)
 
 ### Priority 1 — 資料分析組 sprint (founder 2026-05-23 exam)
 
@@ -144,7 +148,7 @@ Order from `syllabus/dependencies.md` §3. Build L21 (required) first, then L22.
 | ~~18~~ | ~~L22303~~ | ~~數據可視化工具~~ | ✅ Done (35-question pool, 5 diagrams) |
 | ~~19~~ | ~~L22401~~ | ~~大數據與機器學習~~ | ✅ Done |
 | ~~20~~ | ~~L22402~~ | ~~大數據應用於鑑別式AI中的應用~~ | ✅ Done |
-| 21 | L22403 | 大數據在生成式AI中的應用 | Deep, includes code |
+| ~~21~~ | ~~L22403~~ | ~~大數據在生成式AI中的應用~~ | ✅ Done |
 | 22 | L22404 | 大數據隱私保護、安全與合規 | Deep, includes code, external docs needed (個資法) |
 
 ### Priority 2 — 機器學習組 後續擴充 SKU
@@ -192,3 +196,4 @@ Order from `syllabus/dependencies.md` §4 (L21 items already covered above).
 - **L22302** — 常見的大數據分析方法 (2026-04-21). 40-question pool (deep, includes code), 663+-line study guide, 4 Mermaid diagrams (k-means convergence loop, decision-tree split criterion comparison, SMOTE interpolation geometry, imbalance strategy selection flowchart). 3-reviewer pipeline (Claude adversarial: 0 critical/3 important/2 minor; Gemini: 25-line report; Codex auditor: 11 findings) resolved 22 total (5 critical + 6 important + 11 minor): C1 `criterion='information_gain'` does not exist in sklearn — corrected to `'entropy'`/`'log_loss'`, C4 `fit_resample`/`imblearn.pipeline.Pipeline` added to study guide (tested in Q16/Q33/Q37 but missing), C2 SMOTE scoped to numeric features only. **L22 sprint: 5 topics remaining.**
 - **L22303** — 數據可視化工具 (2026-04-21). 35-question pool (medium, includes code), 879-line study guide, 5 Mermaid diagrams (chart-chooser decision tree, tool positioning quadrant, pre-attentive attributes mindmap, data-ink ratio concept flow, Python library selection flowchart). 2-reviewer pipeline (Claude adversarial: 1 critical/5 important; Codex auditor: terminology + mnemonic; Gemini: CLI empty/skipped) resolved 13 total (2 critical [CROSS] + 5 important + 3 minor + 3 minor): C1 duplicate `correct:`/`explanation:` YAML keys removed from 13 questions, C2 4 mislabeled `why_not_*` explanations fixed (Q03/Q04/Q25/Q33), terminology normalized (散布圖/熱圖/箱線圖). **L22 sprint: 4 topics remaining.**
 - **L22402** — 大數據應用於鑑別式AI中的應用 (2026-04-21). 40-question pool (deep, includes code), 667-line study guide, 5 diagrams (confusion-matrix→metrics derivation flowchart, ROC/AUC curve with ASCII + Mermaid, precision–recall tradeoff with scenario table, use-case catalogue mindmap 6 domains, sklearn .fit/.predict/.predict_proba inference pipeline). 3-reviewer pipeline (Claude adversarial: 2 critical/1 important/7 minor; Gemini: 1 critical/0 important/1 minor; Codex auditor: 0 critical/10 important) resolved 18 total (3 critical + 8 important + 4 minor): C1 [CROSS] Q25 Accuracy 98%→95% (confusion matrix arithmetic), C2 Q21 F1 0.66→0.67 (rounding fix), C3 confusion matrix mnemonic order TP→FP→TN→FN corrected to TP→FP→FN→TN. Open items: diagram images (02-roc-auc-curve, 04-use-case-catalogue) may benefit from Gemini rendering. **L22 sprint: 3 topics remaining.**
+- **L22403** — 大數據在生成式AI中的應用 (2026-04-21). 40-question pool (deep, includes code), 877-line study guide, 5 Mermaid diagrams (三大典範資料需求金字塔, 語料清理管線, RAG資料管線, 分散式訓練三大策略比較, 分詞器技術比較). 2-reviewer pipeline (Claude adversarial: 0 critical/3 important/2 minor; Gemini: CLI empty/skipped; Codex auditor: 11 findings) resolved 13 total (1 critical [CROSS] + 5 important + 6 minor): C1 [CROSS] Dolma token count contradiction study-guide 1.715T vs Q40 3T reconciled, I1 ROOTS language count corrected (Q40 46→59: 46 natural + 13 programming languages), I2 LLaMA tokenizer classification corrected to SentencePiece-BPE (LLaMA 1/2) / tiktoken (LLaMA 3). **L22 sprint: 2 topics remaining.**

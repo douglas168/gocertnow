@@ -1,0 +1,18 @@
+---
+title: 語料清理管線 (L22403)
+---
+flowchart LR
+    RAW["🌐 原始語料\nCommon Crawl\n~100TB HTML"]
+    EXT["📄 文字萃取\nHTML → Plain Text\n移除標記/CSS/JS"]
+    LANG["🌏 語言識別\nfastText LangDetect\n過濾非目標語言"]
+    QUAL["⭐ 品質過濾\nPerplexity Filter\n規則過濾 (短句/亂碼)"]
+    DEDUP["🔍 去重\nExact-match Hash\nMinHash LSH Near-dedup\n減少 20–30%"]
+    SAFE["🛡️ 安全過濾\nPII 偵測\n有害內容過濾"]
+    TOK["✂️ 分詞\nBPE / SentencePiece\n→ Token IDs"]
+    OUT["✅ 訓練語料\n~15TB tokens\n(C4 from CC)"]
+
+    RAW --> EXT --> LANG --> QUAL --> DEDUP --> SAFE --> TOK --> OUT
+
+    style RAW fill:#ffebee,stroke:#f44336,color:#000
+    style OUT fill:#e8f5e9,stroke:#4CAF50,color:#000
+    style DEDUP fill:#fff9c4,stroke:#FFC107,color:#000

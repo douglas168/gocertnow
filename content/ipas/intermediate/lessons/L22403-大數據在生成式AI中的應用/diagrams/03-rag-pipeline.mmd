@@ -1,0 +1,26 @@
+---
+title: RAG 資料管線 (L22403)
+---
+flowchart TD
+    subgraph INDEX["📚 索引建立 (離線)"]
+        DOCS["原始文件\n(PDF/Word/網頁)"]
+        CHUNK["文件分塊 Chunking\nFixed-size: 256–512 tokens\nSemantic: 句子邊界\nRecursive: LangChain Splitter"]
+        EMBED["嵌入模型 Embedding\ntext-embedding-3-small\nbge-m3 / e5-mistral"]
+        VDB["向量資料庫\nFAISS (本地)\nChroma / Weaviate (雲端)\nMilvus (大規模)"]
+        DOCS --> CHUNK --> EMBED --> VDB
+    end
+
+    subgraph QUERY["🔎 查詢推論 (線上)"]
+        Q["使用者問題"]
+        QE["問題嵌入\n同一嵌入模型"]
+        RET["相似度搜尋\ncosine similarity / ANN"]
+        CTX["Top-K 相關段落"]
+        PROMPT["Prompt 組合\n問題 + 上下文"]
+        LLM["LLM 生成回答\nmodel.generate()"]
+        Q --> QE --> RET --> CTX --> PROMPT --> LLM
+    end
+
+    VDB --> RET
+
+    style INDEX fill:#e3f2fd,stroke:#1976D2,color:#000
+    style QUERY fill:#f3e5f5,stroke:#7B1FA2,color:#000

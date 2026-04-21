@@ -1,0 +1,17 @@
+---
+title: 三大典範資料需求金字塔 (L22403)
+---
+graph TD
+    PT["🏔️ 預訓練 Pretraining\n(TB 級語料 — 1T+ tokens)\nCommon Crawl / The Pile / Dolma\n高成本、需去重+品質過濾\n↓ 訓練後: 通用語言模型"]
+    FT["🔧 微調 Fine-tuning / SFT\n(K–M 級指令資料集)\nAlpaca 52K / FLAN 數百萬 / OpenHermes\n低成本、需高品質指令-回覆對\n↓ 訓練後: 領域/任務模型"]
+    LO["⚡ LoRA / PEFT\n(更少資料, 更少參數)\n1K–10K examples 足夠\n只訓練低秩適配矩陣 rank=4–64\n↓ 訓練後: 輕量適配層"]
+    RA["📚 RAG\n(不訓練模型, 只建索引)\n文件分塊 → 嵌入 → 向量資料庫\n知識可即時更新\n↓ 推論時: 檢索增強生成"]
+
+    PT --> FT
+    FT --> LO
+    PT -.->|"替代路徑\n不改模型權重"| RA
+
+    style PT fill:#e8f4f8,stroke:#2196F3,color:#000
+    style FT fill:#e8f5e9,stroke:#4CAF50,color:#000
+    style LO fill:#fff3e0,stroke:#FF9800,color:#000
+    style RA fill:#fce4ec,stroke:#E91E63,color:#000

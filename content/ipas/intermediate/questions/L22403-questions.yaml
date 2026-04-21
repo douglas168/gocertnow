@@ -1,0 +1,880 @@
+- id: "L22403-Q01"
+  topic_code: "L22403"
+  item_code: "L22403-1"
+  difficulty: 1
+  question: "在大規模預訓練語料庫（pretraining corpus）的四個核心考量中，下列何者最直接對應『是否有權合法使用資料』？"
+  options:
+    a: "授權合規（licensing compliance）"
+    b: "向量維度（embedding dimension）"
+    c: "推論延遲（inference latency）"
+    d: "GPU 時脈（GPU clock）"
+  correct: "a"
+  explanation:
+    why_correct: "授權合規直接關係到資料來源是否可被蒐集、儲存、訓練與再利用，是大規模語料治理的重要面向。"
+    why_not_b: "向量維度屬於模型表示或檢索設定，和語料授權是否合法無直接關係。"
+    why_not_c: "推論延遲是部署與服務品質議題，不是語料來源合法性的判斷標準。"
+    why_not_d: "GPU 時脈是硬體規格，考生常把『訓練需要算力』誤認成『資料合規』的一部分。"
+  keywords:
+    - "pretraining corpus"
+    - "licensing compliance"
+    - "資料治理"
+  exam_trap: false
+
+- id: "L22403-Q02"
+  topic_code: "L22403"
+  item_code: "L22403-2"
+  difficulty: 1
+  question: "在語料清理與去重（deduplication）中，MinHash 最常用來處理下列哪一類問題？"
+  options:
+    a: "完全相同檔案（exact duplicate）"
+    b: "近似重複文件（near-duplicate documents）"
+    c: "GPU 記憶體不足"
+    d: "模型過度量化（over-quantization）"
+  correct: "b"
+  explanation:
+    why_correct: "MinHash 透過近似集合相似度，適合找出內容相近但非逐字完全相同的 near-dedup 問題。"
+    why_not_a: "完全相同文件通常可用 hash 或 exact-match 比對處理，不必動用 MinHash。"
+    why_not_c: "GPU 記憶體不足是訓練資源問題，和文本去重演算法不同。"
+    why_not_d: "量化是模型壓縮技術，不是資料清理流程。"
+  keywords:
+    - "MinHash"
+    - "near-dedup"
+    - "語料清理"
+  exam_trap: false
+
+- id: "L22403-Q03"
+  topic_code: "L22403"
+  item_code: "L22403-3"
+  difficulty: 1
+  question: "關於 Byte Pair Encoding（BPE），下列敘述何者正確？"
+  options:
+    a: "以 chosen/rejected pair 訓練 tokenizer"
+    b: "先固定整個字典後不再更新"
+    c: "透過反覆合併高頻字元對（iterative merge）形成 subword"
+    d: "一定需要人工先斷詞成單字後才能運作"
+  correct: "c"
+  explanation:
+    why_correct: "BPE 的核心就是從較小單位開始，反覆合併高頻字元對或子詞對，建立 subword vocabulary。"
+    why_not_a: "chosen/rejected pair 是 RLHF 偏好資料格式，不是 tokenizer 訓練方式。"
+    why_not_b: "BPE vocabulary 是經由 merge 規則逐步形成，不是先天固定後完全不更新。"
+    why_not_d: "BPE 並不要求一定先做人工單字切分；把它和傳統斷詞流程混為一談是常見誤解。"
+  keywords:
+    - "BPE"
+    - "iterative merge"
+    - "subword tokenization"
+  exam_trap: true
+
+- id: "L22403-Q04"
+  topic_code: "L22403"
+  item_code: "L22403-4"
+  difficulty: 1
+  question: "在三大典範（pretraining vs fine-tuning vs RAG）的資料量比較中，通常哪一者需要最大的資料規模？"
+  options:
+    a: "RAG 文件索引（retrieval index）"
+    b: "監督式微調（SFT）"
+    c: "LoRA adapter 設定"
+    d: "預訓練（pretraining）"
+  correct: "d"
+  explanation:
+    why_correct: "預訓練通常需要百 GB、TB 甚至兆 token 等級資料，量級明顯高於 SFT 與單次 RAG 文件庫。"
+    why_not_a: "RAG 重點是把任務相關文件切塊索引，通常遠小於預訓練語料。"
+    why_not_b: "SFT 常見是 10K 到 100K instruction-response pairs，不會接近預訓練量級。"
+    why_not_c: "LoRA 是參數高效微調方法，不是資料規模典範。"
+  keywords:
+    - "pretraining"
+    - "fine-tuning"
+    - "RAG"
+  exam_trap: false
+
+- id: "L22403-Q05"
+  topic_code: "L22403"
+  item_code: "L22403-5"
+  difficulty: 1
+  question: "下列何者最符合監督式微調（Supervised Fine-Tuning, SFT）資料集的典型規模？"
+  options:
+    a: "約 10K–100K 組 instruction-response pairs"
+    b: "一定要 1T tokens 以上"
+    c: "只能使用 50 筆以下專家標註"
+    d: "固定為 5,000,000 tokens，不可增減"
+  correct: "a"
+  explanation:
+    why_correct: "SFT 常見資料量級為數萬到十萬級 instruction-response pairs，重點在任務對齊與品質，而非追求預訓練等級海量資料。"
+    why_not_b: "1T tokens 屬於預訓練量級，拿來描述 SFT 是把兩種典範混淆。"
+    why_not_c: "少量資料也可能有用，但不是 SFT 的典型規模描述。"
+    why_not_d: "5,000,000 tokens 是特定平台文件限制類資訊，不是 SFT 固定規格。"
+  keywords:
+    - "SFT"
+    - "instruction tuning"
+    - "資料規模"
+  exam_trap: true
+
+- id: "L22403-Q06"
+  topic_code: "L22403"
+  item_code: "L22403-6"
+  difficulty: 1
+  question: "在 RAG 資料管線（RAG data pipeline）中，文件通常在建立向量索引前先經過哪個步驟？"
+  options:
+    a: "反向傳播（backpropagation）"
+    b: "切塊（chunking）"
+    c: "模型蒸餾（distillation）"
+    d: "梯度裁剪（gradient clipping）"
+  correct: "b"
+  explanation:
+    why_correct: "RAG 的典型流程是 chunking -> embedding -> 向量資料庫（Vector Store） -> retrieval -> prompt augmentation -> generation。"
+    why_not_a: "反向傳播屬於模型訓練，不是建立檢索索引的必要步驟。"
+    why_not_c: "模型蒸餾是壓縮模型的方法，和文件前處理不同。"
+    why_not_d: "梯度裁剪也是訓練技巧，非 RAG 建索引流程。"
+  keywords:
+    - "RAG"
+    - "chunking"
+    - "向量資料庫（Vector Store）"
+  exam_trap: false
+
+- id: "L22403-Q07"
+  topic_code: "L22403"
+  item_code: "L22403-7"
+  difficulty: 1
+  question: "在資料平行（Data Parallelism, DDP）中，下列何者最符合其基本運作方式？"
+  options:
+    a: "每張 GPU 只存模型的一層"
+    b: "每張 GPU 使用不同 tokenizer"
+    c: "模型在多張 GPU 上各自複製一份，資料批次被切分後同步梯度（AllReduce）"
+    d: "把文件切塊後寫入向量資料庫"
+  correct: "c"
+  explanation:
+    why_correct: "DDP 的核心是 model replicated, data split，之後用 AllReduce 同步梯度更新。"
+    why_not_a: "把模型層或權重切開比較接近 tensor 或 pipeline parallelism。"
+    why_not_b: "tokenizer 通常不是 DDP 切分的核心對象。"
+    why_not_d: "這描述的是 RAG 建索引流程，不是分散式訓練。"
+  keywords:
+    - "Data Parallelism"
+    - "DDP"
+    - "AllReduce"
+  exam_trap: true
+
+- id: "L22403-Q08"
+  topic_code: "L22403"
+  item_code: "L22403-8"
+  difficulty: 1
+  question: "若要用 Hugging Face `pipeline()` 做一般生成式續寫（text continuation），下列哪個 task name 最正確？"
+  options:
+    a: "`summarization`"
+    b: "`question-answering`"
+    c: "`feature-extraction`"
+    d: "`text-generation`"
+  correct: "d"
+  explanation:
+    why_correct: "`text-generation` 是做一般文字生成與續寫時最直接的 pipeline task name。"
+    why_not_a: "`summarization` 用於摘要任務，學生常因為也會輸出文字而誤選。"
+    why_not_b: "`question-answering` 偏抽取式問答，不是自由生成續寫的標準 task。"
+    why_not_c: "`feature-extraction` 主要輸出向量表徵，不是自然語句生成。"
+  keywords:
+    - "Hugging Face"
+    - "pipeline"
+    - "text-generation"
+  exam_trap: false
+
+- id: "L22403-Q09"
+  topic_code: "L22403"
+  item_code: "L22403-1"
+  difficulty: 2
+  question: "下列哪一個資料集（dataset）最適合用來說明『高品質 curated mixture』而非單純大規模網頁爬蟲（web crawl）？"
+  options:
+    a: "The Pile（825GB，22 個多樣來源）"
+    b: "單次 Common Crawl 原始 HTML"
+    c: "任一企業內部 FAQ PDF"
+    d: "單一產品的說明文件頁"
+  correct: "a"
+  explanation:
+    why_correct: "The Pile 是由 22 個多樣且相對高品質來源混合而成，常用來對比原始網頁爬蟲語料。"
+    why_not_b: "Common Crawl 代表的是規模極大、來源開放但品質與重複控制更困難的 raw web corpus。"
+    why_not_c: "企業 FAQ 可用於 RAG 或微調，但不代表大規模 curated pretraining mixture。"
+    why_not_d: "單一產品說明文件規模太小，也缺乏多樣性。"
+  keywords:
+    - "The Pile"
+    - "curated mixture"
+    - "corpus diversity"
+  exam_trap: false
+
+- id: "L22403-Q10"
+  topic_code: "L22403"
+  item_code: "L22403-2"
+  difficulty: 2
+  question: "語料去重（deduplication）能降低模型 memorization 與 train-test overlap，最主要是因為它做了什麼？"
+  options:
+    a: "移除完全相同或近似重複的內容，減少模型反覆看到相同片段"
+    b: "把每份文件都改寫成不同語言"
+    c: "把所有低頻詞都刪掉"
+    d: "只保留最長的文件"
+  correct: "a"
+  explanation:
+    why_correct: "去重的目的就是減少重複曝光，避免模型過度記住特定內容，也降低評估資料污染。"
+    why_not_b: "改寫語言不等於去重，甚至可能保留相同語意重複。"
+    why_not_c: "刪除低頻詞屬於粗糙詞彙過濾，不是 dedup 的核心。"
+    why_not_d: "只保留長文件無法處理重複問題，還可能犧牲多樣性。"
+  keywords:
+    - "deduplication"
+    - "memorization"
+    - "train-test overlap"
+  exam_trap: false
+
+- id: "L22403-Q11"
+  topic_code: "L22403"
+  item_code: "L22403-3"
+  difficulty: 2
+  question: "相較於 BPE，WordPiece 的 merge 準則更接近下列哪一種描述？"
+  options:
+    a: "只看字元出現順序，不看統計"
+    b: "完全隨機選擇要合併的子詞"
+    c: "依提升訓練語料 likelihood 的效果決定合併"
+    d: "固定使用人工詞典，不進行資料驅動學習"
+  correct: "c"
+  explanation:
+    why_correct: "WordPiece 常被描述為 likelihood-based merge，和 BPE 只看頻率的直觀說法不同。"
+    why_not_a: "WordPiece 並不是只看順序，核心仍是統計驅動。"
+    why_not_b: "隨機合併不可能形成穩定有效的 tokenizer。"
+    why_not_d: "WordPiece 仍是從資料學出 subword，不是固定人工詞典。"
+  keywords:
+    - "WordPiece"
+    - "likelihood-based merge"
+    - "BPE comparison"
+  exam_trap: true
+
+- id: "L22403-Q12"
+  topic_code: "L22403"
+  item_code: "L22403-4"
+  difficulty: 2
+  question: "為什麼在企業導入生成式 AI 時，RAG（Retrieval-Augmented Generation）通常不需要像 pretraining 那樣的 TB 級資料？"
+  options:
+    a: "因為 RAG 不會用到 tokenizer"
+    b: "因為 RAG 只允許使用英文資料"
+    c: "因為 RAG 仍要重新訓練整個基礎模型"
+    d: "因為 RAG 主要是對任務相關文件做切塊、嵌入與檢索，而不是從零學語言能力"
+  correct: "d"
+  explanation:
+    why_correct: "RAG 的價值在補充外部知識檢索，並不等於重新建立模型的通用語言能力，因此資料量常遠小於 pretraining。"
+    why_not_a: "RAG 一樣常會受 tokenizer 與 token 長度影響。"
+    why_not_b: "RAG 並不限於英文，中文與多語資料也可使用。"
+    why_not_c: "RAG 核心不是 full retraining，這是和 fine-tuning/pretraining 混淆的典型錯誤。"
+  keywords:
+    - "RAG"
+    - "pretraining vs RAG"
+    - "資料量級"
+  exam_trap: true
+
+- id: "L22403-Q13"
+  topic_code: "L22403"
+  item_code: "L22403-5"
+  difficulty: 2
+  question: "下列何者最能正確描述 RLHF（Reinforcement Learning from Human Feedback）中的偏好資料（preference data）？"
+  options:
+    a: "只有單一正確答案的分類標籤"
+    b: "常見為 chosen/rejected 的回答配對，用來訓練偏好或 reward 訊號"
+    c: "只包含原始 HTML 與 CSS"
+    d: "和 SFT 完全相同，不需區分"
+  correct: "b"
+  explanation:
+    why_correct: "RLHF 常用成對偏好資料表示人類偏好，與一般 SFT 的 instruction-response 格式不同。"
+    why_not_a: "分類標籤不是 RLHF 偏好資料的典型形式。"
+    why_not_c: "HTML/CSS 不是偏好學習資料格式的重點。"
+    why_not_d: "SFT 與 RLHF 使用的資料結構、目標與訓練方式都不同。"
+  keywords:
+    - "RLHF"
+    - "preference data"
+    - "chosen rejected"
+  exam_trap: true
+
+- id: "L22403-Q14"
+  topic_code: "L22403"
+  item_code: "L22403-6"
+  difficulty: 2
+  question: "RAG 中常見的 fixed-size chunking 為何常落在 256–512 tokens 左右？"
+  options:
+    a: "因為所有模型都強制固定 384 tokens"
+    b: "因為這個範圍常能兼顧語意完整性、檢索粒度與上下文長度成本"
+    c: "因為 chunk 越大，embedding 維度會自動增加"
+    d: "因為向量資料庫無法儲存超過 512 tokens 的文字"
+  correct: "b"
+  explanation:
+    why_correct: "256–512 tokens 是常見實務起點，目的是在檢索命中率、片段完整性與上下文成本之間取得平衡。"
+    why_not_a: "不存在所有模型都固定 384 tokens 的規則。"
+    why_not_c: "embedding 維度由模型決定，不會因 chunk 字數自動增長。"
+    why_not_d: "向量資料庫能存更長文字，限制通常不是這麼絕對。"
+  keywords:
+    - "chunking"
+    - "256-512 tokens"
+    - "RAG design"
+  exam_trap: false
+
+- id: "L22403-Q15"
+  topic_code: "L22403"
+  item_code: "L22403-7"
+  difficulty: 2
+  question: "相較於 Data Parallelism，Tensor Parallelism 的切分重點是什麼？"
+  options:
+    a: "把資料集切給不同公司"
+    b: "把 tokenizer vocabulary 平均切給不同 GPU"
+    c: "把單一層的權重矩陣（weight matrices）切分到多張 GPU"
+    d: "把模型輸出只保留前 10 個 token"
+  correct: "c"
+  explanation:
+    why_correct: "Tensor Parallelism 針對同一層內的大矩陣做切分，常見於 Megatron-LM 類架構。"
+    why_not_a: "資料集分給不同公司不是分散式平行訓練術語。"
+    why_not_b: "vocabulary 可影響某些實作，但 tensor parallel 的核心不是切 tokenizer。"
+    why_not_d: "這和生成參數設定有關，不是平行訓練策略。"
+  keywords:
+    - "Tensor Parallelism"
+    - "Megatron-LM"
+    - "weight matrices"
+  exam_trap: false
+
+- id: "L22403-Q16"
+  topic_code: "L22403"
+  item_code: "L22403-8"
+  difficulty: 2
+  question: "在 Hugging Face `model.generate()` 中，若想限制『新生成 token 數量』，應優先使用哪個參數？"
+  options:
+    a: "`max_length`"
+    b: "`temperature`"
+    c: "`top_p`"
+    d: "`max_new_tokens`"
+  correct: "d"
+  explanation:
+    why_correct: "`max_new_tokens` 是目前最直觀且 exam-safe 的參數，用來限制新輸出的 token 數。"
+    why_not_a: "`max_length` 容易和輸入長度一起計算而造成誤解，題目要求的是新生成 token。"
+    why_not_b: "`temperature` 控制隨機性，不控制輸出長度。"
+    why_not_c: "`top_p` 是 nucleus sampling 參數，也不直接限制長度。"
+  keywords:
+    - "model.generate"
+    - "max_new_tokens"
+    - "Hugging Face"
+  exam_trap: true
+
+- id: "L22403-Q17"
+  topic_code: "L22403"
+  item_code: "L22403-1"
+  difficulty: 3
+  question: "台灣某新創想建立繁中客服大模型（Traditional Chinese customer-support LLM），正在比較語料來源。若目標是提升語言涵蓋度與穩定性，下列哪個作法最合理？"
+  options:
+    a: "混合多來源且已做授權審查的繁中、英文與領域文本，兼顧規模、品質與多樣性"
+    b: "只抓單一論壇的熱門貼文，因為話題最即時"
+    c: "只保留最長文章，刪除所有短句"
+    d: "完全忽略資料來源授權，只看總 token 數"
+  correct: "a"
+  explanation:
+    why_correct: "預訓練語料品質來自規模、品質、多樣性與授權合規的平衡，不是單靠某一來源灌大。"
+    why_not_b: "單一論壇可能產生偏見、文體單一與資料污染，不利泛化。"
+    why_not_c: "只留長文會犧牲對話、問答、摘要等短文本型態。"
+    why_not_d: "忽略授權可能帶來法律與商業風險，即使 token 數很大也不合理。"
+  keywords:
+    - "corpus design"
+    - "多樣性"
+    - "授權合規"
+  exam_trap: false
+
+- id: "L22403-Q18"
+  topic_code: "L22403"
+  item_code: "L22403-2"
+  difficulty: 3
+  question: "你在整理企業 FAQ 與歷史客服紀錄時，發現許多內容只有標點或少數字詞不同，但語意幾乎相同。此時最適合優先加入哪種流程？"
+  options:
+    a: "加入 near-dedup，例如 MinHash / LSH 類方法"
+    b: "只做 exact hash，比對完全相同字串即可"
+    c: "直接提高 `temperature`"
+    d: "把所有文件轉成 PDF"
+  correct: "a"
+  explanation:
+    why_correct: "當重複不是逐字相同而是近似改寫時，near-dedup 才能有效抓出這類資料污染。"
+    why_not_b: "exact hash 只能處理完全一致內容，會漏掉輕微改寫或格式差異。"
+    why_not_c: "temperature 是生成時的取樣參數，無法清理資料。"
+    why_not_d: "轉成 PDF 只改檔案封裝形式，不會解決文本重複。"
+  keywords:
+    - "near-dedup"
+    - "MinHash"
+    - "FAQ cleaning"
+  exam_trap: false
+
+- id: "L22403-Q19"
+  topic_code: "L22403"
+  item_code: "L22403-3"
+  difficulty: 3
+  question: "某團隊要處理中英日混合文本，且希望 tokenizer 對沒有明確空白分隔的語言也能穩定工作。下列哪個選擇最合理？"
+  options:
+    a: "只用人工空白斷詞，不需要 tokenizer"
+    b: "強制每種語言分別用不同資料庫"
+    c: "優先考慮 SentencePiece，因其 language-agnostic 且不必先做 pre-tokenization"
+    d: "直接使用 one-hot character encoding 取代所有 subword 方法"
+  correct: "c"
+  explanation:
+    why_correct: "SentencePiece 可直接對 raw text 建模，常用於 T5、mT5 等多語或無空白語言場景。"
+    why_not_a: "人工空白斷詞對中日文並不穩定，也不符合現代 subword tokenizer 流程。"
+    why_not_b: "不同語言可混合建 tokenizer，不必先拆成不同資料庫。"
+    why_not_d: "純字元 one-hot 通常效率差，且不符合題目想要的主流 tokenizer。"
+  keywords:
+    - "SentencePiece"
+    - "language-agnostic"
+    - "multilingual"
+  exam_trap: false
+
+- id: "L22403-Q20"
+  topic_code: "L22403"
+  item_code: "L22403-4"
+  difficulty: 3
+  question: "某大學實驗室只有 5 萬筆高品質指令資料，想讓開源模型更會回答校務問答。從資料量與目標來看，最合適的起點是什麼？"
+  options:
+    a: "重做 TB 級 pretraining"
+    b: "先蒐集 3T tokens 再說"
+    c: "直接建全校網頁的 Common Crawl"
+    d: "先做 SFT 或 PEFT/LoRA 微調，而非從零預訓練"
+  correct: "d"
+  explanation:
+    why_correct: "5 萬筆高品質 instruction data 非常符合 SFT/LoRA 類微調場景，不適合直接走預訓練。"
+    why_not_a: "TB 級 pretraining 的成本與資料需求遠超過題目條件。"
+    why_not_b: "3T tokens 是預訓練級別，不是校務問答系統的合理起點。"
+    why_not_c: "抓全校網頁可做 RAG 補知識，但若目標是提升指令遵循能力，SFT/LoRA 更直接。"
+  keywords:
+    - "SFT"
+    - "PEFT"
+    - "LoRA"
+  exam_trap: false
+
+- id: "L22403-Q21"
+  topic_code: "L22403"
+  item_code: "L22403-5"
+  difficulty: 3
+  question: "某公司想用最少 GPU 記憶體做客服模型調整，手上只有約 3,000 組高品質指令資料。下列哪個方案最符合實務？"
+  options:
+    a: "優先考慮 LoRA，常見 rank 可從 r=4、8、16 等小值起試"
+    b: "必須進行 full fine-tuning，否則無法學習"
+    c: "資料太少，唯一方法是先做 1T tokens pretraining"
+    d: "先做 Pipeline Parallelism，再忽略資料品質"
+  correct: "a"
+  explanation:
+    why_correct: "LoRA/PEFT 正是面向資料較少、成本受限場景；3,000 筆也落在常見 1K–10K instruction examples 的可行區間。"
+    why_not_b: "full fine-tuning 並非唯一選項，且成本更高。"
+    why_not_c: "少量高品質資料仍可用於 LoRA，沒有必要跳到預訓練量級。"
+    why_not_d: "Pipeline Parallelism 解的是模型分階段執行，不會取代資料品質需求。"
+  keywords:
+    - "LoRA"
+    - "PEFT"
+    - "rank"
+  exam_trap: false
+
+- id: "L22403-Q22"
+  topic_code: "L22403"
+  item_code: "L22403-6"
+  difficulty: 3
+  question: "你要為法規文件建立 RAG 系統，若使用單一 5,000-token chunk，最可能出現哪個問題？"
+  options:
+    a: "embedding 模型一定無法運作"
+    b: "檢索粒度過粗，容易取回包含太多無關內容的片段"
+    c: "向量資料庫會自動變成關聯式資料庫"
+    d: "模型會自動進入 RLHF 模式"
+  correct: "b"
+  explanation:
+    why_correct: "chunk 太大時，單一片段涵蓋過多主題，檢索命中雖可能包含答案，卻夾帶大量噪音。"
+    why_not_a: "embedding 模型不一定無法運作，只是效果可能下降。"
+    why_not_c: "向量資料庫的型態不會因 chunk 變大而改變。"
+    why_not_d: "RLHF 與 RAG chunk 大小沒有這種自動關聯。"
+  keywords:
+    - "RAG"
+    - "chunk size"
+    - "retrieval quality"
+  exam_trap: true
+
+- id: "L22403-Q23"
+  topic_code: "L22403"
+  item_code: "L22403-7"
+  difficulty: 3
+  question: "閱讀下列情境：『8 張 GPU 都有完整模型副本，各自處理不同 mini-batch，之後用 AllReduce 同步梯度。』這最符合哪種分散式策略？"
+  options:
+    a: "Tensor Parallelism"
+    b: "Pipeline Parallelism"
+    c: "Data Parallelism"
+    d: "RAG Index Sharding"
+  correct: "c"
+  explanation:
+    why_correct: "完整模型副本 + 資料切分 + AllReduce，同時出現時就是 Data Parallelism 的典型描述。"
+    why_not_a: "Tensor Parallelism 會切分層內權重，不會讓每張 GPU 都保有完整模型。"
+    why_not_b: "Pipeline Parallelism 是把層分成 stage，會有 micro-batch 與 bubble 問題。"
+    why_not_d: "Index sharding 是檢索架構，不是訓練平行策略。"
+  keywords:
+    - "Data Parallelism"
+    - "AllReduce"
+    - "distributed training"
+  exam_trap: false
+
+- id: "L22403-Q24"
+  topic_code: "L22403"
+  item_code: "L22403-8"
+  difficulty: 3
+  question: "下列模型與 tokenizer 配對，何者正確？"
+  options:
+    a: "BERT -> SentencePiece"
+    b: "GPT-4 -> WordPiece"
+    c: "T5 -> WordPiece"
+    d: "DistilBERT -> WordPiece"
+  correct: "d"
+  explanation:
+    why_correct: "BERT 與 DistilBERT 系列典型使用 WordPiece；因此 DistilBERT -> WordPiece 是正確配對。"
+    why_not_a: "BERT 的典型 tokenizer 是 WordPiece，不是 SentencePiece。（補充：LLaMA 1/2 使用 SentencePiece-BPE 框架，非單純 BPE；LLaMA 3 才改為 tiktoken）"
+    why_not_b: "GPT-4 題目設定下歸類為 BPE 路線，OpenAI 常以 tiktoken 表述其 BPE tokenizer。"
+    why_not_c: "T5 系列常使用 SentencePiece，不是 WordPiece。"
+  keywords:
+    - "WordPiece"
+    - "BERT"
+    - "DistilBERT"
+  exam_trap: true
+
+- id: "L22403-Q25"
+  topic_code: "L22403"
+  item_code: "L22403-1"
+  difficulty: 4
+  question: "比較 Common Crawl 與 The Pile 時，下列分析何者最合理？"
+  options:
+    a: "Common Crawl 規模可達約 100TB raw HTML，但品質與授權控制更困難；The Pile 雖較小（825GB），卻是 22 個來源的 curated mixture"
+    b: "The Pile 比 Common Crawl 更接近原始網頁抓取，因此噪音一定更高"
+    c: "兩者都不適合任何預訓練用途"
+    d: "只要 token 數大，資料品質與多樣性就不再重要"
+  correct: "a"
+  explanation:
+    why_correct: "這正好反映兩類語料的核心差異：raw web crawl 強在規模，curated mixture 強在品質控制與來源設計。"
+    why_not_b: "The Pile 反而常被拿來對比 raw crawl 的較高品質混合策略。"
+    why_not_c: "兩者都曾被用於大型語言模型相關工作，只是治理方式不同。"
+    why_not_d: "大規模不會自動帶來高品質或合法性，這是高頻迷思。"
+  keywords:
+    - "Common Crawl"
+    - "The Pile"
+    - "corpus quality"
+  exam_trap: true
+
+- id: "L22403-Q26"
+  topic_code: "L22403"
+  item_code: "L22403-2"
+  difficulty: 4
+  question: "若一個資料清理流程同時包含 exact hash 去重、MinHash near-dedup、quality filtering，下列分析何者最恰當？"
+  options:
+    a: "這三者彼此重複，只要保留一種即可"
+    b: "這三者處理的問題層次不同，組合使用可同時降低重複、噪音與低品質資料"
+    c: "quality filtering 可以完全取代 dedup"
+    d: "MinHash 只適合拿來做 GPU 排程"
+  correct: "b"
+  explanation:
+    why_correct: "exact dedup 抓完全相同內容，MinHash 處理近似重複，quality filtering 則清理低品質樣本，三者互補。"
+    why_not_a: "把不同資料問題當成同一件事，是常見的流程設計錯誤。"
+    why_not_c: "quality filtering 不會自動識別近似重複文本。"
+    why_not_d: "MinHash 是文本相似度近似方法，不是排程工具。"
+  keywords:
+    - "exact dedup"
+    - "MinHash"
+    - "quality filtering"
+  exam_trap: false
+
+- id: "L22403-Q27"
+  topic_code: "L22403"
+  item_code: "L22403-3"
+  difficulty: 4
+  question: "比較 BPE、WordPiece、SentencePiece，下列哪項判斷最精確？"
+  options:
+    a: "BPE、WordPiece、SentencePiece 都必須先以空白切詞，否則無法用於中文"
+    b: "WordPiece 與 BPE 完全相同，只是名稱不同"
+    c: "SentencePiece 可直接處理 raw text，而 WordPiece 常以 likelihood-based merge 與 BPE 區隔"
+    d: "只有 SentencePiece 能做 subword tokenization，另外兩者都不能"
+  correct: "c"
+  explanation:
+    why_correct: "SentencePiece 的強項是免 pre-tokenization；WordPiece 與 BPE 則常以 merge 準則不同作為教學區分。"
+    why_not_a: "這是把傳統斷詞需求套到所有 subword 方法上的誤解。"
+    why_not_b: "兩者相近但並非完全相同，考點就在於 merge 準則差異。"
+    why_not_d: "三者都屬於主流 subword tokenizer 路線。"
+  keywords:
+    - "BPE"
+    - "WordPiece"
+    - "SentencePiece"
+  exam_trap: true
+
+- id: "L22403-Q28"
+  topic_code: "L22403"
+  item_code: "L22403-4"
+  difficulty: 4
+  question: "下列哪一組比較最能正確反映 pretraining、SFT 與 RAG 的資料角色差異？"
+  options:
+    a: "pretraining 用來存向量；SFT 用來做網頁爬蟲；RAG 用來切 GPU"
+    b: "pretraining 重建通用語言能力；SFT 對齊任務或指令；RAG 透過外部文件檢索補充最新知識"
+    c: "三者本質完全相同，只是名稱不同"
+    d: "只要用了 RAG，就不再需要任何資料清理"
+  correct: "b"
+  explanation:
+    why_correct: "這個選項同時抓到三者的功能定位，而不是只比較資料量。"
+    why_not_a: "三個描述都把概念錯置到不相關的系統元件上。"
+    why_not_c: "三者在訓練目標、資料型態與系統架構上明顯不同。"
+    why_not_d: "RAG 仍需要清理、切塊與索引品質控制。"
+  keywords:
+    - "pretraining"
+    - "SFT"
+    - "RAG"
+  exam_trap: true
+
+- id: "L22403-Q29"
+  topic_code: "L22403"
+  item_code: "L22403-5"
+  difficulty: 4
+  question: "比較 SFT、RLHF 與 LoRA/PEFT，下列判斷何者最合理？"
+  options:
+    a: "LoRA 的主要目的，是把 chosen/rejected pair 轉成 embedding"
+    b: "SFT 常用 instruction-response pairs；RLHF 常用偏好配對；LoRA/PEFT 著重以較少可訓練參數降低成本"
+    c: "只要做 RLHF，就不再需要任何監督資料"
+    d: "SFT 一定比 LoRA 更省記憶體"
+  correct: "b"
+  explanation:
+    why_correct: "這個選項同時正確區分三者的資料格式與系統目的，是考試高頻綜合題。"
+    why_not_a: "LoRA 是參數高效微調方法，不是資料格式轉換工具。"
+    why_not_c: "RLHF 常建立在已具備 SFT 基礎的模型之上。"
+    why_not_d: "LoRA/PEFT 正是以更省資源著稱，不能反過來說。"
+  keywords:
+    - "SFT"
+    - "RLHF"
+    - "LoRA"
+  exam_trap: false
+
+- id: "L22403-Q30"
+  topic_code: "L22403"
+  item_code: "L22403-6"
+  difficulty: 4
+  question: "若某 RAG 系統檢索效果不佳，團隊正在比較 fixed-size chunking、semantic chunking、recursive chunking。下列分析何者較合理？"
+  options:
+    a: "三者效果必定完全相同，只差名稱"
+    b: "只要換更大的向量資料庫，就不必在意 chunking 方法"
+    c: "chunking 策略會影響語意邊界、檢索粒度與上下文冗餘，應依文件型態調整"
+    d: "chunking 只在圖片模型有用，文字 RAG 不需要"
+  correct: "c"
+  explanation:
+    why_correct: "chunking 方法決定片段如何切分，直接影響 embedding 表示與後續檢索品質。"
+    why_not_a: "不同 chunking 會切出不同片段結構，效果不可能天然相同。"
+    why_not_b: "向量資料庫不是萬靈丹，片段切法錯誤仍會讓檢索偏離需求。"
+    why_not_d: "文字 RAG 的第一步通常就是文件切塊。"
+  keywords:
+    - "fixed-size chunking"
+    - "semantic chunking"
+    - "recursive chunking"
+  exam_trap: false
+
+- id: "L22403-Q31"
+  topic_code: "L22403"
+  item_code: "L22403-7"
+  difficulty: 4
+  question: "比較 Tensor Parallelism 與 Pipeline Parallelism，下列敘述何者最正確？"
+  options:
+    a: "兩者都只是在切資料，和模型無關"
+    b: "Tensor Parallelism 把層內矩陣切到多 GPU；Pipeline Parallelism 把模型層分段成 stages，但可能有 bubble overhead"
+    c: "Pipeline Parallelism 的主要用途是建立向量索引"
+    d: "Tensor Parallelism 一定比 Data Parallelism 更容易部署在任何小模型上"
+  correct: "b"
+  explanation:
+    why_correct: "這正是兩者的經典差異：一個切層內運算，一個切跨層 stage；後者常伴隨 idle bubble。"
+    why_not_a: "這兩者都屬於模型切分，不是單純資料切分。"
+    why_not_c: "向量索引屬於 RAG 系統，與 Pipeline Parallelism 無關。"
+    why_not_d: "是否容易部署取決於模型大小與架構，不存在這種絕對規則。"
+  keywords:
+    - "Tensor Parallelism"
+    - "Pipeline Parallelism"
+    - "bubble overhead"
+  exam_trap: true
+
+- id: "L22403-Q32"
+  topic_code: "L22403"
+  item_code: "L22403-3"
+  difficulty: 4
+  question: "關於 OpenAI 的 `tiktoken`，下列分析何者正確？"
+  options:
+    a: "`tiktoken` 是 Hugging Face 的 RLHF trainer"
+    b: "`tiktoken` 主要用於向量資料庫索引，不做 tokenization"
+    c: "`tiktoken` 與 BPE 無關，完全是 WordPiece 實作"
+    d: "`tiktoken` 可視為 OpenAI 的 fast BPE tokenizer；`cl100k_base` 詞彙表大小為 100,277"
+  correct: "d"
+  explanation:
+    why_correct: "依題目給定事實，`tiktoken` 屬於 OpenAI 的 BPE tokenizer 實作，`cl100k_base` vocab size 為 100,277（GPT-4 / GPT-3.5 使用 `cl100k_base`；GPT-4o 起改為 `o200k_base`，詞彙量約 200k）。"
+    why_not_a: "RLHF trainer 與 tokenizer 是不同層級的工具。"
+    why_not_b: "tokenization 是 `tiktoken` 的核心用途，不是向量索引本身。"
+    why_not_c: "題目指定 `tiktoken` 為 BPE 路線，不是 WordPiece。"
+  keywords:
+    - "tiktoken"
+    - "cl100k_base"
+    - "BPE"
+  exam_trap: true
+
+- id: "L22403-Q33"
+  topic_code: "L22403"
+  item_code: "L22403-4"
+  difficulty: 5
+  question: "某政府單位要做法規問答系統，只有 2 萬筆問答資料，但法規經常更新且必須可追溯來源。從資料策略評估（evaluation）來看，哪個方案最合適？"
+  options:
+    a: "以 RAG 為主，必要時搭配少量 SFT 強化回答格式與指令遵循"
+    b: "直接做大規模 pretraining，因為法規會更新"
+    c: "只做 RLHF，不需要知識檢索"
+    d: "只靠增加 `temperature` 讓模型看起來更懂法規"
+  correct: "a"
+  explanation:
+    why_correct: "法規常更新且需來源可追溯，RAG 最能處理最新知識；若再加少量 SFT，可改善回答風格與格式一致性。"
+    why_not_b: "pretraining 成本極高，且不利快速反映頻繁法規更新。"
+    why_not_c: "RLHF 可調整偏好，但不能取代最新法規內容的檢索。"
+    why_not_d: "temperature 只改取樣隨機性，不會提升知識正確性。"
+  keywords:
+    - "RAG"
+    - "SFT"
+    - "法規問答"
+  exam_trap: false
+
+- id: "L22403-Q34"
+  topic_code: "L22403"
+  item_code: "L22403-5"
+  difficulty: 5
+  question: "一個台灣校園助理專案預算有限，手上有 8,000 筆高品質 instruction data，想提升特定任務表現。若需在效果、成本、資料量之間取捨，下列何者最合理？"
+  options:
+    a: "先做 full pretraining，因為資料越多越好"
+    b: "改做 Common Crawl 爬蟲，取代所有標註資料"
+    c: "只建向量資料庫（Vector Store），不做任何模型調整也一定最好"
+    d: "優先採用 PEFT/LoRA，必要時再擴充至 SFT；這比 full fine-tuning 更符合成本約束"
+  correct: "d"
+  explanation:
+    why_correct: "8,000 筆高品質資料非常適合先走 LoRA/PEFT，能在有限 GPU 與時間下取得較高性價比。"
+    why_not_a: "預訓練需求與專案條件明顯不匹配。"
+    why_not_b: "網頁爬蟲增加的是原始文本，不等於任務對齊所需的 instruction data。"
+    why_not_c: "向量資料庫（Vector Store）適合知識補充，但不一定能改善指令格式、拒答策略或回應風格。"
+  keywords:
+    - "PEFT"
+    - "LoRA"
+    - "cost trade-off"
+  exam_trap: false
+
+- id: "L22403-Q35"
+  topic_code: "L22403"
+  item_code: "L22403-6"
+  difficulty: 5
+  question: "某企業的 RAG 系統需要同時支援『快速檢索』與『較少斷裂的語意片段』。若要在 fixed-size chunking 與 semantic chunking 間做取捨，下列評估何者較佳？"
+  options:
+    a: "只要是 RAG，一律固定用 32 tokens chunk 最佳"
+    b: "semantic chunking 一定全面優於 fixed-size，沒有例外"
+    c: "可先以 256–512 tokens 的 fixed-size 做 baseline，再針對長法規或章節式文件評估 semantic chunking"
+    d: "chunking 不影響檢索效果，因此可忽略"
+  correct: "c"
+  explanation:
+    why_correct: "這種做法兼顧工程可控性與檢索品質，先建立 baseline，再依文件型態評估更語意化的切法。"
+    why_not_a: "32 tokens 常過小，容易造成語意破碎，不是通用最佳值。"
+    why_not_b: "semantic chunking 未必在所有資料與成本條件下都更優。"
+    why_not_d: "chunking 是 RAG 品質的核心槓桿之一。"
+  keywords:
+    - "semantic chunking"
+    - "fixed-size chunking"
+    - "RAG trade-off"
+  exam_trap: false
+
+- id: "L22403-Q36"
+  topic_code: "L22403"
+  item_code: "L22403-7"
+  difficulty: 5
+  question: "某 40B 模型在 8 張 GPU 上訓練時，單卡放不下完整模型。若團隊希望降低記憶體壓力，但又擔心 stage 間 idle bubble，最合理的評估是什麼？"
+  options:
+    a: "只用 Data Parallelism 就一定能解決模型放不下的問題"
+    b: "直接改用更大的 chunk size，與平行策略無關"
+    c: "把所有資料轉成 chosen/rejected pairs 即可"
+    d: "可優先考慮 Tensor Parallelism，必要時再與 Pipeline Parallelism 組合，因為前者先解決單層權重放不下的問題"
+  correct: "d"
+  explanation:
+    why_correct: "當單卡放不下模型時，先處理權重切分是合理路徑；若模型更大，再評估與 pipeline 組合及其 bubble 成本。"
+    why_not_a: "Data Parallelism 會複製完整模型，無法解決單卡無法容納的根本問題。"
+    why_not_b: "chunk size 屬於 RAG/文本處理，不是模型記憶體切分方案。"
+    why_not_c: "chosen/rejected pairs 是 RLHF 資料格式，和模型裝不下無關。"
+  keywords:
+    - "Tensor Parallelism"
+    - "Pipeline Parallelism"
+    - "memory trade-off"
+  exam_trap: false
+
+- id: "L22403-Q37"
+  topic_code: "L22403"
+  item_code: "L22403-8"
+  difficulty: 5
+  question: "閱讀下列 pseudocode 後，哪個修改最能符合『摘要（summarization）』用途？\n\n```python\nfrom transformers import pipeline\npipe = pipeline(task=?, model=\"google/flan-t5-base\")\nresult = pipe(article)\n```"
+  options:
+    a: "把 `task` 設成 `summarization`"
+    b: "把 `task` 設成 `feature-extraction`"
+    c: "把 `task` 設成 `fill-mask`"
+    d: "把 `task` 設成 `text-classification`"
+  correct: "a"
+  explanation:
+    why_correct: "`summarization` 是 Hugging Face 對摘要任務提供的標準 pipeline task name。"
+    why_not_b: "`feature-extraction` 會輸出表徵向量，不會直接產生摘要文字。"
+    why_not_c: "`fill-mask` 用於遮罩語詞填空，與長文摘要不同。"
+    why_not_d: "`text-classification` 會輸出類別，不會整理摘要內容。"
+  keywords:
+    - "pipeline"
+    - "summarization"
+    - "pseudocode"
+  exam_trap: false
+
+- id: "L22403-Q38"
+  topic_code: "L22403"
+  item_code: "L22403-3"
+  difficulty: 5
+  question: "你要在多語客服系統中選 tokenizer，需求是：支援中英混合、盡量降低人工 pre-tokenization 依賴、並和現代生成模型實務接軌。從工程與資料角度評估，下列何者最合理？"
+  options:
+    a: "固定選 WordPiece，因為所有生成模型都只用 WordPiece"
+    b: "優先考慮 BPE 或 SentencePiece；若特別重視 raw text 與多語無空白處理，SentencePiece 更有優勢"
+    c: "放棄 subword，全部改成人工詞典切詞"
+    d: "tokenizer 與資料品質無關，因此可隨機選"
+  correct: "b"
+  explanation:
+    why_correct: "這個判斷同時考慮生成模型實務與多語處理特性，不把 tokenizer 選型簡化成單一教條。"
+    why_not_a: "WordPiece 常見於 BERT 類模型，但不是所有生成模型都採用。"
+    why_not_c: "人工詞典切詞在人力與泛化上通常不如主流 subword 方法。"
+    why_not_d: "tokenizer 會影響 token 數、跨語言處理與資料切分效率，不能隨機選。"
+  keywords:
+    - "SentencePiece"
+    - "BPE"
+    - "tokenizer selection"
+  exam_trap: false
+
+- id: "L22403-Q39"
+  topic_code: "L22403"
+  item_code: "L22403-4"
+  difficulty: 5
+  question: "若某團隊同時有 1,200 份內部 SOP、6 萬筆客服指令資料，以及有限算力，想在三個月內交付可用系統。從 pretraining、fine-tuning、RAG 三者取捨，下列方案何者最值得優先採用？"
+  options:
+    a: "先做 3T tokens 的預訓練，再視情況補文件"
+    b: "只用 Common Crawl，因為規模最大"
+    c: "以 RAG 導入 SOP 知識，並用 6 萬筆資料做 SFT/LoRA 強化互動格式與任務對齊"
+    d: "完全不做知識整理，僅靠 `top_k` 與 `top_p` 調參"
+  correct: "c"
+  explanation:
+    why_correct: "這個方案同時利用 RAG 的知識更新能力與 SFT/LoRA 的任務對齊能力，最符合三個月交付與有限算力條件。"
+    why_not_a: "3T tokens 預訓練與專案時程、資源完全不匹配。"
+    why_not_b: "單靠 Common Crawl 既無內部 SOP 可追溯性，也不保證客服任務對齊。"
+    why_not_d: "生成參數調整不能取代知識與對齊策略。"
+  keywords:
+    - "RAG"
+    - "SFT"
+    - "LoRA"
+  exam_trap: false
+
+- id: "L22403-Q40"
+  topic_code: "L22403"
+  item_code: "L22403-1"
+  difficulty: 5
+  question: "某團隊在比較預訓練語料來源時，看到下列選項：Common Crawl 約 100TB raw HTML、過濾後可形成約 15TB tokens 的 C4；ROOTS 約 1.6TB、59 languages（46 自然語言 + 13 程式語言）；RedPajama 1.2T tokens；Dolma 約 1.7T tokens（訓練樣本；總語料池約 3T，口訣常記 3T）。若專案目標是『多語、多樣且較容易治理』，哪個評估最合理？"
+  options:
+    a: "只看 Dolma 的 token 數最大，因此必然是唯一正解"
+    b: "只要選 Common Crawl，授權與品質就不需要再檢查"
+    c: "只要 ROOTS 是多語，就完全不必考慮資料品質與授權"
+    d: "不能只看規模；還要同時評估多語覆蓋、來源多樣性、資料品質與授權合規，必要時採混合語料策略"
+  correct: "d"
+  explanation:
+    why_correct: "這題的重點是評估取捨，不是背最大數字。多語與治理需求意味著規模、品質、多樣性、合規都要一起看。"
+    why_not_a: "token 數大不代表最適合專案目標，尤其當治理與多語平衡更重要時。"
+    why_not_b: "Common Crawl 規模大，但品質與授權風險反而更需要額外治理。"
+    why_not_c: "多語只是其中一個面向，不會自動保證合規或高品質。"
+  keywords:
+    - "Common Crawl"
+    - "ROOTS"
+    - "RedPajama"
+    - "Dolma"
+  exam_trap: true

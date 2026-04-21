@@ -1,0 +1,24 @@
+---
+title: 分詞器技術比較 (L22403)
+---
+graph TD
+    ROOT["✂️ 子詞分詞技術\nSubword Tokenization"]
+
+    BPE["BPE\nByte-Pair Encoding\n---\n演算法: 迭代合併最高頻字元對\n詞表: 從字元集開始擴充\n使用模型: GPT-2 / GPT-4 / LLaMA 3\n特性: 簡單高效; 與語言相依"]
+
+    WP["WordPiece\n---\n演算法: 最大化訓練語料 likelihood\n詞表: ## 前綴標示詞中片段\n使用模型: BERT / DistilBERT\n特性: 比 BPE 更平滑; 英文優化"]
+
+    SP["SentencePiece\n(框架, 非演算法)\n---\n包含: BPE-SP / Unigram 兩種演算法\n特性: 語言無關, 不需預先空格切詞\n使用模型: T5 / mT5 / XLNet / LLaMA 1–2\n優點: 多語言、中文、日文表現佳"]
+
+    TT["tiktoken\nOpenAI 快速 BPE 實作\n---\n gpt-4: cl100k_base (100,277 詞)\ngpt-4o: o200k_base (200,019 詞)\n特性: Rust 實作, 速度極快"]
+
+    ROOT --> BPE
+    ROOT --> WP
+    ROOT --> SP
+    ROOT --> TT
+
+    style ROOT fill:#f5f5f5,stroke:#616161,color:#000
+    style BPE fill:#e8f4f8,stroke:#1976D2,color:#000
+    style WP fill:#e8f5e9,stroke:#388E3C,color:#000
+    style SP fill:#fff3e0,stroke:#F57C00,color:#000
+    style TT fill:#fce4ec,stroke:#C62828,color:#000
