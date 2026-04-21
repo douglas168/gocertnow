@@ -1,0 +1,769 @@
+- id: "L22401-Q01"
+  topic_code: "L22401"
+  item_code: "L22401-5V特性"
+  difficulty: 1
+  question: "在大數據 5V（Volume/Velocity/Variety/Veracity/Value）中，最直接反映「資料量大到單機記憶體可能放不下」的是哪一項？"
+  options:
+    a: "Volume"
+    b: "Velocity"
+    c: "Veracity"
+    d: "Value"
+  correct: "a"
+  explanation:
+    why_correct: "Volume 指資料規模本身很大，常直接帶來儲存、記憶體與訓練時間壓力，因此會影響是否要採 mini-batch、out-of-core 或 distributed training。"
+    why_not_b: "Velocity 是資料到達速度快，不一定代表總量大；考生常把『即時資料很多』與『整體資料量大』混為一談。"
+    why_not_c: "Veracity 著重資料真實性、噪音與可信度，不是容量問題。"
+    why_not_d: "Value 是資料能否產生商業價值，偏決策層面，不是技術上的容量限制。"
+  keywords:
+    - "5V"
+    - "Volume"
+    - "memory constraint"
+  exam_trap: false
+
+- id: "L22401-Q02"
+  topic_code: "L22401"
+  item_code: "L22401-批次與線上學習"
+  difficulty: 1
+  question: "下列何者最符合線上學習（Online Learning / Incremental Learning）的特徵？"
+  options:
+    a: "每次一定要用全部歷史資料重新訓練"
+    b: "模型可隨新到達資料逐步更新"
+    c: "只能在分散式叢集上執行"
+    d: "一定比 mini-batch SGD 更準確"
+  correct: "b"
+  explanation:
+    why_correct: "Online / Incremental Learning 的核心是資料到一批更新一批，甚至逐筆更新，適合資料持續流入或無法一次放入記憶體的情境。"
+    why_not_a: "那是典型 batch retraining 思維，不是 incremental 更新。"
+    why_not_c: "線上學習可以在單機或分散式環境進行；常見誤解是把『線上』誤解成『上線服務』或『分散式平台』。"
+    why_not_d: "準確度取決於資料與調參，不能一概而論。"
+  keywords:
+    - "online learning"
+    - "incremental learning"
+    - "streaming data"
+  exam_trap: true
+
+- id: "L22401-Q03"
+  topic_code: "L22401"
+  item_code: "L22401-分散式ML框架"
+  difficulty: 1
+  question: "在分散式機器學習（Distributed Machine Learning）框架辨識題中，哪一個最常被用來描述 Spark 上的可擴展機器學習函式庫？"
+  options:
+    a: "TensorBoard"
+    b: "NumPy"
+    c: "Spark MLlib"
+    d: "OpenCV"
+  correct: "c"
+  explanation:
+    why_correct: "Spark MLlib 是 Apache Spark 生態中用於 scalable machine learning 的代表性函式庫，常見於大數據情境的 recognition-level 題目。"
+    why_not_a: "TensorBoard 主要是視覺化與監控工具，不是 Spark 的分散式 ML 函式庫。"
+    why_not_b: "NumPy 是單機數值運算基礎套件，不是 Spark 上的 distributed ML framework。"
+    why_not_d: "OpenCV 側重電腦視覺，不是 Spark 分散式機器學習的標準答案。"
+  keywords:
+    - "Spark MLlib"
+    - "distributed ML"
+    - "Apache Spark"
+  exam_trap: false
+
+- id: "L22401-Q04"
+  topic_code: "L22401"
+  item_code: "L22401-資料並行與模型並行"
+  difficulty: 1
+  question: "若同一個模型副本（model replica）部署在多個 worker，各自處理不同資料分片後再同步梯度，這最典型屬於哪一種平行化方式？"
+  options:
+    a: "Model Parallelism"
+    b: "Feature Selection"
+    c: "Federated Learning"
+    d: "Data Parallelism"
+  correct: "d"
+  explanation:
+    why_correct: "Data Parallelism 是將資料切分給多個 worker，而每個 worker 持有完整模型副本，再進行梯度同步或參數更新。"
+    why_not_a: "Model Parallelism 是把模型本身拆到不同裝置，不是把相同模型複製多份。"
+    why_not_b: "Feature Selection 是特徵篩選方法，與運算平行化架構不同。"
+    why_not_c: "Federated Learning 涉及資料不出端側的訓練協作，本題沒有這個條件。"
+  keywords:
+    - "data parallelism"
+    - "gradient synchronization"
+    - "worker"
+  exam_trap: false
+
+- id: "L22401-Q05"
+  topic_code: "L22401"
+  item_code: "L22401-維度災難"
+  difficulty: 1
+  question: "所謂維度災難（Curse of Dimensionality），核心是指哪一種現象？"
+  options:
+    a: "維度增加後，距離與鄰近性概念變得較不穩定，許多方法效果下降"
+    b: "資料筆數增加後，所有模型都必然過擬合"
+    c: "特徵越多，模型訓練一定越快"
+    d: "高維資料只能用監督式學習"
+  correct: "a"
+  explanation:
+    why_correct: "在高維空間中，樣本彼此距離差異可能趨於不明顯，造成距離型或密度型方法難以有效判別鄰近結構。"
+    why_not_b: "過擬合與樣本數、模型複雜度、正則化等都有關，並非資料多就必然過擬合。"
+    why_not_c: "特徵越多通常代表計算與記憶體成本更高，不會保證更快。"
+    why_not_d: "高維資料也可用於非監督式方法，只是某些方法會受維度災難影響。"
+  keywords:
+    - "curse of dimensionality"
+    - "high dimension"
+    - "distance concentration"
+  exam_trap: false
+
+- id: "L22401-Q06"
+  topic_code: "L22401"
+  item_code: "L22401-資料稀疏性與不平衡"
+  difficulty: 1
+  question: "在大規模 one-hot encoding 情境下，最常見的資料表示問題是什麼？"
+  options:
+    a: "資料自動變成平衡資料（balanced data）"
+    b: "產生高維且稀疏（sparse）的向量表示"
+    c: "所有特徵都會變成連續值"
+    d: "可完全消除維度災難"
+  correct: "b"
+  explanation:
+    why_correct: "one-hot encoding 會把類別特徵展成大量 0 與少量 1 的向量，因此常形成高維 sparse vectors，增加記憶體與計算負擔。"
+    why_not_a: "one-hot 是特徵表示法，與類別分布是否平衡沒有直接關係。"
+    why_not_c: "one-hot 反而是離散類別轉成二元向量，不會自動變成連續特徵。"
+    why_not_d: "高維 sparse 表示常使高維問題更明顯，不是消除它。"
+  keywords:
+    - "sparsity"
+    - "one-hot encoding"
+    - "sparse vector"
+  exam_trap: false
+
+- id: "L22401-Q07"
+  topic_code: "L22401"
+  item_code: "L22401-分散式訓練架構"
+  difficulty: 1
+  question: "在分散式訓練（Distributed Training）中，Parameter Server architecture 的主要角色是什麼？"
+  options:
+    a: "把資料自動轉成 Data Lake"
+    b: "只負責視覺化模型結果"
+    c: "集中管理或聚合模型參數更新"
+    d: "把所有特徵都刪除到只剩 10 維"
+  correct: "c"
+  explanation:
+    why_correct: "Parameter Server 的核心概念是由伺服器節點持有或聚合參數，worker 端計算梯度後再與參數伺服器同步。"
+    why_not_a: "Data Lake 是資料儲存架構，不是參數同步機制。"
+    why_not_b: "視覺化不是 Parameter Server 的主要任務。"
+    why_not_d: "降維與參數伺服器是完全不同層次的概念。"
+  keywords:
+    - "parameter server"
+    - "distributed training"
+    - "parameter synchronization"
+  exam_trap: false
+
+- id: "L22401-Q08"
+  topic_code: "L22401"
+  item_code: "L22401-5V特性"
+  difficulty: 2
+  question: "關於大數據的 Velocity 與機器學習（Machine Learning）設計，下列敘述何者正確？"
+  options:
+    a: "Velocity 高代表資料一定不需要清理"
+    b: "Velocity 高時，一定只能使用 full-batch training"
+    c: "Velocity 只影響儲存空間，不影響模型更新策略"
+    d: "Velocity 高時，常需要考慮 online / incremental learning 或 streaming pipeline"
+  correct: "d"
+  explanation:
+    why_correct: "當資料持續快速流入時，模型與前處理流程往往需要能逐步更新，而非等所有資料累積完再統一重訓。"
+    why_not_a: "資料來得快不代表資料品質好，反而可能更需要即時清理與監控。"
+    why_not_b: "full-batch 通常不適合高速度流式資料。"
+    why_not_c: "Velocity 直接影響資料攝取頻率、延遲需求與模型更新節奏。"
+  keywords:
+    - "Velocity"
+    - "online learning"
+    - "streaming pipeline"
+  exam_trap: false
+
+- id: "L22401-Q09"
+  topic_code: "L22401"
+  item_code: "L22401-批次與線上學習"
+  difficulty: 2
+  question: "比較批次訓練（Batch Training）與小批次隨機梯度下降（Mini-batch SGD），下列何者正確？"
+  options:
+    a: "Mini-batch 每次更新只使用部分樣本，不必一次讀入全部資料"
+    b: "Batch Training 一定比 Mini-batch 更省記憶體"
+    c: "Mini-batch 一定比 full-batch 更快且更準"
+    d: "兩者都不能在 GPU 上執行"
+  correct: "a"
+  explanation:
+    why_correct: "Mini-batch 的設計就是每次抽取部分資料估計梯度，因此在記憶體壓力與運算吞吐間取得折衷。"
+    why_not_b: "full-batch 常需要一次處理完整資料，記憶體需求通常較高。"
+    why_not_c: "這是常見誤解。Mini-batch 常較實務可行，但速度與準確度不保證在所有情況都優於 full-batch。"
+    why_not_d: "兩者都可在 GPU 上執行。"
+  keywords:
+    - "batch training"
+    - "mini-batch SGD"
+    - "memory usage"
+  exam_trap: true
+
+- id: "L22401-Q10"
+  topic_code: "L22401"
+  item_code: "L22401-分散式訓練架構"
+  difficulty: 2
+  question: "關於集中式訓練（Centralized Training）與分散式訓練（Distributed Training）的比較，下列何者正確？"
+  options:
+    a: "資料量大時，集中式訓練一定無法使用"
+    b: "分散式訓練就是聯邦學習（Federated Learning）"
+    c: "集中式訓練完全不需要考慮 I/O 與記憶體瓶頸"
+    d: "分散式訓練通常是為了突破單機在計算、記憶體或訓練時間上的限制"
+  correct: "d"
+  explanation:
+    why_correct: "Distributed Training 的主要動機是擴展計算與儲存能力，處理單機難以負荷的資料規模或模型規模。"
+    why_not_a: "資料量大不代表一定要分散式；若資料仍能在單機有效處理，集中式仍可能較簡單。"
+    why_not_b: "聯邦學習是分散式的一種特殊情境，強調資料不出端側，不能直接畫上等號。"
+    why_not_c: "單機同樣可能受 I/O、RAM 與訓練時間限制。"
+  keywords:
+    - "centralized training"
+    - "distributed training"
+    - "scalability"
+  exam_trap: true
+
+- id: "L22401-Q11"
+  topic_code: "L22401"
+  item_code: "L22401-資料並行與模型並行"
+  difficulty: 2
+  question: "若單一模型（single model）太大，無法完整放入單一 GPU 記憶體，較可能考慮哪一種平行化方式？"
+  options:
+    a: "Data Cleaning"
+    b: "Bagging"
+    c: "Model Parallelism"
+    d: "Online Serving"
+  correct: "c"
+  explanation:
+    why_correct: "當模型本身太大時，需把不同層或不同張量切到多個裝置上，這是 Model Parallelism 的典型使用時機。"
+    why_not_a: "清理資料不能解決模型放不進裝置記憶體的問題。"
+    why_not_b: "Bagging 是集成學習方法，不是裝置層級的模型切分策略。"
+    why_not_d: "Online Serving 指上線推論服務，不是訓練時的平行化方法。"
+  keywords:
+    - "model parallelism"
+    - "GPU memory"
+    - "large model"
+  exam_trap: false
+
+- id: "L22401-Q12"
+  topic_code: "L22401"
+  item_code: "L22401-資料稀疏性與不平衡"
+  difficulty: 2
+  question: "在類別不平衡（Class Imbalance）很嚴重的資料集上，下列哪一項理解較正確？"
+  options:
+    a: "只要總資料筆數很大，就不必管 minority class"
+    b: "Accuracy 通常最能反映 minority class 的實際辨識能力"
+    c: "只要使用分散式訓練，類別不平衡就會自動消失"
+    d: "Mini-batch 可能抽不到足夠 minority class，需注意取樣與評估指標"
+  correct: "d"
+  explanation:
+    why_correct: "在高度不平衡資料中，某些 mini-batch 幾乎沒有少數類，會使模型偏向多數類，因此常需採重抽樣、class weighting 或改用 precision/recall 等指標。"
+    why_not_a: "總量大不代表各類別都充足，少數類仍可能被淹沒。"
+    why_not_b: "Accuracy 在不平衡資料上常有誤導性。"
+    why_not_c: "分散式訓練解決的是可擴展性，不會自動修正資料分布。"
+  keywords:
+    - "class imbalance"
+    - "minority class"
+    - "evaluation metric"
+  exam_trap: false
+
+- id: "L22401-Q13"
+  topic_code: "L22401"
+  item_code: "L22401-5V特性"
+  difficulty: 2
+  question: "關於 Veracity 與機器學習（Machine Learning）影響的敘述，下列何者正確？"
+  options:
+    a: "Veracity 偏向資料噪音、錯誤與可信度，會影響模型穩定性"
+    b: "Veracity 指資料型態很多，因此只對資料庫 schema 有影響"
+    c: "Veracity 愈高代表資料更新頻率愈快"
+    d: "Veracity 與模型效果無關，只與硬體有關"
+  correct: "a"
+  explanation:
+    why_correct: "Veracity 著重資料是否可信、是否含噪音或標註偏差，這會直接影響訓練品質與泛化能力。"
+    why_not_b: "這描述比較接近 Variety，而不是 Veracity。"
+    why_not_c: "更新頻率快對應的是 Velocity。"
+    why_not_d: "資料真實性對模型品質高度相關，不只是硬體問題。"
+  keywords:
+    - "Veracity"
+    - "data quality"
+    - "noise"
+  exam_trap: false
+
+- id: "L22401-Q14"
+  topic_code: "L22401"
+  item_code: "L22401-演算法追蹤"
+  difficulty: 2
+  question: "觀察下列 pseudocode：`for x, y in stream: model.partial_fit(x, y)`。這段程式最接近哪一種學習模式？"
+  options:
+    a: "Full-batch Training"
+    b: "Online / Incremental Learning"
+    c: "Model Parallelism"
+    d: "Data Lake Ingestion"
+  correct: "b"
+  explanation:
+    why_correct: "程式逐筆或逐小批從 stream 讀入資料並使用 `partial_fit` 更新，這就是增量式學習的典型寫法。"
+    why_not_a: "full-batch 會在每輪使用全部訓練資料，不是逐筆串流更新。"
+    why_not_c: "這裡沒有模型切分到多裝置的資訊。"
+    why_not_d: "資料匯入不等於模型訓練更新。"
+  keywords:
+    - "partial_fit"
+    - "pseudocode"
+    - "online learning"
+  exam_trap: false
+
+- id: "L22401-Q15"
+  topic_code: "L22401"
+  item_code: "L22401-批次與線上學習"
+  difficulty: 3
+  question: "某台灣零售電商每天持續收到新交易資料，且希望凌晨前更新詐欺偵測模型，不想每次都重新載入全部歷史資料。此情境較適合優先考慮哪一種方法？"
+  options:
+    a: "固定每月做一次 full retraining，平時不更新"
+    b: "只保留最近 10 筆資料做 full-batch training"
+    c: "Online / Incremental Learning 搭配定期驗證"
+    d: "把模型拆成 model parallelism 即可"
+  correct: "c"
+  explanation:
+    why_correct: "資料持續流入且有頻繁更新需求時，Incremental Learning 可逐步吸收新資料，避免每次從頭重訓全部歷史資料。"
+    why_not_a: "更新頻率太低，無法滿足近即時的業務需求。"
+    why_not_b: "只留 10 筆資料會嚴重喪失歷史資訊，並非合理訓練策略。"
+    why_not_d: "模型並行解決的是模型太大，不是資料持續到達的更新問題。"
+  keywords:
+    - "incremental learning"
+    - "fraud detection"
+    - "model update"
+  exam_trap: false
+
+- id: "L22401-Q16"
+  topic_code: "L22401"
+  item_code: "L22401-5V特性"
+  difficulty: 3
+  question: "某製造業公司要整合感測器數值、維修文字紀錄與影像檢測結果做預測維護。此情境中，最直接驅動資料前處理與平台選型複雜度上升的 5V 特性是什麼？"
+  options:
+    a: "Volume"
+    b: "Veracity"
+    c: "Value"
+    d: "Variety"
+  correct: "d"
+  explanation:
+    why_correct: "感測器、文字與影像屬於不同資料型態，Variety 會使資料整合、特徵工程與 pipeline 設計更複雜。"
+    why_not_a: "資料量大可能也是問題，但本題最直接的重點在多樣資料型態。"
+    why_not_b: "資料可信度不是題目主要描述。"
+    why_not_c: "是否有商業價值不是前處理複雜度上升的主因。"
+  keywords:
+    - "Variety"
+    - "predictive maintenance"
+    - "multimodal data"
+  exam_trap: false
+
+- id: "L22401-Q17"
+  topic_code: "L22401"
+  item_code: "L22401-分散式訓練架構"
+  difficulty: 3
+  question: "你在台北某金融機構訓練分類模型，單機 CPU 與 RAM 已接近極限，但模型本身不大，主要問題是資料量很大。此時較合理的第一步是什麼？"
+  options:
+    a: "優先評估 data parallelism 或分散式資料處理架構"
+    b: "直接改用 federated learning，因為任何分散式都一樣"
+    c: "先把所有類別合併成一類，減少資料量"
+    d: "只把學習率調高，不改架構"
+  correct: "a"
+  explanation:
+    why_correct: "當瓶頸主要來自資料量與單機資源限制，而非模型太大時，應優先考慮分散式資料處理或 data parallel 設計。"
+    why_not_b: "Federated Learning 有資料不出域等特殊條件，不能當作所有 distributed training 的同義詞。"
+    why_not_c: "這會破壞任務定義，並不是工程上的合理擴展方式。"
+    why_not_d: "調學習率無法解決記憶體與計算資源不足。"
+  keywords:
+    - "data parallelism"
+    - "distributed processing"
+    - "resource bottleneck"
+  exam_trap: true
+
+- id: "L22401-Q18"
+  topic_code: "L22401"
+  item_code: "L22401-演算法追蹤"
+  difficulty: 3
+  question: "某訓練迴圈 pseudocode 為：`for epoch in 1..E: grad=0; for each sample in dataset: grad += g(sample); update(theta, grad)`。若每個 epoch 只在最後更新一次參數，此做法最接近哪一種？"
+  options:
+    a: "Online Learning"
+    b: "Batch Training"
+    c: "Mini-batch SGD"
+    d: "Parameter Server Training"
+  correct: "b"
+  explanation:
+    why_correct: "此程式先累積整個 dataset 的梯度，再於 epoch 結束時更新一次參數，正是 full-batch / batch training 的典型特徵。"
+    why_not_a: "Online Learning 會更頻繁地逐筆或逐小批更新。"
+    why_not_c: "Mini-batch 會對資料切成多個 batch 並多次更新，不會等整個 dataset 都跑完才更新一次。"
+    why_not_d: "這裡沒有任何分散式參數同步的資訊。"
+  keywords:
+    - "batch training"
+    - "training loop"
+    - "pseudocode"
+  exam_trap: false
+
+- id: "L22401-Q19"
+  topic_code: "L22401"
+  item_code: "L22401-演算法追蹤"
+  difficulty: 3
+  question: "資料共有 12 筆，mini-batch size = 4，且不考慮最後不足批次的情況。若每個 epoch 先 shuffle 再切批，單一 epoch 內通常會有幾次參數更新（parameter updates）？"
+  options:
+    a: "1 次"
+    b: "2 次"
+    c: "3 次"
+    d: "12 次"
+  correct: "c"
+  explanation:
+    why_correct: "12 筆資料以 batch size 4 切分，可形成 3 個 mini-batch，因此通常有 3 次更新。"
+    why_not_a: "1 次更新比較像 full-batch training 的情況。"
+    why_not_b: "2 次代表只處理 8 筆資料，不符合題意。"
+    why_not_d: "12 次更新是逐筆更新，較接近 online / stochastic 形式。"
+  keywords:
+    - "mini-batch"
+    - "parameter updates"
+    - "sampling trace"
+  exam_trap: false
+
+- id: "L22401-Q20"
+  topic_code: "L22401"
+  item_code: "L22401-維度災難"
+  difficulty: 3
+  question: "某團隊將商品特徵擴充到 800 維後，發現以距離為核心的 clustering 表現明顯惡化。最合理的初步判斷是什麼？"
+  options:
+    a: "資料筆數一定太少，與維度無關"
+    b: "只要資料夠大，高維就不再是問題"
+    c: "應直接改用 full-batch training 就能恢復分群品質"
+    d: "高維下距離差異可能趨於不明顯，導致距離型方法失效"
+  correct: "d"
+  explanation:
+    why_correct: "這是典型 curse of dimensionality 現象，高維會使距離與鄰近概念弱化，讓距離型聚類更難選擇有效閾值。"
+    why_not_a: "樣本數可能影響效果，但題目明確指出高維擴充後惡化，不能忽略維度因素。"
+    why_not_b: "資料量大不會自動抵消高維帶來的距離退化問題。"
+    why_not_c: "訓練批次大小與聚類距離失效不是同一層問題。"
+  keywords:
+    - "curse of dimensionality"
+    - "clustering"
+    - "distance-based method"
+  exam_trap: false
+
+- id: "L22401-Q21"
+  topic_code: "L22401"
+  item_code: "L22401-分散式ML框架"
+  difficulty: 3
+  question: "某資料工程師已使用 Apache Spark 處理 ETL，現在希望在同一生態中對大規模資料做基本機器學習訓練。若題目是 recognition-level，最合理的工具選擇是什麼？"
+  options:
+    a: "Spark MLlib"
+    b: "Photoshop"
+    c: "LaTeX"
+    d: "Git LFS"
+  correct: "a"
+  explanation:
+    why_correct: "Spark MLlib 是 Spark 生態中最典型的分散式機器學習函式庫，適合作為這類辨識題的標準答案。"
+    why_not_b: "Photoshop 與機器學習訓練無關。"
+    why_not_c: "LaTeX 是排版工具，不是 ML framework。"
+    why_not_d: "Git LFS 用於大型檔案版控，不是分散式訓練工具。"
+  keywords:
+    - "Spark MLlib"
+    - "ETL"
+    - "distributed framework"
+  exam_trap: false
+
+- id: "L22401-Q22"
+  topic_code: "L22401"
+  item_code: "L22401-資料並行與模型並行"
+  difficulty: 4
+  question: "比較資料並行（Data Parallelism）與模型並行（Model Parallelism），何者最能準確說明兩者在實務上的主要差異？"
+  options:
+    a: "Data Parallelism 只能用在文字資料；Model Parallelism 只能用在影像資料"
+    b: "Data Parallelism 重點在切資料；Model Parallelism 重點在切模型"
+    c: "兩者都一定需要 Parameter Server，否則不能運作"
+    d: "兩者只是名稱不同，實際上完全一樣"
+  correct: "b"
+  explanation:
+    why_correct: "Data Parallelism 與 Model Parallelism 的本質差異，就是前者複製模型切資料，後者切模型結構到多裝置。"
+    why_not_a: "平行化方法與資料模態沒有這種硬性一對一關係。"
+    why_not_c: "同步方式可以是 AllReduce、Parameter Server 等，不是唯一架構。"
+    why_not_d: "兩者解決的瓶頸不同，不能視為同義詞。"
+  keywords:
+    - "data parallelism"
+    - "model parallelism"
+    - "parallel training"
+  exam_trap: false
+
+- id: "L22401-Q23"
+  topic_code: "L22401"
+  item_code: "L22401-分散式訓練架構"
+  difficulty: 4
+  question: "在比較 Parameter Server 與 AllReduce 架構時，下列何者最合理？"
+  options:
+    a: "AllReduce 的核心是由單一中心節點永久保存全部參數並單向下發"
+    b: "Parameter Server 與 AllReduce 都只能做模型並行，不能做資料並行"
+    c: "Parameter Server 偏向由參數節點聚合更新；AllReduce 偏向 worker 間協同同步梯度"
+    d: "兩者唯一差異只是程式語言不同"
+  correct: "c"
+  explanation:
+    why_correct: "Parameter Server 與 AllReduce 的關鍵差異在同步模式：前者較偏中心化參數管理，後者較偏節點間集體通訊。"
+    why_not_a: "這描述比較接近 parameter server 的直覺，不是 AllReduce。"
+    why_not_b: "兩者常見於 data-parallel 訓練情境。"
+    why_not_d: "架構差異在通訊與同步設計，不在語言。"
+  keywords:
+    - "parameter server"
+    - "AllReduce"
+    - "synchronization"
+  exam_trap: false
+
+- id: "L22401-Q24"
+  topic_code: "L22401"
+  item_code: "L22401-5V特性"
+  difficulty: 4
+  question: "某團隊面對高 Volume 與高 Velocity 的交易資料，打算選擇訓練策略。若要求每日持續更新且單機 RAM 不足，哪一種理解最合理？"
+  options:
+    a: "只要是 big data，就一定要採 federated learning"
+    b: "因為資料大，所以只能做 full-batch training"
+    c: "高 Velocity 只影響前端畫面，不影響訓練"
+    d: "可結合 mini-batch 或 incremental learning，必要時再導入 distributed processing"
+  correct: "d"
+  explanation:
+    why_correct: "Volume 與 Velocity 同時存在時，通常要先考慮資料餵入方式與更新節奏，再視單機瓶頸決定是否擴充到分散式。"
+    why_not_a: "Federated Learning 是特殊分散式情境，不是大數據的預設答案。"
+    why_not_b: "高速度資料反而常不適合 full-batch。"
+    why_not_c: "Velocity 直接影響資料管線與模型更新頻率。"
+  keywords:
+    - "Volume"
+    - "Velocity"
+    - "incremental learning"
+  exam_trap: false
+
+- id: "L22401-Q25"
+  topic_code: "L22401"
+  item_code: "L22401-資料稀疏性與不平衡"
+  difficulty: 4
+  question: "某廣告點擊預測資料有上百萬個 one-hot 特徵，且點擊率不到 1%。下列何者最能同時指出兩個主要風險？"
+  options:
+    a: "高維稀疏表示造成記憶體壓力，而類別不平衡會讓模型偏向多數類"
+    b: "因為特徵很多，所以資料一定不是 sparse"
+    c: "只要樣本數大，accuracy 一定足夠評估少數類"
+    d: "把資料改成分散式儲存後，少數類比例就會自動提高"
+  correct: "a"
+  explanation:
+    why_correct: "本題同時涉及 sparsity 與 class imbalance：前者增加表示與計算成本，後者使模型容易忽略少數類。"
+    why_not_b: "大量 one-hot 特徵正是 sparse representation 的典型來源。"
+    why_not_c: "accuracy 在極度不平衡時可能非常誤導。"
+    why_not_d: "儲存方式不會改變原始類別分布。"
+  keywords:
+    - "sparsity"
+    - "class imbalance"
+    - "click-through rate"
+  exam_trap: false
+
+- id: "L22401-Q26"
+  topic_code: "L22401"
+  item_code: "L22401-演算法追蹤"
+  difficulty: 4
+  question: "考生閱讀以下 mini-batch pseudocode：`shuffle(D); for B in split(D, k): theta = theta - lr * grad(B)`。若把 `k` 從 256 改成資料總筆數 `|D|`，其行為最接近哪一種訓練？"
+  options:
+    a: "Online Learning"
+    b: "Batch Training"
+    c: "Data Parallelism"
+    d: "Feature Hashing"
+  correct: "b"
+  explanation:
+    why_correct: "當 batch size 等於整個資料集大小時，每輪只剩一次用全資料估梯度的更新，行為上就接近 batch training。"
+    why_not_a: "Online Learning 會用更小粒度頻繁更新，不是全資料一次更新。"
+    why_not_c: "這題討論的是 batch size，不是多節點訓練。"
+    why_not_d: "Feature Hashing 是特徵表示技術，與訓練迴圈無關。"
+  keywords:
+    - "mini-batch"
+    - "batch size"
+    - "algorithm trace"
+  exam_trap: false
+
+- id: "L22401-Q27"
+  topic_code: "L22401"
+  item_code: "L22401-維度災難"
+  difficulty: 4
+  question: "相較於小資料情境，大數據尺度下的維度災難（Curse of Dimensionality）何者描述較完整？"
+  options:
+    a: "只要資料筆數夠多，高維問題就會完全消失"
+    b: "高維只會影響資料視覺化，不影響演算法選用"
+    c: "即使樣本很多，高維仍可能讓距離型方法退化，且計算與儲存成本同步放大"
+    d: "高維代表資料一定比較準確，因此 Veracity 也會提高"
+  correct: "c"
+  explanation:
+    why_correct: "在 big-data scale，高維問題不只影響距離概念，也會放大記憶體、特徵工程與計算成本，因此不是『資料多就沒事』。"
+    why_not_a: "這是常見誤解。樣本多不等於高維問題消失。"
+    why_not_b: "高維直接影響演算法是否可行，尤其是距離或密度導向方法。"
+    why_not_d: "維度高與資料真實性沒有必然關係。"
+  keywords:
+    - "curse of dimensionality"
+    - "scalability"
+    - "high-dimensional data"
+  exam_trap: false
+
+- id: "L22401-Q28"
+  topic_code: "L22401"
+  item_code: "L22401-分散式訓練架構"
+  difficulty: 4
+  question: "有考生把「分散式訓練（Distributed Training）」直接等同於「聯邦學習（Federated Learning）」。就考試概念而言，哪一項分析最正確？"
+  options:
+    a: "這兩者完全相同，只是英文不同"
+    b: "只要有多台機器參與，就一定是 federated learning"
+    c: "Federated Learning 只適用於 Spark MLlib，因此通常可忽略"
+    d: "Federated Learning 是分散式訓練的一種特殊形式，但分散式訓練範圍更廣"
+  correct: "d"
+  explanation:
+    why_correct: "Distributed Training 泛指多節點協作訓練；Federated Learning 則多了資料不集中、隱私與端側協作等特殊限制。"
+    why_not_a: "這正是命題常見陷阱，兩者不能直接畫上等號。"
+    why_not_b: "多機協作不必然是 federated；資料是否集中、是否跨組織才是關鍵。"
+    why_not_c: "Federated Learning 並不限於 Spark MLlib。"
+  keywords:
+    - "distributed training"
+    - "federated learning"
+    - "exam trap"
+  exam_trap: true
+
+- id: "L22401-Q29"
+  topic_code: "L22401"
+  item_code: "L22401-批次與線上學習"
+  difficulty: 5
+  question: "某政府單位要建置異常通報模型，限制條件為：資料每分鐘持續流入、單機 RAM 不足以容納全部歷史資料、且希望模型可逐步更新。哪一種方案最能同時滿足三項條件？"
+  options:
+    a: "採 online / incremental learning，必要時搭配 out-of-core 或 distributed pipeline"
+    b: "堅持 full-batch training，等資料累積一季後再重訓"
+    c: "只增加報表欄位，不調整訓練方式"
+    d: "改成 model parallelism，即可自然支援流式更新"
+  correct: "a"
+  explanation:
+    why_correct: "本題同時涉及 Velocity、記憶體限制與更新需求，最佳方向是 incremental 更新，並以 out-of-core 或 distributed pipeline 支援資料規模。"
+    why_not_b: "無法滿足持續更新需求，也忽略記憶體限制。"
+    why_not_c: "報表欄位調整無法解決訓練架構問題。"
+    why_not_d: "Model Parallelism 處理的是模型大小，不是流式資料更新本身。"
+  keywords:
+    - "incremental learning"
+    - "out-of-core"
+    - "streaming"
+  exam_trap: false
+
+- id: "L22401-Q30"
+  topic_code: "L22401"
+  item_code: "L22401-分散式訓練架構"
+  difficulty: 5
+  question: "某企業已有多台 GPU 伺服器，模型本身放得進單一卡，但訓練資料量極大，並希望縮短 epoch 時間。若要在 Data Parallelism 下選擇同步方式，哪一項判斷最合理？"
+  options:
+    a: "應優先做 model parallelism，因為資料量大與資料並行無關"
+    b: "可在 Parameter Server 或 AllReduce 間依通訊與同步需求選擇，兩者都可能適用"
+    c: "只要是多 GPU，就一定只能用 Parameter Server"
+    d: "同步方式與訓練效率完全無關"
+  correct: "b"
+  explanation:
+    why_correct: "當模型放得進單卡而資料量巨大時，Data Parallelism 合理；同步則可依系統設計在 Parameter Server 或 AllReduce 間取捨。"
+    why_not_a: "模型並行主要在模型太大時才是優先選項。"
+    why_not_c: "多 GPU 並不限制只能選 Parameter Server。"
+    why_not_d: "同步成本與通訊型態會直接影響效率。"
+  keywords:
+    - "data parallelism"
+    - "AllReduce"
+    - "parameter server"
+  exam_trap: false
+
+- id: "L22401-Q31"
+  topic_code: "L22401"
+  item_code: "L22401-5V特性"
+  difficulty: 5
+  question: "某新創同時面對多模態資料（Variety）、標註噪音（Veracity）與有限運算預算（Value 對成本效益考量）。下列哪一個方案最符合考試導向的整體判斷？"
+  options:
+    a: "只因為資料多樣，就直接上最複雜的分散式深度模型"
+    b: "忽略資料品質，先把所有資料都餵進 full-batch training"
+    c: "先評估資料是否值得投入、處理品質問題，再依規模決定集中式或分散式訓練"
+    d: "只要有 Variety，就不需要考慮 Value 與 Veracity"
+  correct: "c"
+  explanation:
+    why_correct: "本題結合 5V 中多個面向。正確做法不是盲目上重架構，而是同時評估資料價值、品質與規模，再做訓練架構選擇。"
+    why_not_a: "複雜度高不代表合適，也忽略成本與資料品質。"
+    why_not_b: "忽略 Veracity 往往會使模型品質不穩。"
+    why_not_d: "5V 之間需要綜合判斷，不能只看單一 V。"
+  keywords:
+    - "5V"
+    - "Variety"
+    - "Veracity"
+  exam_trap: false
+
+- id: "L22401-Q32"
+  topic_code: "L22401"
+  item_code: "L22401-批次與線上學習"
+  difficulty: 5
+  question: "下列哪一個情境最適合拿來反駁「Mini-batch 一定比 Full-batch 更快」這個說法？"
+  options:
+    a: "任何 GPU 訓練情境都不可能出現 Full-batch 較快"
+    b: "只要資料量大，Mini-batch 必定最佳"
+    c: "Mini-batch 與 Full-batch 的速度不受硬體吞吐、I/O 與 batch size 設定影響"
+    d: "若資料集其實不大且可完整載入、硬體對大批次運算友善，Full-batch 可能更單純甚至更快"
+  correct: "d"
+  explanation:
+    why_correct: "題目要辨識的是『一定』這個絕對化說法錯在哪裡。速度受資料規模、記憶體、I/O、平行度與實作細節共同影響。"
+    why_not_a: "這同樣是絕對化錯誤，與實務不符。"
+    why_not_b: "資料量大常使 mini-batch 更可行，但不代表在所有設定下一定最快。"
+    why_not_c: "這些因素都會影響訓練速度。"
+  keywords:
+    - "mini-batch"
+    - "full-batch"
+    - "performance tradeoff"
+  exam_trap: true
+
+- id: "L22401-Q33"
+  topic_code: "L22401"
+  item_code: "L22401-資料稀疏性與不平衡"
+  difficulty: 5
+  question: "某電信業者有十億筆紀錄，但正樣本僅 0.2%，且特徵多為高維稀疏類別欄位。若要提出最完整的風險判斷，下列何者最佳？"
+  options:
+    a: "即使資料很多，仍需同時處理稀疏表示成本與類別不平衡帶來的評估偏差"
+    b: "資料量足夠大時，minority class 便不再是問題"
+    c: "只要改成分散式訓練，precision / recall 就不重要了"
+    d: "高維稀疏資料代表類別一定平衡，因此只要看 accuracy"
+  correct: "a"
+  explanation:
+    why_correct: "這題的重點是大數據不會自動消除 sparsity 與 imbalance。系統成本與評估偏差都要同時考慮。"
+    why_not_b: "少數類比例極低時，即使總量大仍可能造成訓練與評估問題。"
+    why_not_c: "分散式只提升可擴展性，不會取代適當的評估指標。"
+    why_not_d: "高維稀疏與類別是否平衡沒有必然關係。"
+  keywords:
+    - "sparsity"
+    - "class imbalance"
+    - "precision recall"
+  exam_trap: false
+
+- id: "L22401-Q34"
+  topic_code: "L22401"
+  item_code: "L22401-演算法追蹤"
+  difficulty: 5
+  question: "某學生看到 pseudocode：`shuffle(D); for B in batches(D, 128): update(theta, grad(B))`，便判斷這一定是『線上服務（online service）』程式而不是訓練程式。哪一個評估最正確？"
+  options:
+    a: "判斷正確，因為 online 一詞只能指網站上線"
+    b: "判斷錯誤，這其實是 mini-batch training loop；online learning 與線上服務是不同概念"
+    c: "判斷正確，因為任何有 shuffle 的程式都不是訓練"
+    d: "判斷正確，因為 batch size 128 代表推論 API"
+  correct: "b"
+  explanation:
+    why_correct: "這段 pseudocode 是典型的訓練迴圈。考試常見陷阱是把 online learning 的『online』誤解成『網站上線』或『線上服務』。"
+    why_not_a: "這正是名詞混淆造成的錯誤。"
+    why_not_c: "shuffle 常見於訓練資料隨機化。"
+    why_not_d: "batch size 是訓練超參數，不代表推論 API。"
+  keywords:
+    - "online learning"
+    - "mini-batch"
+    - "terminology trap"
+  exam_trap: true
+
+- id: "L22401-Q35"
+  topic_code: "L22401"
+  item_code: "L22401-分散式訓練架構"
+  difficulty: 5
+  question: "某團隊主張：「只要是 Big Data，就一定需要 Distributed Training。」若依本單元觀點進行評估，哪一項回應最完整？"
+  options:
+    a: "正確，Big Data 與 Distributed Training 是必然對應關係"
+    b: "正確，只要資料大就不能用 mini-batch 或 out-of-core"
+    c: "不一定；是否需要分散式應視資料規模、到達速度、模型大小與單機資源限制綜合判斷"
+    d: "不一定；但唯一判準只有資料欄位數是否超過 100"
+  correct: "c"
+  explanation:
+    why_correct: "Big Data 不等於一定要 distributed。若單機仍可透過 mini-batch、out-of-core 或 incremental learning 有效處理，就未必需要上分散式。"
+    why_not_a: "這是絕對化錯誤，也是本題指定的常見迷思。"
+    why_not_b: "mini-batch 與 out-of-core 正是面對大資料時的重要策略。"
+    why_not_d: "是否分散式不可能只看欄位數。"
+  keywords:
+    - "distributed training"
+    - "big data"
+    - "scalability decision"
+  exam_trap: true

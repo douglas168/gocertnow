@@ -65,6 +65,10 @@ Tracks open items across all lessons that need resolution before publishing.
 - **Diagram rendering:** 5 Mermaid diagrams (`.mmd`) under `lessons/L22303-數據可視化工具/diagrams/` — render to PNG via Gemini downstream (not blocking publish).
 - **Gemini cross-review skipped** (CLI returned empty output); Claude adversarial (1 critical resolved) + Codex auditor applied — re-run Gemini pass if desired before exam assembly.
 
+### L22401 — 大數據與機器學習
+- **Diagram rendering:** 5 Mermaid diagrams under `lessons/L22401-大數據與機器學習/diagrams/` — render to PNG via Gemini downstream (not blocking publish).
+- **Gemini cross-review skipped** (CLI returned empty output); Claude adversarial (0 critical, 3 important resolved) + Codex auditor (3 critical resolved) — re-run Gemini pass if desired before exam assembly.
+
 ---
 
 ## Lesson Progress
@@ -89,7 +93,7 @@ Tracks open items across all lessons that need resolution before publishing.
 | 16 | L22301 | 統計學在大數據中的應用 | L22 | elective_a (資料分析組) | 1 | ✅ Done | 0 |
 | 17 | L22302 | 常見的大數據分析方法 | L22 | elective_a (資料分析組) | 1 | ✅ Done | 1 |
 | 18 | L22303 | 數據可視化工具 | L22 | elective_a (資料分析組) | 1 | ✅ Done | 1 |
-| 19 | L22401 | 大數據與機器學習 | L22 | elective_a (資料分析組) | 1 | Not started | — |
+| ~~19~~ | ~~L22401~~ | ~~大數據與機器學習~~ | L22 | elective_a (資料分析組) | 1 | ✅ Done | 2 |
 | 20 | L22402 | 大數據應用於鑑別式AI中的應用 | L22 | elective_a (資料分析組) | 1 | Not started | — |
 | 21 | L22403 | 大數據在生成式AI中的應用 | L22 | elective_a (資料分析組) | 1 | Not started | — |
 | 22 | L22404 | 大數據隱私保護、安全與合規 | L22 | elective_a (資料分析組) | 1 | Not started | — |
@@ -110,9 +114,9 @@ Tracks open items across all lessons that need resolution before publishing.
 
 ## What's Next
 
-**Next lesson:** `/course-generate-lesson L22401` — 大數據與機器學習
+**Next lesson:** `/course-generate-lesson L22402` — 大數據應用於鑑別式AI中的應用
 
-**Remaining lessons:** 16 of 34 topics left (4 for 資料分析組 SKU; 12 for 機器學習組 SKU; all L21 items now complete)
+**Remaining lessons:** 15 of 34 topics left (3 for 資料分析組 SKU; 12 for 機器學習組 SKU; all L21 items now complete)
 
 ### Priority 1 — 資料分析組 sprint (founder 2026-05-23 exam)
 
