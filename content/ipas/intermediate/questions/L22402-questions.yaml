@@ -1,0 +1,879 @@
+- id: "L22402-Q01"
+  topic_code: "L22402"
+  item_code: "confusion-matrix"
+  difficulty: 1
+  question: "在二元分類的混淆矩陣（Confusion Matrix）中，實際為正類、模型也判定為正類，稱為下列何者？"
+  options:
+    a: "真陽性（True Positive, TP）"
+    b: "假陽性（False Positive, FP）"
+    c: "真陰性（True Negative, TN）"
+    d: "假陰性（False Negative, FN）"
+  correct: "a"
+  explanation:
+    why_correct: "真陽性表示實際標籤為正類，且模型預測也為正類，是分類正確且抓到目標事件的情況。"
+    why_not_b: "假陽性是模型把實際負類誤判成正類。考生常因為看到『判成正類』就選 FP，卻忽略了實際標籤也是判斷條件。"
+    why_not_c: "真陰性是實際與預測都為負類，和本題的『實際為正類』不符。"
+    why_not_d: "假陰性是漏掉真正的正類，代表實際為正類但模型判成負類。"
+  keywords:
+    - "混淆矩陣"
+    - "True Positive"
+    - "TP"
+  exam_trap: false
+
+- id: "L22402-Q02"
+  topic_code: "L22402"
+  item_code: "confusion-matrix"
+  difficulty: 1
+  question: "若信用卡詐欺偵測模型將一筆正常交易誤判為詐欺，這在混淆矩陣（Confusion Matrix）中最適合記為何者？"
+  options:
+    a: "真陽性（True Positive, TP）"
+    b: "假陽性（False Positive, FP）"
+    c: "真陰性（True Negative, TN）"
+    d: "假陰性（False Negative, FN）"
+  correct: "b"
+  explanation:
+    why_correct: "正常交易屬於負類，卻被模型判成正類詐欺，因此是 False Positive。"
+    why_not_a: "真陽性代表真的詐欺也被抓到。許多人只看到『模型有抓到異常』就誤選，但本題的實際類別是正常交易。"
+    why_not_c: "真陰性應是正常交易且模型也判為正常，並非誤判。"
+    why_not_d: "假陰性是漏掉真正詐欺案件，方向與本題相反。"
+  keywords:
+    - "False Positive"
+    - "fraud detection"
+    - "confusion matrix"
+  exam_trap: false
+
+- id: "L22402-Q03"
+  topic_code: "L22402"
+  item_code: "confusion-matrix"
+  difficulty: 1
+  question: "某模型的混淆矩陣（Confusion Matrix）為 TP=80、TN=50、FP=10、FN=20，則準確率（Accuracy）為何？"
+  options:
+    a: "0.80"
+    b: "0.75"
+    c: "0.8125"
+    d: "0.8889"
+  correct: "c"
+  explanation:
+    why_correct: "Accuracy = (TP + TN) / (TP + TN + FP + FN) = (80 + 50) / 160 = 0.8125。"
+    why_not_a: "0.80 常來自把 80/100 直覺當成準確率，只看 TP 而忽略 TN、FP、FN。"
+    why_not_b: "0.75 常見於分母分子代錯，例如只用部分欄位計算。"
+    why_not_d: "0.8889 比較像 Precision = 80 / (80 + 10)，是把 Accuracy 與 Precision 混用的常見錯誤。"
+  keywords:
+    - "Accuracy"
+    - "混淆矩陣計算"
+    - "classification metric"
+  exam_trap: true
+
+- id: "L22402-Q04"
+  topic_code: "L22402"
+  item_code: "confusion-matrix"
+  difficulty: 1
+  question: "在疾病篩檢情境中，若病人實際有病，但模型預測為無病，這屬於哪一種結果？"
+  options:
+    a: "真陽性（True Positive, TP）"
+    b: "假陽性（False Positive, FP）"
+    c: "真陰性（True Negative, TN）"
+    d: "假陰性（False Negative, FN）"
+  correct: "d"
+  explanation:
+    why_correct: "實際為正類但預測為負類，就是假陰性，代表模型漏掉真正需要被偵測的個案。"
+    why_not_a: "真陽性是成功找出病患，不是漏判。"
+    why_not_b: "假陽性是把健康者誤判為有病，與本題的實際標籤不同。"
+    why_not_c: "真陰性要求實際與預測都為負類，與題意不符。"
+  keywords:
+    - "False Negative"
+    - "medical screening"
+    - "FN"
+  exam_trap: false
+
+- id: "L22402-Q05"
+  topic_code: "L22402"
+  item_code: "confusion-matrix"
+  difficulty: 1
+  question: "關於混淆矩陣（Confusion Matrix）的列與欄，下列敘述何者最常見且正確？"
+  options:
+    a: "所有教材都固定列為預測、欄為實際，因此不必看標示"
+    b: "混淆矩陣只能用於多類別分類，不能用於二元分類"
+    c: "混淆矩陣只能看整體正確率，不能看錯誤型態"
+    d: "閱讀混淆矩陣前，應先確認列與欄分別代表實際標籤或預測標籤"
+  correct: "d"
+  explanation:
+    why_correct: "不同工具或教材的軸向定義可能不同，先確認標示才能正確辨識 TP、FP、TN、FN。"
+    why_not_a: "這是常見誤解。若不看標示直接套公式，很容易把 FP 與 FN 對調。"
+    why_not_b: "混淆矩陣可用於二元或多類別分類。"
+    why_not_c: "混淆矩陣的核心價值正是拆解不同錯誤型態，而不只是一個總體比率。"
+  keywords:
+    - "confusion matrix axis"
+    - "TP FP FN TN"
+    - "interpretation"
+  exam_trap: true
+
+- id: "L22402-Q06"
+  topic_code: "L22402"
+  item_code: "precision-recall"
+  difficulty: 1
+  question: "在垃圾郵件過濾（Spam Filtering）情境中，如果企業最在意『正常郵件不要被誤判成垃圾郵件』，通常應優先觀察哪個指標？"
+  options:
+    a: "Precision（精確率）"
+    b: "Recall（召回率）"
+    c: "Accuracy（準確率）"
+    d: "Support（樣本數）"
+  correct: "a"
+  explanation:
+    why_correct: "當模型一旦判為垃圾郵件，希望大多數都真的為垃圾郵件，這就是重視降低 False Positive，因此應優先看 Precision。"
+    why_not_b: "Recall 著重抓到多少真正垃圾郵件，較偏向降低漏網率，不是本題主要風險。"
+    why_not_c: "Accuracy 在類別不平衡時可能看起來很高，卻無法反映正常郵件被誤殺的痛點。"
+    why_not_d: "Support 只表示樣本數，不能直接表示預測品質。"
+  keywords:
+    - "Precision"
+    - "spam filtering"
+    - "false positive"
+  exam_trap: false
+
+- id: "L22402-Q07"
+  topic_code: "L22402"
+  item_code: "precision-recall"
+  difficulty: 1
+  question: "在詐欺偵測（Fraud Detection）情境中，若銀行更在意『不要漏掉真詐欺』，通常應優先提高哪個指標？"
+  options:
+    a: "Precision（精確率）"
+    b: "Recall（召回率）"
+    c: "Specificity（特異度）"
+    d: "Accuracy（準確率）"
+  correct: "b"
+  explanation:
+    why_correct: "不漏掉真詐欺代表要盡量降低 False Negative，因此優先追求較高的 Recall。"
+    why_not_a: "Precision 著重被判成詐欺的案件中有多少真的詐欺，並不直接對應漏判成本。"
+    why_not_c: "Specificity 是針對負類判對的能力，和『漏掉正類』不是同一件事。"
+    why_not_d: "Accuracy 在詐欺比例很低時容易失真，不能作為唯一主指標。"
+  keywords:
+    - "Recall"
+    - "fraud detection"
+    - "false negative"
+  exam_trap: false
+
+- id: "L22402-Q08"
+  topic_code: "L22402"
+  item_code: "precision-recall"
+  difficulty: 1
+  question: "下列何者最能正確描述精確率（Precision）與召回率（Recall）的差異？"
+  options:
+    a: "Precision 衡量抓到多少真實正類；Recall 衡量預測正類中有多少是對的"
+    b: "Precision 與 Recall 在任何資料集都一定相同"
+    c: "Precision 衡量預測為正類中有多少是真的；Recall 衡量實際正類中有多少被抓到"
+    d: "Precision 只能用在回歸（Regression），Recall 只能用在分類（Classification）"
+  correct: "c"
+  explanation:
+    why_correct: "Precision 的分母是預測正類總數，Recall 的分母是實際正類總數，兩者回答的是不同管理問題。"
+    why_not_a: "這是把兩者定義對調的典型考點。"
+    why_not_b: "只有在極特殊情況下才可能接近，不是一般定義。"
+    why_not_d: "Precision 與 Recall 都是分類任務常用指標，不是回歸指標。"
+  keywords:
+    - "Precision vs Recall"
+    - "definition"
+    - "classification metrics"
+  exam_trap: true
+
+- id: "L22402-Q09"
+  topic_code: "L22402"
+  item_code: "f1-score"
+  difficulty: 2
+  question: "關於 F1-score（F1 分數），下列敘述何者正確？"
+  options:
+    a: "F1-score 是 Precision 與 Recall 的算術平均"
+    b: "F1-score 是 Precision 與 Recall 的調和平均（Harmonic Mean）"
+    c: "F1-score 只需要 TN 與 FP 就能計算"
+    d: "F1-score 只適用於回歸（Regression）"
+  correct: "b"
+  explanation:
+    why_correct: "F1-score = 2PR / (P + R)，以調和平均方式平衡 Precision 與 Recall，避免其中一個極低時被算術平均掩蓋。"
+    why_not_a: "算術平均無法凸顯不平衡表現，這是常見混淆。"
+    why_not_c: "F1 來自 Precision 與 Recall，因此核心仍與 TP、FP、FN 有關，不是只看 TN 與 FP。"
+    why_not_d: "F1 是分類指標，尤其常用於不平衡分類。"
+  keywords:
+    - "F1-score"
+    - "harmonic mean"
+    - "precision recall"
+  exam_trap: false
+
+- id: "L22402-Q10"
+  topic_code: "L22402"
+  item_code: "f1-score"
+  difficulty: 2
+  question: "若某模型的 Precision=0.8、Recall=0.5，則 F1-score（F1 分數）最接近下列何者？"
+  options:
+    a: "0.62"
+    b: "0.80"
+    c: "0.40"
+    d: "0.65"
+  correct: "a"
+  explanation:
+    why_correct: "F1 = 2PR / (P + R) = 2 × 0.8 × 0.5 / 1.3 ≈ 0.6154，最接近 0.62。"
+    why_not_b: "0.80 是直接把較高的 Precision 當成 F1，忽略 Recall 較低會拉低結果。"
+    why_not_c: "0.40 常見於錯把 Precision 與 Recall 相乘後未乘 2 或分母代錯。"
+    why_not_d: "0.65 看似合理，但若沒有正確套用公式，容易高估 F1。"
+  keywords:
+    - "F1 calculation"
+    - "Precision"
+    - "Recall"
+  exam_trap: false
+
+- id: "L22402-Q11"
+  topic_code: "L22402"
+  item_code: "auc-roc"
+  difficulty: 2
+  question: "關於 ROC 曲線（Receiver Operating Characteristic Curve）與 AUC-ROC，下列敘述何者正確？"
+  options:
+    a: "AUC-ROC 一定要用最終 hard label 計算"
+    b: "ROC 曲線的橫軸通常是真正率（True Positive Rate）"
+    c: "ROC 曲線主要觀察不同門檻（threshold）下真正率與假正率的變化"
+    d: "AUC-ROC 越低代表模型越穩定"
+  correct: "c"
+  explanation:
+    why_correct: "ROC 曲線是以不同門檻掃描，觀察 TPR 與 FPR 的變化；AUC 則是該曲線下面積。"
+    why_not_a: "AUC-ROC 的標準做法是使用 prediction scores，例如 `predict_proba` 的機率，而不是只用 hard label。"
+    why_not_b: "ROC 的橫軸通常是 False Positive Rate，不是真正率。"
+    why_not_d: "AUC 越高通常代表排序能力越好，越低不是越穩定。"
+  keywords:
+    - "ROC"
+    - "AUC-ROC"
+    - "門檻"
+  exam_trap: true
+
+- id: "L22402-Q12"
+  topic_code: "L22402"
+  item_code: "auc-roc"
+  difficulty: 2
+  question: "若一個二元分類模型的 AUC-ROC 約為 0.5，最合理的解讀是什麼？"
+  options:
+    a: "模型的排序能力接近隨機猜測"
+    b: "模型一定過擬合（Overfitting）"
+    c: "模型 Precision 一定很高"
+    d: "模型在所有門檻下都沒有錯誤"
+  correct: "a"
+  explanation:
+    why_correct: "AUC 約 0.5 通常表示模型對正負類的區分能力接近隨機。"
+    why_not_b: "過擬合要看訓練與測試落差，不能只靠 AUC=0.5 就下結論。"
+    why_not_c: "AUC 與特定門檻下的 Precision 不是同一概念。"
+    why_not_d: "若完全沒有錯誤，AUC 反而應接近 1。"
+  keywords:
+    - "AUC 0.5"
+    - "random guess"
+    - "model discrimination"
+  exam_trap: false
+
+- id: "L22402-Q13"
+  topic_code: "L22402"
+  item_code: "auc-roc"
+  difficulty: 2
+  question: "在 sklearn 評估二元分類模型時，若要計算 AUC-ROC，通常較適合提供哪一種輸出給 `roc_auc_score()`？"
+  options:
+    a: "`model.fit(X_train, y_train)` 的回傳值"
+    b: "`model.predict(X_test)` 產生的類別標籤"
+    c: "`confusion_matrix(y_test, y_pred)` 的矩陣本身"
+    d: "`model.predict_proba(X_test)[:, 1]` 的正類機率分數"
+  correct: "d"
+  explanation:
+    why_correct: "AUC-ROC 需要可隨門檻變動的連續分數，sklearn 官方常用 `predict_proba(...)[:, 1]` 作為正類機率分數。"
+    why_not_a: "`.fit()` 是訓練步驟，不是每筆測試樣本的預測分數。"
+    why_not_b: "hard label 只有 0/1，無法充分反映不同門檻下的排序資訊。"
+    why_not_c: "混淆矩陣是某一門檻的結果摘要，不是 ROC 掃描所需的原始分數。"
+  keywords:
+    - "roc_auc_score"
+    - "predict_proba"
+    - "sklearn"
+  exam_trap: true
+
+- id: "L22402-Q14"
+  topic_code: "L22402"
+  item_code: "use-cases"
+  difficulty: 2
+  question: "下列哪一個最符合『大數據應用於鑑別式 AI（Discriminative AI）』的典型分類/預測工作負載？"
+  options:
+    a: "自動生成一段新品廣告文案"
+    b: "用大型語言模型續寫故事"
+    c: "將會議逐字稿改寫成不同語氣"
+    d: "依據大量交易紀錄判斷是否為詐欺交易"
+  correct: "d"
+  explanation:
+    why_correct: "詐欺偵測是典型以既有特徵判斷類別的 discriminative AI 應用，符合 L22402 的分類/預測工作負載。"
+    why_not_a: "生成廣告文案偏生成式 AI，不是本主題聚焦。"
+    why_not_b: "故事續寫屬於生成任務，不是鑑別式分類。"
+    why_not_c: "語氣改寫同樣偏生成式應用。"
+  keywords:
+    - "fraud detection"
+    - "discriminative AI"
+    - "classification"
+  exam_trap: false
+
+- id: "L22402-Q15"
+  topic_code: "L22402"
+  item_code: "use-cases"
+  difficulty: 2
+  question: "若電信公司利用大量客戶行為資料預測用戶是否會流失（Churn Prediction），此任務最常被視為哪一類問題？"
+  options:
+    a: "分群（Clustering）"
+    b: "排序（Ranking）"
+    c: "分類（Classification）"
+    d: "關聯規則（Association Rule Mining）"
+  correct: "c"
+  explanation:
+    why_correct: "客戶是否流失通常是二元標籤，因此常建模為分類問題。"
+    why_not_a: "分群不依賴既有標籤，和本題的『是否流失』預測目標不同。"
+    why_not_b: "雖然最終可能用分數排序客戶，但核心建模目標仍是分類。"
+    why_not_d: "關聯規則著重共現模式，不是直接預測流失標籤的主要方法。"
+  keywords:
+    - "churn prediction"
+    - "classification"
+    - "telecom"
+  exam_trap: false
+
+- id: "L22402-Q16"
+  topic_code: "L22402"
+  item_code: "sklearn-pseudocode"
+  difficulty: 2
+  question: "在 sklearn 的典型流程中，`model.fit(X_train, y_train)` 最主要的作用是什麼？"
+  options:
+    a: "輸出每個測試樣本的正類機率"
+    b: "計算混淆矩陣（Confusion Matrix）"
+    c: "把資料自動切成 train/test"
+    d: "根據訓練資料學習模型參數"
+  correct: "d"
+  explanation:
+    why_correct: "`.fit()` 代表用訓練資料進行學習，建立模型與其參數。"
+    why_not_a: "那通常是 `.predict_proba()` 的角色。"
+    why_not_b: "混淆矩陣通常在得到預測結果後額外計算，不是 `.fit()` 本身完成。"
+    why_not_c: "資料切分通常由 `train_test_split()` 等工具完成。"
+  keywords:
+    - "fit"
+    - "sklearn"
+    - "train model"
+  exam_trap: false
+
+- id: "L22402-Q17"
+  topic_code: "L22402"
+  item_code: "confusion-matrix"
+  difficulty: 3
+  question: "某內容審查團隊收到模型報表：TP=45、FP=15、TN=120、FN=20。若主管問『被模型判定為違規的內容中，真的違規的比例是多少？』，應回覆下列何者？"
+  options:
+    a: "0.75"
+    b: "0.69"
+    c: "0.90"
+    d: "0.82"
+  correct: "a"
+  explanation:
+    why_correct: "題目問的是 Precision = TP / (TP + FP) = 45 / 60 = 0.75。"
+    why_not_b: "0.69 常見於把 45/(45+20) 算成 Recall，卻誤以為是『判為違規中真的違規』。"
+    why_not_c: "0.90 並非由本題數值正確推得，容易來自只看 TN 主導的直覺。"
+    why_not_d: "0.82 看起來像整體 Accuracy 近似值，但題目問的是正類預測的可信度。"
+  keywords:
+    - "Precision calculation"
+    - "content moderation"
+    - "TP FP"
+  exam_trap: true
+
+- id: "L22402-Q18"
+  topic_code: "L22402"
+  item_code: "confusion-matrix"
+  difficulty: 3
+  question: "某醫療檢測模型在 200 筆資料上的結果為 TP=30、FP=10、TN=150、FN=10。若題目要求召回率（Recall），應選下列何者？"
+  options:
+    a: "0.70"
+    b: "0.75"
+    c: "0.88"
+    d: "0.85"
+  correct: "b"
+  explanation:
+    why_correct: "Recall = TP / (TP + FN) = 30 / (30 + 10) = 0.75。"
+    why_not_a: "0.70 常見於分母抄錯或把 FP 納入。"
+    why_not_c: "0.88 比較像把 TN 與 TP 都納入整體準確率（Accuracy）的誤算。"
+    why_not_d: "0.85 是常見的直覺高估，未依公式計算。"
+  keywords:
+    - "Recall calculation"
+    - "medical diagnosis"
+    - "TP FN"
+  exam_trap: true
+
+- id: "L22402-Q19"
+  topic_code: "L22402"
+  item_code: "precision-recall"
+  difficulty: 3
+  question: "一家郵件服務商準備調整垃圾郵件模型的門檻。若新門檻使更多郵件被判為垃圾郵件，最可能出現哪一種變化？"
+  options:
+    a: "Precision 與 Recall 一定同時上升"
+    b: "Recall 上升，但 Precision 可能下降"
+    c: "Accuracy 一定變成 1"
+    d: "AUC-ROC 一定上升"
+  correct: "b"
+  explanation:
+    why_correct: "降低門檻通常會把更多樣本判為正類，因此較容易抓到更多真陽性，Recall 上升；但也可能帶來更多假陽性，使 Precision 下降。"
+    why_not_a: "Precision 與 Recall 往往存在取捨，並非必然同升。"
+    why_not_c: "門檻調整不會保證模型完美。"
+    why_not_d: "AUC 反映整體排序能力，不是單一門檻調整就會改變。"
+  keywords:
+    - "門檻"
+    - "Precision Recall tradeoff"
+    - "spam filtering"
+  exam_trap: false
+
+- id: "L22402-Q20"
+  topic_code: "L22402"
+  item_code: "precision-recall"
+  difficulty: 3
+  question: "某保險公司用模型篩選高風險理賠案件供人工複核。人工審核資源有限，主管要求『送進人工隊列的案件要盡量是真的高風險』。此時最適合優先優化哪一個指標？"
+  options:
+    a: "Recall（召回率）"
+    b: "F1-score（F1 分數）"
+    c: "Precision（精確率）"
+    d: "AUC-ROC"
+  correct: "c"
+  explanation:
+    why_correct: "人工複核名額有限時，重點是被送進隊列的案件品質要高，也就是降低 FP、提高 Precision。"
+    why_not_a: "Recall 高能抓到更多高風險案件，但可能把太多誤報也送進人工流程。"
+    why_not_b: "F1 是折衷指標，若題目明確偏向案件品質，Precision 更直接。"
+    why_not_d: "AUC 適合比較模型整體排序能力，但不能直接代表人工隊列的命中率。"
+  keywords:
+    - "Precision priority"
+    - "manual review"
+    - "risk screening"
+  exam_trap: false
+
+- id: "L22402-Q21"
+  topic_code: "L22402"
+  item_code: "f1-score"
+  difficulty: 3
+  question: "某客服流失預測模型的 Precision=0.60、Recall=0.75。若產品經理要求用單一數值同時反映兩者平衡表現，則 F1-score 最接近何者？"
+  options:
+    a: "0.60"
+    b: "0.80"
+    c: "0.90"
+    d: "0.67"
+  correct: "d"
+  explanation:
+    why_correct: "F1 = 2 × 0.60 × 0.75 / (0.60 + 0.75) = 0.6667，最接近 0.67（≈ 0.6667）。"
+    why_not_a: "0.60 只是 Precision，未整合 Recall。"
+    why_not_b: "0.80 高於兩者中的較大值，不可能是調和平均。"
+    why_not_c: "0.90 明顯高估，反映未理解 F1 會受較低者限制。"
+  keywords:
+    - "F1-score calculation"
+    - "churn prediction"
+    - "harmonic mean"
+  exam_trap: false
+
+- id: "L22402-Q22"
+  topic_code: "L22402"
+  item_code: "auc-roc"
+  difficulty: 3
+  question: "兩個詐欺偵測模型 A 與 B 使用同一測試集。A 的 AUC-ROC=0.92，B 的 AUC-ROC=0.81。若尚未決定最終 threshold，下列解讀何者較合理？"
+  options:
+    a: "模型 A 在多數 threshold 下區分正負類的排序能力通常較佳"
+    b: "模型 A 在 threshold=0.5 的 Precision 一定比模型 B 高"
+    c: "模型 B 的 Accuracy 一定較低"
+    d: "只要 AUC 較高，就不需要再考慮業務成本"
+  correct: "a"
+  explanation:
+    why_correct: "AUC-ROC 較高表示模型整體排序/區分能力通常更好，特別適合在 threshold 未定時比較模型。"
+    why_not_b: "AUC 高不代表某個固定 threshold 的 Precision 必然更高。"
+    why_not_c: "Accuracy 受 threshold 與類別分布影響，不能直接由 AUC 推定。"
+    why_not_d: "模型選擇仍需結合誤判成本與部署需求。"
+  keywords:
+    - "model comparison"
+    - "AUC-ROC"
+    - "threshold independent"
+  exam_trap: false
+
+- id: "L22402-Q23"
+  topic_code: "L22402"
+  item_code: "auc-roc"
+  difficulty: 3
+  question: "分析師用 `y_pred = model.predict(X_test)` 後直接拿 `y_pred` 計算 AUC-ROC，結果主管提醒這樣可能失真。最主要原因是什麼？"
+  options:
+    a: "`predict()` 不能用在分類任務"
+    b: "`predict()` 一定比 `predict_proba()` 慢"
+    c: "AUC-ROC 需要各樣本的排序分數，hard label 會丟失 threshold 可調資訊"
+    d: "`predict()` 只會輸出訓練集結果"
+  correct: "c"
+  explanation:
+    why_correct: "AUC-ROC 要看不同 threshold 的表現，因此需要連續分數或機率；hard label 只剩 0/1，無法完整表示排序資訊。"
+    why_not_a: "`predict()` 當然可以用於分類，它只是用途不同。"
+    why_not_b: "速度不是主管提醒的核心原因。"
+    why_not_d: "`predict()` 是對輸入資料做預測，並不限於訓練集。"
+  keywords:
+    - "predict vs predict_proba"
+    - "AUC misuse"
+    - "hard label"
+  exam_trap: true
+
+- id: "L22402-Q24"
+  topic_code: "L22402"
+  item_code: "use-cases"
+  difficulty: 3
+  question: "某零售平台以歷史購買、瀏覽與客服紀錄預測顧客是否會退訂會員。從 L22402 的角度看，這類工作最貼近哪一種描述？"
+  options:
+    a: "無監督式分群（Unsupervised Clustering）應用"
+    b: "文本生成（Text Generation）應用"
+    c: "影像風格轉換（Style Transfer）應用"
+    d: "以大量特徵支援的鑑別式分類（Discriminative Classification）應用"
+  correct: "d"
+  explanation:
+    why_correct: "題目已有明確預測目標『是否退訂』，且使用大量歷史特徵，屬於典型鑑別式分類工作負載。"
+    why_not_a: "分群沒有明確監督標籤，不符合『是否退訂』的預測型任務。"
+    why_not_b: "文本生成不是本題的任務型態。"
+    why_not_c: "影像風格轉換與會員退訂預測無關。"
+  keywords:
+    - "membership churn"
+    - "discriminative classification"
+    - "big data application"
+  exam_trap: false
+
+- id: "L22402-Q25"
+  topic_code: "L22402"
+  item_code: "confusion-matrix"
+  difficulty: 4
+  question: "某資料科學家在不平衡資料集上回報模型 Accuracy=95%，但混淆矩陣顯示 TP=5、FN=45、FP=5、TN=945。對這份報告最合理的分析是什麼？"
+  options:
+    a: "Accuracy 很高，表示模型已足以部署"
+    b: "因為 FP 很少，所以 Recall 一定很高"
+    c: "雖然 Accuracy 高，但模型漏掉多數正類，若正類重要則報告可能誤導"
+    d: "只要 TN 大於 TP，混淆矩陣就不能用"
+  correct: "c"
+  explanation:
+    why_correct: "此例正類稀少，模型主要靠判對大量負類撐高 Accuracy；但 Recall = 5 / 50 = 0.10，若正類重要，實務價值有限。"
+    why_not_a: "這正是不平衡資料下只看 Accuracy 的典型陷阱。"
+    why_not_b: "Recall 與 FN 直接相關，本例 FN 很高，Recall 反而很低。"
+    why_not_d: "混淆矩陣仍然非常有用，正是它揭露了 Accuracy 掩蓋的問題。"
+  keywords:
+    - "imbalanced data"
+    - "Accuracy trap"
+    - "confusion matrix analysis"
+  exam_trap: true
+
+- id: "L22402-Q26"
+  topic_code: "L22402"
+  item_code: "precision-recall"
+  difficulty: 4
+  question: "某醫院要在大規模初篩模型中盡量找出潛在患者，並接受後續由醫師進一步複核。若只能先優先一個指標，最佳選擇為何？"
+  options:
+    a: "Precision（精確率），因為誤報一定比漏報更危險"
+    b: "Recall（召回率），因為初篩階段更怕漏掉真正患者"
+    c: "Accuracy（準確率），因為它最容易向主管說明"
+    d: "AUC-ROC，因為它等同於最終醫療決策品質"
+  correct: "b"
+  explanation:
+    why_correct: "初篩通常容許後續人工複核，因此更怕漏掉真正患者，應優先提高 Recall。"
+    why_not_a: "Precision 重要，但在初篩階段通常不是首要風險。"
+    why_not_c: "容易說明不等於最適合決策，尤其在醫療與不平衡資料下更是如此。"
+    why_not_d: "AUC 有助模型比較，但不能直接取代此情境下的指標優先順序。"
+  keywords:
+    - "medical screening"
+    - "Recall priority"
+    - "tradeoff"
+  exam_trap: false
+
+- id: "L22402-Q27"
+  topic_code: "L22402"
+  item_code: "f1-score"
+  difficulty: 4
+  question: "某模型調整門檻後，Precision 從 0.90 降到 0.75，但 Recall 從 0.40 升到 0.75。若團隊想用單一指標判斷整體平衡是否改善，何者最合理？"
+  options:
+    a: "因為 Precision 下降，所以模型一定變差"
+    b: "只看 Accuracy 即可，不需要 F1-score"
+    c: "只看 TN 是否增加即可"
+    d: "比較前後的 F1-score，因為它能平衡 Precision 與 Recall"
+  correct: "d"
+  explanation:
+    why_correct: "當 Precision 與 Recall 一升一降時，F1-score 是常見的平衡指標。前者 F1 約 0.55，後者 F1=0.75，顯示整體平衡改善。"
+    why_not_a: "Precision 單獨下降不代表整體一定變差，需結合 Recall 觀察。"
+    why_not_b: "Accuracy 可能受類別分布影響，無法直接反映這種 tradeoff。"
+    why_not_c: "TN 只是混淆矩陣的一部分，不能代表正類偵測與誤報的平衡。"
+  keywords:
+    - "F1-score comparison"
+    - "門檻調整"
+    - "Precision Recall balance"
+  exam_trap: false
+
+- id: "L22402-Q28"
+  topic_code: "L22402"
+  item_code: "auc-roc"
+  difficulty: 4
+  question: "團隊比較兩個模型時發現：模型 X 在門檻=0.5 的 Accuracy 較高，但模型 Y 的 AUC-ROC 較高。若公司尚未決定正式上線門檻，哪一個判斷較合理？"
+  options:
+    a: "直接選模型 X，因為 0.5 是唯一標準門檻"
+    b: "偏向考慮模型 Y，因為較高 AUC-ROC 代表在多種門檻下的排序能力較好"
+    c: "兩者完全無法比較，必須重訓"
+    d: "只要 Accuracy 較高，AUC-ROC 就沒有意義"
+  correct: "b"
+  explanation:
+    why_correct: "當正式門檻尚未確定時，AUC-ROC 能更全面反映模型在不同門檻下的辨識能力，因此較有參考價值。"
+    why_not_a: "0.5 常是預設值，不是所有商業場景唯一合理的門檻。"
+    why_not_c: "兩者當然可比較，只是比較面向不同。"
+    why_not_d: "AUC-ROC 特別適合這種門檻尚待決策的情況。"
+  keywords:
+    - "AUC vs Accuracy"
+    - "model selection"
+    - "門檻規劃"
+  exam_trap: true
+
+- id: "L22402-Q29"
+  topic_code: "L22402"
+  item_code: "use-cases"
+  difficulty: 4
+  question: "下列哪一組『應用情境 → 優先關注指標』的配對最合理？"
+  options:
+    a: "信用卡詐欺初篩 → Accuracy（準確率）"
+    b: "垃圾郵件過濾且重視正常信件不被攔截 → Recall（召回率）"
+    c: "醫療初篩且可再做人工複核 → Precision（精確率）"
+    d: "詐欺偵測且重視不要漏掉高風險交易 → Recall（召回率）"
+  correct: "d"
+  explanation:
+    why_correct: "詐欺偵測若最怕漏掉真正詐欺，就應優先提高 Recall 以降低 False Negative。"
+    why_not_a: "詐欺資料通常不平衡，只看 Accuracy 容易產生錯誤安全感。"
+    why_not_b: "垃圾郵件若重視正常信件不被攔截，應偏向 Precision，而非 Recall。"
+    why_not_c: "醫療初篩若可人工複核，通常先重視 Recall，避免漏診。"
+  keywords:
+    - "use-case mapping"
+    - "Recall"
+    - "fraud detection"
+  exam_trap: true
+
+- id: "L22402-Q30"
+  topic_code: "L22402"
+  item_code: "sklearn-pseudocode"
+  difficulty: 4
+  question: "閱讀下列 sklearn 偽程式碼（pseudocode）：`model.fit(X_train, y_train)`、`y_prob = model.predict_proba(X_test)[:, 1]`、`y_pred = (y_prob >= 0.7)`。這段流程最主要在做什麼？"
+  options:
+    a: "先訓練模型，再以 0.7 作為門檻產生最終類別"
+    b: "先計算 F1-score，再重新切分資料集"
+    c: "直接輸出 ROC 曲線的面積，不需要其他步驟"
+    d: "把多類別問題自動轉成回歸問題"
+  correct: "a"
+  explanation:
+    why_correct: "程式先用 `.fit()` 訓練，再取正類機率 `y_prob`，最後以 0.7 門檻轉成布林類別預測。"
+    why_not_b: "這段沒有任何 F1 計算或資料重切分。"
+    why_not_c: "AUC/ROC 仍需搭配真實標籤與評估函式計算。"
+    why_not_d: "這是二元分類常見流程，與回歸無關。"
+  keywords:
+    - "predict_proba"
+    - "門檻"
+    - "pseudocode"
+  exam_trap: false
+
+- id: "L22402-Q31"
+  topic_code: "L22402"
+  item_code: "sklearn-pseudocode"
+  difficulty: 4
+  question: "某同事將 `y_prob = model.predict_proba(X_test)` 直接拿去做混淆矩陣（Confusion Matrix），卻得到型別不合的問題。最合理的修正是什麼？"
+  options:
+    a: "改用 `model.fit(X_test, y_test)` 重新訓練"
+    b: "先從機率轉成類別標籤，例如設定門檻後再計算混淆矩陣"
+    c: "把 `predict_proba` 換成 `score` 就一定等價"
+    d: "AUC-ROC 與混淆矩陣完全相同，所以不用修正"
+  correct: "b"
+  explanation:
+    why_correct: "混淆矩陣需要離散類別標籤；若先取得機率，應再用門檻轉成 `y_pred` 後計算。"
+    why_not_a: "在測試集上重新訓練不但無法解決問題，還會造成資料洩漏。"
+    why_not_c: "`.score()` 回傳的是整體分數，不是每筆樣本類別。"
+    why_not_d: "AUC 與混淆矩陣用途不同，不能互相取代。"
+  keywords:
+    - "confusion matrix input"
+    - "predict_proba"
+    - "門檻轉換"
+  exam_trap: false
+
+- id: "L22402-Q32"
+  topic_code: "L22402"
+  item_code: "sklearn-pseudocode"
+  difficulty: 4
+  question: "關於 sklearn 的 `.predict()` 與 `.predict_proba()`，下列敘述何者最合理？"
+  options:
+    a: "`.predict()` 主要輸出類別標籤；`.predict_proba()` 主要輸出各類別機率分數"
+    b: "`.predict_proba()` 只能在回歸模型使用"
+    c: "`.predict()` 一定比 `.predict_proba()` 更適合計算 AUC-ROC"
+    d: "兩者功能完全相同，只是名稱不同"
+  correct: "a"
+  explanation:
+    why_correct: "`.predict()` 通常回傳最終類別，`.predict_proba()` 則回傳類別機率，適合門檻調整與 AUC 等任務。"
+    why_not_b: "許多分類器都支援 `.predict_proba()`。"
+    why_not_c: "AUC-ROC 通常更適合用機率或分數，而不是 hard label。"
+    why_not_d: "兩者輸出與用途不同。"
+  keywords:
+    - "predict"
+    - "predict_proba"
+    - "sklearn classification"
+  exam_trap: true
+
+- id: "L22402-Q33"
+  topic_code: "L22402"
+  item_code: "confusion-matrix"
+  difficulty: 5
+  question: "某模型在 1,000 筆交易上的結果為 TP=72、FP=18、TN=882、FN=28。若產品負責人要求『被攔下的交易中至少 80% 真的有問題』，且資料科學家暫時只能從現有指標判斷是否達標，最合理的結論是什麼？"
+  options:
+    a: "已達標，因為 Precision = 72 / (72 + 18) = 0.80"
+    b: "未達標，因為 Recall 只有 0.72"
+    c: "未達標，因為 Accuracy 未達 0.90"
+    d: "無法判斷，因為一定要先算 AUC-ROC"
+  correct: "a"
+  explanation:
+    why_correct: "『被攔下的交易中至少 80% 真的有問題』對應的是 Precision，計算結果正好為 0.80，因此符合要求。"
+    why_not_b: "Recall 與是否達成『攔下案件的命中率』是不同管理目標。"
+    why_not_c: "Accuracy 不是本題需求的核心。"
+    why_not_d: "題目要求的是固定決策結果下的命中率，混淆矩陣已足夠判斷。"
+  keywords:
+    - "Precision target"
+    - "transaction screening"
+    - "business requirement"
+  exam_trap: false
+
+- id: "L22402-Q34"
+  topic_code: "L22402"
+  item_code: "confusion-matrix"
+  difficulty: 5
+  question: "某健康檢查平台同時追蹤兩個版本模型。版本 A：TP=48、FP=12、TN=828、FN=112；版本 B：TP=90、FP=60、TN=780、FN=70。若業務要求『漏掉高風險個案的成本遠高於多通知一些人複檢』，下列判斷何者最佳？"
+  options:
+    a: "選 A，因為 FP 較少，所以一定較好"
+    b: "選 B，因為它大幅降低 FN，更符合業務成本結構"
+    c: "兩者 Accuracy 接近，所以沒有差別"
+    d: "只要 TN 高就表示模型更適合醫療應用"
+  correct: "b"
+  explanation:
+    why_correct: "在漏判成本高的情境，FN 比 FP 更關鍵。版本 B 把 FN 從 112 降到 70，更貼合業務風險承擔。"
+    why_not_a: "FP 較少不代表在此場景較佳，因為題目已明示漏判成本更高。"
+    why_not_c: "兩者 Accuracy 接近（版本A 87.6%，版本B 87.0%），不能反映 FN 成本差異。"
+    why_not_d: "TN 高多半只是負類多，不能單獨當成醫療決策依據。"
+  keywords:
+    - "FN cost"
+    - "medical screening"
+    - "confusion matrix tradeoff"
+  exam_trap: false
+
+- id: "L22402-Q35"
+  topic_code: "L22402"
+  item_code: "precision-recall"
+  difficulty: 5
+  question: "某企業要設計職缺推薦黑名單模型，以過濾疑似違規帳號。條件是：1. 不要錯殺太多正常求職者；2. 人工複核名額有限；3. 仍希望保留一定偵測能力。若只能先設定主要優化方向，何者最佳？"
+  options:
+    a: "以 Recall 為主，因為抓越多越安全"
+    b: "以 Accuracy 為主，因為最容易提高"
+    c: "以 Precision 為主，再視人工量能調整門檻"
+    d: "只看 AUC-ROC，不必設定門檻"
+  correct: "c"
+  explanation:
+    why_correct: "題目同時強調不要錯殺正常用戶與人工量能有限，代表需要先確保被攔下者大多真的有問題，因此應先以 Precision 為主，再做門檻調整。"
+    why_not_a: "單純追求 Recall 可能導致大量正常求職者被誤攔。"
+    why_not_b: "Accuracy 在此類不平衡篩選任務常無法對應實際營運成本。"
+    why_not_d: "AUC 有助比較模型，但最終仍要落到門檻與作業量能。"
+  keywords:
+    - "Precision first"
+    - "門檻調整"
+    - "manual review capacity"
+  exam_trap: false
+
+- id: "L22402-Q36"
+  topic_code: "L22402"
+  item_code: "precision-recall"
+  difficulty: 5
+  question: "某詐欺偵測團隊用同一組 `predict_proba` 測試不同門檻。門檻從 0.8 降到 0.4 後，Recall 明顯提高，但誤報也變多。若主管問『這是否代表模型本身排序能力變好？』，最佳回答為何？"
+  options:
+    a: "是，因為 Recall 提高就代表模型更強"
+    b: "否，這主要反映門檻改變；模型的排序能力不一定改變"
+    c: "是，因為 FP 變多表示模型看到更多資訊"
+    d: "否，但代表 AUC-ROC 一定下降"
+  correct: "b"
+  explanation:
+    why_correct: "在同一組機率分數下調整門檻，只是改變決策切點；這會改變 Precision/Recall，但不代表模型本身的排序能力改變。"
+    why_not_a: "Recall 提高可能只是門檻降低造成，不能直接視為模型本質變強。"
+    why_not_c: "FP 增加通常是門檻放寬的副作用，不是『看到更多資訊』。"
+    why_not_d: "若底層分數不變，AUC 通常也不變。"
+  keywords:
+    - "門檻效果"
+    - "Recall increase"
+    - "model ranking"
+  exam_trap: true
+
+- id: "L22402-Q37"
+  topic_code: "L22402"
+  item_code: "f1-score"
+  difficulty: 5
+  question: "兩個模型在同一資料集上的結果如下：模型 A 的 Precision=0.92、Recall=0.40；模型 B 的 Precision=0.70、Recall=0.70。若團隊想找『Precision 與 Recall 較均衡』的版本，最佳判斷為何？"
+  options:
+    a: "選 A，因為 Precision 更高就代表整體更好"
+    b: "選 B，因為其 F1-score 較高且兩項指標更平衡"
+    c: "兩者無法比較，因為沒有 TN"
+    d: "選 A，因為 Recall 低可以完全忽略"
+  correct: "b"
+  explanation:
+    why_correct: "模型 A 的 F1 約為 0.56，模型 B 的 F1 為 0.70。若目標是平衡 Precision 與 Recall，B 更符合需求。"
+    why_not_a: "Precision 高不代表整體平衡較佳，Recall 過低會影響實務可用性。"
+    why_not_c: "F1 不需要 TN 即可比較。"
+    why_not_d: "Recall 低是否可忽略要看場景，題目已明示要看平衡。"
+  keywords:
+    - "F1-based selection"
+    - "balanced performance"
+    - "model comparison"
+  exam_trap: false
+
+- id: "L22402-Q38"
+  topic_code: "L22402"
+  item_code: "auc-roc"
+  difficulty: 5
+  question: "某分析師提出三種評估流程：1. 用 `predict()` 算 AUC-ROC；2. 用 `predict_proba()[:,1]` 算 AUC-ROC；3. 用 `predict_proba()[:,1]` 搭配多個門檻畫 ROC 曲線。若要符合標準做法，哪一種組合最佳？"
+  options:
+    a: "只有 1 正確"
+    b: "只有 2 正確"
+    c: "2 與 3 正確，且 3 是 2 的視覺化延伸"
+    d: "1、2、3 都等價"
+  correct: "c"
+  explanation:
+    why_correct: "AUC-ROC 的標準輸入是連續分數，如 `predict_proba()[:,1]`；ROC 曲線則是對不同門檻的視覺化，因此 2 與 3 都符合方法論。"
+    why_not_a: "只用 hard label 算 AUC 會失去排序資訊，通常不建議。"
+    why_not_b: "2 正確，但 3 也正確，且是 ROC 的直接操作方式。"
+    why_not_d: "三者並不等價，1 的資訊量最低。"
+  keywords:
+    - "AUC workflow"
+    - "ROC curve"
+    - "predict_proba"
+  exam_trap: true
+
+- id: "L22402-Q39"
+  topic_code: "L22402"
+  item_code: "use-cases"
+  difficulty: 5
+  question: "某資料分析組要為三個專案制定第一優先指標：甲. 垃圾郵件攔截，重視正常信件不要被擋；乙. 醫療初篩，重視不要漏掉患者；丙. 尚未決定上線門檻的新模型比較。下列哪一組配對最佳？"
+  options:
+    a: "甲→Recall，乙→Precision，丙→Accuracy"
+    b: "甲→Accuracy，乙→AUC-ROC，丙→Recall"
+    c: "甲→Precision，乙→Recall，丙→AUC-ROC"
+    d: "甲→F1-score，乙→Accuracy，丙→Precision"
+  correct: "c"
+  explanation:
+    why_correct: "垃圾郵件重視別誤擋正常信件，優先看 Precision；醫療初篩怕漏診，優先看 Recall；門檻未定的模型比較，AUC-ROC 最合適。"
+    why_not_a: "這組把前兩者的優先順序對調，也把模型比較誤交給 Accuracy。"
+    why_not_b: "Accuracy 不適合垃圾郵件主痛點，AUC 也不能直接取代醫療初篩對漏診的關注。"
+    why_not_d: "F1 有時有用，但若題目已清楚給出業務優先順序，就應先選更直接的指標。"
+  keywords:
+    - "metric selection"
+    - "use case mapping"
+    - "AUC-ROC"
+  exam_trap: false
+
+- id: "L22402-Q40"
+  topic_code: "L22402"
+  item_code: "sklearn-pseudocode"
+  difficulty: 5
+  question: "某新進工程師寫下流程：`model.fit(X_train, y_train)` → `y_prob = model.predict_proba(X_test)[:,1]` → `for t in [0.3,0.5,0.7]: y_pred = (y_prob >= t)` → 比較 Precision/Recall。從部署監控角度看，這段流程的最佳解讀是什麼？"
+  options:
+    a: "這是在做特徵選擇（Feature Selection）"
+    b: "這是在把分類問題轉成回歸問題"
+    c: "這是在重新訓練三個不同模型"
+    d: "這是在固定同一模型分數後，透過不同門檻評估業務取捨"
+  correct: "d"
+  explanation:
+    why_correct: "模型只訓練一次，後面是在同一組機率分數上測試不同門檻，觀察 Precision/Recall 如何隨業務門檻改變。"
+    why_not_a: "流程中沒有任何特徵篩選步驟。"
+    why_not_b: "輸出機率不代表改成回歸，仍是分類決策流程。"
+    why_not_c: "只有 `.fit()` 一次，並沒有重訓三個模型。"
+  keywords:
+    - "門檻調整"
+    - "deployment monitoring"
+    - "predict_proba loop"
+  exam_trap: false
