@@ -1,0 +1,23 @@
+flowchart TD
+    Ingest([📥 新批次資料到達]) --> Compare{與 Schema Registry\n比對結構}
+
+    Compare -->|一致| Pass[✅ 正常寫入\nSilver Layer]
+    Compare -->|不一致| Detect{漂移類型?}
+
+    Detect -->|新增欄位\nAdditive| AddCol["🟡 Additive Drift\n允許新欄位，舊欄位設 NULL\n策略：Schema Evolution\n（推薦 Delta Lake / Iceberg）"]
+    Detect -->|刪除欄位\nBreaking| Breaking["🔴 Breaking Drift\n上游偷偷刪欄位\n策略：告警 + 停止寫入\n等待 Schema 協商"]
+    Detect -->|型別變更\nType Change| TypeChange["🔴 Type Change Drift\n int → string 等\n策略：強制轉型 or 拒絕 + 告警"]
+    Detect -->|欄位重新命名\nRename| Rename["🟡 Rename Drift\n舊名新名共存過渡\n策略：Alias mapping\n或 dbt column rename test"]
+
+    AddCol --> Log[📝 記錄 Schema 版本\n更新 Schema Registry]
+    Breaking --> Alert[🚨 PagerDuty 告警\n阻止寫入]
+    TypeChange --> Alert
+    Rename --> Log
+    Log --> Pass
+    Alert --> Manual([👨‍💻 工程師介入處理])
+
+    style Breaking fill:#f8d7da
+    style TypeChange fill:#f8d7da
+    style AddCol fill:#fff3cd
+    style Rename fill:#fff3cd
+    style Pass fill:#d4edda

@@ -1,0 +1,21 @@
+sequenceDiagram
+    participant Kafka as 📨 Kafka Stream
+    participant Spark as ⚡ Spark Streaming
+    participant WM as 🕐 Watermark\n(event_time − 2h)
+    participant State as 🗄️ Dedup State\n(bounded window)
+    participant Silver as ⚪ Silver Layer
+
+    Kafka->>Spark: event {id: E1, time: 10:00}
+    Spark->>WM: 更新 watermark → 08:00
+    Spark->>State: 查詢 E1 是否存在?
+    State-->>Spark: 不存在 → 寫入
+    Spark->>Silver: ✅ 寫出 E1
+
+    Kafka->>Spark: 重複事件 {id: E1, time: 10:01}
+    Spark->>State: 查詢 E1 是否存在?
+    State-->>Spark: 已存在 → 丟棄
+    Note over Spark: 🔥🔥 withWatermark + dropDuplicatesWithinWatermark<br/>→ State 大小有界（只保留 2 小時內）
+
+    Kafka->>Spark: 遲到事件 {id: E2, time: 07:30}
+    Note over Spark,WM: event_time 07:30 < watermark 08:00<br/>→ 遲到，丟棄（取決於 output mode）
+    Note over Silver: ⚠️ complete mode 不支援 watermark<br/>只能用 append 或 update mode

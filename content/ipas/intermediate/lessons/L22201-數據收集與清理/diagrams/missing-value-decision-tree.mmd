@@ -1,0 +1,24 @@
+flowchart TD
+    Start([🔍 發現缺值]) --> Q1{缺值比例\n> 50%?}
+
+    Q1 -->|是| Drop[❌ 刪除整欄\n.drop 或重新採集]
+    Q1 -->|否| Q2{資料有\n時間順序?}
+
+    Q2 -->|是| Q3{前後值\n有意義?}
+    Q3 -->|是| Forward["↕️ 前向/後向填補\ndf.ffill() / df.bfill()\n⚠️ pandas 3.0+: 禁用\nfillna(method='ffill')"]
+    Q3 -->|否| Q4{分組/\n分區有意義?}
+
+    Q2 -->|否| Q4
+    Q4 -->|是| Partition["📊 分區補值\n.groupby().transform('median')\n✅ 保留各區段分佈"]
+    Q4 -->|否| Global["📈 全域統計補值\n.fillna(median / mean / mode)\n⚠️ 可能掩蓋分組差異"]
+
+    Forward --> Check{✅ 補值後驗證\n分佈是否合理?}
+    Partition --> Check
+    Global --> Check
+    Check -->|合理| Done([完成缺值處理])
+    Check -->|異常| Drop
+
+    style Forward fill:#fff3cd
+    style Partition fill:#d4edda
+    style Global fill:#f8d7da
+    style Drop fill:#f8d7da

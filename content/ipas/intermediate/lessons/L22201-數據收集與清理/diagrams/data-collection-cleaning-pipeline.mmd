@@ -1,0 +1,33 @@
+flowchart LR
+    subgraph 資料來源["📥 資料來源 (Data Sources)"]
+        A1[API 拉取]
+        A2[IoT 感測器]
+        A3[CSV/JSON 批次]
+        A4[網頁爬取]
+        A5[事件推送\nWebhook]
+    end
+
+    subgraph Bronze["🟤 Bronze Layer\n（原始落地，不清理）"]
+        B[Raw Storage\nData Lake]
+    end
+
+    subgraph Silver["⚪ Silver Layer\n（清理、去重、PII遮蔽）"]
+        C1[缺值處理\ndropna / ffill / fillna]
+        C2[去重複\ndrop_duplicates\ndropDuplicatesWithinWatermark]
+        C3[異常值移除\nIQR fence / z-score clip]
+        C4[PII 遮蔽/假名化]
+        C5[型別轉換 & Regex抽取]
+        C6[Schema drift 偵測]
+    end
+
+    subgraph Gold["🟡 Gold Layer\n（聚合、分析就緒）"]
+        D[分析用資料集\nFeature Store]
+    end
+
+    A1 & A2 & A3 & A4 & A5 --> B
+    B --> C1 & C2 & C3 & C4 & C5 & C6
+    C1 & C2 & C3 & C4 & C5 & C6 --> D
+
+    style Bronze fill:#8B4513,color:#fff
+    style Silver fill:#C0C0C0,color:#000
+    style Gold fill:#DAA520,color:#000

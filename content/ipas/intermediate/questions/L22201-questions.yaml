@@ -1,0 +1,829 @@
+# L22201 數據收集與清理 — Practice Question Bank
+# Total: 35 questions | Difficulty: D1×7, D2×7, D3×7, D4×7, D5×7
+# Answer distribution: a=9, b=9, c=9, d=8
+# Generated: 2026-04-20
+
+- id: "L22201-Q01"
+  topic_code: "L22201"
+  item_code: "L22201-A"
+  difficulty: 1
+  question: "下列哪種資料收集方式（data collection method）最適合即時（real-time）獲取外部服務狀態更新，不需要客戶端主動輪詢（polling）？"
+  options:
+    a: "批次抓取（batch scraping）"
+    b: "Webhook 事件推送（event push）"
+    c: "排程 API 輪詢（scheduled API polling）"
+    d: "IoT 感測器串流（IoT sensor streaming）"
+  correct: "b"
+  explanation:
+    why_correct: "Webhook 是「伺服器主動推送」模式，事件發生時立即通知接收端，無需客戶端定期輪詢，延遲最低且節省頻寬。"
+    why_not_a: "批次抓取是離線批量取得資料，非即時，且需客戶端主動發起。"
+    why_not_c: "排程 API 輪詢仍由客戶端主動發送請求，會有輪詢間隔造成的延遲，不是『不需輪詢』的方案。"
+    why_not_d: "IoT 串流是設備持續傳送感測資料，適合物聯網場景，但並非『外部服務狀態更新』的標準模式。"
+  keywords:
+    - "webhook"
+    - "polling"
+    - "real-time"
+    - "data collection"
+  exam_trap: false
+
+- id: "L22201-Q02"
+  topic_code: "L22201"
+  item_code: "L22201-B"
+  difficulty: 1
+  question: "pandas 的 `dropna(how='all')` 與 `dropna(how='any')` 的差異為何？"
+  options:
+    a: "`how='all'` 只刪除「該列所有欄位都是 NaN」的列；`how='any'` 只要有一欄為 NaN 就刪除"
+    b: "`how='all'` 只要有一欄為 NaN 就刪除；`how='any'` 只刪除全列皆為 NaN 的列"
+    c: "兩者行為相同，差異僅在效能"
+    d: "`how='all'` 刪除欄（columns）；`how='any'` 刪除列（rows）"
+  correct: "a"
+  explanation:
+    why_correct: "`how='all'` 表示只有當一整列的所有值都是 NaN 時才刪除，`how='any'` 表示只要該列中有任一 NaN 就刪除。這是 pandas 文件的精確定義。"
+    why_not_b: "選項 B 把兩個參數的意義對調，是最常見的混淆錯誤。"
+    why_not_c: "兩者行為截然不同，`how='any'` 比 `how='all'` 刪除更多列，不僅是效能差異。"
+    why_not_d: "`how=` 參數控制刪除條件，axis= 才控制刪除方向（列或欄）。"
+  keywords:
+    - "dropna"
+    - "how='all'"
+    - "how='any'"
+    - "missing value"
+  exam_trap: false
+
+- id: "L22201-Q03"
+  topic_code: "L22201"
+  item_code: "L22201-C"
+  difficulty: 1
+  question: "pandas `drop_duplicates()` 的 `keep` 參數設為 `False` 時，其行為是？"
+  options:
+    a: "保留第一筆重複紀錄，刪除其餘"
+    b: "保留最後一筆重複紀錄，刪除其餘"
+    c: "刪除所有重複紀錄（包括第一次出現的那筆）"
+    d: "不刪除任何紀錄，僅標記重複欄位"
+  correct: "c"
+  explanation:
+    why_correct: "`keep=False` 表示所有出現過重複的紀錄全部刪除，不保留任何一筆，結果只剩下完全唯一（never duplicated）的紀錄。"
+    why_not_a: "保留第一筆是 `keep='first'`（預設值）的行為。"
+    why_not_b: "保留最後一筆是 `keep='last'` 的行為。"
+    why_not_d: "pandas `drop_duplicates()` 不提供「僅標記」功能，要標記請用 `duplicated()` 方法。"
+  keywords:
+    - "drop_duplicates"
+    - "keep=False"
+    - "deduplication"
+  exam_trap: false
+
+- id: "L22201-Q04"
+  topic_code: "L22201"
+  item_code: "L22201-D"
+  difficulty: 1
+  question: "IQR（四分位距，Interquartile Range）異常值偵測中，標準的「下界 fence」公式為何？"
+  options:
+    a: "Q1 − 1.5 × IQR，其中 IQR = Q3 − Q1"
+    b: "Q2 − 1.5 × IQR，其中 IQR = Q3 − Q1"
+    c: "Q1 − 2.0 × IQR，其中 IQR = Q3 − Q1"
+    d: "Q1 − 1.5 × IQR，其中 IQR = Q3 − Q2"
+  correct: "a"
+  explanation:
+    why_correct: "IQR 的定義為第三四分位數減第一四分位數（Q3 − Q1），Tukey fence 下界為 Q1 − 1.5 × IQR，上界為 Q3 + 1.5 × IQR。選項 a 兩者皆正確。"
+    why_not_b: "下界以 Q1 為基準，不是 Q2（中位數）。"
+    why_not_c: "乘數 2.0 不是 Tukey fence 的標準係數；標準係數是 1.5（嚴格異常值用 3.0）。"
+    why_not_d: "選項 d 將 IQR 定義為 Q3 − Q2（Q2 為中位數），此為錯誤定義；IQR 應為 Q3 − Q1。定義錯誤導致 fence 計算結果不正確。"
+  keywords:
+    - "IQR"
+    - "四分位距"
+    - "outlier"
+    - "fence"
+  exam_trap: false
+
+- id: "L22201-Q05"
+  topic_code: "L22201"
+  item_code: "L22201-E"
+  difficulty: 1
+  question: "Python 正規表達式（regex）中，`\\d+` 的匹配對象為何？"
+  options:
+    a: "一個或多個空白字元"
+    b: "一個或多個數字字元（0–9）"
+    c: "零個或多個數字字元"
+    d: "一個或多個英文字母"
+  correct: "b"
+  explanation:
+    why_correct: "`\\d` 匹配任意單一數字（0–9），`+` 量詞表示「一個或多個」，故 `\\d+` 匹配一個或多個連續數字，例如 '123' 或 '7'。"
+    why_not_a: "空白字元由 `\\s` 表示，不是 `\\d`。"
+    why_not_c: "零個或多個應使用 `\\d*`（星號），`+` 要求至少一個字元。"
+    why_not_d: "英文字母由 `[a-zA-Z]` 或 `[a-z]` 表示，`\\d` 專指數字。"
+  keywords:
+    - "regex"
+    - "\\d+"
+    - "正規表達式"
+  exam_trap: false
+
+- id: "L22201-Q06"
+  topic_code: "L22201"
+  item_code: "L22201-F"
+  difficulty: 1
+  question: "資料品質（data quality）六大維度中，「完整性（Completeness）」的定義是？"
+  options:
+    a: "資料集中應有的欄位、紀錄都實際存在，沒有缺失"
+    b: "資料的值與真實世界事實相符"
+    c: "同一資料在不同系統間的值一致"
+    d: "資料在需要使用時已可取得"
+  correct: "a"
+  explanation:
+    why_correct: "完整性（Completeness）衡量資料集是否包含所有預期的紀錄與欄位值，缺失值（NaN/NULL）多代表完整性低。"
+    why_not_b: "選項 B 描述的是準確性（Accuracy）——資料與真實世界事實相符。"
+    why_not_c: "選項 C 描述的是一致性（Consistency）——不同系統/表間的值一致。"
+    why_not_d: "選項 D 描述的是及時性（Timeliness）——資料在需要時可用。"
+  keywords:
+    - "Completeness"
+    - "完整性"
+    - "資料品質"
+    - "six dimensions"
+  exam_trap: false
+
+- id: "L22201-Q07"
+  topic_code: "L22201"
+  item_code: "L22201-G"
+  difficulty: 1
+  question: "Schema drift（結構漂移）在資料管線（data pipeline）中最常見的成因是？"
+  options:
+    a: "資料量超過記憶體上限導致溢出"
+    b: "網路延遲造成批次資料晚到"
+    c: "上游資料來源（source schema）在未預先通知下新增、刪除或更名欄位"
+    d: "ETL 工具版本不相容"
+  correct: "c"
+  explanation:
+    why_correct: "Schema drift 的定義是：上游資料結構（欄位名稱、型別、新增/刪除欄位）在下游不知情的情況下改變，導致管線解析失敗，是造成 30–40% 管線中斷的主要原因。"
+    why_not_a: "記憶體溢出是資源問題，不是 schema drift。"
+    why_not_b: "晚到資料是 late-arriving records 問題，屬於 watermark policy 範疇。"
+    why_not_d: "工具版本不相容是相容性問題，不是 schema drift 的典型成因。"
+  keywords:
+    - "schema drift"
+    - "pipeline outage"
+    - "結構漂移"
+  exam_trap: false
+
+- id: "L22201-Q08"
+  topic_code: "L22201"
+  item_code: "L22201-H"
+  difficulty: 2
+  question: "下列哪個敘述最精確地區分假名化（pseudonymization）與匿名化（anonymization）？"
+  options:
+    a: "兩者皆不可逆，差異僅在加密強度"
+    b: "假名化使用雜湊（hash）；匿名化使用對稱加密（symmetric encryption）"
+    c: "假名化是不可逆的資料遮蔽，匿名化是可逆的 token 替換"
+    d: "假名化可透過金鑰或映射表還原原始 PII；匿名化是不可逆的單向轉換"
+  correct: "d"
+  explanation:
+    why_correct: "假名化（pseudonymization）以 token 或假名替換 PII，但保留映射表，可以還原（reversible）；匿名化（anonymization）是不可逆的單向轉換，無法從輸出復原原始 PII，兩者的核心差異在可逆性。"
+    why_not_a: "假名化是可逆的，並非兩者皆不可逆。"
+    why_not_b: "假名化的技術實作多樣（token、雜湊+鹽值、加密等），匿名化也不限於對稱加密；以技術手段分類並不精確。"
+    why_not_c: "選項 C 把可逆性對調了——假名化才是可逆的，匿名化才是不可逆的。"
+  keywords:
+    - "pseudonymization"
+    - "假名化"
+    - "anonymization"
+    - "匿名化"
+    - "PII"
+  exam_trap: false
+
+- id: "L22201-Q09"
+  topic_code: "L22201"
+  item_code: "L22201-A"
+  difficulty: 2
+  question: "工廠部署了大量溫度感測器，每秒產生一筆讀值並需即時監控。下列哪種資料收集架構最合適？"
+  options:
+    a: "每日定時批次（daily batch）透過 SFTP 傳輸 CSV"
+    b: "MQTT broker 搭配 Kafka 串流佇列（streaming queue）即時接收 IoT 資料"
+    c: "每 15 分鐘呼叫一次 REST API 輪詢"
+    d: "由感測器直接寫入關聯式資料庫（RDBMS）"
+  correct: "b"
+  explanation:
+    why_correct: "IoT 高頻感測場景需要低延遲串流架構。MQTT 是輕量 IoT 協議，Kafka 提供高吞吐佇列與持久化，是業界標準的即時 IoT 資料收集組合。"
+    why_not_a: "每日批次無法滿足「即時監控」需求，感測器資料會積壓。"
+    why_not_c: "15 分鐘輪詢間隔對每秒一筆的即時場景延遲過高，且增加 API 負載。"
+    why_not_d: "感測器直寫 RDBMS 在大量並發時會成為瓶頸，缺乏緩衝機制，不適合高頻 IoT 場景。"
+  keywords:
+    - "IoT"
+    - "MQTT"
+    - "Kafka"
+    - "streaming"
+    - "real-time"
+  exam_trap: false
+
+- id: "L22201-Q10"
+  topic_code: "L22201"
+  item_code: "L22201-B"
+  difficulty: 2
+  question: "時間序列（time-series）資料中有零散缺值，希望以前一個有效觀測值填補（forward fill）。在 pandas 3.0 環境下，哪段程式碼是正確寫法？"
+  options:
+    a: "`df['col'] = df['col'].ffill()`"
+    b: "`df['col'] = df['col'].fillna(method='ffill')`"
+    c: "`df['col'] = df['col'].fillna(method='pad')`"
+    d: "`df['col'] = df['col'].forward_fill()`"
+  correct: "a"
+  explanation:
+    why_correct: "pandas 3.0 已移除 `fillna()` 的 `method=` 參數；正確的前向填補方式是直接呼叫 `df.ffill()` 或 `Series.ffill()`。"
+    why_not_b: "`fillna(method='ffill')` 在 pandas 2.1 起發出 FutureWarning，在 3.0 已完全移除，執行時會拋出 TypeError。"
+    why_not_c: "`fillna(method='pad')` 與 B 同理，`method=` 參數在 3.0 已移除，`'pad'` 是 `'ffill'` 的別名但同樣無效。"
+    why_not_d: "`forward_fill()` 不是 pandas 的標準方法名稱，執行會拋出 AttributeError。"
+  keywords:
+    - "ffill"
+    - "pandas 3.0"
+    - "fillna method removed"
+    - "time-series imputation"
+  exam_trap: true
+
+- id: "L22201-Q11"
+  topic_code: "L22201"
+  item_code: "L22201-C"
+  difficulty: 2
+  question: "電商訂單資料表中，同一筆訂單可能因系統重傳出現多筆 `order_id` 相同的紀錄，需保留最後一筆（系統認定最新狀態）並刪除其餘。下列哪個 pandas 呼叫正確實現此需求？"
+  options:
+    a: "`df.drop_duplicates(subset=['order_id'], keep=False)`"
+    b: "`df.drop_duplicates(subset=['order_id'], keep='first')`"
+    c: "`df.drop_duplicates(subset=['order_id'], keep='last')`"
+    d: "`df.drop_duplicates(keep='last')`"
+  correct: "c"
+  explanation:
+    why_correct: "`keep='last'` 表示在重複的 `order_id` 群組中保留最後一筆，其餘刪除；`subset=['order_id']` 指定只依 order_id 判斷重複。"
+    why_not_a: "`keep=False` 會連最後那筆也刪除，導致訂單資料完全消失，結果錯誤。"
+    why_not_b: "`keep='first'` 保留第一筆，不符合「保留最新狀態（最後一筆）」需求。"
+    why_not_d: "未指定 `subset` 時，pandas 以所有欄位判斷重複，相同 order_id 但其他欄位不同的紀錄不會被判為重複，無法達成目標。"
+  keywords:
+    - "drop_duplicates"
+    - "keep='last'"
+    - "subset"
+    - "deduplication"
+  exam_trap: false
+
+- id: "L22201-Q12"
+  topic_code: "L22201"
+  item_code: "L22201-D"
+  difficulty: 2
+  question: "Z-score 異常值處理中，「clipping（截斷）」策略與「dropping（刪除）」策略的主要差異為何？"
+  options:
+    a: "Clipping 刪除異常值所在整列；dropping 以邊界值替換"
+    b: "Clipping 使用 IQR 計算；dropping 使用 Z-score 計算"
+    c: "兩者均不影響樣本數，差異僅在計算複雜度"
+    d: "Clipping 將超出閾值的值截斷至邊界值（如 ±3σ），保留樣本數；dropping 移除整列，樣本數減少"
+  correct: "d"
+  explanation:
+    why_correct: "Z-score clipping 把超過 |Z|=3 的觀測值截斷至 +3σ 或 −3σ，紀錄仍保留；dropping 則直接移除該紀錄，樣本數下降，可能導致偏差（bias）。兩者適用場景不同。"
+    why_not_a: "選項 A 把兩者定義對調了。"
+    why_not_b: "Clipping 與 dropping 都可以搭配 IQR 或 Z-score 計算閾值，並非方法本身決定計算方式。"
+    why_not_c: "Dropping 會減少樣本數，選項 C 說法錯誤。"
+  keywords:
+    - "z-score"
+    - "clipping"
+    - "dropping"
+    - "outlier"
+  exam_trap: false
+
+- id: "L22201-Q13"
+  topic_code: "L22201"
+  item_code: "L22201-F"
+  difficulty: 2
+  question: "下列哪個選項「不是」資料品質（data quality）的標準六大維度之一？"
+  options:
+    a: "準確性（Accuracy）"
+    b: "可擴展性（Scalability）"
+    c: "唯一性（Uniqueness）"
+    d: "及時性（Timeliness）"
+  correct: "b"
+  explanation:
+    why_correct: "資料品質六大維度為：Completeness（完整性）、Accuracy（準確性）、Consistency（一致性）、Timeliness（及時性）、Uniqueness（唯一性）、Validity（有效性）。可擴展性（Scalability）是系統架構屬性，不是資料品質維度。"
+    why_not_a: "準確性（Accuracy）是六大維度之一，是正確答案的干擾項。"
+    why_not_c: "唯一性（Uniqueness）是六大維度之一，衡量重複資料程度。"
+    why_not_d: "及時性（Timeliness）是六大維度之一，衡量資料是否在需要時可用。"
+  keywords:
+    - "資料品質"
+    - "six dimensions"
+    - "Scalability"
+    - "NOT a dimension"
+  exam_trap: false
+
+- id: "L22201-Q14"
+  topic_code: "L22201"
+  item_code: "L22201-I"
+  difficulty: 2
+  question: "ETL（Extract-Transform-Load）與 ELT（Extract-Load-Transform）的根本差異為何？"
+  options:
+    a: "ETL 在載入前先完成清理與轉換（transform before load）；ELT 先載入原始資料再在目標端執行轉換"
+    b: "ETL 只適用於雲端；ELT 只適用於地端（on-premises）"
+    c: "ELT 比 ETL 快 10 倍，因為跳過了資料清理步驟"
+    d: "兩者本質相同，差異僅在縮寫順序"
+  correct: "a"
+  explanation:
+    why_correct: "ETL 的轉換（T）發生在載入（L）之前，適合需要嚴格清理才能入庫的受監管管線；ELT 先把原始資料載入（L）至資料湖，轉換在目標端（如 Silver 層）執行，利用雲端彈性算力。"
+    why_not_b: "ETL 與 ELT 皆可在雲端或地端實施；此說法過度簡化。"
+    why_not_c: "ELT 並非跳過清理，而是把清理步驟移至目標端；說「快 10 倍」是誇大且不精確。"
+    why_not_d: "兩者在資料流程、清理時機、適用場景上有本質差異，不僅是縮寫順序不同。"
+  keywords:
+    - "ETL"
+    - "ELT"
+    - "transform before load"
+    - "Lakehouse"
+  exam_trap: false
+
+- id: "L22201-Q15"
+  topic_code: "L22201"
+  item_code: "L22201-E"
+  difficulty: 3
+  question: "以下 pandas 程式碼的執行結果為何？\n\n```python\nimport pandas as pd\ndf = pd.DataFrame({'raw': ['TEL:02-12345678', 'TEL:03-9876543']})\ndf['phone'] = df['raw'].str.extract(r'TEL:(\\d{2}-\\d{7,8})')\nprint(df['phone'].tolist())\n```"
+  options:
+    a: "['TEL:02-12345678', 'TEL:03-9876543']（回傳整個原始字串）"
+    b: "['02', '03']（只擷取區碼）"
+    c: "['02-12345678', '03-9876543']（擷取捕獲群組內容）"
+    d: "None（正規表達式語法錯誤）"
+  correct: "c"
+  explanation:
+    why_correct: "`str.extract()` 回傳第一個捕獲群組（括號內）的匹配內容。regex `TEL:(\\d{2}-\\d{7,8})` 的捕獲群組是 `\\d{2}-\\d{7,8}`，故擷取結果為 '02-12345678' 和 '03-9876543'。"
+    why_not_a: "`str.extract()` 只回傳捕獲群組，不包含群組外的 'TEL:' 前綴。"
+    why_not_b: "只擷取 '02' 需要捕獲群組只包含 `\\d{2}`，此題的捕獲群組包含完整電話號碼含區碼。"
+    why_not_d: "正規表達式語法正確，`\\d{2}` 匹配 2 位數字，`\\d{7,8}` 匹配 7–8 位數字，捕獲群組格式無誤。"
+  keywords:
+    - "str.extract"
+    - "regex"
+    - "capture group"
+    - "pandas"
+  exam_trap: false
+
+- id: "L22201-Q16"
+  topic_code: "L22201"
+  item_code: "L22201-B"
+  difficulty: 3
+  question: "工程師在 pandas 3.0 環境下執行以下程式碼：\n\n```python\ndf['temperature'] = df['temperature'].fillna(method='bfill')\n```\n\n執行後發生什麼？最正確的處理方式為何？"
+  options:
+    a: "正常執行，以後一個有效值往前填補（backward fill）"
+    b: "發出 FutureWarning，但仍正確執行後向填補"
+    c: "靜默失敗，NaN 保持不變"
+    d: "拋出 TypeError，應改為 `df['temperature'] = df['temperature'].bfill()`"
+  correct: "d"
+  explanation:
+    why_correct: "pandas 3.0 完全移除了 `fillna()` 的 `method=` 參數，執行時拋出 TypeError。正確替換方式是直接呼叫 `Series.bfill()` 或 `DataFrame.bfill()`，不需透過 `fillna()`。"
+    why_not_a: "pandas 3.0 已移除此參數，不會正常執行，直接拋出錯誤。"
+    why_not_b: "FutureWarning 是 pandas 2.1–2.x 的行為；在 3.0，`method=` 已完全移除，不再只是警告。"
+    why_not_c: "不是靜默失敗，而是明確拋出 TypeError。"
+  keywords:
+    - "pandas 3.0"
+    - "fillna method removed"
+    - "bfill"
+    - "TypeError"
+  exam_trap: true
+
+- id: "L22201-Q17"
+  topic_code: "L22201"
+  item_code: "L22201-C"
+  difficulty: 3
+  question: "台灣某電商平台使用 PySpark Structured Streaming 處理即時訂單串流。工程師寫了以下程式碼去除重複訂單：\n\n```python\ndf_dedup = streaming_df.dropDuplicates(['order_id'])\n```\n\n長時間運行後，叢集記憶體持續增長直到 OOM（Out of Memory）。根本原因為何？"
+  options:
+    a: "Spark 不支援在串流中使用 `dropDuplicates()`"
+    b: "未使用 `withWatermark()` 導致狀態無限累積（unbounded state growth）"
+    c: "應改用 `distinct()` 而非 `dropDuplicates()`"
+    d: "必須設定 `spark.sql.streaming.statefulOperator.checkCorrectness.enabled=true`"
+  correct: "b"
+  explanation:
+    why_correct: "在 Structured Streaming 中，`dropDuplicates()` 需要記錄所有已見過的 key 以比對是否重複。若未設定 `withWatermark()` 限制狀態保留範圍，狀態會隨時間無限增長，最終導致 OOM。正確做法是先呼叫 `withWatermark('event_time', '2 hours').dropDuplicatesWithinWatermark(['order_id'])`。"
+    why_not_a: "PySpark 支援串流中使用 `dropDuplicates()`，但需搭配 watermark 才能控制狀態大小。"
+    why_not_c: "`distinct()` 在串流中不適用，且無法解決狀態累積問題。"
+    why_not_d: "此設定旗標與狀態累積無關，無法解決 OOM 問題。"
+  keywords:
+    - "dropDuplicates"
+    - "withWatermark"
+    - "unbounded state"
+    - "streaming deduplication"
+    - "OOM"
+  exam_trap: true
+
+- id: "L22201-Q18"
+  topic_code: "L22201"
+  item_code: "L22201-I"
+  difficulty: 3
+  question: "某公司採用 Lakehouse 架構，資料流為 Bronze → Silver → Gold。以下哪個操作應在「Silver 層」執行？"
+  options:
+    a: "去重複、型別轉換、PII 遮蔽、填補缺值，產出已清理的結構化資料"
+    b: "以原始格式（raw as-is）儲存來源資料，不做任何轉換"
+    c: "依業務邏輯聚合（aggregate）計算 KPI 報表供 BI 工具讀取"
+    d: "訓練機器學習模型並儲存 model artifacts"
+  correct: "a"
+  explanation:
+    why_correct: "Silver 層是清理層（cleaned/conformed layer）：對 Bronze 的原始資料執行去重複、型別轉換、缺值填補、PII 遮蔽等清理動作，產出可信賴的結構化資料供 Gold 層使用。"
+    why_not_b: "以原始格式儲存不做任何轉換是 Bronze 層的職責（land as-is）。"
+    why_not_c: "依業務邏輯聚合計算 KPI 是 Gold 層的職責（aggregated/served data）。"
+    why_not_d: "模型訓練不屬於 Lakehouse 層次架構的任何層，是獨立的 MLOps 流程。"
+  keywords:
+    - "Bronze"
+    - "Silver"
+    - "Gold"
+    - "Lakehouse"
+    - "ELT"
+  exam_trap: false
+
+- id: "L22201-Q19"
+  topic_code: "L22201"
+  item_code: "L22201-E"
+  difficulty: 3
+  question: "某系統 log 格式為 `2026-04-15 14:32:01 ERROR [user_id=U1234] login failed`。工程師需要從 log 欄位中批次擷取 `user_id` 數字部分。以下哪段 pandas 程式碼能正確完成？"
+  options:
+    a: "`df['uid'] = df['log'].str.findall(r'user_id=(\\w+)')`"
+    b: "`df['uid'] = df['log'].str.replace(r'.*user_id=U(\\d+).*', r'\\1')`"
+    c: "`df['uid'] = df['log'].str.extract(r'user_id=U(\\d+)')`"
+    d: "`df['uid'] = df['log'].str.split('user_id=U').str[1]`"
+  correct: "c"
+  explanation:
+    why_correct: "`str.extract()` 配合捕獲群組 `(\\d+)` 精確擷取 'U' 之後的數字部分，結果為純數字字串（如 '1234'），這是 pandas 批次 regex 擷取的標準做法。"
+    why_not_a: "`str.findall()` 回傳 list，每格包含 `['U1234']` 而非純數字，且擷取結果包含 'U' 前綴不符需求。"
+    why_not_b: "使用 `str.replace()` 並傳入反向參照（如 `r'\\1'`）雖然在技術上可行，但它回傳整個修改後的字串，而非僅擷取捕獲群組的值，行為不穩定且較難維護；`str.extract()` 才是從字串中提取子欄位的標準方法。"
+    why_not_d: "`str.split()` 依字串分割，`[1]` 取分割後第二段，但這段包含 '1234 login failed...'，需再進一步切割，不夠精確。"
+  keywords:
+    - "str.extract"
+    - "regex"
+    - "log parsing"
+    - "user_id"
+  exam_trap: false
+
+- id: "L22201-Q20"
+  topic_code: "L22201"
+  item_code: "L22201-D"
+  difficulty: 3
+  question: "以下 Python 程式碼對某感測器溫度資料進行 IQR 異常值處理：\n\n```python\nQ1 = df['temp'].quantile(0.25)\nQ3 = df['temp'].quantile(0.75)\nIQR = Q3 - Q1\nlower = Q1 - 1.5 * IQR\nupper = Q3 + 1.5 * IQR\ndf['temp'] = df['temp'].clip(lower=lower, upper=upper)\n```\n\n執行後，超出 fence 的值會被如何處理？"
+  options:
+    a: "超出範圍的整列被刪除，DataFrame 行數減少"
+    b: "超出範圍的值被替換為 NaN"
+    c: "程式碼語法錯誤，`clip()` 不接受 `lower=`/`upper=` 參數"
+    d: "超出下界的值截斷為 `lower`，超出上界的值截斷為 `upper`，行數不變"
+  correct: "d"
+  explanation:
+    why_correct: "`df.clip(lower=, upper=)` 將小於 `lower` 的值設為 `lower`，大於 `upper` 的值設為 `upper`，其餘不動。這是 clipping 策略：保留紀錄但縮限極端值，DataFrame 行數不變。"
+    why_not_a: "Clipping 不刪除任何列，刪除列是 dropping 策略（配合 `dropna` 或 boolean indexing）。"
+    why_not_b: "`clip()` 不產生 NaN，而是截斷至邊界值。"
+    why_not_c: "pandas `DataFrame.clip(lower=, upper=)` 是合法的 API，語法無誤。"
+  keywords:
+    - "IQR"
+    - "clip"
+    - "outlier"
+    - "fence"
+    - "pandas"
+  exam_trap: false
+
+- id: "L22201-Q21"
+  topic_code: "L22201"
+  item_code: "L22201-G"
+  difficulty: 3
+  question: "某資料管線從第三方 API 接收 JSON 資料，近期 API 新增了 `discount_rate` 欄位但未通知下游。為防止類似的 schema drift 中斷管線，下列哪種策略最有效？"
+  options:
+    a: "在 Bronze 層強制套用固定 schema，遇到未知欄位即拋出錯誤"
+    b: "導入 Schema Registry（如 Apache Confluent Schema Registry），在資料入管線時驗證 schema 版本，並以 schema-on-read 策略容忍新增欄位"
+    c: "每週手動比對上游 API 文件與現有 schema"
+    d: "將所有欄位儲存為字串型別（string），避免型別不符錯誤"
+  correct: "b"
+  explanation:
+    why_correct: "Schema Registry 在資料進入管線時就驗證 schema，並追蹤版本變更，可及早偵測 schema drift；schema-on-read 策略允許新增欄位不中斷管線，是業界處理 schema drift 的最佳實踐。"
+    why_not_a: "強制固定 schema 雖可偵測 drift，但遇到新增欄位就立即拋錯並中斷管線，對新增欄位的合理情況過於嚴格。"
+    why_not_c: "手動比對無法即時偵測，且人力成本高、容易遺漏，無法規模化。"
+    why_not_d: "所有欄位存為字串雖可暫時避免型別錯誤，但犧牲了型別安全性，下游計算會更複雜且容易產生難以排查的 bug。"
+  keywords:
+    - "schema drift"
+    - "schema registry"
+    - "schema-on-read"
+    - "pipeline"
+  exam_trap: false
+
+- id: "L22201-Q22"
+  topic_code: "L22201"
+  item_code: "L22201-H"
+  difficulty: 5
+  question: "醫療機構建置病患資料管線，需遵守個資法（PII 保護）。在 Silver 層處理時，下列哪個步驟順序最符合 PII 遮蔽最佳實踐？"
+  options:
+    a: "先用 PII 偵測工具（如 Presidio）識別敏感欄位 → 執行 redaction/tokenization → 驗證輸出中無殘存 PII → 釋出至 Gold 層"
+    b: "先把所有欄位雜湊（hash）→ 再用 ML 模型偵測是否含 PII → 不符就回滾"
+    c: "Gold 層才做 PII 遮蔽，因為 BI 工具有存取控制"
+    d: "PII 欄位只需加密儲存，不需要遮蔽或假名化"
+  correct: "a"
+  explanation:
+    why_correct: "標準流程是「偵測 → 遮蔽 → 驗證 → 釋出」：先識別 PII 欄位，執行 redaction 或 tokenization，然後驗證輸出確無殘存 PII，最後才允許資料進入下游。這確保 PII 在 Silver 層就被移除，不進入 Gold 層。"
+    why_not_b: "先雜湊再偵測 PII 邏輯顛倒；已雜湊的資料 PII 偵測工具無法識別明文 PII。"
+    why_not_c: "PII 遮蔽應在 Silver 層就完成，Gold 層的存取控制不能替代資料本身的去識別化。"
+    why_not_d: "加密儲存在金鑰洩漏或管理人員有權限時仍可解密存取 PII；遮蔽/假名化才能確保敏感資訊不以明文存在。"
+  keywords:
+    - "PII"
+    - "redaction"
+    - "Presidio"
+    - "tokenization"
+    - "pipeline"
+  exam_trap: false
+
+- id: "L22201-Q23"
+  topic_code: "L22201"
+  item_code: "L22201-J"
+  difficulty: 4
+  question: "以下 PySpark Structured Streaming 程式碼設定了 watermark 並嘗試去重複：\n\n```python\ndf_dedup = (\n    streaming_df\n    .withWatermark('event_time', '2 hours')\n    .dropDuplicatesWithinWatermark(['session_id'])\n)\nquery = df_dedup.writeStream.outputMode('complete').start()\n```\n\n此程式碼會出現什麼問題？"
+  options:
+    a: "沒有問題，`complete` 模式是 watermark 的首選輸出模式"
+    b: "`dropDuplicatesWithinWatermark` 只支援全欄位去重，不接受 `['session_id']` 參數"
+    c: "`outputMode('complete')` 與 watermark 不相容；應改用 `append` 或 `update` 模式"
+    d: "`withWatermark()` 必須放在 `dropDuplicatesWithinWatermark()` 之後才能正確初始化"
+  correct: "c"
+  explanation:
+    why_correct: "Spark Structured Streaming 文件明確說明：watermark 只與 `append` 和 `update` 輸出模式相容。`complete` 模式要求 Spark 保留並重算完整結果集，這與 watermark「丟棄過時狀態」的機制相衝突，查詢會在執行時拋出 AnalysisException。"
+    why_not_a: "`complete` 模式是與 watermark 不相容的輸出模式，不是首選。"
+    why_not_b: "`dropDuplicatesWithinWatermark(['session_id'])` 語法正確，可接受欄位名稱列表。"
+    why_not_d: "`withWatermark()` 必須在 dedup 操作之前呼叫，現有程式碼順序正確。"
+  keywords:
+    - "withWatermark"
+    - "outputMode"
+    - "complete"
+    - "append"
+    - "update"
+    - "streaming"
+  exam_trap: true
+
+- id: "L22201-Q24"
+  topic_code: "L22201"
+  item_code: "L22201-B"
+  difficulty: 4
+  question: "某零售資料集包含多個地區的銷售紀錄，各地區商品單價分布差異極大（北部均價 500 元，南部均價 150 元）。若用全局（global）平均值填補缺值，會產生什麼問題？最佳替代方案為何？"
+  options:
+    a: "全局平均值填補不會有問題，因為平均值是最穩健的填補方式"
+    b: "全局平均值會讓南部的缺值被高估、北部的缺值被低估；應改用分區（partition-wise）的地區內平均值或中位數填補"
+    c: "應改用前向填補（ffill），因為時間序列比均值填補更準確"
+    d: "全局平均值填補會使資料集行數減少"
+  correct: "b"
+  explanation:
+    why_correct: "當資料具有自然分組（地區、類別）且各組分布差異大時，全局統計量（均值/中位數）對每個分組都不具代表性，會產生嚴重的填補偏差。應先按地區分組，再計算各分組內的統計量填補，即 partition-wise（分區）imputation。"
+    why_not_a: "全局平均值在分組差異大的場景會引入填補偏差，並非穩健選擇。"
+    why_not_c: "ffill 適合時間序列的縱向缺值填補，但本題場景是截面資料的分組問題，且 ffill 不能解決分組偏差問題。"
+    why_not_d: "均值填補不刪除任何列，行數不變；刪除行是 dropna 的行為。"
+  keywords:
+    - "partition-wise imputation"
+    - "global mean"
+    - "fillna"
+    - "groupby"
+    - "missing value"
+  exam_trap: true
+
+- id: "L22201-Q25"
+  topic_code: "L22201"
+  item_code: "L22201-C"
+  difficulty: 4
+  question: "以下兩段 PySpark Structured Streaming 程式碼，哪段能正確在串流中去除重複的 `event_id`，同時防止狀態無限增長？\n\n**程式碼 A：**\n```python\ndf.withWatermark('ts', '1 hour').dropDuplicates(['event_id'])\n```\n**程式碼 B：**\n```python\ndf.withWatermark('ts', '1 hour').dropDuplicatesWithinWatermark(['event_id'])\n```"
+  options:
+    a: "兩段程式碼行為完全相同"
+    b: "兩段都有錯，應改用 `distinct()` 加上 watermark"
+    c: "只有程式碼 A 正確；dropDuplicatesWithinWatermark 是實驗性 API，生產環境不建議使用"
+    d: "只有程式碼 B 能正確限制狀態大小；A 使用 dropDuplicates 不保證釋放 watermark 過期的狀態"
+  correct: "d"
+  explanation:
+    why_correct: "`dropDuplicatesWithinWatermark()` 是 PySpark 4.x 推薦的串流去重 API，它在 watermark 推進後釋放已過期的狀態，確保有界狀態（bounded state）。相比之下，`dropDuplicates()` 即使搭配 `withWatermark()` 也不保證回收過期狀態，長期運行仍可能積累。"
+    why_not_a: "兩者在狀態管理行為上有本質差異，不相同。"
+    why_not_b: "`distinct()` 不適用於 Structured Streaming，會拋出 AnalysisException。"
+    why_not_c: "`dropDuplicatesWithinWatermark()` 在 PySpark 4.x 是穩定的生產 API，並非實驗性。"
+  keywords:
+    - "dropDuplicatesWithinWatermark"
+    - "dropDuplicates"
+    - "watermark"
+    - "bounded state"
+    - "PySpark 4.x"
+  exam_trap: false
+
+- id: "L22201-Q26"
+  topic_code: "L22201"
+  item_code: "L22201-H"
+  difficulty: 4
+  question: "某公司將客戶手機號碼以 SHA-256 雜湊（無鹽值 salt）後儲存於資料庫，並聲稱已完成「匿名化（anonymization）」。下列哪個敘述最準確描述此方案的風險？"
+  options:
+    a: "SHA-256 是單向雜湊，原始號碼無法被反推，此方案完全符合匿名化標準"
+    b: "此方案是假名化（pseudonymization）而非匿名化，因為有金鑰映射可還原"
+    c: "雜湊本身無法被數學反推，但台灣手機號碼輸入空間有限（約 10^8 個），攻擊者可預先計算所有號碼的 SHA-256 雜湊值建立彩虹表（rainbow table），實現重識別（re-identification）"
+    d: "此方案完全符合 GDPR 的匿名化標準，因為 SHA-256 是不可逆演算法"
+  correct: "c"
+  explanation:
+    why_correct: "SHA-256 本身是不可逆的，但台灣手機號碼格式固定（09 開頭 10 位數，約 10^8 個可能值），輸入空間有限。攻擊者只需預先計算所有可能號碼的雜湊值，建立查找表，即可從雜湊值逆推回原始號碼。無鹽值雜湊在有限輸入空間下不足以構成真正的匿名化。正確做法是加鹽值（salt）或使用 tokenization。"
+    why_not_a: "SHA-256 的不可逆性在理論上成立，但實際上有限輸入空間使彩虹表攻擊完全可行，聲稱「無法還原」在此場景是錯誤的。"
+    why_not_b: "無鹽值 SHA-256 雜湊不存在「金鑰映射」，假名化的特徵是可透過金鑰還原；此方案嚴格說既非假名化也非真正的匿名化，問題在彩虹表風險。（補充：無鹽值雜湊因彩虹表攻擊風險，嚴格而言既非假名化也非足夠的匿名化，屬於不充分的遮蔽手段。此知識點在 §3-9 §6 陷阱5 有延伸說明。）"
+    why_not_d: "GDPR 對匿名化的要求是「合理手段下不可重識別」；彩虹表攻擊是可行且已知的合理手段，因此此方案不符合 GDPR 匿名化標準。"
+  keywords:
+    - "anonymization"
+    - "SHA-256"
+    - "rainbow table"
+    - "re-identification"
+    - "PII"
+  exam_trap: true
+
+- id: "L22201-Q27"
+  topic_code: "L22201"
+  item_code: "L22201-I"
+  difficulty: 4
+  question: "某金融機構需將交易資料送入監管報告系統，規定資料必須在載入前通過欄位格式驗證、去識別化及稽核紀錄。同時，系統運行在地端（on-premises）機房，雲端彈性算力不可用。下列哪種架構最合適？"
+  options:
+    a: "ETL（先清理/驗證/去識別化，再載入報告系統），因為受監管管線需要在載入前確保資料合規"
+    b: "串流架構（Kafka + Flink），因為金融資料需要低延遲"
+    c: "ELT + Lakehouse Bronze/Silver/Gold，因為分層架構支援所有清理需求"
+    d: "直接讀取（直接查詢交易源頭資料庫），因為避免複製可降低合規風險"
+  correct: "a"
+  explanation:
+    why_correct: "受監管的金融報告管線需要在資料入庫前就完成驗證、去識別化和稽核，這正是 ETL（Transform before Load）的設計初衷。地端環境也缺乏 ELT 所需的雲端彈性算力。"
+    why_not_b: "串流架構專注於低延遲，但監管報告通常是批次場景；且串流不能替代載入前的資料驗證流程。"
+    why_not_c: "ELT 把清理移至 Silver 層（載入後才清理），不滿足「載入前通過驗證」的監管要求。"
+    why_not_d: "直接查詢源頭資料庫會對交易系統產生額外負載，且缺乏獨立的稽核軌跡和去識別化步驟，合規風險更高。"
+  keywords:
+    - "ETL"
+    - "regulated pipeline"
+    - "on-premises"
+    - "compliance"
+    - "transform before load"
+  exam_trap: false
+
+- id: "L22201-Q28"
+  topic_code: "L22201"
+  item_code: "L22201-J"
+  difficulty: 4
+  question: "Spark Structured Streaming 設定 `withWatermark('event_time', '2 hours')`，以下哪個敘述正確描述 watermark 的語意保證？"
+  options:
+    a: "所有延遲超過 2 小時的資料保證被立即拋棄（dropped immediately）"
+    b: "Watermark 2 小時表示結果最多延遲 2 小時才輸出，與事件時間無關"
+    c: "Watermark 只對 `complete` 輸出模式有效，`append` 和 `update` 模式無法使用 watermark"
+    d: "延遲在 2 小時內的資料保證被聚合處理；延遲超過 2 小時的資料「可能」被丟棄（不保證一定丟棄），取決於 watermark 推進時機"
+  correct: "d"
+  explanation:
+    why_correct: "Spark 文件的精確語意：watermark 保證延遲在閾值（2 hours）內的資料一定會被聚合；超過閾值的資料「可能」被丟棄，但不是百分之百保證立即丟棄——若該批次的 watermark 尚未推進到足夠遠，晚到資料仍可能被處理。Watermark 的作用是允許引擎安全地清理過期狀態。"
+    why_not_a: "「保證立即拋棄」是錯誤的；watermark 推進是基於最大 event_time，超過閾值的資料是「可能」被丟棄，非「保證立即」。"
+    why_not_b: "Watermark 的 '2 hours' 是事件時間（event time）的延遲容忍度，不是結果輸出的處理時間（processing time）延遲。"
+    why_not_c: "Watermark 與 `append` 和 `update` 模式相容；不相容的是 `complete` 模式，選項 C 描述完全相反。"
+  keywords:
+    - "watermark"
+    - "event_time"
+    - "late data"
+    - "guarantee"
+    - "structured streaming"
+  exam_trap: false
+
+- id: "L22201-Q29"
+  topic_code: "L22201"
+  item_code: "L22201-G"
+  difficulty: 4
+  question: "根據業界研究，schema drift 造成資料管線中斷的比例約為多少？哪種組合策略能同時兼顧「即時偵測」與「不中斷管線」？"
+  options:
+    a: "約 5–10%；使用靜態 DDL 腳本（static DDL scripts）定期更新 schema"
+    b: "約 30–40%；結合 schema registry（版本管控）與 schema-on-read（延遲 schema 套用）"
+    c: "約 60–70%；唯一解是改用 NoSQL 資料庫避免固定 schema"
+    d: "約 30–40%；使用強制固定 schema（strict schema enforcement）並在偵測到 drift 時立即中斷管線"
+  correct: "b"
+  explanation:
+    why_correct: "Airbyte 研究資料指出 schema drift 造成約 30–40% 的管線中斷。最佳兼顧策略是：schema registry 做版本管控並即時偵測變更，schema-on-read 讓新欄位不中斷現有管線，兩者互補。"
+    why_not_a: "5–10% 低估了 schema drift 的普遍性；靜態 DDL 腳本是被動人工更新，無法即時偵測。"
+    why_not_c: "60–70% 過度高估；改用 NoSQL 並非唯一解，且會帶來其他資料管理複雜度。"
+    why_not_d: "30–40% 比例正確，但強制固定 schema 在遇到新增欄位（合理變更）時立即中斷管線，過於保守，無法兼顧「不中斷管線」。"
+  keywords:
+    - "schema drift"
+    - "30-40%"
+    - "schema registry"
+    - "schema-on-read"
+  exam_trap: false
+
+- id: "L22201-Q30"
+  topic_code: "L22201"
+  item_code: "L22201-B"
+  difficulty: 5
+  question: "某電商平台有「全台各縣市門市銷售額」資料，各縣市銷售均值差異達 3–5 倍。資料工程師需填補缺值，同時維護一個供全國分析的 Gold 層報表。以下哪個策略在準確性與可維護性上最佳？"
+  options:
+    a: "在 Silver 層按縣市（partition by city）分組計算中位數填補；Gold 層只做聚合，不再填補"
+    b: "在 Gold 層用全局中位數填補，因為 Gold 層用途是全國分析"
+    c: "在 Bronze 層用 ffill() 前向填補，避免後續層次需要處理缺值"
+    d: "對缺值欄位一律填 0，以確保計算不報錯"
+  correct: "a"
+  explanation:
+    why_correct: "在 Silver 層按縣市分組計算各組中位數填補（partition-wise imputation），可確保填補值具有分組代表性，不受全局分布偏移影響；Gold 層只負責聚合報表，不應再做缺值填補（已在 Silver 完成）。這符合 Lakehouse 各層職責分離原則。"
+    why_not_b: "Gold 層使用全局中位數填補，會讓銷售額低的縣市缺值被高估、銷售高的縣市被低估，全國分析結果偏差更大，且違反「清理在 Silver」的分層原則。"
+    why_not_c: "Bronze 層應保留原始資料（land as-is），在 Bronze 填補缺值會破壞原始資料不可變性，且 ffill 在截面（cross-sectional）資料中無意義——ffill 是時間序列縱向填補。"
+    why_not_d: "填 0 對銷售額欄位會把缺失值錯誤解讀為「零銷售」，嚴重扭曲統計分析，特別是均值、加總類指標。"
+  keywords:
+    - "partition-wise imputation"
+    - "Silver layer"
+    - "groupby"
+    - "median"
+    - "Lakehouse"
+  exam_trap: true
+
+- id: "L22201-Q31"
+  topic_code: "L22201"
+  item_code: "L22201-C"
+  difficulty: 5
+  question: "某資料工程師設計 Delta Lake upsert 管線，每日從 CDC（Change Data Capture）接收上游異動資料並合併至主表。以下程式碼有何問題？\n\n```python\n# 每日 CDC 增量資料（未去重）\nsource_df = spark.read.parquet('/cdc/daily/')\n\n# MERGE INTO 主表\nspark.sql(\"\"\"\n    MERGE INTO gold.orders AS target\n    USING source AS source\n    ON target.order_id = source.order_id\n    WHEN MATCHED THEN UPDATE SET *\n    WHEN NOT MATCHED THEN INSERT *\n\"\"\")\n```"
+  options:
+    a: "程式碼正確，Delta Lake MERGE INTO 自動去除 source 中的重複 order_id"
+    b: "應改用 INSERT OVERWRITE 而非 MERGE INTO，因為 MERGE 不支援 ACID"
+    c: "source_df 未先去重就送入 MERGE，若同一 order_id 在 CDC 中出現多次，可能導致非預期的多次 INSERT（NOT MATCHED 分支）"
+    d: "Delta Lake MERGE INTO 語法錯誤，`WHEN NOT MATCHED THEN INSERT *` 不合法"
+  correct: "c"
+  explanation:
+    why_correct: "Delta Lake 的 MERGE INTO 不會自動去重 source。當 source 中有多筆相同 order_id 時，MATCHED 分支會多次 UPDATE（每次覆蓋），NOT MATCHED 分支若 join 失敗則多次 INSERT，造成資料不一致。最佳實踐是先對 source_df 執行 `dropDuplicates(['order_id'])` 再傳入 MERGE。"
+    why_not_a: "MERGE INTO 不會自動去重 source，這是常見的誤解（exam trap）。"
+    why_not_b: "Delta Lake MERGE INTO 本身就是 ACID upsert，支援原子性操作；INSERT OVERWRITE 會覆蓋整個目標表，不適合增量更新。"
+    why_not_d: "`WHEN NOT MATCHED THEN INSERT *` 是合法的 Delta Lake SQL 語法。"
+  keywords:
+    - "Delta Lake"
+    - "MERGE INTO"
+    - "ACID"
+    - "pre-deduplicate"
+    - "CDC"
+  exam_trap: false
+
+- id: "L22201-Q32"
+  topic_code: "L22201"
+  item_code: "L22201-I"
+  difficulty: 5
+  question: "新創公司正在評估下一代資料平台架構，面臨以下約束：① 資料科學家需要用 SQL 探索原始資料；② 資料量每月翻倍，算力需彈性擴展；③ 部分資料需在入庫前通過 GDPR 合規驗證才能儲存。約束①②支持 ELT/Lakehouse，約束③要求 ETL 的特性。下列哪個混合架構最合理？"
+  options:
+    a: "全面採用 ELT，GDPR 驗證改在 Silver 層做（載入後再清理驗證）"
+    b: "全面採用 ETL，因為有一個合規要求就必須整體採用 ETL 架構"
+    c: "依資料敏感度分流：GDPR 敏感資料走 ETL 先驗證再入庫；非敏感資料走 ELT 進 Lakehouse，利用雲端彈性算力；兩條路線共用 Gold 層服務資料科學家"
+    d: "改用 NoSQL 資料庫，因為 schema-less 設計自動符合 GDPR 的靈活性需求"
+  correct: "c"
+  explanation:
+    why_correct: "混合架構是正解：GDPR 敏感資料走 ETL（在載入前驗證，符合約束③），非敏感資料走 ELT Lakehouse（彈性算力，符合約束②，且 SQL 探索原始 Bronze 資料，符合約束①）。兩條路線不互斥，依資料類型分流是最務實的 trade-off 選擇。"
+    why_not_a: "ELT 是「載入後才清理」，GDPR 若在 Silver 層才驗證，非合規資料已進入 Bronze 儲存，可能違反 GDPR 資料最小化（data minimisation）原則。"
+    why_not_b: "因一個合規需求就整體採用 ETL，放棄了雲端彈性算力（違反約束②）和原始資料 SQL 探索（違反約束①），過度限制架構彈性。"
+    why_not_d: "NoSQL schema-less 設計解決的是資料模型靈活性問題，與 GDPR 合規驗證完全無關；且資料科學家 SQL 探索在 NoSQL 上實作成本更高。"
+  keywords:
+    - "ETL"
+    - "ELT"
+    - "GDPR"
+    - "hybrid architecture"
+    - "Lakehouse"
+    - "data minimisation"
+  exam_trap: false
+
+- id: "L22201-Q33"
+  topic_code: "L22201"
+  item_code: "L22201-J"
+  difficulty: 5
+  question: "某平台串流處理用戶行為事件，設計了以下去重管線：\n\n```python\nevents = (\n    spark.readStream.format('kafka')...\n    .withWatermark('event_time', '30 minutes')\n    .dropDuplicatesWithinWatermark(['user_id', 'event_type', 'event_time'])\n)\nquery = events.writeStream.outputMode('append')...\n```\n\n產品經理要求：若某地區網路不穩定，事件最長可能延遲 2 小時才到達。目前設定是否足夠？應如何調整？"
+  options:
+    a: "30 分鐘已足夠，串流系統自動補償延遲"
+    b: "應將 watermark 延長至至少 `'2 hours'`，否則超過 30 分鐘的晚到事件會被丟棄，導致資料遺失；同時需評估狀態大小（state size）與延遲容忍的權衡"
+    c: "應改用 `outputMode('complete')` 以確保所有延遲資料都被保留"
+    d: "必須停止 watermark 機制（移除 withWatermark），改用無限狀態保留以防止任何事件丟失"
+  correct: "b"
+  explanation:
+    why_correct: "Watermark 閾值決定了系統容忍的最大事件延遲。30 分鐘 watermark 意味著超過 30 分鐘的晚到事件「可能」被丟棄。若業務需求是容忍最長 2 小時延遲，就必須將 watermark 設為 ≥ 2 hours。但延長 watermark 也意味著狀態保留時間更長（更多記憶體），這是延遲容忍度與狀態大小（memory）的典型 trade-off。"
+    why_not_a: "Spark 不會自動補償 watermark 閾值不足的問題；超過 watermark 的事件確實可能被丟棄。"
+    why_not_c: "`complete` 模式與 watermark 不相容（AnalysisException），且完整輸出模式要求重輸出所有歷史結果，並非「保留延遲資料」的正確方案。"
+    why_not_d: "移除 watermark 會導致狀態無限增長（unbounded state），最終 OOM；這不是生產環境可接受的方案。"
+  keywords:
+    - "watermark"
+    - "late-arriving"
+    - "state size"
+    - "trade-off"
+    - "2 hours"
+  exam_trap: false
+
+- id: "L22201-Q34"
+  topic_code: "L22201"
+  item_code: "L22201-H"
+  difficulty: 5
+  question: "某健保資料分析平台需對外提供研究用資料集，研究者不得追溯個別病患。法律顧問要求「真正的匿名化（anonymization）」，但資料科學家認為「假名化（pseudonymization）加上嚴格存取控制」更實用。在以下哪種情境下，假名化方案確實不足以替代匿名化？"
+  options:
+    a: "當資料集包含罕見疾病診斷（rare disease diagnosis），透過疾病碼 + 地區 + 年齡可能唯一識別個別病患，即使移除姓名也可被重識別（re-identified）"
+    b: "當研究者只需要統計聚合資料（aggregate statistics），個別紀錄不需提供"
+    c: "當假名化使用的 token 由第三方機構持有金鑰，研究平台無法解碼"
+    d: "當資料集已移除所有直接識別欄位（姓名、身分證、手機號碼）"
+  correct: "a"
+  explanation:
+    why_correct: "假名化僅移除直接識別符（如姓名），但保留準識別符（quasi-identifiers）如疾病碼、地區、年齡。罕見疾病在特定地區的特定年齡層可能只有少數病患，攻擊者可透過連結攻擊（linkage attack）重識別個別病患。在此情境下，假名化「不足」，需要 k-匿名化（k-anonymity）或差分隱私（differential privacy）等真正匿名化技術。"
+    why_not_b: "若只提供聚合統計資料，假名化與匿名化的區別不關鍵，因為個別紀錄本就不暴露；這是假名化「足夠」的情境。"
+    why_not_c: "第三方持有金鑰是假名化的強化版本，研究平台無法解碼，安全性進一步提高，這是假名化「可接受」的情境。"
+    why_not_d: "移除直接識別欄位後仍可能被重識別（正是選項 A 描述的情況），但 D 本身不是判斷假名化「不足」的直接原因；A 才直接說明了為何假名化不夠的機制。"
+  keywords:
+    - "anonymization"
+    - "pseudonymization"
+    - "re-identification"
+    - "quasi-identifier"
+    - "rare disease"
+    - "linkage attack"
+  exam_trap: false
+
+- id: "L22201-Q35"
+  topic_code: "L22201"
+  item_code: "L22201-F"
+  difficulty: 5
+  question: "某 FinTech 公司設計資料品質閘控（data quality gate）於 Silver 層，需同時監控六大維度。下列哪組規則設計最完整地覆蓋六個維度（Completeness、Accuracy、Consistency、Timeliness、Uniqueness、Validity）？"
+  options:
+    a: "① 缺值率 < 5%；② 金額欄位為正數；③ 主鍵無重複；④ 日期格式符合 ISO 8601"
+    b: "① 主鍵無重複；② 所有欄位有值；③ 日期格式正確；④ 來源系統版本一致"
+    c: "① 每日資料量波動 < 20%；② 與昨日資料 join 後無新欄位；③ 主鍵無重複；④ 資料更新時間差 < 30 分鐘"
+    d: "① 缺值率 < 5%（Completeness）；② 與參考主檔比對準確率 > 99%（Accuracy）；③ 跨表外鍵一致（Consistency）；④ 資料更新時間差 < 1 小時（Timeliness）；⑤ 主鍵唯一率 = 100%（Uniqueness）；⑥ 金額欄位格式及值域合法（Validity）"
+  correct: "d"
+  explanation:
+    why_correct: "選項 D 精確對應全部六個維度，每條規則各負責一個維度：① Completeness（缺值率）、② Accuracy（與參考主檔比對）、③ Consistency（跨表外鍵）、④ Timeliness（更新時間差）、⑤ Uniqueness（主鍵唯一率）、⑥ Validity（金額格式及值域）。這是六維度全覆蓋的品質閘控設計。"
+    why_not_a: "只有 4 條規則：① Completeness（缺值率）、② Validity（金額正數）、③ Uniqueness（主鍵無重複）、④ Validity（日期格式）——缺少 Accuracy、Consistency、Timeliness，且 Validity 重複覆蓋。"
+    why_not_b: "只覆蓋 4 個維度：Uniqueness（主鍵無重複）、Completeness（所有欄位有值）、Validity（日期格式）、Consistency（來源系統版本）——缺少 Accuracy 和 Timeliness。"
+    why_not_c: "資料量波動和 join 後新欄位偵測屬於 schema drift 監控，不是 Accuracy 維度；雖有 Timeliness 和 Uniqueness，但缺少 Completeness、Accuracy（正式定義）、Validity 的明確規則，六維未全覆蓋。"
+  keywords:
+    - "資料品質"
+    - "six dimensions"
+    - "quality gate"
+    - "Silver layer"
+    - "Completeness"
+    - "Accuracy"
+    - "Timeliness"
+  exam_trap: false
