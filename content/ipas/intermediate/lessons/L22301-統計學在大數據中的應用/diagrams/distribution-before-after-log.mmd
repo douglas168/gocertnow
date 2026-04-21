@@ -1,0 +1,22 @@
+flowchart LR
+    subgraph 原始分佈 右偏
+        direction TB
+        B1["頻率\n  ██\n  ████\n  ██████\n  ████████\n  ██████████\n  ────────────▶ 值\n  左高右長尾（右偏）\n  skewness > 0"]
+    end
+
+    subgraph log transform 後
+        direction TB
+        A1["頻率\n      ██\n    ██████\n  ██████████\n    ██████\n      ██\n  ────────────▶ ln x\n  接近對稱（常態）\n  skewness ≈ 0"]
+    end
+
+    subgraph 使用情境
+        direction TB
+        C1["✅ 收入、銷售額、點擊數\n   通常呈右偏分佈\n✅ log transform 後\n   可用 z-score 標準化\n⚠️ x 必須 > 0\n   x = 0 時改用 log1p\n   ln x + 1"]
+    end
+
+    原始分佈 右偏 -->|"x' = ln(x)"| log transform 後
+    log transform 後 --> 使用情境
+
+    style 原始分佈 右偏 fill:#ffd6a5,stroke:#f3722c
+    style log transform 後 fill:#caffbf,stroke:#43aa8b
+    style 使用情境 fill:#a8dadc,stroke:#457b9d

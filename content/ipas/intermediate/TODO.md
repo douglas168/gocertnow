@@ -79,7 +79,7 @@ Tracks open items across all lessons that need resolution before publishing.
 | 13 | L22201 | 數據收集與清理 | L22 | elective_a (資料分析組) | 1 | ✅ Done | 1 |
 | 14 | L22202 | 數據儲存與管理 | L22 | elective_a (資料分析組) | 1 | ✅ Done | 1 |
 | 15 | L22203 | 數據處理技術與工具 | L22 | elective_a (資料分析組) | 1 | ✅ Done | 2 |
-| 16 | L22301 | 統計學在大數據中的應用 | L22 | elective_a (資料分析組) | 1 | Not started | — |
+| 16 | L22301 | 統計學在大數據中的應用 | L22 | elective_a (資料分析組) | 1 | ✅ Done | 0 |
 | 17 | L22302 | 常見的大數據分析方法 | L22 | elective_a (資料分析組) | 1 | Not started | — |
 | 18 | L22303 | 數據可視化工具 | L22 | elective_a (資料分析組) | 1 | Not started | — |
 | 19 | L22401 | 大數據與機器學習 | L22 | elective_a (資料分析組) | 1 | Not started | — |
@@ -103,9 +103,9 @@ Tracks open items across all lessons that need resolution before publishing.
 
 ## What's Next
 
-**Next lesson:** `/course-generate-lesson L22301` — 統計學在大數據中的應用
+**Next lesson:** `/course-generate-lesson L22302` — 常見的大數據分析方法
 
-**Remaining lessons:** 19 of 34 topics left (7 for 資料分析組 SKU; 18 for 機器學習組 SKU; all L21 items now complete)
+**Remaining lessons:** 18 of 34 topics left (6 for 資料分析組 SKU; 18 for 機器學習組 SKU; all L21 items now complete)
 
 ### Priority 1 — 資料分析組 sprint (founder 2026-05-23 exam)
 
@@ -128,7 +128,7 @@ Order from `syllabus/dependencies.md` §3. Build L21 (required) first, then L22.
 | ~~13~~ | ~~L22201~~ | ~~數據收集與清理~~ | ✅ Done (35-question pool, 5 diagrams) |
 | ~~14~~ | ~~L22202~~ | ~~數據儲存與管理~~ | ✅ Done (35-question pool, 5 diagrams) |
 | ~~15~~ | ~~L22203~~ | ~~數據處理技術與工具~~ | ✅ Done (35-question pool, 5 diagrams) |
-| 16 | L22301 | 統計學在大數據中的應用 | Medium, includes code |
+| ~~16~~ | ~~L22301~~ | ~~統計學在大數據中的應用~~ | ✅ Done (35-question pool, 5 diagrams) |
 | 17 | L22302 | 常見的大數據分析方法 | Deep, includes code |
 | 18 | L22303 | 數據可視化工具 | Medium, includes code |
 | 19 | L22401 | 大數據與機器學習 | Deep, includes code |

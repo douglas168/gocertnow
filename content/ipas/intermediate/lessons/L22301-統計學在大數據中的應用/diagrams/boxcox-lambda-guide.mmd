@@ -1,0 +1,14 @@
+flowchart TD
+    A["Box-Cox 轉換\nx λ = x^λ - 1 / λ  λ≠0\nx 0 = ln x  λ=0\n⚠️ 僅適用 x > 0"]
+
+    A --> B["λ = 0\n→ ln x\n等同 log transform\n最常用於右偏修正"]
+    A --> C["0 < λ < 1\n→ 弱化右偏\nλ 愈小效果愈強"]
+    A --> D["λ = 1\n→ x - 1  線性偏移\n分布形狀不變\n⚠️ 非 identity transform"]
+    A --> E["λ > 1\n→ 放大右尾\n用於左偏修正（少見）"]
+    A --> F["λ 由資料估計\nsklearn PowerTransformer\nmethod='box-cox'\n自動尋找最佳 λ"]
+
+    style B fill:#caffbf,stroke:#43aa8b
+    style C fill:#caffbf,stroke:#43aa8b
+    style D fill:#ffd6a5,stroke:#f3722c
+    style E fill:#ffd6a5,stroke:#f3722c
+    style F fill:#a8dadc,stroke:#457b9d

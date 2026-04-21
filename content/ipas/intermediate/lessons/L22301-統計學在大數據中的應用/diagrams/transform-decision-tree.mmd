@@ -1,0 +1,22 @@
+flowchart TD
+    A[拿到一欄特徵資料] --> B{資料含負值或零？}
+    B -->|是| C{是否含極端離群值？}
+    B -->|否，全為正值| D{分佈是否右偏？}
+
+    C -->|是| E[RobustScaler\n公式：x - median / IQR\n對異常值不敏感]
+    C -->|否| F{需要固定輸出範圍 0~1？}
+
+    F -->|是| G[MinMaxScaler\n公式：x - min / max - min\n輸出範圍固定 0 ~ 1]
+    F -->|否| H[StandardScaler\n公式：x - μ / σ\n距離型或梯度型模型首選]
+
+    D -->|是，右偏| I{是否需要映射到特定分佈？}
+    D -->|否，近對稱| H
+
+    I -->|映射到均勻/常態分佈| J[QuantileTransformer\n非線性；min→0, max→1\n適合非常偏斜或多眾數資料]
+    I -->|只需減少偏度| K[log / Box-Cox\nlog：x = ln x  僅 x > 0\nBox-Cox：需估計 λ，僅 x > 0]
+
+    style E fill:#f9c74f,stroke:#f3722c
+    style G fill:#90be6d,stroke:#43aa8b
+    style H fill:#4d908e,color:#fff,stroke:#277da1
+    style J fill:#f8961e,stroke:#f3722c
+    style K fill:#f94144,color:#fff,stroke:#c1121f

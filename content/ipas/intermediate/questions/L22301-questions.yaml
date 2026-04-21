@@ -1,0 +1,806 @@
+- id: "L22301-Q01"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 1
+  question: "下列何者是標準化（Standardization）常用的 z-score 公式？"
+  options:
+    a: "z = (x − μ) / σ"
+    b: "z = (x − x_min) / (x_max − x_min)"
+    c: "z = (x − median) / IQR"
+    d: "z = (x − μ) / σ²"
+  correct: "a"
+  explanation:
+    why_correct: "標準化（Standardization）常用的 z-score 公式為 z = (x − μ) / σ，表示資料點相對平均數偏離了幾個標準差。"
+    why_not_a: "此選項正確。"
+    why_not_b: "這是最小最大正規化（min-max normalization）的公式，考生常把 normalization 與 standardization 混為一談。"
+    why_not_c: "這是 RobustScaler 的典型教學公式，使用 median 與 IQR，不是 z-score。"
+    why_not_d: "分母應為標準差 σ，不是變異數 σ²；這是常見的公式記憶錯誤。"
+  keywords:
+    - "標準化"
+    - "Standardization"
+    - "z-score"
+  exam_trap: true
+
+- id: "L22301-Q02"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 1
+  question: "下列何者是將資料映射到 0 到 1 區間的最小最大正規化（min-max normalization）公式？"
+  options:
+    a: "x' = (x − μ) / σ"
+    b: "x' = (x − x_min) / (x_max − x_min)"
+    c: "x' = (x − median) / IQR"
+    d: "x' = ln(x)"
+  correct: "b"
+  explanation:
+    why_correct: "最小最大正規化（min-max normalization）會依據最小值與最大值，將資料線性映射到固定區間，最常見是 0 到 1。"
+    why_not_a: "這是 z-score 標準化（Standardization），不是正規化到固定邊界的公式。"
+    why_not_b: "此選項正確。"
+    why_not_c: "這是 RobustScaler 的典型公式，主要目的是降低異常值影響，不是直接映射到 0 到 1。"
+    why_not_d: "對數轉換（log transform）可處理偏態，但不保證輸出在 0 到 1 區間。"
+  keywords:
+    - "正規化"
+    - "min-max normalization"
+    - "公式"
+  exam_trap: true
+
+- id: "L22301-Q03"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 1
+  question: "RobustScaler 的核心縮放基準為何？"
+  options:
+    a: "平均數（mean）與標準差（standard deviation）"
+    b: "最小值（minimum）與最大值（maximum）"
+    c: "中位數（median）與四分位距（IQR）"
+    d: "眾數（mode）與全距（range）"
+  correct: "c"
+  explanation:
+    why_correct: "RobustScaler 以中位數與四分位距（IQR）做中心化與縮放，因此比使用 mean、standard deviation 的方法更能抵抗 outliers。"
+    why_not_a: "這描述的是 StandardScaler 的主要概念，不是 RobustScaler。"
+    why_not_b: "這較接近 MinMaxScaler 的思路，並非 RobustScaler。"
+    why_not_c: "此選項正確。"
+    why_not_d: "mode 與 range 不是 sklearn RobustScaler 的核心統計量，但初學者可能因為都屬於描述統計而誤選。"
+  keywords:
+    - "RobustScaler"
+    - "median"
+    - "IQR"
+  exam_trap: false
+
+- id: "L22301-Q04"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 1
+  question: "下列何者最能正確區分標準化（Standardization）與正規化（Normalization）？"
+  options:
+    a: "兩者完全同義，只是不同教科書用語"
+    b: "標準化一定把資料壓到 0 到 1，正規化一定讓平均變成 0"
+    c: "標準化只能用在常態分佈，正規化只能用在偏態分佈"
+    d: "標準化通常以平均數與標準差調整尺度；正規化常把資料映到固定區間"
+  correct: "d"
+  explanation:
+    why_correct: "標準化（Standardization）通常讓資料以平均數 0、標準差 1 的尺度表達；正規化（Normalization）常指 min-max 這類映到固定範圍的轉換。"
+    why_not_a: "這是最常見誤解。考試常故意把兩者當同義詞來設陷阱。"
+    why_not_b: "這把兩者效果完全對調了，屬於典型背公式但沒理解目的的錯法。"
+    why_not_c: "兩者都可依情境使用，並非只能對某一種分佈使用。"
+    why_not_d: "此選項正確。"
+  keywords:
+    - "標準化"
+    - "正規化"
+    - "Standardization"
+    - "Normalization"
+  exam_trap: true
+
+- id: "L22301-Q05"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 1
+  question: "對數轉換（log transform）中的 `log1p(x)` 最適合用於哪一種資料條件？"
+  options:
+    a: "資料含 0，且希望進行近似對數轉換"
+    b: "資料有負值很多，想直接套用 Box-Cox"
+    c: "資料已經在 0 到 1 之間，不需任何轉換"
+    d: "資料只要是整數，就應一律使用 `log1p`"
+  correct: "a"
+  explanation:
+    why_correct: "`log1p(x)` 等於 ln(1+x)，對含 0 的非負資料比直接取 ln(x) 更安全，常用於右偏且有 0 值的計數型資料。"
+    why_not_a: "此選項正確。"
+    why_not_b: "Box-Cox 要求 x > 0，負值資料不能直接套用；`log1p` 也不是處理任意負值的萬用解。"
+    why_not_c: "是否在 0 到 1 區間與是否需要 log transform 無直接必然關係，重點是偏態與資料性質。"
+    why_not_d: "資料是整數不代表一定適合做對數轉換，這忽略了分佈與分析目的。"
+  keywords:
+    - "log transform"
+    - "log1p"
+    - "右偏"
+  exam_trap: true
+
+- id: "L22301-Q06"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 1
+  question: "關於 Box-Cox transform，下列何者正確？"
+  options:
+    a: "只要資料有 outlier，就一定優先用 Box-Cox"
+    b: "當 λ = 1 時，Box-Cox 等同 z-score"
+    c: "Box-Cox 可直接處理任意實數，包含 0 與負值"
+    d: "當 λ = 0 時，Box-Cox 退化為 ln(x)，且要求 x > 0"
+  correct: "d"
+  explanation:
+    why_correct: "Box-Cox 的定義中，λ = 0 時會退化為 ln(x)，而且輸入必須為正值，這是最常考的兩個核心條件。"
+    why_not_a: "Box-Cox 主要用於分佈形狀調整，不是只要有 outlier 就必用；對抗 outliers 更常想到 RobustScaler。"
+    why_not_b: "λ = 1 並不等同 z-score，Box-Cox 與 z-score 是不同目的與公式的轉換。"
+    why_not_c: "這是 Yeo-Johnson 與 Box-Cox 常被混淆的地方；Box-Cox 不能直接處理 0 或負值。"
+    why_not_d: "此選項正確。"
+  keywords:
+    - "Box-Cox"
+    - "lambda"
+    - "log"
+  exam_trap: true
+
+- id: "L22301-Q07"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 1
+  question: "在 `sklearn.preprocessing` 中，若先以訓練資料呼叫 `StandardScaler().fit(X_train)`，該 scaler 主要會學到哪一類統計量？"
+  options:
+    a: "每個欄位的相關係數矩陣"
+    b: "每個欄位的類別標籤數量"
+    c: "每個欄位的平均數（mean）與縮放所需的標準差資訊"
+    d: "每個欄位的主成分載荷（principal component loading）"
+  correct: "c"
+  explanation:
+    why_correct: "StandardScaler 在 fit 階段會從訓練資料學到各特徵的平均數與變異尺度，之後 transform 才能做 z-score 標準化。"
+    why_not_a: "相關係數矩陣不是 StandardScaler 的主要輸出，這比較像後續分析或統計檢查。"
+    why_not_b: "這是類別資料統計，不是數值欄位標準化的核心資訊。"
+    why_not_c: "此選項正確。"
+    why_not_d: "主成分載荷屬於 PCA 範疇，不是本章 preprocessing 的 fit 結果。"
+  keywords:
+    - "sklearn.preprocessing"
+    - "StandardScaler"
+    - "fit"
+  exam_trap: false
+
+- id: "L22301-Q08"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 2
+  question: "關於 z-score 標準化（Standardization）後的資料，下列敘述何者正確？"
+  options:
+    a: "一定會落在 0 到 1 之間"
+    b: "通常會轉成平均數約為 0、標準差約為 1 的尺度"
+    c: "一定會消除所有異常值（outliers）"
+    d: "只能用在類別型欄位"
+  correct: "b"
+  explanation:
+    why_correct: "z-score 標準化的重點是以平均數 0、標準差 1 的尺度表示，不保證值域在固定區間內。"
+    why_not_a: "這是把 Standardization 與 Min-Max Normalization 混淆的典型錯誤。"
+    why_not_b: "此選項正確。"
+    why_not_c: "標準化不會刪除或消除 outliers，只是改變尺度；異常值仍可能存在。"
+    why_not_d: "標準化通常用於數值型欄位，不是類別型欄位。"
+  keywords:
+    - "Standardization"
+    - "z-score"
+    - "尺度"
+  exam_trap: true
+
+- id: "L22301-Q09"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 2
+  question: "下列哪一項最明確屬於本章『統計學在大數據中的應用』的範圍外（out of scope）？"
+  options:
+    a: "比較 StandardScaler 與 RobustScaler 的差異"
+    b: "說明 log transform 適用於右偏（right-skewed）資料"
+    c: "使用 MinMaxScaler 將資料映射到 0 到 1"
+    d: "說明 SMOTE 如何做少數類別過採樣"
+  correct: "d"
+  explanation:
+    why_correct: "SMOTE 屬於不平衡學習與資料增樣議題，不是本章聚焦的轉換、縮放與分佈調整範圍。"
+    why_not_a: "這正是本章核心範圍之一，尤其是 outlier 情境下的縮放選擇。"
+    why_not_b: "log transform 與偏態調整是本章重點。"
+    why_not_c: "MinMaxScaler 是本章明確涵蓋的 preprocessing 工具。"
+    why_not_d: "此選項正確。"
+  keywords:
+    - "scope"
+    - "SMOTE"
+    - "preprocessing"
+  exam_trap: true
+
+- id: "L22301-Q10"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 2
+  question: "某欄位大多數值集中，但少數極端高值非常大。若目標是降低異常值（outliers）對縮放的影響，下列何者最適合？"
+  options:
+    a: "MinMaxScaler，因為一定最能保留原始分佈"
+    b: "RobustScaler，因為使用 median 與 IQR 較不受極端值影響"
+    c: "StandardScaler，因為 mean 與 standard deviation 最能放大異常值"
+    d: "LabelEncoder，因為可把數值重新編碼"
+  correct: "b"
+  explanation:
+    why_correct: "RobustScaler 以中位數與 IQR 為核心，因此在有極端值時，通常比 StandardScaler 或 MinMaxScaler 更穩健。"
+    why_not_a: "MinMaxScaler 直接受最小值與最大值影響，遇到極端值時反而容易把大多數資料壓縮。"
+    why_not_b: "此選項正確。"
+    why_not_c: "StandardScaler 不是為了放大異常值設計，而且 mean、standard deviation 會被異常值拉動。"
+    why_not_d: "LabelEncoder 用於類別編碼，不是數值欄位縮放工具。"
+  keywords:
+    - "RobustScaler"
+    - "outliers"
+    - "縮放"
+  exam_trap: false
+
+- id: "L22301-Q11"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 2
+  question: "關於正規化（Normalization）與標準化（Standardization），下列敘述何者正確？"
+  options:
+    a: "Normalization 與 Standardization 一定同時進行，不能擇一"
+    b: "Normalization 一定比 Standardization 更適合所有機器學習模型"
+    c: "Normalization 常強調固定邊界；Standardization 常強調以平均與標準差調整尺度"
+    d: "Standardization 的目的就是把所有欄位都變成整數"
+  correct: "c"
+  explanation:
+    why_correct: "這是兩者最實務、也最符合考試命題的區分方式：一個偏重值域邊界，一個偏重統計尺度。"
+    why_not_a: "兩者可依資料與模型需求擇一，不必一定同時做。"
+    why_not_b: "沒有任何一種縮放對所有模型與資料都絕對最佳，這種說法過度武斷。"
+    why_not_c: "此選項正確。"
+    why_not_d: "Standardization 不會把連續值強制變整數。"
+  keywords:
+    - "Normalization"
+    - "Standardization"
+    - "比較"
+  exam_trap: true
+
+- id: "L22301-Q12"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 2
+  question: "關於對數轉換（log transform）的使用情境，下列敘述何者正確？"
+  options:
+    a: "只要資料筆數超過一萬筆，就必須做 log transform"
+    b: "log transform 主要用於把資料強制壓到 0 到 1"
+    c: "若資料有 0，直接使用 ln(x) 與使用 `log1p(x)` 完全沒有差別"
+    d: "當資料呈現右偏（right-skewed），且值為正或可用 `log1p` 處理時，log transform 常是合理選項"
+  correct: "d"
+  explanation:
+    why_correct: "對數轉換常用來減少右偏與壓縮大值範圍；若資料含 0，使用 `log1p` 會比直接 ln(x) 更穩妥。"
+    why_not_a: "是否做 log transform 與資料筆數無直接必然關係，關鍵在分佈形狀與分析目的。"
+    why_not_b: "log transform 不保證輸出在固定區間，這是 min-max normalization 的典型用途。"
+    why_not_c: "ln(0) 不可定義，因此資料含 0 時不能說兩者完全相同。"
+    why_not_d: "此選項正確。"
+  keywords:
+    - "log transform"
+    - "right-skewed"
+    - "log1p"
+  exam_trap: false
+
+- id: "L22301-Q13"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 2
+  question: "關於 Box-Cox transform 的 λ（lambda）參數，下列敘述何者正確？"
+  options:
+    a: "λ 只可能等於 0 或 1，沒有其他可能"
+    b: "λ = 0 時，轉換可視為 ln(x)"
+    c: "λ 越大，表示資料一定越接近常態分佈"
+    d: "只要估出 λ，就可忽略 Box-Cox 的正值限制"
+  correct: "b"
+  explanation:
+    why_correct: "Box-Cox 公式中，當 λ = 0 時會退化為 ln(x)，這是考試非常常見的概念題。"
+    why_not_a: "λ 不是只有 0 或 1，實務上可由資料估計出不同連續值。"
+    why_not_b: "此選項正確。"
+    why_not_c: "λ 的效果需視資料而定，不能說越大就一定越接近常態。"
+    why_not_d: "不論 λ 為何，Box-Cox 仍要求輸入資料 x > 0。"
+  keywords:
+    - "Box-Cox"
+    - "lambda"
+    - "正值限制"
+  exam_trap: true
+
+- id: "L22301-Q14"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 2
+  question: "關於 `fit()` 與 `transform()` 的差異，下列何者正確？"
+  options:
+    a: "`transform()` 會重新估計平均數與標準差，`fit()` 只負責輸出結果"
+    b: "`fit_transform()` 一定只能用在測試資料，避免偏差"
+    c: "`fit()` 先從資料學參數，`transform()` 再用這些參數轉換資料"
+    d: "`fit()` 與 `transform()` 在 scaler 中完全等價"
+  correct: "c"
+  explanation:
+    why_correct: "在 sklearn preprocessing 中，`fit()` 是學參數，`transform()` 是套參數；`fit_transform()` 則是兩步合併。"
+    why_not_a: "說法完全顛倒。估計平均數、標準差、最小值等工作是 `fit()` 的角色。"
+    why_not_b: "相反地，通常只在訓練資料上 `fit`，避免測試資料洩漏。"
+    why_not_c: "此選項正確。"
+    why_not_d: "兩者功能不同，不能視為完全等價。"
+  keywords:
+    - "fit"
+    - "transform"
+    - "data leakage"
+  exam_trap: true
+
+- id: "L22301-Q15"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 3
+  question: "某製造業資料欄位的平均數 μ=50、標準差 σ=10，若某筆觀測值 x=65，則其 z-score 標準化（Standardization）結果為何？"
+  options:
+    a: "1.5"
+    b: "0.15"
+    c: "6.5"
+    d: "-1.5"
+  correct: "a"
+  explanation:
+    why_correct: "依公式 z = (x − μ) / σ = (65 − 50) / 10 = 1.5，因此此值高於平均 1.5 個標準差。"
+    why_not_a: "此選項正確。"
+    why_not_b: "這是把分母誤當成 100 或錯把標準差當百分比，屬於粗心計算錯誤。"
+    why_not_c: "這是直接把 65 除以 10，忽略先減平均數的步驟。"
+    why_not_d: "若 x 小於平均數才可能得到負值，本題 x=65 大於 μ=50。"
+  keywords:
+    - "z-score"
+    - "Standardization"
+    - "公式計算"
+  exam_trap: false
+
+- id: "L22301-Q16"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 3
+  question: "某平台的欄位最小值為 20、最大值為 80。若觀測值 x=50，則以最小最大正規化（min-max normalization）映到 0 到 1 的結果為何？"
+  options:
+    a: "0.25"
+    b: "0.50"
+    c: "0.60"
+    d: "0.75"
+  correct: "b"
+  explanation:
+    why_correct: "依公式 x' = (x − x_min) / (x_max − x_min) = (50 − 20) / (80 − 20) = 30/60 = 0.5。"
+    why_not_a: "這通常是把分母錯算成 120，或誤把 30 除以錯誤範圍。"
+    why_not_b: "此選項正確。"
+    why_not_c: "這是把 30/50 或其他錯誤範圍代入造成的常見計算錯誤。"
+    why_not_d: "很多考生把 x=50 直覺當成接近上界，但實際上它正好在 20 與 80 的中間。"
+  keywords:
+    - "min-max normalization"
+    - "正規化"
+    - "公式計算"
+  exam_trap: false
+
+- id: "L22301-Q17"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 3
+  question: "某台灣電商公司要分析客單價，絕大多數訂單落在 500 到 2,000 元，但少數企業客戶一次下單超過 20 萬元。若目標是做距離敏感模型前的縮放，哪個作法最合適？"
+  options:
+    a: "MinMaxScaler，因為任何資料都應先映到 0 到 1"
+    b: "直接不做前處理，避免改變資料"
+    c: "RobustScaler，因為極端高額訂單會明顯影響 mean 與 max"
+    d: "只做 one-hot encoding，因為金額欄位不需縮放"
+  correct: "c"
+  explanation:
+    why_correct: "此情境的關鍵是極端高值明顯存在，RobustScaler 以 median 與 IQR 縮放，通常比 MinMaxScaler 或 StandardScaler 更適合。"
+    why_not_a: "MinMaxScaler 會被超大訂單主導，使一般訂單擠在很窄區間內。"
+    why_not_b: "距離敏感模型常受尺度影響，不做前處理可能讓模型被大值牽動。"
+    why_not_c: "此選項正確。"
+    why_not_d: "one-hot encoding 是類別處理，不適用於連續金額欄位。"
+  keywords:
+    - "RobustScaler"
+    - "outlier"
+    - "電商"
+  exam_trap: false
+
+- id: "L22301-Q18"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 3
+  question: "某新創團隊有一個比例欄位，值固定介於 0 與 100。若下游系統要求輸入介於 0 到 1，這時最合理的前處理是什麼？"
+  options:
+    a: "使用 z-score 標準化（Standardization），因為任何數值欄位都應先做 z-score"
+    b: "使用 min-max normalization，因為需求明確要求固定輸出邊界"
+    c: "使用 RobustScaler，因為比例資料一定有 outlier"
+    d: "使用 Box-Cox，因為比例資料不可以線性縮放"
+  correct: "b"
+  explanation:
+    why_correct: "題目已明確指出下游系統要求 0 到 1 邊界，此時 min-max normalization 最直接符合需求。"
+    why_not_a: "z-score 不保證輸出在 0 到 1，因此不滿足題目的系統限制。"
+    why_not_b: "此選項正確。"
+    why_not_c: "是否有 outlier 題目未指出，而且 RobustScaler 也不保證固定邊界。"
+    why_not_d: "Box-Cox 用於分佈形狀調整，不是為了滿足固定區間輸出。"
+  keywords:
+    - "Normalization"
+    - "Standardization"
+    - "bounded data"
+  exam_trap: true
+
+- id: "L22301-Q19"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 3
+  question: "某零售資料中的每日交易筆數欄位大量集中在 0 到 20，但偶爾會出現上千筆，分佈呈明顯右偏，且資料包含 0。若希望降低偏態，下列哪個作法最合適？"
+  options:
+    a: "直接使用 ln(x)，因為任何右偏資料都可直接取對數"
+    b: "只做 MinMaxScaler，因為縮到 0 到 1 就會自動變常態"
+    c: "使用 `log1p(x)`，因為資料含 0 且呈右偏"
+    d: "使用 SMOTE 平衡資料，因為高交易量太少"
+  correct: "c"
+  explanation:
+    why_correct: "資料右偏且包含 0，`log1p(x)` 是比直接 ln(x) 更安全的對數轉換選擇。"
+    why_not_a: "ln(0) 無法定義，因此含 0 資料不能直接一律使用 ln(x)。"
+    why_not_b: "MinMaxScaler 只改變尺度，不會自動把偏態分佈調成常態。"
+    why_not_c: "此選項正確。"
+    why_not_d: "SMOTE 處理的是類別不平衡，不是連續欄位偏態。"
+  keywords:
+    - "log1p"
+    - "right-skewed"
+    - "零售"
+  exam_trap: true
+
+- id: "L22301-Q20"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 3
+  question: "某工廠感測資料全為正值，且分佈明顯右偏。資料工程師想使用 Box-Cox transform 改善分佈。下列哪一項是套用前必須先確認的關鍵條件？"
+  options:
+    a: "資料必須先 one-hot encoding"
+    b: "資料筆數必須剛好是 2 的次方"
+    c: "資料必須已經經過 MinMaxScaler"
+    d: "所有輸入值都必須大於 0"
+  correct: "d"
+  explanation:
+    why_correct: "Box-Cox transform 的基本限制就是輸入 x 必須大於 0，這是套用前最重要的檢查。"
+    why_not_a: "one-hot encoding 與連續數值分佈調整無直接關係。"
+    why_not_b: "資料筆數不需要是特定數量。"
+    why_not_c: "是否先做 MinMaxScaler 並不是 Box-Cox 的必要條件。"
+    why_not_d: "此選項正確。"
+  keywords:
+    - "Box-Cox"
+    - "positive-only"
+    - "sensor data"
+  exam_trap: false
+
+- id: "L22301-Q21"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 3
+  question: "閱讀下列程式片段：`scaler = StandardScaler(); X_train_s = scaler.fit_transform(X_train); X_test_s = scaler.transform(X_test)`。此寫法最主要是在避免什麼問題？"
+  options:
+    a: "避免測試資料（test data）的統計資訊洩漏到訓練流程"
+    b: "避免 Python 無法處理浮點數"
+    c: "避免 `fit_transform()` 改變欄位名稱"
+    d: "避免 PCA 自動被套用"
+  correct: "a"
+  explanation:
+    why_correct: "只在訓練資料上 fit，才能避免測試資料的平均數、標準差等資訊滲入訓練流程，這是典型 data leakage 防範。"
+    why_not_a: "此選項正確。"
+    why_not_b: "StandardScaler 與 Python 浮點處理無此關聯。"
+    why_not_c: "欄位名稱不是此程式片段的核心風險。"
+    why_not_d: "程式中並沒有 PCA。"
+  keywords:
+    - "StandardScaler"
+    - "fit_transform"
+    - "data leakage"
+  exam_trap: true
+
+- id: "L22301-Q22"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 4
+  question: "某公司要做 PCA 前處理，兩個候選方案分別是 `StandardScaler` 與 `MinMaxScaler`。在沒有明確固定邊界需求時，兩者最關鍵的差異為何？"
+  options:
+    a: "StandardScaler 以平均數與標準差調整尺度；MinMaxScaler 以最小值與最大值映射固定範圍"
+    b: "StandardScaler 只能處理正值；MinMaxScaler 可處理負值"
+    c: "MinMaxScaler 可以消除 outliers；StandardScaler 不行"
+    d: "兩者都會自動把資料變常態分佈"
+  correct: "a"
+  explanation:
+    why_correct: "這是兩者最本質的差異：一個是統計尺度標準化，一個是值域邊界映射。PCA 前常見的是先做 StandardScaler。"
+    why_not_a: "此選項正確。"
+    why_not_b: "兩者都可處理正負值，重點不在此。"
+    why_not_c: "MinMaxScaler 並不會消除 outliers，反而容易受極端值影響。"
+    why_not_d: "兩者都不是把資料強制變常態分佈的工具。"
+  keywords:
+    - "PCA"
+    - "StandardScaler"
+    - "MinMaxScaler"
+  exam_trap: true
+
+- id: "L22301-Q23"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 4
+  question: "某金融資料欄位同時具備兩個特徵：存在明顯右偏（right skewness），且有少數極端值。若只能先做一種主要前處理以改善『縮放穩定性』，下列哪個判斷最合理？"
+  options:
+    a: "優先用 MinMaxScaler，因為有偏態時一定先壓到 0 到 1"
+    b: "優先用 RobustScaler，因為題目強調的是縮放時降低極端值影響"
+    c: "優先用 SMOTE，因為極端值代表少數樣本"
+    d: "優先用 PCA，因為 PCA 可同時處理偏態與異常值"
+  correct: "b"
+  explanation:
+    why_correct: "題目限定只能先做一種主要前處理，且目標明確是改善縮放穩定性，因此比起處理偏態，先降低 outliers 對縮放的破壞更合理，RobustScaler 較符合。"
+    why_not_a: "MinMaxScaler 對極端值敏感，這會讓大多數資料被擠壓。"
+    why_not_b: "此選項正確。"
+    why_not_c: "SMOTE 不是連續欄位縮放方法。"
+    why_not_d: "PCA 不屬於本題要選的前處理縮放方案，也不能視為處理 outlier 的主要工具。"
+  keywords:
+    - "RobustScaler"
+    - "right-skewed"
+    - "decision"
+  exam_trap: false
+
+- id: "L22301-Q24"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 4
+  question: "關於 `PowerTransformer(method='box-cox')` 與手寫 Box-Cox 公式的比較，下列何者最合理？"
+  options:
+    a: "兩者都能直接處理 0 與負值，因此無須先檢查資料"
+    b: "手寫公式只要知道 λ 就一定比 sklearn 更正確"
+    c: "`PowerTransformer(method='box-cox')` 只做 Box-Cox，不涉及任何標準化"
+    d: "sklearn 的 `PowerTransformer(method='box-cox')` 會估計 λ，且預設還會再做標準化"
+  correct: "d"
+  explanation:
+    why_correct: "依 sklearn 官方行為，`PowerTransformer(method='box-cox')` 會估計 `lambdas_`，且預設 `standardize=True`，這與只記純公式的教材觀念不同。"
+    why_not_a: "Box-Cox 仍要求輸入值大於 0，不能直接處理 0 或負值。"
+    why_not_b: "手寫公式與 sklearn 工具各有用途，不能簡化成『手寫一定更正確』。"
+    why_not_c: "這是常見誤解；sklearn 版本的 PowerTransformer 預設會再標準化。"
+    why_not_d: "此選項正確。"
+  keywords:
+    - "PowerTransformer"
+    - "Box-Cox"
+    - "standardize"
+  exam_trap: true
+
+- id: "L22301-Q25"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 4
+  question: "某政府開放資料中的公司罰鍰金額欄位，絕大多數在數千到數萬元，少數案件高達上千萬元，且欄位皆為正值。若目標是降低右偏並保留數值順序，下列何者最合理？"
+  options:
+    a: "使用 log transform 或 Box-Cox 這類非線性轉換"
+    b: "使用 one-hot encoding，因為高額罰鍰屬於特殊類別"
+    c: "使用 SMOTE，增加高額罰鍰樣本"
+    d: "不做任何處理，因為金額欄位不能轉換"
+  correct: "a"
+  explanation:
+    why_correct: "金額欄位全為正值且明顯右偏，log transform 或 Box-Cox 都是合理的分佈調整選項，且仍保留單調順序。"
+    why_not_a: "此選項正確。"
+    why_not_b: "連續金額資料不應任意離散成類別，否則損失資訊。"
+    why_not_c: "SMOTE 用於分類不平衡，與金額偏態處理無關。"
+    why_not_d: "金額欄位常常正是最需要做適當轉換的數值欄位之一。"
+  keywords:
+    - "log transform"
+    - "Box-Cox"
+    - "金額資料"
+  exam_trap: false
+
+- id: "L22301-Q26"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 4
+  question: "閱讀下列 pseudocode：`scaler = MinMaxScaler(); scaler.fit([[10],[20],[30]]); scaler.transform([[25]])`。若使用預設 `feature_range=(0,1)`，輸出最可能為何？"
+  options:
+    a: "0.25"
+    b: "0.75"
+    c: "1.25"
+    d: "2.50"
+  correct: "b"
+  explanation:
+    why_correct: "以 min=10、max=30 計算，(25−10)/(30−10)=15/20=0.75，因此輸出為 0.75。"
+    why_not_a: "這通常是把 25 當成靠近下界，或錯把分母設成 60。"
+    why_not_b: "此選項正確。"
+    why_not_c: "若超過 1 代表計算邏輯錯誤；25 明明在 10 與 30 的範圍內。"
+    why_not_d: "這是直接把 25/10 或類似錯誤算式代入造成的誤選。"
+  keywords:
+    - "MinMaxScaler"
+    - "pseudocode"
+    - "公式計算"
+  exam_trap: false
+
+- id: "L22301-Q27"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 4
+  question: "下列哪一項最能說明為何 MinMaxScaler 與 StandardScaler 不能互相當作同義替代？"
+  options:
+    a: "因為 MinMaxScaler 只能處理文字欄位，StandardScaler 只能處理數值欄位"
+    b: "因為 StandardScaler 一定比 MinMaxScaler 更快"
+    c: "因為兩者的轉換目標不同：一個重在固定範圍，一個重在統計尺度一致"
+    d: "因為兩者都會把資料轉成類別型態"
+  correct: "c"
+  explanation:
+    why_correct: "兩者設計目的不同，因此不能只看『都有縮放』就視為可任意互換。這也是考試常見的混淆題。"
+    why_not_a: "兩者都主要用於數值型欄位，並不是文字欄位專用。"
+    why_not_b: "速度不是本質差異，也不足以支持互不可替代的理由。"
+    why_not_c: "此選項正確。"
+    why_not_d: "縮放不會把數值欄位自動轉成類別。"
+  keywords:
+    - "MinMaxScaler"
+    - "StandardScaler"
+    - "比較"
+  exam_trap: true
+
+- id: "L22301-Q28"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 4
+  question: "若考題要求『選出不屬於本章資料轉換與縮放主軸的技術』，下列何者最應被排除？"
+  options:
+    a: "Quantile transform"
+    b: "RobustScaler"
+    c: "Box-Cox transform"
+    d: "特徵選擇（feature selection）"
+  correct: "d"
+  explanation:
+    why_correct: "本章聚焦於資料轉換、縮放、分佈調整與 preprocessing API；特徵選擇屬於另一個更上層的建模前處理議題。"
+    why_not_a: "Quantile transform 屬於本章的非線性分佈調整範圍。"
+    why_not_b: "RobustScaler 是本章核心內容。"
+    why_not_c: "Box-Cox transform 也是本章重要考點。"
+    why_not_d: "此選項正確。"
+  keywords:
+    - "feature selection"
+    - "scope"
+    - "分位數轉換"
+    - "Quantile transform"
+  exam_trap: true
+
+- id: "L22301-Q29"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 5
+  question: "某台灣物流平台有一個『每日配送件數』欄位，資料非負、包含大量 0、明顯右偏，且下游模型不要求固定輸出範圍。若希望同時降低偏態並避免對 0 取對數的問題，下列哪個方案最符合全部限制？"
+  options:
+    a: "使用 `log1p(x)`"
+    b: "使用 Box-Cox，因為 Box-Cox 一定比 log 更通用且可含 0"
+    c: "使用 MinMaxScaler，因為 0 到 1 區間最安全"
+    d: "使用 StandardScaler，因為平均數變 0 就等於解決偏態"
+  correct: "a"
+  explanation:
+    why_correct: "題目限制包含 0、右偏、且不要求固定區間，`log1p(x)` 正好同時滿足這三點，是最直接合理的選擇。"
+    why_not_a: "此選項正確。"
+    why_not_b: "Box-Cox 不能直接處理 0，這正違反題目條件。"
+    why_not_c: "MinMaxScaler 改變的是尺度，不是偏態本身。"
+    why_not_d: "StandardScaler 也不會自動消除右偏。"
+  keywords:
+    - "log1p"
+    - "transform selection"
+    - "物流"
+  exam_trap: true
+
+- id: "L22301-Q30"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 5
+  question: "某資料科學家在訓練集上得到某欄位 median=40、IQR=20。若新資料觀測值 x=70，依 RobustScaler 的常見教學公式 `x' = (x − median) / IQR`，轉換結果為何？"
+  options:
+    a: "0.5"
+    b: "1.5"
+    c: "2.0"
+    d: "-1.5"
+  correct: "b"
+  explanation:
+    why_correct: "依公式計算，(70−40)/20 = 30/20 = 1.5，因此答案為 1.5。"
+    why_not_a: "這通常是把分子誤算成 10，或誤把 70 與 60 相減。"
+    why_not_b: "此選項正確。"
+    why_not_c: "這是把 30/15 或其他錯誤 IQR 代入後的結果。"
+    why_not_d: "x 大於 median，因此不可能得到負值。"
+  keywords:
+    - "RobustScaler"
+    - "IQR"
+    - "公式計算"
+  exam_trap: false
+
+- id: "L22301-Q31"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 5
+  question: "某團隊寫出兩種流程。流程甲：先對整份資料 `fit_transform()`，再切 train/test。流程乙：先切 train/test，再用訓練集 `fit`、分別 `transform` train/test。若從考試與實務角度評估，哪個判斷最正確？"
+  options:
+    a: "流程甲較好，因為可讓縮放參數更完整"
+    b: "兩者完全等價，只是程式風格不同"
+    c: "流程乙較好，因為可避免測試集資訊滲入前處理參數"
+    d: "流程甲較好，因為 `fit_transform()` 本來就應對全部資料執行"
+  correct: "c"
+  explanation:
+    why_correct: "流程乙是正確做法。應先切資料，再只用訓練集估計 scaler 參數，避免 data leakage。"
+    why_not_a: "這種『參數更完整』其實就是把測試集資訊偷看進去，屬於洩漏。"
+    why_not_b: "兩者在模型評估上差異很大，不能視為等價。"
+    why_not_c: "此選項正確。"
+    why_not_d: "把全部資料一起 `fit_transform()` 是常見新手錯誤，不是推薦流程。"
+  keywords:
+    - "fit_transform"
+    - "data leakage"
+    - "workflow"
+  exam_trap: true
+
+- id: "L22301-Q32"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 5
+  question: "某保險資料專案有三個限制：一、欄位存在明顯 outliers；二、下游不要求 0 到 1 邊界；三、主要需求是讓縮放不要被極端值主導。下列哪個方案最能同時滿足三項條件？"
+  options:
+    a: "MinMaxScaler"
+    b: "StandardScaler"
+    c: "直接做 PCA"
+    d: "RobustScaler"
+  correct: "d"
+  explanation:
+    why_correct: "三個條件都指向同一件事：要選一個對 outliers 較穩健、又不以固定邊界為目標的縮放法，RobustScaler 最符合。"
+    why_not_a: "MinMaxScaler 強烈受極端值影響，不符合條件。"
+    why_not_b: "StandardScaler 也會受到 mean 與 standard deviation 被 outliers 拉動的問題。"
+    why_not_c: "PCA 不是這題要求的主要縮放解法。"
+    why_not_d: "此選項正確。"
+  keywords:
+    - "RobustScaler"
+    - "outliers"
+    - "保險資料"
+  exam_trap: false
+
+- id: "L22301-Q33"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 5
+  question: "某分析師主張：『只要把資料做 StandardScaler，就等於同時完成 Normalization 與偏態校正。』若從本章觀點評估，哪個回應最合理？"
+  options:
+    a: "此說法不正確，因為 StandardScaler 主要處理統計尺度，不等於固定區間映射，也不保證修正偏態"
+    b: "此說法正確，因為平均數變 0 就代表資料已標準、正規且近似常態"
+    c: "此說法正確，因為任何 scaler 都能同時處理 outlier 與 skewness"
+    d: "此說法部分正確，但僅限於資料是整數時"
+  correct: "a"
+  explanation:
+    why_correct: "StandardScaler 的功能是以 mean 與 standard deviation 調整尺度；它不等於 min-max normalization，也不等於針對右偏做 log/Box-Cox 之類的分佈轉換。"
+    why_not_a: "此選項正確。"
+    why_not_b: "這把三件不同的事混成一件，是典型考試陷阱。"
+    why_not_c: "沒有任何 scaler 能一概而論同時解決所有分佈問題。"
+    why_not_d: "是否為整數與這個判斷無直接關係。"
+  keywords:
+    - "StandardScaler"
+    - "Normalization"
+    - "skewness"
+  exam_trap: true
+
+- id: "L22301-Q34"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 5
+  question: "某考生在複習時列出四個主題：1. z-score 計算；2. MinMaxScaler API；3. Box-Cox 正值限制；4. PCA 特徵選擇策略。若要依本章界線挑出『不應列為核心考點』者，應選哪一項？"
+  options:
+    a: "1"
+    b: "2"
+    c: "3"
+    d: "4"
+  correct: "d"
+  explanation:
+    why_correct: "PCA 特徵選擇策略已超出本章主軸。本章最多只會提到『PCA 前常需標準化』，不會深入 PCA 或特徵選擇本身。"
+    why_not_a: "z-score 計算是本章最基本的公式題。"
+    why_not_b: "MinMaxScaler API 與 fit/transform 正是本章實作考點。"
+    why_not_c: "Box-Cox 的正值限制是常見必考陷阱。"
+    why_not_d: "此選項正確。"
+  keywords:
+    - "boundary"
+    - "PCA"
+    - "feature selection"
+  exam_trap: true
+
+- id: "L22301-Q35"
+  topic_code: "L22301"
+  item_code: "L22301"
+  difficulty: 5
+  question: "某資料欄位同時滿足以下條件：一、值全為正；二、分佈明顯右偏；三、希望用可參數化方式調整分佈；四、團隊知道 λ=0 時應退化為 log。依這些限制，下列哪個方案最符合？"
+  options:
+    a: "使用 MinMaxScaler，因為它也有可調參數 `feature_range`"
+    b: "使用 StandardScaler，因為標準差本身就是 λ"
+    c: "使用 Box-Cox transform"
+    d: "使用 SMOTE，因為右偏代表樣本不平衡"
+  correct: "c"
+  explanation:
+    why_correct: "題目已把 Box-Cox 的關鍵線索全部給出：正值、右偏、可參數化 λ、且 λ=0 時退化為 log，因此最符合的是 Box-Cox transform。"
+    why_not_a: "MinMaxScaler 的參數控制的是輸出區間，不是分佈形狀調整。"
+    why_not_b: "StandardScaler 沒有 λ 這個分佈轉換參數，這是概念錯置。"
+    why_not_c: "此選項正確。"
+    why_not_d: "SMOTE 與連續欄位偏態轉換無關。"
+  keywords:
+    - "Box-Cox"
+    - "lambda"
+    - "transform selection"
+  exam_trap: false

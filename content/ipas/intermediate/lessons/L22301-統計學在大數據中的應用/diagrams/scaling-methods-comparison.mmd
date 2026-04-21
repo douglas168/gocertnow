@@ -1,0 +1,28 @@
+flowchart LR
+    subgraph 原始資料
+        direction TB
+        R1["值：80, 90, 100, 110, 500\n最大值 500 是離群值"]
+    end
+
+    subgraph StandardScaler
+        direction TB
+        S1["μ = 176, σ = 177\nz = x - μ / σ\n80 → -0.54\n90 → -0.48\n100 → -0.43\n500 → +1.83\n⚠️ 離群值 500 拉大 σ"]
+    end
+
+    subgraph MinMaxScaler
+        direction TB
+        M1["min = 80, max = 500\nx = x - 80 / 420\n80 → 0.00\n90 → 0.02\n100 → 0.05\n500 → 1.00\n⚠️ 其他點全擠在 0~0.05"]
+    end
+
+    subgraph RobustScaler
+        direction TB
+        Rb1["median = 100, IQR = 20\nx = x - 100 / 20\n80 → -1.00\n90 → -0.50\n100 → 0.00\n110 → +0.50\n500 → +20.0\n✅ 正常點分散均勻"]
+    end
+
+    原始資料 --> StandardScaler
+    原始資料 --> MinMaxScaler
+    原始資料 --> RobustScaler
+
+    style StandardScaler fill:#ffd6a5,stroke:#f3722c
+    style MinMaxScaler fill:#ffd6a5,stroke:#f3722c
+    style RobustScaler fill:#caffbf,stroke:#43aa8b

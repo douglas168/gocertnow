@@ -1,0 +1,32 @@
+mindmap
+  root((sklearn.preprocessing\n資料轉換 API))
+    縮放 Scaling
+      StandardScaler
+        fit 計算 μ 和 σ
+        transform 套用 z-score
+        輸出無固定範圍
+      MinMaxScaler
+        fit 計算 min 和 max
+        transform 套用 min-max
+        輸出固定在 0 ~ 1
+      RobustScaler
+        fit 計算 median 和 IQR
+        transform 套用 IQR 縮放
+        抗離群值干擾
+    分佈轉換 Distribution
+      QuantileTransformer
+        映射到均勻或常態分佈
+        min → 0.0  max → 1.0
+        非線性；適合極偏斜資料
+      PowerTransformer
+        method yeo-johnson 預設 任意 x
+        method box-cox 僅 x>0
+        自動估計最佳 λ
+    fit vs transform 重要觀念
+      fit_transform
+        計算參數 + 套用
+        只用於訓練集
+      transform
+        套用已計算的參數
+        用於驗證集和測試集
+        防止資料洩漏
