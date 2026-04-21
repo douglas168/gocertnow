@@ -1,0 +1,843 @@
+# L22202 數據儲存與管理 — Practice Question Bank
+# Total: 35 questions | Difficulty: D1×7, D2×7, D3×7, D4×7, D5×7
+# Answer distribution: a=9, b=9, c=9, d=8
+# Generated: 2026-04-21
+
+- id: "L22202-Q01"
+  topic_code: "L22202"
+  item_code: "L22202-資料庫架構"
+  difficulty: 1
+  question: "下列何者最符合關聯式資料庫管理系統（RDBMS, Relational Database Management System）的特性？"
+  options:
+    a: "以 key 直接取值為主，通常不強調 schema"
+    b: "以資料表（table）、欄位（column）與 SQL 查詢為核心"
+    c: "主要以節點與邊（node/edge）表示關係"
+    d: "天生只適合儲存影像與音訊等非結構化資料"
+  correct: "b"
+  explanation:
+    why_correct: "RDBMS 的核心是表格化 schema、主鍵與外鍵、以及以 SQL 進行查詢與交易處理。"
+    why_not_a: "這更接近 key-value store 的描述。很多考生看到『快速查詢』就誤選，但 RDBMS 的核心不是單純 key lookup。"
+    why_not_b: "此選項正確，完整描述了 RDBMS 的典型資料模型與查詢方式。"
+    why_not_c: "node/edge 是 graph database 的建模方式，不是關聯式資料庫的主要表示法。"
+    why_not_d: "RDBMS 當然也能儲存 BLOB，但它並不是為非結構化資料而生。"
+  keywords:
+    - "RDBMS"
+    - "SQL"
+    - "table"
+    - "schema"
+  exam_trap: false
+
+- id: "L22202-Q02"
+  topic_code: "L22202"
+  item_code: "L22202-資料庫架構"
+  difficulty: 1
+  question: "下列哪一種 NoSQL 類型最適合儲存 JSON 文件（document）並支援彈性欄位？"
+  options:
+    a: "文件型資料庫（document database）"
+    b: "圖形資料庫（graph database）"
+    c: "寬欄型資料庫（wide-column database）"
+    d: "關聯式資料庫（RDBMS）"
+  correct: "a"
+  explanation:
+    why_correct: "document database 專門處理 JSON/BSON 類型文件，欄位可彈性變動，適合半結構化資料。"
+    why_not_a: "此選項正確，是最標準的對應。"
+    why_not_b: "graph database 強調關係路徑分析，不是以 JSON 文件為主要優勢。"
+    why_not_c: "wide-column 比較適合大規模稀疏欄位與高擴展寫入，不是最典型的 JSON 文件解法。"
+    why_not_d: "RDBMS 可以存 JSON 欄位，但題目問的是『最適合的 NoSQL 類型』。"
+  keywords:
+    - "NoSQL"
+    - "document database"
+    - "JSON"
+    - "MongoDB"
+  exam_trap: false
+
+- id: "L22202-Q03"
+  topic_code: "L22202"
+  item_code: "L22202-儲存機制"
+  difficulty: 1
+  question: "在 row-store 與 column-store 的比較中，下列何者最適合描述 column-store（欄式儲存）？"
+  options:
+    a: "適合頻繁單筆更新的 OLTP"
+    b: "每列資料完整連續儲存，方便整列寫入"
+    c: "相同欄位的值集中存放，利於聚合分析（aggregation）"
+    d: "只適用於交易型資料庫，不能用於分析型系統"
+  correct: "c"
+  explanation:
+    why_correct: "column-store 把同一欄位集中存放，讀取少數欄位、做 SUM/AVG/GROUP BY 等分析時通常更有效率。"
+    why_not_a: "這是 row-store 在 OLTP 場景的典型優勢，考生常把『資料庫』直接聯想到交易處理而誤選。"
+    why_not_b: "這描述的是 row-store，不是 column-store。"
+    why_not_c: "此選項正確，正是欄式儲存的主要設計目的。"
+    why_not_d: "column-store 正是分析型系統常見的儲存方式，不是不能用於分析。"
+  keywords:
+    - "column-store"
+    - "row-store"
+    - "OLAP"
+    - "aggregation"
+  exam_trap: true
+
+- id: "L22202-Q04"
+  topic_code: "L22202"
+  item_code: "L22202-儲存機制"
+  difficulty: 1
+  question: "下列何者最符合 HDFS（Hadoop Distributed File System）的定位？"
+  options:
+    a: "單機上的嵌入式資料庫"
+    b: "主要提供線上交易（OLTP）的 ACID engine"
+    c: "專門管理圖形資料的關係引擎"
+    d: "跨多節點儲存大型檔案的分散式檔案系統"
+  correct: "d"
+  explanation:
+    why_correct: "HDFS 的核心是把大檔案切成 block 分散到多台節點上，以提供高容量與容錯能力。"
+    why_not_a: "HDFS 不是單機嵌入式產品，而是分散式檔案系統。"
+    why_not_b: "ACID OLTP engine 比較接近關聯式資料庫，不是 HDFS 的角色。"
+    why_not_c: "圖形資料管理與 HDFS 無關。"
+    why_not_d: "此選項正確，完整描述 HDFS 的本質。"
+  keywords:
+    - "HDFS"
+    - "distributed file system"
+    - "block-based distributed file system"
+  exam_trap: false
+
+- id: "L22202-Q05"
+  topic_code: "L22202"
+  item_code: "L22202-模型訓練"
+  difficulty: 1
+  question: "Feature store（特徵儲存庫）的主要目的為何？"
+  options:
+    a: "集中管理訓練與線上推論共用的 features，降低 training-serving skew"
+    b: "自動替模型選最佳超參數（hyperparameter）"
+    c: "把所有原始檔案都轉成圖片格式"
+    d: "只負責 GPU 排程，不管理資料"
+  correct: "a"
+  explanation:
+    why_correct: "feature store 的重點是管理可重用特徵、維持 offline 與 online feature 一致性，支援歷史特徵回溯與服務。"
+    why_not_a: "此選項正確，也是本章對 feature store 最應掌握的定位。"
+    why_not_b: "超參數搜尋屬於模型訓練流程，不是 feature store 的責任。"
+    why_not_c: "特徵儲存庫與圖片格式轉換沒有直接關係。"
+    why_not_d: "GPU 排程是計算資源管理，不是資料儲存管理。"
+  keywords:
+    - "feature store"
+    - "training-serving skew"
+    - "online features"
+    - "offline features"
+  exam_trap: false
+
+- id: "L22202-Q06"
+  topic_code: "L22202"
+  item_code: "L22202-跨綱比較"
+  difficulty: 1
+  question: "下列何者最能區分 OLTP（Online Transaction Processing）與 OLAP（Online Analytical Processing）？"
+  options:
+    a: "OLTP 主要處理大型批次報表；OLAP 主要處理單筆交易"
+    b: "OLTP 偏向高頻小交易；OLAP 偏向大量讀取與彙總分析"
+    c: "OLTP 一定使用 object storage；OLAP 一定使用 HDFS"
+    d: "兩者差異只在資料量大小，與查詢型態無關"
+  correct: "b"
+  explanation:
+    why_correct: "OLTP 著重新增、更新、刪除等交易；OLAP 著重聚合、切片、報表與歷史分析。"
+    why_not_a: "這把兩者用途完全對調，是常見的基本概念錯置。"
+    why_not_b: "此選項正確，抓到工作負載與查詢特性差異。"
+    why_not_c: "儲存媒介沒有這種絕對對應，題目考的是 workload 本質。"
+    why_not_d: "兩者最核心的差異就是查詢型態與使用目的，而不只是資料量。"
+  keywords:
+    - "OLTP"
+    - "OLAP"
+    - "transaction"
+    - "analytics"
+  exam_trap: false
+
+- id: "L22202-Q07"
+  topic_code: "L22202"
+  item_code: "L22202-資料庫架構"
+  difficulty: 1
+  question: "下列何者最符合 ACID 與 BASE 的典型對照？"
+  options:
+    a: "ACID 常見於 NoSQL；BASE 常見於 RDBMS"
+    b: "兩者都保證強一致性（strong consistency）"
+    c: "ACID 強調交易正確性；BASE 偏向可用性與最終一致性（eventual consistency）"
+    d: "BASE 表示資料一定不會延遲同步"
+  correct: "c"
+  explanation:
+    why_correct: "ACID 著重原子性、一致性、隔離性、持久性；BASE 則常在分散式 NoSQL 中用來換取可用性與擴展性。"
+    why_not_a: "這把兩者常見應用情境反過來了，屬常見陷阱。"
+    why_not_b: "BASE 常見的是 eventual consistency，不是都保證強一致性。"
+    why_not_c: "此選項正確，符合考試常見的對照方式。"
+    why_not_d: "BASE 並不保證立即同步，反而容許延後達成一致。"
+  keywords:
+    - "ACID"
+    - "BASE"
+    - "eventual consistency"
+    - "NoSQL"
+  exam_trap: true
+
+- id: "L22202-Q08"
+  topic_code: "L22202"
+  item_code: "L22202-跨綱比較"
+  difficulty: 2
+  question: "關於 data lake、data warehouse 與 data lakehouse 的敘述，下列何者正確？"
+  options:
+    a: "data warehouse 最適合直接保留所有原始（raw）資料格式且不治理"
+    b: "data lakehouse 只適合非結構化資料，通常不支援 SQL 分析"
+    c: "data lake 只允許結構化資料（structured data）"
+    d: "data lake 常保留 raw 多格式資料；warehouse 偏結構化分析；lakehouse 則在 lake 上補上治理與可靠表格能力"
+  correct: "d"
+  explanation:
+    why_correct: "這個選項完整區分了三者：lake 重 raw 與多格式，warehouse 重結構化分析，lakehouse 則補上治理與表格能力。"
+    why_not_a: "這更接近 data lake，而不是 warehouse。warehouse 通常偏結構化與整理後資料。"
+    why_not_b: "lakehouse 的目的正是讓資料在開放儲存上更容易被 SQL 分析與治理，不是只能處理非結構化資料。"
+    why_not_c: "data lake 本來就可存放結構化、半結構化與非結構化資料。"
+    why_not_d: "此選項正確，精確點出三者的定位差異。"
+  keywords:
+    - "data lake"
+    - "data warehouse"
+    - "data lakehouse"
+    - "ACID"
+  exam_trap: false
+
+- id: "L22202-Q09"
+  topic_code: "L22202"
+  item_code: "L22202-儲存機制"
+  difficulty: 2
+  question: "下列何者最能說明 object storage（如 S3、Azure Blob）相較於 HDFS 的典型差異？"
+  options:
+    a: "object storage 必定比 HDFS 更適合低延遲隨機更新單一小檔"
+    b: "object storage 以 bucket/container 與 object 為概念；HDFS 以分散式檔案系統路徑為主"
+    c: "HDFS 不支援跨節點儲存資料"
+    d: "兩者都一定提供完整 SQL 查詢功能"
+  correct: "b"
+  explanation:
+    why_correct: "object storage 與檔案系統的抽象不同，這是考試最常考的架構層差異。"
+    why_not_a: "object storage 通常不是為低延遲小檔隨機更新而設計。"
+    why_not_b: "此選項正確，正好對比了兩者的命名空間與存取模型。"
+    why_not_c: "HDFS 的核心就是跨節點分散儲存。"
+    why_not_d: "SQL 查詢通常由上層引擎提供，不是這兩種儲存本身必備的能力。"
+  keywords:
+    - "object storage"
+    - "S3"
+    - "Azure Blob"
+    - "HDFS"
+  exam_trap: false
+
+- id: "L22202-Q10"
+  topic_code: "L22202"
+  item_code: "L22202-儲存機制"
+  difficulty: 2
+  question: "Parquet 檔案格式（Apache Parquet）常被用於分析型資料平台，主要原因為何？"
+  options:
+    a: "它是欄式格式（columnar format），常能降低掃描欄位數與提升壓縮效率"
+    b: "它只能儲存圖片與影音，不適合表格資料"
+    c: "它是 row-based 格式，最適合高頻 OLTP 更新"
+    d: "它不需要 schema，因此最適合無治理資料"
+  correct: "a"
+  explanation:
+    why_correct: "Parquet 是欄式格式，對分析查詢常只需讀部分欄位，能降低 I/O 並提高壓縮比。"
+    why_not_a: "此選項正確，也是 Parquet 在大數據分析場景普及的核心原因。"
+    why_not_b: "Parquet 本來就是為表格型分析資料而設計。"
+    why_not_c: "Parquet 不是 row-based，也不是為高頻交易更新優化。"
+    why_not_d: "Parquet 可以保存 schema，並非完全無 schema。"
+  keywords:
+    - "Parquet"
+    - "columnar format"
+    - "compression"
+    - "analytics"
+  exam_trap: false
+
+- id: "L22202-Q11"
+  topic_code: "L22202"
+  item_code: "L22202-模型訓練"
+  difficulty: 2
+  question: "關於 dataset versioning（資料集版本控管）與時間旅行（Time Travel），下列何者最正確？"
+  options:
+    a: "只要把檔名改成 `final_v2_really_final.csv` 就等同資料集版本控管"
+    b: "時間旅行代表系統自動刪除舊資料，不保留歷史"
+    c: "dataset versioning 只對模型程式碼有用，對訓練資料無幫助"
+    d: "可回到特定資料版本重現訓練輸入，有助於追溯與實驗重現"
+  correct: "d"
+  explanation:
+    why_correct: "資料集版本控管的目的就是讓資料與模型訓練可重現，時間旅行則讓你查詢或還原特定時間點資料狀態。"
+    why_not_a: "手動改檔名無法可靠記錄 lineage、差異與版本關聯，是常見但不成熟的做法。"
+    why_not_b: "時間旅行的重點是保留可追溯歷史，不是刪除歷史。"
+    why_not_c: "訓練資料版本一旦不清楚，就很難重現模型結果。"
+    why_not_d: "此選項正確，完整說明它在 ML data management 的價值。"
+  keywords:
+    - "dataset versioning"
+    - "時間旅行"
+    - "reproducibility"
+    - "Delta Lake"
+  exam_trap: true
+
+- id: "L22202-Q12"
+  topic_code: "L22202"
+  item_code: "L22202-資料庫架構"
+  difficulty: 2
+  question: "下列哪一種情境最適合 graph database（圖形資料庫）？"
+  options:
+    a: "記錄超商每天每店的交易明細，重點是 ACID 與結帳一致性"
+    b: "儲存大量 session token，重點是 key lookup"
+    c: "分析社群好友關係、推薦路徑與多跳連結"
+    d: "做每月營收彙總報表，主要查 SUM 與 AVG"
+  correct: "c"
+  explanation:
+    why_correct: "graph database 最擅長處理節點間關係、路徑搜尋與連結分析。"
+    why_not_a: "這類高交易一致性場景通常更偏向 RDBMS。"
+    why_not_b: "session token 更像 key-value store 的典型用例。"
+    why_not_c: "此選項正確，符合圖形資料庫的優勢場景。"
+    why_not_d: "營收彙總報表通常由 OLAP 或 warehouse 類系統處理。"
+  keywords:
+    - "graph database"
+    - "relationship"
+    - "path query"
+    - "recommendation"
+  exam_trap: false
+
+- id: "L22202-Q13"
+  topic_code: "L22202"
+  item_code: "L22202-儲存機制"
+  difficulty: 2
+  question: "閱讀下列 Spark 偽碼，哪個敘述正確？\n```python\nsales = spark.read.parquet('/data/sales')\nsales.createOrReplaceTempView('sales_v')\nresult = spark.sql(\"SELECT store_id, SUM(amount) AS total FROM sales_v GROUP BY store_id\")\n```\n"
+  options:
+    a: "程式先讀取 Parquet，再建立 temp view，最後用 SQL 做門市彙總"
+    b: "程式會把資料寫回 `/data/sales` 覆蓋原始檔"
+    c: "Parquet 不能被 Spark SQL 查詢，所以 `spark.sql()` 一定失敗"
+    d: "`createOrReplaceTempView()` 會把資料永久存進 RDBMS"
+  correct: "a"
+  explanation:
+    why_correct: "這段程式是 Spark 常見模式：讀取 Parquet、建立暫時檢視，再用 SQL 查詢聚合結果。"
+    why_not_a: "此選項正確，逐步描述了程式流程。"
+    why_not_b: "程式碼沒有任何 `write` 動作。"
+    why_not_c: "Spark 原生就支援把 DataFrame 註冊成 temp view 後用 SQL 查詢。"
+    why_not_d: "temp view 只存在 Spark session 中，不代表永久落地到資料庫。"
+  keywords:
+    - "Spark"
+    - "parquet"
+    - "createOrReplaceTempView"
+    - "SQL"
+  exam_trap: false
+
+- id: "L22202-Q14"
+  topic_code: "L22202"
+  item_code: "L22202-資料庫架構"
+  difficulty: 2
+  question: "閱讀下列 MongoDB 查詢，哪個解讀正確？\n```javascript\ndb.orders.find(\n  { status: 'paid', amount: { $gt: 1000 } },\n  { _id: 0, customer: 1, amount: 1 }\n)\n```\n"
+  options:
+    a: "查出已付款且金額大於 1000 的文件，只投影 `customer` 與 `amount`"
+    b: "查出已付款且金額大於 1000 的文件，但只回傳 `_id`"
+    c: "更新 `amount` 欄位為 1000"
+    d: "回傳所有欄位，但不含 `customer`"
+  correct: "a"
+  explanation:
+    why_correct: "第一個物件是查詢條件，第二個物件是 projection，`_id:0` 表示不回傳 `_id`。"
+    why_not_a: "此選項正確，條件與 projection 都解讀正確。"
+    why_not_b: "projection 明確設定 `_id:0`，所以不是只回傳 `_id`，而是排除 `_id`。"
+    why_not_c: "沒有使用 `$set` 或 update API，因此不會更新資料。"
+    why_not_d: "第二個參數明確指定只回傳 `customer` 與 `amount`，不是所有欄位。"
+  keywords:
+    - "MongoDB"
+    - ".find()"
+    - "projection"
+    - "document database"
+  exam_trap: false
+
+- id: "L22202-Q15"
+  topic_code: "L22202"
+  item_code: "L22202-資料庫架構"
+  difficulty: 3
+  question: "某臺灣電商平台的結帳系統需要處理訂單、付款與庫存扣減，要求交易失敗時可完整回滾（rollback）。下列哪種選擇最合適？"
+  options:
+    a: "graph database，因為關係很多"
+    b: "document database，因為 JSON 很彈性"
+    c: "RDBMS 搭配 ACID transaction"
+    d: "object storage，因為成本低"
+  correct: "c"
+  explanation:
+    why_correct: "訂單結帳屬典型 OLTP，需要交易一致性與回滾能力，RDBMS + ACID 最符合需求。"
+    why_not_a: "雖然資料之間有關係，但此場景核心是交易正確性，不是關係路徑分析。"
+    why_not_b: "文件型資料庫可用於部分場景，但題目強調完整交易回滾，RDBMS 更典型。"
+    why_not_c: "此選項正確，符合 ACID 與 OLTP 的標準對應。"
+    why_not_d: "object storage 不是交易系統的主要儲存引擎。"
+  keywords:
+    - "ACID"
+    - "rollback"
+    - "OLTP"
+    - "RDBMS"
+  exam_trap: false
+
+- id: "L22202-Q16"
+  topic_code: "L22202"
+  item_code: "L22202-跨綱比較"
+  difficulty: 3
+  question: "某大學研究中心想保留原始感測檔、PDF 報告、影像與後續清理後資料，供未來 AI 訓練與探索分析使用。下列哪種儲存主體最合適？"
+  options:
+    a: "純 data warehouse，因為最適合保存所有 raw 資料"
+    b: "只用 OLTP 資料庫，因為更新最方便"
+    c: "只用 graph database，因為資料型態很多"
+    d: "data lake 建在 object storage 上，必要時再接分析引擎"
+  correct: "d"
+  explanation:
+    why_correct: "data lake 最適合保留多格式 raw data，object storage 則提供低成本與高擴展容量。"
+    why_not_a: "warehouse 比較偏整理後、結構化、報表導向資料，不是保存所有 raw data 的首選。"
+    why_not_b: "OLTP 資料庫不適合當大量多格式原始檔的主要存放區。"
+    why_not_c: "graph database 無法解決多格式原始檔存放與治理的主要問題。"
+    why_not_d: "此選項正確，符合 data lake 的核心用途。"
+  keywords:
+    - "data lake"
+    - "object storage"
+    - "raw data"
+    - "AI training"
+  exam_trap: false
+
+- id: "L22202-Q17"
+  topic_code: "L22202"
+  item_code: "L22202-儲存機制"
+  difficulty: 3
+  question: "某零售公司每天要跑全台門市的銷售彙總、商品排行與月報，查詢通常只讀少數欄位但掃過大量列。下列何者最適合？"
+  options:
+    a: "row-store，因為每次都會讀完整列"
+    b: "column-store 或 Parquet，因為聚合分析常只需部分欄位"
+    c: "key-value store，因為所有查詢都可轉成單鍵查找"
+    d: "graph database，因為有商品關係"
+  correct: "b"
+  explanation:
+    why_correct: "大量掃描、少數欄位、聚合彙總是欄式儲存的典型優勢場景。"
+    why_not_a: "row-store 較適合交易型逐筆讀寫，不是這種報表分析的最佳選擇。"
+    why_not_b: "此選項正確，對應 OLAP 與欄式格式的常見搭配。"
+    why_not_c: "彙總報表不是 key lookup 問題。"
+    why_not_d: "商品排行與月報的主軸是分析查詢，不是關係路徑分析。"
+  keywords:
+    - "column-store"
+    - "Parquet"
+    - "OLAP"
+    - "aggregation"
+  exam_trap: false
+
+- id: "L22202-Q18"
+  topic_code: "L22202"
+  item_code: "L22202-模型訓練"
+  difficulty: 3
+  question: "某銀行的風控模型上線後，發現線上推論使用的 `customer_income_band` 與訓練時定義不一致，導致效果下降。最適合優先導入哪種機制？"
+  options:
+    a: "feature store，統一 offline 與 online features 定義"
+    b: "把所有資料搬到 graph database"
+    c: "改成 row-store 儲存即可解決"
+    d: "只增加 GPU 數量"
+  correct: "a"
+  explanation:
+    why_correct: "這是典型的 training-serving skew 問題，feature store 可集中定義與供應相同 feature。"
+    why_not_a: "此選項正確，直接對準題目中的 offline/online 不一致。"
+    why_not_b: "資料庫類型並不是這個問題的根因。"
+    why_not_c: "row-store 或 column-store 解決的是存取模式，不是 feature 定義一致性。"
+    why_not_d: "增加算力不會修正資料定義不一致。"
+  keywords:
+    - "feature store"
+    - "training-serving skew"
+    - "online inference"
+    - "offline training"
+  exam_trap: false
+
+- id: "L22202-Q19"
+  topic_code: "L22202"
+  item_code: "L22202-資料庫架構"
+  difficulty: 3
+  question: "某遊戲平台需要以 `session_id` 快速查詢與更新登入狀態，資料結構簡單、存活時間短（TTL）。下列哪種資料庫最適合？"
+  options:
+    a: "RDBMS，因為所有資料都要正規化"
+    b: "graph database，因為玩家彼此有關係"
+    c: "key-value store，因為是單鍵高速存取場景"
+    d: "data warehouse，因為之後可能要做分析"
+  correct: "c"
+  explanation:
+    why_correct: "session 資料通常以 key 快速取值與更新，key-value store 在這類快取/狀態場景非常典型。"
+    why_not_a: "RDBMS 當然能做，但對這種高速單鍵狀態查詢未必最簡潔高效。"
+    why_not_b: "玩家社交關係不是題目重點，核心需求是 session lookup。"
+    why_not_c: "此選項正確，符合 key-value store 的典型使用案例。"
+    why_not_d: "warehouse 不用來承接線上 session 狀態。"
+  keywords:
+    - "key-value store"
+    - "session"
+    - "TTL"
+    - "Redis"
+  exam_trap: false
+
+- id: "L22202-Q20"
+  topic_code: "L22202"
+  item_code: "L22202-儲存機制"
+  difficulty: 3
+  question: "閱讀下列 SQL，執行結果最可能是什麼？\n```sql\nSELECT department, COUNT(*) AS emp_cnt\nFROM employees\nWHERE salary >= 60000\nGROUP BY department;\n```\n"
+  options:
+    a: "列出每位員工的薪資明細"
+    b: "刪除薪資低於 60000 的員工資料"
+    c: "更新每個部門的人數"
+    d: "統計各部門薪資至少 60000 的員工數"
+  correct: "d"
+  explanation:
+    why_correct: "`WHERE` 先過濾薪資，`GROUP BY department` 再按部門分組，`COUNT(*)` 計算筆數。"
+    why_not_a: "沒有選出個別員工欄位，也沒有逐筆明細。"
+    why_not_b: "這是 `SELECT` 查詢，不是 `DELETE`。"
+    why_not_c: "SQL 並未使用 `UPDATE`，只是在讀取與統計。"
+    why_not_d: "此選項正確，完整對應查詢語意。"
+  keywords:
+    - "SQL"
+    - "WHERE"
+    - "GROUP BY"
+    - "COUNT"
+  exam_trap: false
+
+- id: "L22202-Q21"
+  topic_code: "L22202"
+  item_code: "L22202-模型訓練"
+  difficulty: 3
+  question: "資料團隊要重跑去年 10 月 1 日的模型訓練，但原始資料表後來已被修正多次。若要盡量重現當時輸入，最需要哪個能力？"
+  options:
+    a: "只保留最新資料，避免混淆"
+    b: "資料時間旅行或版本快照（snapshot）"
+    c: "把資料全部改存成 CSV"
+    d: "把 ETL 排程改成每小時一次"
+  correct: "b"
+  explanation:
+    why_correct: "重現歷史訓練資料必須能查回特定時間點或特定版本的資料狀態。"
+    why_not_a: "只留最新資料會讓重現歷史訓練幾乎不可能。"
+    why_not_b: "此選項正確，是 reproducibility 的關鍵機制。"
+    why_not_c: "檔案格式不是能否回到歷史版本的核心。"
+    why_not_d: "排程頻率與是否能回溯歷史版本是不同問題。"
+  keywords:
+    - "時間旅行"
+    - "snapshot"
+    - "dataset versioning"
+    - "reproducibility"
+  exam_trap: false
+
+- id: "L22202-Q22"
+  topic_code: "L22202"
+  item_code: "L22202-跨綱比較"
+  difficulty: 4
+  question: "某企業要同時支援 BI 報表、資料科學探索與原始 log 長期保存，希望避免 lake 與 warehouse 完全分離造成複製成本。下列哪種判斷最合理？"
+  options:
+    a: "只用 OLTP 資料庫即可同時滿足三者"
+    b: "只要有 object storage，就自然等於完整 lakehouse"
+    c: "graph database 較適合，因為 BI 報表本質上是關係查詢"
+    d: "lakehouse 較適合，因為能在開放儲存上兼顧分析與治理"
+  correct: "d"
+  explanation:
+    why_correct: "題目要兼顧 raw data 保留、分析與治理，且希望降低雙重存放成本，這正是 lakehouse 的訴求。"
+    why_not_a: "OLTP 不適合長期承接大規模分析與原始 log 保存。"
+    why_not_b: "只有 object storage 不等於具備 metadata、版本、ACID 與治理能力，這是常見誤解。"
+    why_not_c: "BI 報表需求重點是分析與治理，不是圖形路徑分析。"
+    why_not_d: "此選項正確，符合 lakehouse 的綜合定位。"
+  keywords:
+    - "lakehouse"
+    - "BI"
+    - "data lake"
+    - "data warehouse"
+  exam_trap: true
+
+- id: "L22202-Q23"
+  topic_code: "L22202"
+  item_code: "L22202-儲存機制"
+  difficulty: 4
+  question: "閱讀下列 DDL，哪個判斷最正確？\n```sql\nCREATE TABLE orders (\n  order_id BIGINT PRIMARY KEY,\n  customer_id BIGINT NOT NULL,\n  order_time TIMESTAMP NOT NULL,\n  amount NUMERIC(10,2)\n);\n```\n"
+  options:
+    a: "`amount` 欄位不能存小數"
+    b: "`customer_id` 不可為 NULL，`order_id` 具有主鍵約束"
+    c: "`TIMESTAMP` 表示只存日期，不含時間"
+    d: "此表沒有 schema，新增任何欄位都不需調整定義"
+  correct: "b"
+  explanation:
+    why_correct: "`NOT NULL` 限制 `customer_id` 不得缺值，`PRIMARY KEY` 代表主鍵與唯一識別。"
+    why_not_a: "`NUMERIC(10,2)` 正是可存小數的型別。"
+    why_not_b: "此選項正確，讀懂 constraint 是 DDL 題的基本能力。"
+    why_not_c: "`TIMESTAMP` 通常包含日期與時間，不是只有日期。"
+    why_not_d: "RDBMS 的 `CREATE TABLE` 明確定義 schema，不是無 schema。"
+  keywords:
+    - "DDL"
+    - "CREATE TABLE"
+    - "PRIMARY KEY"
+    - "NOT NULL"
+  exam_trap: false
+
+- id: "L22202-Q24"
+  topic_code: "L22202"
+  item_code: "L22202-跨綱比較"
+  difficulty: 4
+  question: "下列哪個比較最合理地把 workload 與儲存方式配對？"
+  options:
+    a: "高頻訂單交易 → column-store OLAP engine"
+    b: "每秒 session 查詢 → data warehouse"
+    c: "年度營收分析 → key-value store"
+    d: "門市銷售多維報表 → OLAP 搭配 columnar storage"
+  correct: "d"
+  explanation:
+    why_correct: "多維報表與年度分析常需掃描大量資料並做聚合，OLAP + columnar storage 是典型配對。"
+    why_not_a: "高頻交易一般更適合 OLTP 與 row-oriented 系統。"
+    why_not_b: "session 查詢偏即時狀態與單鍵存取，不是 warehouse 的強項。"
+    why_not_c: "年度營收分析需要聚合與掃描，不是 key-value store 的典型工作。"
+    why_not_d: "此選項正確，對應 workload 與 storage 設計。"
+  keywords:
+    - "OLAP"
+    - "columnar storage"
+    - "reporting"
+    - "workload mapping"
+  exam_trap: false
+
+- id: "L22202-Q25"
+  topic_code: "L22202"
+  item_code: "L22202-資料庫架構"
+  difficulty: 4
+  question: "某內容平台文章欄位經常新增，例如 `subtitle`、`seo_tags`、`cover_style`，且不同文章型別欄位差異很大；但查詢多為讀取單篇文章。下列判斷何者最合理？"
+  options:
+    a: "必須用 graph database，因為欄位常變動"
+    b: "必須用 RDBMS，因為 schema 不能變"
+    c: "document database 較合適，因為半結構化內容與彈性欄位較常見"
+    d: "應改用 HDFS，因為欄位數多"
+  correct: "c"
+  explanation:
+    why_correct: "題目強調半結構化內容、欄位不固定與單篇讀取，這很符合 document database 的典型優勢。"
+    why_not_a: "欄位變動不代表需要 graph model。"
+    why_not_b: "RDBMS 也能演進 schema，但這種高變動半結構化內容未必最自然。"
+    why_not_c: "此選項正確，抓到資料形態與存取模式。"
+    why_not_d: "HDFS 是分散式檔案系統，不是用來直接承接這類應用查詢的首選。"
+  keywords:
+    - "document database"
+    - "schema flexibility"
+    - "semi-structured"
+    - "NoSQL"
+  exam_trap: false
+
+- id: "L22202-Q26"
+  topic_code: "L22202"
+  item_code: "L22202-模型訓練"
+  difficulty: 4
+  question: "某資料科學團隊把訓練資料都放在 `training_final.csv`、`training_final_v2.csv`、`training_final_v2_use_this.csv`，結果半年後沒人知道哪個版本對應哪次模型。從資料管理角度看，最關鍵的缺失是什麼？"
+  options:
+    a: "缺少 column-store，因此查詢太慢"
+    b: "缺少正式的 dataset versioning 與 metadata/lineage 管理"
+    c: "缺少 graph query 能力"
+    d: "缺少 MongoDB projection"
+  correct: "b"
+  explanation:
+    why_correct: "問題根源是缺乏可追溯版本、來源與實驗對應關係，不是查詢語法或資料庫類型。"
+    why_not_a: "查詢快慢不是這個案例的核心問題。"
+    why_not_b: "此選項正確，這正是 dataset versioning 要解決的痛點。"
+    why_not_c: "graph query 與版本追溯無直接關聯。"
+    why_not_d: "MongoDB projection 只影響欄位回傳，不會解決版本混亂。"
+  keywords:
+    - "dataset versioning"
+    - "lineage"
+    - "metadata"
+    - "reproducibility"
+  exam_trap: true
+
+- id: "L22202-Q27"
+  topic_code: "L22202"
+  item_code: "L22202-儲存機制"
+  difficulty: 4
+  question: "閱讀下列 Spark 寫出程式，哪個說法最合理？\n```python\ncleaned_df.write.mode('overwrite').parquet('/warehouse/sales_clean')\n```\n"
+  options:
+    a: "把 `cleaned_df` 以 Parquet 格式寫到指定路徑，若路徑存在則覆寫"
+    b: "讀取 `/warehouse/sales_clean` 並轉成 DataFrame"
+    c: "建立永久 SQL table 名為 `sales_clean`"
+    d: "把資料寫進 MongoDB collection"
+  correct: "a"
+  explanation:
+    why_correct: "`.write.mode('overwrite').parquet(path)` 是 Spark DataFrameWriter 的標準寫出語法。"
+    why_not_a: "此選項正確，語法與行為都對。"
+    why_not_b: "讀取會用 `spark.read.parquet(...)`，不是 `write`。"
+    why_not_c: "寫到檔案路徑不等於建立 metastore 中的永久 table。"
+    why_not_d: "程式碼完全沒有 MongoDB connector。"
+  keywords:
+    - "Spark"
+    - "DataFrameWriter"
+    - "parquet"
+    - "overwrite"
+  exam_trap: false
+
+- id: "L22202-Q28"
+  topic_code: "L22202"
+  item_code: "L22202-跨綱比較"
+  difficulty: 4
+  question: "若某組織把『data lake = 任何放在 S3 的檔案』，這個說法最大的問題是什麼？"
+  options:
+    a: "錯在 S3 不能存檔案"
+    b: "錯在 data lake 一定要用 HDFS，不能用 object storage"
+    c: "錯在 data lake 只收結構化資料"
+    d: "錯在只描述了儲存位置，忽略 raw data 保留、多格式與上層治理設計"
+  correct: "d"
+  explanation:
+    why_correct: "data lake 是資料管理與使用模式，不是單純『放在哪裡』。只有 object storage 並不足以完整定義 lake。"
+    why_not_a: "S3 當然可以存放各種 object。"
+    why_not_b: "data lake 很常建在 object storage 上，並非一定要 HDFS。"
+    why_not_c: "data lake 可收結構化、半結構化與非結構化資料。"
+    why_not_d: "此選項正確，點出最常見的概念縮減錯誤。"
+  keywords:
+    - "data lake"
+    - "S3"
+    - "object storage"
+    - "governance"
+  exam_trap: true
+
+- id: "L22202-Q29"
+  topic_code: "L22202"
+  item_code: "L22202-跨綱比較"
+  difficulty: 5
+  question: "一家製造業公司有三類需求：1. MES 即時工單寫入；2. 高層週報與月報；3. 保留原始感測資料供未來 AI 訓練。若只能選『主系統分工方向』，下列何者最合理？"
+  options:
+    a: "三者全部用單一 RDBMS，避免系統複雜"
+    b: "MES 用 OLTP/RDBMS，報表用 OLAP 或 warehouse，原始感測資料落在 data lake/object storage"
+    c: "三者全部用 graph database，方便未來擴充"
+    d: "MES 與報表都改用 key-value store，AI 訓練資料用 session cache"
+  correct: "b"
+  explanation:
+    why_correct: "題目明顯是三種不同 workload：交易、分析、原始資料保存。分層選型比硬塞單一系統更合理。"
+    why_not_a: "全用單一 RDBMS 看似簡化，但會把 OLTP、OLAP 與 raw data retention 混在一起，長期成本高。"
+    why_not_b: "此選項正確，依 workload 分工，是成熟架構判斷。"
+    why_not_c: "graph database 並不適合承接這三類主需求。"
+    why_not_d: "key-value 與 cache 都不適合作為完整報表與訓練資料管理主體。"
+  keywords:
+    - "OLTP"
+    - "OLAP"
+    - "data lake"
+    - "architecture selection"
+  exam_trap: false
+
+- id: "L22202-Q30"
+  topic_code: "L22202"
+  item_code: "L22202-資料庫架構"
+  difficulty: 5
+  question: "某新創要做社群推薦功能，需要快速查『朋友的朋友中，哪些人同時追蹤某主題且互動頻繁』。若你只能在 RDBMS、document database、graph database 三者中選一個主要查詢引擎，最佳判斷為何？"
+  options:
+    a: "RDBMS，因為任何關係都能用很多 JOIN 取代"
+    b: "document database，因為所有關係都能包成單一 JSON"
+    c: "graph database，因為多跳關係與路徑分析是核心需求"
+    d: "object storage，因為擴充性最好"
+  correct: "c"
+  explanation:
+    why_correct: "題目核心是多跳關係與路徑條件判斷，graph database 在這種情境通常更自然有效。"
+    why_not_a: "RDBMS 雖可用 JOIN 處理，但多跳關係查詢複雜度常較高，不是最佳主引擎判斷。"
+    why_not_b: "把高度連結關係硬包進 document 常造成更新與查詢困難。"
+    why_not_c: "此選項正確，對準關係密集型場景。"
+    why_not_d: "object storage 不是查詢引擎。"
+  keywords:
+    - "graph database"
+    - "multi-hop"
+    - "relationship query"
+    - "recommendation"
+  exam_trap: false
+
+- id: "L22202-Q31"
+  topic_code: "L22202"
+  item_code: "L22202-模型訓練"
+  difficulty: 5
+  question: "醫療 AI 團隊要提交模型稽核報告，需證明『當時訓練用的特徵值』與『現在線上推論讀到的特徵』定義一致，且能回溯某次訓練所用資料版本。下列哪組做法最完整？"
+  options:
+    a: "只保留最新 parquet 檔，避免舊資料干擾"
+    b: "只在 README 記錄欄位說明，不做系統化管理"
+    c: "只把資料搬到 data warehouse，不管 online serving"
+    d: "feature store 搭配資料集版本控管／時間旅行，分別處理特徵一致性與資料重現"
+  correct: "d"
+  explanation:
+    why_correct: "題目同時要求 feature 一致性與資料版本可追溯，需要兩種能力配合。"
+    why_not_a: "只留最新資料無法支撐稽核與重現。"
+    why_not_b: "文件紀錄不等於系統化的資料治理與可驗證回溯。"
+    why_not_c: "warehouse 不能自動解決 online/offline feature 一致性。"
+    why_not_d: "此選項正確，是多概念整合後最完整的答案。"
+  keywords:
+    - "feature store"
+    - "dataset versioning"
+    - "時間旅行"
+    - "auditability"
+  exam_trap: false
+
+- id: "L22202-Q32"
+  topic_code: "L22202"
+  item_code: "L22202-跨綱比較"
+  difficulty: 5
+  question: "某公司說：『我們已經把所有 CSV 都放進 object storage，所以已經完成 data lakehouse。』若以中級考試角度判斷，哪個反駁最精確？"
+  options:
+    a: "不精確，因為 lakehouse 還需要 table format / metadata、治理與較可靠的更新一致性，不只是檔案堆放"
+    b: "完全正確，lakehouse 的唯一條件就是 object storage"
+    c: "不正確，因為 lakehouse 一定不能用 parquet 或 open format"
+    d: "不正確，因為 lakehouse 只適合 OLTP，不適合分析"
+  correct: "a"
+  explanation:
+    why_correct: "lakehouse 的核心不是存放位置，而是讓 lake 上資料更可管理、可查詢、可演進、可追溯。"
+    why_not_a: "此選項正確，精準點出 lakehouse 與『純檔案堆放』的差異。"
+    why_not_b: "這正是題目要辨識的常見誤解。"
+    why_not_c: "lakehouse 常見做法恰好是建立在 parquet 等開放格式上。"
+    why_not_d: "lakehouse 主要就是為分析、AI/ML 與治理整合而發展。"
+  keywords:
+    - "lakehouse"
+    - "table format"
+    - "metadata layer"
+    - "object storage"
+  exam_trap: true
+
+- id: "L22202-Q33"
+  topic_code: "L22202"
+  item_code: "L22202-儲存機制"
+  difficulty: 5
+  question: "閱讀下列 SQL，若目的是找出『有訂單的客戶姓名與其訂單數』，哪個判斷最合理？\n```sql\nSELECT c.name, COUNT(o.order_id) AS cnt\nFROM customers c\nJOIN orders o ON c.customer_id = o.customer_id\nWHERE o.status = 'paid'\nGROUP BY c.name;\n```\n"
+  options:
+    a: "此查詢會列出所有客戶，即使沒有任何訂單"
+    b: "此查詢會更新客戶姓名欄位"
+    c: "此查詢會計算每位客戶已付款訂單數，沒有訂單的客戶不會出現"
+    d: "因為用了 JOIN，所以不能再用 GROUP BY"
+  correct: "c"
+  explanation:
+    why_correct: "內部 JOIN 只保留兩表都匹配的列，再依客戶名分組計算已付款訂單數。"
+    why_not_a: "若要保留沒有訂單的客戶，通常要考慮 LEFT JOIN。這是 SQL 讀題常見陷阱。"
+    why_not_b: "這是 `SELECT`，不會更新資料。"
+    why_not_c: "此選項正確，完整描述 JOIN + WHERE + GROUP BY 的結果。"
+    why_not_d: "JOIN 與 GROUP BY 可以同時使用，這是非常常見的查詢型態。"
+  keywords:
+    - "SQL"
+    - "JOIN"
+    - "GROUP BY"
+    - "paid orders"
+  exam_trap: true
+
+- id: "L22202-Q34"
+  topic_code: "L22202"
+  item_code: "L22202-資料庫架構"
+  difficulty: 5
+  question: "一家跨國 IoT 平台每天寫入數十億筆裝置遙測資料，欄位稀疏、橫向擴充比複雜交易更重要。若在 RDBMS、document database、wide-column database、graph database 中選擇，哪個判斷最合理？"
+  options:
+    a: "graph database，因為裝置彼此可能有連線"
+    b: "wide-column database，因為大規模稀疏欄位與擴展寫入是其典型優勢"
+    c: "RDBMS，因為任何大資料量都應優先用 ACID"
+    d: "document database，因為只要是 JSON 都一定最佳"
+  correct: "b"
+  explanation:
+    why_correct: "wide-column database 常見於高吞吐、大規模、稀疏欄位的遙測與時序近似場景。"
+    why_not_a: "即使裝置有關聯，題目強調的是超大規模寫入與稀疏欄位，不是路徑查詢。"
+    why_not_b: "此選項正確，符合 wide-column 的強項。"
+    why_not_c: "ACID 很重要，但不是所有超大規模寫入場景的首要需求。"
+    why_not_d: "是否為 JSON 不是唯一選型準則，workload 與擴展模式更關鍵。"
+  keywords:
+    - "wide-column"
+    - "Cassandra"
+    - "sparse columns"
+    - "horizontal scaling"
+  exam_trap: false
+
+- id: "L22202-Q35"
+  topic_code: "L22202"
+  item_code: "L22202-模型訓練"
+  difficulty: 5
+  question: "某團隊要建立詐欺偵測模型資料平台，需求包含：1. 離線訓練可重現；2. 線上特徵低延遲提供；3. 事後可查某模型版本用了哪批資料。若預算有限，只能優先投資一組基礎能力，下列何者最合理？"
+  options:
+    a: "feature store 加上資料集版本控管／時間旅行，先把特徵一致性與資料追溯打穩"
+    b: "把所有資料改成 Excel，方便人工核對"
+    c: "全部改存成 row-store，就能同時自然解決三項需求"
+    d: "只建更多報表 dashboard，先讓主管看得到圖表"
+  correct: "a"
+  explanation:
+    why_correct: "三項需求的共同底座就是 feature 一致性與資料可追溯；這比先做報表或改檔案格式更關鍵。"
+    why_not_a: "此選項正確，雖然不是所有能力一次到位，但能最大幅降低後續 ML 資料管理風險。"
+    why_not_b: "Excel 不具備可靠的線上服務與版本治理能力。"
+    why_not_c: "row-store 不是解決 feature 管理與資料重現的核心機制。"
+    why_not_d: "dashboard 有助溝通，但無法建立可重現、可追溯的 ML data foundation。"
+  keywords:
+    - "feature store"
+    - "時間旅行"
+    - "dataset versioning"
+    - "fraud detection"
+  exam_trap: false

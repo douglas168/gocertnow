@@ -1,0 +1,24 @@
+---
+title: 儲存系統選型決策樹 (L22202)
+---
+flowchart TD
+    A[資料儲存需求] --> B{資料結構}
+    B -- 結構化 + ACID\n交易 --> C{工作負載類型}
+    B -- 半結構化 / JSON\nKey-Value / Graph --> D{NoSQL 類型選擇}
+    B -- 非結構化 / 多格式\n原始資料保留 --> E[Data Lake\nHDFS / S3 / Azure Blob\n schema-on-read]
+
+    C -- OLTP\n高頻寫入/查詢\n單筆交易 --> F[RDBMS\nMySQL / PostgreSQL\nrow-store]
+    C -- OLAP\n聚合分析\n大量掃描 --> G[Data Warehouse\nSnowflake / BigQuery\ncolumn-store]
+
+    D -- JSON 文件\n彈性 schema --> H[Document DB\nMongoDB]
+    D -- 高速鍵值查找\n快取 --> I[Key-Value DB\nRedis / DynamoDB]
+    D -- 大規模稀疏欄位\n時序/IoT --> J[Wide-Column DB\nHBase / Cassandra]
+    D -- 關係路徑分析\n圖譜 --> K[Graph DB\nNeo4j]
+
+    E -- 需要 ACID +\n開放表格格式 --> L[Data Lakehouse\nDelta Lake / Iceberg\nschema-on-write + time travel]
+    G -- 需要原始資料 +\n統一治理 --> L
+
+    style F fill:#dbeafe
+    style G fill:#dcfce7
+    style E fill:#fef9c3
+    style L fill:#f3e8ff

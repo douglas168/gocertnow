@@ -1,0 +1,25 @@
+---
+title: NoSQL 四大類型使用場景 (L22202)
+---
+mindmap
+    root((NoSQL\n非關聯式資料庫))
+        文件型 Document DB
+            代表：MongoDB / CouchDB / Firestore
+            資料格式：JSON / BSON 文件
+            適用：彈性 schema 的 API 回應\n電商商品目錄、CMS 內容管理
+            查詢：db.collection.find 括弧 filter
+        鍵值型 Key-Value DB
+            代表：Redis / DynamoDB / Memcached
+            資料格式：Key → Value 直接映射
+            適用：Session 快取、排行榜\n高速查找 ms 等級延遲
+            查詢：GET key / SET key value
+        寬欄型 Wide-Column DB
+            代表：Apache HBase / Cassandra / Bigtable
+            資料格式：稀疏欄位族 Column Family
+            適用：IoT 時序資料、大規模稀疏資料\n每列欄位數量不固定
+            查詢：依 Row Key + Column Family 掃描
+        圖型 Graph DB
+            代表：Neo4j / Amazon Neptune / TigerGraph
+            資料格式：節點 Node + 邊 Edge + 屬性
+            適用：社交關係、推薦系統\n知識圖譜、詐欺偵測路徑分析
+            查詢：Cypher MATCH 括弧n1-[r]-括弧n2

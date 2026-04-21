@@ -1,0 +1,26 @@
+---
+title: Row-Store vs Column-Store 存取模式對比 (L22202)
+---
+flowchart LR
+    subgraph DATA ["原始資料表 (4 rows × 4 cols)"]
+        direction TB
+        T["| ID | Name  | Dept  | Salary |\n|----+-------+-------+--------|\n|  1 | Alice | Sales |  50000 |\n|  2 | Bob   | Eng   |  70000 |\n|  3 | Carol | Sales |  55000 |\n|  4 | Dave  | Eng   |  80000 |"]
+    end
+
+    subgraph ROW ["📦 Row-Store (行式儲存)"]
+        direction TB
+        R1["磁碟寫入順序：\n[1,Alice,Sales,50000]\n[2,Bob,Eng,70000]\n[3,Carol,Sales,55000]\n[4,Dave,Eng,80000]"]
+        R2["✅ 快速讀/寫單筆記錄\n→ OLTP 最佳化\n❌ 掃描 Salary 欄要讀所有欄位"]
+    end
+
+    subgraph COL ["📊 Column-Store (欄式儲存)"]
+        direction TB
+        C1["磁碟寫入順序：\nID: [1,2,3,4]\nName: [Alice,Bob,Carol,Dave]\nDept: [Sales,Eng,Sales,Eng]\nSalary: [50000,70000,55000,80000]"]
+        C2["✅ 只讀 Salary 欄即可聚合\n→ OLAP / 分析最佳化\n✅ 欄位壓縮比高\n❌ 寫入單筆需更新多欄位索引"]
+    end
+
+    DATA --> ROW
+    DATA --> COL
+
+    style ROW fill:#dbeafe,stroke:#3b82f6
+    style COL fill:#dcfce7,stroke:#16a34a

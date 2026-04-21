@@ -1,0 +1,28 @@
+---
+title: OLTP vs OLAP 工作負載對照 (L22202)
+---
+flowchart LR
+    subgraph OLTP ["⚡ OLTP — 線上交易處理"]
+        direction TB
+        O1[操作：INSERT / UPDATE / DELETE]
+        O2[單次操作：少量列 1–10 rows]
+        O3[延遲需求：ms 等級]
+        O4[並發：數千筆/秒]
+        O5[儲存格式：Row-store]
+        O6[例：電商訂單、銀行轉帳\nMySQL / PostgreSQL]
+    end
+
+    subgraph OLAP ["📊 OLAP — 線上分析處理"]
+        direction TB
+        A1[操作：SELECT + GROUP BY / AGG]
+        A2[單次操作：大量列 掃描整欄]
+        A3[延遲需求：秒～分鐘 可接受]
+        A4[並發：少量複雜查詢]
+        A5[儲存格式：Column-store]
+        A6[例：銷售報表、BI 分析\nSnowflake / BigQuery / Redshift]
+    end
+
+    OLTP -- 定期 ETL/ELT\n匯入 --> OLAP
+
+    style OLTP fill:#dbeafe,stroke:#3b82f6
+    style OLAP fill:#dcfce7,stroke:#16a34a

@@ -1,0 +1,32 @@
+---
+title: Data Lake / Warehouse / Lakehouse 三層架構 (L22202)
+---
+flowchart TD
+    SRC["📥 資料來源\nDB / API / IoT / Log / 影像"]
+
+    subgraph LAKE ["🏞️ Data Lake (原始層)"]
+        L1[原始格式儲存\nCSV / JSON / Parquet / 影像]
+        L2[Schema-on-Read\n讀取時才定義結構]
+        L3[低成本物件儲存\nHDFS / S3 / Azure Blob]
+    end
+
+    subgraph WH ["🏭 Data Warehouse (分析層)"]
+        W1[清理後結構化資料\nParquet / ORC column-store]
+        W2[Schema-on-Write\n寫入前須定義 schema]
+        W3[高效 OLAP 查詢\nSnowflake / BigQuery / Redshift]
+    end
+
+    subgraph LH ["💎 Data Lakehouse (統一層)"]
+        LH1[開放表格格式\nDelta Lake / Apache Iceberg / Hudi]
+        LH2[ACID 事務 + Time Travel\nschema enforcement 可選]
+        LH3[同時支援 BI 查詢 + ML 訓練\nDatabricks / AWS Lake Formation]
+    end
+
+    SRC --> LAKE
+    LAKE -- ETL/ELT --> WH
+    LAKE -- 直接建表格格式 --> LH
+    WH -- 回流原始資料 --> LH
+
+    style LAKE fill:#fef9c3,stroke:#ca8a04
+    style WH fill:#dcfce7,stroke:#16a34a
+    style LH fill:#f3e8ff,stroke:#9333ea
