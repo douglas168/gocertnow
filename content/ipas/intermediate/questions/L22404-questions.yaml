@@ -1,0 +1,879 @@
+- id: "L22404-Q01"
+  topic_code: "L22404"
+  item_code: "k-anonymity"
+  difficulty: 1
+  question: "在匿名化（anonymization）技術中，若每一組準識別欄位（quasi-identifiers）組合至少出現 3 筆紀錄，最適合稱為何者？"
+  options:
+    a: "3-匿名性（3-anonymity）"
+    b: "2-多樣性（2-diversity）"
+    c: "t-相近性（t-Closeness）"
+    d: "假名化（pseudonymization）"
+  correct: "a"
+  explanation:
+    why_correct: "k-anonymity 的定義就是每個準識別欄位組合至少對應 k 筆紀錄；至少 3 筆即為 3-anonymity。"
+    why_not_b: "l-diversity 關注的是敏感屬性的多樣性，不是等價類的人數。很多考生看到數字就誤以為任何隱私模型都能直接套用。"
+    why_not_c: "t-Closeness 比較的是敏感值分布與整體分布的距離，不是單純計數。"
+    why_not_d: "pseudonymization 是以代碼取代直接識別資訊，但資料仍可能回推個人，與 k-anonymity 的群組保護概念不同。"
+  keywords:
+    - "k-anonymity"
+    - "quasi-identifiers"
+    - "anonymization"
+  exam_trap: false
+
+- id: "L22404-Q02"
+  topic_code: "L22404"
+  item_code: "l-diversity"
+  difficulty: 1
+  question: "下列何者最能說明為何僅有 k-匿名性（k-anonymity）仍可能洩漏敏感資訊（sensitive attribute）？"
+  options:
+    a: "因為 k-anonymity 一定要求加密（encryption）"
+    b: "因為同一等價類中的敏感值可能過度同質（homogeneity）"
+    c: "因為 k-anonymity 只適用於影像資料"
+    d: "因為 k-anonymity 會自動加入差分隱私雜訊"
+  correct: "b"
+  explanation:
+    why_correct: "若同一等價類內的敏感值都相同，即使無法直接識別個人，仍能推知其敏感屬性，這正是 l-diversity 要補強的問題。"
+    why_not_a: "k-anonymity 與是否加密無必然關係；匿名化和加密是不同控制手段。"
+    why_not_c: "k-anonymity 常用於表格型資料，並非只適用影像。"
+    why_not_d: "差分隱私是另一套隱私保護框架，不會因為做到 k-anonymity 就自動產生。"
+  keywords:
+    - "l-diversity"
+    - "homogeneity attack"
+    - "sensitive attribute"
+  exam_trap: true
+
+- id: "L22404-Q03"
+  topic_code: "L22404"
+  item_code: "t-closeness"
+  difficulty: 1
+  question: "t-相近性（t-Closeness）主要希望控制下列哪一種風險？"
+  options:
+    a: "資料傳輸未使用 TLS 1.3"
+    b: "角色權限設定過寬"
+    c: "等價類中的敏感值分布與整體分布差異過大"
+    d: "裝置端模型更新太大"
+  correct: "c"
+  explanation:
+    why_correct: "t-Closeness 的核心是要求各等價類中的敏感值分布，不能與整體資料集分布差距太大，以降低屬性推論風險。"
+    why_not_a: "TLS 1.3 是傳輸加密議題，不是匿名化分布保護模型。"
+    why_not_b: "角色權限屬存取控制，和 t-closeness 的統計分布要求不同。"
+    why_not_d: "模型更新幅度屬聯邦學習訓練議題，不是 t-closeness 的目標。"
+  keywords:
+    - "t-closeness"
+    - "distribution matching"
+    - "attribute disclosure"
+  exam_trap: false
+
+- id: "L22404-Q04"
+  topic_code: "L22404"
+  item_code: "dp-budget"
+  difficulty: 1
+  question: "在差分隱私（Differential Privacy, DP）中，常用符號 ε（epsilon）最直接代表下列何者？"
+  options:
+    a: "資料表欄位數"
+    b: "聯邦學習輪數"
+    c: "加密金鑰長度"
+    d: "隱私損失預算（privacy budget）的大小"
+  correct: "d"
+  explanation:
+    why_correct: "ε 是 DP 中衡量隱私損失強弱的核心參數；通常 ε 越小，隱私保護越強。"
+    why_not_a: "欄位數與 ε 沒有直接定義關係。"
+    why_not_b: "訓練輪數可能影響總隱私消耗，但 ε 本身不是輪數。"
+    why_not_c: "金鑰長度屬加密強度概念，不是 DP 參數。"
+  keywords:
+    - "Differential Privacy"
+    - "epsilon"
+    - "privacy budget"
+  exam_trap: false
+
+- id: "L22404-Q05"
+  topic_code: "L22404"
+  item_code: "laplace-gaussian"
+  difficulty: 1
+  question: "若要對單一數值查詢結果（numeric count query）加入雜訊，教材中最常搭配的差分隱私機制為何？"
+  options:
+    a: "拉普拉斯機制（Laplace mechanism）"
+    b: "安全聚合（secure aggregation）"
+    c: "同態加密（homomorphic encryption）"
+    d: "縱向聯邦學習（Vertical Federated Learning, VFL）"
+  correct: "a"
+  explanation:
+    why_correct: "對單一數值查詢，Laplace mechanism 是最典型的差分隱私作法之一，會依敏感度與 ε 加入雜訊。"
+    why_not_b: "secure aggregation 是保護多方更新值不被單獨看見，不是查詢輸出加噪。"
+    why_not_c: "同態加密保護運算過程，但不保證 DP 的輸出隱私。"
+    why_not_d: "縱向聯邦學習描述資料切分方式，不是雜訊機制。"
+  keywords:
+    - "Laplace mechanism"
+    - "numeric query"
+    - "Differential Privacy"
+  exam_trap: false
+
+- id: "L22404-Q06"
+  topic_code: "L22404"
+  item_code: "homomorphic-encryption"
+  difficulty: 1
+  question: "若題目強調『不解密原始資料仍可進行運算（compute on encrypted data）』，最可能對應哪一項技術？"
+  options:
+    a: "雜湊（hashing）"
+    b: "同態加密（Homomorphic Encryption）"
+    c: "k-匿名性（k-anonymity）"
+    d: "資料本地化（data localization）"
+  correct: "b"
+  explanation:
+    why_correct: "Homomorphic Encryption 的核心特性就是在密文上直接進行運算，最後解密得到對應結果。"
+    why_not_a: "hashing 適合做完整性檢查或不可逆摘要，無法在摘要上進行一般計算。"
+    why_not_c: "k-anonymity 是匿名化模型，不提供密文運算能力。"
+    why_not_d: "資料本地化是資料儲存位置要求，不是運算技術。"
+  keywords:
+    - "Homomorphic Encryption"
+    - "compute on encrypted data"
+    - "privacy-preserving computation"
+  exam_trap: false
+
+- id: "L22404-Q07"
+  topic_code: "L22404"
+  item_code: "federated-learning"
+  difficulty: 1
+  question: "在聯邦學習（Federated Learning, FL）的基本架構中，哪一項通常留在裝置端（on-device）而不集中上傳？"
+  options:
+    a: "全站 TLS 憑證"
+    b: "聚合後的全域模型權重"
+    c: "原始訓練資料（raw training data）"
+    d: "中央協調伺服器日誌"
+  correct: "c"
+  explanation:
+    why_correct: "FL 的核心是資料不離開本地端，裝置只回傳模型更新或梯度等資訊，而非原始資料。"
+    why_not_a: "TLS 憑證屬基礎設施設定，不是 FL 想保留在裝置端的資料本體。"
+    why_not_b: "全域模型通常由伺服器聚合後再下發各端。"
+    why_not_d: "伺服器日誌本來就位於中央端，與 FL 的資料最小化概念不同。"
+  keywords:
+    - "Federated Learning"
+    - "on-device"
+    - "raw training data"
+  exam_trap: false
+
+- id: "L22404-Q08"
+  topic_code: "L22404"
+  item_code: "hvfl"
+  difficulty: 1
+  question: "兩家銀行擁有同一批客戶，但一方有交易資料、另一方有貸款資料；這最符合哪一種聯邦學習型態？"
+  options:
+    a: "水平聯邦學習（Horizontal FL）"
+    b: "集中式學習（centralized learning）"
+    c: "安全多方計算（MPC）"
+    d: "垂直聯邦學習（Vertical FL）"
+  correct: "d"
+  explanation:
+    why_correct: "Vertical FL 是樣本重疊較高、特徵欄位不同的情境；本題正是同客戶、不同欄位。"
+    why_not_a: "Horizontal FL 是特徵相似、樣本不同，例如不同醫院各自有不同病人。"
+    why_not_b: "集中式學習代表把資料集中到同一處，與題目隱私前提不符。"
+    why_not_c: "MPC 是一般計算技術，不直接描述資料切分軸向。"
+  keywords:
+    - "Vertical Federated Learning"
+    - "Horizontal Federated Learning"
+    - "feature split"
+  exam_trap: true
+
+- id: "L22404-Q09"
+  topic_code: "L22404"
+  item_code: "secure-aggregation"
+  difficulty: 2
+  question: "關於安全聚合（secure aggregation），下列敘述何者正確？"
+  options:
+    a: "伺服器可取得各參與者的個別梯度，只是不能下載原始資料"
+    b: "目標是讓伺服器主要看到聚合結果，而非每個裝置的個別更新"
+    c: "它等同於 TLS 1.3，因此只要有 HTTPS 就已滿足"
+    d: "它只用於資料庫靜態加密（encryption at rest）"
+  correct: "b"
+  explanation:
+    why_correct: "secure aggregation 的目標是讓中央端只看見聚合後的更新，降低單一參與者模型更新被還原或推論的風險。"
+    why_not_a: "若能看見個別梯度，仍可能遭受梯度洩漏攻擊，這正是 secure aggregation 要避免的。"
+    why_not_c: "TLS 保護傳輸通道，但不會隱藏伺服器端可見的個別明文更新。"
+    why_not_d: "靜態加密保護儲存資料，與多方更新聚合不是同一層次問題。"
+  keywords:
+    - "secure aggregation"
+    - "gradient privacy"
+    - "Federated Learning"
+  exam_trap: true
+
+- id: "L22404-Q10"
+  topic_code: "L22404"
+  item_code: "encryption"
+  difficulty: 2
+  question: "關於資料靜態加密（encryption at rest）與傳輸加密（encryption in transit），下列配對何者正確？"
+  options:
+    a: "AES-256 常用於資料靜態加密；TLS 1.3 常用於傳輸加密"
+    b: "TLS 1.3 用於硬碟加密；AES-256 用於瀏覽器連線"
+    c: "RBAC 用於資料靜態加密；ABAC 用於傳輸加密"
+    d: "k-anonymity 用於資料靜態加密；l-diversity 用於傳輸加密"
+  correct: "a"
+  explanation:
+    why_correct: "AES-256 常見於磁碟、資料庫或檔案加密；TLS 1.3 則常用於通訊通道保護。"
+    why_not_b: "這是把靜態與傳輸保護用途完全顛倒的典型誤解。"
+    why_not_c: "RBAC 與 ABAC 是授權模型，不是加密協定或演算法。"
+    why_not_d: "k-anonymity 與 l-diversity 是匿名化概念，不負責通道或儲存加密。"
+  keywords:
+    - "AES-256"
+    - "TLS 1.3"
+    - "encryption at rest"
+  exam_trap: false
+
+- id: "L22404-Q11"
+  topic_code: "L22404"
+  item_code: "rbac-abac"
+  difficulty: 2
+  question: "若企業員工薪資資料查詢要依『部門、職等、資料所在地、查詢時間』動態決定是否放行，何者通常比 RBAC 更合適？"
+  options:
+    a: "資料遮罩（data masking）"
+    b: "同態加密（Homomorphic Encryption）"
+    c: "屬性式存取控制（Attribute-Based Access Control, ABAC）"
+    d: "水平聯邦學習（Horizontal FL）"
+  correct: "c"
+  explanation:
+    why_correct: "ABAC 可綜合使用者、資源、環境等屬性做細緻判斷，適合多條件動態授權。"
+    why_not_a: "data masking 是顯示層保護，不是授權決策模型。"
+    why_not_b: "同態加密解決密文運算，不負責誰能查詢。"
+    why_not_d: "Horizontal FL 是分散式訓練架構，與權限控管無關。"
+  keywords:
+    - "ABAC"
+    - "RBAC"
+    - "access control"
+  exam_trap: false
+
+- id: "L22404-Q12"
+  topic_code: "L22404"
+  item_code: "pdpa"
+  difficulty: 2
+  question: "依個人資料保護法（Personal Data Protection Act）第 5 條的比例原則精神，下列何者最符合要求？"
+  options:
+    a: "先把所有可能有用的個資都蒐集，以免未來資料不足"
+    b: "只要資料分析效果好，就可以不限目的長期保存"
+    c: "只要當事人沒有明確反對，就可以蒐集任何欄位"
+    d: "蒐集、處理與利用應在特定目的必要範圍內，不得逾越"
+  correct: "d"
+  explanation:
+    why_correct: "個資法第 5 條強調誠信、必要性與比例原則，不能因為『可能有用』就無限擴張蒐集。"
+    why_not_a: "這是典型的 over-collection，違反必要範圍概念。"
+    why_not_b: "分析效益不能取代法定目的與保存必要性判斷。"
+    why_not_c: "是否得蒐集須有合法基礎與特定目的，不是單靠未反對即可。"
+  keywords:
+    - "個資法"
+    - "比例原則"
+    - "purpose limitation"
+  exam_trap: true
+
+- id: "L22404-Q13"
+  topic_code: "L22404"
+  item_code: "gdpr-25-32"
+  difficulty: 2
+  question: "下列何者最直接對應 GDPR 第 25 條的『隱私保護設計與預設（Data Protection by Design and by Default）』精神？"
+  options:
+    a: "新系統一開始就預設只蒐集完成服務所需最少欄位"
+    b: "每季更換一次伺服器憑證"
+    c: "系統上線後才臨時補做權限盤點"
+    d: "把所有資料永久保留以利未來模型再訓練"
+  correct: "a"
+  explanation:
+    why_correct: "Art. 25 強調在設計階段就把資料最小化與隱私預設納入系統，而不是事後補救。"
+    why_not_b: "憑證更新較接近一般安全維運，不能完整代表 privacy by design。"
+    why_not_c: "事後補做控制比較偏補強，不是設計即納入。"
+    why_not_d: "永久保留所有資料違反預設最小化原則。"
+  keywords:
+    - "GDPR Art. 25"
+    - "Privacy by Design"
+    - "data minimization"
+  exam_trap: false
+
+- id: "L22404-Q14"
+  topic_code: "L22404"
+  item_code: "iso27701"
+  difficulty: 2
+  question: "關於 ISO/IEC 27701:2025，下列敘述何者正確？"
+  options:
+    a: "它只處理資料庫索引效能，不涉及隱私管理"
+    b: "它是用來取代所有加密演算法的單一技術標準"
+    c: "它是一套 Privacy Information Management System（PIMS）相關標準"
+    d: "它僅能描述聯邦學習中的安全聚合流程"
+  correct: "c"
+  explanation:
+    why_correct: "ISO/IEC 27701 著重隱私資訊管理系統（PIMS），提供組織建立隱私治理與控制的框架。"
+    why_not_a: "27701 的焦點是隱私管理，不是資料庫效能。"
+    why_not_b: "它不是加密演算法標準，不能取代 AES 或 TLS。"
+    why_not_d: "安全聚合只是特定技術情境，並非 27701 的唯一或主要範圍。"
+  keywords:
+    - "ISO/IEC 27701:2025"
+    - "PIMS"
+    - "privacy management"
+  exam_trap: false
+
+- id: "L22404-Q15"
+  topic_code: "L22404"
+  item_code: "pseudonymization"
+  difficulty: 2
+  question: "關於假名化（pseudonymization）與匿名化（anonymization），下列敘述何者正確？"
+  options:
+    a: "假名化後資料在 GDPR 下一定不再屬於個人資料"
+    b: "匿名化資料若可合理重識別，仍可能不算真正匿名化"
+    c: "匿名化與假名化在法律效果上完全相同"
+    d: "只要把姓名做雜湊（hash）就一定完成匿名化"
+  correct: "b"
+  explanation:
+    why_correct: "真正匿名化需使個人無法被合理方式再識別；若仍可回推，就不能視為完全匿名。"
+    why_not_a: "pseudonymized data 仍可能透過附加資訊連回個人，因此通常仍屬個人資料。"
+    why_not_c: "兩者在風險程度與法規效果上不同，這是常見考點。"
+    why_not_d: "單純 hash 姓名常仍可被字典攻擊或交叉比對，不能保證匿名化。"
+  keywords:
+    - "pseudonymization"
+    - "anonymization"
+    - "GDPR"
+  exam_trap: true
+
+- id: "L22404-Q16"
+  topic_code: "L22404"
+  item_code: "pdpa"
+  difficulty: 2
+  question: "依個資法第 27 條與施行細則第 12 條精神，下列何者最接近『適當安全維護措施（appropriate security measures）』？"
+  options:
+    a: "只在事故發生後再決定是否建立通報流程"
+    b: "完全依賴供應商口頭承諾，不做內部稽核"
+    c: "只要做一次員工教育訓練，就可永久免除管理責任"
+    d: "建立風險評估、權限管理、軌跡保存、稽核與持續改善機制"
+  correct: "d"
+  explanation:
+    why_correct: "施行細則第 12 條明確強調人員、流程、設備、風險評估、稽核、軌跡與持續改善等整體性措施。"
+    why_not_a: "事故預防與應變流程應事前建立，不是事後臨時決定。"
+    why_not_b: "適當安全措施不能只靠口頭承諾，仍需內部治理與驗證。"
+    why_not_c: "教育訓練重要，但不能取代完整管理制度。"
+  keywords:
+    - "個資法第27條"
+    - "施行細則第12條"
+    - "security measures"
+  exam_trap: false
+
+- id: "L22404-Q17"
+  topic_code: "L22404"
+  item_code: "k-anonymity"
+  difficulty: 3
+  question: "某政府開放資料表將準識別欄位設定為「年齡區間、郵遞區號前三碼、性別」。若等價類別筆數分別為 4、4、2、5，則此表最多符合哪一級 k-匿名（k-anonymity）？"
+  options:
+    a: "2-anonymity"
+    b: "4-anonymity"
+    c: "5-anonymity"
+    d: "無法判斷，因為還缺少敏感欄位"
+  correct: "a"
+  explanation:
+    why_correct: "k 值由最小等價類別大小決定；四組中最小為 2，因此最多只滿足 2-anonymity。"
+    why_not_b: "雖然有些群組達到 4，但只要有一組只有 2 筆，就不能宣稱 4-anonymity。"
+    why_not_c: "5-anonymity 更不可能，因為已有小於 5 的等價類別。"
+    why_not_d: "判斷 k-anonymity 只需要準識別欄位分組後的人數，不必先看敏感欄位。"
+  keywords:
+    - "k-anonymity"
+    - "equivalence class"
+    - "table check"
+  exam_trap: true
+
+- id: "L22404-Q18"
+  topic_code: "L22404"
+  item_code: "l-diversity"
+  difficulty: 3
+  question: "某醫院病患資料在「年齡區間、地區」上已達 4-匿名（4-anonymity），但某一等價類別的疾病欄位 4 筆皆為『腫瘤』。若要降低此同質性攻擊（homogeneity attack），最優先應補強哪一概念？"
+  options:
+    a: "改用 AES-256 加密資料庫"
+    b: "導入 l-多樣性（l-diversity）要求該群組敏感值具多樣性"
+    c: "把資料改由 HTTPS 傳輸"
+    d: "只增加資料量，不調整匿名化規則"
+  correct: "b"
+  explanation:
+    why_correct: "問題出在敏感屬性過度同質，l-diversity 正是要求等價類別內敏感值具足夠多樣性。"
+    why_not_a: "加密可保護未授權存取，但不能解決合法發布後仍可推知群組疾病的問題。"
+    why_not_c: "HTTPS 保護傳輸過程，不處理資料發布後的屬性洩漏。"
+    why_not_d: "單純增加總資料量不一定改變該等價類別的敏感值分布。"
+  keywords:
+    - "l-diversity"
+    - "homogeneity attack"
+    - "hospital data"
+  exam_trap: false
+
+- id: "L22404-Q19"
+  topic_code: "L22404"
+  item_code: "t-closeness"
+  difficulty: 3
+  question: "某電商平台將會員資料做匿名化後，發現某等價類別中『高消費者』占比 90%，但整體資料集僅 20%。若擔心外界據此推論該群組成員消費能力，最適合加入哪種限制？"
+  options:
+    a: "RBAC，限制只有分析師可看資料"
+    b: "k-匿名，提高每群組人數即可"
+    c: "t-接近性（t-closeness），限制群組與整體分布差距"
+    d: "資料本地化，禁止跨境儲存"
+  correct: "c"
+  explanation:
+    why_correct: "本題風險在於群組敏感值分布和母體差異過大，t-closeness 直接針對這個問題。"
+    why_not_a: "RBAC 是授權控制，不處理資料一旦發布後的統計推論風險。"
+    why_not_b: "提高 k 值可能降低識別風險，但不保證敏感值分布接近整體。"
+    why_not_d: "資料本地化與屬性分布洩漏無直接關係。"
+  keywords:
+    - "t-closeness"
+    - "distribution distance"
+    - "e-commerce"
+  exam_trap: false
+
+- id: "L22404-Q20"
+  topic_code: "L22404"
+  item_code: "dp-budget"
+  difficulty: 3
+  question: "某研究團隊對同一批病患資料連續執行兩次差分隱私查詢（Differential Privacy query），分別使用 ε=0.4 與 ε=0.6，且屬於同一筆資料的序列組合（sequential composition）。總隱私預算最接近何者？"
+  options:
+    a: "0.24"
+    b: "0.50"
+    c: "0.60"
+    d: "1.00"
+  correct: "d"
+  explanation:
+    why_correct: "在 sequential composition 下，總 ε 通常相加，因此 0.4 + 0.6 = 1.0。"
+    why_not_a: "0.24 是把兩者相乘，屬常見算錯。"
+    why_not_b: "0.50 是平均值，不是 DP 序列組合的基本計算。"
+    why_not_c: "只取較大 ε 會低估總隱私消耗。"
+  keywords:
+    - "Differential Privacy"
+    - "sequential composition"
+    - "privacy budget arithmetic"
+  exam_trap: true
+
+- id: "L22404-Q21"
+  topic_code: "L22404"
+  item_code: "laplace-gaussian"
+  difficulty: 3
+  question: "金融機構要發布一組多維連續統計向量（vector-valued statistics），並希望以近似差分隱私（approximate DP）處理噪音，下列何者通常比 Laplace 更常見？"
+  options:
+    a: "高斯機制（Gaussian mechanism）"
+    b: "t-接近性（t-closeness）"
+    c: "欄位層級加密（column-level encryption）"
+    d: "角色式存取控制（RBAC）"
+  correct: "a"
+  explanation:
+    why_correct: "對多維向量與近似 DP 場景，高斯機制是常見選擇，特別是在允許 δ>0 的設定下。"
+    why_not_b: "t-closeness 是匿名化分布模型，不是噪音機制。"
+    why_not_c: "欄位加密保護資料儲存，不直接對查詢輸出提供 DP。"
+    why_not_d: "RBAC 控制誰可看資料，不是發布統計時的噪音方法。"
+  keywords:
+    - "Gaussian mechanism"
+    - "approximate DP"
+    - "vector query"
+  exam_trap: false
+
+- id: "L22404-Q22"
+  topic_code: "L22404"
+  item_code: "homomorphic-encryption"
+  difficulty: 3
+  question: "某醫院想委外雲端運算病患風險分數，但契約要求雲端服務商不可見原始病歷內容，且需在密文上直接計算。此時最合適的技術為何？"
+  options:
+    a: "本地差分隱私（local DP）"
+    b: "同態加密（Homomorphic Encryption）"
+    c: "l-多樣性（l-diversity）"
+    d: "資料最小化（data minimization）"
+  correct: "b"
+  explanation:
+    why_correct: "題目明確要求在密文上計算，這正是 Homomorphic Encryption 的適用場景。"
+    why_not_a: "local DP 著重蒐集前先擾動資料，不能直接支援密文運算工作負載。"
+    why_not_c: "l-diversity 用於資料發布匿名化，不是委外計算技術。"
+    why_not_d: "資料最小化是治理原則，不足以滿足密文運算需求。"
+  keywords:
+    - "Homomorphic Encryption"
+    - "hospital analytics"
+    - "encrypted computation"
+  exam_trap: false
+
+- id: "L22404-Q23"
+  topic_code: "L22404"
+  item_code: "federated-learning"
+  difficulty: 3
+  question: "臺灣多家醫院共同訓練影像分類模型，規劃採用 FedAvg。若依聯邦學習（Federated Learning）的一般流程，醫院端最可能上傳何者？"
+  options:
+    a: "完整病患影像原檔"
+    b: "病患身分證字號與影像對照表"
+    c: "本地訓練後的模型更新或權重差異"
+    d: "資料庫主機硬碟快照"
+  correct: "c"
+  explanation:
+    why_correct: "FedAvg 的典型流程是本地訓練後回傳模型更新，再由中央聚合成全域模型。"
+    why_not_a: "若直接上傳完整影像，就失去 FL 希望減少資料集中化的意義。"
+    why_not_b: "上傳可直接識別個人的對照表更違反隱私設計。"
+    why_not_d: "硬碟快照既不必要也極高風險，並非 FL 流程。"
+  keywords:
+    - "FedAvg"
+    - "model update"
+    - "Federated Learning"
+  exam_trap: false
+
+- id: "L22404-Q24"
+  topic_code: "L22404"
+  item_code: "hvfl"
+  difficulty: 3
+  question: "兩家電商平台擁有相同的商品欄位與特徵，但服務不同地區的不同會員群；若要合作訓練推薦模型，最可能採哪種聯邦學習方式？"
+  options:
+    a: "垂直聯邦學習（Vertical FL）"
+    b: "安全聚合（secure aggregation）"
+    c: "同態加密（Homomorphic Encryption）"
+    d: "水平聯邦學習（Horizontal FL）"
+  correct: "d"
+  explanation:
+    why_correct: "Horizontal FL 是特徵空間相近、樣本不同的情況；題目正是相似欄位、不同會員群。"
+    why_not_a: "Vertical FL 需要樣本重疊較高但欄位不同，與本題相反。"
+    why_not_b: "secure aggregation 是保護更新傳輸的輔助機制，不是資料切分型態。"
+    why_not_c: "同態加密可搭配使用，但不是判斷聯邦型態的答案。"
+  keywords:
+    - "Horizontal Federated Learning"
+    - "sample split"
+    - "recommendation model"
+  exam_trap: false
+
+- id: "L22404-Q25"
+  topic_code: "L22404"
+  item_code: "secure-aggregation"
+  difficulty: 4
+  question: "某聯邦學習專案已使用 TLS 1.3 傳輸各醫院的梯度更新，但法遵單位仍擔心中央伺服器可從個別梯度推論敏感資訊。下列判斷何者最合理？"
+  options:
+    a: "仍應考慮安全聚合（secure aggregation），因為 TLS 只能保護傳輸通道，不能阻止伺服器看到個別更新"
+    b: "只要通訊已加密，就代表個別梯度永遠無法被伺服器分析"
+    c: "直接改成 RBAC 即可解決梯度反推問題"
+    d: "把資料庫磁碟改成 AES-256 就足夠"
+  correct: "a"
+  explanation:
+    why_correct: "TLS 解決的是在途竊聽，不是接收端可見性問題；若中央仍看見每家醫院的明文更新，仍可能有洩漏風險。"
+    why_not_b: "這把通道加密誤當成端點隱私保護，是常見誤解。"
+    why_not_c: "RBAC 能限制人員存取，但不改變系統設計上中央看見個別梯度的事實。"
+    why_not_d: "磁碟加密是 at-rest 控制，與聚合前的梯度可見性問題不同。"
+  keywords:
+    - "secure aggregation"
+    - "TLS 1.3"
+    - "gradient leakage"
+  exam_trap: true
+
+- id: "L22404-Q26"
+  topic_code: "L22404"
+  item_code: "encryption"
+  difficulty: 4
+  question: "一家金融機構要求：資料庫落地時必須加密、跨分行 API 傳輸時必須保護通道、且不能把兩種控制混為一談。下列方案何者最完整？"
+  options:
+    a: "只做 TLS 1.3，因為連線安全即可涵蓋落地資料"
+    b: "只做 AES-256，因為資料庫已加密就不需保護網路"
+    c: "資料庫採 AES-256 等靜態加密，跨分行傳輸採 TLS 1.3"
+    d: "以 k-anonymity 取代傳輸與儲存加密"
+  correct: "c"
+  explanation:
+    why_correct: "題目同時要求 at-rest 與 in-transit 控制，應分別採用對應技術。"
+    why_not_a: "TLS 不會自動保護資料庫中已落地的資料。"
+    why_not_b: "資料庫加密無法取代網路傳輸過程的通道保護。"
+    why_not_d: "匿名化不是加密，不能取代通道或靜態保護。"
+  keywords:
+    - "AES-256"
+    - "TLS 1.3"
+    - "defense in depth"
+  exam_trap: false
+
+- id: "L22404-Q27"
+  topic_code: "L22404"
+  item_code: "rbac-abac"
+  difficulty: 4
+  question: "某企業員工薪資分析平台已有 RBAC，能區分人資、主管、稽核三種角色；但新需求要求『僅限台灣地區登入、上班時間、且本人所屬部門資料』才可查詢明細。此時最合理的判斷為何？"
+  options:
+    a: "維持 RBAC 即可，因為角色數量增加就能涵蓋所有條件"
+    b: "改採或補入 ABAC，因為規則涉及使用者、資源與環境屬性"
+    c: "改用 t-closeness，讓薪資資料分布接近整體即可"
+    d: "改用同態加密，權限問題就會自然消失"
+  correct: "b"
+  explanation:
+    why_correct: "部門、地區、時間等都是典型屬性條件，ABAC 較適合表達這類多維授權規則。"
+    why_not_a: "若只靠角色堆疊，角色爆炸風險很高，維護性差。"
+    why_not_c: "t-closeness 是匿名化模型，不是線上授權控制。"
+    why_not_d: "加密不能自動做授權判斷，仍需 access control。"
+  keywords:
+    - "ABAC"
+    - "RBAC"
+    - "employee salary"
+  exam_trap: false
+
+- id: "L22404-Q28"
+  topic_code: "L22404"
+  item_code: "pdpa"
+  difficulty: 4
+  question: "某電商平台想把原本蒐集來做配送的會員電話，直接拿去訓練行銷預測模型，且未重新檢視合法依據與必要性。若以個資法第 5 條與蒐集處理利用的合規精神判斷，下列何者最恰當？"
+  options:
+    a: "只要模型準確率能提升，就可直接再利用"
+    b: "只要資料未外流，就不涉及個資法問題"
+    c: "先以假名化處理，就必然不受個資法限制"
+    d: "應先檢視特定目的、合法依據與必要範圍，否則可能違反比例與目的限制"
+  correct: "d"
+  explanation:
+    why_correct: "原蒐集目的為配送，不代表可直接轉作行銷建模；仍須檢視目的相容性、合法基礎與必要性。"
+    why_not_a: "效益不能凌駕法定蒐集與利用限制。"
+    why_not_b: "是否外流不是唯一判準，不當再利用本身就可能有問題。"
+    why_not_c: "假名化後資料通常仍可能識別個人，不會自動排除法規適用。"
+  keywords:
+    - "個資法第5條"
+    - "purpose limitation"
+    - "e-commerce"
+  exam_trap: true
+
+- id: "L22404-Q29"
+  topic_code: "L22404"
+  item_code: "gdpr-25-32"
+  difficulty: 4
+  question: "某 SaaS 團隊在設計新功能時，決定預設關閉不必要追蹤、只收集完成服務所需欄位，並在上線前做定期弱點測試與災難復原演練。若要分別對應 GDPR 條文，何者最合理？"
+  options:
+    a: "兩者都只屬於 Art. 32"
+    b: "前者偏 Art. 25，後者偏 Art. 32"
+    c: "前者偏 Art. 32，後者偏 Art. 25"
+    d: "兩者都只屬於 Art. 25"
+  correct: "b"
+  explanation:
+    why_correct: "預設最小蒐集與 privacy by default 對應 Art. 25；定期測試、韌性與復原則較貼近 Art. 32。"
+    why_not_a: "Art. 32 雖涵蓋安全措施，但無法完整涵蓋 privacy by design/default 的設計義務。"
+    why_not_c: "這是把設計原則與處理安全性的重點對調。"
+    why_not_d: "Art. 25 不能單獨涵蓋弱點測試與復原演練的安全性要求。"
+  keywords:
+    - "GDPR Art. 25"
+    - "GDPR Art. 32"
+    - "privacy by default"
+  exam_trap: false
+
+- id: "L22404-Q30"
+  topic_code: "L22404"
+  item_code: "iso27701"
+  difficulty: 4
+  question: "公司內部教材仍寫『ISO/IEC 27701 只是 27001/27002 的附錄延伸，不能獨立看待』。依最新版本脈絡，下列判斷何者較合理？"
+  options:
+    a: "此說法完全正確，27701 與隱私治理無關"
+    b: "此說法正確，27701 僅能處理傳輸加密"
+    c: "此說法正確，27701 只適用於聯邦學習場景"
+    d: "此說法過度簡化；27701:2025 已可作為 Privacy Information Management System 的標準脈絡理解"
+  correct: "d"
+  explanation:
+    why_correct: "依最新版本脈絡，27701 應被理解為 PIMS 標準，不宜再簡化成只是附屬擴充的舊描述。"
+    why_not_a: "27701 的核心就是隱私管理，不是無關。"
+    why_not_b: "傳輸加密只是眾多控制之一，非其唯一焦點。"
+    why_not_c: "聯邦學習只是特定應用，不是 27701 的適用限制。"
+  keywords:
+    - "ISO/IEC 27701:2025"
+    - "PIMS"
+    - "governance"
+  exam_trap: true
+
+- id: "L22404-Q31"
+  topic_code: "L22404"
+  item_code: "pseudonymization"
+  difficulty: 4
+  question: "某研究中心將病歷號碼改成隨機代碼，對照表另存於受控金庫中，並限制少數管理員可還原。若依 GDPR 的概念判斷，何者最適合描述這份研究資料？"
+  options:
+    a: "屬於假名化（pseudonymization），資料通常仍視為個人資料"
+    b: "已完成不可逆匿名化（anonymization），不再有任何法規義務"
+    c: "因為代碼是隨機的，所以必然不可能重識別"
+    d: "這其實只是 TLS 1.3 的應用"
+  correct: "a"
+  explanation:
+    why_correct: "只要仍存在可連回個人的附加資訊，這比較符合 pseudonymization，而非完全匿名。"
+    why_not_b: "仍有對照表存在，代表理論上可還原，不符合不可逆匿名化。"
+    why_not_c: "能否重識別取決於附加資訊與可行方法，不是看代碼是否隨機即可。"
+    why_not_d: "TLS 1.3 是傳輸保護，和以代碼取代識別子無關。"
+  keywords:
+    - "pseudonymization"
+    - "GDPR"
+    - "re-identification risk"
+  exam_trap: true
+
+- id: "L22404-Q32"
+  topic_code: "L22404"
+  item_code: "dp-budget"
+  difficulty: 4
+  question: "某地方政府分別對 A 縣市居民資料與 B 縣市居民資料各做一次差分隱私統計，兩批資料主體完全不重疊，且各使用 ε=0.5。若依平行組合（parallel composition）的基本觀念，單一個體承受的隱私損失最接近何者？"
+  options:
+    a: "1.0，因為所有 ε 都必須直接相加"
+    b: "無法估計，因為差分隱私不能處理不同資料集"
+    c: "0.5，因為任一個體只出現在其中一個互斥資料集"
+    d: "0.25，因為要把 ε 平均分配"
+  correct: "c"
+  explanation:
+    why_correct: "在 parallel composition 下，若資料主體互斥，單一個體只承受自己所在那一份查詢的 ε。"
+    why_not_a: "直接相加適用於同一個體反覆暴露於多次查詢的 sequential composition。"
+    why_not_b: "DP 當然可以分析互斥資料集；關鍵在組合方式。"
+    why_not_d: "平均分配不是平行組合的基本規則。"
+  keywords:
+    - "parallel composition"
+    - "Differential Privacy"
+    - "privacy budget"
+  exam_trap: true
+
+- id: "L22404-Q33"
+  topic_code: "L22404"
+  item_code: "k-anonymity"
+  difficulty: 5
+  question: "某政府欲公開一張包含『年齡區間、鄉鎮市區、性別、是否領取特定補助』的資料表。初步處理後各等價類別大小皆至少為 3，但其中一個群組 3 筆資料的補助欄位全部為『是』。若目標是同時降低重識別與敏感屬性推論風險，下列何者最合理？"
+  options:
+    a: "保留 k-匿名結果，再補強 l-多樣性或重新泛化敏感風險高的群組"
+    b: "只要已有 3-anonymity，就不必再看敏感值內容"
+    c: "改成 TLS 1.3 傳輸即可解決發布風險"
+    d: "只增加 RBAC 角色數量即可"
+  correct: "a"
+  explanation:
+    why_correct: "k-anonymity 只處理識別風險，當敏感值同質時仍需 l-diversity 等補強，或進一步重組群組。"
+    why_not_b: "這忽略了 homogeneity attack，是典型考試陷阱。"
+    why_not_c: "傳輸加密不能消除資料公開後的屬性推論風險。"
+    why_not_d: "RBAC 只限制內部誰可看，不處理已發布資料的結構性風險。"
+  keywords:
+    - "k-anonymity"
+    - "l-diversity"
+    - "government open data"
+  exam_trap: true
+
+- id: "L22404-Q34"
+  topic_code: "L22404"
+  item_code: "t-closeness"
+  difficulty: 5
+  question: "某醫院公開研究資料時，希望避免外界從特定等價類別判斷『某區域患者大多屬高風險罕病』，即使該群組已滿足 k-anonymity 且也有數種疾病值。若從模型選擇角度判斷，下列何者最能直接回應此需求？"
+  options:
+    a: "改做垂直聯邦學習（Vertical FL）"
+    b: "採 t-接近性（t-closeness），限制各群組疾病分布接近全體分布"
+    c: "只把病歷號碼改成假名即可"
+    d: "僅以 AES-256 加密發布檔案"
+  correct: "b"
+  explanation:
+    why_correct: "題目要防的是群組分布洩漏，而非只有識別或同質性問題；t-closeness 最直接。"
+    why_not_a: "Vertical FL 是訓練架構，不是資料發布匿名化控制。"
+    why_not_c: "假名化降低直接識別風險，但群組分布仍可能暴露敏感資訊。"
+    why_not_d: "檔案加密只保護未授權存取，資料一旦分享給合法接收者，分布風險仍在。"
+  keywords:
+    - "t-closeness"
+    - "distribution disclosure"
+    - "hospital research data"
+  exam_trap: false
+
+- id: "L22404-Q35"
+  topic_code: "L22404"
+  item_code: "laplace-gaussian"
+  difficulty: 5
+  question: "某團隊要對外發布『多維統計向量』，並明確採用（ε, δ）-Differential Privacy；同時另一組產品經理卻提議改用 Laplace 只是因為「比較常聽到」。若要兼顧機制適配性與表達精準度，何者最合理？"
+  options:
+    a: "任何情況都應先選 Laplace，因為它最有名"
+    b: "不需要看輸出型態，直接改用 k-anonymity 即可"
+    c: "高斯機制（Gaussian mechanism）通常更符合多維向量與（ε, δ）-DP 的敘述"
+    d: "改用 RBAC，避免外部存取就不必考慮 DP"
+  correct: "c"
+  explanation:
+    why_correct: "若問題已明示多維向量與 approximate DP，Gaussian mechanism 的描述通常更貼切。"
+    why_not_a: "知名度不是機制選擇原則；需看查詢型態與隱私定義。"
+    why_not_b: "k-anonymity 與輸出擾動型 DP 屬不同框架，不能直接互換。"
+    why_not_d: "控制外部存取不等於可安全發布統計結果。"
+  keywords:
+    - "Gaussian mechanism"
+    - "Laplace mechanism"
+    - "epsilon-delta DP"
+  exam_trap: true
+
+- id: "L22404-Q36"
+  topic_code: "L22404"
+  item_code: "homomorphic-encryption"
+  difficulty: 5
+  question: "一家金融機構要與外部風控供應商合作建模，限制條件為：原始客戶資料不得離開本行、供應商不可見明文、但仍需在受保護資料上執行部分風險分數計算。若只能優先選一個最貼近需求的技術，下列何者最佳？"
+  options:
+    a: "只做 GDPR Art. 25 文件化即可"
+    b: "只做 secure aggregation 即可，因為它能保護所有型態的外部計算"
+    c: "只做 pseudonymization 即可，因為代碼化後就不算個資"
+    d: "同態加密（Homomorphic Encryption）"
+  correct: "d"
+  explanation:
+    why_correct: "題目核心是外部方不可見明文且仍需執行運算，HE 最貼近這個約束組合。"
+    why_not_a: "文件化重要，但不能取代實際技術保護。"
+    why_not_b: "secure aggregation 主要解決多方更新聚合，不等於一般密文外包計算。"
+    why_not_c: "pseudonymization 仍可能回連個人，也不支援密文運算。"
+  keywords:
+    - "Homomorphic Encryption"
+    - "financial risk modeling"
+    - "encrypted analytics"
+  exam_trap: false
+
+- id: "L22404-Q37"
+  topic_code: "L22404"
+  item_code: "federated-learning"
+  difficulty: 5
+  question: "三家醫院要共同訓練肺部影像模型。條件為：病患影像不能集中、中央伺服器不應看見各院個別更新、且希望保留既有各院本地資料治理。下列方案何者最完整？"
+  options:
+    a: "聯邦學習（Federated Learning）搭配安全聚合（secure aggregation）"
+    b: "集中式蒐集所有影像後再用 TLS 傳輸"
+    c: "僅做 3-anonymity 後上傳全部影像"
+    d: "只用 RBAC 限制研究員帳號"
+  correct: "a"
+  explanation:
+    why_correct: "FL 讓原始資料留在院內，secure aggregation 再降低中央看見個別更新的風險，兩者組合最符合條件。"
+    why_not_b: "即使有 TLS，集中蒐集影像仍違反資料不集中條件。"
+    why_not_c: "匿名化影像後直接集中仍可能有風險，且不符合題目希望保留本地治理的需求。"
+    why_not_d: "帳號權限管理無法取代跨院訓練架構與更新隱私保護。"
+  keywords:
+    - "Federated Learning"
+    - "secure aggregation"
+    - "medical imaging"
+  exam_trap: false
+
+- id: "L22404-Q38"
+  topic_code: "L22404"
+  item_code: "hvfl"
+  difficulty: 5
+  question: "某銀行與電商合作建立信用風險模型。雙方可透過會員帳號對到同一批客戶，但各自持有不同欄位：銀行有還款紀錄，電商有購物行為。若考量資料切分方式，何者判斷最合理？"
+  options:
+    a: "屬於水平聯邦學習，因為兩邊都是表格資料"
+    b: "屬於差分隱私，因為資料不集中"
+    c: "屬於垂直聯邦學習，因為樣本可對齊但特徵欄位不同"
+    d: "屬於 t-closeness，因為兩邊都要比對分布"
+  correct: "c"
+  explanation:
+    why_correct: "同一批客戶、不同欄位，是 Vertical FL 的典型定義。"
+    why_not_a: "是否為表格資料不是分類重點；水平/垂直看的是樣本與特徵切分。"
+    why_not_b: "DP 是隱私保護框架，不描述資料協作拓樸。"
+    why_not_d: "t-closeness 是匿名化模型，與跨機構特徵切分無關。"
+  keywords:
+    - "Vertical Federated Learning"
+    - "credit risk"
+    - "feature partition"
+  exam_trap: true
+
+- id: "L22404-Q39"
+  topic_code: "L22404"
+  item_code: "gdpr-25-32"
+  difficulty: 5
+  question: "某跨境 SaaS 服務同時面臨兩項要求：一是新功能預設不得開啟行銷追蹤，二是處理中的個資要有加密、韌性、復原與定期測試。若要分別對應 GDPR 與組織治理框架，下列何者最合理？"
+  options:
+    a: "兩者都只靠 ISO/IEC 27701:2025 即可，不需區分條文義務"
+    b: "前者屬 Art. 25，後者屬 Art. 32；ISO/IEC 27701 可作為隱私管理制度的補充框架"
+    c: "前者屬 Art. 32，後者屬 Art. 25；27701 只適用台灣個資法"
+    d: "兩者都只要做 pseudonymization 即可"
+  correct: "b"
+  explanation:
+    why_correct: "Art. 25 管設計與預設隱私，Art. 32 管處理安全；27701 則可作為制度化治理的支撐。"
+    why_not_a: "管理標準不能取代法條本身的義務判讀。"
+    why_not_c: "這把兩條文的核心重點顛倒，且 27701 也非只適用台灣。"
+    why_not_d: "假名化只是可能的控制之一，無法涵蓋完整要求。"
+  keywords:
+    - "GDPR Art. 25"
+    - "GDPR Art. 32"
+    - "ISO/IEC 27701:2025"
+  exam_trap: false
+
+- id: "L22404-Q40"
+  topic_code: "L22404"
+  item_code: "pdpa"
+  difficulty: 5
+  question: "某企業計畫把員工薪資、健康檢查與考績資料整併做 AI 人才分析。法務指出其中涉及特種個資與高敏感資料，要求同時滿足個資法比例原則、適當安全維護措施，以及查詢時的細粒度權限控制。下列方案何者最完整？"
+  options:
+    a: "只做資料去識別化，其他控管可後補"
+    b: "只要有員工同意，就不需要內部安全措施"
+    c: "以公開雲端試算表分享，方便主管協作"
+    d: "先檢視蒐集利用合法依據與必要性，再建立加密、稽核、權限控管，必要時以 ABAC 細分查詢條件"
+  correct: "d"
+  explanation:
+    why_correct: "本題同時涉及法規基礎、資料敏感性與權限治理，必須把目的必要性、安全措施與細粒度 access control 一起處理。"
+    why_not_a: "去識別化有幫助，但不能取代法規依據與組織控制。"
+    why_not_b: "同意不是萬靈丹，仍需適當安全維護措施。"
+    why_not_c: "公開分享高敏感資料明顯違反最小揭露與安全維護要求。"
+  keywords:
+    - "個資法"
+    - "ABAC"
+    - "appropriate security measures"
+  exam_trap: false

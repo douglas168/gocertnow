@@ -73,6 +73,10 @@ Tracks open items across all lessons that need resolution before publishing.
 - **Diagram rendering:** 5 Mermaid diagrams (`.mmd`) under `lessons/L22403-大數據在生成式AI中的應用/diagrams/` — render to PNG via Gemini downstream (not blocking publish).
 - **Gemini cross-review skipped** (CLI returned empty output); Claude adversarial (0 critical, 3 important resolved) + Codex auditor (11 findings resolved) — re-run Gemini pass if desired before exam assembly.
 
+### L22404 — 大數據隱私保護、安全與合規
+- **Diagram rendering:** 4 diagrams (`.md` source) under `lessons/L22404-大數據隱私保護、安全與合規/diagrams/` — render to PNG via Gemini downstream (not blocking publish).
+- **Gemini cross-review failed** (CLI error); Claude adversarial (0 critical, 3 important, 5 minor resolved) + Codex auditor (13 findings resolved) — re-run `gemini` interactively once then re-run Gemini pass if desired before exam assembly.
+
 ---
 
 ## Lesson Progress
@@ -100,7 +104,7 @@ Tracks open items across all lessons that need resolution before publishing.
 | ~~19~~ | ~~L22401~~ | ~~大數據與機器學習~~ | L22 | elective_a (資料分析組) | 1 | ✅ Done | 2 |
 | ~~20~~ | ~~L22402~~ | ~~大數據應用於鑑別式AI中的應用~~ | L22 | elective_a (資料分析組) | 1 | ✅ Done | 2 |
 | ~~21~~ | ~~L22403~~ | ~~大數據在生成式AI中的應用~~ | L22 | elective_a (資料分析組) | 1 | ✅ Done | 1 |
-| 22 | L22404 | 大數據隱私保護、安全與合規 | L22 | elective_a (資料分析組) | 1 | Not started | — |
+| ~~22~~ | ~~L22404~~ | ~~大數據隱私保護、安全與合規~~ | L22 | elective_a (資料分析組) | 1 | ✅ Done | 1 |
 | 23 | L23101 | 機率/統計之機器學習基礎應用 | L23 | elective_b (機器學習組) | 2 | Not started | — |
 | 24 | L23102 | 線性代數之機器學習基礎應用 | L23 | elective_b (機器學習組) | 2 | Not started | — |
 | 25 | L23103 | 數值優化技術與方法 | L23 | elective_b (機器學習組) | 2 | Not started | — |
@@ -118,9 +122,11 @@ Tracks open items across all lessons that need resolution before publishing.
 
 ## What's Next
 
-**Next lesson:** `/course-generate-lesson L22404` — 大數據隱私保護、安全與合規
+**🎉 資料分析組 (L21 + L22) content complete!** All 22 priority-1 lessons done.
 
-**Remaining lessons:** 13 of 34 topics left (1 for 資料分析組 SKU; 12 for 機器學習組 SKU; all L21 items now complete)
+**Next:** `/course-generate-exam` to assemble mock exams for 資料分析組 SKU — OR — `/course-generate-lesson L23101` to start 機器學習組 SKU.
+
+**Remaining lessons:** 12 of 34 topics left (all for 機器學習組 SKU; 資料分析組 fully done)
 
 ### Priority 1 — 資料分析組 sprint (founder 2026-05-23 exam)
 
@@ -149,7 +155,7 @@ Order from `syllabus/dependencies.md` §3. Build L21 (required) first, then L22.
 | ~~19~~ | ~~L22401~~ | ~~大數據與機器學習~~ | ✅ Done |
 | ~~20~~ | ~~L22402~~ | ~~大數據應用於鑑別式AI中的應用~~ | ✅ Done |
 | ~~21~~ | ~~L22403~~ | ~~大數據在生成式AI中的應用~~ | ✅ Done |
-| 22 | L22404 | 大數據隱私保護、安全與合規 | Deep, includes code, external docs needed (個資法) |
+| ~~22~~ | ~~L22404~~ | ~~大數據隱私保護、安全與合規~~ | ✅ Done (40-question pool, 4 diagrams) |
 
 ### Priority 2 — 機器學習組 後續擴充 SKU
 
