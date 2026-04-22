@@ -1,36 +1,39 @@
-# Handoff — 2026-04-21
+# Session Handoff — 2026-04-22
 
 ## Session Summary
 
-Built L22202 (數據儲存與管理) — the 14th lesson of the IPAS 中級 course, continuing the 資料分析組 sprint. Also updated the study-guide-writer skill prompt to include the missing Section 8 self-check.
+Completed L22404 大數據隱私保護、安全與合規 — the final lesson in the 資料分析組 (L21 + L22) sprint. **The 資料分析組 SKU content is now fully built (22/22 lessons).**
 
 ## What Was Done
 
-- **L22202 — 數據儲存與管理** (Medium depth, 35 questions)
-  - `study-guide.md` — 1,440 lines covering RDBMS / NoSQL / data lake / warehouse / lakehouse, OLTP vs OLAP, row-store vs column-store, HDFS vs object storage, Spark read/write, feature store, dataset versioning
-  - `questions/L22202-questions.yaml` — 35 questions (D1-5 = 7 each), code-style questions for SQL, MongoDB `.find()`, Spark DataFrame, schema DDL
-  - 5 Mermaid diagrams: storage-decision-tree, oltp-vs-olap, lake-warehouse-lakehouse, nosql-four-types, row-vs-column-store
-  - 2-reviewer pipeline (Gemini 429 skipped): 10 findings resolved (1 critical [CROSS]: Q07 BASE concept added to §3.2.3)
-- **Skill update**: `.claude/skills/course-generate-lesson/prompts/study-guide-writer.md` — Section 8 (結尾：快速自我檢查) added; was omitted from prior template despite being in the skill spec
+- Built L22404 via codex-mode pipeline (researcher → study-guide + 40 questions in parallel → fact-list → Claude + Codex review → fix apply → 4 diagrams)
+- Key lesson content: k-anonymity / ℓ-diversity / t-closeness, differential privacy (ε/δ, Laplace/Gaussian, sequential vs parallel composition), federated learning (FedAvg, HFL/VFL, secure aggregation), homomorphic encryption (appeared in 114年第二梯次 official exam), encryption at-rest/in-transit, GDPR Art.25/32, 個資法, ISO/IEC 27701:2025
+- Critical fix applied: parallel composition theorem absent from study guide but tested in Q32 → added §3.2.5 block
+- Gemini review failed (CLI error) — noted as open item
+- 4 diagrams committed: anonymization ladder, federated learning architecture (with Mermaid sequence diagram), DP budget composition, encryption schematic
+- TODO.md updated: L22404 Done, What's Next updated to reflect 資料分析組 completion
+- Committed: `feat(content): complete L22404 lesson, 40-question practice pool` (1bdda50)
 
 ## What's Next
 
-**Next lesson:** `/course-generate-lesson L22203` — 數據處理技術與工具 (Deep depth, 40 questions)
+**Two options — choose one:**
 
-**Remaining:** 20 of 34 topics (8 for 資料分析組 SKU, 18 for 機器學習組 SKU)
+1. **`/course-generate-exam`** — assemble 3 mock exams for 資料分析組 SKU (all 22 lessons done; highest ROI given founder sits 中級 2026-05-23)
+2. **`/course-generate-lesson L23101`** — start 機器學習組 SKU (L23101 機率/統計之機器學習基礎應用, 12 lessons remaining)
 
-**Exam deadline:** Founder sits 中級 2026-05-23 — 8 more 資料分析組 lessons to complete before then.
+**Recommendation:** Run `/course-generate-exam` first — the founder's exam is 2026-05-23 and mock exams are the last content gate before study mode.
 
 ## Key Files Touched
 
-- `content/ipas/intermediate/lessons/L22202-數據儲存與管理/` (new)
-- `content/ipas/intermediate/questions/L22202-questions.yaml` (new)
-- `content/ipas/intermediate/TODO.md` (updated — L22202 Done, next = L22203)
-- `.claude/skills/course-generate-lesson/prompts/study-guide-writer.md` (Section 8 added)
+- `content/ipas/intermediate/lessons/L22404-大數據隱私保護、安全與合規/study-guide.md`
+- `content/ipas/intermediate/lessons/L22404-大數據隱私保護、安全與合規/research-notes.md`
+- `content/ipas/intermediate/lessons/L22404-大數據隱私保護、安全與合規/diagrams/` (4 files)
+- `content/ipas/intermediate/questions/L22404-questions.yaml`
+- `content/ipas/intermediate/TODO.md`
 
 ## Open Items Carried Forward
 
-- All diagram `.mmd` files across L22101–L22202 need Gemini PNG rendering (non-blocking)
-- Gemini CLI has been 429-ing recently — check quota before next lesson's review stage
-- L21102 coverage gaps: image-matching and Precision/Recall/F1 each have only 1 question
-- Landing page fake-claims: `web/app/(marketing)/page.tsx` has 92% 通過率 badge + sampleTestimonials to fix before traffic
+- **L22404**: Gemini cross-review skipped (CLI error) — run `gemini` interactively once to re-authenticate, then re-run Gemini pass before final exam assembly
+- **All lessons**: Mermaid diagram rendering to PNG pending across L21101–L22404 (non-blocking; do via Gemini downstream)
+- **L21102** coverage gaps: image-matching and Precision/Recall/F1 each have only 1 question
+- **Landing page**: `web/app/(marketing)/page.tsx` has fake-claim 92% 通過率 badge + sampleTestimonials — must fix before sending traffic
