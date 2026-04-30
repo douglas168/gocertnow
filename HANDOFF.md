@@ -1,39 +1,65 @@
-# Session Handoff — 2026-04-22
+# Handoff — 2026-04-30
 
 ## Session Summary
 
-Completed L22404 大數據隱私保護、安全與合規 — the final lesson in the 資料分析組 (L21 + L22) sprint. **The 資料分析組 SKU content is now fully built (22/22 lessons).**
+Full adversarial accuracy review and v2 study guide generation for all 22 IPAS AI應用規劃師 中級 lessons.
 
 ## What Was Done
 
-- Built L22404 via codex-mode pipeline (researcher → study-guide + 40 questions in parallel → fact-list → Claude + Codex review → fix apply → 4 diagrams)
-- Key lesson content: k-anonymity / ℓ-diversity / t-closeness, differential privacy (ε/δ, Laplace/Gaussian, sequential vs parallel composition), federated learning (FedAvg, HFL/VFL, secure aggregation), homomorphic encryption (appeared in 114年第二梯次 official exam), encryption at-rest/in-transit, GDPR Art.25/32, 個資法, ISO/IEC 27701:2025
-- Critical fix applied: parallel composition theorem absent from study guide but tested in Q32 → added §3.2.5 block
-- Gemini review failed (CLI error) — noted as open item
-- 4 diagrams committed: anonymization ladder, federated learning architecture (with Mermaid sequence diagram), DP budget composition, encryption schematic
-- TODO.md updated: L22404 Done, What's Next updated to reflect 資料分析組 completion
-- Committed: `feat(content): complete L22404 lesson, 40-question practice pool` (1bdda50)
+1. **Renamed** existing `study-guide-v2.md` files to `{code}-{topic}-study-guide.md` across 15 lesson folders (L21101, L21302, L22101–L22404).
+
+2. **Generated v2-format study guides** (from scratch, using `study-guide-format-template.md`) for 7 lessons that had no v2 file:
+   - L21102 電腦視覺技術與應用
+   - L21103 生成式AI技術與應用
+   - L21104 多模態人工智慧應用
+   - L21201 AI導入評估
+   - L21202 AI導入規劃
+   - L21203 AI風險管理
+   - L21301 數據準備與模型選擇
+
+3. **Adversarial accuracy review** (Gemini + Claude) run on all 22 guides. Each lesson has an `accuracy-review-2026-04-30.md`. Codex CLI was broken this session (gpt-5.5 version error).
+
+4. **Applied all accuracy fixes** to both existing 15 guides and 7 new guides. Key corrections:
+   - RoBERTa tokenizer: WordPiece → Byte-level BPE
+   - CLIP architecture: Late Fusion → dual-encoder contrastive
+   - BCG AI investment ratio: 70/20/10 → 10/20/70 (70% = people & process)
+   - Google AI governance framework: 3 pillars → 4 pillars
+   - CRISP-DM: linear → cyclical
+   - DDIM added to diffusion section; "slow" caveat corrected
+   - DPO full section added to L22403 and L21103
+   - BERT NSP: marked as largely abandoned in RoBERTa+
+   - DALL-E 3: synthetic recaptioning mechanism explained
+   - LLaVA 1.5+: 1-layer projection → 2-layer MLP
+   - Faster R-CNN: proposal counts corrected (2000 train / 300 inference)
+   - Skip connections: "degradation problem" not vanishing gradient
+   - Exponential Distribution: full section added to L22102 (was missing)
+   - Statistical corrections: CLT n≥30, Binomial→Poisson (n≥100, np≤10), continuity correction ±0.5
+   - GDPR Art.33 conditional qualifier added; pseudonymisation vs anonymization clarified
+   - EU AI Act: GPAI provisions section added to L21203
+   - TAIDE model: LLaMA 2 7B (not Llama 3.1)
+   - sklearn confusion_matrix orientation warning added
+   - Tableau Public: "forces public" (does not restrict sharing)
+
+## Pending / Needs Verification Before 5/23 Exam
+
+- **Taiwan AI Basic Law dates** in L21203 — accuracy review flagged these as needing verification against Presidential Office gazette / Legislative Yuan records. The content cites specific enactment/implementation dates but the reviewer flagged them as unverified. Verify before the exam.
+- **ISO/IEC 27701:2025 standalone claim** in L22404 — standard was originally an extension to ISO 27001; the 2025 edition's standalone status should be confirmed with the ISO catalogue.
 
 ## What's Next
 
-**Two options — choose one:**
+- **Generate 3 mock exams** for 資料分析組 SKU (`/course-generate-exam`) — highest ROI given 中級 exam is 2026-05-23.
+- Start 機器學習組 SKU (L23xxx, 12 lessons) after mock exams are assembled.
 
-1. **`/course-generate-exam`** — assemble 3 mock exams for 資料分析組 SKU (all 22 lessons done; highest ROI given founder sits 中級 2026-05-23)
-2. **`/course-generate-lesson L23101`** — start 機器學習組 SKU (L23101 機率/統計之機器學習基礎應用, 12 lessons remaining)
+## Key File Paths
 
-**Recommendation:** Run `/course-generate-exam` first — the founder's exam is 2026-05-23 and mock exams are the last content gate before study mode.
+- Study guides: `content/ipas/intermediate/lessons/{code}-{topic}/{code}-{topic}-study-guide.md`
+- Accuracy reviews: `content/ipas/intermediate/lessons/{code}-{topic}/accuracy-review-2026-04-30.md`
+- Format template: `study-guide-format-template.md`
+- Original source materials: `content/ipas/intermediate/lessons/{code}-{topic}/study-guide.md`
 
-## Key Files Touched
+## Open Items Carried Forward (from prior sessions)
 
-- `content/ipas/intermediate/lessons/L22404-大數據隱私保護、安全與合規/study-guide.md`
-- `content/ipas/intermediate/lessons/L22404-大數據隱私保護、安全與合規/research-notes.md`
-- `content/ipas/intermediate/lessons/L22404-大數據隱私保護、安全與合規/diagrams/` (4 files)
-- `content/ipas/intermediate/questions/L22404-questions.yaml`
-- `content/ipas/intermediate/TODO.md`
-
-## Open Items Carried Forward
-
-- **L22404**: Gemini cross-review skipped (CLI error) — run `gemini` interactively once to re-authenticate, then re-run Gemini pass before final exam assembly
-- **All lessons**: Mermaid diagram rendering to PNG pending across L21101–L22404 (non-blocking; do via Gemini downstream)
-- **L21102** coverage gaps: image-matching and Precision/Recall/F1 each have only 1 question
+- **L22404**: Gemini cross-review skipped previously (CLI error) — now done in this session
+- **All lessons**: Mermaid diagram rendering to PNG pending across L21101–L22404 (non-blocking)
+- **L21102** coverage gaps: image-matching and Precision/Recall/F1 each have only 1 question in the practice pool
 - **Landing page**: `web/app/(marketing)/page.tsx` has fake-claim 92% 通過率 badge + sampleTestimonials — must fix before sending traffic
