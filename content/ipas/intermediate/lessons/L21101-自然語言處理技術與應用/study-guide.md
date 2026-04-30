@@ -8,6 +8,24 @@
 
 ## Section 1. 考試導覽（Exam Mapping）
 
+### How to Study This Chapter
+
+這份指南建議照這個順序讀：
+
+1. 先讀 **Section 3**，用「流程位置 → 白話例子 → 考試重點」建立理解。
+2. 再看 **Section 4**，把容易混淆的概念放在一起比較。
+3. 接著背 **Section 5** 的口訣，口訣要拿來壓縮理解，不要一開始就硬背。
+4. 最後用 **Section 6 / 7** 練考題判斷：看到題目關鍵字，能不能立刻選出架構或方法。
+5. 如果練習題答錯，回到 Section 3 找原理，不要只背答案。
+
+### 標記說明
+
+| 標記 | 意思 | 讀法 |
+|---|---|---|
+| 🔥 | 需要知道 | 能認出名詞與基本用途 |
+| 🔥🔥 | 常考 | 要能解釋差異與選擇理由 |
+| 🔥🔥🔥 | 高頻必背 | 要能在情境題中快速判斷 |
+
 ### 學習目標
 
 讀完本章你應該能：
@@ -49,6 +67,15 @@
 ---
 
 ## Section 2. 關鍵概念總覽圖（Knowledge Tree）
+
+這張圖不是要一次背完。先抓四層就好：
+
+1. 文字先被切成 `token`。
+2. `token` 變成 embedding 向量。
+3. Transformer 用 attention 理解上下文。
+4. 最後根據任務選 `BERT / GPT / T5/BART / RAG`。
+
+讀下面的樹狀圖時，先看每一層在 NLP 流程中的位置，再看代表方法與考試陷阱。
 
 ```
 🤖 L21101 自然語言處理技術與應用
@@ -104,328 +131,345 @@
 
 ## Section 3. Core Concepts（核心概念）
 
+先把整個 NLP 流程抓起來，後面每個名詞都會比較好懂：
+
+```text
+原始文字
+→ Tokenization：切成 token
+→ Embedding：把 token 變成向量
+→ Transformer：理解 token 之間的關係
+→ 任務輸出：分類 / 摘要 / 翻譯 / 問答 / 生成
+```
+
+考試看到名詞時，先問自己：「它在這條流程的哪一段？」
+
+---
+
 ### 3.1 Tokenization 斷詞 🔥🔥
 
-**定義**：把原始文字切成模型看得懂的最小單位（token）。一句話進入 BERT/GPT 之前，一定先被 tokenizer 切一輪。
+**先懂一句話**：
+Tokenization 就是把文字切成模型可以處理的小單位，這些小單位叫做 `token`。
 
-**白話說明 🗣️**：
-就像你把一則 Instagram 貼文貼進 LINE 要分享，LINE 會自動切成「預覽卡 + 連結」。模型的 tokenizer 也一樣——它不是一個字一個字吃，也不是整句吞，而是切成「中等大小的 subword」，這樣既能處理冷門詞（例如「蝦皮購物」可能被切成「蝦皮_購物」），又不會讓序列長到 GPU 爆記憶體。
+模型不是直接吃完整句子。它會先把句子切開：
 
-**三種主流做法**：
+```text
+I am playing basketball
+→ I / am / play / ##ing / basketball
+```
 
-| 切法 | 代表模型 | 邏輯 |
+`##ing` 裡的 `##` 表示：這不是一個新詞的開頭，而是接在前面 token 後面的片段。
+
+**它在流程中的位置**：
+
+```text
+原始文字 → Tokenization → Embedding → Transformer
+```
+
+所以 tokenization 負責「切材料」，還沒有把文字變成數字。
+
+**三種切法怎麼分**：
+
+| 切法 | 白話理解 | 優點 / 問題 |
 |---|---|---|
-| Word-level | 早期 NLP | 以空白切詞；中文沒空白 → 需額外斷詞工具；但只要遇到字典沒收錄的詞，就無法正確表示其意思（這類詞稱為 OOV, Out-Of-Vocabulary）→ **資訊遺失**，下游任務準確率下降 |
-| **Subword** 🔥🔥 | BERT / GPT / T5 | 把詞切成「比完整單字更小、但比單一字元更有意義」的片段；常見詞可保留整詞，罕見詞、新詞可拆成多個片段處理（如 `playing` → `play` + `##ing`，`##` 表示不是詞首） |
-| Character-level | 少數多語模型 | 一字一 token；序列過長、效率低 |
+| Word-level | 一個完整詞一個 token | 簡單，但遇到字典沒有的詞會 OOV；中文沒有空格，不能只靠空白切 |
+| **Subword** 🔥🔥 | 把詞切成有意義的小片段 | 現代 NLP 主流；能處理新詞、罕見詞，又不會像字元級那麼長 |
+| Character-level | 一個字元一個 token | 幾乎不會 OOV，但序列太長、效率較差 |
 
-**Subword 三巨頭（這題幾乎必考）🔥🔥🔥**：
+> **考試重點**：Subword tokenization 是 word-level 與 character-level 之間的折衷；它能減少 OOV 問題，同時避免序列長度變得太長。
 
-```
-┌─────────────────┬──────────────────┬──────────────────────┐
-│ 演算法          │ 代表模型         │ 關鍵特徵             │
-├─────────────────┼──────────────────┼──────────────────────┤
-│ BPE             │ GPT / Llama /    │ 合併最頻繁的         │
-│ (Byte Pair Enc) │ Qwen / Gemma     │ 字元/子字元 pair；   │
-│                 │                  │ GPT-2+ 改 byte-level │
-├─────────────────┼──────────────────┼──────────────────────┤
-│ WordPiece       │ BERT / DistilBERT│ 類似 BPE，選擇依     │
-│                 │ / RoBERTa        │ likelihood 提升量    │
-├─────────────────┼──────────────────┼──────────────────────┤
-│ Unigram LM      │ T5 / XLNet /     │ 從大 vocab 剪掉最    │
-│ (via Sentence-  │ ALBERT / mT5 /   │ 不重要的 subword；   │
-│ Piece)          │ 多語模型         │ 不依賴空白（對中文   │
-│                 │                  │ 更穩健）🔥           │
-└─────────────────┴──────────────────┴──────────────────────┘
-```
+**Subword 三巨頭怎麼背**：
 
-> 📌 **口訣先記**：「GPT 吃 BPE，BERT 切 WordPiece，T5 拿 Unigram（實作走 SentencePiece）」
+| 方法 | 常見模型 | 考試記法 |
+|---|---|---|
+| BPE | GPT / Llama / Qwen / Gemma | 合併常一起出現的字元或子字元 pair |
+| WordPiece | BERT / DistilBERT / RoBERTa | BERT 常見；會出現 `##ing` 這種非詞首標記 |
+| Unigram LM | T5 / XLNet / ALBERT / mT5 | 常透過 SentencePiece 實作；對中文等無空白語言較穩健 |
 
-> 🔎 **名詞釐清**：這裡其實有三個層級。`T5 / ALBERT / XLNet` 是**模型**；`BPE / WordPiece / Unigram` 是 tokenizer 的**切詞方法**；`SentencePiece` 是拿來實作 tokenizer 的**工具**。所以像 T5 這類模型，常見情況是「模型 = T5、方法 = Unigram、工具 = SentencePiece」。
+> **口訣**：GPT 吃 BPE，BERT 切 WordPiece，T5 拿 Unigram（實作常走 SentencePiece）。
 
-> 🧠 **一句話記法**：`T5 / ALBERT / XLNet` 是「誰在用」；`BPE / WordPiece / Unigram` 是「怎麼切」；`SentencePiece` 是「用什麼工具來切」。
+**容易混淆的三層關係**：
 
-> 💡 **Byte-level BPE 小補充**：GPT-2 之後採用 **byte-level BPE**——直接對 UTF-8 位元組操作，對任何語言都不會 OOV，這是 GPT 系列能無痛處理中日韓文的關鍵。
+| 層級 | 例子 | 問的是什麼 |
+|---|---|---|
+| 模型 | T5 / BERT / GPT | 誰在用？ |
+| 切詞方法 | BPE / WordPiece / Unigram | 怎麼切？ |
+| 工具 | SentencePiece | 用什麼工具實作？ |
 
-> 🇹🇼 **繁中 vs 簡中 tokenization 策略**：中文（無空格）tokenization 常見策略——字元級（每個字一 token，簡單但序列太長）/ jieba 等分詞器（詞級，繁中需用繁中字典如 jieba-tw）/ BPE / Unigram（學出混合單位，BERT-Chinese 走此路）。繁簡混用時要注意字典一致性，否則同一個詞會切出不同 token。**考試若出現中文 NLP 場景題，預設是字元級 / BPE / Unigram，不要選「用空格分詞」。**
+**中文場景要特別記**：
+中文沒有天然空白，所以考試若問中文 NLP，不要直覺選「用空格分詞」。常見方向是字元級、BPE、Unigram，或使用適合中文的分詞器。
+
+**Quick check**：
+如果題目說「模型要處理大量新品牌名、專有名詞，並減少 OOV」，優先想到哪個答案？
 
 ---
 
 ### 3.2 詞嵌入 Word Embeddings 🔥🔥
 
-**定義**：把 token（字串）轉換成向量（數字陣列）的技術。模型只看得懂數字，所以 token 一定要先變向量。
+**先懂一句話**：
+Word embedding 就是把 token 轉成數字向量，因為模型只能計算數字，不能直接理解文字。
 
-**白話說明 🗣️**：
-想像你在 104 人力銀行填履歷，技能欄打「Python」「JavaScript」「SQL」。電腦不認得文字，但它可以把每個技能變成一組座標（例如 Python=[0.8, 0.2, 0.5]），這樣「Python 和 Java」會很近、「Python 和 廚師」會很遠。詞嵌入就是這個「文字→座標」的動作。
+例如：
 
-**靜態 vs 語境化（這是 114.09 樣題明確標註的「進階細節」）🔥🔥**：
-
-```
-靜態詞嵌入（word2vec / GloVe）
-──────────────────────────────
-  "bank" ─────────► [0.3, -0.2, 0.7, ...]   ← 永遠同一個向量
-  （河岸的 bank 和銀行的 bank 向量一模一樣 → 一詞多義無解）
-
-語境化詞嵌入（ELMo / BERT）
-──────────────────────────────
-  "I sat on the river bank"  ─► bank = [0.1, 0.4, -0.3, ...]
-  "I deposited money at the bank" ─► bank = [0.8, -0.2, 0.5, ...]
-  （同一個字，上下文不同 → 向量不同 🔥）
+```text
+cat → [0.2, 0.8, -0.1, 0.5]
+dog → [0.3, 0.7, -0.2, 0.4]
+car → [-0.6, 0.1, 0.9, -0.3]
 ```
 
-**先用 4 個代表方法建立全貌**：
-- **word2vec**：靜態詞嵌入，走「預測型」路線；根據附近詞來學向量
-- **GloVe**：靜態詞嵌入，走「共現統計型」路線；根據整體語料中詞與詞一起出現的情況學向量
-- **ELMo**：語境化詞嵌入；同一個詞在不同句子裡會有不同表示，底層是雙向 LSTM 語言模型
-- **BERT**：語境化詞嵌入；用 Transformer encoder 和 MLM 預訓練，根據上下文產生表示
+意思接近的詞，向量距離通常也比較近。`cat` 和 `dog` 會比 `cat` 和 `car` 更接近。
 
-**如果只看大分類，可以這樣記**：
-- 靜態：`word2vec`、`GloVe`
-- 語境化：`ELMo`、`BERT`
+**它在流程中的位置**：
 
-**再看最常考的兩組差異**：
-- `word2vec vs GloVe`：兩者都屬於**靜態**詞嵌入，但 `word2vec` 是**預測型**，`GloVe` 是**共現統計型**
-- `ELMo vs BERT`：兩者都屬於**語境化**詞嵌入，但 `ELMo` 底層是 **雙向 LSTM**，`BERT` 底層是 **Transformer encoder + MLM**
+```text
+Tokenization → Embedding → Transformer
+```
 
-**其中 word2vec 內部又分兩種訓練法**：
-- **Skip-gram**：給中心詞，預測周圍詞（適合小資料 + 冷門詞）
-- **CBOW**（Continuous Bag of Words）：給周圍詞，預測中心詞（訓練快）
+Tokenization 是「切成 token」，embedding 是「把 token 變成可計算的向量」。
 
-> 📌 **口訣**：先分靜態與語境化；靜態看 `word2vec / GloVe`，語境化看 `ELMo / BERT`。再往下背：`word2vec` 看局部預測，`GloVe` 看全域共現，`ELMo` 用雙向 LSTM，`BERT` 用 MLM + Transformer。
+**最大考點：靜態 vs 語境化**：
+
+| 類型 | 核心概念 | 代表方法 | 最大差別 |
+|---|---|---|---|
+| 靜態詞嵌入 Static embedding | 同一個詞永遠同一個向量 | word2vec / GloVe | 無法處理一詞多義 |
+| 語境化詞嵌入 Contextualized embedding | 同一個詞會根據上下文產生不同向量 | ELMo / BERT | 可以處理一詞多義 |
+
+用 `bank` 來看最清楚：
+
+```text
+靜態 embedding：
+"river bank" 的 bank = "money bank" 的 bank
+→ 分不出河岸與銀行
+
+語境化 embedding：
+"river bank" 的 bank ≠ "money bank" 的 bank
+→ 會根據上下文改變向量
+```
+
+**四個代表方法怎麼分**：
+
+| 方法 | 類型 | 考試關鍵字 |
+|---|---|---|
+| word2vec | 靜態 | 預測型；根據附近詞學向量 |
+| GloVe | 靜態 | 共現統計型；看整體語料中詞與詞一起出現的情況 |
+| ELMo | 語境化 | 雙向 LSTM |
+| BERT | 語境化 | Transformer encoder + MLM |
+
+**word2vec 內部兩種訓練法**：
+
+| 方法 | 白話 | 考試記法 |
+|---|---|---|
+| Skip-gram | 給中心詞，預測周圍詞 | 中心猜旁邊；適合小資料與冷門詞 |
+| CBOW | 給周圍詞，預測中心詞 | 旁邊猜中心；訓練較快 |
+
+> **考試重點**：看到「一詞多義、上下文、同一個詞不同意思」→ 選語境化 embedding，例如 `BERT` 或 `ELMo`。
+
+**Quick check**：
+如果題目問「哪種 embedding 可以分辨 `bank` 在銀行和河岸中的不同意思？」你會選靜態還是語境化？
 
 ---
 
 ### 3.3 Transformer 架構 🔥🔥🔥
 
-**定義**：2017 年 Vaswani et al. 發表的 "Attention Is All You Need" 所提出的模型架構。它不再像 RNN/LSTM 那樣按順序一個字一個字處理，而是改用 `self-attention` 一次看整句，因此能平行運算，也更擅長捕捉長距依賴。
+**先懂一句話**：
+Transformer 是用 attention 讓模型判斷「每個 token 應該注意句子裡哪些其他 token」的架構。
 
-**它在整個 NLP 流程中的位置**：
-先做 `tokenization` 把句子切成 token，再做 `embedding` 把 token 變成向量，接著才把這些向量送進 **Transformer**。也就是說，Transformer 不負責切詞，也不負責把詞變成數字；它負責進一步理解這些向量之間的關係，讓每個詞的表示帶上上下文資訊。
+RNN/LSTM 像是一個字一個字照順序讀；Transformer 可以讓整句話的 token 彼此同時參考，所以比較能平行運算，也比較擅長長距離關係。
 
-白話記法可以直接背：
-- `tokenization` = 切材料
-- `embedding` = 把材料變成可計算格式
-- `transformer` = 真正開始理解句子結構與上下文
+**它在流程中的位置**：
 
-**先抓核心**：
-- `attention` = 讓模型判斷「現在這個詞應該多看哪些詞」
-- `soft attention` = 不是只選一個詞，而是讓所有詞都參與，只是權重不同
-- `self-attention` = attention 的對象來自同一句話本身，也就是「句子自己看自己」
-- `multi-head attention` = 不只看一次，而是同時用多組不同角度去看
-
-**三者關係要這樣記**：
-- `soft attention` 講的是「怎麼加權」
-- `self-attention` 講的是「看誰」
-- `multi-head attention` 講的是「看幾次、用幾種角度看」
-
-所以 Transformer 裡最常見的其實是：
-
-> `multi-head self-attention`
-
-意思就是：
-同一句話裡的 token 彼此互看，而且不是只看一個，而是加權看全部，並且同時用很多個 head 去看。
-
-**白話說明 🗣️**：
-想像你在大學做小組報告，七個組員同時在 LINE 群組裡討論。如果是 RNN，就像大家輪流講話，一個講完下一個才能開口；Transformer 的 self-attention 則像是每個人都能同時看所有人的訊息，再決定哪些內容最值得參考，所以速度更快，也比較不容易忘記前面很遠的資訊。
-
-**Self-Attention 的 Q/K/V 🔥🔥🔥**：
-
-```
-    每個 token 會產生三個向量：
-
-    Query (Q) ──► 我現在想找什麼資訊？
-    Key   (K) ──► 我身上有哪些可被比對的特徵？
-    Value (V) ──► 如果你關注我，我實際提供什麼內容？
-
-    ┌────────────────────────────────────────────────┐
-    │  Attention(Q, K, V) = softmax(QKᵀ / √d_k) · V  │
-    └────────────────────────────────────────────────┘
-
-    步驟：
-    1. Q · Kᵀ   → 算出每個 token 對其他 token 的相關性分數
-    2. / √d_k   → 縮放，避免分數過大
-    3. softmax  → 把分數變成權重分布（加總 = 1）
-    4. · V      → 用這些權重對所有 Value 做加權平均
+```text
+文字 → Tokenization → Embedding → Transformer → 任務輸出
 ```
 
-> 📌 **d_k 是 key 向量維度**；除以 √d_k 是為了避免點積過大，讓 softmax 太尖銳、梯度不穩。數學推導不是本科重點，理解「這是縮放」即可。
+Transformer 不負責切詞，也不負責把文字變數字；它負責讓 token 向量吸收上下文資訊。
 
-**白話 Q/K/V 🗣️**：
-想像你是調酒師要調一杯客製調酒。客人說「我要偏甜、帶點果香、不要太烈」= **Query**；吧檯上每一瓶材料的風味標籤 = **Key**；每一瓶實際倒進杯子的液體 = **Value**。你會先拿客人的需求去比對每個標籤，再決定每一瓶該倒多少，最後按比例混合成一杯新的調酒。
+**先分清楚三個 attention 名詞**：
 
-> 🔑 這裡的重點是：不是只挑一瓶最像的，而是讓所有材料都能參與，只是比例不同。這就是 **soft attention**。
-
-**Soft Attention vs Self-Attention vs Multi-Head Attention**：
-
-| 名稱 | 重點 | 白話理解 |
+| 名稱 | 問題 | 白話理解 |
 |---|---|---|
-| Soft attention | 所有 token 都參與，只是權重不同 | 大家都能發言，但有人權重比較高 |
-| Self-attention | 同一句裡的 token 彼此互看 | 句子自己看自己 |
-| Multi-head attention | 平行做很多組 attention | 好幾組觀察角度一起看 |
+| Soft attention | 怎麼加權？ | 不是只看一個 token，而是全部都看，只是權重不同 |
+| Self-attention | 看誰？ | 同一句話裡的 token 彼此互看 |
+| Multi-head attention | 看幾種角度？ | 同時用多組 attention 看不同關係 |
 
-**Multi-Head Attention 多頭注意力**：
-- 單一 head 通常只能抓到一部分關係
-- 多頭讓模型同時學不同種類的關係，例如語法、語意、位置、共指
-- 白話可以想成團隊分工：一個人看語法，一個人看情感，一個人看誰指代誰，最後再把各自觀察到的結果合併
+所以 Transformer 常見核心是：
 
-**Positional Encoding 位置編碼**：
-- self-attention 本身不會自帶順序感
-- 所以 Transformer 需要額外加入位置資訊，告訴模型哪個 token 在前、哪個在後
-- 否則「我打你」和「你打我」只看詞集合會很像，但意思完全不同
+```text
+multi-head self-attention
+```
 
-**其他零件**（考試知道名字即可）：
-- **Layer Normalization + Residual Connection（Add & Norm）**：每個子層後都接殘差與標準化，幫助深層網路更穩定
-- **Position-wise Feed-Forward Network（FFN）**：在 attention 之後，再對每個位置做一次非線性特徵轉換
+也就是：同一句話裡的 token 彼此互看，而且用多個 head 從不同角度看。
 
-**為什麼 Transformer 取代 RNN/LSTM**：
+**Q / K / V 用人話理解**：
+
+每個 token 都會產生三個向量：
+
+| 名稱 | 白話問題 |
+|---|---|
+| Query (Q) | 我現在想找什麼資訊？ |
+| Key (K) | 我身上有哪些可被比對的特徵？ |
+| Value (V) | 如果你關注我，我實際提供什麼內容？ |
+
+Attention 的流程可以先用這句記：
+
+```text
+Q 和 K 算相關性 → softmax 變權重 → 用權重加總 V
+```
+
+公式長這樣，考試通常不需要推導：
+
+```text
+Attention(Q, K, V) = softmax(QK^T / sqrt(d_k)) · V
+```
+
+`/ sqrt(d_k)` 是縮放，避免分數太大讓 softmax 太極端，導致訓練不穩。
+
+**為什麼需要 Positional Encoding**：
+Self-attention 本身不自帶順序感。如果只看詞集合，「我打你」和「你打我」會很像，但意思完全不同。因此 Transformer 要加入位置資訊，告訴模型 token 的前後順序。
+
+**其他零件考到會認即可**：
+
+| 零件 | 功能 |
+|---|---|
+| Add & Norm | Residual connection + Layer normalization，讓深層網路訓練更穩定 |
+| FFN | Attention 後，對每個位置再做非線性特徵轉換 |
+
+**Transformer 為什麼取代 RNN/LSTM**：
 
 | 面向 | RNN/LSTM | Transformer |
 |---|---|---|
 | 處理方式 | 循序 sequential | 平行 parallel |
-| 長距依賴 | 難處理遠距資訊 | self-attention 可直接建立關聯 |
-| 訓練速度 | 慢 | 快 |
-| GPU 利用率 | 低 | 高 |
+| 長距依賴 | 較難保留很遠的資訊 | self-attention 可直接建立遠距關係 |
+| 訓練速度 | 較慢 | 較快 |
+| GPU 利用率 | 較低 | 較高 |
 
-**Transformer 完整資料流（考試不會考細節，但理解後很多題會秒解）**：
+**完整資料流先有概念就好**：
 
-```
+```text
 輸入文字
-   │
-   ▼
-Tokenizer（BPE / WordPiece / SentencePiece）
-   │
-   ▼
-Token Embedding + Positional Encoding（把每個 token 變向量並加位置資訊）
-   │
-   ▼
-┌──────────────────────────────────┐
-│ Encoder Block（堆疊 N 層）       │
-│ ┌──────────────────────────────┐ │
-│ │ Multi-Head Self-Attention    │ │  ◄── 每層都重複
-│ │   + Add & Norm               │ │
-│ │ Feed-Forward Network         │ │
-│ │   + Add & Norm               │ │
-│ └──────────────────────────────┘ │
-└──────────────────────────────────┘
-   │
-   ▼
-輸出向量 → 丟給分類頭 / 解碼器 / 任務頭
+→ Tokenizer
+→ Token Embedding + Positional Encoding
+→ Multi-Head Self-Attention
+→ Add & Norm
+→ Feed-Forward Network
+→ Add & Norm
+→ 輸出向量給分類頭 / 解碼器 / 任務頭
 ```
 
-> 📌 數學展開、梯度推導、訓練迴圈程式碼屬 L23 機器學習組內容，本科只需了解架構層級。
+> **考試重點**：Transformer 的核心是 self-attention；優勢是平行運算與長距依賴；位置順序要靠 positional encoding 補上。
+
+**Quick check**：
+如果題目問「Transformer 為什麼比 RNN 更適合長文本？」你會回答 self-attention、平行運算，還是 word-level tokenization？
 
 ---
 
 ### 3.4 三大架構家族 🔥🔥🔥
 
-這是整科最高頻的考點。請務必把下面這張圖刻進腦袋。
+**先懂一句話**：
+Transformer 可以分成三大家族：`encoder-only`、`decoder-only`、`encoder-decoder`。考試常要你根據任務選家族。
 
-```
-┌────────────────────────────────────────────────────────────────┐
-│                      Transformer 架構                          │
-│                                                                │
-│   ┌──────────────┐              ┌──────────────┐               │
-│   │   Encoder    │  ◄──雙向──►  │   Decoder    │ ◄──單向       │
-│   │  (雙向理解)  │              │  (生成)      │               │
-│   └──────────────┘              └──────────────┘               │
-│                                                                │
-│   ┌──────────────────┬──────────────────┬──────────────────┐   │
-│   │  Encoder-only    │   Decoder-only   │ Encoder-decoder  │   │
-│   │  BERT / RoBERTa  │  GPT / Llama     │  T5 / BART       │   │
-│   ├──────────────────┼──────────────────┼──────────────────┤   │
-│   │  MLM             │  Next-token LM   │  Span corruption │   │
-│   │  (mask 15%)      │  (causal)        │  / denoising     │   │
-│   ├──────────────────┼──────────────────┼──────────────────┤   │
-│   │ 🎯 理解類        │ 🎯 生成類        │ 🎯 seq2seq       │   │
-│   │ - 文本分類       │ - 對話           │ - 翻譯           │   │
-│   │ - 情感分析       │ - 續寫           │ - 摘要           │   │
-│   │ - NER            │ - few-shot       │ - 生成式 QA      │   │
-│   │ - 抽取式 QA      │ - 通用 LLM       │                  │   │
-│   └──────────────────┴──────────────────┴──────────────────┘   │
-└────────────────────────────────────────────────────────────────┘
+| 架構 | 代表模型 | 看文字的方式 | 擅長任務 |
+|---|---|---|---|
+| Encoder-only | BERT / RoBERTa | 雙向理解，可以同時看前後文 | 分類、情感分析、NER、抽取式 QA |
+| Decoder-only | GPT / Llama | 單向生成，只根據前文預測下一個 token | 對話、續寫、few-shot、通用生成 |
+| Encoder-decoder | T5 / BART | encoder 先理解輸入，decoder 再生成輸出 | 翻譯、摘要、生成式 QA |
+
+**用一句話分辨**：
+
+```text
+BERT = 看懂整句，適合理解類任務
+GPT = 往後接著寫，適合生成類任務
+T5/BART = 先讀懂再改寫，適合輸入輸出都可變長的 seq2seq 任務
 ```
 
-**白話類比 🗣️**：
-- **Encoder-only (BERT)** = 你在 7-11 當店員盤點架上所有商品。你同時看前面、後面、左右所有位置（雙向），然後回答「哪一格缺貨？」——擅長**判讀全景**。
-- **Decoder-only (GPT)** = 你在 LINE 打字回訊息，一個字接一個字（單向），不能偷看還沒打出來的下一個字——擅長**往前寫**。
-- **Encoder-decoder (T5)** = 你在蝦皮賣場把中文描述翻成英文給海外客人：先 encoder 把中文整句看懂（雙向），再 decoder 一字一字寫英文（單向）——擅長**兩邊等長都不固定的任務**。
-
-**三大訓練目標（名稱與對應架構必背）🔥**：
+**三大訓練目標必背**：
 
 | 訓練目標 | 白話 | 對應架構 |
 |---|---|---|
-| MLM（Masked Language Modeling） | 把 15% 的字挖空，模型猜回來 | Encoder-only（BERT） |
-| Causal / Next-token LM | 給前面 n 個字，猜第 n+1 個 | Decoder-only（GPT） |
-| Span corruption / Denoising | 把一段連續文字整段挖空或打亂，還原 | Encoder-decoder（T5/BART） |
+| MLM（Masked Language Modeling） | 把部分 token 遮住，讓模型猜回來 | Encoder-only（BERT） |
+| Causal / Next-token LM | 給前面的 token，猜下一個 token | Decoder-only（GPT） |
+| Span corruption / Denoising | 把一段文字遮住或打亂，讓模型還原 | Encoder-decoder（T5/BART） |
 
-> 📌 完整 fine-tuning 策略（LoRA、adapter、RLHF、訓練迴圈程式碼）屬 L23 機器學習組內容，本科只需了解架構層級。
+> **考試重點**：理解類任務優先想 BERT；生成續寫優先想 GPT；翻譯、摘要這種 seq2seq 優先想 T5/BART。
+
+**Quick check**：
+如果題目說「輸入一篇英文新聞，輸出三句中文摘要」，你會選 encoder-only、decoder-only，還是 encoder-decoder？
 
 ---
 
 ### 3.5 NLP 任務家族
 
-iPAS 樣題 Q3 已出現「情緒分析」正解題。你需要能把每個任務對應到架構家族。
+**先懂一句話**：
+NLP 任務就是「輸入文字後，你希望模型產生什麼輸出」。輸出是類別、標記、答案、翻譯，會決定適合的模型架構。
 
-**文本分類 Text Classification** 🔥
-- 輸入：一段文字
-- 輸出：一個類別標籤（垃圾信/正常、正面/負面）
-- 典型：Encoder-only（BERT fine-tune）
+| 任務 | 輸入 | 輸出 | 常見架構 |
+|---|---|---|---|
+| 文本分類 Text Classification | 一段文字 | 一個類別 | Encoder-only（BERT） |
+| 情感分析 Sentiment Analysis 🔥🔥 | 評論、留言 | 正面 / 負面 / 中性 | Encoder-only（BERT） |
+| NER | 一段文字 | 人名、地名、組織、時間、金額等標記 | Encoder-only（BERT + token classification） |
+| 抽取式摘要 Extractive Summarization | 長文章 | 原文中的重要句子 | 可用 encoder-only |
+| 生成式摘要 Abstractive Summarization 🔥 | 長文章 | 用自己的話生成摘要 | Encoder-decoder（T5/BART） |
+| 機器翻譯 Machine Translation 🔥 | 一種語言文字 | 另一種語言文字 | Encoder-decoder（T5/BART） |
+| 抽取式 QA | 問題 + 文章 | 原文中的一段答案 | Encoder-only |
+| 生成式 QA | 問題 | 模型生成答案 | Encoder-decoder 或 decoder-only |
 
-**情感分析 Sentiment Analysis** 🔥🔥（樣題 Q3 正解）
-- 判斷文本是正面、負面、中性
-- 白話：蝦皮評論自動分類「好評/負評」
-- 典型：Encoder-only（BERT）
+**RAG 也要知道**：
+RAG（Retrieval-Augmented Generation，檢索增強生成）是現代 QA 常見做法：
 
-**命名實體識別 NER（Named Entity Recognition）** 🔥
-- 從文本抽出人名、地名、組織、時間、金額
-- 白話：把一則 104 職缺描述裡的「公司名、薪水、地點」自動標出來
-- 典型：Encoder-only（BERT + token classification head）
-
-**摘要 Summarization**：
-- **抽取式 Extractive**：從原文直接挑重要句子拼起來（像你考前畫重點）→ 可用 encoder-only
-- **生成式 Abstractive**：用自己的話重寫一份短的（像你把論文寫成 FB 貼文）→ 典型 encoder-decoder（T5/BART）🔥
-
-**機器翻譯 Machine Translation** 🔥
-- 中→英、日→中
-- 輸入輸出長度都不固定 → 典型 encoder-decoder（T5/BART）
-
-**問答 QA**：
-- **抽取式 Extractive QA**：答案是原文裡的一段（「台北 101 位於哪裡？」→ 原文中的「信義區」）→ encoder-only
-- **生成式 Generative QA**：答案要自己生成 → encoder-decoder 或 decoder-only
-- **RAG（Retrieval-Augmented Generation，檢索增強生成）** 🔥：現代 QA 主流架構——先用 embedding 檢索相關文件，再把檢索結果塞進 LLM prompt 產生答案。比純 LLM 回答**更不會幻覺、能引用最新資料**。中級考試會出 RAG 架構基本概念——記住「**檢索 → 增強 → 生成**」三步驟。(📎 RAG 原理細節見 L21103 生成式AI技術與應用)
-
-**白話任務地圖 🗣️**（用你每天會碰到的 app 套進來）：
-
+```text
+檢索 relevant documents → 把文件放進 prompt 增強上下文 → 生成答案
 ```
-📱 情感分析  → 蝦皮把全部評論自動分成好評 / 負評
-📱 NER      → 104 從職缺描述抽「公司 / 薪水 / 地點」
-📱 分類     → Gmail 把信標成主要 / 促銷 / 社交
-📱 翻譯     → Google 翻譯把日本旅遊網頁變中文
-📱 摘要     → 新聞 App 把長文章壓成一段 Instagram 限動
-📱 對話     → LINE 的 ChatGPT bot
-📱 續寫     → 你在 IG 打到一半，鍵盤自動建議下一個字
-📱 QA       → 你對 Siri 問「明天台北會下雨嗎？」
-📱 RAG QA   → Perplexity / ChatGPT 開網路查詢模式回答即時新聞
+
+它比純 LLM 直接回答更適合需要最新資料、公司內部文件、可追溯來源的場景，也比較能降低幻覺。
+
+**用日常 app 記任務**：
+
+```text
+情感分析 → 蝦皮評論分好評 / 負評
+NER → 104 職缺抽公司、薪水、地點
+分類 → Gmail 分主要 / 促銷 / 社交
+翻譯 → Google 翻譯
+摘要 → 新聞 App 壓成短摘要
+對話 → ChatGPT bot
+續寫 → 鍵盤自動建議下一個字
+RAG QA → 先查文件再回答公司政策
 ```
+
+> **考試重點**：先看輸出形式。輸出是類別，多半是分類；輸出是原文片段，是抽取式；輸出是新文字，是生成式。
+
+**Quick check**：
+如果題目說「從履歷中找出姓名、學校、技能」，這比較像文本分類、NER，還是翻譯？
 
 ---
 
 ### 3.6 任務 → 架構選型（Dual-constraint 題必考）🔥🔥🔥
 
-iPAS 中級偏好「雙條件」題型：給你兩個特徵，要你選架構。熟悉下面這張對照表就搞定一半。
+**先懂一句話**：
+iPAS 中級常給你兩個條件，要你選模型或架構。不要只看單一關鍵字，要同時看「任務類型」和「輸出形式」。
 
-| 關鍵字 / 場景 | 可能出現的情境題 | 答案 |
+| 題目關鍵字 / 場景 | 判斷邏輯 | 答案 |
 |---|---|---|
-| 雙向 + 抽取式 NER | 從客服訊息中找出人名、公司名、日期 | Encoder-only (`BERT`) |
-| 雙向 + 情感分類 | 判斷一則餐廳評論是正評還是負評 | Encoder-only (`BERT`) |
-| autoregressive + few-shot | 給幾個範例後，請模型仿寫一段產品文案 | Decoder-only (`GPT/Llama`) |
-| 對話 + 續寫 | 根據前面的聊天紀錄自動生成下一句回覆 | Decoder-only (`GPT`) |
-| 可變長輸入 + 可變長輸出 | 把一段英文翻成中文，輸入輸出長度都可能改變 | Encoder-decoder (`T5/BART`) |
-| 翻譯 + 摘要 | 把一篇長新聞摘要成三句重點 | Encoder-decoder (`T5/BART`) |
-| 一詞多義 + 語境相關 | 比較 `bank` 在 `river bank` 和 `go to the bank` 的意思 | 語境化詞嵌入 (`BERT/ELMo`) |
-| 詞彙量大 + 未登錄詞 OOV | 模型遇到新品牌名、專有名詞時仍要能處理 | Subword tokenization |
-| 無空白語言（中/日/泰）+ raw byte | 處理中文、日文、泰文這類沒有空格的文字 | Unigram (via SentencePiece) |
-| 檢索最新資料 + 不幻覺回答 | 回答最新公司政策時，先查文件再生成答案 | RAG（檢索→增強→生成） |
+| 雙向 + 情感分類 | 要看完整句子後判斷類別 | Encoder-only（BERT） |
+| 雙向 + NER / 抽取式 QA | 要理解整段文字並標出原文片段 | Encoder-only（BERT） |
+| autoregressive + next-token | 根據前文一個 token 一個 token 生成 | Decoder-only（GPT/Llama） |
+| 對話 + 續寫 + few-shot | 典型生成式 LLM 場景 | Decoder-only（GPT/Llama） |
+| 可變長輸入 + 可變長輸出 | 輸入輸出都可能長短不同 | Encoder-decoder（T5/BART） |
+| 翻譯 + 摘要 | 先理解輸入，再生成另一段文字 | Encoder-decoder（T5/BART） |
+| 一詞多義 + 上下文 | 同一個詞要依句子改變意思 | 語境化 embedding（BERT/ELMo） |
+| 新詞 / 專有名詞 / OOV | 不想遇到字典外詞就失效 | Subword tokenization |
+| 中文 / 日文 / 無空白語言 | 不能只靠空格切詞 | 字元級 / BPE / Unigram / SentencePiece |
+| 最新資料 + 文件引用 + 降低幻覺 | 先查資料再生成答案 | RAG（檢索 → 增強 → 生成） |
+
+**最後用這組口訣收斂**：
+
+```text
+切字看 tokenization
+變數字看 embedding
+懂上下文看 Transformer
+理解分類找 BERT
+續寫對話找 GPT
+翻譯摘要找 T5/BART
+查資料再回答找 RAG
+```
 
 ---
 
@@ -442,6 +486,11 @@ iPAS 中級偏好「雙條件」題型：給你兩個特徵，要你選架構。
 | 使用方式 | 查表即可 | 需整個模型跑 forward pass |
 | 年代 | 2013 | 2018 |
 
+**考題看到這樣判斷**：
+- 「固定向量、查表、2013、Skip-gram / CBOW」→ `word2vec`
+- 「上下文改變向量、一詞多義、MLM、Transformer encoder」→ `BERT`
+- 「bank 在河岸與銀行意思不同」→ 選語境化 embedding，不選 word2vec
+
 ### 4.2 三大架構家族對照 🔥🔥🔥
 
 | 面向 | Encoder-only | Decoder-only | Encoder-decoder |
@@ -451,6 +500,11 @@ iPAS 中級偏好「雙條件」題型：給你兩個特徵，要你選架構。
 | 訓練目標 | MLM（mask 15% 猜回來） | Next-token prediction | Span corruption / Denoising |
 | 擅長任務 | 分類、情感、NER、抽取式 QA | 對話、生成、續寫、few-shot | 翻譯、摘要、生成式 QA |
 | 現況（2026） | NER / 抽取式 QA 仍是基準 | 通用 LLM 主流 | 翻譯/摘要仍常用 |
+
+**考題看到這樣判斷**：
+- 「理解、分類、情感分析、NER、抽取式 QA」→ `Encoder-only / BERT`
+- 「生成、對話、續寫、few-shot、autoregressive」→ `Decoder-only / GPT`
+- 「翻譯、摘要、seq2seq、輸入輸出長度都可變」→ `Encoder-decoder / T5/BART`
 
 ### 4.3 Subword Tokenizer 對照 🔥🔥
 
@@ -462,6 +516,12 @@ iPAS 中級偏好「雙條件」題型：給你兩個特徵，要你選架構。
 
 > 🔎 **SentencePiece ≠ 演算法**：SentencePiece 是 Google 開源的 tokenizer 函式庫，可以實作 BPE 或 Unigram。T5 / ALBERT / XLNet 雖然都用 SentencePiece，但實際採用的是 **Unigram** 演算法。考題若把 SentencePiece 與 BPE/WordPiece 並列，請理解為「Unigram (via SentencePiece)」的簡寫。
 
+**考題看到這樣判斷**：
+- 「GPT / Llama / byte-level」→ `BPE`
+- 「BERT / ## 前綴」→ `WordPiece`
+- 「T5 / XLNet / ALBERT / SentencePiece / 無空白語言」→ `Unigram`
+- 「OOV / 新詞 / 專有名詞」→ 優先想到 `Subword tokenization`
+
 ### 4.4 抽取式 vs 生成式摘要 🔥
 
 | 面向 | 抽取式 Extractive | 生成式 Abstractive |
@@ -471,6 +531,10 @@ iPAS 中級偏好「雙條件」題型：給你兩個特徵，要你選架構。
 | 讀起來自然 | 中等（句子拼接） | 高 |
 | 典型架構 | encoder-only + 分類頭 | encoder-decoder（T5/BART） |
 | 白話類比 | 考前畫螢光筆 | 幫同學整理筆記到 Instagram 限動 |
+
+**考題看到這樣判斷**：
+- 「從原文挑句子、答案必須在原文」→ 抽取式，可用 `encoder-only`
+- 「用自己的話重寫、可讀性高、可能 hallucinate」→ 生成式，典型選 `encoder-decoder`
 
 ### 4.5 Self-attention vs Multi-head Attention vs Cross-attention
 
@@ -492,6 +556,11 @@ iPAS 中級偏好「雙條件」題型：給你兩個特徵，要你選架構。
 | 白話 | 自己看自己 | 用很多角度一起看 | 看對面（讀取來源句） |
 
 > 📌 口訣：`self / cross` 看「資料來源」，`multi-head` 看「觀察角度數量」。
+
+**考題看到這樣判斷**：
+- 「同一句話內 token 彼此互看」→ `Self-attention`
+- 「平行多組注意力、不同角度」→ `Multi-head attention`
+- 「decoder 讀 encoder 的輸出」→ `Cross-attention`
 
 ---
 
@@ -534,33 +603,67 @@ iPAS 中級偏好「雙條件」題型：給你兩個特徵，要你選架構。
 ### ❌ 陷阱 1：Transformer 是一個模型
 ✅ **正解**：Transformer 是**架構**（architecture），BERT / GPT / T5 才是**模型**（models）。它們都是基於 Transformer 架構設計的具體模型。
 > 為什麼會搞混：很多入門文章直接把「GPT」叫「Transformer model」，講快了就忘了前面「model」，只留「Transformer」變專有名詞。
+> 常見錯誤選項：把 Transformer 和 BERT/GPT/T5 並列成同一層級。看到這種選項，要先分清楚「架構」和「模型」。
 
 ### ❌ 陷阱 2：BERT 可以生成長文字
 ✅ **正解**：BERT 是 **encoder-only**，只能做理解類任務（分類、NER、抽取式 QA），**不能自然生成連貫長文**。要生成請用 GPT（decoder-only）或 T5（encoder-decoder）。
 > 為什麼會搞混：BERT 的 MLM 在預測被遮蔽的字，看起來像「生成」，但那只是 per-token 的填空，不是自回歸的連續生成。
+> 常見錯誤選項：選 BERT 做聊天機器人長回覆、文章續寫、產品文案生成。看到「續寫 / 對話 / 生成長文」優先選 GPT。
 
 ### ❌ 陷阱 3：word2vec 可以處理一詞多義
 ✅ **正解**：word2vec 是**靜態**詞嵌入，一個字只有一個固定向量。要處理一詞多義（"bank" = 河岸 vs 銀行）必須用**語境化**詞嵌入（ELMo / BERT）。這是 114.09 樣題明確標註的「重要細節考核」。
+> 常見錯誤選項：看到「詞嵌入」就選 word2vec。題目若強調上下文或不同語意，要改選 BERT / ELMo。
 
 ### ❌ 陷阱 4：GPT 可以做雙向理解
 ✅ **正解**：GPT 是 **decoder-only / causal**，只能**由左到右**看文字，**不能**看後面還沒出現的字。要雙向理解請用 BERT。
 > 為什麼會搞混：GPT-4 在回答問題時看起來「什麼都懂」，但它是靠龐大的上下文學習能力，不是靠雙向注意力——架構上它嚴格單向。
+> 常見錯誤選項：把 GPT 說成 bidirectional encoder。看到 `causal / autoregressive / next-token`，就是 decoder-only。
 
 ### ❌ 陷阱 5：摘要任務只能用 encoder-only
 ✅ **正解**：**抽取式摘要**可用 encoder-only（挑句子即可）；**生成式摘要**（abstractive）要用 encoder-decoder（T5/BART）或 decoder-only（GPT）才能改寫成自己的話。題目若強調「用自己的話重寫」或「可讀性高」，就是生成式 → encoder-decoder。
+> 常見錯誤選項：只看到「摘要」就選 BERT。要先看它是「從原文挑句子」還是「重新生成一段摘要」。
 
 ### ❌ 陷阱 6：Tokenizer 可以跨模型混用
 ✅ **正解**：**不行**。BERT 的 checkpoint 只能配 WordPiece tokenizer、GPT 只能配 BPE、T5 只能配 Unigram（SentencePiece 實作）。tokenizer 和模型權重是一起訓練出來的，對應關係固定。用錯 tokenizer → 模型吐亂碼。
+> 常見錯誤選項：說所有 Transformer 模型都能共用同一個 tokenizer。考試要記模型、tokenizer、vocab 是一起配套的。
 
 ### ❌ 陷阱 7：Transformer 不需要位置訊息（因為有 attention）
 ✅ **正解**：**需要**。self-attention 本身對順序不敏感（「我打你」和「你打我」attention 結果一樣），所以 Transformer 必須另外加 **Positional Encoding** 或 positional embedding，才能讓模型知道誰在前誰在後。
+> 常見錯誤選項：說 attention 已經自然保留順序。事實是 attention 擅長看關係，但順序資訊要另外加入。
 
 ### ❌ 陷阱 8：GloVe 和 word2vec 都是預測型
 ✅ **正解**：**word2vec = 預測型**（Skip-gram/CBOW 預測鄰近詞）；**GloVe = 共現統計型**（count-based，分解全域共現矩陣）。兩者路線不同。
+> 常見錯誤選項：把 GloVe 說成 Skip-gram 或 CBOW。看到 `co-occurrence / count-based / global statistics`，就是 GloVe。
 
 ---
 
 ## Section 7. 情境題快速判斷（Scenario Quick-Judge）
+
+### 7.1 Exam Decision Flow
+
+看到情境題時，先不要急著看模型名稱。照下面順序判斷：
+
+```text
+1. 題目問的是文字處理流程哪一段？
+   - 切文字 → tokenization
+   - 文字變數字 → embedding
+   - 理解上下文 → Transformer / attention
+   - 任務選型 → encoder-only / decoder-only / encoder-decoder / RAG
+
+2. 如果是任務選型，先看輸出形式：
+   - 輸出一個類別 → BERT / encoder-only
+   - 輸出原文中的片段 → BERT / encoder-only
+   - 輸出新寫出來的文字 → GPT 或 T5/BART
+   - 輸入一段、輸出另一段 → T5/BART / encoder-decoder
+
+3. 再看題目關鍵字：
+   - 雙向 / 理解 / classification / NER → BERT
+   - autoregressive / next-token / few-shot / chat → GPT
+   - translation / summarization / seq2seq → T5/BART
+   - 最新資料 / 引用文件 / 降低幻覺 → RAG
+```
+
+### 7.2 Keyword Map
 
 看到題目關鍵字，直接對照選答案。
 
@@ -601,6 +704,35 @@ iPAS 中級偏好「雙條件」題型：給你兩個特徵，要你選架構。
 「論文變短摘要用自己的話」              → Abstractive → encoder-decoder
 「從原文挑重要句子」                    → Extractive → encoder-only
 ```
+
+### 7.3 Mini Practice
+
+先遮住答案，自己用「輸出形式 → 關鍵字 → 架構」判斷一次。
+
+| 題目情境 | 判斷 | 答案 |
+|---|---|---|
+| 公司想把客服留言分成正面、負面、中性 | 輸出是類別；要理解整句 | 情感分析；Encoder-only / BERT |
+| 從履歷中找出姓名、學校、技能 | 輸出是原文中的實體標記 | NER；Encoder-only / BERT |
+| 把英文產品說明翻成中文 | 輸入輸出都是文字，長度可變 | Machine translation；Encoder-decoder / T5/BART |
+| 把一篇長新聞用自己的話整理成三句摘要 | 生成新文字，不只是挑原句 | Abstractive summarization；Encoder-decoder / T5/BART |
+| 根據前面聊天紀錄產生下一句回覆 | 續寫、對話、自回歸生成 | Decoder-only / GPT |
+| 給模型三個範例，請它仿寫第四個產品文案 | few-shot + 生成文字 | Decoder-only / GPT |
+| 問答系統要先查公司內部文件，再回答並附來源 | 檢索文件後再生成 | RAG |
+| 題目比較 `bank` 在河岸和銀行的不同意思 | 同一詞依上下文改變語意 | 語境化 embedding；BERT / ELMo |
+| 模型需要處理新品牌名與罕見專有名詞 | 降低 OOV 問題 | Subword tokenization |
+| 題目問為何 Transformer 比 RNN 更適合長距依賴 | token 可直接彼此注意，且可平行 | Self-attention / Transformer |
+
+---
+
+## Quick Check Answers
+
+| 小節 | 答案 |
+|---|---|
+| 3.1 Tokenization | `Subword tokenization`，因為它能減少 OOV，又不會像 character-level 那麼長 |
+| 3.2 Word Embeddings | 語境化 embedding，例如 `BERT / ELMo` |
+| 3.3 Transformer | `self-attention`、平行運算、長距依賴；不是 word-level tokenization |
+| 3.4 三大架構家族 | `Encoder-decoder`，典型是 `T5 / BART` |
+| 3.5 NLP 任務家族 | `NER`，因為要從文字中抽出姓名、學校、技能等實體 |
 
 ---
 
